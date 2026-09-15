@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RISE OF NATIONS // CREATE ENCASED</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+    min-height:100vh;
+    background:
+        linear-gradient(rgba(7,12,17,.97),rgba(7,12,17,.99)),
+        repeating-linear-gradient(
+            135deg,
+            rgba(255,255,255,.018) 0 2px,
+            transparent 2px 9px
+        );
+    color:#dbe3e8;
+    font-family:"Segoe UI",Arial,sans-serif;
+}
+
+header{
+    background:rgba(6,11,16,.98);
+    border-bottom:1px solid #293944;
+    box-shadow:0 5px 25px rgba(0,0,0,.45);
+}
+
+.header-inner{
+    max-width:1500px;
+    margin:auto;
+    padding:18px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:30px;
+}
+
+.logo{
+    color:#d6b85c;
+    font-size:22px;
+    font-weight:950;
+    letter-spacing:3px;
+}
+
+.logo span{
+    display:block;
+    color:#687b86;
+    font-size:9px;
+    letter-spacing:2px;
+    margin-top:4px;
+}
+
+nav{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+    gap:7px;
+}
+
+nav a{
+    color:#9aabb4;
+    text-decoration:none;
+    padding:9px 11px;
+    border:1px solid transparent;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.2px;
+    transition:.2s;
+}
+
+nav a:hover{
+    color:#d6b85c;
+    background:#111b22;
+    border-color:#3b4d58;
+}
+
+main{
+    max-width:1250px;
+    margin:auto;
+    padding:70px 30px 100px;
+}
+
+.eyebrow{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:3px;
+    margin-bottom:15px;
+}
+
+h1{
+    color:#edf2f4;
+    font-size:clamp(40px,6.5vw,78px);
+    line-height:.95;
+    letter-spacing:4px;
+    font-weight:950;
+}
+
+.subtitle{
+    max-width:900px;
+    margin-top:22px;
+    color:#8497a2;
+    line-height:1.75;
+    font-size:15px;
+}
+
+.meta{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-top:38px;
+}
+
+.meta-box{
+    padding:18px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+
+.meta-label{
+    color:#596c77;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:8px;
+}
+
+.meta-value{
+    color:#d6b85c;
+    font-size:13px;
+    font-weight:900;
+}
+
+.section{
+    margin-top:35px;
+    padding:30px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+
+.section-number{
+    color:#526773;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:2px;
+    margin-bottom:9px;
+}
+
+h2{
+    color:#e1e8eb;
+    font-size:22px;
+    letter-spacing:1px;
+    margin-bottom:18px;
+}
+
+h3{
+    color:#d6b85c;
+    font-size:14px;
+    letter-spacing:1px;
+    margin:25px 0 10px;
+}
+
+p{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    margin-bottom:13px;
+}
+
+ul,ol{
+    margin:12px 0 18px 22px;
+}
+
+li{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    padding-left:5px;
+}
+
+strong{
+    color:#d9e2e6;
+}
+
+.note{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#111c23;
+    border-left:3px solid #4d91bd;
+}
+
+.note-title{
+    color:#4d91bd;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+
+.warning{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#17140e;
+    border-left:3px solid #d6b85c;
+}
+
+.warning-title{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:18px;
+}
+
+th,td{
+    text-align:left;
+    padding:13px 14px;
+    border:1px solid #293c47;
+    font-size:12px;
+}
+
+th{
+    color:#d6b85c;
+    background:#111c23;
+    font-size:10px;
+    letter-spacing:1px;
+}
+
+td{
+    color:#8ea0a9;
+    background:#0a141a;
+}
+
+.sources{
+    display:grid;
+    gap:10px;
+    margin-top:15px;
+}
+
+.sources a{
+    display:block;
+    padding:13px 15px;
+    background:#101b22;
+    border:1px solid #293c47;
+    color:#9fb0b9;
+    text-decoration:none;
+    font-size:12px;
+    transition:.2s;
+}
+
+.sources a:hover{
+    color:#d6b85c;
+    border-color:#d6b85c;
+}
+
+.back{
+    display:inline-block;
+    margin-top:45px;
+    padding:12px 16px;
+    color:#d6b85c;
+    border:1px solid #4c4530;
+    text-decoration:none;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    transition:.2s;
+}
+
+.back:hover{
+    background:#17150f;
+    border-color:#d6b85c;
+}
+
+footer{
+    border-top:1px solid #202e36;
+    padding:25px 30px;
+    text-align:center;
+    color:#465861;
+    font-size:9px;
+    letter-spacing:2px;
+}
+
+@media(max-width:850px){
+    .header-inner{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    nav{
+        justify-content:flex-start;
+    }
+
+    .meta{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:550px){
+    .meta{
+        grid-template-columns:1fr;
+    }
+
+    main{
+        padding:45px 18px 70px;
+    }
+
+    .section{
+        padding:22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-inner">
+
+        <div class="logo">
+            RISE OF NATIONS
+            <span>TACTICAL KNOWLEDGE DATABASE</span>
+        </div>
+
+        <nav>
+            <a href="../index.html">COMMAND</a>
+            <a href="intelligence.html">INTELLIGENCE</a>
+            <a href="server.html">SERVER</a>
+            <a href="database.html">DATABASE</a>
+            <a href="download.html">DOWNLOAD</a>
+            <a href="communications.html">COMMUNICATIONS</a>
+            <a href="wiki.html">WIKI</a>
+        </nav>
+
+    </div>
+</header>
+
+<main>
+
+    <div class="eyebrow">
+        PROFESSOR DATABASE // INDUSTRIAL MACHINERY
+    </div>
+
+    <h1>CREATE ENCASED</h1>
+
+    <p class="subtitle">
+        Create Encased erweitert Create um zusätzliche technische
+        Komponenten und Maschinenkonzepte. Der Schwerpunkt liegt auf
+        industriellen Produktionsprozessen, technischen Gehäusen und
+        erweiterten Fertigungsanlagen.
+    </p>
+
+    <div class="meta">
+
+        <div class="meta-box">
+            <div class="meta-label">MOD</div>
+            <div class="meta-value">CREATE ENCASED</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">VERSION</div>
+            <div class="meta-value">1.9.0</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">MINECRAFT</div>
+            <div class="meta-value">1.21.1</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">SYSTEM</div>
+            <div class="meta-value">INDUSTRIAL</div>
+        </div>
+
+    </div>
+
+
+    <section class="section">
+
+        <div class="section-number">01 // SYSTEM OVERVIEW</div>
+        <h2>Was ist Create Encased?</h2>
+
+        <p>
+            Create Encased ergänzt die technische Welt von Create um
+            zusätzliche Maschinen- und Verarbeitungssysteme.
+        </p>
+
+        <p>
+            Die Erweiterung eignet sich besonders für Spieler, die ihre
+            Produktionsketten stärker industrialisieren und Maschinen
+            als Teil einer größeren Fabrikinfrastruktur einsetzen
+            möchten.
+        </p>
+
+        <div class="note">
+            <div class="note-title">INDUSTRIAL PRINCIPLE</div>
+            <p>
+                Jede zusätzliche Maschine sollte einen klaren Platz in
+                einer Produktionskette besitzen. Nicht die Anzahl der
+                Maschinen entscheidet über die Qualität einer Fabrik,
+                sondern deren Zusammenspiel.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">02 // CREATE FOUNDATION</div>
+        <h2>Grundlagen</h2>
+
+        <p>
+            Create Encased baut auf dem technischen Grundprinzip von
+            Create auf. Wer bereits mit mechanischer Energie,
+            Antrieben, Wellen und Produktionsmaschinen arbeitet, kann
+            die Erweiterung deutlich leichter verstehen.
+        </p>
+
+        <ul>
+            <li>Mechanical Power</li>
+            <li>Rotation</li>
+            <li>Stress</li>
+            <li>Automatisierung</li>
+            <li>Materialtransport</li>
+            <li>Produktionsketten</li>
+        </ul>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">03 // MACHINERY</div>
+        <h2>Maschinen als Produktionsmodule</h2>
+
+        <p>
+            Erweiterte Maschinen sollten als einzelne Module innerhalb
+            einer Produktionsanlage betrachtet werden.
+        </p>
+
+        <table>
+
+            <tr>
+                <th>MODUL</th>
+                <th>AUFGABE</th>
+            </tr>
+
+            <tr>
+                <td>INPUT</td>
+                <td>Rohmaterial aufnehmen</td>
+            </tr>
+
+            <tr>
+                <td>PROCESSING</td>
+                <td>Material verarbeiten</td>
+            </tr>
+
+            <tr>
+                <td>OUTPUT</td>
+                <td>Produkt ausgeben</td>
+            </tr>
+
+            <tr>
+                <td>LOGISTICS</td>
+                <td>Material weitertransportieren</td>
+            </tr>
+
+        </table>
+
+        <p>
+            Diese Struktur macht es einfacher, komplexe Anlagen später
+            zu erweitern.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">04 // MECHANICAL POWER</div>
+        <h2>Mechanische Energie</h2>
+
+        <p>
+            Wie bei Create muss die mechanische Versorgung der Anlage
+            berücksichtigt werden.
+        </p>
+
+        <h3>Vor dem Ausbau prüfen</h3>
+
+        <ul>
+            <li>Welche Maschinen laufen gleichzeitig?</li>
+            <li>Wie hoch ist die Belastung?</li>
+            <li>Ist ausreichend Antriebsleistung vorhanden?</li>
+            <li>Kann das System später erweitert werden?</li>
+        </ul>
+
+        <div class="warning">
+            <div class="warning-title">LOAD WARNING</div>
+            <p>
+                Eine Produktionslinie sollte nicht dauerhaft am
+                theoretischen Belastungslimit betrieben werden. Plane
+                Reserve für spätere Maschinen ein.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">05 // MATERIAL FLOW</div>
+        <h2>Materialfluss</h2>
+
+        <p>
+            Eine Maschine funktioniert nur so gut wie die Logistik vor
+            und nach ihr.
+        </p>
+
+        <ol>
+            <li>Rohstofflager</li>
+            <li>Input-Transport</li>
+            <li>Verarbeitungsmaschine</li>
+            <li>Output-Puffer</li>
+            <li>Weiterverarbeitung</li>
+            <li>Endlager</li>
+        </ol>
+
+        <p>
+            Besonders bei mehreren Maschinen sollte der Materialfluss
+            bereits vor dem eigentlichen Bau geplant werden.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">06 // AUTOMATION</div>
+        <h2>Produktionslinien automatisieren</h2>
+
+        <p>
+            Create Encased eignet sich vor allem für Produktionslinien,
+            bei denen Maschinen miteinander verbunden werden.
+        </p>
+
+        <table>
+
+            <tr>
+                <th>STUFE</th>
+                <th>STRUKTUR</th>
+            </tr>
+
+            <tr>
+                <td>I</td>
+                <td>Einzelmaschine</td>
+            </tr>
+
+            <tr>
+                <td>II</td>
+                <td>Maschine mit automatischem Input</td>
+            </tr>
+
+            <tr>
+                <td>III</td>
+                <td>Maschine mit automatischem Output</td>
+            </tr>
+
+            <tr>
+                <td>IV</td>
+                <td>Mehrere Maschinen in Reihe</td>
+            </tr>
+
+            <tr>
+                <td>V</td>
+                <td>Vollständig automatisierte Produktionslinie</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">07 // FACTORY DESIGN</div>
+        <h2>Maschinen richtig platzieren</h2>
+
+        <p>
+            Eine effiziente Fabrik sollte nicht nur funktionieren,
+            sondern auch Wartung und Erweiterung ermöglichen.
+        </p>
+
+        <ul>
+            <li>Maschinen nicht zu eng platzieren.</li>
+            <li>Transportwege sichtbar halten.</li>
+            <li>Wartungswege freihalten.</li>
+            <li>Input und Output logisch ausrichten.</li>
+            <li>Energieversorgung früh einplanen.</li>
+        </ul>
+
+        <div class="note">
+            <div class="note-title">FACTORY DESIGN</div>
+            <p>
+                Eine Produktionslinie sollte später erweitert werden
+                können, ohne die komplette Fabrik auseinanderbauen zu
+                müssen.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">08 // JEI WORKFLOW</div>
+        <h2>Rezepte mit JEI analysieren</h2>
+
+        <p>
+            In einem großen Modpack ist JEI das wichtigste Werkzeug,
+            um die tatsächlichen Produktionsmöglichkeiten einer Maschine
+            zu prüfen.
+        </p>
+
+        <ol>
+            <li>Endprodukt suchen.</li>
+            <li>Rezept öffnen.</li>
+            <li>Verarbeitungsmaschine feststellen.</li>
+            <li>Benötigte Zwischenprodukte prüfen.</li>
+            <li>Rohstoffbedarf zurückverfolgen.</li>
+        </ol>
+
+        <p>
+            Dadurch kann eine komplette Produktionskette geplant werden,
+            bevor Ressourcen für den Bau ausgegeben werden.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">09 // STORAGE</div>
+        <h2>Lagerung und Puffer</h2>
+
+        <p>
+            Zwischen einzelnen Produktionsstufen sind kleine
+            Materialpuffer oft sinnvoll.
+        </p>
+
+        <table>
+
+            <tr>
+                <th>BEREICH</th>
+                <th>FUNKTION</th>
+            </tr>
+
+            <tr>
+                <td>INPUT BUFFER</td>
+                <td>Rohstoffe bereitstellen</td>
+            </tr>
+
+            <tr>
+                <td>PROCESS BUFFER</td>
+                <td>Produktionsschwankungen abfangen</td>
+            </tr>
+
+            <tr>
+                <td>OUTPUT BUFFER</td>
+                <td>Fertige Produkte sammeln</td>
+            </tr>
+
+            <tr>
+                <td>FINAL STORAGE</td>
+                <td>Langfristige Lagerung</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">10 // SCALING</div>
+        <h2>Produktionslinien skalieren</h2>
+
+        <p>
+            Wenn eine Produktionslinie nicht mehr genug Produkte liefert,
+            sollte nicht automatisch die gesamte Anlage ersetzt werden.
+        </p>
+
+        <p>
+            Häufig ist es effizienter, den Engpass gezielt zu
+            vervielfältigen.
+        </p>
+
+        <ol>
+            <li>Engpass identifizieren.</li>
+            <li>Produktionsrate prüfen.</li>
+            <li>Zusätzliche Maschine planen.</li>
+            <li>Mechanische Leistung erweitern.</li>
+            <li>Input und Output anpassen.</li>
+        </ol>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">11 // TROUBLESHOOTING</div>
+        <h2>Fehleranalyse</h2>
+
+        <h3>Maschine läuft nicht</h3>
+
+        <p>
+            Prüfe zuerst Energieversorgung, Rezept, Input und die
+            Voraussetzungen der jeweiligen Maschine.
+        </p>
+
+        <h3>Maschine hat keinen Input</h3>
+
+        <p>
+            Prüfe Transportwege, Filter, Funnel und die Ausrichtung
+            der angeschlossenen Komponenten.
+        </p>
+
+        <h3>Output wird nicht abgeholt</h3>
+
+        <p>
+            Prüfe, ob das Ausgabesystem korrekt angeschlossen ist und
+            ob der nachfolgende Speicher ausreichend Kapazität besitzt.
+        </p>
+
+        <h3>Gesamte Anlage stockt</h3>
+
+        <p>
+            Suche den ersten Produktionsschritt, an dem sich Material
+            staut oder nicht mehr weiterbewegt. Dort befindet sich
+            meistens der eigentliche Engpass.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">12 // ADVANCED FACTORY</div>
+        <h2>Fortgeschrittene Produktionsarchitektur</h2>
+
+        <p>
+            Für größere Fabriken empfiehlt sich die Trennung in
+            Produktionssektoren.
+        </p>
+
+        <ul>
+            <li>Rohstoffsektor</li>
+            <li>Grundverarbeitung</li>
+            <li>Zwischenprodukte</li>
+            <li>Endproduktion</li>
+            <li>Lagerung</li>
+            <li>Versand</li>
+        </ul>
+
+        <p>
+            Jede Zone kann über definierte Transportwege mit der nächsten
+            Zone verbunden werden.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">13 // RISE OF NATIONS APPLICATION</div>
+        <h2>Einsatz im Modpack</h2>
+
+        <p>
+            Create Encased passt besonders gut in große industrielle
+            Produktionskomplexe von RISE OF NATIONS.
+        </p>
+
+        <table>
+
+            <tr>
+                <th>ANLAGE</th>
+                <th>EIGNUNG</th>
+            </tr>
+
+            <tr>
+                <td>HAUPTFABRIK</td>
+                <td>SEHR HOCH</td>
+            </tr>
+
+            <tr>
+                <td>RESSOURCENVERARBEITUNG</td>
+                <td>SEHR HOCH</td>
+            </tr>
+
+            <tr>
+                <td>FORSCHUNGSANLAGE</td>
+                <td>HOCH</td>
+            </tr>
+
+            <tr>
+                <td>WERKSTATT</td>
+                <td>HOCH</td>
+            </tr>
+
+            <tr>
+                <td>KLEINE BASIS</td>
+                <td>MITTEL</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">14 // PROFESSOR DOCTRINE</div>
+        <h2>Das Wichtigste zum Mitnehmen</h2>
+
+        <p>
+            Create Encased sollte nicht isoliert betrachtet werden.
+            Die eigentliche Stärke entsteht durch die Kombination aus
+            Maschinen, Energie, Logistik, Lagerung und automatisierten
+            Produktionsketten.
+        </p>
+
+        <ul>
+            <li>Maschinen modular planen.</li>
+            <li>Mechanische Energie früh berücksichtigen.</li>
+            <li>Input und Output sauber trennen.</li>
+            <li>JEI für Rezepte und Produktionsketten verwenden.</li>
+            <li>Engpässe gezielt beseitigen.</li>
+            <li>Produktionsanlagen erweiterbar bauen.</li>
+        </ul>
+
+        <div class="note">
+            <div class="note-title">FINAL PRINCIPLE</div>
+            <p>
+                Eine gute Fabrik ist kein Haufen Maschinen. Sie ist ein
+                System, in dem jede Maschine eine definierte Aufgabe
+                innerhalb einer größeren Produktionskette erfüllt.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">15 // REFERENCE DATA</div>
+        <h2>Originalquellen</h2>
+
+        <p>
+            Für konkrete Rezepte, Blocknamen, Maschinenwerte und
+            versionsabhängige Funktionen sollte die installierte
+            Version zusammen mit JEI und den offiziellen Projektseiten
+            geprüft werden.
+        </p>
+
+        <div class="sources">
+
+            <a href="https://modrinth.com/mod/create-encased"
+               target="_blank"
+               rel="noopener">
+                MODRINTH // CREATE ENCASED
+            </a>
+
+            <a href="https://www.curseforge.com/minecraft/mc-mods/create-encased"
+               target="_blank"
+               rel="noopener">
+                CURSEFORGE // CREATE ENCASED
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <a class="back" href="wiki.html">
+        ← ZURÜCK ZUR WIKI
+    </a>
+
+</main>
+
+<footer>
+    RISE OF NATIONS // CREATE ENCASED // TACTICAL KNOWLEDGE DATABASE
+</footer>
+
+</body>
+</html>
