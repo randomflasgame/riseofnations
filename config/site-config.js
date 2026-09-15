@@ -100,15 +100,15 @@ const SITE_CONFIG = {
 
     serverInfo: {
 
-        address: "PLATZHALTER",
+        address: "RISEOFNATIONS.factions.ws",
 
-        emergencyAddress: "PLATZHALTER",
+        emergencyAddress: "162.120.3.116:9175",
 
-        version: "PLATZHALTER",
+        version: "5",
 
-        status: "PLATZHALTER",
+        status: "active",
 
-        players: "PLATZHALTER"
+        players: "/"
 
     },
 
