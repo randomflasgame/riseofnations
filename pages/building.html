@@ -1,1 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RISE OF NATIONS // BUILDING DATABASE</title>
 
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+        body {
+            margin: 0;
+            background:
+                linear-gradient(rgba(5, 10, 16, 0.94), rgba(5, 10, 16, 0.97)),
+                radial-gradient(circle at top, #263044 0%, #080c12 65%);
+            color: #dce8f2;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .page {
+            min-height: 100vh;
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #3c8dbc;
+            padding-bottom: 18px;
+            margin-bottom: 35px;
+        }
+
+        .brand {
+            color: #5da9d6;
+            font-size: 22px;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        .status {
+            color: #6fcf97;
+            font-size: 12px;
+            letter-spacing: 2px;
+        }
+
+        .header {
+            margin-bottom: 35px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 46px;
+            letter-spacing: 6px;
+            color: #dce8f2;
+        }
+
+        .header p {
+            margin-top: 12px;
+            color: #8798a8;
+            letter-spacing: 2px;
+            font-size: 13px;
+        }
+
+        .system-info {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 35px;
+        }
+
+        .info-box {
+            background: rgba(17, 25, 34, 0.9);
+            border: 1px solid #334453;
+            padding: 18px;
+            position: relative;
+        }
+
+        .info-box::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: #3c8dbc;
+        }
+
+        .info-label {
+            color: #718292;
+            font-size: 10px;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .info-value {
+            color: #dce8f2;
+            font-size: 17px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .mods {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .mod {
+            background: rgba(14, 21, 29, 0.95);
+            border: 1px solid #334453;
+            padding: 22px;
+            transition: 0.2s ease;
+        }
+
+        .mod:hover {
+            border-color: #3c8dbc;
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(60, 141, 188, 0.10);
+        }
+
+        .mod-number {
+            color: #667888;
+            font-size: 11px;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .mod-name {
+            color: #f0f3f5;
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .mod-description {
+            color: #8293a2;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        .footer {
+            margin-top: 35px;
+            padding-top: 20px;
+            border-top: 1px solid #263542;
+        }
+
+        .return {
+            color: #5da9d6;
+            text-decoration: none;
+            font-size: 12px;
+            letter-spacing: 2px;
+        }
+
+        .return:hover {
+            color: #ffffff;
+        }
+
+        @media (max-width: 800px) {
+            .page {
+                padding: 20px;
+            }
+
+            .system-info,
+            .mods {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="page">
+
+    <div class="top-bar">
+        <div class="brand">RISE OF NATIONS // DATABASE</div>
+        <div class="status">● SYSTEM OPERATIONAL</div>
+    </div>
+
+    <div class="header">
+        <h1>BUILDING & DECORATION</h1>
+        <p>CONSTRUCTION // ARCHITECTURE // FURNITURE // DECORATIVE SYSTEMS</p>
+    </div>
+
+    <div class="system-info">
+
+        <div class="info-box">
+            <div class="info-label">DATABASE CATEGORY</div>
+            <div class="info-value">BUILDING</div>
+        </div>
+
+        <div class="info-box">
+            <div class="info-label">REGISTERED SYSTEMS</div>
+            <div class="info-value">11 SYSTEMS</div>
+        </div>
+
+        <div class="info-box">
+            <div class="info-label">STATUS</div>
+            <div class="info-value">OPERATIONAL</div>
+        </div>
+
+    </div>
+
+    <div class="mods">
+
+        <div class="mod">
+            <div class="mod-number">SYSTEM 01</div>
+            <div class="mod-name">Quark</div>
+            <div class="mod-description">
+                Large collection of building blocks, decorative elements,
+                utilities and quality-of-life improvements.
+            </div>
+        </div>
+
+        <div class="mod">
+            <div class="mod-number">SYSTEM 02</div>
+            <div class="mod-name">Supplementaries</div>
+            <div class="mod-description">
+                Adds functional and decorative blocks designed to expand
+                construction, storage and everyday infrastructure.
+            </div>
+        </div>
+
+        <div class="mod">
+            <div class="mod-number">SYSTEM 03</div>
+            <div class="mod-name">Refurbished Furniture</div>
+            <div class="mod-description">
+                Modern furniture and interior equipment for residential,
+                commercial and industrial buildings.
+            </div>
+        </div>
+
+        <div class="mod">
+            <div class="mod-number">SYSTEM 04</div>
+            <div class="mod-name">Macaw’s Doors</div>
+            <div class="mod-description">
+                Expanded door systems for detailed architecture,
+                buildings and fortified structures.
+            </div>
+        </div>
+
+        <div class="mod">
+            <div class="mod-number">SYSTEM 05</div>
+            <div class="mod-name">Macaw’s Windows</div>
+            <div class="mod-description">
+                Additional window designs allowing more detailed
+                residential, military and industrial construction.
+            </div>
+        </div>
+
+        <div class="mod">
+            <div class="mod-number">SYSTEM 06</div>
+            <div class="mod-name">Macaw’s Roofs</div>
+            <div class="mod-description">
+                Specialized roofing components for advanced
+                architectural construction and detailed buildings.
+            </div>
+        </div>
+
+        <div class="mod">
+            <div class="mod-number">SYSTEM 07</div>
+            <div class="mod-name">Macaw’s Bridges</div>
+            <div class="mod-description">
+                Structural bridge components for roads, crossings
+                and large-scale infrastructure projects.
+            </div>
+        </div>
+
+        <div class="mod">
+            <div class="mod-number">SYSTEM 08</div>
+            <div class="mod-name">Immersive Paintings</div>
+            <div class="mod-description">
+                Expanded painting systems allowing custom artwork
+                and detailed environmental decoration.
+            </div>
+        </div>
+
+        <div class="mod">
+            <div class="mod-number">SYSTEM 09</div>
+            <div class="mod-name">Decocraft Nature</div>
+            <div class="mod-description">
+                Additional natural decorative elements for gardens,
+                landscapes and detailed environments.
+            </div>
+        </div>
+
+        <div class="mod">
+            <div class="mod-number">SYSTEM 10</div>
+            <div class="mod-name">Copycats</div>
+            <div class="mod-description">
+                Advanced construction technology allowing decorative
+                blocks to replicate existing shapes and designs.
+            </div>
+        </div>
+
+        <div class="mod">
+            <div class="mod-number">SYSTEM 11</div>
+            <div class="mod-name">Create Deco</div>
+            <div class="mod-description">
+                Industrial decorative components designed to integrate
+                advanced machinery with large-scale architecture.
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <a class="return" href="database.html">
+            ← RETURN TO DATABASE
+        </a>
+    </div>
+
+</div>
+
+</body>
+</html>
