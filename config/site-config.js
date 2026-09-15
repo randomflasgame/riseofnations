@@ -1,183 +1,187 @@
 const SITE_CONFIG = {
 
-    // =========================================================
-    // RISE OF NATIONS
-    // ZENTRALE WEBSITE-KONFIGURATION
-    //
-    // WICHTIG:
-    // Du musst später normalerweise nur diese Datei ändern.
-    // =========================================================
-
-
-    // =========================================================
-    // WEBSITE
-    // =========================================================
+    /* =========================================================
+       WEBSITE
+    ========================================================= */
 
     website: {
+        name: "RISE OF NATIONS",
+        subtitle: "COMMAND NETWORK",
 
-        name: "RISEOFNATIONS",
-
-        subtitle: "PLATZHALTER",
-
-        minecraftVersion: "PLATZHALTER",
-
-        modpackVersion: "PLATZHALTER"
-
+        minecraftVersion: "1.21.1",
+        modpackVersion: "5.0.0"
     },
 
 
-    // =========================================================
-    // MODPACK
-    // =========================================================
+    /* =========================================================
+       MODPACK
+    ========================================================= */
 
     modpack: {
+        name: "RISE OF NATIONS",
 
-        name: "PLATZHALTER",
+        download:
+            "https://drive.usercontent.google.com/download?id=1ZxjIbm88AfJLXFBu-AbAZqQ8C4EZ0uqH&export=download&authuser=0",
 
-        download: "PLATZHALTER",
+        version: "5.0.0",
 
-        version: "PLATZHALTER",
+        minecraftVersion: "1.21.1",
 
-        minecraftVersion: "PLATZHALTER",
-
-        loader: "PLATZHALTER"
-
+        loader: "NeoForge 21.1.248"
     },
 
 
-    // =========================================================
-    // MINECRAFT SERVER
-    // =========================================================
+    /* =========================================================
+       SERVER
+    ========================================================= */
 
     server: {
 
-        // Hauptadresse
-        primary: "PLATZHALTER",
+        primary:
+            "RISEOFNATIONS.factions.ws",
 
-        // Nur für Notfälle
-        emergency: "PLATZHALTER",
+        emergency:
+            "162.120.3.116:9175",
 
-        // Anzeigename des Servers
-        name: "PLATZHALTER",
+        name:
+            "RISE OF NATIONS",
 
-        // Status
-        status: "PLATZHALTER"
-
+        status:
+            "ONLINE"
     },
 
 
-    // =========================================================
-    // DISCORD / COMMUNITY
-    // =========================================================
+    /* =========================================================
+       COMMUNICATIONS
+    ========================================================= */
 
     communications: {
 
-        discord: "PLATZHALTER",
+        discord:
+            "https://discord.gg/vg5guVRD6K",
 
-        community: "PLATZHALTER"
-
+        community:
+            "https://discord.gg/vg5guVRD6K"
     },
 
 
-    // =========================================================
-    // DOWNLOAD
-    // =========================================================
+    /* =========================================================
+       DOWNLOADS
+    ========================================================= */
 
     download: {
 
-        modpack: "PLATZHALTER",
+        modpack:
+            "https://drive.usercontent.google.com/download?id=1ZxjIbm88AfJLXFBu-AbAZqQ8C4EZ0uqH&export=download&authuser=0",
 
-        launcher: "PLATZHALTER",
+        launcher:
+            "",
 
-        additional: "PLATZHALTER"
-
+        additional:
+            ""
     },
 
 
-    // =========================================================
-    // SERVER INFORMATION
-    // =========================================================
+    /* =========================================================
+       SERVER INFORMATION
+    ========================================================= */
 
     serverInfo: {
 
-        address: "RISEOFNATIONS.factions.ws",
+        address:
+            "RISEOFNATIONS.factions.ws",
 
-        emergencyAddress: "162.120.3.116:9175",
+        emergencyAddress:
+            "162.120.3.116:9175",
 
-        version: "5",
+        version:
+            "1.21.1",
 
-        status: "active",
+        status:
+            "ONLINE",
 
-        players: "/"
-
+        players:
+            "-"
     },
 
 
-    // =========================================================
-    // INTELLIGENCE / WELTLAGE
-    // =========================================================
+    /* =========================================================
+       INTELLIGENCE
+    ========================================================= */
 
     intelligence: {
 
-        currentSituation: "PLATZHALTER",
+        currentSituation:
+            "OPERATIONAL",
 
-        globalStatus: "PLATZHALTER",
+        globalStatus:
+            "ONLINE",
 
-        alertLevel: "PLATZHALTER"
-
+        alertLevel:
+            "ACTIVE"
     },
 
 
-    // =========================================================
-    // WIKI
-    // =========================================================
+    /* =========================================================
+       WIKI
+    ========================================================= */
 
     wiki: {
 
-        title: "PLATZHALTER",
+        title:
+            "RISE OF NATIONS // WIKI",
 
-        description: "PLATZHALTER"
-
+        description:
+            "COMMAND NETWORK KNOWLEDGE DATABASE"
     },
 
 
-    // =========================================================
-    // SOCIAL / EXTERNE LINKS
-    // =========================================================
+    /* =========================================================
+       INTERNAL LINKS
+    ========================================================= */
 
     links: {
 
-        discord: "PLATZHALTER",
+        discord:
+            "https://discord.gg/vg5guVRD6K",
 
-        download: "PLATZHALTER",
+        download:
+            "pages/download.html",
 
-        server: "PLATZHALTER",
+        server:
+            "pages/server.html",
 
-        wiki: "PLATZHALTER",
+        wiki:
+            "pages/wiki.html",
 
-        database: "PLATZHALTER",
+        database:
+            "pages/database.html",
 
-        communications: "PLATZHALTER",
+        communications:
+            "pages/communications.html",
 
-        intelligence: "PLATZHALTER"
-
+        intelligence:
+            "pages/intelligence.html"
     },
 
 
-    // =========================================================
-    // SYSTEM STATUS
-    // =========================================================
+    /* =========================================================
+       SYSTEM
+    ========================================================= */
 
     system: {
 
-        status: "PLATZHALTER",
+        status:
+            "OPERATIONAL",
 
-        network: "PLATZHALTER",
+        network:
+            "ONLINE",
 
-        database: "PLATZHALTER",
+        database:
+            "ONLINE",
 
-        deployment: "PLATZHALTER"
-
+        deployment:
+            "ACTIVE"
     }
 
 };
