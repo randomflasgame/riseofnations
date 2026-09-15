@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RISE OF NATIONS // CREATE OPTICAL</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+    min-height:100vh;
+    background:
+        linear-gradient(rgba(7,12,17,.97),rgba(7,12,17,.99)),
+        repeating-linear-gradient(
+            135deg,
+            rgba(255,255,255,.018) 0 2px,
+            transparent 2px 9px
+        );
+    color:#dbe3e8;
+    font-family:"Segoe UI",Arial,sans-serif;
+}
+
+header{
+    background:rgba(6,11,16,.98);
+    border-bottom:1px solid #293944;
+    box-shadow:0 5px 25px rgba(0,0,0,.45);
+}
+
+.header-inner{
+    max-width:1500px;
+    margin:auto;
+    padding:18px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:30px;
+}
+
+.logo{
+    color:#d6b85c;
+    font-size:22px;
+    font-weight:950;
+    letter-spacing:3px;
+}
+
+.logo span{
+    display:block;
+    color:#687b86;
+    font-size:9px;
+    letter-spacing:2px;
+    margin-top:4px;
+}
+
+nav{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+    gap:7px;
+}
+
+nav a{
+    color:#9aabb4;
+    text-decoration:none;
+    padding:9px 11px;
+    border:1px solid transparent;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.2px;
+    transition:.2s;
+}
+
+nav a:hover{
+    color:#d6b85c;
+    background:#111b22;
+    border-color:#3b4d58;
+}
+
+main{
+    max-width:1250px;
+    margin:auto;
+    padding:70px 30px 100px;
+}
+
+.eyebrow{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:3px;
+    margin-bottom:15px;
+}
+
+h1{
+    color:#edf2f4;
+    font-size:clamp(40px,6.5vw,78px);
+    line-height:.95;
+    letter-spacing:4px;
+    font-weight:950;
+}
+
+.subtitle{
+    max-width:900px;
+    margin-top:22px;
+    color:#8497a2;
+    line-height:1.75;
+    font-size:15px;
+}
+
+.meta{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-top:38px;
+}
+
+.meta-box{
+    padding:18px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+
+.meta-label{
+    color:#596c77;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:8px;
+}
+
+.meta-value{
+    color:#d6b85c;
+    font-size:13px;
+    font-weight:900;
+}
+
+.section{
+    margin-top:35px;
+    padding:30px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+
+.section-number{
+    color:#526773;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:2px;
+    margin-bottom:9px;
+}
+
+h2{
+    color:#e1e8eb;
+    font-size:22px;
+    letter-spacing:1px;
+    margin-bottom:18px;
+}
+
+h3{
+    color:#d6b85c;
+    font-size:14px;
+    letter-spacing:1px;
+    margin:25px 0 10px;
+}
+
+p{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    margin-bottom:13px;
+}
+
+ul,ol{
+    margin:12px 0 18px 22px;
+}
+
+li{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    padding-left:5px;
+}
+
+strong{
+    color:#d9e2e6;
+}
+
+.note{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#111c23;
+    border-left:3px solid #4d91bd;
+}
+
+.note-title{
+    color:#4d91bd;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+
+.warning{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#17140e;
+    border-left:3px solid #d6b85c;
+}
+
+.warning-title{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:18px;
+}
+
+th,td{
+    text-align:left;
+    padding:13px 14px;
+    border:1px solid #293c47;
+    font-size:12px;
+}
+
+th{
+    color:#d6b85c;
+    background:#111c23;
+    font-size:10px;
+    letter-spacing:1px;
+}
+
+td{
+    color:#8ea0a9;
+    background:#0a141a;
+}
+
+.sources{
+    display:grid;
+    gap:10px;
+    margin-top:15px;
+}
+
+.sources a{
+    display:block;
+    padding:13px 15px;
+    background:#101b22;
+    border:1px solid #293c47;
+    color:#9fb0b9;
+    text-decoration:none;
+    font-size:12px;
+    transition:.2s;
+}
+
+.sources a:hover{
+    color:#d6b85c;
+    border-color:#d6b85c;
+}
+
+.back{
+    display:inline-block;
+    margin-top:45px;
+    padding:12px 16px;
+    color:#d6b85c;
+    border:1px solid #4c4530;
+    text-decoration:none;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    transition:.2s;
+}
+
+.back:hover{
+    background:#17150f;
+    border-color:#d6b85c;
+}
+
+footer{
+    border-top:1px solid #202e36;
+    padding:25px 30px;
+    text-align:center;
+    color:#465861;
+    font-size:9px;
+    letter-spacing:2px;
+}
+
+@media(max-width:850px){
+    .header-inner{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    nav{
+        justify-content:flex-start;
+    }
+
+    .meta{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:550px){
+    .meta{
+        grid-template-columns:1fr;
+    }
+
+    main{
+        padding:45px 18px 70px;
+    }
+
+    .section{
+        padding:22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-inner">
+
+        <div class="logo">
+            RISE OF NATIONS
+            <span>TACTICAL KNOWLEDGE DATABASE</span>
+        </div>
+
+        <nav>
+            <a href="../index.html">COMMAND</a>
+            <a href="intelligence.html">INTELLIGENCE</a>
+            <a href="server.html">SERVER</a>
+            <a href="database.html">DATABASE</a>
+            <a href="download.html">DOWNLOAD</a>
+            <a href="communications.html">COMMUNICATIONS</a>
+            <a href="wiki.html">WIKI</a>
+        </nav>
+
+    </div>
+</header>
+
+<main>
+
+    <div class="eyebrow">
+        PROFESSOR DATABASE // OPTICAL ENGINEERING
+    </div>
+
+    <h1>CREATE OPTICAL</h1>
+
+    <p class="subtitle">
+        Create Optical erweitert die Create-Technologie um optische und
+        lichtbasierte Systeme. Dadurch entstehen neue Möglichkeiten für
+        technische Anlagen, Beleuchtung, Signale und dekorative
+        Industrieinfrastruktur.
+    </p>
+
+    <div class="meta">
+
+        <div class="meta-box">
+            <div class="meta-label">MOD</div>
+            <div class="meta-value">CREATE OPTICAL</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">VERSION</div>
+            <div class="meta-value">0.4.2</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">MINECRAFT</div>
+            <div class="meta-value">1.21.1</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">SYSTEM</div>
+            <div class="meta-value">OPTICAL</div>
+        </div>
+
+    </div>
+
+
+    <section class="section">
+
+        <div class="section-number">01 // SYSTEM OVERVIEW</div>
+        <h2>Was ist Create Optical?</h2>
+
+        <p>
+            Create Optical erweitert das industrielle Create-Ökosystem
+            um optische Elemente und Systeme.
+        </p>
+
+        <p>
+            Damit können technische Bereiche einer Fabrik nicht nur
+            funktional, sondern auch visuell und infrastrukturell
+            detaillierter dargestellt werden.
+        </p>
+
+        <div class="note">
+            <div class="note-title">RISE OF NATIONS // OPTICAL SYSTEMS</div>
+            <p>
+                Licht kann in einer Industrieanlage als Beleuchtung,
+                Orientierung, Anzeige oder Bestandteil einer technischen
+                Konstruktion eingesetzt werden.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">02 // CORE CONCEPT</div>
+        <h2>Die Idee hinter optischen Systemen</h2>
+
+        <p>
+            Optische Systeme unterscheiden sich von normalen
+            Beleuchtungsblöcken dadurch, dass sie stärker in technische
+            Konstruktionen integriert werden können.
+        </p>
+
+        <ul>
+            <li>Industriebeleuchtung</li>
+            <li>Maschinenbereiche</li>
+            <li>Kontrollräume</li>
+            <li>Fabrikfassaden</li>
+            <li>Signalbereiche</li>
+            <li>Dekorative technische Anlagen</li>
+        </ul>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">03 // FACTORY LIGHTING</div>
+        <h2>Beleuchtung für Industrieanlagen</h2>
+
+        <p>
+            Große Fabriken profitieren von einer klar geplanten
+            Beleuchtungsstruktur.
+        </p>
+
+        <table>
+
+            <tr>
+                <th>BEREICH</th>
+                <th>EMPFOHLENE FUNKTION</th>
+            </tr>
+
+            <tr>
+                <td>PRODUCTION FLOOR</td>
+                <td>Arbeitsbereich sichtbar halten</td>
+            </tr>
+
+            <tr>
+                <td>MACHINE ROOM</td>
+                <td>Maschinen und Wartungsbereiche hervorheben</td>
+            </tr>
+
+            <tr>
+                <td>CONTROL ROOM</td>
+                <td>Technische Atmosphäre und Orientierung</td>
+            </tr>
+
+            <tr>
+                <td>STORAGE</td>
+                <td>Lagerbereiche übersichtlich halten</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">04 // TECHNICAL DESIGN</div>
+        <h2>Optische Systeme in Create-Anlagen</h2>
+
+        <p>
+            Create lebt stark von sichtbaren Maschinen, beweglichen
+            Komponenten und technischen Konstruktionen.
+        </p>
+
+        <p>
+            Optische Elemente können diese Konstruktionen hervorheben,
+            ohne den eigentlichen Produktionsfluss zu verändern.
+        </p>
+
+        <h3>Besonders geeignet</h3>
+
+        <ul>
+            <li>Große Produktionshallen</li>
+            <li>Kraftwerke</li>
+            <li>Bahnhöfe</li>
+            <li>Fabriktürme</li>
+            <li>Werkstätten</li>
+            <li>Militärische Industrieanlagen</li>
+        </ul>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">05 // SIGNALING</div>
+        <h2>Signale und Orientierung</h2>
+
+        <p>
+            Beleuchtung kann innerhalb einer großen Basis auch als
+            Orientierungssystem verwendet werden.
+        </p>
+
+        <p>
+            Unterschiedliche Bereiche können beispielsweise durch
+            unterschiedliche Beleuchtungsstärken oder Positionen
+            erkennbar gemacht werden.
+        </p>
+
+        <div class="note">
+            <div class="note-title">COMMAND CENTER PRINCIPLE</div>
+            <p>
+                Gute Beleuchtung sollte nicht nur schön aussehen.
+                Sie sollte dem Spieler helfen, sich in einer großen
+                technischen Anlage zurechtzufinden.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">06 // INDUSTRIAL ARCHITECTURE</div>
+        <h2>Integration in Gebäude</h2>
+
+        <p>
+            Optische Systeme wirken besonders überzeugend, wenn sie
+            bereits beim Bau eines Gebäudes eingeplant werden.
+        </p>
+
+        <ol>
+            <li>Hauptgebäude festlegen.</li>
+            <li>Produktionsbereiche bestimmen.</li>
+            <li>Maschinen positionieren.</li>
+            <li>Kabel-, Rohr- und Transportwege planen.</li>
+            <li>Beleuchtung entlang dieser Infrastruktur platzieren.</li>
+            <li>Kontroll- und Wartungsbereiche hervorheben.</li>
+        </ol>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">07 // CREATE SYNERGY</div>
+        <h2>Kombination mit anderen Create-Mods</h2>
+
+        <p>
+            Create Optical entfaltet seinen Nutzen besonders innerhalb
+            eines größeren Create-Netzwerks.
+        </p>
+
+        <table>
+
+            <tr>
+                <th>MOD</th>
+                <th>SYNERGIE</th>
+            </tr>
+
+            <tr>
+                <td>CREATE</td>
+                <td>Maschinen und mechanische Infrastruktur</td>
+            </tr>
+
+            <tr>
+                <td>CREATE AERONAUTICS</td>
+                <td>Luftfahrt und bewegliche Konstruktionen</td>
+            </tr>
+
+            <tr>
+                <td>CREATE DIESEL GENERATORS</td>
+                <td>Industrie und Energieversorgung</td>
+            </tr>
+
+            <tr>
+                <td>CREATE NEW AGE</td>
+                <td>Elektrische Systeme</td>
+            </tr>
+
+            <tr>
+                <td>CREATE RAILWAYS NAVIGATOR</td>
+                <td>Transport und Eisenbahninfrastruktur</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">08 // RAILWAY APPLICATIONS</div>
+        <h2>Bahnhöfe und Transport</h2>
+
+        <p>
+            Eisenbahnanlagen sind besonders gut für technische
+            Beleuchtung geeignet.
+        </p>
+
+        <ul>
+            <li>Bahnsteige</li>
+            <li>Bahnhofshallen</li>
+            <li>Signalanlagen</li>
+            <li>Wartungshallen</li>
+            <li>Güterterminals</li>
+            <li>Lokomotivdepots</li>
+        </ul>
+
+        <p>
+            Zusammen mit Create-Trains kann daraus eine glaubwürdige
+            industrielle Verkehrsinfrastruktur entstehen.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">09 // NIGHT OPERATIONS</div>
+        <h2>Nachtbetrieb</h2>
+
+        <p>
+            Besonders große Basen verändern sich bei Nacht vollständig.
+            Eine geplante Beleuchtung kann Produktionsanlagen auch bei
+            schlechten Sichtbedingungen deutlich erkennbar machen.
+        </p>
+
+        <p>
+            Für RISE OF NATIONS eignet sich das besonders für Häfen,
+            Fabriken, Militärbasen, Bahnhöfe und Industriegebiete.
+        </p>
+
+        <div class="warning">
+            <div class="warning-title">DESIGN WARNING</div>
+            <p>
+                Zu viel Licht kann eine industrielle Szene schnell
+                überladen. Hauptbereiche sollten stärker beleuchtet sein
+                als Nebenbereiche.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">10 // PERFORMANCE</div>
+        <h2>Beleuchtung und Performance</h2>
+
+        <p>
+            Große Basen können aus hunderten technischen und dekorativen
+            Blöcken bestehen. Deshalb sollte Beleuchtung nicht wahllos
+            überall eingesetzt werden.
+        </p>
+
+        <ul>
+            <li>Wichtige Bereiche priorisieren.</li>
+            <li>Wiederholende Beleuchtung sinnvoll gruppieren.</li>
+            <li>Unnötige Lichtquellen vermeiden.</li>
+            <li>Große Anlagen zuerst testen.</li>
+        </ul>
+
+        <p>
+            Bei Performance-Problemen sollte die gesamte Beleuchtungs-
+            und Dekorationsstruktur überprüft werden.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">11 // BUILDING DOCTRINE</div>
+        <h2>Professionelle Fabrikgestaltung</h2>
+
+        <p>
+            Eine überzeugende technische Anlage besteht nicht nur aus
+            Maschinen. Auch Beleuchtung, Wartungswege, Lagerbereiche,
+            Kontrollräume und Verkehrswege tragen zur Glaubwürdigkeit bei.
+        </p>
+
+        <ol>
+            <li>Funktion des Gebäudes bestimmen.</li>
+            <li>Maschinenlayout planen.</li>
+            <li>Transportwege definieren.</li>
+            <li>Beleuchtungsbereiche festlegen.</li>
+            <li>Technische Details ergänzen.</li>
+            <li>Gesamtanlage bei Tag und Nacht prüfen.</li>
+        </ol>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">12 // COMMON MISTAKES</div>
+        <h2>Häufige Fehler</h2>
+
+        <h3>Alles gleich hell beleuchten</h3>
+
+        <p>
+            Dadurch verschwinden Hierarchien innerhalb eines Gebäudes.
+            Hauptbereiche sollten visuell stärker hervorgehoben werden.
+        </p>
+
+        <h3>Nur dekorativ bauen</h3>
+
+        <p>
+            Optische Elemente wirken am besten, wenn sie mit einer
+            tatsächlichen Funktion oder einem technischen Bereich
+            verbunden sind.
+        </p>
+
+        <h3>Beleuchtung erst ganz am Ende planen</h3>
+
+        <p>
+            Bei großen Anlagen kann nachträgliche Beleuchtung unnötige
+            Umbauten verursachen. Besser ist es, die Lichtplanung
+            frühzeitig einzubeziehen.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">13 // RISE OF NATIONS APPLICATION</div>
+        <h2>Empfohlene Einsatzgebiete</h2>
+
+        <table>
+
+            <tr>
+                <th>ANLAGE</th>
+                <th>PRIORITÄT</th>
+            </tr>
+
+            <tr>
+                <td>HAUPTFABRIK</td>
+                <td>SEHR HOCH</td>
+            </tr>
+
+            <tr>
+                <td>KRAFTWERK</td>
+                <td>SEHR HOCH</td>
+            </tr>
+
+            <tr>
+                <td>BAHNHOF</td>
+                <td>HOCH</td>
+            </tr>
+
+            <tr>
+                <td>HAFEN</td>
+                <td>HOCH</td>
+            </tr>
+
+            <tr>
+                <td>MILITÄRBASIS</td>
+                <td>HOCH</td>
+            </tr>
+
+            <tr>
+                <td>KLEINE WOHNHÄUSER</td>
+                <td>MITTEL</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">14 // FINAL KNOWLEDGE</div>
+        <h2>Was sollte man sich merken?</h2>
+
+        <p>
+            Create Optical ist weniger eine einzelne Produktionsmod als
+            vielmehr eine Erweiterung für technische und optische
+            Infrastruktur innerhalb des Create-Ökosystems.
+        </p>
+
+        <ul>
+            <li>Optische Systeme frühzeitig einplanen.</li>
+            <li>Beleuchtung funktional einsetzen.</li>
+            <li>Hauptbereiche visuell hervorheben.</li>
+            <li>Große Create-Anlagen mit Licht strukturieren.</li>
+            <li>Nachtbetrieb bei der Planung berücksichtigen.</li>
+            <li>Performance bei großen Projekten beobachten.</li>
+        </ul>
+
+        <div class="note">
+            <div class="note-title">PROFESSOR PRINCIPLE</div>
+            <p>
+                Eine gute Fabrik zeigt dem Spieler durch ihre Architektur
+                automatisch, wo Produktion, Energie, Transport und
+                Kontrolle stattfinden.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">15 // REFERENCE DATA</div>
+        <h2>Originalquellen</h2>
+
+        <p>
+            Für konkrete Inhalte, Blocknamen, Rezepte und
+            versionsabhängige Funktionen sollten die jeweiligen
+            Projektseiten sowie JEI verwendet werden.
+        </p>
+
+        <div class="sources">
+
+            <a href="https://modrinth.com/mod/create-optical"
+               target="_blank"
+               rel="noopener">
+                MODRINTH // CREATE OPTICAL
+            </a>
+
+            <a href="https://www.curseforge.com/minecraft/mc-mods/create-optical"
+               target="_blank"
+               rel="noopener">
+                CURSEFORGE // CREATE OPTICAL
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <a class="back" href="wiki.html">
+        ← ZURÜCK ZUR WIKI
+    </a>
+
+</main>
+
+<footer>
+    RISE OF NATIONS // CREATE OPTICAL // TACTICAL KNOWLEDGE DATABASE
+</footer>
+
+</body>
+</html>
