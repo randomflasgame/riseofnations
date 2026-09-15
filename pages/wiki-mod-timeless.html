@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RISE OF NATIONS // TACZ</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    background:
+        linear-gradient(rgba(7,12,17,.95), rgba(7,12,17,.98)),
+        repeating-linear-gradient(
+            135deg,
+            rgba(255,255,255,.018) 0px,
+            rgba(255,255,255,.018) 2px,
+            transparent 2px,
+            transparent 9px
+        );
+    color: #dbe3e8;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+header {
+    background: rgba(6,11,16,.97);
+    border-bottom: 1px solid #293944;
+    box-shadow: 0 5px 25px rgba(0,0,0,.45);
+}
+
+.header-inner {
+    max-width: 1500px;
+    margin: auto;
+    padding: 18px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+}
+
+.logo {
+    color: #d6b85c;
+    font-size: 22px;
+    font-weight: 950;
+    letter-spacing: 3px;
+}
+
+.logo span {
+    display: block;
+    color: #687b86;
+    font-size: 9px;
+    letter-spacing: 2px;
+    margin-top: 4px;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 7px;
+}
+
+nav a {
+    color: #9aabb4;
+    text-decoration: none;
+    padding: 9px 11px;
+    border: 1px solid transparent;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 1.2px;
+    transition: .2s;
+}
+
+nav a:hover {
+    color: #d6b85c;
+    background: #111b22;
+    border-color: #3b4d58;
+}
+
+main {
+    max-width: 1250px;
+    margin: auto;
+    padding: 70px 30px 100px;
+}
+
+.eyebrow {
+    color: #d6b85c;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+}
+
+h1 {
+    color: #edf2f4;
+    font-size: clamp(42px, 7vw, 82px);
+    line-height: .95;
+    letter-spacing: 5px;
+    font-weight: 950;
+}
+
+.subtitle {
+    max-width: 850px;
+    margin-top: 22px;
+    color: #8497a2;
+    line-height: 1.75;
+    font-size: 15px;
+}
+
+.meta {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 38px;
+}
+
+.meta-box {
+    padding: 18px;
+    background: #0d171d;
+    border: 1px solid #293c47;
+}
+
+.meta-label {
+    color: #596c77;
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+}
+
+.meta-value {
+    color: #d6b85c;
+    font-size: 13px;
+    font-weight: 900;
+}
+
+.section {
+    margin-top: 35px;
+    padding: 30px;
+    background: #0d171d;
+    border: 1px solid #293c47;
+}
+
+.section-number {
+    color: #526773;
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    margin-bottom: 9px;
+}
+
+h2 {
+    color: #e1e8eb;
+    font-size: 22px;
+    letter-spacing: 1px;
+    margin-bottom: 18px;
+}
+
+h3 {
+    color: #d6b85c;
+    font-size: 14px;
+    letter-spacing: 1px;
+    margin: 25px 0 10px;
+}
+
+p {
+    color: #899ba5;
+    font-size: 13px;
+    line-height: 1.8;
+    margin-bottom: 13px;
+}
+
+ul {
+    margin: 12px 0 18px 20px;
+}
+
+li {
+    color: #899ba5;
+    font-size: 13px;
+    line-height: 1.8;
+    padding-left: 5px;
+}
+
+strong {
+    color: #d9e2e6;
+}
+
+.note {
+    margin-top: 18px;
+    padding: 17px 18px;
+    background: #111c23;
+    border-left: 3px solid #4d91bd;
+}
+
+.note-title {
+    color: #4d91bd;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    margin-bottom: 7px;
+}
+
+.warning {
+    margin-top: 18px;
+    padding: 17px 18px;
+    background: #17140e;
+    border-left: 3px solid #d6b85c;
+}
+
+.warning-title {
+    color: #d6b85c;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    margin-bottom: 7px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 18px;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 13px 14px;
+    border: 1px solid #293c47;
+    font-size: 12px;
+}
+
+th {
+    color: #d6b85c;
+    background: #111c23;
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+td {
+    color: #8ea0a9;
+    background: #0a141a;
+}
+
+.sources {
+    display: grid;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.sources a {
+    display: block;
+    padding: 13px 15px;
+    background: #101b22;
+    border: 1px solid #293c47;
+    color: #9fb0b9;
+    text-decoration: none;
+    font-size: 12px;
+    transition: .2s;
+}
+
+.sources a:hover {
+    color: #d6b85c;
+    border-color: #d6b85c;
+}
+
+.back {
+    display: inline-block;
+    margin-top: 45px;
+    padding: 12px 16px;
+    color: #d6b85c;
+    border: 1px solid #4c4530;
+    text-decoration: none;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    transition: .2s;
+}
+
+.back:hover {
+    background: #17150f;
+    border-color: #d6b85c;
+}
+
+footer {
+    border-top: 1px solid #202e36;
+    padding: 25px 30px;
+    text-align: center;
+    color: #465861;
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+@media (max-width: 850px) {
+    .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav {
+        justify-content: flex-start;
+    }
+
+    .meta {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 550px) {
+    .meta {
+        grid-template-columns: 1fr;
+    }
+
+    main {
+        padding: 45px 18px 70px;
+    }
+
+    .section {
+        padding: 22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-inner">
+
+        <div class="logo">
+            RISE OF NATIONS
+            <span>TACTICAL KNOWLEDGE DATABASE</span>
+        </div>
+
+        <nav>
+            <a href="../index.html">COMMAND</a>
+            <a href="intelligence.html">INTELLIGENCE</a>
+            <a href="server.html">SERVER</a>
+            <a href="database.html">DATABASE</a>
+            <a href="download.html">DOWNLOAD</a>
+            <a href="communications.html">COMMUNICATIONS</a>
+            <a href="wiki.html">WIKI</a>
+        </nav>
+
+    </div>
+</header>
+
+<main>
+
+    <div class="eyebrow">
+        PROFESSOR DATABASE // WEAPONS SYSTEMS
+    </div>
+
+    <h1>TACZ</h1>
+
+    <p class="subtitle">
+        <strong>Timeless and Classics Zero</strong> ist das moderne
+        Waffensystem von RISE OF NATIONS. Die Mod erweitert das Spiel
+        um Schusswaffen, Magazine, Munition, Attachments und taktische
+        Kampfsysteme.
+    </p>
+
+
+    <div class="meta">
+
+        <div class="meta-box">
+            <div class="meta-label">MOD</div>
+            <div class="meta-value">TACZ</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">VERSION</div>
+            <div class="meta-value">1.1.8</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">MINECRAFT</div>
+            <div class="meta-value">1.21.1</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">CATEGORY</div>
+            <div class="meta-value">WEAPONS</div>
+        </div>
+
+    </div>
+
+
+    <section class="section">
+
+        <div class="section-number">01 // SYSTEM OVERVIEW</div>
+        <h2>Was ist TACZ?</h2>
+
+        <p>
+            TACZ ist ein umfangreiches modernes Waffensystem. Anders als
+            einfache Waffenmods behandelt TACZ Schusswaffen als eigenes
+            Gameplay-System mit Waffen, Magazinen, Munition, Nachladen,
+            Schussverhalten und taktischer Ausrüstung.
+        </p>
+
+        <p>
+            Dadurch eignet sich die Mod besonders für militärische
+            Auseinandersetzungen, Verteidigung von Basen, Expeditionen,
+            PvE-Kämpfe und größere Multiplayer-Szenarien.
+        </p>
+
+        <div class="note">
+            <div class="note-title">RISE OF NATIONS // IMPORTANT</div>
+            <p>
+                In diesem Modpack arbeitet TACZ zusätzlich mit mehreren
+                Addons und Kompatibilitätsmods zusammen. Die tatsächliche
+                verfügbare Ausrüstung kann deshalb größer sein als die
+                Basisinstallation von TACZ.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">02 // CORE MECHANICS</div>
+        <h2>Grundprinzipien</h2>
+
+        <p>
+            Das zentrale Konzept ist die Trennung von <strong>Waffe,
+            Magazin und Munition</strong>. Eine funktionsfähige Waffe
+            benötigt deshalb nicht einfach nur einen einzelnen Gegenstand.
+        </p>
+
+        <ul>
+            <li>Waffen besitzen eigene Eigenschaften.</li>
+            <li>Magazine bestimmen die verfügbare Munition.</li>
+            <li>Munition muss zur verwendeten Waffe beziehungsweise zum
+                verwendeten Kaliber passen.</li>
+            <li>Nachladen ist ein eigener Vorgang.</li>
+            <li>Attachments können die Eigenschaften einer Waffe verändern.</li>
+            <li>Verschiedene Waffen erfüllen unterschiedliche taktische Rollen.</li>
+        </ul>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">03 // WEAPON CLASSES</div>
+        <h2>Waffentypen</h2>
+
+        <table>
+
+            <tr>
+                <th>KATEGORIE</th>
+                <th>ROLLE</th>
+                <th>EINSATZ</th>
+            </tr>
+
+            <tr>
+                <td>Pistolen</td>
+                <td>Sidearm</td>
+                <td>Nahbereich und Backup</td>
+            </tr>
+
+            <tr>
+                <td>SMGs</td>
+                <td>Close Combat</td>
+                <td>enge Räume und kurze Distanzen</td>
+            </tr>
+
+            <tr>
+                <td>Shotguns</td>
+                <td>Breaching</td>
+                <td>extreme Nahdistanz</td>
+            </tr>
+
+            <tr>
+                <td>Sturmgewehre</td>
+                <td>General Purpose</td>
+                <td>mittlere Distanzen</td>
+            </tr>
+
+            <tr>
+                <td>DMRs</td>
+                <td>Precision</td>
+                <td>mittlere bis große Distanzen</td>
+            </tr>
+
+            <tr>
+                <td>Scharfschützengewehre</td>
+                <td>Long Range</td>
+                <td>große Distanzen</td>
+            </tr>
+
+            <tr>
+                <td>Maschinengewehre</td>
+                <td>Suppression</td>
+                <td>anhaltendes Feuer</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">04 // AMMUNITION</div>
+        <h2>Munition & Magazine</h2>
+
+        <p>
+            Munition ist einer der wichtigsten Faktoren beim Aufbau eines
+            funktionierenden Waffensystems. Ein Spieler sollte deshalb
+            nicht nur Waffen sammeln, sondern auch die dazugehörige
+            Logistik aufbauen.
+        </p>
+
+        <h3>Grundprinzip</h3>
+
+        <p>
+            Für längere Expeditionen empfiehlt sich ein ausreichender
+            Vorrat an kompatibler Munition und Ersatzmagazinen.
+            Besonders bei automatischen Waffen kann der Verbrauch
+            deutlich höher sein als bei einzelnen Präzisionsschüssen.
+        </p>
+
+        <h3>Logistik</h3>
+
+        <ul>
+            <li>Munition zentral lagern.</li>
+            <li>Ersatzmagazine vorbereiten.</li>
+            <li>Munition für verschiedene Waffentypen getrennt organisieren.</li>
+            <li>Vor längeren Operationen den Vorrat kontrollieren.</li>
+            <li>Mobile Lagerung über geeignete Inventar- oder Backpack-Systeme nutzen.</li>
+        </ul>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">05 // ATTACHMENTS</div>
+        <h2>Attachments & Waffenanpassung</h2>
+
+        <p>
+            Je nach verwendeter Waffe und Konfiguration können
+            unterschiedliche Anbauteile zur Verfügung stehen.
+            Attachments dienen dazu, eine Waffe an eine bestimmte
+            taktische Aufgabe anzupassen.
+        </p>
+
+        <ul>
+            <li>Optiken für bessere Zielerfassung.</li>
+            <li>Mündungsaufsätze für bestimmte Einsatzprofile.</li>
+            <li>Magazine mit unterschiedlichen Kapazitäten.</li>
+            <li>Weitere Waffenanpassungen abhängig von der jeweiligen Waffe.</li>
+        </ul>
+
+        <div class="warning">
+            <div class="warning-title">TACTICAL NOTE</div>
+            <p>
+                Eine möglichst starke Waffe ist nicht automatisch die beste
+                Waffe. Entscheidend ist, ob Reichweite, Mobilität,
+                Magazinkapazität und Handling zur jeweiligen Aufgabe passen.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">06 // COMBAT DOCTRINE</div>
+        <h2>Taktischer Einsatz</h2>
+
+        <p>
+            TACZ wird besonders effektiv, wenn die Ausrüstung an die
+            geplante Operation angepasst wird.
+        </p>
+
+        <h3>Close Combat</h3>
+
+        <p>
+            Für Gebäude, Tunnel und enge Räume sind kompakte Waffen
+            besonders praktisch. Beweglichkeit und schnelle Reaktion
+            sind hier wichtiger als maximale Reichweite.
+        </p>
+
+        <h3>Open Terrain</h3>
+
+        <p>
+            Auf offenem Gelände gewinnen Reichweite und Zielgenauigkeit
+            an Bedeutung. Eine ausgewogene Kombination aus Primärwaffe
+            und Backup-Waffe ist sinnvoll.
+        </p>
+
+        <h3>Base Defense</h3>
+
+        <p>
+            Bei der Verteidigung einer Basis sollte die Ausrüstung
+            unterschiedliche Distanzen abdecken. Zusätzlich sollte
+            ausreichend Munition sicher gelagert werden.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">07 // RISE OF NATIONS INTEGRATION</div>
+        <h2>TACZ im Modpack</h2>
+
+        <p>
+            RISE OF NATIONS enthält neben TACZ weitere Systeme, die
+            militärische und technische Gameplay-Elemente erweitern.
+        </p>
+
+        <ul>
+            <li><strong>TACZ Aero Compat</strong> – Kompatibilität mit weiteren Systemen.</li>
+            <li><strong>TACZ Bandits</strong> – zusätzliche Gegner beziehungsweise Inhalte.</li>
+            <li><strong>TACZ NPCs</strong> – zusätzliche NPC-bezogene Inhalte.</li>
+            <li><strong>Superb Warfare</strong> – weiteres militärisches Gameplay.</li>
+            <li><strong>SBW Drone Warfare</strong> – Drohnen- und Kriegsführungssysteme.</li>
+            <li><strong>SecurityCraft</strong> – defensive Infrastruktur.</li>
+        </ul>
+
+        <p>
+            Dadurch kann TACZ als Teil eines größeren militärischen
+            Gesamtsystems eingesetzt werden und muss nicht isoliert
+            betrachtet werden.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">08 // EQUIPMENT PLANNING</div>
+        <h2>Empfohlene Vorbereitung</h2>
+
+        <p>
+            Vor einer größeren Operation sollte die Ausrüstung nicht
+            spontan zusammengestellt werden. Eine kleine standardisierte
+            Ausrüstung spart Zeit und verhindert Engpässe.
+        </p>
+
+        <ul>
+            <li>Primärwaffe auswählen.</li>
+            <li>Passende Munition einpacken.</li>
+            <li>Ersatzmagazine vorbereiten.</li>
+            <li>Backup-Waffe mitführen.</li>
+            <li>Medizinische und defensive Ausrüstung ergänzen.</li>
+            <li>Zusätzliche Lagerkapazität für Beute einplanen.</li>
+        </ul>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">09 // COMMON PROBLEMS</div>
+        <h2>Häufige Probleme</h2>
+
+        <h3>Die Waffe schießt nicht</h3>
+
+        <p>
+            Zuerst kontrollieren, ob ein kompatibles Magazin beziehungsweise
+            die notwendige Munition vorhanden ist und ob die Waffe korrekt
+            geladen wurde.
+        </p>
+
+        <h3>Munition passt nicht</h3>
+
+        <p>
+            Nicht jede Munition ist für jede Waffe geeignet. Überprüfe
+            Kaliber, Magazin und verwendete Waffe über JEI beziehungsweise
+            die jeweiligen Modinformationen.
+        </p>
+
+        <h3>Zu wenig Munition</h3>
+
+        <p>
+            Für größere Operationen sollte die Munitionsproduktion beziehungsweise
+            Beschaffung als Teil der normalen Logistik betrachtet werden.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">10 // ADVANCED KNOWLEDGE</div>
+        <h2>Weiterführende Systeme</h2>
+
+        <p>
+            Das eigentliche Potential von TACZ entsteht durch die Verbindung
+            mit anderen Modpack-Systemen.
+        </p>
+
+        <ul>
+            <li>Backpacks für mobile Munitionslogistik.</li>
+            <li>Storage-Systeme für zentrale Waffenlager.</li>
+            <li>Claims und SecurityCraft für geschützte Waffenlager.</li>
+            <li>Create-basierte Infrastruktur für industrielle Versorgung.</li>
+            <li>Fahrzeuge und Fluggeräte für Operationen über große Distanzen.</li>
+            <li>Voice Chat für koordinierte Multiplayer-Einsätze.</li>
+        </ul>
+
+        <div class="note">
+            <div class="note-title">PROFESSOR LEVEL</div>
+            <p>
+                Der nächste Schritt ist nicht mehr die einzelne Waffe,
+                sondern die komplette militärische Versorgungskette:
+                Ressourcen → Produktion → Lagerung → Transport →
+                Ausrüstung → Operation.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">11 // REFERENCE DATA</div>
+        <h2>Originalquellen</h2>
+
+        <p>
+            Für versionsabhängige Informationen und vollständige technische
+            Details sollten immer die offiziellen Projektquellen geprüft werden.
+        </p>
+
+        <div class="sources">
+
+            <a href="https://modrinth.com/mod/timeless-and-classics-zero"
+               target="_blank"
+               rel="noopener">
+                MODRINTH // TIMELESS AND CLASSICS ZERO
+            </a>
+
+            <a href="https://www.curseforge.com/minecraft/mc-mods/timeless-and-classics-zero"
+               target="_blank"
+               rel="noopener">
+                CURSEFORGE // TIMELESS AND CLASSICS ZERO
+            </a>
+
+            <a href="https://github.com/MC-Modding-Inspirations/Timeless-and-Classics-Zero"
+               target="_blank"
+               rel="noopener">
+                GITHUB // TACZ PROJECT
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <a class="back" href="wiki-important.html">
+        ← ZURÜCK ZU WIKI // IMPORTANT
+    </a>
+
+</main>
+
+<footer>
+    RISE OF NATIONS // TACZ // TACTICAL KNOWLEDGE DATABASE
+</footer>
+
+</body>
+</html>
