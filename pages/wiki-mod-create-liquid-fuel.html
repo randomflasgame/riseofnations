@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RISE OF NATIONS // CREATE LIQUID FUEL</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+    min-height:100vh;
+    background:
+        linear-gradient(rgba(6,11,16,.97),rgba(6,11,16,.99)),
+        repeating-linear-gradient(
+            135deg,
+            rgba(255,255,255,.018) 0 2px,
+            transparent 2px 9px
+        );
+    color:#dbe3e8;
+    font-family:"Segoe UI",Arial,sans-serif;
+}
+
+header{
+    background:rgba(5,10,15,.98);
+    border-bottom:1px solid #293944;
+    box-shadow:0 5px 25px rgba(0,0,0,.45);
+}
+
+.header-inner{
+    max-width:1500px;
+    margin:auto;
+    padding:18px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:30px;
+}
+
+.logo{
+    color:#d6b85c;
+    font-size:22px;
+    font-weight:950;
+    letter-spacing:3px;
+}
+
+.logo span{
+    display:block;
+    color:#687b86;
+    font-size:9px;
+    letter-spacing:2px;
+    margin-top:4px;
+}
+
+nav{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+    gap:7px;
+}
+
+nav a{
+    color:#9aabb4;
+    text-decoration:none;
+    padding:9px 11px;
+    border:1px solid transparent;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.2px;
+    transition:.2s;
+}
+
+nav a:hover{
+    color:#d6b85c;
+    background:#111b22;
+    border-color:#3b4d58;
+}
+
+main{
+    max-width:1250px;
+    margin:auto;
+    padding:70px 30px 100px;
+}
+
+.eyebrow{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:3px;
+    margin-bottom:15px;
+}
+
+h1{
+    color:#edf2f4;
+    font-size:clamp(40px,6.5vw,78px);
+    line-height:.95;
+    letter-spacing:4px;
+    font-weight:950;
+}
+
+.subtitle{
+    max-width:920px;
+    margin-top:22px;
+    color:#8497a2;
+    line-height:1.75;
+    font-size:15px;
+}
+
+.meta{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-top:38px;
+}
+
+.meta-box{
+    padding:18px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+
+.meta-label{
+    color:#596c77;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:8px;
+}
+
+.meta-value{
+    color:#d6b85c;
+    font-size:13px;
+    font-weight:900;
+}
+
+.section{
+    margin-top:35px;
+    padding:30px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+
+.section-number{
+    color:#526773;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:2px;
+    margin-bottom:9px;
+}
+
+h2{
+    color:#e1e8eb;
+    font-size:22px;
+    letter-spacing:1px;
+    margin-bottom:18px;
+}
+
+h3{
+    color:#d6b85c;
+    font-size:14px;
+    letter-spacing:1px;
+    margin:25px 0 10px;
+}
+
+p{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    margin-bottom:13px;
+}
+
+ul,ol{
+    margin:12px 0 18px 22px;
+}
+
+li{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    padding-left:5px;
+}
+
+strong{
+    color:#d9e2e6;
+}
+
+.note{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#111c23;
+    border-left:3px solid #4d91bd;
+}
+
+.note-title{
+    color:#4d91bd;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+
+.warning{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#17140e;
+    border-left:3px solid #d6b85c;
+}
+
+.warning-title{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:18px;
+}
+
+th,td{
+    text-align:left;
+    padding:13px 14px;
+    border:1px solid #293c47;
+    font-size:12px;
+}
+
+th{
+    color:#d6b85c;
+    background:#111c23;
+    font-size:10px;
+    letter-spacing:1px;
+}
+
+td{
+    color:#8ea0a9;
+    background:#0a141a;
+}
+
+.sources{
+    display:grid;
+    gap:10px;
+    margin-top:15px;
+}
+
+.sources a{
+    display:block;
+    padding:13px 15px;
+    background:#101b22;
+    border:1px solid #293c47;
+    color:#9fb0b9;
+    text-decoration:none;
+    font-size:12px;
+    transition:.2s;
+}
+
+.sources a:hover{
+    color:#d6b85c;
+    border-color:#d6b85c;
+}
+
+.back{
+    display:inline-block;
+    margin-top:45px;
+    padding:12px 16px;
+    color:#d6b85c;
+    border:1px solid #4c4530;
+    text-decoration:none;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    transition:.2s;
+}
+
+.back:hover{
+    background:#17150f;
+    border-color:#d6b85c;
+}
+
+footer{
+    border-top:1px solid #202e36;
+    padding:25px 30px;
+    text-align:center;
+    color:#465861;
+    font-size:9px;
+    letter-spacing:2px;
+}
+
+@media(max-width:850px){
+    .header-inner{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    nav{
+        justify-content:flex-start;
+    }
+
+    .meta{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:550px){
+    .meta{
+        grid-template-columns:1fr;
+    }
+
+    main{
+        padding:45px 18px 70px;
+    }
+
+    .section{
+        padding:22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-inner">
+
+        <div class="logo">
+            RISE OF NATIONS
+            <span>TACTICAL KNOWLEDGE DATABASE</span>
+        </div>
+
+        <nav>
+            <a href="../index.html">COMMAND</a>
+            <a href="intelligence.html">INTELLIGENCE</a>
+            <a href="server.html">SERVER</a>
+            <a href="database.html">DATABASE</a>
+            <a href="download.html">DOWNLOAD</a>
+            <a href="communications.html">COMMUNICATIONS</a>
+            <a href="wiki.html">WIKI</a>
+        </nav>
+
+    </div>
+</header>
+
+<main>
+
+    <div class="eyebrow">
+        PROFESSOR DATABASE // ENERGY & FUELS
+    </div>
+
+    <h1>CREATE LIQUID FUEL</h1>
+
+    <p class="subtitle">
+        Create Liquid Fuel erweitert die Create-Industrie um zusätzliche
+        Möglichkeiten rund um flüssige Brennstoffe und deren Nutzung.
+        Damit lassen sich Treibstoffproduktion, Flüssigkeitslogistik und
+        industrielle Energieversorgung stärker miteinander verbinden.
+    </p>
+
+    <div class="meta">
+
+        <div class="meta-box">
+            <div class="meta-label">MOD</div>
+            <div class="meta-value">CREATE LIQUID FUEL</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">VERSION</div>
+            <div class="meta-value">2.1.1</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">MINECRAFT</div>
+            <div class="meta-value">1.21.1</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">SYSTEM</div>
+            <div class="meta-value">FUEL / ENERGY</div>
+        </div>
+
+    </div>
+
+
+    <section class="section">
+
+        <div class="section-number">01 // SYSTEM OVERVIEW</div>
+        <h2>Was macht Create Liquid Fuel?</h2>
+
+        <p>
+            Create Liquid Fuel konzentriert sich auf Flüssigtreibstoffe
+            und deren Einbindung in technische Produktionsketten.
+        </p>
+
+        <p>
+            Dadurch kann eine Fabrik nicht nur mechanische Energie,
+            sondern auch flüssige Energieträger als Bestandteil ihrer
+            Infrastruktur verwenden.
+        </p>
+
+        <div class="note">
+            <div class="note-title">INDUSTRIAL PRINCIPLE</div>
+            <p>
+                Treibstoff sollte als Produktionskette betrachtet werden:
+                Rohstoffgewinnung, Verarbeitung, Speicherung, Transport
+                und anschließende Nutzung gehören zusammen.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">02 // FLUID SYSTEM</div>
+        <h2>Flüssigkeiten verstehen</h2>
+
+        <p>
+            Create arbeitet stark mit Fluid-Netzwerken. Flüssigkeiten
+            werden über Tanks, Pipes und Pumpen innerhalb technischer
+            Anlagen bewegt.
+        </p>
+
+        <ul>
+            <li>Flüssigkeitsquelle identifizieren.</li>
+            <li>Produktion oder Verarbeitung planen.</li>
+            <li>Speicher bereitstellen.</li>
+            <li>Pumpen und Leitungen verbinden.</li>
+            <li>Verbraucher an das Netzwerk anschließen.</li>
+        </ul>
+
+        <div class="warning">
+            <div class="warning-title">IMPORTANT</div>
+            <p>
+                Bei komplexen Fluid-Systemen sollte immer klar sein,
+                welche Flüssigkeit in welchem Abschnitt transportiert
+                wird. Vermischte Leitungen können Produktionsketten
+                unnötig kompliziert machen.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">03 // FUEL PRODUCTION</div>
+        <h2>Treibstoffproduktion</h2>
+
+        <p>
+            Die konkrete Herstellung eines Treibstoffs hängt von den
+            verfügbaren Rezepten der installierten Modversion ab.
+            Verwende deshalb JEI als primäre Referenz für die aktuelle
+            Rezeptkette.
+        </p>
+
+        <ol>
+            <li>Gewünschten Treibstoff in JEI suchen.</li>
+            <li>Benötigte Ausgangsflüssigkeiten bestimmen.</li>
+            <li>Benötigte Rohstoffe identifizieren.</li>
+            <li>Verarbeitungsstufen aufbauen.</li>
+            <li>Endprodukt in einem geeigneten Tank lagern.</li>
+        </ol>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">04 // STORAGE</div>
+        <h2>Treibstoff lagern</h2>
+
+        <p>
+            Flüssigtreibstoff sollte nicht direkt aus einer
+            Produktionsmaschine in den Verbraucher geleitet werden,
+            wenn die Anlage dauerhaft betrieben werden soll.
+        </p>
+
+        <p>
+            Ein Zwischenlager macht die gesamte Infrastruktur
+            stabiler und erleichtert die Wartung.
+        </p>
+
+        <table>
+
+            <tr>
+                <th>ZONE</th>
+                <th>FUNKTION</th>
+            </tr>
+
+            <tr>
+                <td>PRODUCTION</td>
+                <td>Treibstoff herstellen</td>
+            </tr>
+
+            <tr>
+                <td>BUFFER</td>
+                <td>Zwischenspeicher</td>
+            </tr>
+
+            <tr>
+                <td>LOGISTICS</td>
+                <td>Transport</td>
+            </tr>
+
+            <tr>
+                <td>CONSUMER</td>
+                <td>Treibstoff verwenden</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">05 // PUMPING</div>
+        <h2>Pumpen und Leitungen</h2>
+
+        <p>
+            Eine gute Fluid-Anlage besitzt eine klare Fließrichtung.
+            Pumpen sollten gezielt eingesetzt werden, statt das gesamte
+            Netzwerk unnötig kompliziert zu machen.
+        </p>
+
+        <h3>Planungsregeln</h3>
+
+        <ul>
+            <li>Produktions- und Verbrauchsseite trennen.</li>
+            <li>Leitungen logisch beschriften.</li>
+            <li>Zwischenspeicher einplanen.</li>
+            <li>Wartungszugang offen lassen.</li>
+            <li>Unterschiedliche Flüssigkeiten nicht ohne Grund zusammenführen.</li>
+        </ul>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">06 // FACTORY INTEGRATION</div>
+        <h2>Integration in Create-Fabriken</h2>
+
+        <p>
+            Der eigentliche Vorteil entsteht, wenn der Treibstoff nicht
+            als isolierte Maschine betrachtet wird.
+        </p>
+
+        <p>
+            Eine vollständige Fabrik kann beispielsweise aus
+            Rohstoffproduktion, Verarbeitung, Lagerung und Transport
+            bestehen.
+        </p>
+
+        <table>
+
+            <tr>
+                <th>STUFE</th>
+                <th>INDUSTRIELLE AUFGABE</th>
+            </tr>
+
+            <tr>
+                <td>I</td>
+                <td>Rohstoffe beschaffen</td>
+            </tr>
+
+            <tr>
+                <td>II</td>
+                <td>Ausgangsmaterial verarbeiten</td>
+            </tr>
+
+            <tr>
+                <td>III</td>
+                <td>Treibstoff herstellen</td>
+            </tr>
+
+            <tr>
+                <td>IV</td>
+                <td>Flüssigkeit speichern</td>
+            </tr>
+
+            <tr>
+                <td>V</td>
+                <td>Treibstoff verteilen</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">07 // LOGISTICS</div>
+        <h2>Flüssigkeitslogistik</h2>
+
+        <p>
+            Bei großen Fabriken sollte die Fluid-Infrastruktur genauso
+            sorgfältig geplant werden wie Item- und Zuglogistik.
+        </p>
+
+        <ul>
+            <li>Zentrale Treibstoffdepots.</li>
+            <li>Getrennte Produktionsleitungen.</li>
+            <li>Buffer Tanks für Verbrauchsspitzen.</li>
+            <li>Kontrollierte Verteilung an Maschinen.</li>
+            <li>Erweiterbare Leitungswege.</li>
+        </ul>
+
+        <div class="note">
+            <div class="note-title">LOGISTICS DOCTRINE</div>
+            <p>
+                Plane Leitungen so, dass spätere Erweiterungen möglich
+                sind. Eine Fabrik wird meistens größer als ursprünglich
+                geplant.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">08 // AUTOMATION</div>
+        <h2>Automatisierte Treibstoffversorgung</h2>
+
+        <p>
+            Sobald die Produktionskette funktioniert, kann sie mit den
+            Automatisierungssystemen von Create erweitert werden.
+        </p>
+
+        <ol>
+            <li>Rohstoffe automatisch zuführen.</li>
+            <li>Verarbeitung kontinuierlich betreiben.</li>
+            <li>Treibstoff automatisch in Tanks leiten.</li>
+            <li>Verbraucher dauerhaft versorgen.</li>
+            <li>Produktionskapazität an den Verbrauch anpassen.</li>
+        </ol>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">09 // CAPACITY PLANNING</div>
+        <h2>Kapazität berechnen</h2>
+
+        <p>
+            Eine funktionierende Anlage muss mehr Treibstoff produzieren,
+            als ihre Verbraucher durchschnittlich benötigen.
+        </p>
+
+        <table>
+
+            <tr>
+                <th>PARAMETER</th>
+                <th>BEDEUTUNG</th>
+            </tr>
+
+            <tr>
+                <td>INPUT</td>
+                <td>Rohstoffzufuhr</td>
+            </tr>
+
+            <tr>
+                <td>PROCESSING</td>
+                <td>Verarbeitungskapazität</td>
+            </tr>
+
+            <tr>
+                <td>STORAGE</td>
+                <td>Pufferkapazität</td>
+            </tr>
+
+            <tr>
+                <td>OUTPUT</td>
+                <td>Treibstoffproduktion</td>
+            </tr>
+
+            <tr>
+                <td>CONSUMPTION</td>
+                <td>Verbrauch</td>
+            </tr>
+
+        </table>
+
+        <p>
+            Wenn der Verbrauch dauerhaft größer als die Produktion ist,
+            wird auch ein großer Tank irgendwann leer.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">10 // INDUSTRIAL DESIGN</div>
+        <h2>Eine Treibstoffanlage bauen</h2>
+
+        <p>
+            Für große Fabriken empfiehlt sich eine klare räumliche
+            Trennung der einzelnen Bereiche.
+        </p>
+
+        <ul>
+            <li>Rohstoffannahme.</li>
+            <li>Verarbeitungsbereich.</li>
+            <li>Tanklager.</li>
+            <li>Pumpenstation.</li>
+            <li>Verteilerbereich.</li>
+            <li>Verbraucher.</li>
+        </ul>
+
+        <p>
+            Dadurch bleibt die Anlage übersichtlich und kann später
+            leichter erweitert werden.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">11 // TROUBLESHOOTING</div>
+        <h2>Fehleranalyse</h2>
+
+        <h3>Kein Treibstoff kommt beim Verbraucher an</h3>
+
+        <p>
+            Prüfe zuerst Tankinhalt, Leitungsverbindung, Pumpenrichtung
+            und den angeschlossenen Verbraucher.
+        </p>
+
+        <h3>Tank bleibt leer</h3>
+
+        <p>
+            Prüfe die Produktionsmaschine und ob tatsächlich die
+            korrekte Flüssigkeit erzeugt wird.
+        </p>
+
+        <h3>Produktion stoppt</h3>
+
+        <p>
+            Prüfe die Versorgung mit Rohstoffen, den verfügbaren Platz
+            im Ausgangsbehälter und die mechanische Versorgung der
+            beteiligten Create-Komponenten.
+        </p>
+
+        <h3>System ist zu kompliziert</h3>
+
+        <p>
+            Teile die Anlage in kleinere Produktions-, Speicher- und
+            Verteilerabschnitte auf.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">12 // ADVANCED SYSTEMS</div>
+        <h2>Fortgeschrittene Infrastruktur</h2>
+
+        <p>
+            Große industrielle Basen können mehrere Treibstoffnetze
+            besitzen.
+        </p>
+
+        <ul>
+            <li>Separates Hauptdepot.</li>
+            <li>Produktionsdepots.</li>
+            <li>Lokale Buffer Tanks.</li>
+            <li>Verteilerleitungen.</li>
+            <li>Reservekapazität.</li>
+        </ul>
+
+        <div class="note">
+            <div class="note-title">PROFESSOR TIP</div>
+            <p>
+                Ein dezentrales System kann bei großen Fabriken
+                übersichtlicher sein als eine einzige riesige
+                Flüssigkeitsleitung.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">13 // JEI WORKFLOW</div>
+        <h2>JEI als Planungswerkzeug</h2>
+
+        <p>
+            Da das Modpack viele Create-Erweiterungen verwendet, sollte
+            JEI bei jeder neuen Treibstoffanlage geöffnet bleiben.
+        </p>
+
+        <ol>
+            <li>Treibstoff auswählen.</li>
+            <li>Rezept anzeigen.</li>
+            <li>Alle Zwischenprodukte notieren.</li>
+            <li>Verbraucher prüfen.</li>
+            <li>Produktionskapazität planen.</li>
+        </ol>
+
+        <p>
+            So lässt sich vermeiden, dass eine Fabrik gebaut wird, bevor
+            alle benötigten Produktionsstufen bekannt sind.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">14 // RISE OF NATIONS APPLICATION</div>
+        <h2>Einsatz im Modpack</h2>
+
+        <table>
+
+            <tr>
+                <th>BEREICH</th>
+                <th>EIGNUNG</th>
+            </tr>
+
+            <tr>
+                <td>INDUSTRIE</td>
+                <td>SEHR HOCH</td>
+            </tr>
+
+            <tr>
+                <td>ENERGIE</td>
+                <td>HOCH</td>
+            </tr>
+
+            <tr>
+                <td>FLUID LOGISTICS</td>
+                <td>SEHR HOCH</td>
+            </tr>
+
+            <tr>
+                <td>FACTORY DESIGN</td>
+                <td>SEHR HOCH</td>
+            </tr>
+
+            <tr>
+                <td>AUTOMATION</td>
+                <td>HOCH</td>
+            </tr>
+
+        </table>
+
+        <p>
+            Besonders interessant wird das System in Verbindung mit
+            Create, Create Diesel Generators und weiteren
+            Produktions- und Logistik-Erweiterungen.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">15 // PROFESSOR DOCTRINE</div>
+        <h2>Das Wichtigste zum Mitnehmen</h2>
+
+        <ul>
+            <li>Treibstoffproduktion als vollständige Produktionskette planen.</li>
+            <li>Flüssigkeiten sauber voneinander trennen.</li>
+            <li>Buffer Tanks für stabile Versorgung einsetzen.</li>
+            <li>Produktionsleistung und Verbrauch vergleichen.</li>
+            <li>Fluid-Leitungen erweiterbar bauen.</li>
+            <li>JEI für die tatsächlichen Rezepte verwenden.</li>
+            <li>Große Anlagen modular aufbauen.</li>
+        </ul>
+
+        <div class="warning">
+            <div class="warning-title">FINAL PRINCIPLE</div>
+            <p>
+                Eine gute Treibstoffanlage ist nicht die Anlage mit den
+                meisten Tanks, sondern die Anlage, deren Produktion,
+                Speicherung und Verteilung zuverlässig zusammenarbeiten.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">16 // REFERENCE DATA</div>
+        <h2>Originalquellen</h2>
+
+        <p>
+            Für versionsabhängige Rezepte und konkrete Mechaniken sollte
+            immer die Projektseite der verwendeten Version sowie JEI
+            innerhalb des Modpacks herangezogen werden.
+        </p>
+
+        <div class="sources">
+
+            <a href="https://modrinth.com/mod/create-liquid-fuel"
+               target="_blank"
+               rel="noopener">
+                MODRINTH // CREATE LIQUID FUEL
+            </a>
+
+            <a href="https://www.curseforge.com/minecraft/mc-mods/create-liquid-fuel"
+               target="_blank"
+               rel="noopener">
+                CURSEFORGE // CREATE LIQUID FUEL
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <a class="back" href="wiki.html">
+        ← ZURÜCK ZUR WIKI
+    </a>
+
+</main>
+
+<footer>
+    RISE OF NATIONS // CREATE LIQUID FUEL // TACTICAL KNOWLEDGE DATABASE
+</footer>
+
+</body>
+</html>
