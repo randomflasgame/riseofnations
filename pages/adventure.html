@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RISE OF NATIONS // ADVENTURE DATABASE</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+        body {
+            margin: 0;
+            background:
+                linear-gradient(rgba(5, 10, 16, 0.94), rgba(5, 10, 16, 0.97)),
+                radial-gradient(circle at top, #263044 0%, #080c12 65%);
+            color: #dce8f2;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .page {
+            min-height: 100vh;
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #b48a32;
+            padding-bottom: 18px;
+            margin-bottom: 35px;
+        }
+
+        .brand {
+            color: #d7b45a;
+            font-size: 22px;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        .status {
+            color: #6fcf97;
+            font-size: 12px;
+            letter-spacing: 2px;
+        }
+
+        .header {
+            margin-bottom: 35px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 46px;
+            letter-spacing: 6px;
+            color: #d7b45a;
+        }
+
+        .header p {
+            margin-top: 12px;
+            color: #8798a8;
+            letter-spacing: 2px;
+            font-size: 13px;
+        }
+
+        .system-info {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 35px;
+        }
+
+        .info-box {
+            background: rgba(17, 25, 34, 0.9);
+            border: 1px solid #334453;
+            padding: 18px;
+            position: relative;
+        }
+
+        .info-box::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: #d7b45a;
+        }
+
+        .info-label {
+            color: #718292;
+            font-size: 10px;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .info-value {
+            color: #dce8f2;
+            font-size: 17px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .mods {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .mod {
+            background: rgba(14, 21, 29, 0.95);
+            border: 1px solid #334453;
+            padding: 22px;
+            transition: 0.2s ease;
+            position: relative;
+        }
+
+        .mod:hover {
+            border-color: #d7b45a;
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(215, 180, 90, 0.08);
+        }
+
+        .mod-number {
+            color: #6e7f8e;
+            font-size: 11px;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .mod-name {
+            color: #f0f3f5;
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .mod-description {
+            color: #8293a2;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        .footer {
+            margin-top: 35px;
+            padding-top: 20px;
+            border-top: 1px solid #263542;
+        }
+
+        .return {
+            color: #d7b45a;
+            text-decoration: none;
+            font-size: 12px;
+            letter-spacing: 2px;
+        }
+
+        .return:hover {
+            color: #ffffff;
+        }
+
+        @media (max-width: 800px) {
+            .page {
+                padding: 20px;
+            }
+
+            .system-info {
+                grid-template-columns: 1fr;
+            }
+
+            .mods {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="page">
+
+    <div class="top-bar">
+        <div class="brand">RISE OF NATIONS // DATABASE</div>
+        <div class="status">● SYSTEM OPERATIONAL</div>
+    </div>
+
+    <div class="header">
+        <h1>ADVENTURE & DIMENSIONS</h1>
+        <p>EXPLORATION // DIMENSIONAL SYSTEMS // HOSTILE ENTITIES</p>
+    </div>
+
+    <div class="system-info">
+
+        <div class="info-box">
+            <div class="info-label">DATABASE CATEGORY</div>
+            <div class="info-value">ADVENTURE</div>
+        </div>
+
+        <div class="info-box">
+            <div class="info-label">REGISTERED SYSTEMS</div>
+            <div class="info-value">8 SYSTEMS</div>
+        </div>
+
+        <div class="info-box">
+            <div class="info-label">STATUS</div>
+            <div class="info-value">OPERATIONAL</div>
+        </div>
+
+    </div>
+
+    <div class="mods">
+
+        <div class="mod">
+            <div class="mod-number">SYSTEM 01</div>
+            <div class="mod-name">Twilight Forest</div>
+            <div class="mod-description">
+                Access to a massive alternate dimension filled with forests,
+                dungeons, bosses and unexplored territories.
+            </div>
+        </div>
+
+        <div class="mod">
+            <div class="mod-number">SYSTEM 02</div>
+            <div class="mod-name">The Undergarden</div>
+            <div class="mod-description">
+                Underground dimension containing hostile creatures,
+                dangerous environments and unknown resources.
+            </div>
+        </div>
+
+        <div class="mod">
+            <div class="mod-number">SYSTEM 03</div>
+            <div class="mod-name">Eternal Starlight</div>
+            <div class="mod-description">
+                Expands exploration with mysterious landscapes,
+                structures, creatures and celestial environments.
+            </div>
+        </div>
+
+        <div class="mod">
+            <div class="mod-number">SYSTEM 04</div>
+            <div class="mod-name">Ice and Fire</div>
+            <div class="mod-description">
+                Introduces dragons, mythical creatures and dangerous
+                encounters across the overworld.
+            </div>
+        </div>
+
+        <div class="mod">
+            <div class="mod-number">SYSTEM 05</div>
+            <div class="mod-name">L_Ender’s Cataclysm</div>
+            <div class="mod-description">
+                High-level combat encounters, powerful bosses,
+                legendary equipment and extreme combat zones.
+            </div>
+        </div>
+
+        <div class="mod">
+            <div class="mod-number">SYSTEM 06</div>
+            <div class="mod-name">Mowzie’s Mobs</div>
+            <div class="mod-description">
+                Adds highly dangerous creatures with unique combat
+                mechanics and challenging encounters.
+            </div>
+        </div>
+
+        <div class="mod">
+            <div class="mod-number">SYSTEM 07</div>
+            <div class="mod-name">Alex’s Mobs</div>
+            <div class="mod-description">
+                Expands the world with a large variety of new animals
+                and unique wildlife.
+            </div>
+        </div>
+
+        <div class="mod">
+            <div class="mod-number">SYSTEM 08</div>
+            <div class="mod-name">Goety</div>
+            <div class="mod-description">
+                Dark magic, rituals, powerful entities and supernatural
+                forces become available to advanced operators.
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <a class="return" href="database.html">
+            ← RETURN TO DATABASE
+        </a>
+    </div>
+
+</div>
+
+</body>
+</html>
