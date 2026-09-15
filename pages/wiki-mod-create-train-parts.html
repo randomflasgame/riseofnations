@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RISE OF NATIONS // CREATE TRAIN PARTS</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+    min-height:100vh;
+    background:
+        linear-gradient(rgba(5,10,15,.97),rgba(5,10,15,.99)),
+        repeating-linear-gradient(
+            135deg,
+            rgba(255,255,255,.018) 0 2px,
+            transparent 2px 9px
+        );
+    color:#dbe3e8;
+    font-family:"Segoe UI",Arial,sans-serif;
+}
+
+header{
+    background:rgba(5,10,15,.98);
+    border-bottom:1px solid #293944;
+    box-shadow:0 5px 25px rgba(0,0,0,.45);
+}
+
+.header-inner{
+    max-width:1500px;
+    margin:auto;
+    padding:18px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:30px;
+}
+
+.logo{
+    color:#d6b85c;
+    font-size:22px;
+    font-weight:950;
+    letter-spacing:3px;
+}
+
+.logo span{
+    display:block;
+    color:#687b86;
+    font-size:9px;
+    letter-spacing:2px;
+    margin-top:4px;
+}
+
+nav{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+    gap:7px;
+}
+
+nav a{
+    color:#9aabb4;
+    text-decoration:none;
+    padding:9px 11px;
+    border:1px solid transparent;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.2px;
+    transition:.2s;
+}
+
+nav a:hover{
+    color:#d6b85c;
+    background:#111b22;
+    border-color:#3b4d58;
+}
+
+main{
+    max-width:1250px;
+    margin:auto;
+    padding:70px 30px 100px;
+}
+
+.eyebrow{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:3px;
+    margin-bottom:15px;
+}
+
+h1{
+    color:#edf2f4;
+    font-size:clamp(40px,6.5vw,78px);
+    line-height:.95;
+    letter-spacing:4px;
+    font-weight:950;
+}
+
+.subtitle{
+    max-width:930px;
+    margin-top:22px;
+    color:#8497a2;
+    line-height:1.75;
+    font-size:15px;
+}
+
+.meta{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-top:38px;
+}
+
+.meta-box{
+    padding:18px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+
+.meta-label{
+    color:#596c77;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:8px;
+}
+
+.meta-value{
+    color:#d6b85c;
+    font-size:13px;
+    font-weight:900;
+}
+
+.section{
+    margin-top:35px;
+    padding:30px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+
+.section-number{
+    color:#526773;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:2px;
+    margin-bottom:9px;
+}
+
+h2{
+    color:#e1e8eb;
+    font-size:22px;
+    letter-spacing:1px;
+    margin-bottom:18px;
+}
+
+h3{
+    color:#d6b85c;
+    font-size:14px;
+    letter-spacing:1px;
+    margin:25px 0 10px;
+}
+
+p{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    margin-bottom:13px;
+}
+
+ul,ol{
+    margin:12px 0 18px 22px;
+}
+
+li{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    padding-left:5px;
+}
+
+.note{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#111c23;
+    border-left:3px solid #4d91bd;
+}
+
+.note-title{
+    color:#4d91bd;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+
+.warning{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#17140e;
+    border-left:3px solid #d6b85c;
+}
+
+.warning-title{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:18px;
+}
+
+th,td{
+    text-align:left;
+    padding:13px 14px;
+    border:1px solid #293c47;
+    font-size:12px;
+}
+
+th{
+    color:#d6b85c;
+    background:#111c23;
+    font-size:10px;
+    letter-spacing:1px;
+}
+
+td{
+    color:#8ea0a9;
+    background:#0a141a;
+}
+
+.sources{
+    display:grid;
+    gap:10px;
+    margin-top:15px;
+}
+
+.sources a{
+    display:block;
+    padding:13px 15px;
+    background:#101b22;
+    border:1px solid #293c47;
+    color:#9fb0b9;
+    text-decoration:none;
+    font-size:12px;
+    transition:.2s;
+}
+
+.sources a:hover{
+    color:#d6b85c;
+    border-color:#d6b85c;
+}
+
+.back{
+    display:inline-block;
+    margin-top:45px;
+    padding:12px 16px;
+    color:#d6b85c;
+    border:1px solid #4c4530;
+    text-decoration:none;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    transition:.2s;
+}
+
+.back:hover{
+    background:#17150f;
+    border-color:#d6b85c;
+}
+
+footer{
+    border-top:1px solid #202e36;
+    padding:25px 30px;
+    text-align:center;
+    color:#465861;
+    font-size:9px;
+    letter-spacing:2px;
+}
+
+@media(max-width:850px){
+    .header-inner{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    nav{
+        justify-content:flex-start;
+    }
+
+    .meta{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:550px){
+    .meta{
+        grid-template-columns:1fr;
+    }
+
+    main{
+        padding:45px 18px 70px;
+    }
+
+    .section{
+        padding:22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-inner">
+
+        <div class="logo">
+            RISE OF NATIONS
+            <span>TACTICAL KNOWLEDGE DATABASE</span>
+        </div>
+
+        <nav>
+            <a href="../index.html">COMMAND</a>
+            <a href="intelligence.html">INTELLIGENCE</a>
+            <a href="server.html">SERVER</a>
+            <a href="database.html">DATABASE</a>
+            <a href="download.html">DOWNLOAD</a>
+            <a href="communications.html">COMMUNICATIONS</a>
+            <a href="wiki.html">WIKI</a>
+        </nav>
+
+    </div>
+</header>
+
+<main>
+
+    <div class="eyebrow">
+        PROFESSOR DATABASE // RAILWAY ENGINEERING
+    </div>
+
+    <h1>CREATE TRAIN PARTS</h1>
+
+    <p class="subtitle">
+        Create Train Parts erweitert das Create-Eisenbahnsystem um
+        zusätzliche Komponenten für Züge und deren Aufbau. Die Mod
+        richtet sich vor allem an Spieler, die ihr Bahnnetz nicht nur
+        funktional, sondern auch technisch und optisch detailliert
+        aufbauen möchten.
+    </p>
+
+    <div class="meta">
+
+        <div class="meta-box">
+            <div class="meta-label">MOD</div>
+            <div class="meta-value">CREATE TRAIN PARTS</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">VERSION</div>
+            <div class="meta-value">0.5.2</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">MINECRAFT</div>
+            <div class="meta-value">1.21.1</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">SYSTEM</div>
+            <div class="meta-value">RAILWAY SYSTEMS</div>
+        </div>
+
+    </div>
+
+
+    <section class="section">
+
+        <div class="section-number">01 // SYSTEM OVERVIEW</div>
+        <h2>Was ist Create Train Parts?</h2>
+
+        <p>
+            Create Train Parts ergänzt das Eisenbahnsystem von Create
+            um zusätzliche Zugkomponenten. Dadurch entstehen weitere
+            Möglichkeiten für individuelle Zugaufbauten und
+            spezialisierte Transportfahrzeuge.
+        </p>
+
+        <p>
+            Besonders in großen Modpack-Projekten kann das interessant
+            sein, weil Züge unterschiedliche Aufgaben übernehmen können:
+            Personenverkehr, Rohstofftransport, Versorgung oder
+            industrielle Logistik.
+        </p>
+
+        <div class="note">
+            <div class="note-title">CORE PRINCIPLE</div>
+            <p>
+                Der Zug sollte passend zu seiner Aufgabe gebaut werden.
+                Ein kurzer Versorgungszug benötigt andere Prioritäten
+                als ein schwerer Güterzug.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">02 // TRAIN ARCHITECTURE</div>
+        <h2>Aufbau eines Create-Zuges</h2>
+
+        <p>
+            Ein Zug besteht aus mehreren funktionalen Bereichen. Die
+            einzelnen Wagen können dabei unterschiedliche Aufgaben
+            übernehmen.
+        </p>
+
+        <table>
+
+            <tr>
+                <th>KOMPONENTE</th>
+                <th>FUNKTION</th>
+            </tr>
+
+            <tr>
+                <td>LOKOMOTIVE</td>
+                <td>Bewegung und Antrieb</td>
+            </tr>
+
+            <tr>
+                <td>FÜHRERBEREICH</td>
+                <td>Steuerung und Zugbetrieb</td>
+            </tr>
+
+            <tr>
+                <td>GÜTERWAGEN</td>
+                <td>Transport von Items</td>
+            </tr>
+
+            <tr>
+                <td>FLUIDWAGEN</td>
+                <td>Transport von Flüssigkeiten</td>
+            </tr>
+
+            <tr>
+                <td>SPEZIALWAGEN</td>
+                <td>Individuelle Transportaufgaben</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">03 // TRAIN CONFIGURATION</div>
+        <h2>Den richtigen Zug planen</h2>
+
+        <p>
+            Bevor ein Zug gebaut wird, sollte seine Aufgabe feststehen.
+            Dadurch lassen sich unnötige Wagen und überdimensionierte
+            Konstruktionen vermeiden.
+        </p>
+
+        <ol>
+            <li>Transportauftrag bestimmen.</li>
+            <li>Benötigte Kapazität abschätzen.</li>
+            <li>Passende Wagen auswählen.</li>
+            <li>Lokomotive und Zuglänge festlegen.</li>
+            <li>Be- und Entladepunkte planen.</li>
+        </ol>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">04 // FREIGHT OPERATIONS</div>
+        <h2>Güterzüge</h2>
+
+        <p>
+            Für industrielle Produktionsketten sind Güterzüge
+            besonders interessant. Sie können große Mengen zwischen
+            Fabriken transportieren.
+        </p>
+
+        <ul>
+            <li>Erze und Rohstoffe.</li>
+            <li>Verarbeitete Zwischenprodukte.</li>
+            <li>Landwirtschaftliche Waren.</li>
+            <li>Baumaterialien.</li>
+            <li>Fertigprodukte.</li>
+        </ul>
+
+        <div class="note">
+            <div class="note-title">LOGISTICS PRINCIPLE</div>
+            <p>
+                Je größer die Produktionsanlage wird, desto wichtiger
+                wird ein zentral geplantes Transportnetz.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">05 // FLUID TRANSPORT</div>
+        <h2>Flüssigkeiten transportieren</h2>
+
+        <p>
+            Flüssigkeiten benötigen eigene Transportlösungen. In einer
+            industriellen Welt können entsprechende Wagen beispielsweise
+            Produktionsketten mit Treibstoffen oder anderen Flüssigkeiten
+            versorgen.
+        </p>
+
+        <ul>
+            <li>Flüssigkeit am Produktionsstandort bereitstellen.</li>
+            <li>Tankwagen am Bahnhof beladen.</li>
+            <li>Transport über das Schienennetz durchführen.</li>
+            <li>Am Zielbahnhof entladen.</li>
+            <li>Flüssigkeit in einem geeigneten Speicher ablegen.</li>
+        </ul>
+
+        <div class="warning">
+            <div class="warning-title">CHECK YOUR NETWORK</div>
+            <p>
+                Bei komplexen Fluidnetzwerken müssen Lade- und
+                Entladepunkte eindeutig geplant werden.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">06 // PASSENGER SYSTEMS</div>
+        <h2>Personenverkehr und Stadtzüge</h2>
+
+        <p>
+            Nicht jeder Zug muss Waren transportieren. In einer
+            Spielerwelt können Züge auch als sichtbare Infrastruktur
+            zwischen Städten und Siedlungen eingesetzt werden.
+        </p>
+
+        <ul>
+            <li>Stadtverbindungen.</li>
+            <li>Industriependelverkehr.</li>
+            <li>Hauptbahnhöfe.</li>
+            <li>Regionale Verbindungen.</li>
+            <li>Touristische Strecken.</li>
+        </ul>
+
+        <p>
+            Zusammen mit dekorativen Create-Komponenten können solche
+            Züge Teil einer glaubwürdigen Stadtinfrastruktur werden.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">07 // INDUSTRIAL TRAINS</div>
+        <h2>Spezialisierte Industriezüge</h2>
+
+        <table>
+
+            <tr>
+                <th>ZUGTYP</th>
+                <th>AUFGABE</th>
+            </tr>
+
+            <tr>
+                <td>ORE TRAIN</td>
+                <td>Rohstofftransport</td>
+            </tr>
+
+            <tr>
+                <td>FACTORY SUPPLY</td>
+                <td>Versorgung von Fabriken</td>
+            </tr>
+
+            <tr>
+                <td>FUEL TRAIN</td>
+                <td>Transport flüssiger Brennstoffe</td>
+            </tr>
+
+            <tr>
+                <td>FOOD TRAIN</td>
+                <td>Landwirtschaftliche Produkte</td>
+            </tr>
+
+            <tr>
+                <td>EXPORT TRAIN</td>
+                <td>Fertige Handelswaren</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">08 // TRAIN LENGTH</div>
+        <h2>Zuglänge und Kapazität</h2>
+
+        <p>
+            Ein längerer Zug bietet mehr Kapazität, benötigt aber auch
+            mehr Platz im Netzwerk.
+        </p>
+
+        <ul>
+            <li>Lange Züge benötigen ausreichend lange Bahnhöfe.</li>
+            <li>Kurven und Engstellen müssen berücksichtigt werden.</li>
+            <li>Wartebereiche müssen zur Zuglänge passen.</li>
+            <li>Mehr Wagen bedeuten höhere Transportkapazität.</li>
+            <li>Kurze Züge können auf Nebenstrecken effizienter sein.</li>
+        </ul>
+
+        <div class="note">
+            <div class="note-title">DESIGN RULE</div>
+            <p>
+                Nicht automatisch den längstmöglichen Zug bauen.
+                Entscheidend ist das Verhältnis aus Kapazität,
+                Verkehrsaufkommen und Infrastruktur.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">09 // STATION COMPATIBILITY</div>
+        <h2>Bahnhof und Zug müssen zusammenpassen</h2>
+
+        <p>
+            Ein häufiger Planungsfehler ist ein großer Zug an einem zu
+            kleinen Bahnhof.
+        </p>
+
+        <ol>
+            <li>Zuglänge bestimmen.</li>
+            <li>Bahnhof entsprechend dimensionieren.</li>
+            <li>Beladebereiche passend positionieren.</li>
+            <li>Ausfahrt ausreichend lang planen.</li>
+            <li>Wartebereich hinter dem Bahnhof berücksichtigen.</li>
+        </ol>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">10 // NETWORK INTEGRATION</div>
+        <h2>Integration in das Create-Netzwerk</h2>
+
+        <p>
+            Die zusätzlichen Zugteile entfalten ihren Nutzen besonders
+            dann, wenn sie mit einem bestehenden Create-Logistiksystem
+            verbunden werden.
+        </p>
+
+        <ul>
+            <li>Beladebahnhof an Lager anbinden.</li>
+            <li>Lager mit Fabrik verbinden.</li>
+            <li>Produktionsoutput zum Bahnhof führen.</li>
+            <li>Zug zum nächsten Standort schicken.</li>
+            <li>Endprodukte zentral sammeln.</li>
+        </ul>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">11 // MULTIPLAYER APPLICATION</div>
+        <h2>Verwendung auf einem Multiplayer-Server</h2>
+
+        <p>
+            Auf einem Multiplayer-Server können Züge zu gemeinsamer
+            Infrastruktur werden.
+        </p>
+
+        <ul>
+            <li>Spielerstädte miteinander verbinden.</li>
+            <li>Gemeinsame Industriegebiete versorgen.</li>
+            <li>Handelsrouten aufbauen.</li>
+            <li>Rohstoffe für andere Spieler transportieren.</li>
+            <li>Öffentliche Bahnnetze betreiben.</li>
+        </ul>
+
+        <p>
+            Dadurch kann eine funktionierende Wirtschaft entstehen,
+            bei der Transport selbst Teil der Infrastruktur ist.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">12 // TROUBLESHOOTING</div>
+        <h2>Typische Probleme</h2>
+
+        <h3>Zug kann Bahnhof nicht korrekt bedienen</h3>
+
+        <p>
+            Prüfe die Ausrichtung des Zuges, die Bahnhofsposition und
+            die geplanten Ein- und Ausfahrten.
+        </p>
+
+        <h3>Zug ist zu lang</h3>
+
+        <p>
+            Kontrolliere Bahnhofsgröße, Wartebereiche und mögliche
+            Engstellen im Netzwerk.
+        </p>
+
+        <h3>Transportleistung reicht nicht aus</h3>
+
+        <p>
+            Statt sofort einen extrem langen Zug zu bauen, kann auch
+            ein zweiter Zug oder eine zusätzliche Route sinnvoll sein.
+        </p>
+
+        <h3>Netzwerk wird langsam</h3>
+
+        <p>
+            Prüfe Engpässe, Bahnhofsbelegung und konkurrierende
+            Zugrouten.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">13 // ADVANCED ENGINEERING</div>
+        <h2>Modulare Züge</h2>
+
+        <p>
+            Eine professionelle Transportflotte sollte aus mehreren
+            spezialisierten Zugtypen bestehen.
+        </p>
+
+        <table>
+
+            <tr>
+                <th>FLOTTE</th>
+                <th>AUFGABE</th>
+            </tr>
+
+            <tr>
+                <td>LOCAL</td>
+                <td>Kurze regionale Transporte</td>
+            </tr>
+
+            <tr>
+                <td>INDUSTRIAL</td>
+                <td>Große Fabrikversorgung</td>
+            </tr>
+
+            <tr>
+                <td>EXPRESS</td>
+                <td>Schnelle kleinere Transporte</td>
+            </tr>
+
+            <tr>
+                <td>HEAVY</td>
+                <td>Große Warenmengen</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">14 // RISE OF NATIONS APPLICATION</div>
+        <h2>Einsatz im Modpack</h2>
+
+        <p>
+            Create Train Parts ist besonders interessant, wenn Create
+            nicht nur als Maschinenmod, sondern als Grundlage einer
+            kompletten Industrie-Infrastruktur verwendet wird.
+        </p>
+
+        <ul>
+            <li>Industriegebiete mit Bahnlinien verbinden.</li>
+            <li>Große Rohstoffmengen transportieren.</li>
+            <li>Städte mit Produktionszentren verbinden.</li>
+            <li>Handelsrouten sichtbar machen.</li>
+            <li>Spezialisierte Zugflotten aufbauen.</li>
+            <li>Gemeinsame Server-Infrastruktur schaffen.</li>
+        </ul>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">15 // PROFESSOR DOCTRINE</div>
+        <h2>Das Wichtigste zum Mitnehmen</h2>
+
+        <ul>
+            <li>Zugdesign immer an den Transportauftrag anpassen.</li>
+            <li>Kapazität und Infrastruktur gemeinsam planen.</li>
+            <li>Bahnhöfe ausreichend groß dimensionieren.</li>
+            <li>Güter- und Personenverkehr logisch trennen.</li>
+            <li>Große Netzwerke modular aufbauen.</li>
+            <li>Spezialisierte Züge sind oft effizienter als ein Universalzug.</li>
+            <li>Das gesamte Schienennetz als zusammenhängendes System betrachten.</li>
+        </ul>
+
+        <div class="note">
+            <div class="note-title">FINAL PRINCIPLE</div>
+            <p>
+                Ein guter Zug ist nicht der größte Zug. Ein guter Zug
+                erfüllt seine Aufgabe zuverlässig und passt perfekt in
+                das Netzwerk, für das er gebaut wurde.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">16 // REFERENCE DATA</div>
+        <h2>Originalquellen</h2>
+
+        <p>
+            Für konkrete Bauteile, Rezepte und versionsabhängige
+            Funktionen sollte immer die zur Installation passende
+            Projektversion geprüft werden.
+        </p>
+
+        <div class="sources">
+
+            <a href="https://modrinth.com/mod/create-train-parts"
+               target="_blank"
+               rel="noopener">
+                MODRINTH // CREATE TRAIN PARTS
+            </a>
+
+            <a href="https://www.curseforge.com/minecraft/mc-mods/create-train-parts"
+               target="_blank"
+               rel="noopener">
+                CURSEFORGE // CREATE TRAIN PARTS
+            </a>
+
+            <a href="https://modrinth.com/mod/create"
+               target="_blank"
+               rel="noopener">
+                MODRINTH // CREATE
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <a class="back" href="wiki.html">
+        ← ZURÜCK ZUR WIKI
+    </a>
+
+</main>
+
+<footer>
+    RISE OF NATIONS // CREATE TRAIN PARTS // TACTICAL KNOWLEDGE DATABASE
+</footer>
+
+</body>
+</html>
