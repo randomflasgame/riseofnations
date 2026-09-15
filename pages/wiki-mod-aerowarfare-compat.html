@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RISE OF NATIONS // AEROWARFARE COMPAT</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+    min-height:100vh;
+    background:
+        linear-gradient(rgba(5,10,15,.97),rgba(5,10,15,.99)),
+        repeating-linear-gradient(135deg,rgba(255,255,255,.018) 0 2px,transparent 2px 9px);
+    color:#dbe3e8;
+    font-family:"Segoe UI",Arial,sans-serif;
+}
+header{
+    background:rgba(5,10,15,.98);
+    border-bottom:1px solid #293944;
+    box-shadow:0 5px 25px rgba(0,0,0,.45);
+}
+.header-inner{
+    max-width:1500px;
+    margin:auto;
+    padding:18px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:30px;
+}
+.logo{
+    color:#d6b85c;
+    font-size:22px;
+    font-weight:950;
+    letter-spacing:3px;
+}
+.logo span{
+    display:block;
+    color:#687b86;
+    font-size:9px;
+    letter-spacing:2px;
+    margin-top:4px;
+}
+nav{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+    gap:7px;
+}
+nav a{
+    color:#9aabb4;
+    text-decoration:none;
+    padding:9px 11px;
+    border:1px solid transparent;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.2px;
+    transition:.2s;
+}
+nav a:hover{
+    color:#d6b85c;
+    background:#111b22;
+    border-color:#3b4d58;
+}
+main{
+    max-width:1250px;
+    margin:auto;
+    padding:70px 30px 100px;
+}
+.eyebrow{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:3px;
+    margin-bottom:15px;
+}
+h1{
+    color:#edf2f4;
+    font-size:clamp(40px,6.5vw,78px);
+    line-height:.95;
+    letter-spacing:4px;
+    font-weight:950;
+}
+.subtitle{
+    max-width:950px;
+    margin-top:22px;
+    color:#8497a2;
+    line-height:1.75;
+    font-size:15px;
+}
+.meta{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-top:38px;
+}
+.meta-box{
+    padding:18px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+.meta-label{
+    color:#596c77;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:8px;
+}
+.meta-value{
+    color:#d6b85c;
+    font-size:13px;
+    font-weight:900;
+}
+.section{
+    margin-top:35px;
+    padding:30px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+.section-number{
+    color:#526773;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:2px;
+    margin-bottom:9px;
+}
+h2{
+    color:#e1e8eb;
+    font-size:22px;
+    letter-spacing:1px;
+    margin-bottom:18px;
+}
+h3{
+    color:#d6b85c;
+    font-size:14px;
+    letter-spacing:1px;
+    margin:25px 0 10px;
+}
+p{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    margin-bottom:13px;
+}
+ul,ol{
+    margin:12px 0 18px 22px;
+}
+li{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    padding-left:5px;
+}
+.note{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#111c23;
+    border-left:3px solid #4d91bd;
+}
+.note-title{
+    color:#4d91bd;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+.warning{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#17140e;
+    border-left:3px solid #d6b85c;
+}
+.warning-title{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:18px;
+}
+th,td{
+    text-align:left;
+    padding:13px 14px;
+    border:1px solid #293c47;
+    font-size:12px;
+}
+th{
+    color:#d6b85c;
+    background:#111c23;
+    font-size:10px;
+    letter-spacing:1px;
+}
+td{
+    color:#8ea0a9;
+    background:#0a141a;
+}
+.sources{
+    display:grid;
+    gap:10px;
+    margin-top:15px;
+}
+.sources a{
+    display:block;
+    padding:13px 15px;
+    background:#101b22;
+    border:1px solid #293c47;
+    color:#9fb0b9;
+    text-decoration:none;
+    font-size:12px;
+    transition:.2s;
+}
+.sources a:hover{
+    color:#d6b85c;
+    border-color:#d6b85c;
+}
+.back{
+    display:inline-block;
+    margin-top:45px;
+    padding:12px 16px;
+    color:#d6b85c;
+    border:1px solid #4c4530;
+    text-decoration:none;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+}
+footer{
+    border-top:1px solid #202e36;
+    padding:25px 30px;
+    text-align:center;
+    color:#465861;
+    font-size:9px;
+    letter-spacing:2px;
+}
+@media(max-width:850px){
+    .header-inner{flex-direction:column;align-items:flex-start}
+    nav{justify-content:flex-start}
+    .meta{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:550px){
+    .meta{grid-template-columns:1fr}
+    main{padding:45px 18px 70px}
+    .section{padding:22px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="header-inner">
+
+<div class="logo">
+RISE OF NATIONS
+<span>TACTICAL KNOWLEDGE DATABASE</span>
+</div>
+
+<nav>
+<a href="../index.html">COMMAND</a>
+<a href="intelligence.html">INTELLIGENCE</a>
+<a href="server.html">SERVER</a>
+<a href="database.html">DATABASE</a>
+<a href="download.html">DOWNLOAD</a>
+<a href="communications.html">COMMUNICATIONS</a>
+<a href="wiki.html">WIKI</a>
+</nav>
+
+</div>
+</header>
+
+<main>
+
+<div class="eyebrow">
+PROFESSOR DATABASE // AEROWARFARE // COMPATIBILITY SYSTEM
+</div>
+
+<h1>AEROWARFARE COMPAT</h1>
+
+<p class="subtitle">
+Aerowarfare Compat ist eine Kompatibilitätserweiterung innerhalb des
+Luftfahrt- und Create-Ökosystems von RISE OF NATIONS. Der Schwerpunkt
+liegt darauf, unterschiedliche technische Systeme miteinander
+arbeiten zu lassen, anstatt sie als voneinander getrennte Mods zu
+betrachten.
+</p>
+
+<div class="meta">
+
+<div class="meta-box">
+<div class="meta-label">MOD</div>
+<div class="meta-value">AEROWARFARE COMPAT</div>
+</div>
+
+<div class="meta-box">
+<div class="meta-label">VERSION</div>
+<div class="meta-value">1.15.0</div>
+</div>
+
+<div class="meta-box">
+<div class="meta-label">MINECRAFT</div>
+<div class="meta-value">1.21.1</div>
+</div>
+
+<div class="meta-box">
+<div class="meta-label">SYSTEM</div>
+<div class="meta-value">COMPATIBILITY</div>
+</div>
+
+</div>
+
+
+<section class="section">
+<div class="section-number">01 // SYSTEM OVERVIEW</div>
+<h2>Aufgabe des Mods</h2>
+
+<p>
+Kompatibilitätsmods besitzen häufig keine eigene große
+Spielmechanik. Ihre Aufgabe besteht darin, zwei oder mehrere
+Systeme miteinander zu verbinden.
+</p>
+
+<p>
+Das ist besonders wichtig in RISE OF NATIONS, weil hier zahlreiche
+Create-, Luftfahrt-, Waffen- und Fahrzeugmods gleichzeitig
+installiert sind.
+</p>
+
+<div class="note">
+<div class="note-title">CORE PRINCIPLE</div>
+<p>
+Kompatibilität ist Infrastruktur. Der Spieler bemerkt sie meistens
+erst dann, wenn sie fehlt.
+</p>
+</div>
+</section>
+
+
+<section class="section">
+<div class="section-number">02 // ECOSYSTEM</div>
+<h2>Das technische Umfeld</h2>
+
+<table>
+<tr>
+<th>SYSTEM</th>
+<th>ROLLE</th>
+</tr>
+<tr>
+<td>Create</td>
+<td>Mechanische Basis</td>
+</tr>
+<tr>
+<td>Create Aeronautics</td>
+<td>Luftfahrt und bewegliche Konstruktionen</td>
+</tr>
+<tr>
+<td>Aeroworks</td>
+<td>Erweiterte technische Luftfahrt</td>
+</tr>
+<tr>
+<td>Aerowarfare Compat</td>
+<td>Verbindung verschiedener Systeme</td>
+</tr>
+<tr>
+<td>Waffensysteme</td>
+<td>Militärische Anwendung</td>
+</tr>
+</table>
+
+<p>
+Der genaue Umfang einer Kompatibilität hängt immer von den
+installierten Versionen und den jeweiligen Gegenstellen ab.
+</p>
+</section>
+
+
+<section class="section">
+<div class="section-number">03 // WHY COMPATIBILITY</div>
+<h2>Warum sind solche Mods wichtig?</h2>
+
+<p>
+Große Modpacks bestehen aus vielen unabhängigen Projekten. Jeder
+Modentwickler kann seine Systeme unterschiedlich implementieren.
+Dadurch entstehen Schnittstellenprobleme.
+</p>
+
+<ul>
+<li>Unterschiedliche Fahrzeug-Systeme.</li>
+<li>Unterschiedliche Bewegungsmechaniken.</li>
+<li>Unterschiedliche Inventar- und Datenstrukturen.</li>
+<li>Unterschiedliche technische Abhängigkeiten.</li>
+<li>Unterschiedliche Render- und Interaktionssysteme.</li>
+</ul>
+
+<p>
+Eine Compat-Schicht kann solche Systeme gezielt miteinander
+verbinden.
+</p>
+</section>
+
+
+<section class="section">
+<div class="section-number">04 // PLAYER BENEFIT</div>
+<h2>Was merkt der Spieler davon?</h2>
+
+<p>
+Im Idealfall merkt der Spieler überhaupt nicht, dass ein
+Kompatibilitätsmod aktiv ist.
+</p>
+
+<p>
+Stattdessen funktionieren Systeme zusammen, die ohne die
+Kompatibilität getrennt behandelt werden müssten.
+</p>
+
+<div class="note">
+<div class="note-title">IDEAL STATE</div>
+<p>
+Das beste Kompatibilitätssystem ist für den Spieler unsichtbar,
+solange alles korrekt funktioniert.
+</p>
+</div>
+</section>
+
+
+<section class="section">
+<div class="section-number">05 // CREATE INTEGRATION</div>
+<h2>Zusammenspiel mit Create</h2>
+
+<p>
+Da RISE OF NATIONS stark auf Create aufbaut, können technische
+Kompatibilitätsschichten besonders wichtig werden.
+</p>
+
+<ul>
+<li>Mechanische Konstruktionen.</li>
+<li>Fahrzeuge.</li>
+<li>Luftfahrtsysteme.</li>
+<li>Transportanlagen.</li>
+<li>Militärische Technik.</li>
+</ul>
+
+<p>
+Bei Problemen sollte deshalb niemals nur ein einzelner Mod betrachtet
+werden. Die gesamte technische Kette kann relevant sein.
+</p>
+</section>
+
+
+<section class="section">
+<div class="section-number">06 // TROUBLESHOOTING</div>
+<h2>Fehleranalyse</h2>
+
+<h3>Ein System erkennt eine andere Mod-Komponente nicht</h3>
+
+<p>
+Zuerst prüfen, ob beide beteiligten Mods installiert und auf den
+vorgesehenen Versionen vorhanden sind.
+</p>
+
+<h3>Fehler nach einem Mod-Update</h3>
+
+<p>
+Kompatibilitätsmods sind besonders empfindlich gegenüber Änderungen
+an den Mods, mit denen sie zusammenarbeiten.
+</p>
+
+<p>
+Bei einem Fehler sollte deshalb die zuletzt veränderte Modversion
+als erster Ansatzpunkt betrachtet werden.
+</p>
+
+<h3>Server-Crash beim Start</h3>
+
+<p>
+In diesem Fall die Logdatei prüfen und insbesondere nach
+Dependency-, Missing-Class- oder Compatibility-Fehlern suchen.
+</p>
+
+<h3>Nur bestimmte Funktionen funktionieren nicht</h3>
+
+<p>
+Das kann darauf hindeuten, dass genau diese Funktion von einer
+Kompatibilitätsschicht abhängig ist, während der restliche Mod
+korrekt arbeitet.
+</p>
+</section>
+
+
+<section class="section">
+<div class="section-number">07 // VERSION MANAGEMENT</div>
+<h2>Versionen richtig behandeln</h2>
+
+<p>
+Bei einem großen Modpack ist es gefährlich, einzelne Mods völlig
+unabhängig voneinander zu aktualisieren.
+</p>
+
+<ol>
+<li>Aktuelle Modpack-Version dokumentieren.</li>
+<li>Betroffene Mods identifizieren.</li>
+<li>Kompatibilitätsmods prüfen.</li>
+<li>Änderungen zuerst in einer Testwelt durchführen.</li>
+<li>Server und Client gemeinsam testen.</li>
+<li>Erst danach produktiv aktualisieren.</li>
+</ol>
+</section>
+
+
+<section class="section">
+<div class="section-number">08 // SERVER ADMINISTRATION</div>
+<h2>Serverbetrieb</h2>
+
+<p>
+Auf einem Multiplayer-Server sind Kompatibilitätsmods besonders
+wichtig, weil Fehler nicht nur einen einzelnen Client betreffen
+können.
+</p>
+
+<ul>
+<li>Serverversion dokumentieren.</li>
+<li>Client- und Servermodliste vergleichen.</li>
+<li>Abhängigkeiten kontrollieren.</li>
+<li>Backups vor Änderungen erstellen.</li>
+<li>Logs nach Updates kontrollieren.</li>
+</ul>
+
+<div class="warning">
+<div class="warning-title">ADMINISTRATOR WARNING</div>
+<p>
+Nicht einfach eine einzelne Compat-Datei entfernen, nur weil sie
+keine offensichtliche neue Funktion hinzufügt. Sie kann von einem
+anderen System benötigt werden.
+</p>
+</div>
+</section>
+
+
+<section class="section">
+<div class="section-number">09 // DIAGNOSTIC METHOD</div>
+<h2>Systematische Fehlersuche</h2>
+
+<p>
+Bei einem Fehler sollte nicht sofort die komplette Modliste verändert
+werden.
+</p>
+
+<ol>
+<li>Fehler reproduzieren.</li>
+<li>Crash- oder Serverlog sichern.</li>
+<li>Betroffene Funktion identifizieren.</li>
+<li>Direkt beteiligte Mods bestimmen.</li>
+<li>Kompatibilitätsmods prüfen.</li>
+<li>Versionen vergleichen.</li>
+<li>Test in einer separaten Welt.</li>
+</ol>
+</section>
+
+
+<section class="section">
+<div class="section-number">10 // PERFORMANCE</div>
+<h2>Performance</h2>
+
+<p>
+Ein Kompatibilitätsmod ist nicht automatisch ein Performanceproblem.
+Seine tatsächliche Belastung hängt davon ab, welche Systeme er
+miteinander verbindet.
+</p>
+
+<ul>
+<li>Server-Tickrate beobachten.</li>
+<li>Bei komplexen Maschinenanlagen Spark verwenden.</li>
+<li>Große bewegliche Konstruktionen kontrollieren.</li>
+<li>Fehlerhafte Systeme nicht dauerhaft laufen lassen.</li>
+</ul>
+</section>
+
+
+<section class="section">
+<div class="section-number">11 // RISE OF NATIONS APPLICATION</div>
+<h2>Rolle im Modpack</h2>
+
+<p>
+RISE OF NATIONS ist kein kleiner Einzelmod. Die Kombination aus
+Create, Luftfahrt, Fahrzeugen, Waffen und Logistik erzeugt ein
+komplexes technisches Netzwerk.
+</p>
+
+<p>
+Genau hier sind Kompatibilitätsmods besonders wertvoll: Sie helfen
+dabei, aus vielen einzelnen Systemen eine gemeinsame Spielwelt zu
+machen.
+</p>
+
+<ul>
+<li>Industrie.</li>
+<li>Luftfahrt.</li>
+<li>Militärtechnik.</li>
+<li>Fahrzeuge.</li>
+<li>Transport.</li>
+<li>Logistik.</li>
+</ul>
+</section>
+
+
+<section class="section">
+<div class="section-number">12 // PROFESSOR DOCTRINE</div>
+<h2>Das Wichtigste zum Mitnehmen</h2>
+
+<ul>
+<li>Aerowarfare Compat ist primär eine Verbindungsschicht.</li>
+<li>Kompatibilitätsmods können für andere Mods technisch notwendig sein.</li>
+<li>Versionen sollten immer als zusammenhängendes System betrachtet werden.</li>
+<li>Bei Fehlern zuerst Logs und Abhängigkeiten prüfen.</li>
+<li>Server und Client müssen gemeinsam getestet werden.</li>
+<li>Eine Compat-Mod sollte nicht ohne Prüfung entfernt werden.</li>
+</ul>
+
+<div class="warning">
+<div class="warning-title">FINAL PRINCIPLE</div>
+<p>
+In einem großen Modpack ist nicht nur wichtig, welche Mods installiert
+sind. Entscheidend ist auch, wie sie miteinander kommunizieren.
+</p>
+</div>
+</section>
+
+
+<section class="section">
+<div class="section-number">13 // REFERENCE DATA</div>
+<h2>Originalquellen</h2>
+
+<div class="sources">
+
+<a href="https://modrinth.com/"
+   target="_blank"
+   rel="noopener">
+MODRINTH // MOD DATABASE
+</a>
+
+<a href="https://www.curseforge.com/minecraft/mc-mods"
+   target="_blank"
+   rel="noopener">
+CURSEFORGE // MINECRAFT MOD DATABASE
+</a>
+
+</div>
+</section>
+
+
+<a class="back" href="wiki.html">
+← ZURÜCK ZUR WIKI
+</a>
+
+</main>
+
+<footer>
+RISE OF NATIONS // AEROWARFARE COMPAT // TACTICAL KNOWLEDGE DATABASE
+</footer>
+
+</body>
+</html>
