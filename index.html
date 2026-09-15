@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="de">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +12,56 @@
     >
 
     <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .command-nav {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .command-nav a {
+            color: #8fb9d6;
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            padding: 10px 14px;
+            border: 1px solid rgba(72, 139, 180, 0.35);
+            background: rgba(5, 22, 34, 0.75);
+            transition: all 0.2s ease;
+        }
+
+        .command-nav a::before {
+            content: "[ ";
+            color: #d8aa32;
+        }
+
+        .command-nav a::after {
+            content: " ]";
+            color: #d8aa32;
+        }
+
+        .command-nav a:hover {
+            color: #ffffff;
+            border-color: #4c9bd0;
+            background: rgba(16, 55, 78, 0.9);
+            box-shadow: 0 0 15px rgba(55, 145, 205, 0.2);
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 900px) {
+            .command-nav {
+                justify-content: center;
+            }
+
+            .command-nav a {
+                font-size: 9px;
+                padding: 8px 10px;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -26,6 +75,14 @@
                 RISE <span>OF</span> NATIONS
             </div>
 
+            <nav class="command-nav">
+                <a href="#command">COMMAND</a>
+                <a href="#intelligence">INTELLIGENCE</a>
+                <a href="#operations">OPERATIONS</a>
+                <a href="#database">DATABASE</a>
+                <a href="#communications">COMMUNICATIONS</a>
+            </nav>
+
             <div class="system-status">
                 <span class="status-light"></span>
                 SYSTEM ONLINE
@@ -34,8 +91,8 @@
         </header>
 
 
-        <!-- MAIN COMMAND CENTER -->
-        <main class="main-content">
+        <!-- MAIN COMMAND AREA -->
+        <main class="main-content" id="command">
 
             <h1 class="title">
                 RISE<br>
@@ -47,7 +104,7 @@
             </div>
 
 
-            <!-- COMMAND PANELS -->
+            <!-- COMMAND DASHBOARD -->
             <section class="command-panel">
 
                 <div class="panel">
@@ -83,7 +140,7 @@
                 </div>
 
 
-                <div class="panel">
+                <div class="panel" id="intelligence">
                     <div class="panel-label">
                         INTELLIGENCE
                     </div>
@@ -94,7 +151,7 @@
                 </div>
 
 
-                <div class="panel">
+                <div class="panel" id="database">
                     <div class="panel-label">
                         DATABASE
                     </div>
@@ -105,7 +162,7 @@
                 </div>
 
 
-                <div class="panel">
+                <div class="panel" id="communications">
                     <div class="panel-label">
                         COMMUNICATIONS
                     </div>
@@ -136,5 +193,4 @@
     </div>
 
 </body>
-
 </html>
