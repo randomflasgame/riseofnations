@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RISE OF NATIONS // WIKI // WAYSTONES</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+margin:0;
+background:
+linear-gradient(rgba(5,10,16,.95),rgba(5,10,16,.98)),
+repeating-linear-gradient(0deg,rgba(255,255,255,.02) 0,rgba(255,255,255,.02) 1px,transparent 1px,transparent 4px);
+color:#d7e0e8;
+font-family:Arial,Helvetica,sans-serif;
+line-height:1.65
+}
+body:before{
+content:"";
+position:fixed;
+inset:0;
+pointer-events:none;
+background:
+linear-gradient(90deg,rgba(0,80,130,.04) 1px,transparent 1px),
+linear-gradient(rgba(0,80,130,.04) 1px,transparent 1px);
+background-size:40px 40px
+}
+header{
+position:sticky;
+top:0;
+z-index:10;
+background:rgba(7,13,20,.97);
+border-bottom:1px solid #263746;
+box-shadow:0 5px 25px rgba(0,0,0,.45)
+}
+.header-inner{
+max-width:1400px;
+margin:auto;
+min-height:72px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 24px
+}
+.logo{
+color:#d7aa3a;
+font-weight:900;
+letter-spacing:3px;
+font-size:20px
+}
+.logo span{
+display:block;
+color:#758796;
+font-size:9px;
+letter-spacing:3px;
+margin-top:3px
+}
+nav{
+display:flex;
+flex-wrap:wrap;
+gap:7px;
+justify-content:flex-end
+}
+nav a{
+color:#aebdca;
+text-decoration:none;
+border:1px solid #263746;
+padding:9px 12px;
+font-size:10px;
+font-weight:bold;
+letter-spacing:1.5px;
+transition:.2s
+}
+nav a:hover{
+color:#fff;
+border-color:#d7aa3a;
+background:rgba(215,170,58,.08)
+}
+.container{
+max-width:1200px;
+margin:auto;
+padding:60px 24px 100px
+}
+.status{
+display:inline-flex;
+align-items:center;
+gap:9px;
+border:1px solid #31503b;
+color:#79c68c;
+padding:7px 12px;
+font-size:10px;
+font-weight:bold;
+letter-spacing:2px;
+margin-bottom:25px
+}
+.status-dot{
+width:7px;
+height:7px;
+border-radius:50%;
+background:#58c879;
+box-shadow:0 0 10px #58c879
+}
+h1{
+margin:0;
+color:#d7aa3a;
+font-size:clamp(42px,7vw,86px);
+line-height:.95;
+letter-spacing:4px;
+font-weight:900
+}
+.subtitle{
+color:#80909e;
+font-size:13px;
+letter-spacing:3px;
+margin-top:16px;
+margin-bottom:45px
+}
+.info-strip{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:10px;
+margin-bottom:30px
+}
+.info-box{
+background:rgba(13,23,32,.9);
+border:1px solid #263746;
+padding:18px
+}
+.info-label{
+color:#697b89;
+font-size:9px;
+letter-spacing:2px;
+margin-bottom:7px
+}
+.info-value{
+color:#d7e0e8;
+font-weight:bold;
+font-size:14px
+}
+.section{
+background:rgba(10,18,26,.92);
+border:1px solid #263746;
+margin-top:18px;
+padding:28px;
+box-shadow:0 12px 35px rgba(0,0,0,.2)
+}
+.section h2{
+color:#d7aa3a;
+font-size:18px;
+letter-spacing:2px;
+margin:0 0 18px;
+padding-bottom:12px;
+border-bottom:1px solid #263746
+}
+.section h3{
+color:#cbd6de;
+font-size:14px;
+letter-spacing:1px;
+margin-top:27px
+}
+.section p,.section li{
+color:#aab7c1;
+font-size:14px
+}
+.section ul,.section ol{
+padding-left:24px
+}
+.section li{
+margin-bottom:8px
+}
+.tip{
+border-left:3px solid #d7aa3a;
+background:rgba(215,170,58,.06);
+padding:17px 20px;
+margin:20px 0;
+color:#c8c0aa
+}
+.warning{
+border-left:3px solid #c94d4d;
+background:rgba(120,30,30,.08);
+padding:17px 20px;
+margin:20px 0;
+color:#c7a6a6
+}
+.command{
+background:#050b10;
+border:1px solid #1d2c38;
+padding:16px 18px;
+color:#7fc8e8;
+font-family:"Courier New",monospace;
+font-size:13px;
+overflow-x:auto;
+margin:15px 0
+}
+.grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:14px
+}
+.card{
+border:1px solid #263746;
+background:rgba(14,24,33,.8);
+padding:20px
+}
+.card strong{
+display:block;
+color:#d7aa3a;
+font-size:13px;
+letter-spacing:1px;
+margin-bottom:8px
+}
+.card span{
+color:#93a4b0;
+font-size:13px
+}
+.sources a{
+color:#7fc8e8;
+text-decoration:none
+}
+.sources a:hover{text-decoration:underline}
+.back{
+display:inline-block;
+margin-top:35px;
+color:#d7aa3a;
+border:1px solid #5a4925;
+padding:12px 18px;
+text-decoration:none;
+font-size:11px;
+font-weight:bold;
+letter-spacing:1.5px
+}
+.back:hover{background:rgba(215,170,58,.1)}
+footer{
+border-top:1px solid #263746;
+padding:30px 24px;
+text-align:center;
+color:#536370;
+font-size:9px;
+letter-spacing:2px
+}
+@media(max-width:850px){
+.header-inner{
+align-items:flex-start;
+flex-direction:column;
+gap:14px;
+padding-top:15px;
+padding-bottom:15px
+}
+nav{justify-content:flex-start}
+.info-strip,.grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:560px){
+.container{padding:40px 15px 70px}
+.info-strip,.grid{grid-template-columns:1fr}
+.section{padding:20px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="header-inner">
+
+<div class="logo">
+RISE OF NATIONS
+<span>TACTICAL KNOWLEDGE DATABASE</span>
+</div>
+
+<nav>
+<a href="../index.html">COMMAND</a>
+<a href="../index.html#intelligence">INTELLIGENCE</a>
+<a href="server.html">SERVER</a>
+<a href="database.html">DATABASE</a>
+<a href="download.html">DOWNLOAD</a>
+<a href="communications.html">COMMUNICATIONS</a>
+<a href="wiki.html">WIKI</a>
+</nav>
+
+</div>
+</header>
+
+<main class="container">
+
+<div class="status">
+<span class="status-dot"></span>
+DATABASE // SYSTEM OPERATIONAL
+</div>
+
+<h1>WAYSTONES</h1>
+
+<div class="subtitle">
+FAST TRAVEL // NETWORK INFRASTRUCTURE // WORLD NAVIGATION
+</div>
+
+<div class="info-strip">
+
+<div class="info-box">
+<div class="info-label">SYSTEM</div>
+<div class="info-value">WAYSTONES</div>
+</div>
+
+<div class="info-box">
+<div class="info-label">MINECRAFT</div>
+<div class="info-value">1.21.1</div>
+</div>
+
+<div class="info-box">
+<div class="info-label">ROLE</div>
+<div class="info-value">LOGISTICS</div>
+</div>
+
+<div class="info-box">
+<div class="info-label">STATUS</div>
+<div class="info-value">OPERATIONAL</div>
+</div>
+
+</div>
+
+<section class="section">
+
+<h2>01 // SYSTEM OVERVIEW</h2>
+
+<p>
+Waystones erweitert Minecraft um ein schnelles Reisesystem.
+Spieler können wichtige Orte markieren und anschließend zwischen
+freigeschalteten Waystones reisen.
+</p>
+
+<p>
+Im RISE OF NATIONS-Modpack ist Waystones besonders wichtig, weil die Welt
+durch Dörfer, Strukturen, Dimensionen, Fabriken, Basen und andere
+Spielerstandorte sehr groß werden kann.
+</p>
+
+<div class="tip">
+Waystones sind nicht nur Komfort. Sie können zu einem echten
+Transportnetzwerk für deine gesamte Spielwelt werden.
+</div>
+
+</section>
+
+<section class="section">
+
+<h2>02 // WARUM WAYSTONES WICHTIG SIND</h2>
+
+<p>
+Ohne schnelles Reisen musst du große Entfernungen immer wieder zu Fuß,
+mit Fahrzeugen oder anderen Transportmitteln zurücklegen.
+</p>
+
+<p>
+Mit Waystones kannst du wichtige Infrastrukturpunkte miteinander verbinden.
+Dadurch werden beispielsweise Hauptbasen, Fabriken, Dörfer und
+Expeditionsgebiete wesentlich einfacher erreichbar.
+</p>
+
+<div class="grid">
+
+<div class="card">
+<strong>BASE</strong>
+<span>Hauptquartier und zentrale Lagerung.</span>
+</div>
+
+<div class="card">
+<strong>FACTORY</strong>
+<span>Create-Produktionsstandort und industrielle Infrastruktur.</span>
+</div>
+
+<div class="card">
+<strong>VILLAGE</strong>
+<span>Handel, Bewohner und Versorgung.</span>
+</div>
+
+<div class="card">
+<strong>EXPEDITION</strong>
+<span>Entfernte Abenteuer- und Ressourcenstandorte.</span>
+</div>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<h2>03 // WAYSTONE-NETZWERK</h2>
+
+<p>
+Die wichtigste Idee ist, nicht einfach zufällig Waystones zu platzieren.
+Plane ein sinnvolles Netzwerk.
+</p>
+
+<div class="command">
+HEADQUARTERS
+│
+├── INDUSTRIAL ZONE
+├── MAIN VILLAGE
+├── MINING AREA
+├── MILITARY AREA
+└── EXPEDITION HUB
+</div>
+
+<p>
+Ein solches Netzwerk macht spätere Erweiterungen der Welt wesentlich
+übersichtlicher.
+</p>
+
+</section>
+
+<section class="section">
+
+<h2>04 // NAMEN VERGEBEN</h2>
+
+<p>
+Gib deinen Waystones eindeutige Namen.
+Das wird bei vielen Standorten immer wichtiger.
+</p>
+
+<p>
+Vermeide beispielsweise Namen wie:
+</p>
+
+<div class="command">
+Haus
+Basis
+Dorf
+Mine
+</div>
+
+<p>
+Besser sind eindeutige Bezeichnungen, die sofort erkennen lassen,
+welcher Ort gemeint ist.
+</p>
+
+<div class="tip">
+Je größer deine Welt wird, desto wichtiger wird eine einheitliche
+Benennung deiner Infrastruktur.
+</div>
+
+</section>
+
+<section class="section">
+
+<h2>05 // REISEPLANUNG</h2>
+
+<p>
+Waystones reduzieren Reisezeit, ersetzen aber nicht jedes andere
+Transportmittel.
+</p>
+
+<p>
+Für kurze oder mittlere Entfernungen können Fahrzeuge, Eisenbahnen oder
+andere Create-Systeme sinnvoller sein.
+</p>
+
+<p>
+Waystones eignen sich besonders für schnelle Reisen zwischen bereits
+etablierten strategischen Punkten.
+</p>
+
+<div class="command">
+LANGSTRECKE
+→ WAYSTONE
+
+LOKALE LOGISTIK
+→ FAHRZEUG / ZUG / CREATE
+
+PRODUKTTRANSPORT
+→ LOGISTIKSYSTEM
+</div>
+
+</section>
+
+<section class="section">
+
+<h2>06 // WAYSTONES UND CREATE</h2>
+
+<p>
+Create kann große industrielle Gebiete miteinander verbinden.
+Waystones ergänzen diese Infrastruktur auf der Ebene der Spielerbewegung.
+</p>
+
+<p>
+Das bedeutet:
+</p>
+
+<ul>
+<li>Create transportiert Materialien.</li>
+<li>Fahrzeuge transportieren Spieler und Güter.</li>
+<li>Züge verbinden industrielle Standorte.</li>
+<li>Waystones ermöglichen schnelles Reisen zwischen wichtigen Punkten.</li>
+</ul>
+
+<div class="tip">
+Ein gutes Transportsystem verwendet nicht für jedes Problem dieselbe
+Lösung.
+</div>
+
+</section>
+
+<section class="section">
+
+<h2>07 // DIMENSIONEN</h2>
+
+<p>
+Bei einem Modpack mit mehreren Dimensionen können schnelle
+Reisemöglichkeiten besonders wertvoll sein.
+</p>
+
+<p>
+Expeditionen in gefährliche Dimensionen sollten trotzdem vorbereitet
+werden. Ein Waystone ersetzt keine Ausrüstung, Nahrung oder Rückzugsplanung.
+</p>
+
+<div class="warning">
+Verlasse dich bei gefährlichen Expeditionen nicht darauf, dass ein
+Reisepunkt allein deine Überlebenschance garantiert.
+</div>
+
+</section>
+
+<section class="section">
+
+<h2>08 // MULTIPLAYER-NUTZUNG</h2>
+
+<p>
+Auf einem Server können Waystones besonders nützlich sein, wenn mehrere
+Spieler unterschiedliche Gebiete bewohnen.
+</p>
+
+<p>
+Gemeinsam genutzte Punkte können beispielsweise als zentrale Treffpunkte
+dienen.
+</p>
+
+<div class="grid">
+
+<div class="card">
+<strong>COMMUNITY HUB</strong>
+<span>Zentraler Treffpunkt für Spieler.</span>
+</div>
+
+<div class="card">
+<strong>MARKET</strong>
+<span>Handels- und Versorgungsstandort.</span>
+</div>
+
+<div class="card">
+<strong>INDUSTRIAL HUB</strong>
+<span>Große gemeinsame Produktionsanlagen.</span>
+</div>
+
+<div class="card">
+<strong>EXPEDITION HUB</strong>
+<span>Startpunkt für gemeinsame Expeditionen.</span>
+</div>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<h2>09 // SICHERHEIT</h2>
+
+<p>
+Ein Waystone sollte nicht automatisch an jedem beliebigen Ort platziert
+werden.
+</p>
+
+<p>
+Bei wichtigen Basen solltest du zusätzlich Schutzmechanismen und
+Claim-Systeme berücksichtigen.
+</p>
+
+<p>
+Im RISE OF NATIONS-Modpack sind dafür unter anderem
+Open Parties and Claims, Claim My Land und SecurityCraft relevant.
+</p>
+
+<div class="tip">
+Waystone-Netzwerk und Gebietsschutz sollten gemeinsam geplant werden.
+</div>
+
+</section>
+
+<section class="section">
+
+<h2>10 // HÄUFIGE FEHLER</h2>
+
+<h3>Zu viele Punkte ohne Struktur</h3>
+
+<p>
+Wenn jeder kleine Ort einen eigenen Eintrag bekommt, wird das Netzwerk
+unübersichtlich.
+</p>
+
+<h3>Unklare Namen</h3>
+
+<p>
+Eindeutige Namen erleichtern die Navigation erheblich.
+</p>
+
+<h3>Keine Absicherung</h3>
+
+<p>
+Wichtige Infrastruktur sollte zusätzlich gegen unerwünschte Veränderungen
+geschützt werden.
+</p>
+
+<h3>Waystones als einzige Logistik</h3>
+
+<p>
+Spielerreisen und Materialtransport sind unterschiedliche Probleme.
+Nutze dafür passende Systeme.
+</p>
+
+</section>
+
+<section class="section">
+
+<h2>11 // EMPFOHLENE STRUKTUR</h2>
+
+<ol>
+<li>Hauptbasis</li>
+<li>Gemeinschaftszentrum</li>
+<li>Wichtige Produktionsgebiete</li>
+<li>Wichtige Dörfer</li>
+<li>Große Minengebiete</li>
+<li>Expeditionsgebiete</li>
+<li>Dimensionale Zugangspunkte</li>
+</ol>
+
+<p>
+Mit dieser Struktur bleibt dein Netzwerk auch bei einer stark wachsenden
+Welt verständlich.
+</p>
+
+</section>
+
+<section class="section">
+
+<h2>12 // FORTGESCHRITTENE NUTZUNG</h2>
+
+<p>
+Erfahrene Spieler können Waystones als Teil einer größeren
+Infrastrukturplanung betrachten.
+</p>
+
+<p>
+Statt nur einzelne Orte miteinander zu verbinden, kannst du ein
+hierarchisches Netzwerk planen:
+</p>
+
+<div class="command">
+GLOBAL HUB
+↓
+REGIONAL HUB
+↓
+LOCAL HUB
+↓
+BASE / FACILITY
+</div>
+
+<p>
+Dadurch lassen sich große Multiplayer-Welten deutlich übersichtlicher
+organisieren.
+</p>
+
+</section>
+
+<section class="section">
+
+<h2>13 // RISE OF NATIONS EMPFEHLUNG</h2>
+
+<p>
+Setze Waystones nicht wahllos überall hin.
+Jeder wichtige Standort sollte einen klaren Zweck haben.
+</p>
+
+<div class="tip">
+<strong>MERKSATZ:</strong>
+Ein gutes Waystone-Netzwerk spart nicht nur Zeit –
+es macht eine große Welt beherrschbar.
+</div>
+
+</section>
+
+<section class="section sources">
+
+<h2>14 // ORIGINALQUELLEN</h2>
+
+<p>
+Für versionsabhängige Details, Konfiguration und aktuelle Funktionen
+sollten zusätzlich die Originalinformationen des Mods geprüft werden.
+</p>
+
+<ul>
+<li>
+<a href="https://modrinth.com/mod/waystones" target="_blank">
+Waystones auf Modrinth
+</a>
+</li>
+
+<li>
+<a href="https://www.curseforge.com/minecraft/mc-mods/waystones" target="_blank">
+Waystones auf CurseForge
+</a>
+</li>
+</ul>
+
+</section>
+
+<a class="back" href="wiki-important.html">
+← ZURÜCK ZU WICHTIG
+</a>
+
+</main>
+
+<footer>
+RISE OF NATIONS // TACTICAL KNOWLEDGE DATABASE // WAYSTONES
+</footer>
+
+</body>
+</html>
