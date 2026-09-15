@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RISE OF NATIONS // CREATE COOKING FOR BLOCKHEADS</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+    min-height:100vh;
+    background:
+        linear-gradient(rgba(5,10,15,.97),rgba(5,10,15,.99)),
+        repeating-linear-gradient(135deg,rgba(255,255,255,.018) 0 2px,transparent 2px 9px);
+    color:#dbe3e8;
+    font-family:"Segoe UI",Arial,sans-serif;
+}
+header{
+    background:rgba(5,10,15,.98);
+    border-bottom:1px solid #293944;
+    box-shadow:0 5px 25px rgba(0,0,0,.45);
+}
+.header-inner{
+    max-width:1500px;
+    margin:auto;
+    padding:18px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:30px;
+}
+.logo{
+    color:#d6b85c;
+    font-size:22px;
+    font-weight:950;
+    letter-spacing:3px;
+}
+.logo span{
+    display:block;
+    color:#687b86;
+    font-size:9px;
+    letter-spacing:2px;
+    margin-top:4px;
+}
+nav{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+    gap:7px;
+}
+nav a{
+    color:#9aabb4;
+    text-decoration:none;
+    padding:9px 11px;
+    border:1px solid transparent;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.2px;
+    transition:.2s;
+}
+nav a:hover{
+    color:#d6b85c;
+    background:#111b22;
+    border-color:#3b4d58;
+}
+main{
+    max-width:1250px;
+    margin:auto;
+    padding:70px 30px 100px;
+}
+.eyebrow{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:3px;
+    margin-bottom:15px;
+}
+h1{
+    color:#edf2f4;
+    font-size:clamp(40px,6.5vw,76px);
+    line-height:.95;
+    letter-spacing:4px;
+    font-weight:950;
+}
+.subtitle{
+    max-width:950px;
+    margin-top:22px;
+    color:#8497a2;
+    line-height:1.75;
+    font-size:15px;
+}
+.meta{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-top:38px;
+}
+.meta-box{
+    padding:18px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+.meta-label{
+    color:#596c77;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:8px;
+}
+.meta-value{
+    color:#d6b85c;
+    font-size:13px;
+    font-weight:900;
+}
+.section{
+    margin-top:35px;
+    padding:30px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+.section-number{
+    color:#526773;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:2px;
+    margin-bottom:9px;
+}
+h2{
+    color:#e1e8eb;
+    font-size:22px;
+    letter-spacing:1px;
+    margin-bottom:18px;
+}
+h3{
+    color:#d6b85c;
+    font-size:14px;
+    letter-spacing:1px;
+    margin:25px 0 10px;
+}
+p{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    margin-bottom:13px;
+}
+ul,ol{
+    margin:12px 0 18px 22px;
+}
+li{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    padding-left:5px;
+}
+.note{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#111c23;
+    border-left:3px solid #4d91bd;
+}
+.note-title{
+    color:#4d91bd;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+.warning{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#17140e;
+    border-left:3px solid #d6b85c;
+}
+.warning-title{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:18px;
+}
+th,td{
+    text-align:left;
+    padding:13px 14px;
+    border:1px solid #293c47;
+    font-size:12px;
+}
+th{
+    color:#d6b85c;
+    background:#111c23;
+    font-size:10px;
+    letter-spacing:1px;
+}
+td{
+    color:#8ea0a9;
+    background:#0a141a;
+}
+.sources{
+    display:grid;
+    gap:10px;
+    margin-top:15px;
+}
+.sources a{
+    display:block;
+    padding:13px 15px;
+    background:#101b22;
+    border:1px solid #293c47;
+    color:#9fb0b9;
+    text-decoration:none;
+    font-size:12px;
+    transition:.2s;
+}
+.sources a:hover{
+    color:#d6b85c;
+    border-color:#d6b85c;
+}
+.back{
+    display:inline-block;
+    margin-top:45px;
+    padding:12px 16px;
+    color:#d6b85c;
+    border:1px solid #4c4530;
+    text-decoration:none;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    transition:.2s;
+}
+.back:hover{
+    background:#17150f;
+    border-color:#d6b85c;
+}
+footer{
+    border-top:1px solid #202e36;
+    padding:25px 30px;
+    text-align:center;
+    color:#465861;
+    font-size:9px;
+    letter-spacing:2px;
+}
+@media(max-width:850px){
+    .header-inner{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+    nav{justify-content:flex-start}
+    .meta{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:550px){
+    .meta{grid-template-columns:1fr}
+    main{padding:45px 18px 70px}
+    .section{padding:22px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="header-inner">
+
+<div class="logo">
+RISE OF NATIONS
+<span>TACTICAL KNOWLEDGE DATABASE</span>
+</div>
+
+<nav>
+<a href="../index.html">COMMAND</a>
+<a href="intelligence.html">INTELLIGENCE</a>
+<a href="server.html">SERVER</a>
+<a href="database.html">DATABASE</a>
+<a href="download.html">DOWNLOAD</a>
+<a href="communications.html">COMMUNICATIONS</a>
+<a href="wiki.html">WIKI</a>
+</nav>
+
+</div>
+</header>
+
+<main>
+
+<div class="eyebrow">
+PROFESSOR DATABASE // CREATE ECOSYSTEM // FOOD LOGISTICS
+</div>
+
+<h1>CREATE + COOKING FOR BLOCKHEADS</h1>
+
+<p class="subtitle">
+Cooking for Blockheads organisiert das Kochen und die Lebensmittelverwaltung
+in Minecraft. In Kombination mit Create und Farmer’s Delight entsteht
+eine besonders praktische Grundlage für industrielle Küchen, Kantinen,
+Restaurants und automatisierte Lebensmittelproduktion.
+</p>
+
+<div class="meta">
+
+<div class="meta-box">
+<div class="meta-label">MOD</div>
+<div class="meta-value">COOKING FOR BLOCKHEADS</div>
+</div>
+
+<div class="meta-box">
+<div class="meta-label">VERSION</div>
+<div class="meta-value">21.1.24</div>
+</div>
+
+<div class="meta-box">
+<div class="meta-label">MINECRAFT</div>
+<div class="meta-value">1.21.1</div>
+</div>
+
+<div class="meta-box">
+<div class="meta-label">SYSTEM</div>
+<div class="meta-value">FOOD LOGISTICS</div>
+</div>
+
+</div>
+
+
+<section class="section">
+
+<div class="section-number">01 // SYSTEM OVERVIEW</div>
+<h2>Was ist Cooking for Blockheads?</h2>
+
+<p>
+Cooking for Blockheads verbessert die Organisation rund um das Kochen.
+Statt jedes Rezept einzeln auswendig zu kennen, kann der Spieler
+verfügbare Zutaten und mögliche Gerichte übersichtlich verwalten.
+</p>
+
+<p>
+Das macht den Mod besonders interessant für Modpacks mit vielen
+zusätzlichen Lebensmitteln und Rezepten.
+</p>
+
+<div class="note">
+<div class="note-title">CORE PRINCIPLE</div>
+<p>
+Cooking for Blockheads ist vor allem ein Organisations- und
+Kochsystem. Die eigentliche Produktion kann anschließend durch
+Farmer’s Delight, Create und weitere Food-Mods erweitert werden.
+</p>
+</div>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">02 // KITCHEN SYSTEM</div>
+<h2>Die Küche als zentrales System</h2>
+
+<p>
+Das Konzept von Cooking for Blockheads basiert auf einer vernetzten
+Küche. Verschiedene Küchenblöcke arbeiten zusammen und ermöglichen
+einen wesentlich komfortableren Zugriff auf Zutaten und Rezepte.
+</p>
+
+<ul>
+<li>Cooking Table.</li>
+<li>Cooking Oven.</li>
+<li>Tool Rack.</li>
+<li>Fridge.</li>
+<li>Sink.</li>
+<li>Verbundene Kücheninventare.</li>
+</ul>
+
+<p>
+Die genaue Verfügbarkeit einzelner Funktionen hängt von der installierten
+Version und den unterstützten Rezepten ab.
+</p>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">03 // RECIPE MANAGEMENT</div>
+<h2>Rezepte verwalten</h2>
+
+<p>
+Eine der wichtigsten Funktionen ist die zentrale Darstellung von
+Gerichten, die mit den verfügbaren Zutaten hergestellt werden können.
+</p>
+
+<table>
+
+<tr>
+<th>PROBLEM</th>
+<th>LÖSUNG</th>
+</tr>
+
+<tr>
+<td>Viele Rezepte</td>
+<td>Zentrale Rezeptübersicht</td>
+</tr>
+
+<tr>
+<td>Zutaten schwer auffindbar</td>
+<td>Verbundene Lager</td>
+</tr>
+
+<tr>
+<td>Viele Food-Mods</td>
+<td>Gemeinsame Kochoberfläche</td>
+</tr>
+
+<tr>
+<td>Große Küche</td>
+<td>Modulare Küchenblöcke</td>
+</tr>
+
+</table>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">04 // FARMER'S DELIGHT</div>
+<h2>Zusammenspiel mit Farmer’s Delight</h2>
+
+<p>
+In RISE OF NATIONS ist Farmer’s Delight besonders relevant, weil das
+Mod zahlreiche neue Zutaten, Kochprozesse und Gerichte bereitstellt.
+</p>
+
+<p>
+Cooking for Blockheads kann dabei helfen, diese große Anzahl an
+Rezepten übersichtlicher zugänglich zu machen.
+</p>
+
+<ul>
+<li>Gemüse und Feldfrüchte.</li>
+<li>Fleisch und tierische Produkte.</li>
+<li>Verarbeitete Zutaten.</li>
+<li>Komplexere Gerichte.</li>
+<li>Küchenorganisation.</li>
+</ul>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">05 // CREATE INTEGRATION</div>
+<h2>Create und industrielle Küche</h2>
+
+<p>
+Create bringt Maschinen, Transport und Automatisierung in das
+Lebensmittelsystem. Dadurch kann eine Küche weit über simples
+Hand-Crafting hinausgehen.
+</p>
+
+<p>
+Eine mögliche Produktionskette sieht beispielsweise so aus:
+</p>
+
+<ol>
+<li>Feldfrüchte anbauen.</li>
+<li>Rohstoffe ernten.</li>
+<li>Material transportieren.</li>
+<li>Zutaten verarbeiten.</li>
+<li>Gerichte herstellen.</li>
+<li>Fertige Nahrung lagern.</li>
+<li>Produkte an Spieler oder Einrichtungen verteilen.</li>
+</ol>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">06 // INDUSTRIAL KITCHEN</div>
+<h2>Die industrielle Küche</h2>
+
+<p>
+Für RISE OF NATIONS kann eine Küche wie eine kleine Fabrik geplant
+werden. Die Küche besitzt dann unterschiedliche Produktionsbereiche.
+</p>
+
+<table>
+
+<tr>
+<th>BEREICH</th>
+<th>FUNKTION</th>
+</tr>
+
+<tr>
+<td>AGRICULTURE</td>
+<td>Rohstoffproduktion</td>
+</tr>
+
+<tr>
+<td>PREPARATION</td>
+<td>Zutatenvorbereitung</td>
+</tr>
+
+<tr>
+<td>COOKING</td>
+<td>Herstellung von Gerichten</td>
+</tr>
+
+<tr>
+<td>STORAGE</td>
+<td>Lagerung</td>
+</tr>
+
+<tr>
+<td>DISTRIBUTION</td>
+<td>Verteilung</td>
+</tr>
+
+</table>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">07 // STORAGE</div>
+<h2>Lagerung und Zutaten</h2>
+
+<p>
+Eine gute Küche benötigt nicht nur Kochblöcke, sondern auch ein
+durchdachtes Lagersystem.
+</p>
+
+<ul>
+<li>Frische Zutaten.</li>
+<li>Verarbeitete Zutaten.</li>
+<li>Gewürze und Hilfsmittel.</li>
+<li>Fertige Mahlzeiten.</li>
+<li>Reservebestände.</li>
+</ul>
+
+<p>
+Für große Fabriken empfiehlt sich die Kombination aus Cooking for
+Blockheads und einem größeren Lager- bzw. Transportsystem.
+</p>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">08 // CREATE LOGISTICS</div>
+<h2>Materialtransport</h2>
+
+<p>
+Create kann die Lebensmittelproduktion mit mechanischem Transport
+verbinden.
+</p>
+
+<ul>
+<li>Förderbänder für Zutaten.</li>
+<li>Funnels für Ein- und Ausgabe.</li>
+<li>Chutes für vertikalen Transport.</li>
+<li>Depots für Zwischenstationen.</li>
+<li>Storage-Systeme für Rohstoffe.</li>
+</ul>
+
+<div class="note">
+<div class="note-title">DESIGN TIP</div>
+<p>
+Die eigentliche Küche sollte möglichst kompakt bleiben. Große
+Transportwege können außerhalb des Küchenbereichs organisiert werden.
+</p>
+</div>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">09 // JEI SUPPORT</div>
+<h2>Cooking for Blockheads + JEI</h2>
+
+<p>
+JEI bleibt das zentrale Werkzeug für die vollständige Rezeptrecherche.
+Cooking for Blockheads ergänzt diese Funktion um eine praktische
+Küchen- und Zutatenverwaltung.
+</p>
+
+<table>
+
+<tr>
+<th>WERKZEUG</th>
+<th>STÄRKE</th>
+</tr>
+
+<tr>
+<td>JEI</td>
+<td>vollständige Rezeptsuche</td>
+</tr>
+
+<tr>
+<td>Cooking for Blockheads</td>
+<td>Küchen- und Zutatenorganisation</td>
+</tr>
+
+<tr>
+<td>Create</td>
+<td>Automatisierung und Transport</td>
+</tr>
+
+<tr>
+<td>Farmer’s Delight</td>
+<td>Food-Produktion</td>
+</tr>
+
+</table>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">10 // RESTAURANTS</div>
+<h2>Restaurants und Kantinen</h2>
+
+<p>
+Durch die Kombination verschiedener Food-Mods kann eine echte
+Spieler-Küche entstehen.
+</p>
+
+<p>
+Für Städte oder Fraktionen können beispielsweise folgende Bereiche
+gebaut werden:
+</p>
+
+<ul>
+<li>Militärkantine.</li>
+<li>Restaurant.</li>
+<li>Bäckerei.</li>
+<li>Großküche.</li>
+<li>Hotelküche.</li>
+<li>Lebensmittelverteilzentrum.</li>
+</ul>
+
+<p>
+Cooking for Blockheads eignet sich dabei besonders gut als
+Bedienoberfläche für die eigentliche Kücheninfrastruktur.
+</p>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">11 // SURVIVAL</div>
+<h2>Überleben und Ernährung</h2>
+
+<p>
+In einem großen Modpack gibt es häufig deutlich mehr Nahrung als im
+Vanilla-Spiel. Eine zentrale Küche hilft dabei, den Überblick zu
+behalten.
+</p>
+
+<ul>
+<li>Grundnahrung dauerhaft verfügbar halten.</li>
+<li>Komplexe Mahlzeiten gezielt vorbereiten.</li>
+<li>Zutatenbestände kontrollieren.</li>
+<li>Landwirtschaft mit der Küche verbinden.</li>
+</ul>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">12 // TROUBLESHOOTING</div>
+<h2>Fehleranalyse</h2>
+
+<h3>Ein Rezept erscheint nicht</h3>
+
+<p>
+Zuerst prüfen, ob das Rezept tatsächlich vom jeweiligen Mod registriert
+wird und ob alle benötigten Zutaten verfügbar sind.
+</p>
+
+<h3>Zutat wird nicht erkannt</h3>
+
+<p>
+Bei Modpack-Rezepten kann es Unterschiede zwischen ähnlichen Items
+geben. JEI verwenden, um das tatsächliche Rezept zu kontrollieren.
+</p>
+
+<h3>Küche funktioniert nicht vollständig</h3>
+
+<p>
+Alle erforderlichen Küchenkomponenten überprüfen und sicherstellen,
+dass sie korrekt miteinander verbunden sind.
+</p>
+
+<h3>Nach einem Mod-Update fehlen Rezepte</h3>
+
+<p>
+Die betroffenen Food-Mods und deren Integrationen überprüfen.
+</p>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">13 // MULTIPLAYER</div>
+<h2>Küche im Multiplayer</h2>
+
+<p>
+Eine zentrale Küche kann auf einem Server als gemeinschaftliche
+Infrastruktur dienen.
+</p>
+
+<ul>
+<li>Gemeinsame Nahrungsversorgung.</li>
+<li>Kantinen für Spielerbasen.</li>
+<li>Restaurants in Städten.</li>
+<li>Food-Vorräte für Expeditionen.</li>
+<li>Zentrale Zutatenlager.</li>
+</ul>
+
+<div class="note">
+<div class="note-title">COMMUNITY APPLICATION</div>
+<p>
+Eine öffentliche Küche kann eine sinnvolle soziale Infrastruktur
+innerhalb einer Spielerstadt darstellen.
+</p>
+</div>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">14 // ADVANCED PRODUCTION</div>
+<h2>Fortgeschrittene Produktionskette</h2>
+
+<p>
+Für eine vollständig ausgebaute Lebensmittelindustrie kann die
+Kette folgendermaßen aufgebaut werden:
+</p>
+
+<ol>
+<li>Landwirtschaft.</li>
+<li>Ernte.</li>
+<li>Rohstofflager.</li>
+<li>Create-Transport.</li>
+<li>Zutatenverarbeitung.</li>
+<li>Küchenproduktion.</li>
+<li>Fertigwarenlager.</li>
+<li>Verteilung.</li>
+</ol>
+
+<p>
+Damit wird Nahrung zu einem echten Produktionszweig des
+RISE-OF-NATIONS-Wirtschaftssystems.
+</p>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">15 // PROFESSOR DOCTRINE</div>
+<h2>Das Wichtigste zum Mitnehmen</h2>
+
+<ul>
+<li>Cooking for Blockheads organisiert komplexe Küchen.</li>
+<li>JEI bleibt wichtig für vollständige Rezeptinformationen.</li>
+<li>Farmer’s Delight erweitert die Lebensmittelproduktion stark.</li>
+<li>Create kann Transport und Automatisierung übernehmen.</li>
+<li>Große Küchen sollten modular geplant werden.</li>
+<li>Stationäre Lager sind für große Mengen besser geeignet als mobile Lager.</li>
+<li>Eine Küche kann auf dem Server als gemeinschaftliche Infrastruktur dienen.</li>
+</ul>
+
+<div class="warning">
+<div class="warning-title">FINAL PRINCIPLE</div>
+<p>
+Eine gute Küche kocht nicht nur. Sie organisiert Rohstoffe,
+Produktion, Lagerung und Verteilung.
+</p>
+</div>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">16 // REFERENCE DATA</div>
+<h2>Originalquellen</h2>
+
+<div class="sources">
+
+<a href="https://www.curseforge.com/minecraft/mc-mods/cooking-for-blockheads"
+   target="_blank"
+   rel="noopener">
+COOKING FOR BLOCKHEADS // CURSEFORGE
+</a>
+
+<a href="https://modrinth.com/mod/cooking-for-blockheads"
+   target="_blank"
+   rel="noopener">
+COOKING FOR BLOCKHEADS // MODRINTH
+</a>
+
+<a href="https://modrinth.com/mod/create"
+   target="_blank"
+   rel="noopener">
+CREATE // MODRINTH
+</a>
+
+<a href="https://modrinth.com/mod/farmers-delight"
+   target="_blank"
+   rel="noopener">
+FARMER'S DELIGHT // MODRINTH
+</a>
+
+</div>
+
+</section>
+
+
+<a class="back" href="wiki.html">
+← ZURÜCK ZUR WIKI
+</a>
+
+</main>
+
+<footer>
+RISE OF NATIONS // CREATE + COOKING FOR BLOCKHEADS // TACTICAL KNOWLEDGE DATABASE
+</footer>
+
+</body>
+</html>
