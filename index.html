@@ -1,37 +1,38 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>RISE OF NATIONS // COMMAND & CONTROL</title>
+    <title>RISE OF NATIONS // COMMAND DASHBOARD</title>
 
-    <!-- ZENTRALE CONFIG -->
     <script src="config/site-config.js"></script>
 
     <style>
+
         * {
             box-sizing: border-box;
-            margin: 0;
-            padding: 0;
         }
 
-        html {
-            scroll-behavior: smooth;
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            min-height: 100%;
+            background: #05080c;
+            color: #d9e4ef;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
         body {
-            background:
-                radial-gradient(circle at 50% 20%, rgba(25, 65, 95, 0.25), transparent 35%),
-                linear-gradient(135deg, #05080b, #0a1117 45%, #05080b);
-            color: #dce8ef;
-            font-family: Arial, Helvetica, sans-serif;
-            min-height: 100vh;
             overflow-x: hidden;
         }
 
-        body.intro-active {
-            overflow: hidden;
+        a {
+            color: inherit;
+            text-decoration: none;
         }
 
         /* =========================================================
@@ -43,12 +44,14 @@
             inset: 0;
             z-index: 9999;
             background:
-                radial-gradient(circle at 50% 45%, rgba(25, 75, 105, 0.18), transparent 30%),
-                linear-gradient(135deg, #020406, #080d12 50%, #020405);
+                radial-gradient(circle at center, rgba(24, 50, 70, 0.35), transparent 45%),
+                linear-gradient(rgba(3, 7, 11, 0.85), rgba(3, 7, 11, 0.98)),
+                #05080c;
+
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
+
             transition:
                 opacity 1s ease,
                 visibility 1s ease;
@@ -63,259 +66,156 @@
         .intro-grid {
             position: absolute;
             inset: 0;
+
             background-image:
-                linear-gradient(rgba(65, 110, 135, 0.06) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(65, 110, 135, 0.06) 1px, transparent 1px);
-            background-size: 45px 45px;
-            transform: perspective(500px) rotateX(55deg) scale(1.5);
-            transform-origin: center bottom;
-            opacity: 0;
-            animation: gridAppear 2s ease forwards 0.5s;
+                linear-gradient(rgba(60, 110, 145, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(60, 110, 145, 0.05) 1px, transparent 1px);
+
+            background-size: 50px 50px;
+
+            animation: gridMove 12s linear infinite;
         }
 
-        .intro-vignette {
-            position: absolute;
-            inset: 0;
-            background:
-                radial-gradient(circle, transparent 25%, rgba(0,0,0,0.35) 65%, rgba(0,0,0,0.9) 100%);
-            pointer-events: none;
+        @keyframes gridMove {
+            from {
+                transform: translate(0, 0);
+            }
+
+            to {
+                transform: translate(50px, 50px);
+            }
         }
 
-        .gear {
+        .intro-machine {
             position: absolute;
-            width: 180px;
-            height: 180px;
-            border: 18px dashed rgba(110, 135, 145, 0.12);
+            width: 500px;
+            height: 500px;
+            border: 2px solid rgba(100, 140, 165, 0.12);
             border-radius: 50%;
-            opacity: 0;
+
+            animation: rotateMachine 30s linear infinite;
         }
 
-        .gear::after {
+        .intro-machine::before,
+        .intro-machine::after {
             content: "";
             position: absolute;
             inset: 35px;
-            border: 8px solid rgba(110, 135, 145, 0.1);
+            border: 1px dashed rgba(100, 140, 165, 0.15);
             border-radius: 50%;
         }
 
-        .gear.one {
-            left: -50px;
-            bottom: 8%;
-            animation:
-                gearAppear 1.5s ease forwards 0.5s,
-                rotateGear 25s linear infinite 2s;
+        .intro-machine::after {
+            inset: 100px;
+            border-style: solid;
         }
 
-        .gear.two {
-            right: -65px;
-            top: 12%;
-            width: 230px;
-            height: 230px;
-            animation:
-                gearAppear 1.5s ease forwards 0.9s,
-                rotateGearReverse 32s linear infinite 2s;
-        }
+        @keyframes rotateMachine {
+            from {
+                transform: rotate(0deg);
+            }
 
-        .gear.three {
-            right: 18%;
-            bottom: -100px;
-            width: 270px;
-            height: 270px;
-            animation:
-                gearAppear 1.5s ease forwards 1.2s,
-                rotateGear 35s linear infinite 2s;
-        }
-
-        .warning-light {
-            position: absolute;
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background: #3da6d6;
-            box-shadow: 0 0 15px rgba(61,166,214,0.8);
-            opacity: 0;
-        }
-
-        .light-1 {
-            left: 14%;
-            top: 25%;
-            animation:
-                lightOn 1s ease forwards 1.4s,
-                pulseLight 2.2s infinite 2.4s;
-        }
-
-        .light-2 {
-            left: 78%;
-            top: 29%;
-            animation:
-                lightOn 1s ease forwards 1.7s,
-                pulseLight 1.8s infinite 2.6s;
-        }
-
-        .light-3 {
-            left: 23%;
-            top: 72%;
-            animation:
-                lightOn 1s ease forwards 2s,
-                pulseLight 2.5s infinite 2.9s;
-        }
-
-        .light-4 {
-            left: 83%;
-            top: 73%;
-            animation:
-                lightOn 1s ease forwards 2.3s,
-                pulseLight 1.7s infinite 3.2s;
-        }
-
-        .red-light {
-            position: absolute;
-            width: 5px;
-            height: 5px;
-            border-radius: 50%;
-            background: #c43c3c;
-            box-shadow: 0 0 12px rgba(196,60,60,0.8);
-            opacity: 0;
-        }
-
-        .red-1 {
-            left: 18%;
-            top: 45%;
-            animation:
-                lightOn 1s ease forwards 2.1s,
-                pulseRed 1.8s infinite 3s;
-        }
-
-        .red-2 {
-            right: 18%;
-            top: 57%;
-            animation:
-                lightOn 1s ease forwards 2.4s,
-                pulseRed 2s infinite 3.2s;
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         .intro-content {
             position: relative;
-            z-index: 5;
-            width: min(900px, 90%);
+            z-index: 2;
             text-align: center;
+            width: min(900px, 90%);
         }
 
-        .system-label {
-            color: #5fa9cf;
+        .intro-classification {
+            color: #668da8;
             font-size: 12px;
             letter-spacing: 5px;
-            font-weight: bold;
-            opacity: 0;
-            animation: textAppear 1s ease forwards 1.8s;
-            margin-bottom: 25px;
-        }
-
-        .system-line {
-            width: 0;
-            height: 1px;
-            margin: 0 auto 28px;
-            background: linear-gradient(90deg, transparent, #5fa9cf, transparent);
-            animation: lineExpand 1.2s ease forwards 2.1s;
+            margin-bottom: 30px;
         }
 
         .intro-title {
-            font-size: clamp(46px, 9vw, 115px);
-            line-height: 0.9;
-            letter-spacing: 8px;
+            font-size: clamp(50px, 9vw, 125px);
             font-weight: 900;
-            color: #edf4f7;
+            letter-spacing: 8px;
+            color: #e7edf2;
+
             text-shadow:
-                0 0 25px rgba(70, 150, 190, 0.25),
-                0 5px 0 rgba(0,0,0,0.6);
-            opacity: 0;
-            transform: scale(0.92);
-            animation:
-                titleAppear 1.4s cubic-bezier(.16,1,.3,1) forwards 2.4s;
+                0 0 20px rgba(65, 140, 190, 0.35),
+                0 0 60px rgba(65, 140, 190, 0.15);
+
+            margin: 0;
         }
 
         .intro-subtitle {
-            margin-top: 22px;
-            color: #a8bac4;
-            font-size: clamp(11px, 1.5vw, 15px);
+            margin-top: 20px;
+            color: #9fb4c4;
             letter-spacing: 6px;
-            opacity: 0;
-            animation: textAppear 1s ease forwards 3.3s;
-        }
-
-        .initialization {
-            margin-top: 55px;
-            color: #7194a6;
-            font-size: 11px;
-            letter-spacing: 3px;
-            opacity: 0;
-            animation: textAppear 1s ease forwards 3.8s;
-        }
-
-        .initialization::after {
-            content: "";
-            display: inline-block;
-            width: 25px;
-            height: 11px;
-            margin-left: 8px;
-            border-right: 2px solid #5fa9cf;
-            animation: blinkCursor 0.8s infinite;
+            font-size: 14px;
         }
 
         .intro-status {
-            display: flex;
-            justify-content: center;
-            gap: 35px;
-            margin-top: 28px;
-            opacity: 0;
-            animation: textAppear 1s ease forwards 4.4s;
+            margin-top: 60px;
+            color: #5d91b5;
+            font-size: 12px;
+            letter-spacing: 3px;
+            animation: blink 1.4s infinite;
         }
 
-        .status-item {
-            font-size: 9px;
-            letter-spacing: 2px;
-            color: #627985;
-        }
+        @keyframes blink {
 
-        .status-item span {
-            display: inline-block;
-            width: 6px;
-            height: 6px;
-            margin-right: 7px;
-            border-radius: 50%;
-            background: #3fa86b;
-            box-shadow: 0 0 8px rgba(63,168,107,0.8);
+            0%,
+            45% {
+                opacity: 1;
+            }
+
+            50%,
+            100% {
+                opacity: 0.25;
+            }
         }
 
         .skip-intro {
             position: absolute;
-            z-index: 20;
-            bottom: 30px;
             right: 35px;
-            background: rgba(5, 12, 17, 0.8);
-            border: 1px solid rgba(90, 145, 170, 0.35);
-            color: #7893a1;
-            padding: 11px 17px;
-            font-size: 10px;
+            bottom: 30px;
+
+            border: 1px solid rgba(120, 150, 170, 0.35);
+            background: rgba(5, 10, 15, 0.75);
+
+            padding: 10px 16px;
+
+            color: #8ea5b5;
+            font-size: 11px;
             letter-spacing: 2px;
+
             cursor: pointer;
-            transition: 0.25s ease;
+
+            transition: 0.2s;
         }
 
         .skip-intro:hover {
-            color: #dce8ef;
-            border-color: #5fa9cf;
-            background: rgba(15, 35, 45, 0.9);
+            border-color: #6c9dbd;
+            color: #dceaf2;
         }
 
-        .scanline {
-            position: absolute;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: rgba(80, 160, 200, 0.08);
-            box-shadow: 0 0 12px rgba(80, 160, 200, 0.08);
-            animation: scan 5s linear infinite;
+        /* =========================================================
+           MAIN
+        ========================================================= */
+
+        #main {
+            min-height: 100vh;
+
+            background:
+                linear-gradient(rgba(3, 8, 12, 0.88), rgba(3, 8, 12, 0.96)),
+                radial-gradient(circle at 50% 0%, #173246, transparent 55%),
+                #05080c;
+        }
+
+        .top-warning {
+            height: 4px;
+            background: #173b54;
+            box-shadow: 0 0 15px rgba(50, 120, 170, 0.35);
         }
 
         /* =========================================================
@@ -323,491 +223,545 @@
         ========================================================= */
 
         header {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            border-bottom: 1px solid #1e3440;
-            background: rgba(5, 10, 14, 0.95);
-            backdrop-filter: blur(12px);
-        }
-
-        .header-inner {
-            width: min(1450px, 94%);
-            margin: auto;
             min-height: 78px;
+
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 30px;
+
+            padding: 0 35px;
+
+            border-bottom: 1px solid rgba(100, 130, 150, 0.18);
+
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(12, 20, 28, 0.97),
+                    rgba(6, 11, 16, 0.97)
+                );
+
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
         .brand {
             display: flex;
             align-items: center;
             gap: 14px;
-            text-decoration: none;
-            color: #fff;
         }
 
-        .brand-emblem {
-            width: 43px;
-            height: 43px;
-            border: 2px solid #b89543;
-            display: grid;
-            place-items: center;
-            font-size: 19px;
+        .brand-symbol {
+            width: 42px;
+            height: 42px;
+
+            border: 1px solid #52728a;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: #cbd9e2;
+            font-size: 18px;
             font-weight: 900;
-            color: #b89543;
-            background: #101820;
-            transform: rotate(45deg);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(50, 100, 130, 0.22),
+                    rgba(5, 10, 15, 0.8)
+                );
         }
 
-        .brand-emblem span {
-            transform: rotate(-45deg);
+        .brand-text {
+            line-height: 1.1;
         }
 
         .brand-title {
             font-weight: 900;
-            letter-spacing: 2px;
-            font-size: 16px;
+            letter-spacing: 3px;
+            font-size: 15px;
         }
 
         .brand-subtitle {
-            margin-top: 4px;
-            color: #627985;
-            font-size: 8px;
+            color: #668196;
+            font-size: 9px;
             letter-spacing: 2px;
+            margin-top: 4px;
         }
 
         nav {
             display: flex;
+            align-items: center;
+            gap: 5px;
             flex-wrap: wrap;
             justify-content: flex-end;
-            gap: 6px;
         }
 
         nav a {
-            color: #8da5b1;
-            text-decoration: none;
-            padding: 11px 12px;
+            padding: 10px 12px;
+
+            color: #8198a8;
+
             font-size: 10px;
             letter-spacing: 1.5px;
+
             border: 1px solid transparent;
-            transition: 0.2s ease;
+
+            transition: 0.2s;
         }
 
         nav a:hover {
-            color: #e8f3f8;
-            border-color: #294858;
-            background: #0b1820;
+            color: #dbe8ef;
+            border-color: rgba(95, 140, 170, 0.35);
+            background: rgba(35, 65, 85, 0.18);
         }
 
         /* =========================================================
-           MAIN
+           HERO
         ========================================================= */
 
-        main {
-            width: min(1450px, 94%);
-            margin: auto;
-        }
-
         .hero {
-            min-height: 470px;
+            position: relative;
+            min-height: 440px;
+
             display: flex;
             align-items: center;
-            position: relative;
+
+            padding: 80px 8%;
+
             overflow: hidden;
-            border-bottom: 1px solid #1c303b;
         }
 
         .hero::before {
             content: "";
             position: absolute;
-            width: 600px;
-            height: 600px;
-            right: -180px;
-            top: -180px;
-            border: 1px solid rgba(70, 120, 145, 0.15);
-            border-radius: 50%;
-            box-shadow:
-                0 0 0 60px rgba(70,120,145,0.03),
-                0 0 0 120px rgba(70,120,145,0.02);
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(5, 10, 15, 0.98),
+                    rgba(5, 10, 15, 0.75),
+                    rgba(5, 10, 15, 0.96)
+                );
+
+            z-index: 0;
+        }
+
+        .hero-grid {
+            position: absolute;
+            inset: 0;
+
+            background-image:
+                linear-gradient(rgba(80, 130, 160, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(80, 130, 160, 0.04) 1px, transparent 1px);
+
+            background-size: 40px 40px;
+
+            z-index: 0;
         }
 
         .hero-content {
             position: relative;
             z-index: 2;
-            max-width: 900px;
-            padding: 70px 0;
+            max-width: 950px;
         }
 
-        .eyebrow {
-            color: #b89543;
-            font-size: 10px;
+        .classification {
+            color: #6086a0;
+            font-size: 11px;
             letter-spacing: 4px;
-            font-weight: bold;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
 
         .hero h1 {
-            font-size: clamp(48px, 8vw, 100px);
+            margin: 0;
+
+            font-size: clamp(55px, 8vw, 115px);
             line-height: 0.9;
-            letter-spacing: 5px;
-            color: #edf4f7;
-            margin-bottom: 22px;
+
+            letter-spacing: 6px;
+            font-weight: 900;
+
+            color: #e8eef2;
+
+            text-shadow:
+                0 0 30px rgba(80, 150, 190, 0.18);
         }
 
-        .hero h1 span {
-            color: #5da1c7;
-        }
+        .hero h2 {
+            margin: 22px 0 0;
 
-        .hero p {
-            max-width: 700px;
-            color: #849aa5;
-            line-height: 1.7;
             font-size: 14px;
+            letter-spacing: 5px;
+
+            color: #8ca7b9;
         }
 
-        .hero-buttons {
+        .hero-description {
+            max-width: 700px;
+
+            margin-top: 30px;
+
+            color: #758d9e;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .hero-actions {
             display: flex;
+            gap: 12px;
             flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 32px;
+
+            margin-top: 35px;
         }
 
         .button {
             display: inline-block;
-            padding: 13px 20px;
-            border: 1px solid #31586b;
-            background: #0b1922;
-            color: #dce8ef;
-            text-decoration: none;
+
+            padding: 13px 18px;
+
+            border: 1px solid #4b6f87;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(39, 72, 94, 0.55),
+                    rgba(10, 20, 28, 0.8)
+                );
+
+            color: #d7e4ec;
+
             font-size: 10px;
+            font-weight: 700;
             letter-spacing: 2px;
-            font-weight: bold;
-            transition: 0.2s ease;
+
+            transition: 0.2s;
         }
 
         .button:hover {
-            border-color: #6aa9c8;
-            background: #102936;
+            border-color: #82b1cc;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(52, 98, 125, 0.75),
+                    rgba(12, 25, 35, 0.9)
+                );
+
             transform: translateY(-1px);
         }
 
-        .button.gold {
-            border-color: #80672e;
-            color: #d3b766;
-        }
-
-        .section-title {
-            padding: 38px 0 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 20px;
-        }
-
-        .section-title h2 {
-            font-size: 14px;
-            letter-spacing: 3px;
-            color: #cddbe1;
-        }
-
-        .section-title span {
-            color: #526a76;
-            font-size: 9px;
-            letter-spacing: 2px;
-        }
-
-        .dashboard {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-            padding-bottom: 50px;
-        }
-
-        .panel {
-            position: relative;
-            min-height: 190px;
-            padding: 22px;
-            background:
-                linear-gradient(145deg, rgba(18,32,41,0.95), rgba(7,15,20,0.95));
-            border: 1px solid #1e3541;
-            overflow: hidden;
-            transition: 0.25s ease;
-        }
-
-        .panel:hover {
-            border-color: #3b6478;
-            transform: translateY(-2px);
-        }
-
-        .panel::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 70px;
-            height: 1px;
-            background: #426b7e;
-        }
-
-        .panel-number {
-            color: #4d7080;
-            font-size: 9px;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
-        }
-
-        .panel h3 {
-            color: #e0ebef;
-            font-size: 15px;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
-        }
-
-        .panel p {
-            color: #728994;
-            font-size: 11px;
-            line-height: 1.6;
-            margin-bottom: 18px;
-        }
-
-        .panel-link {
-            color: #5da1c7;
-            text-decoration: none;
-            font-size: 9px;
-            letter-spacing: 2px;
-        }
-
-        .panel-link:hover {
-            color: #b89543;
-        }
-
-        .status-bar {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: #61a878;
-            font-size: 9px;
-            letter-spacing: 2px;
-        }
-
-        .status-dot {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background: #61a878;
-            box-shadow: 0 0 10px rgba(97,168,120,0.7);
-        }
-
-        .feature {
-            border-top: 1px solid #1c303b;
-            border-bottom: 1px solid #1c303b;
-            padding: 65px 0;
-            margin-bottom: 50px;
-        }
-
-        .feature-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .feature h2 {
-            color: #e3edf1;
-            font-size: 29px;
-            letter-spacing: 2px;
-            margin-bottom: 18px;
-        }
-
-        .feature p {
-            color: #788e99;
-            font-size: 13px;
-            line-height: 1.8;
-        }
-
-        .feature-box {
-            min-height: 230px;
-            border: 1px solid #213945;
-            background: #091219;
-            padding: 25px;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-        }
-
-        .feature-item {
-            border: 1px solid #182d38;
-            padding: 18px;
-            background: #0b161d;
-        }
-
-        .feature-item strong {
-            display: block;
-            color: #b9cbd2;
-            font-size: 11px;
-            letter-spacing: 1px;
-            margin-bottom: 8px;
-        }
-
-        .feature-item span {
-            color: #607681;
-            font-size: 9px;
-            line-height: 1.5;
-        }
-
-        footer {
-            width: min(1450px, 94%);
-            margin: auto;
-            padding: 25px 0 40px;
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
-            color: #455c67;
-            font-size: 9px;
-            letter-spacing: 1.5px;
+        .button.primary {
+            border-color: #668fac;
         }
 
         /* =========================================================
-           ANIMATIONS
+           STATUS STRIP
         ========================================================= */
 
-        @keyframes gridAppear {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        .status-strip {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+
+            border-top: 1px solid rgba(100, 130, 150, 0.18);
+            border-bottom: 1px solid rgba(100, 130, 150, 0.18);
+
+            background: rgba(8, 14, 20, 0.9);
         }
 
-        @keyframes gearAppear {
-            from {
-                opacity: 0;
-                transform: scale(0.7);
-            }
+        .status-item {
+            padding: 22px 25px;
 
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
+            border-right: 1px solid rgba(100, 130, 150, 0.14);
         }
 
-        @keyframes rotateGear {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+        .status-item:last-child {
+            border-right: none;
         }
 
-        @keyframes rotateGearReverse {
-            from { transform: rotate(360deg); }
-            to { transform: rotate(0deg); }
+        .status-label {
+            font-size: 9px;
+            color: #5f7687;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
         }
 
-        @keyframes lightOn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        .status-value {
+            font-size: 13px;
+            color: #c6d6df;
+            letter-spacing: 1px;
         }
 
-        @keyframes pulseLight {
-            0%, 100% { opacity: 0.35; }
-            50% { opacity: 1; }
+        .status-online {
+            color: #77a88a;
         }
 
-        @keyframes pulseRed {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 1; }
+        /* =========================================================
+           DASHBOARD
+        ========================================================= */
+
+        .dashboard {
+            width: min(1500px, 92%);
+            margin: 55px auto 80px;
         }
 
-        @keyframes textAppear {
-            from {
-                opacity: 0;
-                transform: translateY(12px);
-            }
+        .section-heading {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            margin-bottom: 20px;
         }
 
-        @keyframes lineExpand {
-            from { width: 0; }
-            to { width: min(500px, 70vw); }
+        .section-heading h2 {
+            margin: 0;
+
+            font-size: 13px;
+            letter-spacing: 3px;
+            color: #cbd8df;
         }
 
-        @keyframes titleAppear {
-            from {
-                opacity: 0;
-                transform: scale(0.92);
-                filter: blur(8px);
-            }
-
-            to {
-                opacity: 1;
-                transform: scale(1);
-                filter: blur(0);
-            }
+        .section-heading span {
+            color: #526b7a;
+            font-size: 9px;
+            letter-spacing: 2px;
         }
 
-        @keyframes blinkCursor {
-            0%, 45% { opacity: 1; }
-            46%, 100% { opacity: 0; }
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
         }
 
-        @keyframes scan {
-            from { top: -10%; }
-            to { top: 110%; }
+        .panel {
+            min-height: 220px;
+
+            padding: 25px;
+
+            position: relative;
+            overflow: hidden;
+
+            border: 1px solid rgba(93, 124, 145, 0.22);
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(19, 31, 41, 0.92),
+                    rgba(7, 13, 19, 0.96)
+                );
+
+            transition:
+                border-color 0.2s,
+                transform 0.2s,
+                background 0.2s;
         }
 
-        @media (max-width: 900px) {
+        .panel::before {
+            content: "";
 
-            .header-inner {
-                padding: 15px 0;
-                align-items: flex-start;
+            position: absolute;
+            left: 0;
+            top: 0;
+
+            width: 3px;
+            height: 100%;
+
+            background: #365c74;
+
+            opacity: 0.7;
+        }
+
+        .panel:hover {
+            border-color: rgba(110, 155, 180, 0.5);
+
+            transform: translateY(-2px);
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(23, 41, 54, 0.95),
+                    rgba(8, 15, 21, 0.98)
+                );
+        }
+
+        .panel-number {
+            color: #4e7188;
+            font-size: 9px;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+        }
+
+        .panel h3 {
+            margin: 0 0 12px;
+
+            color: #d7e2e8;
+
+            font-size: 18px;
+            letter-spacing: 2px;
+        }
+
+        .panel p {
+            margin: 0;
+
+            color: #718898;
+
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        .panel-link {
+            display: inline-block;
+
+            margin-top: 25px;
+
+            color: #7fa7bf;
+
+            font-size: 9px;
+            letter-spacing: 2px;
+
+            transition: 0.2s;
+        }
+
+        .panel-link:hover {
+            color: #d5e4ed;
+        }
+
+        /* =========================================================
+           SYSTEM BAR
+        ========================================================= */
+
+        .system-bar {
+            width: min(1500px, 92%);
+            margin: 0 auto 40px;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+
+            border: 1px solid rgba(90, 120, 140, 0.2);
+
+            background: rgba(7, 12, 17, 0.9);
+        }
+
+        .system-cell {
+            padding: 18px 20px;
+
+            border-right: 1px solid rgba(90, 120, 140, 0.15);
+        }
+
+        .system-cell:last-child {
+            border-right: none;
+        }
+
+        .system-title {
+            font-size: 8px;
+            color: #526b7a;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .system-value {
+            font-size: 11px;
+            color: #b8cbd5;
+            letter-spacing: 1px;
+        }
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        footer {
+            border-top: 1px solid rgba(100, 130, 150, 0.18);
+
+            padding: 25px 5%;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            color: #536a79;
+
+            font-size: 9px;
+            letter-spacing: 1.5px;
+
+            background: rgba(4, 8, 12, 0.95);
+        }
+
+        /* =========================================================
+           MOBILE
+        ========================================================= */
+
+        @media (max-width: 1000px) {
+
+            header {
                 flex-direction: column;
+                gap: 15px;
+                padding: 18px;
             }
 
             nav {
-                justify-content: flex-start;
+                justify-content: center;
             }
 
-            .dashboard {
-                grid-template-columns: 1fr 1fr;
+            .status-strip {
+                grid-template-columns: repeat(2, 1fr);
             }
 
-            .feature-grid {
+            .dashboard-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .system-bar {
                 grid-template-columns: 1fr;
+            }
+
+            .system-cell {
+                border-right: none;
+                border-bottom: 1px solid rgba(90, 120, 140, 0.15);
+            }
+
+            .system-cell:last-child {
+                border-bottom: none;
             }
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 650px) {
 
-            .dashboard {
+            .hero {
+                padding: 60px 7%;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+                letter-spacing: 3px;
+            }
+
+            .status-strip {
                 grid-template-columns: 1fr;
             }
 
-            .hero {
-                min-height: 420px;
+            .status-item {
+                border-right: none;
+                border-bottom: 1px solid rgba(100, 130, 150, 0.14);
             }
 
-            .intro-status {
-                gap: 12px;
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .skip-intro {
-                right: 15px;
-                bottom: 15px;
+            .dashboard-grid {
+                grid-template-columns: 1fr;
             }
 
             footer {
                 flex-direction: column;
+                gap: 10px;
+                text-align: center;
             }
         }
+
     </style>
+
 </head>
 
-
-<body class="intro-active">
+<body>
 
     <!-- =========================================================
          CINEMATIC INTRO
@@ -816,94 +770,65 @@
     <section id="intro">
 
         <div class="intro-grid"></div>
-
-        <div class="gear one"></div>
-        <div class="gear two"></div>
-        <div class="gear three"></div>
-
-        <div class="warning-light light-1"></div>
-        <div class="warning-light light-2"></div>
-        <div class="warning-light light-3"></div>
-        <div class="warning-light light-4"></div>
-
-        <div class="red-light red-1"></div>
-        <div class="red-light red-2"></div>
-
-        <div class="scanline"></div>
+        <div class="intro-machine"></div>
 
         <div class="intro-content">
 
-            <div class="system-label">
-                RISE OF NATIONS // COMMAND & CONTROL NETWORK
+            <div class="intro-classification">
+                MILITARY / INDUSTRIAL NETWORK
             </div>
 
-            <div class="system-line"></div>
-
-            <div class="intro-title">
-                RISE<br>
-                OF NATIONS
-            </div>
+            <h1 class="intro-title">
+                RISE OF NATIONS
+            </h1>
 
             <div class="intro-subtitle">
-                GLOBAL COMMAND // STRATEGY // INDUSTRY // SURVIVAL
-            </div>
-
-            <div class="initialization">
-                SYSTEM INITIALIZATION
+                COMMAND &amp; CONTROL SYSTEM
             </div>
 
             <div class="intro-status">
-
-                <div class="status-item">
-                    <span></span>
-                    CORE ONLINE
-                </div>
-
-                <div class="status-item">
-                    <span></span>
-                    DATABASE ONLINE
-                </div>
-
-                <div class="status-item">
-                    <span></span>
-                    NETWORK ONLINE
-                </div>
-
+                SYSTEM INITIALIZATION...
             </div>
 
         </div>
 
-        <button class="skip-intro" id="skipIntro">
+        <button
+            class="skip-intro"
+            onclick="skipIntro()"
+        >
             SKIP INTRO
         </button>
-
-        <div class="intro-vignette"></div>
 
     </section>
 
 
     <!-- =========================================================
-         HEADER
+         MAIN WEBSITE
     ========================================================= -->
 
-    <header>
+    <main id="main">
 
-        <div class="header-inner">
+        <div class="top-warning"></div>
+
+
+        <!-- HEADER -->
+
+        <header>
 
             <a href="index.html" class="brand">
 
-                <div class="brand-emblem">
-                    <span>R</span>
+                <div class="brand-symbol">
+                    RN
                 </div>
 
-                <div>
+                <div class="brand-text">
 
                     <div class="brand-title">
                         RISE OF NATIONS
                     </div>
 
                     <div class="brand-subtitle">
-                        COMMAND & CONTROL NETWORK
+                        COMMAND NETWORK
                     </div>
 
                 </div>
@@ -943,64 +868,140 @@
 
             </nav>
 
-        </div>
-
-    </header>
-
-
-    <!-- =========================================================
-         MAIN
-    ========================================================= -->
-
-    <main>
+        </header>
 
 
         <!-- HERO -->
 
         <section class="hero">
 
+            <div class="hero-grid"></div>
+
             <div class="hero-content">
 
-                <div class="eyebrow">
-                    GLOBAL STRATEGIC COMMAND // ONLINE
+                <div class="classification">
+                    SECURE NETWORK // COMMAND ACCESS
                 </div>
 
                 <h1>
-                    RISE<br>
-                    <span>OF NATIONS</span>
+                    RISE OF<br>
+                    NATIONS
                 </h1>
 
-                <p>
-                    Ein Minecraft-Projekt für Nationen, Industrie,
-                    Technologie, Krieg, Diplomatie, Handel und Überleben.
-                    Baue deine Nation auf, entwickle deine Industrie,
-                    erforsche neue Technologien und entscheide selbst,
-                    wie sich die Welt entwickelt.
+                <h2>
+                    MILITARY • INDUSTRIAL • SURVIVAL • NATIONS
+                </h2>
+
+                <p class="hero-description">
+
+                    Welcome to the central command network of
+                    Rise of Nations. Access server information,
+                    modpack intelligence, communications,
+                    technical documentation and operational data.
+
                 </p>
 
 
-                <div class="hero-buttons">
+                <div class="hero-actions">
 
-                    <a href="pages/wiki.html" class="button gold">
+                    <a
+                        href="pages/wiki.html"
+                        class="button primary"
+                    >
                         ENTER WIKI
                     </a>
 
                     <a
-                        id="heroDownload"
-                        href="#"
+                        href="pages/download.html"
                         class="button"
                     >
                         DOWNLOAD MODPACK
                     </a>
 
-                    <a href="pages/server.html" class="button">
+                    <a
+                        href="pages/server.html"
+                        class="button"
+                    >
                         SERVER INFORMATION
                     </a>
 
-                    <a href="pages/faq.html" class="button">
-                        INSTALLATION & FAQ
+                    <a
+                        href="pages/faq.html"
+                        class="button"
+                    >
+                        FAQ / SUPPORT
                     </a>
 
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- STATUS STRIP -->
+
+        <section class="status-strip">
+
+            <div class="status-item">
+
+                <div class="status-label">
+                    SERVER STATUS
+                </div>
+
+                <div
+                    class="status-value status-online"
+                    id="serverStatus"
+                >
+                    --
+                </div>
+
+            </div>
+
+
+            <div class="status-item">
+
+                <div class="status-label">
+                    MODPACK
+                </div>
+
+                <div
+                    class="status-value"
+                    id="modpackVersion"
+                >
+                    --
+                </div>
+
+            </div>
+
+
+            <div class="status-item">
+
+                <div class="status-label">
+                    MINECRAFT
+                </div>
+
+                <div
+                    class="status-value"
+                    id="minecraftVersion"
+                >
+                    --
+                </div>
+
+            </div>
+
+
+            <div class="status-item">
+
+                <div class="status-label">
+                    SYSTEM
+                </div>
+
+                <div
+                    class="status-value"
+                    id="systemStatus"
+                >
+                    --
                 </div>
 
             </div>
@@ -1010,486 +1011,381 @@
 
         <!-- DASHBOARD -->
 
-        <div class="section-title">
-
-            <h2>
-                COMMAND DASHBOARD
-            </h2>
-
-            <span id="systemStatus">
-                SYSTEM STATUS // OPERATIONAL
-            </span>
-
-        </div>
-
-
         <section class="dashboard">
 
+            <div class="section-heading">
 
-            <!-- SERVER -->
+                <h2>
+                    COMMAND DASHBOARD
+                </h2>
 
-            <article class="panel">
+                <span>
+                    NETWORK ACCESS // ONLINE
+                </span>
 
-                <div class="panel-number">
-                    01 // SERVER
-                </div>
-
-                <h3>
-                    SERVER STATUS
-                </h3>
-
-                <p>
-                    Aktuelle Informationen über den Minecraft-Server,
-                    Version, Verbindung und wichtige Serverdaten.
-                </p>
-
-                <div class="status-bar">
-
-                    <div class="status-dot"></div>
-
-                    <span id="serverStatus">
-                        PLATZHALTER
-                    </span>
-
-                </div>
-
-                <br>
-
-                <a
-                    href="pages/server.html"
-                    class="panel-link"
-                >
-                    ACCESS SERVER DATA →
-                </a>
-
-            </article>
+            </div>
 
 
-            <!-- DEPLOYMENT -->
-
-            <article class="panel">
-
-                <div class="panel-number">
-                    02 // DEPLOYMENT
-                </div>
-
-                <h3>
-                    CURRENT DEPLOYMENT
-                </h3>
-
-                <p>
-                    RISE OF NATIONS Modpack für
-                    <span id="minecraftVersion">
-                        PLATZHALTER
-                    </span>.
-                    Die aktuelle Zusammenstellung aus Industrie,
-                    Technologie, Abenteuer und Survival.
-                </p>
-
-                <a
-                    href="pages/download.html"
-                    class="panel-link"
-                >
-                    VIEW DEPLOYMENT →
-                </a>
-
-            </article>
+            <div class="dashboard-grid">
 
 
-            <!-- INTELLIGENCE -->
+                <!-- SERVER -->
 
-            <article class="panel">
+                <article class="panel">
 
-                <div class="panel-number">
-                    03 // INTELLIGENCE
-                </div>
+                    <div class="panel-number">
+                        01 // SERVER
+                    </div>
 
-                <h3>
-                    GLOBAL INTELLIGENCE
-                </h3>
+                    <h3>
+                        SERVER
+                    </h3>
 
-                <p>
-                    Aktuelle Lageberichte, Entwicklungen,
-                    neue Technologien und Ereignisse aus der Welt
-                    von RISE OF NATIONS.
-                </p>
+                    <p>
+                        Minecraft server information,
+                        connection data, emergency address,
+                        version information and current status.
+                    </p>
 
-                <a
-                    href="pages/intelligence.html"
-                    class="panel-link"
-                >
-                    OPEN INTELLIGENCE →
-                </a>
+                    <a
+                        href="pages/server.html"
+                        class="panel-link"
+                    >
+                        SERVER INFORMATION →
+                    </a>
 
-            </article>
-
-
-            <!-- DATABASE -->
-
-            <article class="panel">
-
-                <div class="panel-number">
-                    04 // DATABASE
-                </div>
-
-                <h3>
-                    MODPACK DATABASE
-                </h3>
-
-                <p>
-                    Durchsuche das Modpack und entdecke die
-                    verschiedenen Systeme, Technologien, Maschinen,
-                    Waffen und Gameplay-Erweiterungen.
-                </p>
-
-                <a
-                    href="pages/database.html"
-                    class="panel-link"
-                >
-                    ACCESS DATABASE →
-                </a>
-
-            </article>
+                </article>
 
 
-            <!-- WIKI -->
+                <!-- DEPLOYMENT -->
 
-            <article class="panel">
+                <article class="panel">
 
-                <div class="panel-number">
-                    05 // KNOWLEDGE
-                </div>
+                    <div class="panel-number">
+                        02 // DEPLOYMENT
+                    </div>
 
-                <h3>
-                    KNOWLEDGE SYSTEM // WIKI
-                </h3>
+                    <h3>
+                        DEPLOYMENT
+                    </h3>
 
-                <p>
-                    Anleitungen und Informationen zu den wichtigsten
-                    Mods und Systemen des Modpacks.
-                </p>
+                    <p>
+                        Current modpack deployment,
+                        version information and official
+                        download access.
+                    </p>
 
-                <a
-                    href="pages/wiki.html"
-                    class="panel-link"
-                >
-                    ENTER KNOWLEDGE SYSTEM →
-                </a>
+                    <a
+                        href="pages/download.html"
+                        class="panel-link"
+                    >
+                        DOWNLOAD CENTER →
+                    </a>
 
-            </article>
-
-
-            <!-- COMMUNICATIONS -->
-
-            <article class="panel">
-
-                <div class="panel-number">
-                    06 // COMMUNICATIONS
-                </div>
-
-                <h3>
-                    COMMUNICATIONS
-                </h3>
-
-                <p>
-                    Community, Discord und Kommunikationskanäle
-                    für Spieler und Nationen.
-                </p>
-
-                <a
-                    href="pages/communications.html"
-                    class="panel-link"
-                >
-                    OPEN COMMUNICATIONS →
-                </a>
-
-            </article>
+                </article>
 
 
-            <!-- FAQ -->
+                <!-- INTELLIGENCE -->
 
-            <article class="panel">
+                <article class="panel">
 
-                <div class="panel-number">
-                    07 // SUPPORT
-                </div>
+                    <div class="panel-number">
+                        03 // INTELLIGENCE
+                    </div>
 
-                <h3>
-                    INSTALLATION & FAQ
-                </h3>
+                    <h3>
+                        INTELLIGENCE
+                    </h3>
 
-                <p>
-                    Schritt-für-Schritt-Installation, empfohlene
-                    Einstellungen, Performance-Tipps und Lösungen
-                    für die häufigsten Probleme.
-                </p>
+                    <p>
+                        Global situation reports,
+                        developments, alerts and
+                        current world information.
+                    </p>
 
-                <a
-                    href="pages/faq.html"
-                    class="panel-link"
-                >
-                    OPEN TECHNICAL SUPPORT →
-                </a>
+                    <a
+                        href="pages/intelligence.html"
+                        class="panel-link"
+                    >
+                        OPEN INTELLIGENCE →
+                    </a>
 
-            </article>
+                </article>
+
+
+                <!-- DATABASE -->
+
+                <article class="panel">
+
+                    <div class="panel-number">
+                        04 // DATABASE
+                    </div>
+
+                    <h3>
+                        DATABASE
+                    </h3>
+
+                    <p>
+                        Access the technical modpack database,
+                        mod information, systems and
+                        operational documentation.
+                    </p>
+
+                    <a
+                        href="pages/database.html"
+                        class="panel-link"
+                    >
+                        OPEN DATABASE →
+                    </a>
+
+                </article>
+
+
+                <!-- WIKI -->
+
+                <article class="panel">
+
+                    <div class="panel-number">
+                        05 // KNOWLEDGE
+                    </div>
+
+                    <h3>
+                        WIKI
+                    </h3>
+
+                    <p>
+                        Guides, mod explanations,
+                        gameplay information and
+                        technical documentation.
+                    </p>
+
+                    <a
+                        href="pages/wiki.html"
+                        class="panel-link"
+                    >
+                        OPEN WIKI →
+                    </a>
+
+                </article>
+
+
+                <!-- FAQ -->
+
+                <article class="panel">
+
+                    <div class="panel-number">
+                        06 // TECHNICAL SUPPORT
+                    </div>
+
+                    <h3>
+                        FAQ // SUPPORT
+                    </h3>
+
+                    <p>
+                        Installationsanleitung, empfohlene
+                        Einstellungen, Performance-Tipps
+                        und Lösungen für häufige Probleme.
+                    </p>
+
+                    <a
+                        href="pages/faq.html"
+                        class="panel-link"
+                    >
+                        OPEN SUPPORT DATABASE →
+                    </a>
+
+                </article>
+
+
+                <!-- COMMUNICATIONS -->
+
+                <article class="panel">
+
+                    <div class="panel-number">
+                        07 // COMMUNICATIONS
+                    </div>
+
+                    <h3>
+                        COMMUNICATIONS
+                    </h3>
+
+                    <p>
+                        Community communication,
+                        Discord access and important
+                        network announcements.
+                    </p>
+
+                    <a
+                        href="pages/communications.html"
+                        class="panel-link"
+                    >
+                        OPEN COMMUNICATIONS →
+                    </a>
+
+                </article>
+
+
+            </div>
 
         </section>
 
 
-        <!-- FEATURE -->
+        <!-- SYSTEM BAR -->
 
-        <section class="feature">
+        <section class="system-bar">
 
-            <div class="feature-grid">
+            <div class="system-cell">
 
-
-                <div>
-
-                    <div class="eyebrow">
-                        PLAYER DRIVEN WORLD
-                    </div>
-
-                    <h2>
-                        YOUR NATION.<br>
-                        YOUR DECISIONS.
-                    </h2>
-
-                    <p>
-                        RISE OF NATIONS ist keine Welt mit einer
-                        festgelegten Geschichte. Die Spieler erschaffen
-                        ihre eigenen Nationen, Bündnisse, Konflikte,
-                        Handelswege und Machtstrukturen.
-                        Jede neue Welt entwickelt sich durch die
-                        Entscheidungen ihrer Spieler.
-                    </p>
-
+                <div class="system-title">
+                    NETWORK STATUS
                 </div>
 
+                <div class="system-value">
+                    <span id="networkStatus">
+                        --
+                    </span>
+                </div>
 
-                <div class="feature-box">
-
-                    <div class="feature-item">
-
-                        <strong>
-                            NATIONS
-                        </strong>
-
-                        <span>
-                            Eigene Staaten, Gebiete und politische Systeme.
-                        </span>
-
-                    </div>
+            </div>
 
 
-                    <div class="feature-item">
+            <div class="system-cell">
 
-                        <strong>
-                            INDUSTRY
-                        </strong>
+                <div class="system-title">
+                    DATABASE
+                </div>
 
-                        <span>
-                            Fabriken, Maschinen und automatisierte Produktion.
-                        </span>
+                <div class="system-value">
+                    <span id="databaseStatus">
+                        --
+                    </span>
+                </div>
 
-                    </div>
-
-
-                    <div class="feature-item">
-
-                        <strong>
-                            TECHNOLOGY
-                        </strong>
-
-                        <span>
-                            Forschung und moderne technische Systeme.
-                        </span>
-
-                    </div>
+            </div>
 
 
-                    <div class="feature-item">
+            <div class="system-cell">
 
-                        <strong>
-                            CONFLICT
-                        </strong>
+                <div class="system-title">
+                    DEPLOYMENT
+                </div>
 
-                        <span>
-                            Diplomatie, Krieg und strategische Entscheidungen.
-                        </span>
-
-                    </div>
-
-
-                    <div class="feature-item">
-
-                        <strong>
-                            ADVENTURE
-                        </strong>
-
-                        <span>
-                            Erkundung, Strukturen, Dimensionen und Gefahren.
-                        </span>
-
-                    </div>
-
-
-                    <div class="feature-item">
-
-                        <strong>
-                            SURVIVAL
-                        </strong>
-
-                        <span>
-                            Ressourcen, Nahrung, Bauen und Überleben.
-                        </span>
-
-                    </div>
-
+                <div class="system-value">
+                    <span id="deploymentStatus">
+                        --
+                    </span>
                 </div>
 
             </div>
 
         </section>
 
+
+        <!-- FOOTER -->
+
+        <footer>
+
+            <div>
+                RISE OF NATIONS // COMMAND NETWORK
+            </div>
+
+            <div>
+                VERSION
+                <span id="footerVersion">
+                    --
+                </span>
+            </div>
+
+        </footer>
+
     </main>
 
 
     <!-- =========================================================
-         FOOTER
-    ========================================================= -->
-
-    <footer>
-
-        <div>
-            RISE OF NATIONS // COMMAND & CONTROL NETWORK
-        </div>
-
-        <div id="footerVersion">
-            MINECRAFT PLATZHALTER // SYSTEM ONLINE
-        </div>
-
-    </footer>
-
-
-    <!-- =========================================================
-         CONFIG LOGIC
+         JAVASCRIPT
     ========================================================= -->
 
     <script>
 
         /*
-         * =======================================================
-         * ZENTRALE CONFIG VERWENDEN
-         * =======================================================
-         */
-
-        document.title =
-            SITE_CONFIG.website.name +
-            " // COMMAND & CONTROL";
-
-
-        /*
-         * DOWNLOAD
-         */
-
-        const heroDownload =
-            document.getElementById("heroDownload");
-
-        heroDownload.href =
-            SITE_CONFIG.download.modpack;
-
-
-        /*
-         * SERVER STATUS
-         */
-
-        document.getElementById("serverStatus").textContent =
-            SITE_CONFIG.server.status;
-
-
-        /*
-         * MINECRAFT VERSION
-         */
-
-        document.getElementById("minecraftVersion").textContent =
-            SITE_CONFIG.website.minecraftVersion;
-
-
-        /*
-         * SYSTEM STATUS
-         */
-
-        document.getElementById("systemStatus").textContent =
-            "SYSTEM STATUS // " +
-            SITE_CONFIG.system.status;
-
-
-        /*
-         * FOOTER VERSION
-         */
-
-        document.getElementById("footerVersion").textContent =
-            "MINECRAFT " +
-            SITE_CONFIG.website.minecraftVersion +
-            " // " +
-            SITE_CONFIG.system.status;
-
-
-        /*
-         * =======================================================
+         * =========================================================
          * INTRO
-         * =======================================================
+         * =========================================================
          */
 
-        const intro =
-            document.getElementById("intro");
-
-        const skipIntro =
-            document.getElementById("skipIntro");
+        const intro = document.getElementById("intro");
 
 
-        function closeIntro() {
+        function skipIntro() {
 
             intro.classList.add("hidden");
 
-            document.body.classList.remove(
-                "intro-active"
-            );
-
-            localStorage.setItem(
-                "ronIntroSeen",
+            sessionStorage.setItem(
+                "ron_intro_seen",
                 "true"
             );
+
         }
 
 
-        skipIntro.addEventListener(
-            "click",
-            closeIntro
-        );
+        window.addEventListener("load", () => {
+
+            const alreadySeen =
+                sessionStorage.getItem("ron_intro_seen");
+
+            if (alreadySeen === "true") {
+
+                intro.classList.add("hidden");
+
+            } else {
+
+                setTimeout(() => {
+
+                    intro.classList.add("hidden");
+
+                    sessionStorage.setItem(
+                        "ron_intro_seen",
+                        "true"
+                    );
+
+                }, 5500);
+
+            }
+
+        });
 
 
-        const introAlreadySeen =
-            localStorage.getItem(
-                "ronIntroSeen"
-            );
+        /*
+         * =========================================================
+         * CONFIG
+         * =========================================================
+         */
 
+        if (typeof SITE_CONFIG !== "undefined") {
 
-        if (introAlreadySeen === "true") {
+            document.getElementById("serverStatus").textContent =
+                SITE_CONFIG.server.status;
 
-            intro.classList.add("hidden");
+            document.getElementById("modpackVersion").textContent =
+                SITE_CONFIG.modpack.version;
 
-            document.body.classList.remove(
-                "intro-active"
-            );
+            document.getElementById("minecraftVersion").textContent =
+                SITE_CONFIG.website.minecraftVersion;
 
-        } else {
+            document.getElementById("systemStatus").textContent =
+                SITE_CONFIG.system.status;
 
-            setTimeout(() => {
+            document.getElementById("networkStatus").textContent =
+                SITE_CONFIG.system.network;
 
-                closeIntro();
+            document.getElementById("databaseStatus").textContent =
+                SITE_CONFIG.system.database;
 
-            }, 6500);
+            document.getElementById("deploymentStatus").textContent =
+                SITE_CONFIG.system.deployment;
+
+            document.getElementById("footerVersion").textContent =
+                SITE_CONFIG.modpack.version;
 
         }
 
