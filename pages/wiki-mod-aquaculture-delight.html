@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RISE OF NATIONS // AQUACULTURE DELIGHT</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+    min-height:100vh;
+    background:
+        linear-gradient(rgba(5,10,15,.97),rgba(5,10,15,.99)),
+        repeating-linear-gradient(135deg,rgba(255,255,255,.018) 0 2px,transparent 2px 9px);
+    color:#dbe3e8;
+    font-family:"Segoe UI",Arial,sans-serif;
+}
+
+header{
+    background:rgba(5,10,15,.98);
+    border-bottom:1px solid #293944;
+    box-shadow:0 5px 25px rgba(0,0,0,.45);
+}
+
+.header-inner{
+    max-width:1500px;
+    margin:auto;
+    padding:18px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:30px;
+}
+
+.logo{
+    color:#d6b85c;
+    font-size:22px;
+    font-weight:950;
+    letter-spacing:3px;
+}
+
+.logo span{
+    display:block;
+    color:#687b86;
+    font-size:9px;
+    letter-spacing:2px;
+    margin-top:4px;
+}
+
+nav{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+    gap:7px;
+}
+
+nav a{
+    color:#9aabb4;
+    text-decoration:none;
+    padding:9px 11px;
+    border:1px solid transparent;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.2px;
+    transition:.2s;
+}
+
+nav a:hover{
+    color:#d6b85c;
+    background:#111b22;
+    border-color:#3b4d58;
+}
+
+main{
+    max-width:1250px;
+    margin:auto;
+    padding:70px 30px 100px;
+}
+
+.eyebrow{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:3px;
+    margin-bottom:15px;
+}
+
+h1{
+    color:#edf2f4;
+    font-size:clamp(40px,6vw,76px);
+    line-height:.95;
+    letter-spacing:4px;
+    font-weight:950;
+}
+
+.subtitle{
+    max-width:950px;
+    margin-top:22px;
+    color:#8497a2;
+    line-height:1.75;
+    font-size:15px;
+}
+
+.meta{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-top:38px;
+}
+
+.meta-box{
+    padding:18px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+
+.meta-label{
+    color:#596c77;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:8px;
+}
+
+.meta-value{
+    color:#d6b85c;
+    font-size:13px;
+    font-weight:900;
+}
+
+.section{
+    margin-top:35px;
+    padding:30px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+
+.section-number{
+    color:#526773;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:2px;
+    margin-bottom:9px;
+}
+
+h2{
+    color:#e1e8eb;
+    font-size:22px;
+    letter-spacing:1px;
+    margin-bottom:18px;
+}
+
+h3{
+    color:#d6b85c;
+    font-size:14px;
+    letter-spacing:1px;
+    margin:25px 0 10px;
+}
+
+p{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    margin-bottom:13px;
+}
+
+ul,ol{
+    margin:12px 0 18px 22px;
+}
+
+li{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    padding-left:5px;
+}
+
+.note{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#111c23;
+    border-left:3px solid #4d91bd;
+}
+
+.note-title{
+    color:#4d91bd;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+
+.warning{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#17140e;
+    border-left:3px solid #d6b85c;
+}
+
+.warning-title{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:18px;
+}
+
+th,td{
+    text-align:left;
+    padding:13px 14px;
+    border:1px solid #293c47;
+    font-size:12px;
+}
+
+th{
+    color:#d6b85c;
+    background:#111c23;
+    font-size:10px;
+    letter-spacing:1px;
+}
+
+td{
+    color:#8ea0a9;
+    background:#0a141a;
+}
+
+.sources{
+    display:grid;
+    gap:10px;
+    margin-top:15px;
+}
+
+.sources a{
+    display:block;
+    padding:13px 15px;
+    background:#101b22;
+    border:1px solid #293c47;
+    color:#9fb0b9;
+    text-decoration:none;
+    font-size:12px;
+    transition:.2s;
+}
+
+.sources a:hover{
+    color:#d6b85c;
+    border-color:#d6b85c;
+}
+
+.back{
+    display:inline-block;
+    margin-top:45px;
+    padding:12px 16px;
+    color:#d6b85c;
+    border:1px solid #4c4530;
+    text-decoration:none;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+}
+
+footer{
+    border-top:1px solid #202e36;
+    padding:25px 30px;
+    text-align:center;
+    color:#465861;
+    font-size:9px;
+    letter-spacing:2px;
+}
+
+@media(max-width:850px){
+    .header-inner{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    nav{
+        justify-content:flex-start;
+    }
+
+    .meta{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:550px){
+    .meta{
+        grid-template-columns:1fr;
+    }
+
+    main{
+        padding:45px 18px 70px;
+    }
+
+    .section{
+        padding:22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="header-inner">
+
+<div class="logo">
+RISE OF NATIONS
+<span>TACTICAL KNOWLEDGE DATABASE</span>
+</div>
+
+<nav>
+<a href="../index.html">COMMAND</a>
+<a href="intelligence.html">INTELLIGENCE</a>
+<a href="server.html">SERVER</a>
+<a href="database.html">DATABASE</a>
+<a href="download.html">DOWNLOAD</a>
+<a href="communications.html">COMMUNICATIONS</a>
+<a href="wiki.html">WIKI</a>
+</nav>
+
+</div>
+</header>
+
+<main>
+
+<div class="eyebrow">
+PROFESSOR DATABASE // FOOD SYSTEMS // AQUATIC INTEGRATION
+</div>
+
+<h1>AQUACULTURE<br>DELIGHT</h1>
+
+<p class="subtitle">
+Aquaculture Delight verbindet das erweiterte Fischerei-System
+von Aquaculture 2 mit dem erweiterten Food- und Cooking-Umfeld
+des Modpacks. Dadurch werden Fänge aus der Fischerei stärker in
+die Lebensmittelproduktion von RISE OF NATIONS eingebunden.
+</p>
+
+<div class="meta">
+
+<div class="meta-box">
+<div class="meta-label">MOD</div>
+<div class="meta-value">AQUACULTURE DELIGHT</div>
+</div>
+
+<div class="meta-box">
+<div class="meta-label">VERSION</div>
+<div class="meta-value">1.2.0</div>
+</div>
+
+<div class="meta-box">
+<div class="meta-label">MINECRAFT</div>
+<div class="meta-value">1.21.1</div>
+</div>
+
+<div class="meta-box">
+<div class="meta-label">SYSTEM</div>
+<div class="meta-value">FOOD COMPAT</div>
+</div>
+
+</div>
+
+
+<section class="section">
+<div class="section-number">01 // SYSTEM OVERVIEW</div>
+<h2>Was ist Aquaculture Delight?</h2>
+
+<p>
+Aquaculture Delight ist eine Integrations-Erweiterung für das
+Food-Umfeld von RISE OF NATIONS. Der Mod verbindet Inhalte aus
+Aquaculture 2 mit dem Koch- und Ernährungssystem rund um
+Farmer's Delight.
+</p>
+
+<p>
+Damit entsteht eine direkte Verbindung zwischen zwei Gameplay-
+Bereichen, die sonst weitgehend getrennt funktionieren würden:
+Fischerei und Küche.
+</p>
+
+<div class="note">
+<div class="note-title">CORE FUNCTION</div>
+<p>
+Die wichtigste Aufgabe des Mods ist die Integration vorhandener
+Inhalte. Er sollte daher zusammen mit Aquaculture 2 und dem
+jeweiligen Food-System betrachtet werden.
+</p>
+</div>
+</section>
+
+
+<section class="section">
+<div class="section-number">02 // REQUIRED SYSTEMS</div>
+<h2>Mod-Umfeld</h2>
+
+<p>
+Die Bedeutung von Aquaculture Delight ergibt sich vor allem aus
+seinen verbundenen Mods.
+</p>
+
+<table>
+<tr>
+<th>KOMPONENTE</th>
+<th>ROLLE</th>
+</tr>
+<tr>
+<td>Aquaculture 2</td>
+<td>Fischerei und aquatische Ressourcen</td>
+</tr>
+<tr>
+<td>Farmer's Delight</td>
+<td>Koch- und Verarbeitungssystem</td>
+</tr>
+<tr>
+<td>Aquaculture Delight</td>
+<td>Verbindung der beiden Systeme</td>
+</tr>
+<tr>
+<td>JEI</td>
+<td>Anzeige der verfügbaren Rezepte und Verwendungen</td>
+</tr>
+</table>
+</section>
+
+
+<section class="section">
+<div class="section-number">03 // FISH TO FOOD</div>
+<h2>Von der Angel auf den Teller</h2>
+
+<p>
+Der grundlegende Gedanke hinter der Integration ist einfach:
+Fisch, der beim Angeln gewonnen wird, soll innerhalb eines
+umfangreicheren Ernährungssystems interessanter werden.
+</p>
+
+<ol>
+<li>Fischerei betreiben.</li>
+<li>Aquatische Fänge sammeln.</li>
+<li>Fänge im Lager sortieren.</li>
+<li>JEI auf mögliche Rezepte prüfen.</li>
+<li>Zutaten vorbereiten.</li>
+<li>Gerichte herstellen.</li>
+<li>Lebensmittel für Expeditionen oder die Basis verwenden.</li>
+</ol>
+</section>
+
+
+<section class="section">
+<div class="section-number">04 // FARMER'S DELIGHT</div>
+<h2>Verbindung zu Farmer's Delight</h2>
+
+<p>
+Farmer's Delight erweitert Minecraft um ein umfangreicheres
+Koch- und Landwirtschaftssystem. Aquaculture Delight ergänzt
+dieses Umfeld um aquatische Ressourcen.
+</p>
+
+<p>
+Damit wird Fischerei zu einem Bestandteil der gesamten
+Lebensmittelproduktion und nicht nur zu einer separaten
+Methode, um Nahrung zu bekommen.
+</p>
+
+<div class="warning">
+<div class="warning-title">VERSION CONTROL</div>
+<p>
+Konkrete Rezepte sollten immer mit JEI auf der installierten
+Version 1.2.0 kontrolliert werden. Rezeptnamen und Zutaten
+können sich zwischen Versionen verändern.
+</p>
+</div>
+</section>
+
+
+<section class="section">
+<div class="section-number">05 // RECIPE ANALYSIS</div>
+<h2>Rezepte untersuchen</h2>
+
+<p>
+Bei einem großen Modpack ist es nicht sinnvoll, sich jede
+Kochkombination zu merken. JEI übernimmt hier die Rolle einer
+technischen Datenbank.
+</p>
+
+<ul>
+<li>Fisch in JEI suchen.</li>
+<li>Verwendungen anzeigen.</li>
+<li>Nach Kochrezepten suchen.</li>
+<li>Benötigte Zutaten prüfen.</li>
+<li>Alternative Gerichte vergleichen.</li>
+<li>Endprodukt auf Hunger- und Sättigungswerte prüfen.</li>
+</ul>
+
+<div class="note">
+<div class="note-title">PLAYER PROCEDURE</div>
+<p>
+Wenn ein Fisch scheinbar keine Verwendung besitzt, immer zuerst
+JEI kontrollieren. Nicht jedes Item muss automatisch Teil eines
+neuen Gerichts sein.
+</p>
+</div>
+</section>
+
+
+<section class="section">
+<div class="section-number">06 // FOOD LOGISTICS</div>
+<h2>Lebensmittelproduktion</h2>
+
+<p>
+Mit Aquaculture Delight entsteht ein zusätzlicher Rohstoffstrom
+für die Küche. Fisch kann dabei ähnlich wie andere Rohstoffe
+des Food-Systems behandelt werden.
+</p>
+
+<table>
+<tr>
+<th>PHASE</th>
+<th>AUFGABE</th>
+</tr>
+<tr>
+<td>ACQUISITION</td>
+<td>Fischerei</td>
+</tr>
+<tr>
+<td>STORAGE</td>
+<td>Rohstoffe lagern</td>
+</tr>
+<tr>
+<td>PREPARATION</td>
+<td>Zutaten vorbereiten</td>
+</tr>
+<tr>
+<td>COOKING</td>
+<td>Gerichte herstellen</td>
+</tr>
+<tr>
+<td>DEPLOYMENT</td>
+<td>Nahrung verwenden</td>
+</tr>
+</table>
+</section>
+
+
+<section class="section">
+<div class="section-number">07 // SURVIVAL VALUE</div>
+<h2>Nutzen im Survival</h2>
+
+<p>
+Ein Vorteil des Systems ist die größere Auswahl an
+Nahrungsquellen. Spieler müssen nicht ausschließlich auf
+Landwirtschaft oder Tierhaltung setzen.
+</p>
+
+<p>
+Besonders während der frühen und mittleren Spielphase kann
+Fischerei eine zusätzliche Versorgungslinie darstellen.
+Später wird sie vor allem wegen spezieller Rezepte und der
+größeren Lebensmittelvielfalt interessant.
+</p>
+</section>
+
+
+<section class="section">
+<div class="section-number">08 // EXPEDITION SUPPLY</div>
+<h2>Nahrung für Expeditionen</h2>
+
+<p>
+Für längere Reisen sollte Nahrung nicht nur nach ihrem
+Herstellungsaufwand bewertet werden. Wichtig sind auch
+Lagerfähigkeit, Verfügbarkeit und die Möglichkeit, unterwegs
+weitere Rohstoffe zu beschaffen.
+</p>
+
+<ul>
+<li>Vor Expeditionen ausreichend Nahrung vorbereiten.</li>
+<li>Fisch als zusätzliche Versorgungsquelle einplanen.</li>
+<li>Gerichte nach ihrem tatsächlichen Nutzen auswählen.</li>
+<li>Überschüsse in gut sortierten Lagern aufbewahren.</li>
+</ul>
+</section>
+
+
+<section class="section">
+<div class="section-number">09 // STORAGE</div>
+<h2>Lagerung der Fischressourcen</h2>
+
+<p>
+Durch Aquaculture 2 können viele unterschiedliche Fisch- und
+aquatische Items anfallen. Zusammen mit weiteren Food-Mods
+kann dadurch schnell ein unübersichtliches Lager entstehen.
+</p>
+
+<table>
+<tr>
+<th>LAGER</th>
+<th>INHALT</th>
+</tr>
+<tr>
+<td>RAW FISH</td>
+<td>Unverarbeitete Fänge</td>
+</tr>
+<tr>
+<td>INGREDIENTS</td>
+<td>Zutaten für Rezepte</td>
+</tr>
+<tr>
+<td>COOKED FOOD</td>
+<td>Fertige Gerichte</td>
+</tr>
+<tr>
+<td>RARE CATCH</td>
+<td>Seltene oder besondere Fänge</td>
+</tr>
+</table>
+
+<p>
+Sophisticated Backpacks und Sophisticated Storage eignen sich
+im RISE-OF-NATIONS-Modpack gut für die Organisation großer
+Lebensmittelvorräte.
+</p>
+</section>
+
+
+<section class="section">
+<div class="section-number">10 // COOKING FOR BLOCKHEADS</div>
+<h2>Verbindung zu Cooking for Blockheads</h2>
+
+<p>
+Cooking for Blockheads ist ebenfalls installiert und kann das
+Kochen mit vielen unterschiedlichen Zutaten übersichtlicher
+machen.
+</p>
+
+<p>
+Damit entsteht ein sinnvoller Workflow: Aquaculture liefert
+Ressourcen, Aquaculture Delight verbindet sie mit dem
+Food-System und Cooking for Blockheads erleichtert die
+Organisation der Küche.
+</p>
+
+<div class="note">
+<div class="note-title">KITCHEN NETWORK</div>
+<p>
+Je größer das Modpack wird, desto wertvoller werden Systeme,
+die nicht nur neue Inhalte liefern, sondern vorhandene Inhalte
+übersichtlich miteinander verbinden.
+</p>
+</div>
+</section>
+
+
+<section class="section">
+<div class="section-number">11 // APPLESKIN</div>
+<h2>Nahrungswerte kontrollieren</h2>
+
+<p>
+AppleSkin ist ebenfalls Bestandteil des Modpacks. Dadurch
+können Spieler besser beurteilen, welchen praktischen Nutzen
+ein Lebensmittel tatsächlich besitzt.
+</p>
+
+<p>
+Bei vielen verschiedenen Gerichten sollte nicht automatisch
+das aufwendigste Rezept gewählt werden. Entscheidend ist das
+Verhältnis aus Aufwand, Verfügbarkeit und tatsächlichem
+Nahrungswert.
+</p>
+</section>
+
+
+<section class="section">
+<div class="section-number">12 // MULTIPLAYER ECONOMY</div>
+<h2>Fischerei als Wirtschaftszweig</h2>
+
+<p>
+Auf einem Multiplayer-Server kann Fischerei zu einer
+spezialisierten Aufgabe werden. Ein Spieler oder eine Gruppe
+kann die aquatischen Ressourcen liefern, während andere Spieler
+die Verarbeitung übernehmen.
+</p>
+
+<ul>
+<li>Fischer liefern Rohmaterial.</li>
+<li>Köche verarbeiten Zutaten.</li>
+<li>Lageristen organisieren Vorräte.</li>
+<li>Expeditionstrupps verbrauchen die fertigen Gerichte.</li>
+</ul>
+
+<p>
+So entsteht aus einem kleinen Kompatibilitätsmod ein Teil einer
+größeren arbeitsteiligen Wirtschaft.
+</p>
+</section>
+
+
+<section class="section">
+<div class="section-number">13 // AUTOMATION</div>
+<h2>Automatisierung</h2>
+
+<p>
+Aquaculture Delight selbst ist in erster Linie eine
+Rezeptintegration. Ob einzelne Schritte automatisiert werden
+können, hängt von den beteiligten Food- und Technikmods ab.
+</p>
+
+<p>
+Create kann bei Transport, Sortierung und Verarbeitung
+unterstützen, sofern die jeweiligen Rezepte und Maschinen eine
+entsprechende Integration besitzen.
+</p>
+
+<div class="warning">
+<div class="warning-title">AUTOMATION RULE</div>
+<p>
+Nicht jedes Rezept eines Food-Mods ist automatisch mit Create
+kompatibel. JEI sollte vor dem Bau einer Produktionsanlage als
+erste Referenz verwendet werden.
+</p>
+</div>
+</section>
+
+
+<section class="section">
+<div class="section-number">14 // TROUBLESHOOTING</div>
+<h2>Fehleranalyse</h2>
+
+<h3>Ein Fisch kann nicht verarbeitet werden</h3>
+<p>
+Den Fisch in JEI öffnen und die Verwendungsansicht prüfen.
+Anschließend kontrollieren, ob Aquaculture Delight tatsächlich
+geladen wurde.
+</p>
+
+<h3>Ein Rezept fehlt</h3>
+<p>
+Versionen und Abhängigkeiten prüfen. Zusätzlich können
+Konfigurationen oder andere Mods die verfügbaren Rezepte
+beeinflussen.
+</p>
+
+<h3>JEI zeigt keine Integration</h3>
+<p>
+Prüfen, ob die beteiligten Mods auf dem Client vorhanden sind
+und ob die installierten Versionen zusammenpassen.
+</p>
+
+<h3>Server und Client verhalten sich unterschiedlich</h3>
+<p>
+Client und Server sollten mit derselben vorgesehenen
+Modpack-Version betrieben werden. Bei Problemen die Logs
+beider Seiten vergleichen.
+</p>
+</section>
+
+
+<section class="section">
+<div class="section-number">15 // PERFORMANCE</div>
+<h2>Performance</h2>
+
+<p>
+Aquaculture Delight ist ein vergleichsweise kleiner
+Integrationsmod. Er fügt keine große Weltgeneration und kein
+umfangreiches eigenes Simulationssystem hinzu.
+</p>
+
+<p>
+Bei Performance-Problemen im Modpack sollten daher zuerst
+größere Systeme wie Weltgenerierung, Rendering, Entities und
+Simulation untersucht werden.
+</p>
+</section>
+
+
+<section class="section">
+<div class="section-number">16 // RISE OF NATIONS ROLE</div>
+<h2>Rolle im Modpack</h2>
+
+<p>
+Aquaculture Delight passt besonders gut zum Aufbau von
+RISE OF NATIONS, weil der Mod zwei normalerweise getrennte
+Bereiche verbindet: Ressourcenbeschaffung und Lebensmittel-
+produktion.
+</p>
+
+<table>
+<tr>
+<th>BEREICH</th>
+<th>BEDEUTUNG</th>
+</tr>
+<tr>
+<td>Fischerei</td>
+<td>Hoch</td>
+</tr>
+<tr>
+<td>Food-System</td>
+<td>Hoch</td>
+</tr>
+<tr>
+<td>Kochen</td>
+<td>Hoch</td>
+</tr>
+<tr>
+<td>Erkundung</td>
+<td>Mittel</td>
+</tr>
+<tr>
+<td>Automation</td>
+<td>Abhängig von weiteren Mods</td>
+</tr>
+</table>
+</section>
+
+
+<section class="section">
+<div class="section-number">17 // PROFESSOR DOCTRINE</div>
+<h2>Was man sich merken sollte</h2>
+
+<ul>
+<li>Aquaculture Delight verbindet Aquaculture 2 mit dem Food-System.</li>
+<li>Farmer's Delight ist dabei ein wichtiger Bestandteil des Umfelds.</li>
+<li>Fischerei wird dadurch stärker mit Kochen verbunden.</li>
+<li>JEI ist die wichtigste Referenz für konkrete Rezepte.</li>
+<li>Cooking for Blockheads kann die Küchenorganisation erleichtern.</li>
+<li>AppleSkin hilft beim Vergleich verschiedener Lebensmittel.</li>
+<li>Sophisticated Storage und Backpacks eignen sich für große Vorräte.</li>
+<li>Create kann bei vorhandenen Integrationen bei Transport und Verarbeitung helfen.</li>
+<li>Die installierte Version 1.2.0 ist die Referenz für RISE OF NATIONS.</li>
+</ul>
+
+<div class="warning">
+<div class="warning-title">FINAL ASSESSMENT</div>
+<p>
+Aquaculture Delight ist weniger ein eigenständiger Gameplay-Mod
+als eine wichtige Brücke zwischen Fischerei und Küche. Genau
+diese Verbindungen machen große Modpacks abwechslungsreicher
+und verhindern, dass einzelne Systeme isoliert nebeneinander
+existieren.
+</p>
+</div>
+</section>
+
+
+<section class="section">
+<div class="section-number">18 // REFERENCE DATA</div>
+<h2>Originalquellen</h2>
+
+<div class="sources">
+
+<a href="https://modrinth.com/"
+   target="_blank"
+   rel="noopener">
+MODRINTH // MOD DATABASE
+</a>
+
+<a href="https://www.curseforge.com/minecraft/mc-mods"
+   target="_blank"
+   rel="noopener">
+CURSEFORGE // MINECRAFT MOD DATABASE
+</a>
+
+</div>
+</section>
+
+
+<a class="back" href="wiki.html">
+← ZURÜCK ZUR WIKI
+</a>
+
+</main>
+
+<footer>
+RISE OF NATIONS // AQUACULTURE DELIGHT // TACTICAL KNOWLEDGE DATABASE
+</footer>
+
+</body>
+</html>
