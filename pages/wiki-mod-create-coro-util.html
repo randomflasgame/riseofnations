@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RISE OF NATIONS // COROUTIL</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+    min-height:100vh;
+    background:
+        linear-gradient(rgba(5,10,15,.97),rgba(5,10,15,.99)),
+        repeating-linear-gradient(135deg,rgba(255,255,255,.018) 0 2px,transparent 2px 9px);
+    color:#dbe3e8;
+    font-family:"Segoe UI",Arial,sans-serif;
+}
+header{
+    background:rgba(5,10,15,.98);
+    border-bottom:1px solid #293944;
+    box-shadow:0 5px 25px rgba(0,0,0,.45);
+}
+.header-inner{
+    max-width:1500px;
+    margin:auto;
+    padding:18px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:30px;
+}
+.logo{
+    color:#d6b85c;
+    font-size:22px;
+    font-weight:950;
+    letter-spacing:3px;
+}
+.logo span{
+    display:block;
+    color:#687b86;
+    font-size:9px;
+    letter-spacing:2px;
+    margin-top:4px;
+}
+nav{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+    gap:7px;
+}
+nav a{
+    color:#9aabb4;
+    text-decoration:none;
+    padding:9px 11px;
+    border:1px solid transparent;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.2px;
+    transition:.2s;
+}
+nav a:hover{
+    color:#d6b85c;
+    background:#111b22;
+    border-color:#3b4d58;
+}
+main{
+    max-width:1250px;
+    margin:auto;
+    padding:70px 30px 100px;
+}
+.eyebrow{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:3px;
+    margin-bottom:15px;
+}
+h1{
+    color:#edf2f4;
+    font-size:clamp(40px,6.5vw,78px);
+    line-height:.95;
+    letter-spacing:4px;
+    font-weight:950;
+}
+.subtitle{
+    max-width:950px;
+    margin-top:22px;
+    color:#8497a2;
+    line-height:1.75;
+    font-size:15px;
+}
+.meta{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-top:38px;
+}
+.meta-box{
+    padding:18px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+.meta-label{
+    color:#596c77;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:8px;
+}
+.meta-value{
+    color:#d6b85c;
+    font-size:13px;
+    font-weight:900;
+}
+.section{
+    margin-top:35px;
+    padding:30px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+.section-number{
+    color:#526773;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:2px;
+    margin-bottom:9px;
+}
+h2{
+    color:#e1e8eb;
+    font-size:22px;
+    letter-spacing:1px;
+    margin-bottom:18px;
+}
+h3{
+    color:#d6b85c;
+    font-size:14px;
+    letter-spacing:1px;
+    margin:25px 0 10px;
+}
+p{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    margin-bottom:13px;
+}
+ul,ol{
+    margin:12px 0 18px 22px;
+}
+li{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    padding-left:5px;
+}
+.note{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#111c23;
+    border-left:3px solid #4d91bd;
+}
+.note-title{
+    color:#4d91bd;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+.warning{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#17140e;
+    border-left:3px solid #d6b85c;
+}
+.warning-title{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:18px;
+}
+th,td{
+    text-align:left;
+    padding:13px 14px;
+    border:1px solid #293c47;
+    font-size:12px;
+}
+th{
+    color:#d6b85c;
+    background:#111c23;
+    font-size:10px;
+    letter-spacing:1px;
+}
+td{
+    color:#8ea0a9;
+    background:#0a141a;
+}
+.sources{
+    display:grid;
+    gap:10px;
+    margin-top:15px;
+}
+.sources a{
+    display:block;
+    padding:13px 15px;
+    background:#101b22;
+    border:1px solid #293c47;
+    color:#9fb0b9;
+    text-decoration:none;
+    font-size:12px;
+    transition:.2s;
+}
+.sources a:hover{
+    color:#d6b85c;
+    border-color:#d6b85c;
+}
+.back{
+    display:inline-block;
+    margin-top:45px;
+    padding:12px 16px;
+    color:#d6b85c;
+    border:1px solid #4c4530;
+    text-decoration:none;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    transition:.2s;
+}
+.back:hover{
+    background:#17150f;
+    border-color:#d6b85c;
+}
+footer{
+    border-top:1px solid #202e36;
+    padding:25px 30px;
+    text-align:center;
+    color:#465861;
+    font-size:9px;
+    letter-spacing:2px;
+}
+@media(max-width:850px){
+    .header-inner{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+    nav{justify-content:flex-start}
+    .meta{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:550px){
+    .meta{grid-template-columns:1fr}
+    main{padding:45px 18px 70px}
+    .section{padding:22px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="header-inner">
+
+<div class="logo">
+RISE OF NATIONS
+<span>TACTICAL KNOWLEDGE DATABASE</span>
+</div>
+
+<nav>
+<a href="../index.html">COMMAND</a>
+<a href="intelligence.html">INTELLIGENCE</a>
+<a href="server.html">SERVER</a>
+<a href="database.html">DATABASE</a>
+<a href="download.html">DOWNLOAD</a>
+<a href="communications.html">COMMUNICATIONS</a>
+<a href="wiki.html">WIKI</a>
+</nav>
+
+</div>
+</header>
+
+<main>
+
+<div class="eyebrow">
+PROFESSOR DATABASE // LIBRARIES // ENTITY SYSTEMS
+</div>
+
+<h1>COROUTIL</h1>
+
+<p class="subtitle">
+CoroUtil ist eine technische Bibliothek, die von verschiedenen
+Minecraft-Mods als gemeinsame Grundlage verwendet wird. Im
+RISE-OF-NATIONS-Modpack ist sie vor allem als Abhängigkeit und
+technische Infrastruktur relevant und weniger als eigenständiger
+Content-Mod.
+</p>
+
+<div class="meta">
+
+<div class="meta-box">
+<div class="meta-label">MOD</div>
+<div class="meta-value">COROUTIL</div>
+</div>
+
+<div class="meta-box">
+<div class="meta-label">VERSION</div>
+<div class="meta-value">1.3.9</div>
+</div>
+
+<div class="meta-box">
+<div class="meta-label">MINECRAFT</div>
+<div class="meta-value">1.21.1</div>
+</div>
+
+<div class="meta-box">
+<div class="meta-label">SYSTEM</div>
+<div class="meta-value">LIBRARY</div>
+</div>
+
+</div>
+
+
+<section class="section">
+
+<div class="section-number">01 // SYSTEM OVERVIEW</div>
+<h2>Was ist CoroUtil?</h2>
+
+<p>
+CoroUtil ist eine gemeinsam verwendbare technische Bibliothek.
+Solche Bibliotheken stellen Funktionen bereit, die andere Mods
+nicht jedes Mal selbst implementieren müssen.
+</p>
+
+<p>
+Für den normalen Spieler bedeutet das: CoroUtil ist normalerweise
+kein Mod, den man aktiv spielt. Seine Bedeutung liegt darin, dass
+andere Mods seine bereitgestellten Systeme verwenden können.
+</p>
+
+<div class="note">
+<div class="note-title">CORE PRINCIPLE</div>
+<p>
+CoroUtil ist Infrastruktur. Wenn ein anderer Mod davon abhängt,
+muss die Bibliothek vorhanden sein, damit dieser Mod korrekt
+funktionieren kann.
+</p>
+</div>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">02 // LIBRARY ROLE</div>
+<h2>Warum gibt es solche Libraries?</h2>
+
+<p>
+Viele komplexere Mods benötigen ähnliche technische Funktionen:
+Entitäten, Bewegungslogik, KI, Wettereffekte, Hilfsfunktionen oder
+gemeinsame Datenstrukturen.
+</p>
+
+<p>
+Eine Library verhindert, dass jeder Mod diese Systeme komplett
+neu entwickeln muss.
+</p>
+
+<ul>
+<li>Gemeinsame technische Funktionen.</li>
+<li>Wiederverwendbarer Code.</li>
+<li>Gemeinsame Entity-Systeme.</li>
+<li>Hilfsfunktionen für andere Mods.</li>
+<li>Reduzierung von doppelter Implementierung.</li>
+</ul>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">03 // DEPENDENCIES</div>
+<h2>Abhängigkeiten verstehen</h2>
+
+<p>
+Wenn Minecraft beim Start meldet, dass eine Library fehlt, bedeutet
+das meistens nicht, dass die Library selbst ein Problem verursacht.
+Vielmehr benötigt ein anderer Mod ihre Funktionen.
+</p>
+
+<table>
+
+<tr>
+<th>KOMPONENTE</th>
+<th>ROLLE</th>
+</tr>
+
+<tr>
+<td>Content-Mod</td>
+<td>eigentliche Spielerfunktion</td>
+</tr>
+
+<tr>
+<td>CoroUtil</td>
+<td>gemeinsame technische Infrastruktur</td>
+</tr>
+
+<tr>
+<td>Forge / NeoForge</td>
+<td>Modding-Plattform</td>
+</tr>
+
+<tr>
+<td>Modpack</td>
+<td>Gesamtsystem</td>
+</tr>
+
+</table>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">04 // PLAYER EXPERIENCE</div>
+<h2>Was merkt der Spieler davon?</h2>
+
+<p>
+In einem stabil laufenden Modpack meistens: nichts.
+</p>
+
+<p>
+Das ist bei Libraries sogar ein gutes Zeichen. Die technische
+Infrastruktur soll im Hintergrund funktionieren, während der
+eigentliche Content-Mod die sichtbaren Funktionen liefert.
+</p>
+
+<div class="note">
+<div class="note-title">FIELD NOTE</div>
+<p>
+Eine Library muss nicht viele eigene Items oder Blöcke besitzen,
+um für das gesamte Modpack wichtig zu sein.
+</p>
+</div>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">05 // ENTITY INFRASTRUCTURE</div>
+<h2>Technische Entity-Funktionen</h2>
+
+<p>
+CoroUtil gehört zum technischen Umfeld von Mods, die komplexe
+Entitäten und Weltinteraktionen verwenden. Solche Bibliotheken
+können beispielsweise gemeinsame Logik für Entitäten und
+Simulationen bereitstellen.
+</p>
+
+<p>
+Welche konkrete Funktion im Einzelfall genutzt wird, hängt vom
+jeweiligen abhängigen Mod ab.
+</p>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">06 // MODPACK ARCHITECTURE</div>
+<h2>Position im Modpack</h2>
+
+<p>
+RISE OF NATIONS enthält viele Mods, die wiederum weitere Libraries
+und APIs benötigen. Dadurch entsteht eine Abhängigkeitsstruktur.
+</p>
+
+<ol>
+<li>Minecraft stellt die Spielwelt bereit.</li>
+<li>NeoForge stellt die Modding-Plattform bereit.</li>
+<li>Libraries stellen gemeinsame Funktionen bereit.</li>
+<li>Content-Mods verwenden diese Funktionen.</li>
+<li>Das Modpack verbindet alle Systeme.</li>
+</ol>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">07 // INSTALLATION</div>
+<h2>Installation</h2>
+
+<p>
+Wenn CoroUtil Bestandteil des Modpacks ist, sollte die Version aus
+dem Modpack verwendet werden.
+</p>
+
+<ul>
+<li>Nicht einfach eine beliebige Version austauschen.</li>
+<li>Auf Minecraft-Version achten.</li>
+<li>Auf Loader-Kompatibilität achten.</li>
+<li>Abhängigkeiten anderer Mods berücksichtigen.</li>
+</ul>
+
+<div class="warning">
+<div class="warning-title">CAUTION</div>
+<p>
+Bei einem bestehenden Modpack sollte eine Library nicht ohne Grund
+aktualisiert werden. Eine scheinbar kleine Versionsänderung kann
+Abhängigkeiten inkompatibel machen.
+</p>
+</div>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">08 // VERSION CONTROL</div>
+<h2>Versionen</h2>
+
+<p>
+Für RISE OF NATIONS ist die dokumentierte Version:
+</p>
+
+<table>
+
+<tr>
+<th>PARAMETER</th>
+<th>WERT</th>
+</tr>
+
+<tr>
+<td>Minecraft</td>
+<td>1.21.1</td>
+</tr>
+
+<tr>
+<td>CoroUtil</td>
+<td>1.3.9</td>
+</tr>
+
+<tr>
+<td>Funktion</td>
+<td>Library / Dependency</td>
+</tr>
+
+</table>
+
+<p>
+Bei einem späteren Modpack-Update sollte die Versionskombination
+erneut geprüft werden.
+</p>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">09 // TROUBLESHOOTING</div>
+<h2>Fehleranalyse</h2>
+
+<h3>„Missing dependency“</h3>
+
+<p>
+Prüfen, ob CoroUtil tatsächlich im Mods-Ordner vorhanden ist und
+zur verwendeten Minecraft-Version passt.
+</p>
+
+<h3>Minecraft startet nicht mehr nach einem Update</h3>
+
+<p>
+Die zuletzt geänderten Mods identifizieren. Besonders wichtig sind
+Libraries, die von mehreren Mods gemeinsam verwendet werden.
+</p>
+
+<h3>Nur ein bestimmter Mod funktioniert nicht</h3>
+
+<p>
+Prüfen, ob dieser Mod CoroUtil benötigt und ob seine erwartete
+Library-Version installiert ist.
+</p>
+
+<h3>Mehrere Versionen derselben Library</h3>
+
+<p>
+Doppelte oder widersprüchliche Library-Dateien können zu
+unerwartetem Verhalten führen. Der Mods-Ordner sollte auf
+überflüssige Versionen kontrolliert werden.
+</p>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">10 // UPDATE STRATEGY</div>
+<h2>Wie man Libraries aktualisiert</h2>
+
+<p>
+Libraries sollten möglichst zusammen mit dem Modpack und den
+abhängigen Mods aktualisiert werden.
+</p>
+
+<ol>
+<li>Modpack sichern.</li>
+<li>Abhängigkeiten prüfen.</li>
+<li>Library-Version kontrollieren.</li>
+<li>Betroffene Mods prüfen.</li>
+<li>Testwelt starten.</li>
+<li>Server separat testen.</li>
+</ol>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">11 // MULTIPLAYER</div>
+<h2>Serverbetrieb</h2>
+
+<p>
+Auf einem Multiplayer-Server muss die benötigte Library ebenfalls
+auf der entsprechenden Seite vorhanden sein, sofern der abhängige
+Mod dies verlangt.
+</p>
+
+<p>
+Client und Server sollten grundsätzlich dieselbe Modpack-Konfiguration
+verwenden, wenn ein Mod dies voraussetzt.
+</p>
+
+<div class="note">
+<div class="note-title">SERVER DOCTRINE</div>
+<p>
+Wenn ein Server nach einer Änderung plötzlich nicht mehr startet,
+zuerst die zuletzt geänderten Mods und deren Dependencies prüfen.
+</p>
+</div>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">12 // PERFORMANCE</div>
+<h2>Performance</h2>
+
+<p>
+Eine Library wie CoroUtil ist nicht automatisch ein Performance-Mod.
+Ihre Aufgabe besteht primär darin, technische Funktionen für andere
+Mods bereitzustellen.
+</p>
+
+<p>
+Ob ein abhängiger Mod Leistung kostet, hängt daher vom jeweiligen
+Mod und dessen Nutzung ab und nicht allein von der Existenz der
+Library.
+</p>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">13 // COMMON MISTAKES</div>
+<h2>Häufige Fehler</h2>
+
+<ul>
+<li>Library mit einem Content-Mod verwechseln.</li>
+<li>Beliebige Version installieren.</li>
+<li>Abhängigkeiten ignorieren.</li>
+<li>Mehrere Versionen gleichzeitig im Mods-Ordner behalten.</li>
+<li>Eine funktionierende Modpack-Version ohne Backup austauschen.</li>
+</ul>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">14 // PROFESSOR DOCTRINE</div>
+<h2>Das Wichtigste zum Mitnehmen</h2>
+
+<ul>
+<li>CoroUtil ist eine technische Library.</li>
+<li>Sie stellt Funktionen für andere Mods bereit.</li>
+<li>Der Spieler muss sie normalerweise nicht direkt bedienen.</li>
+<li>Die korrekte Version ist für abhängige Mods wichtig.</li>
+<li>Libraries sollten nicht wahllos aktualisiert werden.</li>
+<li>Bei Startfehlern zuerst Abhängigkeiten überprüfen.</li>
+</ul>
+
+<div class="warning">
+<div class="warning-title">FINAL PRINCIPLE</div>
+<p>
+Wenn eine Library ihren Job richtig macht, bemerkst du sie meistens
+gar nicht. Genau das ist bei technischer Infrastruktur gewollt.
+</p>
+</div>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">15 // REFERENCE DATA</div>
+<h2>Originalquellen</h2>
+
+<div class="sources">
+
+<a href="https://www.curseforge.com/minecraft/mc-mods/coroutil"
+   target="_blank"
+   rel="noopener">
+COROUTIL // CURSEFORGE
+</a>
+
+<a href="https://modrinth.com/mod/coroutil"
+   target="_blank"
+   rel="noopener">
+COROUTIL // MODRINTH
+</a>
+
+</div>
+
+</section>
+
+
+<a class="back" href="wiki.html">
+← ZURÜCK ZUR WIKI
+</a>
+
+</main>
+
+<footer>
+RISE OF NATIONS // COROUTIL // TACTICAL KNOWLEDGE DATABASE
+</footer>
+
+</body>
+</html>
