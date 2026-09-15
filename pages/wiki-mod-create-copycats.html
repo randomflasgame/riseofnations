@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RISE OF NATIONS // COPYCATS</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+    min-height:100vh;
+    background:
+        linear-gradient(rgba(5,10,15,.97),rgba(5,10,15,.99)),
+        repeating-linear-gradient(135deg,rgba(255,255,255,.018) 0 2px,transparent 2px 9px);
+    color:#dbe3e8;
+    font-family:"Segoe UI",Arial,sans-serif;
+}
+header{
+    background:rgba(5,10,15,.98);
+    border-bottom:1px solid #293944;
+    box-shadow:0 5px 25px rgba(0,0,0,.45);
+}
+.header-inner{
+    max-width:1500px;
+    margin:auto;
+    padding:18px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:30px;
+}
+.logo{
+    color:#d6b85c;
+    font-size:22px;
+    font-weight:950;
+    letter-spacing:3px;
+}
+.logo span{
+    display:block;
+    color:#687b86;
+    font-size:9px;
+    letter-spacing:2px;
+    margin-top:4px;
+}
+nav{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+    gap:7px;
+}
+nav a{
+    color:#9aabb4;
+    text-decoration:none;
+    padding:9px 11px;
+    border:1px solid transparent;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.2px;
+    transition:.2s;
+}
+nav a:hover{
+    color:#d6b85c;
+    background:#111b22;
+    border-color:#3b4d58;
+}
+main{
+    max-width:1250px;
+    margin:auto;
+    padding:70px 30px 100px;
+}
+.eyebrow{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:3px;
+    margin-bottom:15px;
+}
+h1{
+    color:#edf2f4;
+    font-size:clamp(40px,6.5vw,78px);
+    line-height:.95;
+    letter-spacing:4px;
+    font-weight:950;
+}
+.subtitle{
+    max-width:950px;
+    margin-top:22px;
+    color:#8497a2;
+    line-height:1.75;
+    font-size:15px;
+}
+.meta{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-top:38px;
+}
+.meta-box{
+    padding:18px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+.meta-label{
+    color:#596c77;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:8px;
+}
+.meta-value{
+    color:#d6b85c;
+    font-size:13px;
+    font-weight:900;
+}
+.section{
+    margin-top:35px;
+    padding:30px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+.section-number{
+    color:#526773;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:2px;
+    margin-bottom:9px;
+}
+h2{
+    color:#e1e8eb;
+    font-size:22px;
+    letter-spacing:1px;
+    margin-bottom:18px;
+}
+h3{
+    color:#d6b85c;
+    font-size:14px;
+    letter-spacing:1px;
+    margin:25px 0 10px;
+}
+p{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    margin-bottom:13px;
+}
+ul,ol{
+    margin:12px 0 18px 22px;
+}
+li{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    padding-left:5px;
+}
+.note{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#111c23;
+    border-left:3px solid #4d91bd;
+}
+.note-title{
+    color:#4d91bd;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+.warning{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#17140e;
+    border-left:3px solid #d6b85c;
+}
+.warning-title{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:18px;
+}
+th,td{
+    text-align:left;
+    padding:13px 14px;
+    border:1px solid #293c47;
+    font-size:12px;
+}
+th{
+    color:#d6b85c;
+    background:#111c23;
+    font-size:10px;
+    letter-spacing:1px;
+}
+td{
+    color:#8ea0a9;
+    background:#0a141a;
+}
+.sources{
+    display:grid;
+    gap:10px;
+    margin-top:15px;
+}
+.sources a{
+    display:block;
+    padding:13px 15px;
+    background:#101b22;
+    border:1px solid #293c47;
+    color:#9fb0b9;
+    text-decoration:none;
+    font-size:12px;
+    transition:.2s;
+}
+.sources a:hover{
+    color:#d6b85c;
+    border-color:#d6b85c;
+}
+.back{
+    display:inline-block;
+    margin-top:45px;
+    padding:12px 16px;
+    color:#d6b85c;
+    border:1px solid #4c4530;
+    text-decoration:none;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    transition:.2s;
+}
+.back:hover{
+    background:#17150f;
+    border-color:#d6b85c;
+}
+footer{
+    border-top:1px solid #202e36;
+    padding:25px 30px;
+    text-align:center;
+    color:#465861;
+    font-size:9px;
+    letter-spacing:2px;
+}
+@media(max-width:850px){
+    .header-inner{flex-direction:column;align-items:flex-start}
+    nav{justify-content:flex-start}
+    .meta{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:550px){
+    .meta{grid-template-columns:1fr}
+    main{padding:45px 18px 70px}
+    .section{padding:22px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="header-inner">
+
+<div class="logo">
+RISE OF NATIONS
+<span>TACTICAL KNOWLEDGE DATABASE</span>
+</div>
+
+<nav>
+<a href="../index.html">COMMAND</a>
+<a href="intelligence.html">INTELLIGENCE</a>
+<a href="server.html">SERVER</a>
+<a href="database.html">DATABASE</a>
+<a href="download.html">DOWNLOAD</a>
+<a href="communications.html">COMMUNICATIONS</a>
+<a href="wiki.html">WIKI</a>
+</nav>
+
+</div>
+</header>
+
+<main>
+
+<div class="eyebrow">
+PROFESSOR DATABASE // CREATE // ARCHITECTURE SYSTEMS
+</div>
+
+<h1>COPYCATS</h1>
+
+<p class="subtitle">
+Copycats erweitert das Create-Bausystem um Möglichkeiten, das
+Aussehen und die Form von Blöcken wesentlich flexibler in
+mechanische und architektonische Konstruktionen einzubauen.
+Dadurch lassen sich Maschinen, Fassaden und bewegliche Contraptions
+deutlich individueller gestalten.
+</p>
+
+<div class="meta">
+
+<div class="meta-box">
+<div class="meta-label">MOD</div>
+<div class="meta-value">COPYCATS</div>
+</div>
+
+<div class="meta-box">
+<div class="meta-label">VERSION</div>
+<div class="meta-value">3.0.4</div>
+</div>
+
+<div class="meta-box">
+<div class="meta-label">MINECRAFT</div>
+<div class="meta-value">1.21.1</div>
+</div>
+
+<div class="meta-box">
+<div class="meta-label">SYSTEM</div>
+<div class="meta-value">CREATE BUILDING</div>
+</div>
+
+</div>
+
+
+<section class="section">
+
+<div class="section-number">01 // SYSTEM OVERVIEW</div>
+<h2>Was ist Copycats?</h2>
+
+<p>
+Copycats ist ein Erweiterungsmod für das Create-Umfeld, der das
+Bauen mit sogenannten Copycat-Blöcken ermöglicht.
+</p>
+
+<p>
+Das grundlegende Prinzip besteht darin, dass ein kompatibler
+Copycat-Block die optische Gestaltung eines anderen Blocks
+übernehmen kann.
+</p>
+
+<div class="note">
+<div class="note-title">CORE PRINCIPLE</div>
+<p>
+Copycats trennen Funktion und Optik stärker voneinander.
+Ein technisches Bauteil kann dadurch in eine wesentlich besser
+passende industrielle oder architektonische Oberfläche integriert
+werden.
+</p>
+</div>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">02 // COPYCAT CONCEPT</div>
+<h2>Das Copycat-Prinzip</h2>
+
+<p>
+Statt für jede mögliche Materialvariante einen eigenen speziellen
+Block zu benötigen, kann ein Copycat-Block die Oberfläche eines
+anderen Blocks übernehmen.
+</p>
+
+<table>
+
+<tr>
+<th>SYSTEM</th>
+<th>FUNKTION</th>
+</tr>
+
+<tr>
+<td>BASE BLOCK</td>
+<td>funktionaler Copycat-Block</td>
+</tr>
+
+<tr>
+<td>APPEARANCE</td>
+<td>übernommene Blockoptik</td>
+</tr>
+
+<tr>
+<td>CREATE</td>
+<td>Integration in technische Konstruktionen</td>
+</tr>
+
+</table>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">03 // ARCHITECTURE</div>
+<h2>Architektur und Fassaden</h2>
+
+<p>
+Die größte Stärke von Copycats liegt in der Verbindung aus Technik
+und Architektur.
+</p>
+
+<ul>
+<li>Maschinengehäuse.</li>
+<li>Fabrikwände.</li>
+<li>Metallverkleidungen.</li>
+<li>Industriehallen.</li>
+<li>Brücken und Bahnanlagen.</li>
+<li>Militärische Einrichtungen.</li>
+<li>Innenräume technischer Anlagen.</li>
+</ul>
+
+<p>
+Gerade im RISE-OF-NATIONS-Stil können damit funktionale Create-
+Maschinen wesentlich glaubwürdiger in Gebäude integriert werden.
+</p>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">04 // CREATE MACHINES</div>
+<h2>Technik besser verstecken</h2>
+
+<p>
+Create-Maschinen sind funktional, können optisch aber manchmal
+wie ein zusammengebautes Testsystem wirken. Copycats helfen dabei,
+diese Maschinen in eine geplante Architektur einzubetten.
+</p>
+
+<ol>
+<li>Mechanische Funktion bauen.</li>
+<li>Arbeitsbereich definieren.</li>
+<li>Maschinengehäuse planen.</li>
+<li>Copycat-Flächen als Verkleidung verwenden.</li>
+<li>Wartungszugänge offenlassen.</li>
+</ol>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">05 // MOVING CONTRAPTIONS</div>
+<h2>Contraptions</h2>
+
+<p>
+Bei beweglichen Create-Contraptions ist die Gestaltung besonders
+interessant. Gebäude, Maschinen und Fahrzeuge können aus
+beweglichen Komponenten bestehen und trotzdem ein einheitliches
+Erscheinungsbild behalten.
+</p>
+
+<ul>
+<li>Fahrzeugaufbauten.</li>
+<li>Maschinenarme.</li>
+<li>Mobile Bohrsysteme.</li>
+<li>Zugkomponenten.</li>
+<li>Schiffsaufbauten.</li>
+<li>Produktionsmaschinen.</li>
+</ul>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">06 // INDUSTRIAL DESIGN</div>
+<h2>Industrielles Design</h2>
+
+<p>
+Für RISE OF NATIONS eignet sich Copycats besonders für einen
+einheitlichen industriellen Baustil.
+</p>
+
+<table>
+
+<tr>
+<th>DESIGN</th>
+<th>ANWENDUNG</th>
+</tr>
+
+<tr>
+<td>METALL</td>
+<td>Fabriken und Maschinen</td>
+</tr>
+
+<tr>
+<td>BETON</td>
+<td>Militärische Anlagen</td>
+</tr>
+
+<tr>
+<td>HOLZ</td>
+<td>Werkstätten und Lager</td>
+</tr>
+
+<tr>
+<td>STEIN</td>
+<td>Massive Infrastruktur</td>
+</tr>
+
+<tr>
+<td>DEKOR</td>
+<td>Innenräume und Details</td>
+</tr>
+
+</table>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">07 // BUILDING WORKFLOW</div>
+<h2>Empfohlener Bauablauf</h2>
+
+<p>
+Copycats funktionieren am besten, wenn die Gestaltung nicht erst
+nach dem technischen Aufbau begonnen wird.
+</p>
+
+<ol>
+<li>Funktion festlegen.</li>
+<li>Maschine oder Contraption bauen.</li>
+<li>Bewegungsbereiche testen.</li>
+<li>Gehäuse planen.</li>
+<li>Copycat-Blöcke einsetzen.</li>
+<li>Wartung und Zugang berücksichtigen.</li>
+<li>Details ergänzen.</li>
+</ol>
+
+<div class="note">
+<div class="note-title">BUILDING DOCTRINE</div>
+<p>
+Technik zuerst. Fassade danach. So verhindert man, dass eine
+schöne Verkleidung später wegen einer beweglichen Maschine wieder
+abgebaut werden muss.
+</p>
+</div>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">08 // RESOURCE MANAGEMENT</div>
+<h2>Materialplanung</h2>
+
+<p>
+Copycat-Bauteile sind besonders praktisch, wenn ein Bauprojekt
+viele optisch unterschiedliche Oberflächen benötigt.
+</p>
+
+<p>
+Vor einem großen Projekt sollte trotzdem festgelegt werden,
+welche Materialien tatsächlich verwendet werden. Dadurch bleibt
+das Design konsistent.
+</p>
+
+<ul>
+<li>Hauptmaterial bestimmen.</li>
+<li>Sekundärmaterial bestimmen.</li>
+<li>Akzentmaterial auswählen.</li>
+<li>Mechanische Komponenten hervorheben.</li>
+</ul>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">09 // FACTORY DESIGN</div>
+<h2>Fabriken bauen</h2>
+
+<p>
+Eine Create-Fabrik wirkt besonders glaubwürdig, wenn technische
+Funktion und Architektur zusammenpassen.
+</p>
+
+<p>
+Ein mögliches Designschema:
+</p>
+
+<table>
+
+<tr>
+<th>BEREICH</th>
+<th>GESTALTUNG</th>
+</tr>
+
+<tr>
+<td>MASCHINENHALLE</td>
+<td>Metall + große technische Komponenten</td>
+</tr>
+
+<tr>
+<td>LAGER</td>
+<td>Beton + robuste Wände</td>
+</tr>
+
+<tr>
+<td>VERWALTUNG</td>
+<td>saubere Fassaden</td>
+</tr>
+
+<tr>
+<td>WARTUNG</td>
+<td>offene technische Bereiche</td>
+</tr>
+
+<tr>
+<td>TRANSPORT</td>
+<td>Schienen + Fördertechnik</td>
+</tr>
+
+</table>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">10 // COMPATIBILITY</div>
+<h2>Zusammenspiel mit anderen Mods</h2>
+
+<p>
+Copycats ist besonders interessant in einem Modpack, das bereits
+viele Bau- und Dekorationsmods verwendet.
+</p>
+
+<ul>
+<li>Create.</li>
+<li>Create Deco.</li>
+<li>Copycats.</li>
+<li>Macaw’s Building Mods.</li>
+<li>Quark.</li>
+<li>Supplementaries.</li>
+<li>Refurbished Furniture.</li>
+</ul>
+
+<p>
+Die Systeme können optisch kombiniert werden, auch wenn sie
+technisch unterschiedliche Aufgaben erfüllen.
+</p>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">11 // MULTIPLAYER</div>
+<h2>Gemeinsame Bauprojekte</h2>
+
+<p>
+Auf einem Multiplayer-Server können Copycats besonders für große
+Spielerstädte und Industriezonen interessant sein.
+</p>
+
+<ul>
+<li>Einheitliche Stadtarchitektur.</li>
+<li>Industrielle Produktionsanlagen.</li>
+<li>Bahnhöfe.</li>
+<li>Fabriken.</li>
+<li>Militärbasen.</li>
+<li>Hafenanlagen.</li>
+</ul>
+
+<div class="note">
+<div class="note-title">CITY APPLICATION</div>
+<p>
+Copycats eignen sich hervorragend, um unterschiedliche Gebäude
+mit demselben architektonischen Grundstil zu bauen.
+</p>
+</div>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">12 // TROUBLESHOOTING</div>
+<h2>Fehleranalyse</h2>
+
+<h3>Copycat sieht nicht wie erwartet aus</h3>
+
+<p>
+Prüfen, ob der gewünschte Block für die entsprechende Copycat-
+Funktion geeignet ist und ob die Optik korrekt übernommen wurde.
+</p>
+
+<h3>Block funktioniert optisch, aber nicht mechanisch</h3>
+
+<p>
+Copycat-Blöcke sind primär ein Bau- und Darstellungswerkzeug.
+Die eigentliche Funktion kommt weiterhin vom verwendeten
+Create-Bauteil.
+</p>
+
+<h3>Problem innerhalb einer Contraption</h3>
+
+<p>
+Die Konstruktion zunächst ohne dekorative Schicht testen. Danach
+Copycat-Komponenten schrittweise hinzufügen.
+</p>
+
+<h3>Problem nach Update</h3>
+
+<p>
+Create und Copycats gemeinsam auf Versionskompatibilität prüfen.
+</p>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">13 // PERFORMANCE</div>
+<h2>Performance</h2>
+
+<p>
+Copycats können sehr viele zusätzliche Bauoptionen ermöglichen.
+Bei extrem großen Konstruktionen sollte trotzdem auf eine
+vernünftige Anzahl an Blockupdates und beweglichen Contraptions
+geachtet werden.
+</p>
+
+<ul>
+<li>Große Contraptions modular bauen.</li>
+<li>Dekoration nicht unnötig übertreiben.</li>
+<li>Bewegliche Maschinen kompakt halten.</li>
+<li>Große Fabriken in funktionale Bereiche aufteilen.</li>
+</ul>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">14 // RISE OF NATIONS APPLICATION</div>
+<h2>Einsatz im Modpack</h2>
+
+<p>
+Copycats passt besonders gut zur technischen und industriellen
+Identität von RISE OF NATIONS.
+</p>
+
+<ul>
+<li>Militärische Produktionsanlagen.</li>
+<li>Fabriken.</li>
+<li>Bahnhöfe.</li>
+<li>Flughäfen.</li>
+<li>Hafenanlagen.</li>
+<li>Fahrzeuge.</li>
+<li>Große Maschinenhallen.</li>
+<li>Automatisierte Produktionskomplexe.</li>
+</ul>
+
+<p>
+Damit kann aus einer funktionalen Create-Maschine ein vollständig
+gestaltetes Industrieobjekt werden.
+</p>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">15 // PROFESSOR DOCTRINE</div>
+<h2>Das Wichtigste zum Mitnehmen</h2>
+
+<ul>
+<li>Copycats erweitert die optische Flexibilität von Create-Bauten.</li>
+<li>Funktion und Erscheinungsbild können stärker getrennt werden.</li>
+<li>Besonders nützlich für Maschinengehäuse und Industriearchitektur.</li>
+<li>Bewegliche Contraptions profitieren von flexibler Gestaltung.</li>
+<li>Copycats ergänzt andere Bau- und Dekorationsmods.</li>
+<li>Technische Funktion sollte vor der endgültigen Verkleidung getestet werden.</li>
+</ul>
+
+<div class="warning">
+<div class="warning-title">FINAL PRINCIPLE</div>
+<p>
+Eine gute Maschine funktioniert. Eine großartige Maschine sieht
+auch so aus, als wäre sie gebaut worden, um genau diese Aufgabe
+zu erfüllen.
+</p>
+</div>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">16 // REFERENCE DATA</div>
+<h2>Originalquellen</h2>
+
+<div class="sources">
+
+<a href="https://modrinth.com/mod/copycats"
+   target="_blank"
+   rel="noopener">
+COPYCATS // MODRINTH
+</a>
+
+<a href="https://www.curseforge.com/minecraft/mc-mods/copycats"
+   target="_blank"
+   rel="noopener">
+COPYCATS // CURSEFORGE
+</a>
+
+<a href="https://github.com/copycats-plus/copycats"
+   target="_blank"
+   rel="noopener">
+COPYCATS // GITHUB
+</a>
+
+</div>
+
+</section>
+
+
+<a class="back" href="wiki.html">
+← ZURÜCK ZUR WIKI
+</a>
+
+</main>
+
+<footer>
+RISE OF NATIONS // COPYCATS // TACTICAL KNOWLEDGE DATABASE
+</footer>
+
+</body>
+</html>
