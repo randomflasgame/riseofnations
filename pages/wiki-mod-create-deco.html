@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RISE OF NATIONS // CREATE DECO</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+    min-height:100vh;
+    background:
+        linear-gradient(rgba(5,10,15,.97),rgba(5,10,15,.99)),
+        repeating-linear-gradient(135deg,rgba(255,255,255,.018) 0 2px,transparent 2px 9px);
+    color:#dbe3e8;
+    font-family:"Segoe UI",Arial,sans-serif;
+}
+
+header{
+    background:rgba(5,10,15,.98);
+    border-bottom:1px solid #293944;
+    box-shadow:0 5px 25px rgba(0,0,0,.45);
+}
+
+.header-inner{
+    max-width:1500px;
+    margin:auto;
+    padding:18px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:30px;
+}
+
+.logo{
+    color:#d6b85c;
+    font-size:22px;
+    font-weight:950;
+    letter-spacing:3px;
+}
+
+.logo span{
+    display:block;
+    color:#687b86;
+    font-size:9px;
+    letter-spacing:2px;
+    margin-top:4px;
+}
+
+nav{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+    gap:7px;
+}
+
+nav a{
+    color:#9aabb4;
+    text-decoration:none;
+    padding:9px 11px;
+    border:1px solid transparent;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.2px;
+    transition:.2s;
+}
+
+nav a:hover{
+    color:#d6b85c;
+    background:#111b22;
+    border-color:#3b4d58;
+}
+
+main{
+    max-width:1250px;
+    margin:auto;
+    padding:70px 30px 100px;
+}
+
+.eyebrow{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:3px;
+    margin-bottom:15px;
+}
+
+h1{
+    color:#edf2f4;
+    font-size:clamp(40px,6.5vw,78px);
+    line-height:.95;
+    letter-spacing:4px;
+    font-weight:950;
+}
+
+.subtitle{
+    max-width:930px;
+    margin-top:22px;
+    color:#8497a2;
+    line-height:1.75;
+    font-size:15px;
+}
+
+.meta{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-top:38px;
+}
+
+.meta-box{
+    padding:18px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+
+.meta-label{
+    color:#596c77;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:8px;
+}
+
+.meta-value{
+    color:#d6b85c;
+    font-size:13px;
+    font-weight:900;
+}
+
+.section{
+    margin-top:35px;
+    padding:30px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+
+.section-number{
+    color:#526773;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:2px;
+    margin-bottom:9px;
+}
+
+h2{
+    color:#e1e8eb;
+    font-size:22px;
+    letter-spacing:1px;
+    margin-bottom:18px;
+}
+
+h3{
+    color:#d6b85c;
+    font-size:14px;
+    letter-spacing:1px;
+    margin:25px 0 10px;
+}
+
+p{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    margin-bottom:13px;
+}
+
+ul,ol{
+    margin:12px 0 18px 22px;
+}
+
+li{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    padding-left:5px;
+}
+
+.note{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#111c23;
+    border-left:3px solid #4d91bd;
+}
+
+.note-title{
+    color:#4d91bd;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+
+.warning{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#17140e;
+    border-left:3px solid #d6b85c;
+}
+
+.warning-title{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:18px;
+}
+
+th,td{
+    text-align:left;
+    padding:13px 14px;
+    border:1px solid #293c47;
+    font-size:12px;
+}
+
+th{
+    color:#d6b85c;
+    background:#111c23;
+    font-size:10px;
+    letter-spacing:1px;
+}
+
+td{
+    color:#8ea0a9;
+    background:#0a141a;
+}
+
+.sources{
+    display:grid;
+    gap:10px;
+    margin-top:15px;
+}
+
+.sources a{
+    display:block;
+    padding:13px 15px;
+    background:#101b22;
+    border:1px solid #293c47;
+    color:#9fb0b9;
+    text-decoration:none;
+    font-size:12px;
+    transition:.2s;
+}
+
+.sources a:hover{
+    color:#d6b85c;
+    border-color:#d6b85c;
+}
+
+.back{
+    display:inline-block;
+    margin-top:45px;
+    padding:12px 16px;
+    color:#d6b85c;
+    border:1px solid #4c4530;
+    text-decoration:none;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    transition:.2s;
+}
+
+.back:hover{
+    background:#17150f;
+    border-color:#d6b85c;
+}
+
+footer{
+    border-top:1px solid #202e36;
+    padding:25px 30px;
+    text-align:center;
+    color:#465861;
+    font-size:9px;
+    letter-spacing:2px;
+}
+
+@media(max-width:850px){
+    .header-inner{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    nav{
+        justify-content:flex-start;
+    }
+
+    .meta{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:550px){
+    .meta{
+        grid-template-columns:1fr;
+    }
+
+    main{
+        padding:45px 18px 70px;
+    }
+
+    .section{
+        padding:22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-inner">
+
+        <div class="logo">
+            RISE OF NATIONS
+            <span>TACTICAL KNOWLEDGE DATABASE</span>
+        </div>
+
+        <nav>
+            <a href="../index.html">COMMAND</a>
+            <a href="intelligence.html">INTELLIGENCE</a>
+            <a href="server.html">SERVER</a>
+            <a href="database.html">DATABASE</a>
+            <a href="download.html">DOWNLOAD</a>
+            <a href="communications.html">COMMUNICATIONS</a>
+            <a href="wiki.html">WIKI</a>
+        </nav>
+
+    </div>
+</header>
+
+<main>
+
+    <div class="eyebrow">
+        PROFESSOR DATABASE // INDUSTRIAL ARCHITECTURE
+    </div>
+
+    <h1>CREATE DECO</h1>
+
+    <p class="subtitle">
+        Create Deco erweitert Create um zusätzliche dekorative und
+        industrielle Bauelemente. Der Schwerpunkt liegt auf Fabrik-
+        architektur, technischen Fassaden, Innenräumen und der
+        visuellen Ausarbeitung großer Produktionsanlagen.
+    </p>
+
+    <div class="meta">
+
+        <div class="meta-box">
+            <div class="meta-label">MOD</div>
+            <div class="meta-value">CREATE DECO</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">VERSION</div>
+            <div class="meta-value">2.1.3</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">MINECRAFT</div>
+            <div class="meta-value">1.21.1</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">SYSTEM</div>
+            <div class="meta-value">BUILDING / INDUSTRIAL</div>
+        </div>
+
+    </div>
+
+
+    <section class="section">
+
+        <div class="section-number">01 // SYSTEM OVERVIEW</div>
+        <h2>Was ist Create Deco?</h2>
+
+        <p>
+            Create Deco ergänzt die Create-Welt um Bauelemente,
+            mit denen technische Anlagen und industrielle Gebäude
+            wesentlich detaillierter gestaltet werden können.
+        </p>
+
+        <p>
+            Das Ziel ist weniger eine neue Produktionsmechanik,
+            sondern eine bessere Verbindung zwischen funktionierender
+            Create-Technik und glaubwürdiger Industriearchitektur.
+        </p>
+
+        <div class="note">
+            <div class="note-title">CORE PRINCIPLE</div>
+            <p>
+                Create Deco macht aus einer funktionierenden Maschine
+                eine komplette Industrieanlage.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">02 // BUILDING MATERIALS</div>
+        <h2>Industrielle Baumaterialien</h2>
+
+        <p>
+            Die zusätzlichen Baublöcke eignen sich besonders für
+            Fabriken, Werkhallen, Lagerhäuser, Bahnanlagen und
+            technische Gebäude.
+        </p>
+
+        <ul>
+            <li>Industriefassaden.</li>
+            <li>Werkhallen.</li>
+            <li>Maschinenräume.</li>
+            <li>Lagergebäude.</li>
+            <li>Bahnhöfe und Depots.</li>
+            <li>Technische Nebenanlagen.</li>
+        </ul>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">03 // FACTORY ARCHITECTURE</div>
+        <h2>Fabriken planen</h2>
+
+        <p>
+            Eine große Create-Anlage wirkt deutlich überzeugender,
+            wenn Maschinen und Gebäude gemeinsam geplant werden.
+        </p>
+
+        <table>
+
+            <tr>
+                <th>BEREICH</th>
+                <th>BAULICHE IDEE</th>
+            </tr>
+
+            <tr>
+                <td>PRODUCTION HALL</td>
+                <td>Hohe Halle mit sichtbaren Maschinen</td>
+            </tr>
+
+            <tr>
+                <td>ENGINE ROOM</td>
+                <td>Separater Bereich für Energie und Antriebe</td>
+            </tr>
+
+            <tr>
+                <td>STORAGE</td>
+                <td>Großes Lager mit klaren Transportwegen</td>
+            </tr>
+
+            <tr>
+                <td>LOADING AREA</td>
+                <td>Güterumschlag und Fahrzeugverkehr</td>
+            </tr>
+
+            <tr>
+                <td>ADMINISTRATION</td>
+                <td>Büro- und Kontrollbereiche</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">04 // INDUSTRIAL DETAILS</div>
+        <h2>Details statt leere Wände</h2>
+
+        <p>
+            Große Gebäude wirken häufig leer, wenn nur die äußere
+            Fassade gestaltet wurde.
+        </p>
+
+        <p>
+            Create Deco kann verwendet werden, um technische Bereiche
+            sichtbar zu machen und Innenräume stärker zu strukturieren.
+        </p>
+
+        <ul>
+            <li>Maschinen sichtbar in die Architektur integrieren.</li>
+            <li>Wartungsgänge und Plattformen einbauen.</li>
+            <li>Rohre und Transportwege sichtbar führen.</li>
+            <li>Decken und Träger strukturieren.</li>
+            <li>Lagerräume von Produktionsräumen trennen.</li>
+        </ul>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">05 // FACTORY FLOORS</div>
+        <h2>Hallenböden und Arbeitsbereiche</h2>
+
+        <p>
+            Der Boden einer Fabrik sollte nicht nur dekorativ sein.
+            Unterschiedliche Bereiche können durch verschiedene
+            Materialien und Muster voneinander getrennt werden.
+        </p>
+
+        <ul>
+            <li>Produktionsflächen.</li>
+            <li>Wartungsbereiche.</li>
+            <li>Transportkorridore.</li>
+            <li>Lagerflächen.</li>
+            <li>Sicherheitsbereiche.</li>
+        </ul>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">06 // WALL SYSTEMS</div>
+        <h2>Fassaden und Wände</h2>
+
+        <p>
+            Industrielle Gebäude profitieren von einer Mischung aus
+            großen Flächen und kleineren technischen Details.
+        </p>
+
+        <ol>
+            <li>Grundstruktur des Gebäudes errichten.</li>
+            <li>Fenster und Tore festlegen.</li>
+            <li>Träger und strukturelle Elemente ergänzen.</li>
+            <li>Technische Details hinzufügen.</li>
+            <li>Maschinen und Leitungen integrieren.</li>
+        </ol>
+
+        <div class="note">
+            <div class="note-title">DESIGN RULE</div>
+            <p>
+                Nicht jede Wand muss maximal detailliert sein.
+                Große ruhige Flächen lassen technische Bereiche
+                stärker hervorstechen.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">07 // TECHNICAL BUILDING</div>
+        <h2>Technische Gebäude</h2>
+
+        <p>
+            Create Deco eignet sich besonders für Gebäude, deren
+            Funktion bereits durch ihre Architektur erkennbar sein soll.
+        </p>
+
+        <table>
+
+            <tr>
+                <th>GEBÄUDE</th>
+                <th>CHARAKTER</th>
+            </tr>
+
+            <tr>
+                <td>POWER PLANT</td>
+                <td>Energieversorgung</td>
+            </tr>
+
+            <tr>
+                <td>FACTORY</td>
+                <td>Produktion</td>
+            </tr>
+
+            <tr>
+                <td>WAREHOUSE</td>
+                <td>Lagerung</td>
+            </tr>
+
+            <tr>
+                <td>DEPOT</td>
+                <td>Transport</td>
+            </tr>
+
+            <tr>
+                <td>WORKSHOP</td>
+                <td>Wartung und Fertigung</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">08 // CREATE INTEGRATION</div>
+        <h2>Zusammenspiel mit Create</h2>
+
+        <p>
+            Die Stärke von Create Deco liegt darin, dass die
+            dekorativen Elemente direkt um echte Create-Anlagen
+            herum eingesetzt werden können.
+        </p>
+
+        <ul>
+            <li>Maschinen in Hallen integrieren.</li>
+            <li>Förderstrecken architektonisch einfassen.</li>
+            <li>Mechanische Antriebe sichtbar gestalten.</li>
+            <li>Wartungsbereiche um Maschinen herum planen.</li>
+            <li>Produktionslinien als Teil des Gebäudes behandeln.</li>
+        </ul>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">09 // RAILWAY ARCHITECTURE</div>
+        <h2>Bahnhöfe und Depots</h2>
+
+        <p>
+            In Verbindung mit den Create-Eisenbahnsystemen können
+            industrielle Gebäude direkt an das Transportnetz
+            angeschlossen werden.
+        </p>
+
+        <ol>
+            <li>Güterbahnhof planen.</li>
+            <li>Lager direkt an die Gleise setzen.</li>
+            <li>Be- und Entladebereiche einplanen.</li>
+            <li>Produktionshalle mit dem Bahnhof verbinden.</li>
+            <li>Materialfluss eindeutig kennzeichnen.</li>
+        </ol>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">10 // INTERIOR DESIGN</div>
+        <h2>Innenräume</h2>
+
+        <p>
+            Auch das Innere einer Fabrik sollte funktional aussehen.
+            Räume können anhand ihrer Aufgabe unterschiedlich gestaltet
+            werden.
+        </p>
+
+        <ul>
+            <li>Produktionshalle – offen und hoch.</li>
+            <li>Maschinenraum – technisch und dicht.</li>
+            <li>Lager – modular und geordnet.</li>
+            <li>Werkstatt – kleinere Arbeitsbereiche.</li>
+            <li>Kontrollraum – Übersicht über die Anlage.</li>
+        </ul>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">11 // MULTIPLAYER BUILDING</div>
+        <h2>Gemeinsame Industriegebiete</h2>
+
+        <p>
+            Auf einem Multiplayer-Server können Spieler komplette
+            Industriegebiete gemeinsam errichten.
+        </p>
+
+        <ul>
+            <li>Gemeinsame Produktionshallen.</li>
+            <li>Große Lagerkomplexe.</li>
+            <li>Bahnhöfe.</li>
+            <li>Werkstätten.</li>
+            <li>Versorgungsgebäude.</li>
+            <li>Verwaltungs- und Handelsbereiche.</li>
+        </ul>
+
+        <div class="note">
+            <div class="note-title">WORLD BUILDING</div>
+            <p>
+                Dadurch entsteht nicht nur eine funktionierende
+                Maschine, sondern eine glaubwürdige industrielle
+                Infrastruktur innerhalb der Spielwelt.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">12 // COMMON MISTAKES</div>
+        <h2>Häufige Fehler beim Fabrikbau</h2>
+
+        <h3>Zu viele Details</h3>
+
+        <p>
+            Wenn jedes einzelne Feld dekoriert wird, verliert die
+            Architektur schnell ihre klare Struktur.
+        </p>
+
+        <h3>Keine funktionale Planung</h3>
+
+        <p>
+            Eine schöne Fabrik sollte trotzdem Wartungs- und
+            Transportwege besitzen.
+        </p>
+
+        <h3>Maschinen komplett verstecken</h3>
+
+        <p>
+            Bei Create ist die sichtbare Technik häufig ein wichtiger
+            Bestandteil des Designs.
+        </p>
+
+        <h3>Keine Erweiterungsflächen</h3>
+
+        <p>
+            Bei großen Industrieanlagen sollte Platz für spätere
+            Produktionslinien vorgesehen werden.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">13 // ADVANCED ARCHITECTURE</div>
+        <h2>Vom Gebäude zum Industriekomplex</h2>
+
+        <p>
+            Mehrere Gebäude können zu einem zusammenhängenden
+            Industriegebiet verbunden werden.
+        </p>
+
+        <ol>
+            <li>Rohstofflager.</li>
+            <li>Produktionshallen.</li>
+            <li>Energieversorgung.</li>
+            <li>Werkstätten.</li>
+            <li>Güterbahnhof.</li>
+            <li>Hauptlager.</li>
+            <li>Verwaltung.</li>
+        </ol>
+
+        <p>
+            Straßen, Schienen, Rohrleitungen und Förderbänder verbinden
+            anschließend die einzelnen Bereiche.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">14 // RISE OF NATIONS APPLICATION</div>
+        <h2>Einsatz im Modpack</h2>
+
+        <p>
+            Create Deco eignet sich besonders für die industrielle
+            Seite von RISE OF NATIONS.
+        </p>
+
+        <ul>
+            <li>Fabriken.</li>
+            <li>Militärische Industrieanlagen.</li>
+            <li>Güterbahnhöfe.</li>
+            <li>Werkstätten.</li>
+            <li>Große Lager.</li>
+            <li>Hafen- und Logistikbereiche.</li>
+            <li>Städtische Industriegebiete.</li>
+        </ul>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">15 // PROFESSOR DOCTRINE</div>
+        <h2>Das Wichtigste zum Mitnehmen</h2>
+
+        <ul>
+            <li>Create Deco ergänzt die Architektur rund um Create.</li>
+            <li>Funktion und Design sollten gemeinsam geplant werden.</li>
+            <li>Technische Maschinen können sichtbar Teil des Gebäudes sein.</li>
+            <li>Große Industrieanlagen profitieren von klaren Zonen.</li>
+            <li>Transportwege sollten architektonisch berücksichtigt werden.</li>
+            <li>Leere Flächen sind genauso wichtig wie Details.</li>
+            <li>Gebäude sollten spätere Erweiterungen ermöglichen.</li>
+        </ul>
+
+        <div class="warning">
+            <div class="warning-title">FINAL PRINCIPLE</div>
+            <p>
+                Gute Industriearchitektur versteckt die Technik nicht.
+                Sie macht die Technik zum Mittelpunkt des Gebäudes.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">16 // REFERENCE DATA</div>
+        <h2>Originalquellen</h2>
+
+        <p>
+            Für konkrete Blöcke, Rezepte und versionsabhängige Inhalte
+            sollte immer die Projektseite der verwendeten Version
+            konsultiert werden.
+        </p>
+
+        <div class="sources">
+
+            <a href="https://modrinth.com/mod/create-deco"
+               target="_blank"
+               rel="noopener">
+                MODRINTH // CREATE DECO
+            </a>
+
+            <a href="https://www.curseforge.com/minecraft/mc-mods/create-deco"
+               target="_blank"
+               rel="noopener">
+                CURSEFORGE // CREATE DECO
+            </a>
+
+            <a href="https://modrinth.com/mod/create"
+               target="_blank"
+               rel="noopener">
+                MODRINTH // CREATE
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <a class="back" href="wiki.html">
+        ← ZURÜCK ZUR WIKI
+    </a>
+
+</main>
+
+<footer>
+    RISE OF NATIONS // CREATE DECO // TACTICAL KNOWLEDGE DATABASE
+</footer>
+
+</body>
+</html>
