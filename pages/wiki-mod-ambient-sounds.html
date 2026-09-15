@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RISE OF NATIONS // AMBIENT SOUNDS</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+    min-height:100vh;
+    background:
+        linear-gradient(rgba(5,10,15,.97),rgba(5,10,15,.99)),
+        repeating-linear-gradient(
+            135deg,
+            rgba(255,255,255,.018) 0 2px,
+            transparent 2px 9px
+        );
+    color:#dbe3e8;
+    font-family:"Segoe UI",Arial,sans-serif;
+}
+
+header{
+    background:rgba(5,10,15,.98);
+    border-bottom:1px solid #293944;
+    box-shadow:0 5px 25px rgba(0,0,0,.45);
+}
+
+.header-inner{
+    max-width:1500px;
+    margin:auto;
+    padding:18px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:30px;
+}
+
+.logo{
+    color:#d6b85c;
+    font-size:22px;
+    font-weight:950;
+    letter-spacing:3px;
+}
+
+.logo span{
+    display:block;
+    color:#687b86;
+    font-size:9px;
+    letter-spacing:2px;
+    margin-top:4px;
+}
+
+nav{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+    gap:7px;
+}
+
+nav a{
+    color:#9aabb4;
+    text-decoration:none;
+    padding:9px 11px;
+    border:1px solid transparent;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.2px;
+    transition:.2s;
+}
+
+nav a:hover{
+    color:#d6b85c;
+    background:#111b22;
+    border-color:#3b4d58;
+}
+
+main{
+    max-width:1250px;
+    margin:auto;
+    padding:70px 30px 100px;
+}
+
+.eyebrow{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:3px;
+    margin-bottom:15px;
+}
+
+h1{
+    color:#edf2f4;
+    font-size:clamp(42px,7vw,82px);
+    line-height:.95;
+    letter-spacing:4px;
+    font-weight:950;
+}
+
+.subtitle{
+    max-width:950px;
+    margin-top:22px;
+    color:#8497a2;
+    line-height:1.75;
+    font-size:15px;
+}
+
+.meta{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-top:38px;
+}
+
+.meta-box{
+    padding:18px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+
+.meta-label{
+    color:#596c77;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:8px;
+}
+
+.meta-value{
+    color:#d6b85c;
+    font-size:13px;
+    font-weight:900;
+}
+
+.section{
+    margin-top:35px;
+    padding:30px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+
+.section-number{
+    color:#526773;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:2px;
+    margin-bottom:9px;
+}
+
+h2{
+    color:#e1e8eb;
+    font-size:22px;
+    letter-spacing:1px;
+    margin-bottom:18px;
+}
+
+h3{
+    color:#d6b85c;
+    font-size:14px;
+    letter-spacing:1px;
+    margin:25px 0 10px;
+}
+
+p{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    margin-bottom:13px;
+}
+
+ul,ol{
+    margin:12px 0 18px 22px;
+}
+
+li{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    padding-left:5px;
+}
+
+.note{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#111c23;
+    border-left:3px solid #4d91bd;
+}
+
+.note-title{
+    color:#4d91bd;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+
+.warning{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#17140e;
+    border-left:3px solid #d6b85c;
+}
+
+.warning-title{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:18px;
+}
+
+th,td{
+    text-align:left;
+    padding:13px 14px;
+    border:1px solid #293c47;
+    font-size:12px;
+}
+
+th{
+    color:#d6b85c;
+    background:#111c23;
+    font-size:10px;
+    letter-spacing:1px;
+}
+
+td{
+    color:#8ea0a9;
+    background:#0a141a;
+}
+
+.sources{
+    display:grid;
+    gap:10px;
+    margin-top:15px;
+}
+
+.sources a{
+    display:block;
+    padding:13px 15px;
+    background:#101b22;
+    border:1px solid #293c47;
+    color:#9fb0b9;
+    text-decoration:none;
+    font-size:12px;
+    transition:.2s;
+}
+
+.sources a:hover{
+    color:#d6b85c;
+    border-color:#d6b85c;
+}
+
+.back{
+    display:inline-block;
+    margin-top:45px;
+    padding:12px 16px;
+    color:#d6b85c;
+    border:1px solid #4c4530;
+    text-decoration:none;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+}
+
+footer{
+    border-top:1px solid #202e36;
+    padding:25px 30px;
+    text-align:center;
+    color:#465861;
+    font-size:9px;
+    letter-spacing:2px;
+}
+
+@media(max-width:850px){
+    .header-inner{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    nav{
+        justify-content:flex-start;
+    }
+
+    .meta{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:550px){
+    .meta{
+        grid-template-columns:1fr;
+    }
+
+    main{
+        padding:45px 18px 70px;
+    }
+
+    .section{
+        padding:22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="header-inner">
+
+<div class="logo">
+RISE OF NATIONS
+<span>TACTICAL KNOWLEDGE DATABASE</span>
+</div>
+
+<nav>
+<a href="../index.html">COMMAND</a>
+<a href="intelligence.html">INTELLIGENCE</a>
+<a href="server.html">SERVER</a>
+<a href="database.html">DATABASE</a>
+<a href="download.html">DOWNLOAD</a>
+<a href="communications.html">COMMUNICATIONS</a>
+<a href="wiki.html">WIKI</a>
+</nav>
+
+</div>
+</header>
+
+<main>
+
+<div class="eyebrow">
+PROFESSOR DATABASE // AUDIO SYSTEMS // WORLD IMMERSION
+</div>
+
+<h1>AMBIENT SOUNDS</h1>
+
+<p class="subtitle">
+Ambient Sounds erweitert die akustische Atmosphäre der Welt.
+Statt Minecraft ausschließlich über die normalen Spielgeräusche
+wahrzunehmen, erhält die Umgebung zusätzliche Hintergrund- und
+Atmosphärengeräusche, die Biome und Aufenthaltsorte lebendiger
+machen.
+</p>
+
+<div class="meta">
+
+<div class="meta-box">
+<div class="meta-label">MOD</div>
+<div class="meta-value">AMBIENT SOUNDS</div>
+</div>
+
+<div class="meta-box">
+<div class="meta-label">VERSION</div>
+<div class="meta-value">6.3.8</div>
+</div>
+
+<div class="meta-box">
+<div class="meta-label">MINECRAFT</div>
+<div class="meta-value">1.21.1</div>
+</div>
+
+<div class="meta-box">
+<div class="meta-label">SYSTEM</div>
+<div class="meta-value">AUDIO / IMMERSION</div>
+</div>
+
+</div>
+
+
+<section class="section">
+<div class="section-number">01 // SYSTEM OVERVIEW</div>
+<h2>Was ist Ambient Sounds?</h2>
+
+<p>
+Ambient Sounds ist ein Audio- und Atmosphärenmod. Er ergänzt die
+Welt um zusätzliche Umgebungsgeräusche, die abhängig von der
+aktuellen Umgebung abgespielt werden können.
+</p>
+
+<p>
+Dadurch fühlt sich ein Wald anders an als eine Höhle, ein
+Gebirge anders als eine offene Ebene und eine unterirdische
+Anlage anders als ein belebtes Stadtgebiet.
+</p>
+
+<div class="note">
+<div class="note-title">IMMERSION PRINCIPLE</div>
+<p>
+Die meisten dieser Veränderungen sind nicht direkt sichtbar.
+Gerade dadurch wirken sie besonders stark: Die Welt klingt
+unterschiedlich, bevor der Spieler überhaupt bewusst darüber
+nachdenkt.
+</p>
+</div>
+</section>
+
+
+<section class="section">
+<div class="section-number">02 // ENVIRONMENTAL AUDIO</div>
+<h2>Umgebungsgeräusche</h2>
+
+<p>
+Der wichtigste Bestandteil des Mods ist die akustische
+Differenzierung verschiedener Umgebungen.
+</p>
+
+<table>
+<tr>
+<th>UMGEBUNG</th>
+<th>AUDIO-WIRKUNG</th>
+</tr>
+<tr>
+<td>Wälder</td>
+<td>Natur- und Umgebungsatmosphäre</td>
+</tr>
+<tr>
+<td>Höhlen</td>
+<td>Dunkle und unterirdische Geräuschkulisse</td>
+</tr>
+<tr>
+<td>Gewässer</td>
+<td>Zusätzliche Wasser- und Umgebungsatmosphäre</td>
+</tr>
+<tr>
+<td>Gebirge</td>
+<td>Offene, natürliche Klangkulisse</td>
+</tr>
+<tr>
+<td>Siedlungen</td>
+<td>Lebendigeres Gefühl für bewohnte Bereiche</td>
+</tr>
+<tr>
+<td>Dimensionen</td>
+<td>Stärkeres Gefühl für unterschiedliche Welten</td>
+</tr>
+</table>
+
+<p>
+Die konkrete Audioauswahl hängt von Biomen, Umgebung und der
+installierten Version ab.
+</p>
+</section>
+
+
+<section class="section">
+<div class="section-number">03 // VOLUME CONTROL</div>
+<h2>Lautstärke richtig einstellen</h2>
+
+<p>
+Ambient Sounds funktioniert am besten, wenn die zusätzlichen
+Geräusche nicht die wichtigen Spielinformationen überdecken.
+</p>
+
+<p>
+Insbesondere bei einem Modpack mit Simple Voice Chat und
+Sound Physics Remastered sollte die gesamte Audiomischung
+bewusst eingestellt werden.
+</p>
+
+<ul>
+<li>Master-Lautstärke sinnvoll wählen.</li>
+<li>Umgebungsgeräusche nicht unnötig laut stellen.</li>
+<li>Voice Chat muss verständlich bleiben.</li>
+<li>Wichtige Warn- und Kampfsounds sollten hörbar bleiben.</li>
+<li>Bei Kopfhörern auf eine angenehme Gesamtlautstärke achten.</li>
+</ul>
+</section>
+
+
+<section class="section">
+<div class="section-number">04 // SOUND PHYSICS</div>
+<h2>Zusammenspiel mit Sound Physics Remastered</h2>
+
+<p>
+RISE OF NATIONS enthält zusätzlich Sound Physics Remastered.
+Dadurch können zwei verschiedene Ebenen der Audioimmersion
+zusammenkommen.
+</p>
+
+<table>
+<tr>
+<th>SYSTEM</th>
+<th>AUFGABE</th>
+</tr>
+<tr>
+<td>Ambient Sounds</td>
+<td>Erzeugt zusätzliche Umgebungsklänge</td>
+</tr>
+<tr>
+<td>Sound Physics Remastered</td>
+<td>Verändert die räumliche Wahrnehmung von Geräuschen</td>
+</tr>
+<tr>
+<td>Simple Voice Chat</td>
+<td>Spielerkommunikation</td>
+</tr>
+<tr>
+<td>Vanilla Audio</td>
+<td>Normale Minecraft-Spielgeräusche</td>
+</tr>
+</table>
+
+<p>
+Gemeinsam entsteht dadurch eine deutlich komplexere Klangwelt
+als in Vanilla-Minecraft.
+</p>
+</section>
+
+
+<section class="section">
+<div class="section-number">05 // EXPLORATION</div>
+<h2>Erkundung und Atmosphäre</h2>
+
+<p>
+Bei langen Erkundungstouren ist Audio besonders wirkungsvoll.
+Der Spieler bewegt sich durch unterschiedliche Landschaften,
+ohne ständig neue visuelle Effekte zu benötigen.
+</p>
+
+<p>
+Gerade in einem Modpack mit neuen Dimensionen und vielen
+zusätzlichen Strukturen hilft eine abwechslungsreiche
+Geräuschkulisse dabei, verschiedene Regionen voneinander
+abzugrenzen.
+</p>
+
+<ul>
+<li>Neue Gebiete wirken individueller.</li>
+<li>Höhlen fühlen sich stärker vom Oberflächenbereich getrennt an.</li>
+<li>Dimensionen erhalten eine eigene Atmosphäre.</li>
+<li>Lange Reisen werden weniger monoton.</li>
+</ul>
+</section>
+
+
+<section class="section">
+<div class="section-number">06 // CITIES & BASES</div>
+<h2>Städte und Basen</h2>
+
+<p>
+Auch für das RISE-OF-NATIONS-Bausystem ist Audio interessant.
+Eine große Fabrik, eine ruhige Wohnsiedlung und ein abgelegener
+Außenposten können visuell ähnlich aufgebaut sein und sich
+akustisch trotzdem unterschiedlich anfühlen.
+</p>
+
+<div class="note">
+<div class="note-title">WORLD BUILDING</div>
+<p>
+Eine überzeugende Welt besteht nicht nur aus Gebäuden.
+Beleuchtung, Bewegung, Partikel und Audio bestimmen gemeinsam,
+wie glaubwürdig ein Ort wirkt.
+</p>
+</div>
+</section>
+
+
+<section class="section">
+<div class="section-number">07 // INDUSTRIAL ATMOSPHERE</div>
+<h2>Fabriken und Industrie</h2>
+
+<p>
+In Verbindung mit Create entsteht ein interessanter Kontrast:
+Create liefert Maschinen, Animationen und mechanische Abläufe,
+während Ambient Sounds die Welt um diese Systeme akustisch
+ergänzen kann.
+</p>
+
+<p>
+Eine große Fabrik kann dadurch deutlich stärker nach einem
+aktiven Produktionsstandort wirken als eine rein dekorative
+Halle.
+</p>
+</section>
+
+
+<section class="section">
+<div class="section-number">08 // NIGHT & DARKNESS</div>
+<h2>Nacht und dunkle Gebiete</h2>
+
+<p>
+Audio spielt besonders bei eingeschränkter Sicht eine wichtige
+Rolle. Wenn der Spieler weniger Informationen über die Augen
+erhält, gewinnt die Geräuschkulisse an Bedeutung.
+</p>
+
+<p>
+Das kann Nachtwanderungen, Wälder, Höhlen und andere dunkle
+Gebiete intensiver wirken lassen.
+</p>
+
+<div class="warning">
+<div class="warning-title">HEADPHONE NOTE</div>
+<p>
+Bei Kopfhörern können zusätzliche Atmosphärengeräusche deutlich
+stärker wirken. Die Lautstärke sollte so gewählt werden, dass
+Spiel- und Sprachsignale weiterhin klar verständlich bleiben.
+</p>
+</div>
+</section>
+
+
+<section class="section">
+<div class="section-number">09 // MULTIPLAYER</div>
+<h2>Multiplayer und Kommunikation</h2>
+
+<p>
+Im Multiplayer muss Ambient Audio mit der Kommunikation
+zusammenpassen. RISE OF NATIONS verwendet Simple Voice Chat,
+wodurch die Balance zwischen Weltatmosphäre und Sprachkommunikation
+besonders relevant wird.
+</p>
+
+<ul>
+<li>Voice Chat sollte immer verständlich bleiben.</li>
+<li>Umgebungsgeräusche dürfen Gespräche nicht überdecken.</li>
+<li>Bei Events kann die Audioatmosphäre bewusst genutzt werden.</li>
+<li>Große Städte können durch Sound deutlich lebendiger wirken.</li>
+</ul>
+</section>
+
+
+<section class="section">
+<div class="section-number">10 // PERFORMANCE</div>
+<h2>Performance und Audio</h2>
+
+<p>
+Audio-Mods verändern primär die Klangwiedergabe und sind daher
+nicht mit klassischen Grafik- oder Weltgenerierungsmods
+gleichzusetzen.
+</p>
+
+<p>
+Sollten jedoch ungewöhnliche Audioprobleme auftreten, sollte
+zuerst geprüft werden, ob mehrere Audio-Mods oder Ressourcenpakete
+miteinander interagieren.
+</p>
+
+<ul>
+<li>Mod-Versionen kontrollieren.</li>
+<li>Ressourcenpakete testen.</li>
+<li>Audio-Einstellungen zurücksetzen, falls notwendig.</li>
+<li>Bei Problemen Logs prüfen.</li>
+<li>Andere Audio-Mods testweise deaktivieren.</li>
+</ul>
+</section>
+
+
+<section class="section">
+<div class="section-number">11 // TROUBLESHOOTING</div>
+<h2>Typische Probleme</h2>
+
+<h3>Keine zusätzlichen Geräusche</h3>
+<p>
+Prüfen, ob der Mod korrekt geladen wurde und die relevanten
+Sound- beziehungsweise Umgebungslautstärken aktiviert sind.
+</p>
+
+<h3>Audio ist zu laut</h3>
+<p>
+Die entsprechenden Minecraft-Audioeinstellungen beziehungsweise
+die Mod-Konfiguration kontrollieren und die Umgebungssounds
+reduzieren.
+</p>
+
+<h3>Sounds wirken ungewöhnlich</h3>
+<p>
+Bei gleichzeitiger Verwendung mehrerer Audio-Mods sollte geprüft
+werden, ob sich deren Funktionen überschneiden.
+</p>
+
+<h3>Problem nur mit einem Ressourcenpaket</h3>
+<p>
+Das Ressourcenpaket testweise deaktivieren. Audio-Assets können
+durch Ressourcenpakete verändert oder ersetzt werden.
+</p>
+</section>
+
+
+<section class="section">
+<div class="section-number">12 // IMMERSION STACK</div>
+<h2>Die Audio-Kombination von RISE OF NATIONS</h2>
+
+<table>
+<tr>
+<th>KOMPONENTE</th>
+<th>FUNKTION</th>
+</tr>
+<tr>
+<td>Ambient Sounds</td>
+<td>Umgebungsatmosphäre</td>
+</tr>
+<tr>
+<td>Sound Physics Remastered</td>
+<td>Räumliche Klangwirkung</td>
+</tr>
+<tr>
+<td>Simple Voice Chat</td>
+<td>Spielerkommunikation</td>
+</tr>
+<tr>
+<td>Vanilla Sounds</td>
+<td>Gameplay-relevante Geräusche</td>
+</tr>
+<tr>
+<td>Resource Packs</td>
+<td>Optionale zusätzliche Audioinhalte</td>
+</tr>
+</table>
+</section>
+
+
+<section class="section">
+<div class="section-number">13 // PROFESSOR DOCTRINE</div>
+<h2>Was man sich merken sollte</h2>
+
+<ul>
+<li>Ambient Sounds erweitert die akustische Atmosphäre der Welt.</li>
+<li>Biom und Umgebung können deutlich unterschiedlicher wirken.</li>
+<li>Der Mod ergänzt sich gut mit Sound Physics Remastered.</li>
+<li>Simple Voice Chat sollte bei der Lautstärkebalance berücksichtigt werden.</li>
+<li>Audio ist besonders bei Erkundung, Nacht und Höhlen wirkungsvoll.</li>
+<li>Bei Audioproblemen zuerst Mod-, Ressourcenpaket- und Lautstärkeeinstellungen prüfen.</li>
+<li>Die installierte Version 6.3.8 ist die Referenz für RISE OF NATIONS.</li>
+</ul>
+
+<div class="warning">
+<div class="warning-title">FINAL ASSESSMENT</div>
+<p>
+Ambient Sounds verändert nicht die Stärke des Spielers,
+sondern die Wahrnehmung der Welt. Genau dadurch gehört der Mod
+zu den wichtigsten Immersionssystemen des Modpacks.
+</p>
+</div>
+</section>
+
+
+<section class="section">
+<div class="section-number">14 // REFERENCE DATA</div>
+<h2>Originalquellen</h2>
+
+<div class="sources">
+
+<a href="https://modrinth.com/mod/ambientsounds"
+   target="_blank"
+   rel="noopener">
+MODRINTH // AMBIENT SOUNDS
+</a>
+
+<a href="https://www.curseforge.com/minecraft/mc-mods/ambientsounds"
+   target="_blank"
+   rel="noopener">
+CURSEFORGE // AMBIENT SOUNDS
+</a>
+
+</div>
+</section>
+
+
+<a class="back" href="wiki.html">
+← ZURÜCK ZUR WIKI
+</a>
+
+</main>
+
+<footer>
+RISE OF NATIONS // AMBIENT SOUNDS // TACTICAL KNOWLEDGE DATABASE
+</footer>
+
+</body>
+</html>
