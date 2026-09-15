@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RISE OF NATIONS // AQUACULTURE 2</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+    min-height:100vh;
+    background:
+        linear-gradient(rgba(5,10,15,.97),rgba(5,10,15,.99)),
+        repeating-linear-gradient(
+            135deg,
+            rgba(255,255,255,.018) 0 2px,
+            transparent 2px 9px
+        );
+    color:#dbe3e8;
+    font-family:"Segoe UI",Arial,sans-serif;
+}
+
+header{
+    background:rgba(5,10,15,.98);
+    border-bottom:1px solid #293944;
+    box-shadow:0 5px 25px rgba(0,0,0,.45);
+}
+
+.header-inner{
+    max-width:1500px;
+    margin:auto;
+    padding:18px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:30px;
+}
+
+.logo{
+    color:#d6b85c;
+    font-size:22px;
+    font-weight:950;
+    letter-spacing:3px;
+}
+
+.logo span{
+    display:block;
+    color:#687b86;
+    font-size:9px;
+    letter-spacing:2px;
+    margin-top:4px;
+}
+
+nav{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+    gap:7px;
+}
+
+nav a{
+    color:#9aabb4;
+    text-decoration:none;
+    padding:9px 11px;
+    border:1px solid transparent;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.2px;
+    transition:.2s;
+}
+
+nav a:hover{
+    color:#d6b85c;
+    background:#111b22;
+    border-color:#3b4d58;
+}
+
+main{
+    max-width:1250px;
+    margin:auto;
+    padding:70px 30px 100px;
+}
+
+.eyebrow{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:3px;
+    margin-bottom:15px;
+}
+
+h1{
+    color:#edf2f4;
+    font-size:clamp(42px,7vw,82px);
+    line-height:.95;
+    letter-spacing:4px;
+    font-weight:950;
+}
+
+.subtitle{
+    max-width:950px;
+    margin-top:22px;
+    color:#8497a2;
+    line-height:1.75;
+    font-size:15px;
+}
+
+.meta{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-top:38px;
+}
+
+.meta-box{
+    padding:18px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+
+.meta-label{
+    color:#596c77;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:8px;
+}
+
+.meta-value{
+    color:#d6b85c;
+    font-size:13px;
+    font-weight:900;
+}
+
+.section{
+    margin-top:35px;
+    padding:30px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+
+.section-number{
+    color:#526773;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:2px;
+    margin-bottom:9px;
+}
+
+h2{
+    color:#e1e8eb;
+    font-size:22px;
+    letter-spacing:1px;
+    margin-bottom:18px;
+}
+
+h3{
+    color:#d6b85c;
+    font-size:14px;
+    letter-spacing:1px;
+    margin:25px 0 10px;
+}
+
+p{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    margin-bottom:13px;
+}
+
+ul,ol{
+    margin:12px 0 18px 22px;
+}
+
+li{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    padding-left:5px;
+}
+
+.note{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#111c23;
+    border-left:3px solid #4d91bd;
+}
+
+.note-title{
+    color:#4d91bd;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+
+.warning{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#17140e;
+    border-left:3px solid #d6b85c;
+}
+
+.warning-title{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:18px;
+}
+
+th,td{
+    text-align:left;
+    padding:13px 14px;
+    border:1px solid #293c47;
+    font-size:12px;
+}
+
+th{
+    color:#d6b85c;
+    background:#111c23;
+    font-size:10px;
+    letter-spacing:1px;
+}
+
+td{
+    color:#8ea0a9;
+    background:#0a141a;
+}
+
+.sources{
+    display:grid;
+    gap:10px;
+    margin-top:15px;
+}
+
+.sources a{
+    display:block;
+    padding:13px 15px;
+    background:#101b22;
+    border:1px solid #293c47;
+    color:#9fb0b9;
+    text-decoration:none;
+    font-size:12px;
+    transition:.2s;
+}
+
+.sources a:hover{
+    color:#d6b85c;
+    border-color:#d6b85c;
+}
+
+.back{
+    display:inline-block;
+    margin-top:45px;
+    padding:12px 16px;
+    color:#d6b85c;
+    border:1px solid #4c4530;
+    text-decoration:none;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+}
+
+footer{
+    border-top:1px solid #202e36;
+    padding:25px 30px;
+    text-align:center;
+    color:#465861;
+    font-size:9px;
+    letter-spacing:2px;
+}
+
+@media(max-width:850px){
+    .header-inner{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    nav{
+        justify-content:flex-start;
+    }
+
+    .meta{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:550px){
+    .meta{
+        grid-template-columns:1fr;
+    }
+
+    main{
+        padding:45px 18px 70px;
+    }
+
+    .section{
+        padding:22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="header-inner">
+
+<div class="logo">
+RISE OF NATIONS
+<span>TACTICAL KNOWLEDGE DATABASE</span>
+</div>
+
+<nav>
+<a href="../index.html">COMMAND</a>
+<a href="intelligence.html">INTELLIGENCE</a>
+<a href="server.html">SERVER</a>
+<a href="database.html">DATABASE</a>
+<a href="download.html">DOWNLOAD</a>
+<a href="communications.html">COMMUNICATIONS</a>
+<a href="wiki.html">WIKI</a>
+</nav>
+
+</div>
+</header>
+
+<main>
+
+<div class="eyebrow">
+PROFESSOR DATABASE // AQUATIC OPERATIONS // FISHING
+</div>
+
+<h1>AQUACULTURE 2</h1>
+
+<p class="subtitle">
+Aquaculture 2 erweitert das Angeln in Minecraft zu einem deutlich
+größeren Fischerei- und Sammelsystem. Der Mod fügt zusätzliche
+Fischarten, Angelinhalte, Ausrüstung und Verwendungen hinzu und
+passt damit besonders gut zu einem Modpack, das Landwirtschaft,
+Nahrung und Erkundung miteinander verbindet.
+</p>
+
+<div class="meta">
+
+<div class="meta-box">
+<div class="meta-label">MOD</div>
+<div class="meta-value">AQUACULTURE 2</div>
+</div>
+
+<div class="meta-box">
+<div class="meta-label">VERSION</div>
+<div class="meta-value">2.7.21</div>
+</div>
+
+<div class="meta-box">
+<div class="meta-label">MINECRAFT</div>
+<div class="meta-value">1.21.1</div>
+</div>
+
+<div class="meta-box">
+<div class="meta-label">SYSTEM</div>
+<div class="meta-value">FISHING / FOOD</div>
+</div>
+
+</div>
+
+
+<section class="section">
+<div class="section-number">01 // SYSTEM OVERVIEW</div>
+<h2>Was ist Aquaculture 2?</h2>
+
+<p>
+Aquaculture 2 erweitert das Vanilla-Angeln um ein umfangreicheres
+aquatisches Ökosystem. Statt Fischen ausschließlich als einzelne
+Nahrungsquelle zu betrachten, wird die Fischerei zu einem eigenen
+Teil des Survival- und Sammelgameplays.
+</p>
+
+<p>
+Der Mod eignet sich besonders für Spieler, die regelmäßig
+Gewässer erkunden, angeln, Nahrung herstellen oder seltene
+aquatische Ressourcen sammeln möchten.
+</p>
+
+<div class="note">
+<div class="note-title">CORE PRINCIPLE</div>
+<p>
+Aquaculture 2 macht aus dem einfachen Vanilla-Angelvorgang ein
+eigenständigeres Sammelsystem mit mehr Vielfalt und mehr Gründen,
+regelmäßig eine Angel mitzunehmen.
+</p>
+</div>
+</section>
+
+
+<section class="section">
+<div class="section-number">02 // FISHING SYSTEM</div>
+<h2>Das erweiterte Angeln</h2>
+
+<p>
+Die grundlegende Bedienung bleibt Minecraft-Spielern vertraut:
+Eine Angel wird ausgeworfen und der Fang anschließend eingeholt.
+Aquaculture 2 erweitert jedoch die möglichen Ergebnisse und
+damit die Bedeutung der Fischerei.
+</p>
+
+<ol>
+<li>Angel vorbereiten.</li>
+<li>Geeignetes Gewässer aufsuchen.</li>
+<li>Angel auswerfen.</li>
+<li>Auf einen Fang warten.</li>
+<li>Beute einsammeln.</li>
+<li>Fang anschließend als Nahrung oder Ressource verwenden.</li>
+</ol>
+
+<p>
+Die genaue Beute hängt vom jeweiligen Angel- und Gewässersystem
+sowie der installierten Mod-Version ab.
+</p>
+</section>
+
+
+<section class="section">
+<div class="section-number">03 // FISH VARIETY</div>
+<h2>Mehr Fischarten</h2>
+
+<p>
+Eine der sichtbarsten Erweiterungen ist die größere Vielfalt an
+Fischen. Dadurch werden verschiedene Gewässer interessanter,
+weil Angeln nicht mehr ausschließlich dieselben wenigen Vanilla-
+Ergebnisse liefert.
+</p>
+
+<table>
+<tr>
+<th>BEREICH</th>
+<th>BEDEUTUNG</th>
+</tr>
+<tr>
+<td>Fischarten</td>
+<td>Erweiterte Auswahl an möglichen Fängen</td>
+</tr>
+<tr>
+<td>Nahrung</td>
+<td>Fänge können als Lebensmittel relevant sein</td>
+</tr>
+<tr>
+<td>Sammeln</td>
+<td>Seltenere Fänge erweitern die Sammlung</td>
+</tr>
+<tr>
+<td>Verarbeitung</td>
+<td>Bestimmte Fänge können weitere Verwendungen besitzen</td>
+</tr>
+</table>
+</section>
+
+
+<section class="section">
+<div class="section-number">04 // FISHING RODS</div>
+<h2>Angel-Ausrüstung</h2>
+
+<p>
+Aquaculture 2 erweitert nicht nur den Fang selbst, sondern auch
+die Möglichkeiten rund um das Angeln. Zusätzliche Ausrüstung kann
+die Fischerei langfristig interessanter machen.
+</p>
+
+<p>
+Welche Ausrüstung verfügbar ist und welche Werte sie besitzt,
+sollte direkt über JEI geprüft werden, da sich Details zwischen
+Minecraft-Versionen und Mod-Versionen unterscheiden können.
+</p>
+
+<div class="warning">
+<div class="warning-title">JEI REFERENCE</div>
+<p>
+Für konkrete Rezepte, Materialien und Werte ist JEI die zuverlässigste
+Ingame-Referenz innerhalb des RISE-OF-NATIONS-Modpacks.
+</p>
+</div>
+</section>
+
+
+<section class="section">
+<div class="section-number">05 // TREASURE & CATCHES</div>
+<h2>Fänge und besondere Beute</h2>
+
+<p>
+Das erweiterte Fischereisystem sorgt dafür, dass ein Angelausflug
+nicht ausschließlich mit gewöhnlichem Fisch endet. Je nach
+System und Umgebung können unterschiedliche Arten von Beute
+interessant werden.
+</p>
+
+<ul>
+<li>Nahrungsmittel sammeln.</li>
+<li>Seltenere Fischarten entdecken.</li>
+<li>Zusätzliche Ressourcen erhalten.</li>
+<li>Fänge über JEI auf weitere Verwendungen prüfen.</li>
+<li>Überschüsse für Handel oder Lagerung verwenden.</li>
+</ul>
+</section>
+
+
+<section class="section">
+<div class="section-number">06 // FOOD ECONOMY</div>
+<h2>Fischerei als Nahrungsquelle</h2>
+
+<p>
+In RISE OF NATIONS ist Aquaculture 2 besonders interessant,
+weil gleichzeitig Farmer's Delight, Aquaculture Delight,
+Cooking for Blockheads und weitere Ernährungsmods installiert
+sind.
+</p>
+
+<p>
+Dadurch kann Fisch nicht nur direkt gegessen, sondern auch Teil
+einer größeren Lebensmittelproduktion werden.
+</p>
+
+<table>
+<tr>
+<th>SYSTEM</th>
+<th>ROLLE</th>
+</tr>
+<tr>
+<td>Aquaculture 2</td>
+<td>Fischerei und Fänge</td>
+</tr>
+<tr>
+<td>Farmer's Delight</td>
+<td>Erweiterte Verarbeitung und Gerichte</td>
+</tr>
+<tr>
+<td>AppleSkin</td>
+<td>Übersicht über Hunger und Sättigung</td>
+</tr>
+<tr>
+<td>Cooking for Blockheads</td>
+<td>Organisation von Kochsystemen</td>
+</tr>
+</table>
+</section>
+
+
+<section class="section">
+<div class="section-number">07 // LAVA FISHING</div>
+<h2>Angeln außerhalb normaler Gewässer</h2>
+
+<p>
+Das Modpack enthält zusätzlich das <strong>Aquaculture Lava Fishing Addon</strong>.
+Damit wird das Konzept der Fischerei über gewöhnliche Wasserflächen
+hinaus erweitert.
+</p>
+
+<p>
+Diese Kombination ist besonders interessant für Spieler, die
+Ressourcen aus ungewöhnlichen Umgebungen gewinnen möchten.
+Die konkreten verfügbaren Fänge sollten über JEI und die
+Mod-Dokumentation geprüft werden.
+</p>
+
+<div class="note">
+<div class="note-title">SYSTEM CONNECTION</div>
+<p>
+Aquaculture 2 und das Lava-Fishing-Addon sollten als zusammengehörige
+Komponenten des erweiterten Fischerei-Systems betrachtet werden.
+</p>
+</div>
+</section>
+
+
+<section class="section">
+<div class="section-number">08 // EXPLORATION</div>
+<h2>Angeln auf Expeditionen</h2>
+
+<p>
+Eine Angel ist ein vergleichsweise kleines Werkzeug, kann aber
+auf längeren Reisen zusätzlichen Nutzen liefern. Besonders an
+Flüssen, Seen, Küsten und anderen Gewässern lohnt sich ein kurzer
+Fischereistopp.
+</p>
+
+<ul>
+<li>Angel als Teil der Expeditionsausrüstung mitnehmen.</li>
+<li>Gewässer auf dem Reiseweg nutzen.</li>
+<li>Fänge direkt verarbeiten oder lagern.</li>
+<li>Seltene Fische für spätere Verwendung aufbewahren.</li>
+</ul>
+</section>
+
+
+<section class="section">
+<div class="section-number">09 // STORAGE</div>
+<h2>Fänge richtig lagern</h2>
+
+<p>
+Mit vielen Fischarten steigt auch die Zahl der unterschiedlichen
+Items im Lager. Sophisticated Storage und Sophisticated Backpacks
+können hier besonders hilfreich sein.
+</p>
+
+<p>
+Für größere Fischereioperationen empfiehlt sich eine klare
+Trennung zwischen Rohfisch, verarbeiteten Lebensmitteln und
+anderen aquatischen Ressourcen.
+</p>
+
+<table>
+<tr>
+<th>LAGERBEREICH</th>
+<th>INHALT</th>
+</tr>
+<tr>
+<td>RAW CATCH</td>
+<td>Frischer oder unverarbeiteter Fang</td>
+</tr>
+<tr>
+<td>FOOD</td>
+<td>Fertige Lebensmittel</td>
+</tr>
+<tr>
+<td>RARE</td>
+<td>Seltene oder besondere Fänge</td>
+</tr>
+<tr>
+<td>PROCESSING</td>
+<td>Material für weitere Verarbeitung</td>
+</tr>
+</table>
+</section>
+
+
+<section class="section">
+<div class="section-number">10 // JEI OPERATIONS</div>
+<h2>JEI als Fischerei-Datenbank</h2>
+
+<p>
+Bei einem großen Modpack ist es kaum sinnvoll, alle Fischarten,
+Rezepte und Verwendungen auswendig zu kennen.
+</p>
+
+<p>
+JEI ermöglicht eine schnelle Kontrolle darüber, was mit einem
+Fang gemacht werden kann.
+</p>
+
+<ol>
+<li>Fisch oder Item in JEI suchen.</li>
+<li>Rezeptansicht öffnen.</li>
+<li>Verwendungen prüfen.</li>
+<li>Alternative Verarbeitung vergleichen.</li>
+<li>Benötigte Materialien kontrollieren.</li>
+</ol>
+</section>
+
+
+<section class="section">
+<div class="section-number">11 // FARMING VS FISHING</div>
+<h2>Fischerei oder Landwirtschaft?</h2>
+
+<p>
+Aquaculture 2 konkurriert nicht unbedingt mit Farmer's Delight
+oder der normalen Landwirtschaft. Die Systeme ergänzen sich.
+</p>
+
+<table>
+<tr>
+<th>VERSORGUNG</th>
+<th>STÄRKE</th>
+</tr>
+<tr>
+<td>Landwirtschaft</td>
+<td>Planbare Produktion</td>
+</tr>
+<tr>
+<td>Tierhaltung</td>
+<td>Kontinuierliche Ressourcen</td>
+</tr>
+<tr>
+<td>Fischerei</td>
+<td>Zusätzliche Nahrung und Sammelbeute</td>
+</tr>
+<tr>
+<td>Expedition</td>
+<td>Unterwegs verfügbare Versorgung</td>
+</tr>
+</table>
+
+<p>
+Eine gute Basis nutzt mehrere Nahrungsquellen und ist dadurch
+weniger abhängig von einem einzigen Produktionssystem.
+</p>
+</section>
+
+
+<section class="section">
+<div class="section-number">12 // MULTIPLAYER</div>
+<h2>Fischerei im Multiplayer</h2>
+
+<p>
+Aquaculture 2 eignet sich auch für arbeitsteilige Versorgung.
+Ein Spieler kann beispielsweise Landwirtschaft betreiben,
+während ein anderer regelmäßig Fischerei übernimmt.
+</p>
+
+<ul>
+<li>Fischerei als eigener Versorgungszweig.</li>
+<li>Gemeinsame Lager für Überschüsse.</li>
+<li>Seltene Fänge zentral sammeln.</li>
+<li>Lebensmittelproduktion mit anderen Spielern koordinieren.</li>
+</ul>
+</section>
+
+
+<section class="section">
+<div class="section-number">13 // TROUBLESHOOTING</div>
+<h2>Typische Probleme</h2>
+
+<h3>Fischerei liefert unerwartete Beute</h3>
+<p>
+Bei einem großen Modpack können mehrere Mods die verfügbaren
+Fänge oder Loot-Tabellen beeinflussen. JEI und die Mod-Konfiguration
+sollten zuerst geprüft werden.
+</p>
+
+<h3>Bestimmte Fische fehlen</h3>
+<p>
+Prüfen, ob die entsprechende Version tatsächlich installiert
+wurde und ob weitere benötigte Komponenten vorhanden sind.
+</p>
+
+<h3>Rezepte fehlen</h3>
+<p>
+Den jeweiligen Fisch in JEI öffnen und die Rezept- sowie
+Verwendungsansicht prüfen.
+</p>
+
+<h3>Angeln funktioniert nicht wie erwartet</h3>
+<p>
+Zuerst Vanilla-Angelmechanik, Mod-Version und gegebenenfalls
+zusätzliche Fischerei-Addons überprüfen.
+</p>
+</section>
+
+
+<section class="section">
+<div class="section-number">14 // PERFORMANCE</div>
+<h2>Performance</h2>
+
+<p>
+Aquaculture 2 ist im Vergleich zu großen Weltgenerierungs- oder
+Technologiemods ein relativ fokussierter Gameplay-Mod.
+</p>
+
+<p>
+Die normale Nutzung des Fischereisystems sollte keine zentrale
+Performance-Belastung des Modpacks darstellen. Bei Problemen
+sollten insbesondere umfangreiche Entity-, Weltgenerierungs- und
+Simulationssysteme untersucht werden.
+</p>
+</section>
+
+
+<section class="section">
+<div class="section-number">15 // PROFESSOR DOCTRINE</div>
+<h2>Was man sich merken sollte</h2>
+
+<ul>
+<li>Aquaculture 2 erweitert das Vanilla-Angeln erheblich.</li>
+<li>Der Mod fügt zusätzliche Fischarten und Fischerei-Inhalte hinzu.</li>
+<li>Angeln wird dadurch zu einem eigenständigen Sammel- und Versorgungssystem.</li>
+<li>Farmer's Delight und Aquaculture Delight machen die Fänge für das Ernährungssystem interessant.</li>
+<li>AppleSkin hilft beim Vergleich von Nahrungsmitteln.</li>
+<li>Das Lava-Fishing-Addon erweitert das Fischerei-Konzept zusätzlich.</li>
+<li>JEI ist die wichtigste Referenz für konkrete Rezepte und Verwendungen.</li>
+<li>Die installierte Version 2.7.21 ist die Referenz für RISE OF NATIONS.</li>
+</ul>
+
+<div class="warning">
+<div class="warning-title">FINAL ASSESSMENT</div>
+<p>
+Aquaculture 2 macht aus einem kleinen Vanilla-Nebensystem eine
+richtige Nebenbeschäftigung. Im Zusammenspiel mit den zahlreichen
+Food- und Farming-Mods des Modpacks wird daraus ein relevanter
+Teil der Versorgung und Erkundung.
+</p>
+</div>
+</section>
+
+
+<section class="section">
+<div class="section-number">16 // REFERENCE DATA</div>
+<h2>Originalquellen</h2>
+
+<div class="sources">
+
+<a href="https://modrinth.com/mod/aquaculture"
+   target="_blank"
+   rel="noopener">
+MODRINTH // AQUACULTURE 2
+</a>
+
+<a href="https://www.curseforge.com/minecraft/mc-mods/aquaculture"
+   target="_blank"
+   rel="noopener">
+CURSEFORGE // AQUACULTURE 2
+</a>
+
+<a href="https://github.com/TeamMetallurgy/Aquaculture"
+   target="_blank"
+   rel="noopener">
+GITHUB // AQUACULTURE
+</a>
+
+</div>
+</section>
+
+
+<a class="back" href="wiki.html">
+← ZURÜCK ZUR WIKI
+</a>
+
+</main>
+
+<footer>
+RISE OF NATIONS // AQUACULTURE 2 // TACTICAL KNOWLEDGE DATABASE
+</footer>
+
+</body>
+</html>
