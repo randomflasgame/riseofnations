@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RISE OF NATIONS // ASSEMBLY LINE</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+    min-height:100vh;
+    background:
+        linear-gradient(rgba(5,10,15,.97),rgba(5,10,15,.99)),
+        repeating-linear-gradient(135deg,rgba(255,255,255,.018) 0 2px,transparent 2px 9px);
+    color:#dbe3e8;
+    font-family:"Segoe UI",Arial,sans-serif;
+}
+header{
+    background:rgba(5,10,15,.98);
+    border-bottom:1px solid #293944;
+    box-shadow:0 5px 25px rgba(0,0,0,.45);
+}
+.header-inner{
+    max-width:1500px;
+    margin:auto;
+    padding:18px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:30px;
+}
+.logo{
+    color:#d6b85c;
+    font-size:22px;
+    font-weight:950;
+    letter-spacing:3px;
+}
+.logo span{
+    display:block;
+    color:#687b86;
+    font-size:9px;
+    letter-spacing:2px;
+    margin-top:4px;
+}
+nav{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+    gap:7px;
+}
+nav a{
+    color:#9aabb4;
+    text-decoration:none;
+    padding:9px 11px;
+    border:1px solid transparent;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.2px;
+    transition:.2s;
+}
+nav a:hover{
+    color:#d6b85c;
+    background:#111b22;
+    border-color:#3b4d58;
+}
+main{
+    max-width:1250px;
+    margin:auto;
+    padding:70px 30px 100px;
+}
+.eyebrow{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:3px;
+    margin-bottom:15px;
+}
+h1{
+    color:#edf2f4;
+    font-size:clamp(40px,6.5vw,78px);
+    line-height:.95;
+    letter-spacing:4px;
+    font-weight:950;
+}
+.subtitle{
+    max-width:950px;
+    margin-top:22px;
+    color:#8497a2;
+    line-height:1.75;
+    font-size:15px;
+}
+.meta{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-top:38px;
+}
+.meta-box{
+    padding:18px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+.meta-label{
+    color:#596c77;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:8px;
+}
+.meta-value{
+    color:#d6b85c;
+    font-size:13px;
+    font-weight:900;
+}
+.section{
+    margin-top:35px;
+    padding:30px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+.section-number{
+    color:#526773;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:2px;
+    margin-bottom:9px;
+}
+h2{
+    color:#e1e8eb;
+    font-size:22px;
+    letter-spacing:1px;
+    margin-bottom:18px;
+}
+h3{
+    color:#d6b85c;
+    font-size:14px;
+    letter-spacing:1px;
+    margin:25px 0 10px;
+}
+p{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    margin-bottom:13px;
+}
+ul,ol{
+    margin:12px 0 18px 22px;
+}
+li{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    padding-left:5px;
+}
+.note{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#111c23;
+    border-left:3px solid #4d91bd;
+}
+.note-title{
+    color:#4d91bd;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+.warning{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#17140e;
+    border-left:3px solid #d6b85c;
+}
+.warning-title{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:18px;
+}
+th,td{
+    text-align:left;
+    padding:13px 14px;
+    border:1px solid #293c47;
+    font-size:12px;
+}
+th{
+    color:#d6b85c;
+    background:#111c23;
+    font-size:10px;
+    letter-spacing:1px;
+}
+td{
+    color:#8ea0a9;
+    background:#0a141a;
+}
+.sources{
+    display:grid;
+    gap:10px;
+    margin-top:15px;
+}
+.sources a{
+    display:block;
+    padding:13px 15px;
+    background:#101b22;
+    border:1px solid #293c47;
+    color:#9fb0b9;
+    text-decoration:none;
+    font-size:12px;
+    transition:.2s;
+}
+.sources a:hover{
+    color:#d6b85c;
+    border-color:#d6b85c;
+}
+.back{
+    display:inline-block;
+    margin-top:45px;
+    padding:12px 16px;
+    color:#d6b85c;
+    border:1px solid #4c4530;
+    text-decoration:none;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+}
+footer{
+    border-top:1px solid #202e36;
+    padding:25px 30px;
+    text-align:center;
+    color:#465861;
+    font-size:9px;
+    letter-spacing:2px;
+}
+@media(max-width:850px){
+    .header-inner{flex-direction:column;align-items:flex-start}
+    nav{justify-content:flex-start}
+    .meta{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:550px){
+    .meta{grid-template-columns:1fr}
+    main{padding:45px 18px 70px}
+    .section{padding:22px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="header-inner">
+
+<div class="logo">
+RISE OF NATIONS
+<span>TACTICAL KNOWLEDGE DATABASE</span>
+</div>
+
+<nav>
+<a href="../index.html">COMMAND</a>
+<a href="intelligence.html">INTELLIGENCE</a>
+<a href="server.html">SERVER</a>
+<a href="database.html">DATABASE</a>
+<a href="download.html">DOWNLOAD</a>
+<a href="communications.html">COMMUNICATIONS</a>
+<a href="wiki.html">WIKI</a>
+</nav>
+
+</div>
+</header>
+
+<main>
+
+<div class="eyebrow">
+PROFESSOR DATABASE // INDUSTRIAL AUTOMATION // PRODUCTION SYSTEMS
+</div>
+
+<h1>ASSEMBLY LINE</h1>
+
+<p class="subtitle">
+Assembly Line erweitert das industrielle Spielprinzip um stärker
+strukturierte Produktionsabläufe. Statt einzelne Gegenstände
+isoliert herzustellen, wird die Produktion als zusammenhängende
+Fertigungskette betrachtet.
+</p>
+
+<div class="meta">
+
+<div class="meta-box">
+<div class="meta-label">MOD</div>
+<div class="meta-value">ASSEMBLY LINE</div>
+</div>
+
+<div class="meta-box">
+<div class="meta-label">VERSION</div>
+<div class="meta-value">0.8.2</div>
+</div>
+
+<div class="meta-box">
+<div class="meta-label">MINECRAFT</div>
+<div class="meta-value">1.21.1</div>
+</div>
+
+<div class="meta-box">
+<div class="meta-label">SYSTEM</div>
+<div class="meta-value">AUTOMATION</div>
+</div>
+
+</div>
+
+
+<section class="section">
+<div class="section-number">01 // SYSTEM OVERVIEW</div>
+<h2>Was ist Assembly Line?</h2>
+
+<p>
+Assembly-Line-Systeme bilden industrielle Fertigung nach. Rohstoffe
+werden nicht einfach an einer einzigen Maschine verarbeitet,
+sondern durchlaufen mehrere Produktionsstufen.
+</p>
+
+<p>
+Das macht den Mod besonders interessant für große Fabriken, bei denen
+Materialflüsse geplant, automatisiert und erweitert werden sollen.
+</p>
+
+<div class="note">
+<div class="note-title">INDUSTRIAL PRINCIPLE</div>
+<p>
+Die eigentliche Herausforderung ist nicht das Herstellen eines
+einzelnen Gegenstands, sondern der Aufbau einer stabilen
+Produktionskette.
+</p>
+</div>
+</section>
+
+
+<section class="section">
+<div class="section-number">02 // PRODUCTION CHAIN</div>
+<h2>Produktionsketten verstehen</h2>
+
+<table>
+<tr>
+<th>STUFE</th>
+<th>FUNKTION</th>
+</tr>
+<tr>
+<td>INPUT</td>
+<td>Rohstoffe und Grundmaterialien</td>
+</tr>
+<tr>
+<td>PROCESSING</td>
+<td>Verarbeitung zu Zwischenprodukten</td>
+</tr>
+<tr>
+<td>ASSEMBLY</td>
+<td>Zusammenbau mehrerer Komponenten</td>
+</tr>
+<tr>
+<td>OUTPUT</td>
+<td>Fertiges Produkt</td>
+</tr>
+</table>
+
+<p>
+Eine gute Produktionsanlage sollte möglichst klar erkennen lassen,
+welche Materialien hineingehen und welches Endprodukt am Ende
+herauskommt.
+</p>
+</section>
+
+
+<section class="section">
+<div class="section-number">03 // INPUT MANAGEMENT</div>
+<h2>Rohstoffe organisieren</h2>
+
+<p>
+Jede automatisierte Fabrik beginnt mit zuverlässigen Inputs.
+</p>
+
+<ul>
+<li>Erz und Metalle.</li>
+<li>Holz und organische Materialien.</li>
+<li>Zwischenprodukte.</li>
+<li>Energie oder technische Ressourcen.</li>
+<li>Flüssigkeiten, sofern benötigt.</li>
+</ul>
+
+<p>
+Für größere Fabriken sollte bereits vor dem Bau geklärt werden,
+welche Ressourcen dauerhaft benötigt werden.
+</p>
+</section>
+
+
+<section class="section">
+<div class="section-number">04 // FACTORY PLANNING</div>
+<h2>Fabrikplanung</h2>
+
+<ol>
+<li>Endprodukt bestimmen.</li>
+<li>Benötigte Zwischenprodukte ermitteln.</li>
+<li>Produktionsschritte sortieren.</li>
+<li>Maschinenbedarf bestimmen.</li>
+<li>Input-Lager einrichten.</li>
+<li>Produktionslinie bauen.</li>
+<li>Output-Lager anschließen.</li>
+</ol>
+
+<div class="warning">
+<div class="warning-title">PLANNING WARNING</div>
+<p>
+Nicht zuerst die Maschinen aufstellen und danach überlegen, wie sie
+verbunden werden. Bei großen Fabriken führt das schnell zu
+chaotischen Transportwegen.
+</p>
+</div>
+</section>
+
+
+<section class="section">
+<div class="section-number">05 // CREATE CONNECTION</div>
+<h2>Zusammenspiel mit Create</h2>
+
+<p>
+In RISE OF NATIONS ist Create die zentrale Grundlage für
+mechanische Automatisierung. Deshalb lässt sich ein Assembly-Line-
+Konzept hervorragend mit Create kombinieren.
+</p>
+
+<ul>
+<li>Belts für Materialtransport.</li>
+<li>Funnels für Ein- und Ausgabe.</li>
+<li>Chutes für vertikalen Transport.</li>
+<li>Brass-Systeme für komplexere Logistik.</li>
+<li>Mechanical Crafters für mehrstufiges Crafting.</li>
+<li>Mechanical Presses für Verarbeitung.</li>
+<li>Mechanical Mixers für Produktionsrezepte.</li>
+<li>Trains für große Entfernungen.</li>
+</ul>
+</section>
+
+
+<section class="section">
+<div class="section-number">06 // MATERIAL FLOW</div>
+<h2>Materialfluss</h2>
+
+<p>
+Eine Produktionsanlage funktioniert nur so gut wie ihr
+Materialtransport.
+</p>
+
+<table>
+<tr>
+<th>PROBLEM</th>
+<th>MÖGLICHE URSACHE</th>
+</tr>
+<tr>
+<td>Maschine wartet</td>
+<td>Input fehlt</td>
+</tr>
+<tr>
+<td>Lager läuft voll</td>
+<td>Output wird nicht abgeführt</td>
+</tr>
+<tr>
+<td>Produktion stockt</td>
+<td>Zwischenprodukt fehlt</td>
+</tr>
+<tr>
+<td>Transport überlastet</td>
+<td>Zu wenig Logistik für die Produktionsmenge</td>
+</tr>
+</table>
+</section>
+
+
+<section class="section">
+<div class="section-number">07 // MODULAR FACTORIES</div>
+<h2>Modulare Produktion</h2>
+
+<p>
+Große Fabriken sollten in einzelne Module aufgeteilt werden.
+</p>
+
+<ul>
+<li>Rohstoffannahme.</li>
+<li>Schmelzwerk.</li>
+<li>Komponentenfertigung.</li>
+<li>Montage.</li>
+<li>Endproduktion.</li>
+<li>Verpackung und Lagerung.</li>
+</ul>
+
+<p>
+Dadurch kann ein Produktionszweig später erweitert werden, ohne die
+gesamte Fabrik neu bauen zu müssen.
+</p>
+</section>
+
+
+<section class="section">
+<div class="section-number">08 // SCALING</div>
+<h2>Produktion skalieren</h2>
+
+<p>
+Wenn ein Produkt dauerhaft zu langsam hergestellt wird, sollte
+nicht sofort die gesamte Anlage verändert werden.
+</p>
+
+<p>
+Zuerst muss festgestellt werden, welche Produktionsstufe der
+Engpass ist.
+</p>
+
+<ol>
+<li>Produktion beobachten.</li>
+<li>Engpass identifizieren.</li>
+<li>Betroffene Maschine vervielfachen.</li>
+<li>Input erhöhen.</li>
+<li>Output-Transport prüfen.</li>
+</ol>
+</section>
+
+
+<section class="section">
+<div class="section-number">09 // MULTIPLAYER INDUSTRY</div>
+<h2>Industrie im Multiplayer</h2>
+
+<p>
+Auf einem Multiplayer-Server kann eine Assembly-Line-Fabrik sogar
+als eigenes Spielerprojekt betrieben werden.
+</p>
+
+<p>
+Ein Spieler kann Rohstoffe liefern, während andere Spieler
+Zwischenprodukte herstellen oder die fertigen Waren transportieren.
+</p>
+
+<div class="note">
+<div class="note-title">ECONOMIC PRINCIPLE</div>
+<p>
+Spezialisierung kann auf einem Server effizienter sein als wenn
+jeder Spieler dieselbe komplette Produktionskette selbst aufbaut.
+</p>
+</div>
+</section>
+
+
+<section class="section">
+<div class="section-number">10 // PERFORMANCE</div>
+<h2>Performance und Serverlast</h2>
+
+<p>
+Große automatisierte Fabriken können durch viele gleichzeitig aktive
+Maschinen und Transportobjekte zusätzliche Serverlast erzeugen.
+</p>
+
+<ul>
+<li>Produktionslinien kompakt planen.</li>
+<li>Unnötige Dauerproduktion vermeiden.</li>
+<li>Überfüllte Transportsysteme verhindern.</li>
+<li>Bei Problemen Spark zur Analyse verwenden.</li>
+</ul>
+</section>
+
+
+<section class="section">
+<div class="section-number">11 // TROUBLESHOOTING</div>
+<h2>Fehleranalyse</h2>
+
+<h3>Produktionslinie produziert nichts</h3>
+<p>
+Zuerst prüfen, ob der erste Produktionsschritt überhaupt Input
+erhält. Danach die gesamte Kette Schritt für Schritt verfolgen.
+</p>
+
+<h3>Zwischenprodukt fehlt</h3>
+<p>
+Prüfen, ob die entsprechende Produktionsmaschine korrekt versorgt
+wird und ob das Rezept tatsächlich verfügbar ist.
+</p>
+
+<h3>Output wird nicht transportiert</h3>
+<p>
+Lager, Funnel, Belt oder sonstige Transportverbindungen kontrollieren.
+Auch falsche Ein- und Ausgaberichtungen können eine komplette Linie
+blockieren.
+</p>
+
+<h3>Nach Mod-Update verändert</h3>
+<p>
+Bei Änderungen an Rezepten oder Maschinen immer die aktuelle JEI-
+Darstellung verwenden und nicht blind nach alten Produktionsplänen
+bauen.
+</p>
+</section>
+
+
+<section class="section">
+<div class="section-number">12 // ADVANCED ENGINEERING</div>
+<h2>Fortgeschrittene Produktionsplanung</h2>
+
+<p>
+Für sehr große Anlagen lohnt sich eine Produktionsmatrix.
+</p>
+
+<table>
+<tr>
+<th>FRAGE</th>
+<th>PLANUNG</th>
+</tr>
+<tr>
+<td>Was wird produziert?</td>
+<td>Endprodukt definieren</td>
+</tr>
+<tr>
+<td>Was wird benötigt?</td>
+<td>Rohstoffe auflisten</td>
+</tr>
+<tr>
+<td>Wo entsteht der Engpass?</td>
+<td>Produktionsrate vergleichen</td>
+</tr>
+<tr>
+<td>Wie wird transportiert?</td>
+<td>Logistiknetz festlegen</td>
+</tr>
+<tr>
+<td>Wie wird erweitert?</td>
+<td>Reserveflächen einplanen</td>
+</tr>
+</table>
+</section>
+
+
+<section class="section">
+<div class="section-number">13 // RISE OF NATIONS APPLICATION</div>
+<h2>Einsatz im Modpack</h2>
+
+<p>
+Das Modpack besitzt eine außergewöhnlich große technische
+Modlandschaft. Ein strukturiertes Assembly-Line-Konzept passt daher
+besonders gut zu industriellen Megaprojekten.
+</p>
+
+<ul>
+<li>Create.</li>
+<li>Create Factory.</li>
+<li>Create Ultimate Factory.</li>
+<li>Create Diesel Generators.</li>
+<li>Create New Age.</li>
+<li>Create Mechanical Fusion.</li>
+<li>Electrodynamics.</li>
+<li>Nuclear Science.</li>
+<li>Voltaic.</li>
+<li>Modular Force Fields.</li>
+</ul>
+
+<p>
+Damit können Produktionsanlagen vom einfachen Rohstoffbetrieb bis
+zu hochkomplexen Industriezentren aufgebaut werden.
+</p>
+</section>
+
+
+<section class="section">
+<div class="section-number">14 // PROFESSOR DOCTRINE</div>
+<h2>Das Wichtigste zum Mitnehmen</h2>
+
+<ul>
+<li>Produktionsketten sollten vor dem Bau geplant werden.</li>
+<li>Materialfluss ist genauso wichtig wie die Maschinen selbst.</li>
+<li>Engpässe müssen gezielt analysiert werden.</li>
+<li>Modulare Fabriken lassen sich leichter erweitern.</li>
+<li>JEI sollte zur Kontrolle aktueller Rezepte verwendet werden.</li>
+<li>Create eignet sich hervorragend als Logistikgrundlage.</li>
+<li>Große Fabriken sollten auf Serverperformance geprüft werden.</li>
+</ul>
+
+<div class="warning">
+<div class="warning-title">FINAL PRINCIPLE</div>
+<p>
+Eine echte Fabrik ist kein Haufen Maschinen. Sie ist ein System,
+in dem jeder Produktionsschritt den nächsten zuverlässig versorgt.
+</p>
+</div>
+</section>
+
+
+<section class="section">
+<div class="section-number">15 // REFERENCE DATA</div>
+<h2>Originalquellen</h2>
+
+<div class="sources">
+
+<a href="https://modrinth.com/"
+   target="_blank"
+   rel="noopener">
+MODRINTH // MOD DATABASE
+</a>
+
+<a href="https://www.curseforge.com/minecraft/mc-mods"
+   target="_blank"
+   rel="noopener">
+CURSEFORGE // MINECRAFT MOD DATABASE
+</a>
+
+</div>
+</section>
+
+
+<a class="back" href="wiki.html">
+← ZURÜCK ZUR WIKI
+</a>
+
+</main>
+
+<footer>
+RISE OF NATIONS // ASSEMBLY LINE // TACTICAL KNOWLEDGE DATABASE
+</footer>
+
+</body>
+</html>
