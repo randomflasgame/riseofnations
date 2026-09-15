@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>WICHTIG // WIKI // RISE OF NATIONS</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+
+            background:
+                radial-gradient(circle at top, #18232d 0%, #0b1117 45%, #05080b 100%);
+
+            color: #e8edf2;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+
+            background:
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+
+            background-size: 40px 40px;
+            opacity: 0.35;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+
+            min-height: 76px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 15px 35px;
+
+            background: rgba(7, 12, 17, 0.96);
+            border-bottom: 1px solid #1d5f91;
+
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+
+        .logo {
+            color: #d6a83d;
+            font-size: 22px;
+            font-weight: 900;
+            letter-spacing: 3px;
+        }
+
+        nav {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        nav a {
+            color: #bfc9d2;
+            text-decoration: none;
+
+            padding: 13px 17px;
+
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 1.5px;
+
+            border: 1px solid transparent;
+
+            transition: 0.2s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: white;
+            background: rgba(18, 91, 143, 0.25);
+            border-color: #1d6fa8;
+        }
+
+        .status {
+            color: #65d48a;
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+
+        main {
+            max-width: 1350px;
+            margin: auto;
+            padding: 70px 35px;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 55px;
+        }
+
+        .classification {
+            color: #c64e4e;
+
+            font-size: 12px;
+            font-weight: bold;
+
+            letter-spacing: 4px;
+
+            margin-bottom: 18px;
+        }
+
+        h1 {
+            margin: 0;
+
+            color: #d6a83d;
+
+            font-size: clamp(42px, 7vw, 80px);
+            font-weight: 900;
+
+            letter-spacing: 7px;
+        }
+
+        .subtitle {
+            margin-top: 18px;
+
+            color: #8796a3;
+
+            font-size: 13px;
+            letter-spacing: 3px;
+        }
+
+        .notice {
+            margin-bottom: 35px;
+
+            padding: 22px 25px;
+
+            background: rgba(13, 21, 28, 0.94);
+
+            border-left: 3px solid #c64e4e;
+
+            border-top: 1px solid #263846;
+            border-right: 1px solid #263846;
+            border-bottom: 1px solid #263846;
+        }
+
+        .notice-title {
+            color: #c64e4e;
+
+            font-size: 12px;
+            font-weight: bold;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 9px;
+        }
+
+        .notice p {
+            margin: 0;
+
+            color: #9aa7b1;
+
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .mod-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        .mod-card {
+            display: block;
+
+            padding: 25px;
+
+            min-height: 190px;
+
+            background: rgba(13, 21, 28, 0.96);
+
+            border: 1px solid #263846;
+
+            text-decoration: none;
+
+            transition: 0.2s;
+        }
+
+        .mod-card:hover {
+            border-color: #287bb5;
+
+            transform: translateY(-3px);
+
+            background: rgba(16, 28, 37, 0.98);
+        }
+
+        .mod-number {
+            color: #56636e;
+
+            font-size: 10px;
+            font-weight: bold;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 12px;
+        }
+
+        .mod-card h2 {
+            margin: 0 0 12px;
+
+            color: #e8edf2;
+
+            font-size: 21px;
+
+            letter-spacing: 1px;
+        }
+
+        .mod-card p {
+            margin: 0;
+
+            color: #8f9ba5;
+
+            font-size: 13px;
+
+            line-height: 1.7;
+        }
+
+        .mod-footer {
+            margin-top: 18px;
+
+            padding-top: 12px;
+
+            border-top: 1px solid #263846;
+
+            color: #5aa3d5;
+
+            font-size: 10px;
+            font-weight: bold;
+
+            letter-spacing: 1.5px;
+        }
+
+        .back {
+            display: block;
+
+            width: fit-content;
+
+            margin: 45px auto 0;
+
+            padding: 12px 18px;
+
+            color: #9ba8b2;
+
+            text-decoration: none;
+
+            font-size: 11px;
+            font-weight: bold;
+
+            letter-spacing: 2px;
+
+            border: 1px solid #263846;
+        }
+
+        .back:hover {
+            color: white;
+
+            border-color: #287bb5;
+
+            background: rgba(18, 91, 143, 0.2);
+        }
+
+        footer {
+            text-align: center;
+
+            padding: 50px 20px;
+
+            color: #56636e;
+
+            font-size: 11px;
+
+            letter-spacing: 2px;
+        }
+
+        @media (max-width: 900px) {
+
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .mod-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        RISE OF NATIONS
+    </div>
+
+    <nav>
+
+        <a href="../index.html">
+            COMMAND
+        </a>
+
+        <a href="intelligence.html">
+            INTELLIGENCE
+        </a>
+
+        <a href="server.html">
+            SERVER
+        </a>
+
+        <a href="database.html">
+            DATABASE
+        </a>
+
+        <a href="download.html">
+            DOWNLOAD
+        </a>
+
+        <a href="communications.html">
+            COMMUNICATIONS
+        </a>
+
+        <a href="wiki.html" class="active">
+            WIKI
+        </a>
+
+    </nav>
+
+    <div class="status">
+        ● SYSTEM ONLINE
+    </div>
+
+</header>
+
+
+<main>
+
+    <section class="page-header">
+
+        <div class="classification">
+            KNOWLEDGE DATABASE // CLASSIFICATION 01
+        </div>
+
+        <h1>
+            WICHTIG
+        </h1>
+
+        <div class="subtitle">
+            ESSENTIAL PLAYER KNOWLEDGE
+        </div>
+
+    </section>
+
+
+    <section class="notice">
+
+        <div class="notice-title">
+            DATABASE INFORMATION
+        </div>
+
+        <p>
+            Dieser Bereich enthält ausführliche Dokumentationen zu den
+            Mods, deren Systeme für das normale Spielen von RISE OF NATIONS
+            besonders wichtig sind. Die einzelnen Einträge werden nicht
+            auf eine kurze Zusammenfassung reduziert. Ziel ist eine
+            vollständige, verständliche Wissensgrundlage mit weiterführenden
+            Quellen.
+        </p>
+
+    </section>
+
+
+    <section class="mod-list">
+
+
+        <a class="mod-card" href="wiki-mod-create.html">
+
+            <div class="mod-number">
+                SYSTEM 01
+            </div>
+
+            <h2>
+                CREATE
+            </h2>
+
+            <p>
+                Mechanische Energie, Maschinen, Verarbeitung,
+                Automatisierung, Transport und fortgeschrittene
+                technische Systeme.
+            </p>
+
+            <div class="mod-footer">
+                OPEN FULL DOCUMENTATION →
+            </div>
+
+        </a>
+
+
+        <a class="mod-card" href="wiki-mod-jei.html">
+
+            <div class="mod-number">
+                SYSTEM 02
+            </div>
+
+            <h2>
+                JEI
+            </h2>
+
+            <p>
+                Rezeptsuche, Item-Informationen, Herstellungswege und
+                die wichtigsten Funktionen zum Arbeiten mit dem Modpack.
+            </p>
+
+            <div class="mod-footer">
+                OPEN FULL DOCUMENTATION →
+            </div>
+
+        </a>
+
+
+        <a class="mod-card" href="wiki-mod-waystones.html">
+
+            <div class="mod-number">
+                SYSTEM 03
+            </div>
+
+            <h2>
+                WAYSTONES
+            </h2>
+
+            <p>
+                Teleportation, Waystones, Reisemöglichkeiten und die
+                wichtigsten Regeln und Funktionen des Reisesystems.
+            </p>
+
+            <div class="mod-footer">
+                OPEN FULL DOCUMENTATION →
+            </div>
+
+        </a>
+
+
+        <a class="mod-card" href="wiki-mod-simple-voice-chat.html">
+
+            <div class="mod-number">
+                SYSTEM 04
+            </div>
+
+            <h2>
+                SIMPLE VOICE CHAT
+            </h2>
+
+            <p>
+                Sprachkommunikation, Einrichtung, Bedienung,
+                Gruppen und wichtige Einstellungen für den Server.
+            </p>
+
+            <div class="mod-footer">
+                OPEN FULL DOCUMENTATION →
+            </div>
+
+        </a>
+
+
+        <a class="mod-card" href="wiki-mod-farmers-delight.html">
+
+            <div class="mod-number">
+                SYSTEM 05
+            </div>
+
+            <h2>
+                FARMER'S DELIGHT
+            </h2>
+
+            <p>
+                Landwirtschaft, Kochen, Küchenstationen, Zutaten,
+                Verarbeitung und die wichtigsten Nahrungssysteme.
+            </p>
+
+            <div class="mod-footer">
+                OPEN FULL DOCUMENTATION →
+            </div>
+
+        </a>
+
+
+        <a class="mod-card" href="wiki-mod-sophisticated-backpacks.html">
+
+            <div class="mod-number">
+                SYSTEM 06
+            </div>
+
+            <h2>
+                SOPHISTICATED BACKPACKS
+            </h2>
+
+            <p>
+                Tragbarer Speicher, Backpack-Stufen, Upgrades,
+                Automatisierung und fortgeschrittene Lagerfunktionen.
+            </p>
+
+            <div class="mod-footer">
+                OPEN FULL DOCUMENTATION →
+            </div>
+
+        </a>
+
+
+        <a class="mod-card" href="wiki-mod-timeless.html">
+
+            <div class="mod-number">
+                SYSTEM 07
+            </div>
+
+            <h2>
+                TIMELESS AND CLASSICS ZERO
+            </h2>
+
+            <p>
+                Waffen, Munition, Nachladen, Ausrüstung und wichtige
+                Bedienmechaniken des Waffensystems.
+            </p>
+
+            <div class="mod-footer">
+                OPEN FULL DOCUMENTATION →
+            </div>
+
+        </a>
+
+
+        <a class="mod-card" href="wiki-mod-claims.html">
+
+            <div class="mod-number">
+                SYSTEM 08
+            </div>
+
+            <h2>
+                OPEN PARTIES AND CLAIMS
+            </h2>
+
+            <p>
+                Claims, Schutz des eigenen Gebiets, Gruppen und
+                wichtige Multiplayer-Funktionen.
+            </p>
+
+            <div class="mod-footer">
+                OPEN FULL DOCUMENTATION →
+            </div>
+
+        </a>
+
+
+        <a class="mod-card" href="wiki-mod-securitycraft.html">
+
+            <div class="mod-number">
+                SYSTEM 09
+            </div>
+
+            <h2>
+                SECURITYCRAFT
+            </h2>
+
+            <p>
+                Sicherheitssysteme, geschützte Bereiche, Überwachung,
+                Zugangskontrolle und technische Verteidigung.
+            </p>
+
+            <div class="mod-footer">
+                OPEN FULL DOCUMENTATION →
+            </div>
+
+        </a>
+
+
+        <a class="mod-card" href="wiki-mod-sophisticated-storage.html">
+
+            <div class="mod-number">
+                SYSTEM 10
+            </div>
+
+            <h2>
+                SOPHISTICATED STORAGE
+            </h2>
+
+            <p>
+                Erweiterte Lagerung, Speicher-Upgrades, Organisation
+                und fortgeschrittene Lagertechnik.
+            </p>
+
+            <div class="mod-footer">
+                OPEN FULL DOCUMENTATION →
+            </div>
+
+        </a>
+
+
+    </section>
+
+
+    <a class="back" href="wiki.html">
+        ← RETURN TO WIKI
+    </a>
+
+</main>
+
+
+<footer>
+    RISE OF NATIONS // KNOWLEDGE DATABASE // SYSTEM ONLINE
+</footer>
+
+</body>
+</html>
