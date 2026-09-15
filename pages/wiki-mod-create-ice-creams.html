@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RISE OF NATIONS // CREATE ICE CREAMS</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+    min-height:100vh;
+    background:
+        linear-gradient(rgba(5,10,15,.97),rgba(5,10,15,.99)),
+        repeating-linear-gradient(135deg,rgba(255,255,255,.018) 0 2px,transparent 2px 9px);
+    color:#dbe3e8;
+    font-family:"Segoe UI",Arial,sans-serif;
+}
+
+header{
+    background:rgba(5,10,15,.98);
+    border-bottom:1px solid #293944;
+    box-shadow:0 5px 25px rgba(0,0,0,.45);
+}
+
+.header-inner{
+    max-width:1500px;
+    margin:auto;
+    padding:18px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:30px;
+}
+
+.logo{
+    color:#d6b85c;
+    font-size:22px;
+    font-weight:950;
+    letter-spacing:3px;
+}
+
+.logo span{
+    display:block;
+    color:#687b86;
+    font-size:9px;
+    letter-spacing:2px;
+    margin-top:4px;
+}
+
+nav{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+    gap:7px;
+}
+
+nav a{
+    color:#9aabb4;
+    text-decoration:none;
+    padding:9px 11px;
+    border:1px solid transparent;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.2px;
+    transition:.2s;
+}
+
+nav a:hover{
+    color:#d6b85c;
+    background:#111b22;
+    border-color:#3b4d58;
+}
+
+main{
+    max-width:1250px;
+    margin:auto;
+    padding:70px 30px 100px;
+}
+
+.eyebrow{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:3px;
+    margin-bottom:15px;
+}
+
+h1{
+    color:#edf2f4;
+    font-size:clamp(40px,6.5vw,78px);
+    line-height:.95;
+    letter-spacing:4px;
+    font-weight:950;
+}
+
+.subtitle{
+    max-width:930px;
+    margin-top:22px;
+    color:#8497a2;
+    line-height:1.75;
+    font-size:15px;
+}
+
+.meta{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-top:38px;
+}
+
+.meta-box{
+    padding:18px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+
+.meta-label{
+    color:#596c77;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:8px;
+}
+
+.meta-value{
+    color:#d6b85c;
+    font-size:13px;
+    font-weight:900;
+}
+
+.section{
+    margin-top:35px;
+    padding:30px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+
+.section-number{
+    color:#526773;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:2px;
+    margin-bottom:9px;
+}
+
+h2{
+    color:#e1e8eb;
+    font-size:22px;
+    letter-spacing:1px;
+    margin-bottom:18px;
+}
+
+h3{
+    color:#d6b85c;
+    font-size:14px;
+    letter-spacing:1px;
+    margin:25px 0 10px;
+}
+
+p{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    margin-bottom:13px;
+}
+
+ul,ol{
+    margin:12px 0 18px 22px;
+}
+
+li{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    padding-left:5px;
+}
+
+.note{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#111c23;
+    border-left:3px solid #4d91bd;
+}
+
+.note-title{
+    color:#4d91bd;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+
+.warning{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#17140e;
+    border-left:3px solid #d6b85c;
+}
+
+.warning-title{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:18px;
+}
+
+th,td{
+    text-align:left;
+    padding:13px 14px;
+    border:1px solid #293c47;
+    font-size:12px;
+}
+
+th{
+    color:#d6b85c;
+    background:#111c23;
+    font-size:10px;
+    letter-spacing:1px;
+}
+
+td{
+    color:#8ea0a9;
+    background:#0a141a;
+}
+
+.sources{
+    display:grid;
+    gap:10px;
+    margin-top:15px;
+}
+
+.sources a{
+    display:block;
+    padding:13px 15px;
+    background:#101b22;
+    border:1px solid #293c47;
+    color:#9fb0b9;
+    text-decoration:none;
+    font-size:12px;
+    transition:.2s;
+}
+
+.sources a:hover{
+    color:#d6b85c;
+    border-color:#d6b85c;
+}
+
+.back{
+    display:inline-block;
+    margin-top:45px;
+    padding:12px 16px;
+    color:#d6b85c;
+    border:1px solid #4c4530;
+    text-decoration:none;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    transition:.2s;
+}
+
+.back:hover{
+    background:#17150f;
+    border-color:#d6b85c;
+}
+
+footer{
+    border-top:1px solid #202e36;
+    padding:25px 30px;
+    text-align:center;
+    color:#465861;
+    font-size:9px;
+    letter-spacing:2px;
+}
+
+@media(max-width:850px){
+    .header-inner{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    nav{
+        justify-content:flex-start;
+    }
+
+    .meta{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:550px){
+    .meta{
+        grid-template-columns:1fr;
+    }
+
+    main{
+        padding:45px 18px 70px;
+    }
+
+    .section{
+        padding:22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-inner">
+
+        <div class="logo">
+            RISE OF NATIONS
+            <span>TACTICAL KNOWLEDGE DATABASE</span>
+        </div>
+
+        <nav>
+            <a href="../index.html">COMMAND</a>
+            <a href="intelligence.html">INTELLIGENCE</a>
+            <a href="server.html">SERVER</a>
+            <a href="database.html">DATABASE</a>
+            <a href="download.html">DOWNLOAD</a>
+            <a href="communications.html">COMMUNICATIONS</a>
+            <a href="wiki.html">WIKI</a>
+        </nav>
+
+    </div>
+</header>
+
+<main>
+
+    <div class="eyebrow">
+        PROFESSOR DATABASE // FOOD SYSTEMS // CREATE
+    </div>
+
+    <h1>CREATE ICE CREAMS</h1>
+
+    <p class="subtitle">
+        Create Ice Creams erweitert Create um ein spezialisiertes
+        Dessert- und Produktionssystem. Zutaten, Verarbeitung und
+        fertige Produkte lassen sich in eine industrielle
+        Lebensmittelproduktion integrieren.
+    </p>
+
+    <div class="meta">
+
+        <div class="meta-box">
+            <div class="meta-label">MOD</div>
+            <div class="meta-value">CREATE ICE CREAMS</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">VERSION</div>
+            <div class="meta-value">1.51</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">MINECRAFT</div>
+            <div class="meta-value">1.21.1</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">SYSTEM</div>
+            <div class="meta-value">FOOD / PRODUCTION</div>
+        </div>
+
+    </div>
+
+
+    <section class="section">
+
+        <div class="section-number">01 // SYSTEM OVERVIEW</div>
+        <h2>Was ist Create Ice Creams?</h2>
+
+        <p>
+            Create Ice Creams fügt zusätzliche Lebensmittel und
+            Produktionsmöglichkeiten rund um Eiscreme und verwandte
+            Dessertprodukte hinzu.
+        </p>
+
+        <p>
+            Durch die Verbindung mit Create kann die Herstellung
+            von einem einfachen Handwerksprozess zu einer
+            automatisierten Produktionslinie ausgebaut werden.
+        </p>
+
+        <div class="note">
+            <div class="note-title">CORE PRINCIPLE</div>
+            <p>
+                Das interessante Element ist nicht nur das fertige
+                Eis, sondern die Möglichkeit, Zutaten und Verarbeitung
+                in eine vollständige Fabrik einzubauen.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">02 // PRODUCTION CHAIN</div>
+        <h2>Die Produktionskette</h2>
+
+        <p>
+            Eine industrielle Dessertproduktion lässt sich
+            grundsätzlich in mehrere Stufen aufteilen.
+        </p>
+
+        <ol>
+            <li>Grundzutaten beschaffen.</li>
+            <li>Zutaten vorbereiten.</li>
+            <li>Produkte verarbeiten.</li>
+            <li>Eis beziehungsweise Dessert herstellen.</li>
+            <li>Produkte lagern.</li>
+            <li>Produkte transportieren.</li>
+        </ol>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">03 // INGREDIENTS</div>
+        <h2>Grundstoffe und Zutaten</h2>
+
+        <p>
+            Die genaue Zusammensetzung hängt von den jeweiligen
+            Rezepten der installierten Version ab. Für die Planung
+            sollte man deshalb JEI als primäre Rezeptdatenbank verwenden.
+        </p>
+
+        <table>
+
+            <tr>
+                <th>STUFE</th>
+                <th>BEISPIELFUNKTION</th>
+            </tr>
+
+            <tr>
+                <td>RAW</td>
+                <td>Milch, Früchte und weitere Ausgangsstoffe</td>
+            </tr>
+
+            <tr>
+                <td>PREPARATION</td>
+                <td>Zutaten vorbereiten</td>
+            </tr>
+
+            <tr>
+                <td>MIXING</td>
+                <td>Mehrere Komponenten kombinieren</td>
+            </tr>
+
+            <tr>
+                <td>PROCESSING</td>
+                <td>Industrielle Verarbeitung</td>
+            </tr>
+
+            <tr>
+                <td>FINAL PRODUCT</td>
+                <td>Fertiges Dessert</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">04 // JEI WORKFLOW</div>
+        <h2>Rezepte mit JEI analysieren</h2>
+
+        <p>
+            Bei einem großen Modpack ist es kaum sinnvoll, jedes
+            Rezept auswendig zu lernen. JEI sollte als zentrale
+            technische Referenz verwendet werden.
+        </p>
+
+        <ul>
+            <li>Endprodukt suchen.</li>
+            <li>Rezept öffnen.</li>
+            <li>Benötigte Zutaten notieren.</li>
+            <li>Produktionsmethode prüfen.</li>
+            <li>Vorstufen ebenfalls untersuchen.</li>
+        </ul>
+
+        <div class="note">
+            <div class="note-title">PROFESSOR TIP</div>
+            <p>
+                Suche nicht nur nach dem fertigen Produkt. Öffne
+                auch die Zutaten und deren Rezepte. Dadurch erkennst
+                du die komplette Produktionskette.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">05 // CREATE INTEGRATION</div>
+        <h2>Create-Maschinen einsetzen</h2>
+
+        <p>
+            Wenn ein Rezept mit Create-Verarbeitung kompatibel ist,
+            kann die Herstellung in eine größere Produktionsanlage
+            integriert werden.
+        </p>
+
+        <ul>
+            <li>Transport mit Bändern.</li>
+            <li>Filterung mit Funnels.</li>
+            <li>Flüssigkeitstransport über Pipes.</li>
+            <li>Automatisierte Verarbeitung.</li>
+            <li>Zentrale Lagerung.</li>
+        </ul>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">06 // FACTORY DESIGN</div>
+        <h2>Eiscremefabrik planen</h2>
+
+        <p>
+            Für eine größere Anlage empfiehlt sich eine klare
+            Trennung zwischen Rohstofflager, Verarbeitung und
+            Endproduktlager.
+        </p>
+
+        <ol>
+            <li>Rohstofflager errichten.</li>
+            <li>Zutatenzufuhr organisieren.</li>
+            <li>Produktionsmaschinen aufstellen.</li>
+            <li>Zwischenprodukte transportieren.</li>
+            <li>Fertige Produkte sammeln.</li>
+            <li>Endlager anschließen.</li>
+        </ol>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">07 // AUTOMATION</div>
+        <h2>Automatisierte Produktion</h2>
+
+        <p>
+            Der größte Vorteil entsteht, wenn die Dessertproduktion
+            ohne ständige manuelle Eingriffe funktioniert.
+        </p>
+
+        <ul>
+            <li>Automatische Zufuhr.</li>
+            <li>Automatische Verarbeitung.</li>
+            <li>Automatische Sortierung.</li>
+            <li>Automatische Lagerung.</li>
+            <li>Kontinuierliche Produktion.</li>
+        </ul>
+
+        <div class="warning">
+            <div class="warning-title">EFFICIENCY WARNING</div>
+            <p>
+                Eine vollautomatische Anlage sollte nicht größer
+                sein als der tatsächliche Bedarf. Überproduktion
+                verbraucht unnötig Energie, Platz und Ressourcen.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">08 // FOOD INDUSTRY</div>
+        <h2>Verbindung mit Farmer’s Delight</h2>
+
+        <p>
+            RISE OF NATIONS besitzt mehrere Lebensmittel- und
+            Landwirtschaftssysteme. Dadurch kann Create Ice Creams
+            Teil einer größeren Nahrungsmittelindustrie werden.
+        </p>
+
+        <ul>
+            <li>Landwirtschaft liefert Zutaten.</li>
+            <li>Farmer’s Delight erweitert die Lebensmittelproduktion.</li>
+            <li>Create übernimmt Transport und Verarbeitung.</li>
+            <li>Create Ice Creams ergänzt die Dessertproduktion.</li>
+            <li>Zentrale Lager bündeln fertige Produkte.</li>
+        </ul>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">09 // STORAGE</div>
+        <h2>Lagerung</h2>
+
+        <p>
+            Fertige Produkte sollten getrennt von Rohstoffen gelagert
+            werden. Dadurch bleiben Produktionsanlagen übersichtlich.
+        </p>
+
+        <ul>
+            <li>Rohstofflager.</li>
+            <li>Zwischenlager.</li>
+            <li>Fertigwarenlager.</li>
+            <li>Ausgabe- oder Verkaufsbereich.</li>
+        </ul>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">10 // MULTIPLAYER</div>
+        <h2>Eiscreme als Handelsgut</h2>
+
+        <p>
+            Lebensmittel eignen sich besonders gut für eine
+            spielergetriebene Wirtschaft.
+        </p>
+
+        <ul>
+            <li>Cafés und Restaurants.</li>
+            <li>Handelsstände.</li>
+            <li>Versorgung von Spielern.</li>
+            <li>Event- und Festtagsproduktion.</li>
+            <li>Großhandel mit Lebensmitteln.</li>
+        </ul>
+
+        <div class="note">
+            <div class="note-title">ECONOMIC APPLICATION</div>
+            <p>
+                Ein spezialisiertes Unternehmen kann sich auf
+                Lebensmittelproduktion konzentrieren und andere
+                Spieler oder Städte beliefern.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">11 // FACTORY LOGISTICS</div>
+        <h2>Transport innerhalb der Fabrik</h2>
+
+        <p>
+            Auch eine kleine Dessertfabrik profitiert von sauberer
+            Logistik.
+        </p>
+
+        <table>
+
+            <tr>
+                <th>BEREICH</th>
+                <th>FUNKTION</th>
+            </tr>
+
+            <tr>
+                <td>INPUT</td>
+                <td>Zutaten aufnehmen</td>
+            </tr>
+
+            <tr>
+                <td>PROCESSING</td>
+                <td>Produktion</td>
+            </tr>
+
+            <tr>
+                <td>BUFFER</td>
+                <td>Zwischenlager</td>
+            </tr>
+
+            <tr>
+                <td>OUTPUT</td>
+                <td>Fertigprodukte</td>
+            </tr>
+
+            <tr>
+                <td>STORAGE</td>
+                <td>Langzeitlagerung</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">12 // TROUBLESHOOTING</div>
+        <h2>Fehleranalyse</h2>
+
+        <h3>Rezept funktioniert nicht</h3>
+
+        <p>
+            Öffne das Rezept direkt in JEI und überprüfe, ob die
+            verwendeten Zutaten und der richtige Produktionsweg
+            eingesetzt werden.
+        </p>
+
+        <h3>Maschine erhält keine Zutaten</h3>
+
+        <p>
+            Kontrolliere Funnels, Filter, Inventare und die
+            Bewegungsrichtung des Transportsystems.
+        </p>
+
+        <h3>Produktion steht still</h3>
+
+        <p>
+            Prüfe zunächst die Versorgung mit Rohstoffen. Danach
+            solltest du Zwischenlager und Ausgangsseite kontrollieren.
+        </p>
+
+        <h3>Lager läuft über</h3>
+
+        <p>
+            Produktionsrate reduzieren oder ein größeres beziehungsweise
+            intelligenteres Lagersystem einsetzen.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">13 // ADVANCED PRODUCTION</div>
+        <h2>Fortgeschrittene Anlagen</h2>
+
+        <p>
+            Eine größere Lebensmittelanlage kann verschiedene
+            Produkte parallel herstellen.
+        </p>
+
+        <ul>
+            <li>Gemeinsames Rohstofflager.</li>
+            <li>Getrennte Produktionslinien.</li>
+            <li>Gemeinsamer Transportkorridor.</li>
+            <li>Zentrale Qualitäts- und Lagerkontrolle.</li>
+            <li>Separate Ausgabestationen.</li>
+        </ul>
+
+        <p>
+            Dabei sollte jede Produktionslinie möglichst unabhängig
+            arbeiten können, damit ein Fehler nicht die komplette
+            Fabrik stilllegt.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">14 // RISE OF NATIONS APPLICATION</div>
+        <h2>Einsatz im Modpack</h2>
+
+        <p>
+            Create Ice Creams ist kein zentraler Progressionsmod,
+            kann aber hervorragend als Teil einer großen
+            Lebensmittel- und Handelsinfrastruktur eingesetzt werden.
+        </p>
+
+        <ul>
+            <li>Industriegebiete mit Lebensmittelproduktion.</li>
+            <li>Cafés und Restaurants.</li>
+            <li>Städtische Versorgung.</li>
+            <li>Spielerhandel.</li>
+            <li>Event- und Festtagsproduktion.</li>
+            <li>Automatisierte Create-Fabriken.</li>
+        </ul>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">15 // PROFESSOR DOCTRINE</div>
+        <h2>Das Wichtigste zum Mitnehmen</h2>
+
+        <ul>
+            <li>JEI ist die wichtigste Rezeptreferenz.</li>
+            <li>Rohstoffe und Fertigprodukte sollten getrennt gelagert werden.</li>
+            <li>Create kann die Produktion weitgehend automatisieren.</li>
+            <li>Farmer’s Delight und andere Food-Mods können als Zulieferer dienen.</li>
+            <li>Lebensmittel können im Multiplayer zu Handelswaren werden.</li>
+            <li>Große Anlagen sollten modular aufgebaut sein.</li>
+        </ul>
+
+        <div class="warning">
+            <div class="warning-title">FINAL PRINCIPLE</div>
+            <p>
+                Behandle auch scheinbar kleine Food-Mods als Teil
+                eines größeren Produktionssystems. Die Stärke entsteht
+                durch die Verbindung von Landwirtschaft, Verarbeitung,
+                Automation, Lagerung und Handel.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">16 // REFERENCE DATA</div>
+        <h2>Originalquellen</h2>
+
+        <p>
+            Für konkrete Rezepte, Produktionsmethoden und
+            versionsabhängige Inhalte sollte die jeweilige
+            Projektseite konsultiert werden.
+        </p>
+
+        <div class="sources">
+
+            <a href="https://modrinth.com/mod/create-ice-creams"
+               target="_blank"
+               rel="noopener">
+                MODRINTH // CREATE ICE CREAMS
+            </a>
+
+            <a href="https://www.curseforge.com/minecraft/mc-mods/create-ice-creams"
+               target="_blank"
+               rel="noopener">
+                CURSEFORGE // CREATE ICE CREAMS
+            </a>
+
+            <a href="https://modrinth.com/mod/create"
+               target="_blank"
+               rel="noopener">
+                MODRINTH // CREATE
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <a class="back" href="wiki.html">
+        ← ZURÜCK ZUR WIKI
+    </a>
+
+</main>
+
+<footer>
+    RISE OF NATIONS // CREATE ICE CREAMS // TACTICAL KNOWLEDGE DATABASE
+</footer>
+
+</body>
+</html>
