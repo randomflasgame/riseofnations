@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RISE OF NATIONS // WIKI // SIMPLE VOICE CHAT</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+    margin:0;
+    background:
+        linear-gradient(rgba(5,10,16,.95),rgba(5,10,16,.98)),
+        repeating-linear-gradient(
+            0deg,
+            rgba(255,255,255,.02) 0px,
+            rgba(255,255,255,.02) 1px,
+            transparent 1px,
+            transparent 4px
+        );
+    color:#d7e0e8;
+    font-family:Arial,Helvetica,sans-serif;
+    line-height:1.65;
+}
+
+body:before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    background:
+        linear-gradient(90deg,rgba(0,80,130,.04) 1px,transparent 1px),
+        linear-gradient(rgba(0,80,130,.04) 1px,transparent 1px);
+    background-size:40px 40px;
+}
+
+header{
+    position:sticky;
+    top:0;
+    z-index:10;
+    background:rgba(7,13,20,.97);
+    border-bottom:1px solid #263746;
+    box-shadow:0 5px 25px rgba(0,0,0,.45);
+}
+
+.header-inner{
+    max-width:1400px;
+    margin:auto;
+    min-height:72px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 24px;
+}
+
+.logo{
+    color:#d7aa3a;
+    font-weight:900;
+    letter-spacing:3px;
+    font-size:20px;
+}
+
+.logo span{
+    display:block;
+    color:#758796;
+    font-size:9px;
+    letter-spacing:3px;
+    margin-top:3px;
+}
+
+nav{
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
+    justify-content:flex-end;
+}
+
+nav a{
+    color:#aebdca;
+    text-decoration:none;
+    border:1px solid #263746;
+    padding:9px 12px;
+    font-size:10px;
+    font-weight:bold;
+    letter-spacing:1.5px;
+    transition:.2s;
+}
+
+nav a:hover{
+    color:#fff;
+    border-color:#d7aa3a;
+    background:rgba(215,170,58,.08);
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:60px 24px 100px;
+}
+
+.status{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    border:1px solid #31503b;
+    color:#79c68c;
+    padding:7px 12px;
+    font-size:10px;
+    font-weight:bold;
+    letter-spacing:2px;
+    margin-bottom:25px;
+}
+
+.status-dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:#58c879;
+    box-shadow:0 0 10px #58c879;
+}
+
+h1{
+    margin:0;
+    color:#d7aa3a;
+    font-size:clamp(42px,7vw,86px);
+    line-height:.95;
+    letter-spacing:4px;
+    font-weight:900;
+}
+
+.subtitle{
+    color:#80909e;
+    font-size:13px;
+    letter-spacing:3px;
+    margin-top:16px;
+    margin-bottom:45px;
+}
+
+.info-strip{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+    margin-bottom:30px;
+}
+
+.info-box{
+    background:rgba(13,23,32,.9);
+    border:1px solid #263746;
+    padding:18px;
+}
+
+.info-label{
+    color:#697b89;
+    font-size:9px;
+    letter-spacing:2px;
+    margin-bottom:7px;
+}
+
+.info-value{
+    color:#d7e0e8;
+    font-weight:bold;
+    font-size:14px;
+}
+
+.section{
+    background:rgba(10,18,26,.92);
+    border:1px solid #263746;
+    margin-top:18px;
+    padding:28px;
+    box-shadow:0 12px 35px rgba(0,0,0,.2);
+}
+
+.section h2{
+    color:#d7aa3a;
+    font-size:18px;
+    letter-spacing:2px;
+    margin:0 0 18px;
+    padding-bottom:12px;
+    border-bottom:1px solid #263746;
+}
+
+.section h3{
+    color:#cbd6de;
+    font-size:14px;
+    letter-spacing:1px;
+    margin-top:27px;
+}
+
+.section p,
+.section li{
+    color:#aab7c1;
+    font-size:14px;
+}
+
+.section ul,
+.section ol{
+    padding-left:24px;
+}
+
+.section li{
+    margin-bottom:8px;
+}
+
+.tip{
+    border-left:3px solid #d7aa3a;
+    background:rgba(215,170,58,.06);
+    padding:17px 20px;
+    margin:20px 0;
+    color:#c8c0aa;
+}
+
+.warning{
+    border-left:3px solid #c94d4d;
+    background:rgba(120,30,30,.08);
+    padding:17px 20px;
+    margin:20px 0;
+    color:#c7a6a6;
+}
+
+.command{
+    background:#050b10;
+    border:1px solid #1d2c38;
+    padding:16px 18px;
+    color:#7fc8e8;
+    font-family:"Courier New",monospace;
+    font-size:13px;
+    overflow-x:auto;
+    margin:15px 0;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:14px;
+}
+
+.card{
+    border:1px solid #263746;
+    background:rgba(14,24,33,.8);
+    padding:20px;
+}
+
+.card strong{
+    display:block;
+    color:#d7aa3a;
+    font-size:13px;
+    letter-spacing:1px;
+    margin-bottom:8px;
+}
+
+.card span{
+    color:#93a4b0;
+    font-size:13px;
+}
+
+.sources a{
+    color:#7fc8e8;
+    text-decoration:none;
+}
+
+.sources a:hover{
+    text-decoration:underline;
+}
+
+.back{
+    display:inline-block;
+    margin-top:35px;
+    color:#d7aa3a;
+    border:1px solid #5a4925;
+    padding:12px 18px;
+    text-decoration:none;
+    font-size:11px;
+    font-weight:bold;
+    letter-spacing:1.5px;
+}
+
+.back:hover{
+    background:rgba(215,170,58,.1);
+}
+
+footer{
+    border-top:1px solid #263746;
+    padding:30px 24px;
+    text-align:center;
+    color:#536370;
+    font-size:9px;
+    letter-spacing:2px;
+}
+
+@media(max-width:850px){
+    .header-inner{
+        align-items:flex-start;
+        flex-direction:column;
+        gap:14px;
+        padding-top:15px;
+        padding-bottom:15px;
+    }
+
+    nav{
+        justify-content:flex-start;
+    }
+
+    .info-strip,
+    .grid{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+@media(max-width:560px){
+    .container{
+        padding:40px 15px 70px;
+    }
+
+    .info-strip,
+    .grid{
+        grid-template-columns:1fr;
+    }
+
+    .section{
+        padding:20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="header-inner">
+
+<div class="logo">
+RISE OF NATIONS
+<span>TACTICAL KNOWLEDGE DATABASE</span>
+</div>
+
+<nav>
+<a href="../index.html">COMMAND</a>
+<a href="../index.html#intelligence">INTELLIGENCE</a>
+<a href="server.html">SERVER</a>
+<a href="database.html">DATABASE</a>
+<a href="download.html">DOWNLOAD</a>
+<a href="communications.html">COMMUNICATIONS</a>
+<a href="wiki.html">WIKI</a>
+</nav>
+
+</div>
+</header>
+
+<main class="container">
+
+<div class="status">
+<span class="status-dot"></span>
+DATABASE // COMMUNICATIONS SYSTEM OPERATIONAL
+</div>
+
+<h1>SIMPLE VOICE CHAT</h1>
+
+<div class="subtitle">
+PROXIMITY COMMUNICATION // MULTIPLAYER COORDINATION // RADIO NETWORK
+</div>
+
+<div class="info-strip">
+
+<div class="info-box">
+<div class="info-label">SYSTEM</div>
+<div class="info-value">VOICE CHAT</div>
+</div>
+
+<div class="info-box">
+<div class="info-label">MINECRAFT</div>
+<div class="info-value">1.21.1</div>
+</div>
+
+<div class="info-box">
+<div class="info-label">ROLE</div>
+<div class="info-value">COMMUNICATION</div>
+</div>
+
+<div class="info-box">
+<div class="info-label">STATUS</div>
+<div class="info-value">OPERATIONAL</div>
+</div>
+
+</div>
+
+<section class="section">
+
+<h2>01 // SYSTEM OVERVIEW</h2>
+
+<p>
+Simple Voice Chat erweitert Minecraft um ein direktes Sprachkommunikationssystem.
+Spieler können innerhalb der Spielwelt miteinander sprechen, ohne dafür
+zusätzlich einen externen Sprachkanal öffnen zu müssen.
+</p>
+
+<p>
+Im RISE OF NATIONS-Modpack ist das besonders interessant, weil große
+Entfernungen, Fahrzeuge, Fabriken, Expeditionen und Multiplayer-Projekte
+eine schnelle Kommunikation benötigen.
+</p>
+
+<div class="tip">
+<strong>GRUNDIDEE:</strong>
+Die Position deines Spielers wird Teil der Kommunikation.
+Entfernung und Umgebung können beeinflussen, wer dich hört.
+</div>
+
+</section>
+
+<section class="section">
+
+<h2>02 // PROXIMITY VOICE</h2>
+
+<p>
+Die zentrale Funktion ist die räumliche Sprachkommunikation.
+Statt automatisch mit jedem Spieler auf dem Server zu sprechen,
+kommunizierst du abhängig von der Entfernung.
+</p>
+
+<div class="command">
+SPIELER A
+│
+├── NAHER SPIELER → HÖRBAR
+├── WEITER ENTFERNT → SCHWÄCHER / NICHT HÖRBAR
+└── ANDERE REGION → KEINE DIREKTE KOMMUNIKATION
+</div>
+
+<p>
+Dadurch entsteht ein natürlicheres Multiplayer-Gefühl.
+Spieler in einer Fabrik können miteinander sprechen, während
+ein Spieler viele hundert Blöcke entfernt nicht automatisch alles mithört.
+</p>
+
+</section>
+
+<section class="section">
+
+<h2>03 // WARUM DAS FÜR RISE OF NATIONS WICHTIG IST</h2>
+
+<p>
+RISE OF NATIONS ist auf Multiplayer ausgelegt. Spieler können eigene
+Basen, Produktionsanlagen, Fahrzeuge und Siedlungen betreiben.
+</p>
+
+<p>
+Voice Chat ermöglicht es, direkt auf Ereignisse in der Welt zu reagieren.
+</p>
+
+<div class="grid">
+
+<div class="card">
+<strong>EXPEDITION</strong>
+<span>Spieler können sich während einer Erkundung koordinieren.</span>
+</div>
+
+<div class="card">
+<strong>FACTORY</strong>
+<span>Teams können Produktionsanlagen gemeinsam bedienen.</span>
+</div>
+
+<div class="card">
+<strong>VEHICLES</strong>
+<span>Besatzungen können während der Fahrt kommunizieren.</span>
+</div>
+
+<div class="card">
+<strong>EMERGENCY</strong>
+<span>Spieler können unmittelbar vor Gefahren warnen.</span>
+</div>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<h2>04 // MIKROFON</h2>
+
+<p>
+Damit Voice Chat funktioniert, benötigt dein Computer ein Mikrofon,
+das von Minecraft beziehungsweise dem Voice-Chat-System verwendet werden kann.
+</p>
+
+<p>
+Vor dem ersten Einsatz solltest du prüfen, ob das richtige Eingabegerät
+ausgewählt ist und ob dein Mikrofon ein verständliches Signal liefert.
+</p>
+
+<div class="warning">
+Wenn andere Spieler dich nicht hören können, solltest du zuerst
+Mikrofon, Berechtigungen und Voice-Chat-Einstellungen überprüfen.
+</div>
+
+</section>
+
+<section class="section">
+
+<h2>05 // PUSH-TO-TALK</h2>
+
+<p>
+Push-to-Talk bedeutet, dass dein Mikrofon nicht dauerhaft übertragen wird.
+Stattdessen hältst du eine festgelegte Taste gedrückt, um zu sprechen.
+</p>
+
+<p>
+Für Multiplayer-Server ist diese Methode häufig sinnvoll, weil dadurch
+Hintergrundgeräusche reduziert werden.
+</p>
+
+<div class="tip">
+Eine gute Push-to-Talk-Taste sollte erreichbar sein, ohne deine
+normalen Minecraft-Steuerungen zu behindern.
+</div>
+
+</section>
+
+<section class="section">
+
+<h2>06 // SPRACHKANÄLE</h2>
+
+<p>
+Je nach Konfiguration und verwendeten Funktionen können Voice-Chat-Systeme
+mehr als nur normale Proximity-Kommunikation ermöglichen.
+</p>
+
+<p>
+Besonders interessant sind separate Gesprächsgruppen für Teams oder
+bestimmte Spielsituationen.
+</p>
+
+<div class="command">
+NORMAL
+→ LOKALE KOMMUNIKATION
+
+TEAM
+→ KOORDINATION
+
+EVENT
+→ GEMEINSAME AKTION
+
+EMERGENCY
+→ SCHNELLE WARNUNG
+</div>
+
+</section>
+
+<section class="section">
+
+<h2>07 // KOMMUNIKATION IN FAHRZEUGEN</h2>
+
+<p>
+Fahrzeuge spielen in RISE OF NATIONS eine wichtige Rolle.
+Während einer Fahrt oder eines Einsatzes kann direkte Sprachkommunikation
+wesentlich praktischer sein als Chat-Nachrichten.
+</p>
+
+<p>
+Ein Fahrer kann beispielsweise navigieren, während ein anderer Spieler
+Informationen über die Umgebung weitergibt.
+</p>
+
+<div class="tip">
+Bei gemeinsamen Fahrzeugoperationen sollte vorher klar sein,
+wer fährt, wer navigiert und wer für Beobachtung zuständig ist.
+</div>
+
+</section>
+
+<section class="section">
+
+<h2>08 // KOMMUNIKATION BEI EXPEDITIONEN</h2>
+
+<p>
+Bei Expeditionen in gefährliche Gebiete ist Voice Chat besonders nützlich.
+</p>
+
+<p>
+Spieler können unmittelbar auf Gegner, Strukturen, Ressourcen oder
+unerwartete Ereignisse reagieren.
+</p>
+
+<div class="command">
+SCOUT
+↓
+MELDUNG
+↓
+TEAM
+↓
+ENTSCHEIDUNG
+↓
+AKTION
+</div>
+
+<p>
+Dadurch kann ein Team wesentlich schneller reagieren als über geschriebenen
+Chat.
+</p>
+
+</section>
+
+<section class="section">
+
+<h2>09 // FUNKDISZIPLIN</h2>
+
+<p>
+Bei größeren Gruppen kann zu viel gleichzeitig gesprochen werden.
+Eine einfache Kommunikationsdisziplin hilft.
+</p>
+
+<ul>
+<li>Kurz und eindeutig sprechen.</li>
+<li>Wichtige Informationen zuerst nennen.</li>
+<li>Nicht dauerhaft in laufende Gespräche hineinsprechen.</li>
+<li>Bei Gefahr die Information sofort weitergeben.</li>
+<li>Bei Gruppenaktionen vorher Zuständigkeiten klären.</li>
+</ul>
+
+<div class="tip">
+Voice Chat funktioniert am besten, wenn nicht jeder gleichzeitig redet.
+</div>
+
+</section>
+
+<section class="section">
+
+<h2>10 // VOICE CHAT UND DISCORD</h2>
+
+<p>
+Der Ingame-Voice-Chat und Discord erfüllen unterschiedliche Aufgaben.
+</p>
+
+<div class="grid">
+
+<div class="card">
+<strong>INGAME VOICE</strong>
+<span>Direkte Kommunikation innerhalb der Minecraft-Welt.</span>
+</div>
+
+<div class="card">
+<strong>DISCORD</strong>
+<span>Community, Organisation und Kommunikation außerhalb des Spiels.</span>
+</div>
+
+</div>
+
+<p>
+Für das eigentliche Spielgeschehen ist der Ingame-Voice-Chat besonders
+praktisch, während Discord für Serverorganisation und Community-Kommunikation
+geeignet bleibt.
+</p>
+
+</section>
+
+<section class="section">
+
+<h2>11 // HÄUFIGE PROBLEME</h2>
+
+<h3>Niemand hört mich</h3>
+
+<p>
+Prüfe dein ausgewähltes Mikrofon, die Systemberechtigungen und die
+Voice-Chat-Einstellungen.
+</p>
+
+<h3>Ich höre niemanden</h3>
+
+<p>
+Prüfe Ausgabegerät, Lautstärke und ob sich andere Spieler innerhalb
+der relevanten Kommunikationsreichweite befinden.
+</p>
+
+<h3>Stimme klingt schlecht</h3>
+
+<p>
+Überprüfe Mikrofonqualität, Eingangspegel und mögliche Hintergrundgeräusche.
+</p>
+
+<h3>Voice Chat funktioniert überhaupt nicht</h3>
+
+<p>
+Prüfe zuerst, ob die Voice-Chat-Verbindung zum Server erfolgreich
+hergestellt wurde.
+</p>
+
+</section>
+
+<section class="section">
+
+<h2>12 // MULTIPLAYER-STRATEGIE</h2>
+
+<p>
+Für größere Projekte lohnt es sich, Kommunikation bewusst in die
+Organisation des Teams einzubauen.
+</p>
+
+<div class="command">
+COMMAND
+↓
+TEAM LEADER
+↓
+OPERATORS
+↓
+SPECIALISTS
+</div>
+
+<p>
+Das ist keine zwingende Rollenverteilung, sondern ein Beispiel dafür,
+wie Gruppenkommunikation bei größeren Projekten strukturiert werden kann.
+</p>
+
+</section>
+
+<section class="section">
+
+<h2>13 // PRIVATSPHÄRE & RESPEKT</h2>
+
+<p>
+Voice Chat sollte wie jede andere Kommunikationsform respektvoll
+verwendet werden.
+</p>
+
+<ul>
+<li>Keine absichtliche Belästigung.</li>
+<li>Keine unnötig lauten Geräusche.</li>
+<li>Keine absichtliche Störung anderer Spieler.</li>
+<li>Serverregeln beachten.</li>
+<li>Andere Spieler nicht dauerhaft unterbrechen.</li>
+</ul>
+
+<div class="warning">
+Die technischen Möglichkeiten des Mods ersetzen nicht die Regeln
+des RISE OF NATIONS-Servers.
+</div>
+
+</section>
+
+<section class="section">
+
+<h2>14 // EMPFOHLENE EINSTELLUNGEN</h2>
+
+<p>
+Für den normalen Multiplayer-Betrieb empfiehlt sich eine Konfiguration,
+bei der Sprache gut verständlich bleibt und Hintergrundgeräusche möglichst
+gering sind.
+</p>
+
+<ol>
+<li>Richtiges Mikrofon auswählen.</li>
+<li>Mikrofonpegel prüfen.</li>
+<li>Push-to-Talk konfigurieren.</li>
+<li>Ausgabelautstärke einstellen.</li>
+<li>Mit einem anderen Spieler testen.</li>
+<li>Erst danach größere Gruppenaktionen starten.</li>
+</ol>
+
+</section>
+
+<section class="section">
+
+<h2>15 // RISE OF NATIONS EMPFEHLUNG</h2>
+
+<p>
+Simple Voice Chat sollte auf dem Server möglichst früh eingerichtet und
+getestet werden, weil viele andere Systeme des Modpacks davon profitieren.
+</p>
+
+<p>
+Besonders bei Fahrzeugen, Expeditionen, gemeinsamen Fabriken und
+größeren Multiplayer-Projekten kann direkte Sprachkommunikation einen
+deutlichen Unterschied machen.
+</p>
+
+<div class="tip">
+<strong>MERKSATZ:</strong>
+Chat überträgt Informationen.
+Voice Chat überträgt Informationen plus Situation und Reaktion.
+</div>
+
+</section>
+
+<section class="section sources">
+
+<h2>16 // ORIGINALQUELLEN</h2>
+
+<p>
+Für aktuelle Versionen, Konfiguration, Serverinstallation und technische
+Details solltest du die offiziellen Projektinformationen verwenden.
+</p>
+
+<ul>
+<li>
+<a href="https://modrinth.com/plugin/simple-voice-chat" target="_blank">
+Simple Voice Chat auf Modrinth
+</a>
+</li>
+
+<li>
+<a href="https://www.curseforge.com/minecraft/mc-mods/simple-voice-chat" target="_blank">
+Simple Voice Chat auf CurseForge
+</a>
+</li>
+
+<li>
+<a href="https://modrepo.de/minecraft/voicechat/overview" target="_blank">
+Simple Voice Chat Dokumentation
+</a>
+</li>
+</ul>
+
+</section>
+
+<a class="back" href="wiki-important.html">
+← ZURÜCK ZU WICHTIG
+</a>
+
+</main>
+
+<footer>
+RISE OF NATIONS // TACTICAL KNOWLEDGE DATABASE // SIMPLE VOICE CHAT
+</footer>
+
+</body>
+</html>
