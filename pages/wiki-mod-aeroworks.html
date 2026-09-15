@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RISE OF NATIONS // AEROWORKS</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+    min-height:100vh;
+    background:
+        linear-gradient(rgba(5,10,15,.97),rgba(5,10,15,.99)),
+        repeating-linear-gradient(135deg,rgba(255,255,255,.018) 0 2px,transparent 2px 9px);
+    color:#dbe3e8;
+    font-family:"Segoe UI",Arial,sans-serif;
+}
+header{
+    background:rgba(5,10,15,.98);
+    border-bottom:1px solid #293944;
+    box-shadow:0 5px 25px rgba(0,0,0,.45);
+}
+.header-inner{
+    max-width:1500px;
+    margin:auto;
+    padding:18px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:30px;
+}
+.logo{
+    color:#d6b85c;
+    font-size:22px;
+    font-weight:950;
+    letter-spacing:3px;
+}
+.logo span{
+    display:block;
+    color:#687b86;
+    font-size:9px;
+    letter-spacing:2px;
+    margin-top:4px;
+}
+nav{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+    gap:7px;
+}
+nav a{
+    color:#9aabb4;
+    text-decoration:none;
+    padding:9px 11px;
+    border:1px solid transparent;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.2px;
+    transition:.2s;
+}
+nav a:hover{
+    color:#d6b85c;
+    background:#111b22;
+    border-color:#3b4d58;
+}
+main{
+    max-width:1250px;
+    margin:auto;
+    padding:70px 30px 100px;
+}
+.eyebrow{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:3px;
+    margin-bottom:15px;
+}
+h1{
+    color:#edf2f4;
+    font-size:clamp(40px,6.5vw,78px);
+    line-height:.95;
+    letter-spacing:4px;
+    font-weight:950;
+}
+.subtitle{
+    max-width:950px;
+    margin-top:22px;
+    color:#8497a2;
+    line-height:1.75;
+    font-size:15px;
+}
+.meta{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-top:38px;
+}
+.meta-box{
+    padding:18px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+.meta-label{
+    color:#596c77;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:8px;
+}
+.meta-value{
+    color:#d6b85c;
+    font-size:13px;
+    font-weight:900;
+}
+.section{
+    margin-top:35px;
+    padding:30px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+.section-number{
+    color:#526773;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:2px;
+    margin-bottom:9px;
+}
+h2{
+    color:#e1e8eb;
+    font-size:22px;
+    letter-spacing:1px;
+    margin-bottom:18px;
+}
+h3{
+    color:#d6b85c;
+    font-size:14px;
+    letter-spacing:1px;
+    margin:25px 0 10px;
+}
+p{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    margin-bottom:13px;
+}
+ul,ol{
+    margin:12px 0 18px 22px;
+}
+li{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    padding-left:5px;
+}
+.note{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#111c23;
+    border-left:3px solid #4d91bd;
+}
+.note-title{
+    color:#4d91bd;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+.warning{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#17140e;
+    border-left:3px solid #d6b85c;
+}
+.warning-title{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:18px;
+}
+th,td{
+    text-align:left;
+    padding:13px 14px;
+    border:1px solid #293c47;
+    font-size:12px;
+}
+th{
+    color:#d6b85c;
+    background:#111c23;
+    font-size:10px;
+    letter-spacing:1px;
+}
+td{
+    color:#8ea0a9;
+    background:#0a141a;
+}
+.sources{
+    display:grid;
+    gap:10px;
+    margin-top:15px;
+}
+.sources a{
+    display:block;
+    padding:13px 15px;
+    background:#101b22;
+    border:1px solid #293c47;
+    color:#9fb0b9;
+    text-decoration:none;
+    font-size:12px;
+    transition:.2s;
+}
+.sources a:hover{
+    color:#d6b85c;
+    border-color:#d6b85c;
+}
+.back{
+    display:inline-block;
+    margin-top:45px;
+    padding:12px 16px;
+    color:#d6b85c;
+    border:1px solid #4c4530;
+    text-decoration:none;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    transition:.2s;
+}
+.back:hover{
+    background:#17150f;
+    border-color:#d6b85c;
+}
+footer{
+    border-top:1px solid #202e36;
+    padding:25px 30px;
+    text-align:center;
+    color:#465861;
+    font-size:9px;
+    letter-spacing:2px;
+}
+@media(max-width:850px){
+    .header-inner{flex-direction:column;align-items:flex-start}
+    nav{justify-content:flex-start}
+    .meta{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:550px){
+    .meta{grid-template-columns:1fr}
+    main{padding:45px 18px 70px}
+    .section{padding:22px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="header-inner">
+
+<div class="logo">
+RISE OF NATIONS
+<span>TACTICAL KNOWLEDGE DATABASE</span>
+</div>
+
+<nav>
+<a href="../index.html">COMMAND</a>
+<a href="intelligence.html">INTELLIGENCE</a>
+<a href="server.html">SERVER</a>
+<a href="database.html">DATABASE</a>
+<a href="download.html">DOWNLOAD</a>
+<a href="communications.html">COMMUNICATIONS</a>
+<a href="wiki.html">WIKI</a>
+</nav>
+
+</div>
+</header>
+
+<main>
+
+<div class="eyebrow">
+PROFESSOR DATABASE // CREATE ECOSYSTEM // AEROSPACE SYSTEMS
+</div>
+
+<h1>AEROWORKS</h1>
+
+<p class="subtitle">
+Aeroworks erweitert das Create-Ökosystem um zusätzliche Systeme für
+Luftfahrt, Flugtechnik und technische Konstruktionen. In RISE OF
+NATIONS bildet der Mod damit eine wichtige Verbindung zwischen
+mechanischer Create-Technik und der mobilen Infrastruktur des
+Luftraums.
+</p>
+
+<div class="meta">
+
+<div class="meta-box">
+<div class="meta-label">MOD</div>
+<div class="meta-value">AEROWORKS</div>
+</div>
+
+<div class="meta-box">
+<div class="meta-label">VERSION</div>
+<div class="meta-value">1.4.2</div>
+</div>
+
+<div class="meta-box">
+<div class="meta-label">MINECRAFT</div>
+<div class="meta-value">1.21.1</div>
+</div>
+
+<div class="meta-box">
+<div class="meta-label">SYSTEM</div>
+<div class="meta-value">AEROSPACE</div>
+</div>
+
+</div>
+
+
+<section class="section">
+<div class="section-number">01 // SYSTEM OVERVIEW</div>
+<h2>Was ist Aeroworks?</h2>
+
+<p>
+Aeroworks gehört zum erweiterten technischen Umfeld von Create und
+befasst sich mit Luftfahrt-orientierten Mechaniken und Konstruktionen.
+</p>
+
+<p>
+Damit entsteht eine weitere technische Ebene oberhalb klassischer
+Bodenfahrzeuge, Züge und stationärer Maschinen.
+</p>
+
+<div class="note">
+<div class="note-title">CORE CONCEPT</div>
+<p>
+Create liefert die mechanische Basis. Aeroworks erweitert diese Idee
+in Richtung Luftfahrt und eröffnet damit neue Möglichkeiten für
+Transport, Erkundung und Infrastruktur.
+</p>
+</div>
+</section>
+
+
+<section class="section">
+<div class="section-number">02 // CREATE INTEGRATION</div>
+<h2>Verbindung mit Create</h2>
+
+<p>
+Der entscheidende Punkt ist die Integration in eine bestehende
+Create-orientierte Spielwelt. Spieler denken nicht mehr nur in
+Maschinenhallen und Schienen, sondern zusätzlich in beweglichen
+technischen Konstruktionen.
+</p>
+
+<table>
+<tr>
+<th>CREATE-BEREICH</th>
+<th>AEROWORKS-ANWENDUNG</th>
+</tr>
+<tr>
+<td>Mechanische Konstruktionen</td>
+<td>Technische Fluggeräte</td>
+</tr>
+<tr>
+<td>Rohstoffe</td>
+<td>Fertigung von Komponenten</td>
+</tr>
+<tr>
+<td>Logistik</td>
+<td>Versorgung von Flugplätzen</td>
+</tr>
+<tr>
+<td>Schienen</td>
+<td>Anbindung von Flughäfen</td>
+</tr>
+</table>
+</section>
+
+
+<section class="section">
+<div class="section-number">03 // AIRCRAFT CONCEPT</div>
+<h2>Flugtechnik</h2>
+
+<p>
+Bei Luftfahrtsystemen muss ein Spieler anders planen als bei einer
+stationären Maschine. Gewicht, Aufbau, Startfläche und Wartung werden
+zu wichtigen Bestandteilen eines funktionierenden Systems.
+</p>
+
+<ul>
+<li>Fluggerät konstruieren.</li>
+<li>Komponenten korrekt anordnen.</li>
+<li>Start- und Landebereich vorbereiten.</li>
+<li>Versorgung und Lagerung planen.</li>
+<li>Flugroute bestimmen.</li>
+<li>Wartungsbereich bereitstellen.</li>
+</ul>
+</section>
+
+
+<section class="section">
+<div class="section-number">04 // AIRFIELD DESIGN</div>
+<h2>Flugplätze bauen</h2>
+
+<p>
+Ein Fluggerät ist wesentlich interessanter, wenn es in eine echte
+Infrastruktur eingebettet wird.
+</p>
+
+<h3>Minimaler Flugplatz</h3>
+<ul>
+<li>Start- und Landebahn.</li>
+<li>Hangar.</li>
+<li>Werkstatt.</li>
+<li>Lager.</li>
+<li>Tank- beziehungsweise Versorgungsbereich.</li>
+</ul>
+
+<h3>Fortgeschrittener Flugplatz</h3>
+<ul>
+<li>Kontrollgebäude.</li>
+<li>mehrere Hangars.</li>
+<li>Güterterminal.</li>
+<li>Bahnhof.</li>
+<li>Funk- und Navigationsbereich.</li>
+<li>militärischer Sicherungsbereich.</li>
+</ul>
+</section>
+
+
+<section class="section">
+<div class="section-number">05 // LOGISTICS</div>
+<h2>Luftfracht</h2>
+
+<p>
+Luftfahrt kann im Modpack als Ergänzung zu Zügen und Straßenverkehr
+betrachtet werden.
+</p>
+
+<table>
+<tr>
+<th>TRANSPORT</th>
+<th>STÄRKE</th>
+<th>SINNVOLLE NUTZUNG</th>
+</tr>
+<tr>
+<td>Zug</td>
+<td>hohe Kapazität</td>
+<td>Massenlogistik</td>
+</tr>
+<tr>
+<td>Straßenfahrzeug</td>
+<td>flexibel</td>
+<td>lokale Versorgung</td>
+</tr>
+<tr>
+<td>Fluggerät</td>
+<td>Reichweite</td>
+<td>schneller Transport</td>
+</tr>
+</table>
+
+<p>
+Damit kann ein mehrstufiges Verkehrsnetz entstehen, in dem jeder
+Transportweg eine bestimmte Aufgabe übernimmt.
+</p>
+</section>
+
+
+<section class="section">
+<div class="section-number">06 // INDUSTRIAL PRODUCTION</div>
+<h2>Produktion</h2>
+
+<p>
+Komplexe Flugtechnik sollte nicht isoliert betrachtet werden.
+Sinnvoller ist eine Produktionskette, die auf einer Create-Fabrik
+aufbaut.
+</p>
+
+<ol>
+<li>Rohstoffe abbauen.</li>
+<li>Grundmaterialien verarbeiten.</li>
+<li>Komponenten herstellen.</li>
+<li>Maschinenteile fertigen.</li>
+<li>Fluggerät montieren.</li>
+<li>Testflug durchführen.</li>
+<li>Wartungsbestand aufbauen.</li>
+</ol>
+
+<div class="note">
+<div class="note-title">FACTORY DOCTRINE</div>
+<p>
+Eine große Luftfahrtanlage sollte wie ein industrieller Produktions-
+standort behandelt werden und nicht wie ein einzelnes Crafting-Rezept.
+</p>
+</div>
+</section>
+
+
+<section class="section">
+<div class="section-number">07 // MILITARY APPLICATION</div>
+<h2>Militärische Nutzung</h2>
+
+<p>
+Im RISE-OF-NATIONS-Setting können Luftfahrtsysteme auch für
+militärische Infrastruktur genutzt werden.
+</p>
+
+<ul>
+<li>Aufklärung.</li>
+<li>Versorgung entfernter Standorte.</li>
+<li>Transport von Personal.</li>
+<li>Logistische Unterstützung.</li>
+<li>Grenzüberwachung.</li>
+<li>Schnelle Verlegung.</li>
+</ul>
+
+<div class="warning">
+<div class="warning-title">IMPORTANT</div>
+<p>
+Die tatsächlichen Fähigkeiten eines Fluggeräts hängen von der
+konkreten Modversion und den installierten Addons ab. Für exakte
+Funktionsdetails immer die im Spiel angezeigten Informationen und
+die jeweilige Moddokumentation prüfen.
+</p>
+</div>
+</section>
+
+
+<section class="section">
+<div class="section-number">08 // AERONAUTICS ECOSYSTEM</div>
+<h2>Zusammenspiel mit anderen Mods</h2>
+
+<p>
+In diesem Modpack steht Aeroworks nicht alleine. Besonders interessant
+ist das Zusammenspiel mit weiteren Create- und Transportmods.
+</p>
+
+<ul>
+<li>Create – mechanische Grundsysteme.</li>
+<li>Create Aeronautics – erweiterte Luftfahrtmechanik.</li>
+<li>Create Aeronautics Lift Patch – Kompatibilitätsunterstützung.</li>
+<li>Create Aeronautics Roller Fix – technische Fehlerkorrektur.</li>
+<li>Create Railways Navigator – Transportplanung.</li>
+<li>Create Threaded Trains – Zugnetz.</li>
+<li>Create Train Parts – Zugkomponenten.</li>
+<li>Simple Planes – alternative Luftfahrt.</li>
+</ul>
+</section>
+
+
+<section class="section">
+<div class="section-number">09 // BASE DESIGN</div>
+<h2>Eine funktionierende Luftwaffenbasis</h2>
+
+<p>
+Für ein glaubwürdiges Projekt sollte eine Luftfahrtbasis mehrere
+Bereiche besitzen.
+</p>
+
+<table>
+<tr>
+<th>BEREICH</th>
+<th>FUNKTION</th>
+</tr>
+<tr>
+<td>Hangar</td>
+<td>Abstellen und Warten</td>
+</tr>
+<tr>
+<td>Werkstatt</td>
+<td>Reparatur und Fertigung</td>
+</tr>
+<tr>
+<td>Lager</td>
+<td>Ersatzteile und Material</td>
+</tr>
+<tr>
+<td>Startbahn</td>
+<td>Start und Landung</td>
+</tr>
+<tr>
+<td>Kontrollzentrum</td>
+<td>Koordination</td>
+</tr>
+<tr>
+<td>Bahnhof</td>
+<td>Anbindung an Bodentransport</td>
+</tr>
+</table>
+</section>
+
+
+<section class="section">
+<div class="section-number">10 // EXPLORATION</div>
+<h2>Erkundung und Reichweite</h2>
+
+<p>
+Flugtechnik verändert die Wahrnehmung der Welt. Entfernungen, die
+zu Fuß oder mit normalen Fahrzeugen lange dauern, können aus einer
+anderen Perspektive betrachtet werden.
+</p>
+
+<p>
+Besonders sinnvoll sind Fluggeräte bei der Erkundung großer
+Gebiete, bei der Verbindung weit entfernter Spielerbasen und bei
+der Versorgung abgelegener Projekte.
+</p>
+</section>
+
+
+<section class="section">
+<div class="section-number">11 // TROUBLESHOOTING</div>
+<h2>Fehleranalyse</h2>
+
+<h3>Fluggerät funktioniert nicht wie erwartet</h3>
+<p>
+Zuerst prüfen, ob alle benötigten Komponenten vorhanden und korrekt
+verbaut sind. Danach die konkrete Modversion und mögliche
+Kompatibilitätsmods überprüfen.
+</p>
+
+<h3>Probleme nach Create-Updates</h3>
+<p>
+Create-basierte Erweiterungen können auf bestimmte Versionen der
+Create-API oder interner Systeme angewiesen sein. Bei Problemen
+sollte deshalb zuerst die installierte Create-Version verglichen
+werden.
+</p>
+
+<h3>Kompatibilitätsprobleme</h3>
+<p>
+Da RISE OF NATIONS mehrere Luftfahrt- und Create-Erweiterungen
+enthält, sollte bei einem Fehler geprüft werden, ob mehrere Mods
+denselben technischen Bereich verändern.
+</p>
+
+<h3>Server und Client verhalten sich unterschiedlich</h3>
+<p>
+Bei technischen Fahrzeug- und Bewegungsmods muss überprüft werden,
+ob die benötigten Dateien auf Server und Client korrekt installiert
+sind.
+</p>
+</section>
+
+
+<section class="section">
+<div class="section-number">12 // PERFORMANCE</div>
+<h2>Performance</h2>
+
+<p>
+Bewegliche technische Konstruktionen können auf Servern komplexer
+sein als rein dekorative Gebäude.
+</p>
+
+<ul>
+<li>Anzahl beweglicher Konstruktionen begrenzen.</li>
+<li>Große Maschinenanlagen sinnvoll gruppieren.</li>
+<li>Unnötige dauerhaft aktive Systeme vermeiden.</li>
+<li>Server-Tickrate bei Problemen beobachten.</li>
+<li>Bei größeren Anlagen Spark zur Diagnose verwenden.</li>
+</ul>
+</section>
+
+
+<section class="section">
+<div class="section-number">13 // PROGRESSION</div>
+<h2>Empfohlene Lernreihenfolge</h2>
+
+<ol>
+<li>Create-Grundlagen verstehen.</li>
+<li>Mechanische Energie und Maschinen beherrschen.</li>
+<li>Materialproduktion automatisieren.</li>
+<li>Logistik aufbauen.</li>
+<li>Flughafen errichten.</li>
+<li>Aeroworks-Systeme testen.</li>
+<li>Flugnetz mit bestehender Infrastruktur verbinden.</li>
+<li>Fortgeschrittene Luftfahrtprojekte entwickeln.</li>
+</ol>
+</section>
+
+
+<section class="section">
+<div class="section-number">14 // RISE OF NATIONS APPLICATION</div>
+<h2>Einsatz im Modpack</h2>
+
+<p>
+Aeroworks passt besonders gut zum industriellen Charakter von
+RISE OF NATIONS. Zusammen mit Create, Zügen, Fahrzeugen und weiteren
+Technikmods kann daraus ein vollständiges Verkehrsnetz entstehen.
+</p>
+
+<ul>
+<li>Industrie → Produktion</li>
+<li>Bahnhof → Massenlogistik</li>
+<li>Straße → lokale Versorgung</li>
+<li>Flugplatz → schnelle Verbindung</li>
+<li>Militärbasis → strategische Infrastruktur</li>
+</ul>
+
+<div class="note">
+<div class="note-title">STRATEGIC VIEW</div>
+<p>
+Die interessanteste Nutzung besteht nicht darin, möglichst viele
+Fluggeräte zu besitzen, sondern sie sinnvoll in ein bestehendes
+Verkehrs- und Wirtschaftssystem einzubauen.
+</p>
+</div>
+</section>
+
+
+<section class="section">
+<div class="section-number">15 // PROFESSOR DOCTRINE</div>
+<h2>Das Wichtigste zum Mitnehmen</h2>
+
+<ul>
+<li>Aeroworks erweitert das Create-Ökosystem um Luftfahrt-orientierte Technik.</li>
+<li>Fluggeräte sollten als Teil einer größeren Infrastruktur betrachtet werden.</li>
+<li>Create eignet sich als industrielle Grundlage für die benötigte Produktion.</li>
+<li>Flugplätze können mit Bahn, Straße und Fabrik verbunden werden.</li>
+<li>Weitere Aeronautics-Addons können die Funktionalität ergänzen oder korrigieren.</li>
+<li>Bei technischen Problemen immer zuerst Modversionen und Abhängigkeiten prüfen.</li>
+</ul>
+
+<div class="warning">
+<div class="warning-title">FINAL PRINCIPLE</div>
+<p>
+Luftfahrt ist nicht nur ein Fahrzeug. Sie ist ein eigenes logistisches
+System aus Produktion, Wartung, Infrastruktur und Transport.
+</p>
+</div>
+</section>
+
+
+<section class="section">
+<div class="section-number">16 // REFERENCE DATA</div>
+<h2>Originalquellen</h2>
+
+<div class="sources">
+
+<a href="https://modrinth.com/"
+   target="_blank"
+   rel="noopener">
+MODRINTH // MOD DATABASE
+</a>
+
+<a href="https://www.curseforge.com/minecraft/mc-mods"
+   target="_blank"
+   rel="noopener">
+CURSEFORGE // MINECRAFT MOD DATABASE
+</a>
+
+</div>
+</section>
+
+
+<a class="back" href="wiki.html">
+← ZURÜCK ZUR WIKI
+</a>
+
+</main>
+
+<footer>
+RISE OF NATIONS // AEROWORKS // TACTICAL KNOWLEDGE DATABASE
+</footer>
+
+</body>
+</html>
