@@ -66,6 +66,13 @@
             box-shadow: 0 0 25px rgba(55, 145, 205, 0.15);
         }
 
+        .database-card a {
+            display: block;
+            height: 100%;
+            color: inherit;
+            text-decoration: none;
+        }
+
         .database-code {
             color: #d8aa32;
             font-size: 10px;
@@ -94,6 +101,23 @@
             color: #56758c;
             font-size: 10px;
             letter-spacing: 2px;
+        }
+
+        .return-link {
+            display: inline-block;
+            margin-top: 25px;
+            color: #8fb9d6;
+            text-decoration: none;
+            font-size: 11px;
+            letter-spacing: 2px;
+            border: 1px solid rgba(72, 139, 180, 0.35);
+            padding: 10px 15px;
+        }
+
+        .return-link:hover {
+            color: #ffffff;
+            border-color: #4c9bd0;
+            background: rgba(16, 55, 78, 0.8);
         }
 
         @media (max-width: 900px) {
@@ -143,19 +167,27 @@
 
             <section class="database-grid">
 
+                <!-- TECHNOLOGY -->
                 <div class="database-card">
-                    <div class="database-code">TECH-01</div>
-                    <h2>TECHNOLOGY</h2>
-                    <p>
-                        Create, Maschinen, Energie,
-                        Produktion und industrielle Systeme.
-                    </p>
+                    <a href="technology.html">
+                        <div class="database-code">TECH-01</div>
+
+                        <h2>TECHNOLOGY</h2>
+
+                        <p>
+                            Create, Maschinen, Energie,
+                            Produktion und industrielle Systeme.
+                        </p>
+                    </a>
                 </div>
 
 
+                <!-- WEAPONS & VEHICLES -->
                 <div class="database-card">
                     <div class="database-code">MIL-02</div>
+
                     <h2>WEAPONS &amp; VEHICLES</h2>
+
                     <p>
                         Waffen, Fahrzeuge, Fluggeräte,
                         Artillerie und militärische Systeme.
@@ -163,9 +195,12 @@
                 </div>
 
 
+                <!-- ADVENTURE -->
                 <div class="database-card">
                     <div class="database-code">ADV-03</div>
+
                     <h2>ADVENTURE</h2>
+
                     <p>
                         Dimensionen, Bosse, Monster
                         und gefährliche Expeditionen.
@@ -173,9 +208,12 @@
                 </div>
 
 
+                <!-- STRUCTURES -->
                 <div class="database-card">
                     <div class="database-code">STR-04</div>
+
                     <h2>STRUCTURES</h2>
+
                     <p>
                         Dörfer, Dungeons, Brücken,
                         Minen und neue Weltstrukturen.
@@ -183,9 +221,12 @@
                 </div>
 
 
+                <!-- BUILDING -->
                 <div class="database-card">
                     <div class="database-code">BLD-05</div>
+
                     <h2>BUILDING &amp; DECORATION</h2>
+
                     <p>
                         Bauen, Einrichtung, Dekoration
                         und zusätzliche Bauelemente.
@@ -193,9 +234,12 @@
                 </div>
 
 
+                <!-- FOOD -->
                 <div class="database-card">
                     <div class="database-code">FOD-06</div>
+
                     <h2>FOOD &amp; FARMING</h2>
+
                     <p>
                         Landwirtschaft, Kochen, Getränke,
                         Fischerei und Versorgung.
@@ -203,9 +247,12 @@
                 </div>
 
 
+                <!-- QUALITY OF LIFE -->
                 <div class="database-card">
                     <div class="database-code">QOL-07</div>
+
                     <h2>QUALITY OF LIFE</h2>
+
                     <p>
                         Waystones, Karten, Inventar,
                         Komfort und praktische Systeme.
@@ -213,9 +260,12 @@
                 </div>
 
 
+                <!-- SURVIVAL -->
                 <div class="database-card">
                     <div class="database-code">RPG-08</div>
+
                     <h2>SURVIVAL &amp; RPG</h2>
+
                     <p>
                         Fähigkeiten, Artefakte, Claims,
                         Jahreszeiten und Survival-Systeme.
@@ -223,9 +273,12 @@
                 </div>
 
 
+                <!-- PERFORMANCE -->
                 <div class="database-card">
                     <div class="database-code">SYS-09</div>
+
                     <h2>PERFORMANCE</h2>
+
                     <p>
                         Optimierung, Speicherverwaltung,
                         Chunk Loading und Serveranalyse.
@@ -233,9 +286,12 @@
                 </div>
 
 
+                <!-- COMMUNICATIONS -->
                 <div class="database-card">
                     <div class="database-code">COM-10</div>
+
                     <h2>COMMUNICATIONS</h2>
+
                     <p>
                         Voice Chat und weitere Systeme
                         für die Kommunikation.
@@ -243,9 +299,12 @@
                 </div>
 
 
+                <!-- WORLD -->
                 <div class="database-card">
                     <div class="database-code">ENV-11</div>
+
                     <h2>WORLD &amp; CREATURES</h2>
+
                     <p>
                         Tiere, Kreaturen, NPCs und
                         zusätzliche Weltelemente.
@@ -253,9 +312,12 @@
                 </div>
 
 
+                <!-- MISC -->
                 <div class="database-card">
                     <div class="database-code">MISC-12</div>
+
                     <h2>ADDITIONAL SYSTEMS</h2>
+
                     <p>
                         Weitere Erweiterungen und
                         unterstützende Modpack-Systeme.
@@ -263,6 +325,11 @@
                 </div>
 
             </section>
+
+
+            <a class="return-link" href="../index.html">
+                ← RETURN TO COMMAND
+            </a>
 
 
             <div class="database-footer">
