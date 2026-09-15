@@ -9,46 +9,337 @@
 
     <link rel="stylesheet" href="../style.css">
     <script src="../config/site-config.js"></script>
+
+    <style>
+        .ron-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            padding: 14px 28px;
+            background: rgba(7, 12, 17, 0.97);
+            border-bottom: 1px solid rgba(120, 160, 190, 0.25);
+        }
+
+        .ron-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            color: #dce6ed !important;
+            text-decoration: none !important;
+            font-weight: 900;
+            letter-spacing: 2px;
+            white-space: nowrap;
+        }
+
+        .ron-brand::before {
+            content: "RON";
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 22px;
+            margin-bottom: 5px;
+            border: 1px solid #60798a;
+            background: #111c25;
+            color: #d6a94a;
+            font-size: 10px;
+            letter-spacing: 2px;
+        }
+
+        .ron-brand span {
+            color: #728b9b;
+            font-size: 9px;
+            letter-spacing: 3px;
+            font-weight: 600;
+        }
+
+        .ron-nav-links {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .ron-nav-links a {
+            padding: 10px 12px;
+            color: #8fa7b8 !important;
+            text-decoration: none !important;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1.4px;
+            border: 1px solid transparent;
+            transition: 0.2s ease;
+        }
+
+        .ron-nav-links a:hover {
+            color: #dce6ed !important;
+            background: rgba(40, 75, 100, 0.25);
+            border-color: rgba(100, 145, 175, 0.25);
+        }
+
+        .ron-nav-links a.active {
+            color: #d6a94a !important;
+            background: rgba(80, 65, 25, 0.18);
+            border-color: rgba(214, 169, 74, 0.35);
+        }
+
+        .intelligence-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 0.8fr;
+            gap: 18px;
+            margin-top: 24px;
+        }
+
+        .intelligence-wide {
+            grid-column: 1 / -1;
+        }
+
+        .intelligence-feed {
+            display: grid;
+            gap: 12px;
+        }
+
+        .intelligence-entry {
+            padding: 16px;
+            border: 1px solid rgba(110, 145, 165, 0.16);
+            background: rgba(12, 20, 27, 0.72);
+        }
+
+        .intelligence-entry:hover {
+            border-color: rgba(100, 145, 175, 0.35);
+            background: rgba(20, 35, 45, 0.72);
+        }
+
+        .intelligence-entry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 8px;
+        }
+
+        .intelligence-category {
+            color: #d6a94a;
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 1.8px;
+        }
+
+        .intelligence-time {
+            color: #60798a;
+            font-size: 9px;
+            letter-spacing: 1px;
+        }
+
+        .intelligence-headline {
+            color: #dce6ed;
+            font-size: 14px;
+            font-weight: 900;
+            letter-spacing: 0.5px;
+            line-height: 1.5;
+        }
+
+        .intelligence-description {
+            margin-top: 7px;
+            color: #8298a7;
+            font-size: 12px;
+            line-height: 1.65;
+        }
+
+        .intelligence-indicators {
+            display: grid;
+            gap: 0;
+        }
+
+        .intelligence-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(130, 160, 180, 0.12);
+        }
+
+        .intelligence-row:last-child {
+            border-bottom: none;
+        }
+
+        .intelligence-label {
+            color: #708798;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 1.4px;
+        }
+
+        .intelligence-value {
+            color: #dce6ed;
+            font-size: 12px;
+            font-weight: 900;
+            text-align: right;
+        }
+
+        .intelligence-value.green {
+            color: #70c889;
+        }
+
+        .intelligence-value.gold {
+            color: #d6a94a;
+        }
+
+        .intelligence-value.red {
+            color: #d46a6a;
+        }
+
+        .intelligence-alert {
+            padding: 16px;
+            border-left: 3px solid #d6a94a;
+            background: rgba(110, 85, 25, 0.10);
+            color: #b9aa83;
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        .intelligence-ticker {
+            overflow: hidden;
+            margin-top: 18px;
+            border-top: 1px solid rgba(110, 145, 165, 0.15);
+            border-bottom: 1px solid rgba(110, 145, 165, 0.15);
+            background: rgba(7, 13, 18, 0.8);
+        }
+
+        .intelligence-ticker-track {
+            display: flex;
+            gap: 60px;
+            width: max-content;
+            padding: 11px 0;
+            animation: intelligenceTicker 28s linear infinite;
+        }
+
+        .intelligence-ticker-item {
+            color: #8298a7;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 1.6px;
+            white-space: nowrap;
+        }
+
+        .intelligence-ticker-item::before {
+            content: "◆";
+            margin-right: 9px;
+            color: #d6a94a;
+        }
+
+        @keyframes intelligenceTicker {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .ron-nav {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .ron-nav-links {
+                justify-content: flex-start;
+            }
+
+            .intelligence-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .intelligence-wide {
+                grid-column: auto;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
     <div class="top-line"></div>
 
+
+    <!-- =========================
+         NAVIGATION
+    ========================== -->
+
     <header>
+
         <nav class="ron-nav">
 
-            <div class="ron-brand">
+            <a
+                href="../index.html"
+                class="ron-brand"
+                onclick="sessionStorage.setItem('ron_access', 'granted')"
+            >
                 RISE OF NATIONS
-                <span>INTELLIGENCE COMMAND</span>
-            </div>
+
+                <span>
+                    COMMAND NETWORK
+                </span>
+            </a>
+
 
             <div class="ron-nav-links">
-                <a href="communications.html">COMMUNICATIONS</a>
-                <a href="intelligence.html" class="active">INTELLIGENCE</a>
-                <a href="server.html">SERVER</a>
-                <a href="database.html">DATABASE</a>
-                <a href="download.html">DOWNLOAD</a>
-                <a href="wiki.html">WIKI</a>
-                <a href="faq.html">FAQ</a>
+
+                <a
+                    href="../index.html"
+                    onclick="sessionStorage.setItem('ron_access', 'granted')"
+                >
+                    HOME / COMMAND
+                </a>
+
+                <a href="communications.html">
+                    COMMUNICATIONS
+                </a>
+
+                <a href="intelligence.html" class="active">
+                    INTELLIGENCE
+                </a>
+
+                <a href="server.html">
+                    SERVER
+                </a>
+
+                <a href="database.html">
+                    DATABASE
+                </a>
+
+                <a href="download.html">
+                    DOWNLOAD
+                </a>
+
+                <a href="wiki.html">
+                    WIKI
+                </a>
+
+                <a href="faq.html">
+                    FAQ
+                </a>
+
             </div>
 
         </nav>
+
     </header>
 
+
+    <!-- =========================
+         MAIN
+    ========================== -->
 
     <main class="ron-page">
 
         <div class="ron-classification">
-
-            <span>
-                INTELLIGENCE // GLOBAL SITUATION CENTER
-            </span>
-
-            <span class="ron-live">
-                ● SIMULATION NETWORK ONLINE
-            </span>
-
+            GLOBAL INTELLIGENCE // SITUATION CENTER
         </div>
 
 
@@ -57,74 +348,48 @@
         </h1>
 
         <p class="ron-page-subtitle">
-            Global situation reports, strategic indicators and
-            simulated world intelligence.
+            RISE OF NATIONS // GLOBAL SITUATION & INTELLIGENCE NETWORK
         </p>
 
 
-        <!-- STATUS -->
+        <!-- =========================
+             LIVE TICKER
+        ========================== -->
 
-        <div class="ron-status-grid">
+        <div class="intelligence-ticker">
 
-            <div class="ron-status">
+            <div class="intelligence-ticker-track">
 
-                <div class="ron-status-label">
-                    GLOBAL STATUS
+                <div class="intelligence-ticker-item">
+                    GLOBAL SITUATION MONITORING ACTIVE
                 </div>
 
-                <div
-                    class="ron-status-value ron-green"
-                    id="globalStatus"
-                >
-                    STABLE
+                <div class="intelligence-ticker-item">
+                    INDUSTRIAL PRODUCTION INDICATORS UPDATED
                 </div>
 
-            </div>
-
-
-            <div class="ron-status">
-
-                <div class="ron-status-label">
-                    ALERT LEVEL
+                <div class="intelligence-ticker-item">
+                    MILITARY ACTIVITY UNDER OBSERVATION
                 </div>
 
-                <div
-                    class="ron-status-value ron-gold"
-                    id="alertLevel"
-                >
-                    LOW
+                <div class="intelligence-ticker-item">
+                    TECHNOLOGY DEVELOPMENT DETECTED
                 </div>
 
-            </div>
-
-
-            <div class="ron-status">
-
-                <div class="ron-status-label">
-                    WORLD ACTIVITY
+                <div class="intelligence-ticker-item">
+                    UNKNOWN STRUCTURES UNDER ANALYSIS
                 </div>
 
-                <div
-                    class="ron-status-value ron-blue"
-                    id="worldActivity"
-                >
-                    64%
+                <div class="intelligence-ticker-item">
+                    GLOBAL SITUATION MONITORING ACTIVE
                 </div>
 
-            </div>
-
-
-            <div class="ron-status">
-
-                <div class="ron-status-label">
-                    REPORTS TODAY
+                <div class="intelligence-ticker-item">
+                    INDUSTRIAL PRODUCTION INDICATORS UPDATED
                 </div>
 
-                <div
-                    class="ron-status-value"
-                    id="reportsToday"
-                >
-                    000
+                <div class="intelligence-ticker-item">
+                    MILITARY ACTIVITY UNDER OBSERVATION
                 </div>
 
             </div>
@@ -132,904 +397,598 @@
         </div>
 
 
-        <!-- INTELLIGENCE FEED -->
-
-        <div class="section-title">
-
-            GLOBAL INTELLIGENCE FEED
-
-            <span>
-                LIVE SIMULATION
-            </span>
-
-        </div>
+        <div class="intelligence-grid">
 
 
-        <div class="ron-card">
+            <!-- =========================
+                 CURRENT SITUATION
+            ========================== -->
 
-            <div class="ron-panel-header">
-
-                <div class="ron-panel-title">
-                    SITUATION REPORTS
-                </div>
-
-                <div class="ron-panel-code">
-                    INTEL // LIVE
-                </div>
-
-            </div>
-
-
-            <div id="intelFeed"></div>
-
-        </div>
-
-
-        <!-- TICKER -->
-
-        <div class="ron-alert gold">
-
-            <strong>INTELLIGENCE TICKER</strong>
-
-            <span id="tickerText">
-                Monitoring global activity...
-            </span>
-
-        </div>
-
-
-        <!-- STRATEGIC INDICATORS -->
-
-        <div class="section-title">
-
-            STRATEGIC INDICATORS
-
-            <span>
-                GLOBAL MONITORING
-            </span>
-
-        </div>
-
-
-        <div class="ron-grid">
-
-            <div class="ron-card">
+            <section class="ron-panel">
 
                 <div class="ron-panel-header">
 
                     <div class="ron-panel-title">
-                        INDUSTRIAL PRODUCTION
-                    </div>
-
-                    <div
-                        class="ron-panel-code"
-                        id="industryValue"
-                    >
-                        71%
-                    </div>
-
-                </div>
-
-                <div class="ron-bar">
-                    <div
-                        class="ron-bar-fill"
-                        id="industryBar"
-                        style="width:71%;"
-                    ></div>
-                </div>
-
-                <p>
-                    Monitoring global industrial activity,
-                    manufacturing and infrastructure expansion.
-                </p>
-
-            </div>
-
-
-            <div class="ron-card">
-
-                <div class="ron-panel-header">
-
-                    <div class="ron-panel-title">
-                        TRADE ACTIVITY
-                    </div>
-
-                    <div
-                        class="ron-panel-code"
-                        id="tradeValue"
-                    >
-                        58%
-                    </div>
-
-                </div>
-
-                <div class="ron-bar">
-                    <div
-                        class="ron-bar-fill"
-                        id="tradeBar"
-                        style="width:58%;"
-                    ></div>
-                </div>
-
-                <p>
-                    Monitoring resource exchange, logistics
-                    and international commerce.
-                </p>
-
-            </div>
-
-
-            <div class="ron-card">
-
-                <div class="ron-panel-header">
-
-                    <div class="ron-panel-title">
-                        MILITARY READINESS
-                    </div>
-
-                    <div
-                        class="ron-panel-code"
-                        id="militaryValue"
-                    >
-                        43%
-                    </div>
-
-                </div>
-
-                <div class="ron-bar red">
-                    <div
-                        class="ron-bar-fill"
-                        id="militaryBar"
-                        style="width:43%;"
-                    ></div>
-                </div>
-
-                <p>
-                    Simulated military readiness across
-                    monitored territories.
-                </p>
-
-            </div>
-
-
-            <div class="ron-card">
-
-                <div class="ron-panel-header">
-
-                    <div class="ron-panel-title">
-                        RESOURCE PRESSURE
-                    </div>
-
-                    <div
-                        class="ron-panel-code"
-                        id="resourceValue"
-                    >
-                        36%
-                    </div>
-
-                </div>
-
-                <div class="ron-bar gold">
-                    <div
-                        class="ron-bar-fill"
-                        id="resourceBar"
-                        style="width:36%;"
-                    ></div>
-                </div>
-
-                <p>
-                    Simulated pressure on strategic resources
-                    and raw material reserves.
-                </p>
-
-            </div>
-
-
-            <div class="ron-card">
-
-                <div class="ron-panel-header">
-
-                    <div class="ron-panel-title">
-                        POPULATION ACTIVITY
-                    </div>
-
-                    <div
-                        class="ron-panel-code"
-                        id="populationValue"
-                    >
-                        67%
-                    </div>
-
-                </div>
-
-                <div class="ron-bar">
-                    <div
-                        class="ron-bar-fill"
-                        id="populationBar"
-                        style="width:67%;"
-                    ></div>
-                </div>
-
-                <p>
-                    Simulated settlement, construction and
-                    general population activity.
-                </p>
-
-            </div>
-
-
-            <div class="ron-card">
-
-                <div class="ron-panel-header">
-
-                    <div class="ron-panel-title">
-                        TECHNOLOGICAL DEVELOPMENT
-                    </div>
-
-                    <div
-                        class="ron-panel-code"
-                        id="technologyValue"
-                    >
-                        82%
-                    </div>
-
-                </div>
-
-                <div class="ron-bar">
-                    <div
-                        class="ron-bar-fill"
-                        id="technologyBar"
-                        style="width:82%;"
-                    ></div>
-                </div>
-
-                <p>
-                    Simulated technological progress,
-                    research and industrial innovation.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <!-- SITUATION -->
-
-        <div class="section-title">
-
-            CURRENT SITUATION
-
-            <span>
-                STRATEGIC OVERVIEW
-            </span>
-
-        </div>
-
-
-        <div class="ron-grid">
-
-            <div class="ron-card">
-
-                <div class="ron-panel-header">
-
-                    <div class="ron-panel-title">
-                        ECONOMIC SITUATION
+                        CURRENT SITUATION
                     </div>
 
                     <div class="ron-panel-code">
-                        ECON
+                        INT-01
                     </div>
 
                 </div>
 
-                <div class="ron-data">
 
-                    <div class="ron-data-row">
+                <div class="intelligence-alert">
 
-                        <span class="ron-data-label">
-                            MARKET ACTIVITY
-                        </span>
+                    <strong>
+                        SITUATION UPDATE
+                    </strong>
 
-                        <span
-                            class="ron-data-value"
-                            id="marketActivity"
-                        >
-                            HIGH
-                        </span>
+                    <br><br>
+
+                    Global activity continues to change.
+                    Industrial expansion, military movements,
+                    technological development and unexplained
+                    events are being monitored across the world.
+
+                </div>
+
+
+                <div class="intelligence-feed" style="margin-top:18px;">
+
+                    <div class="intelligence-entry">
+
+                        <div class="intelligence-entry-header">
+
+                            <span class="intelligence-category">
+                                INDUSTRY
+                            </span>
+
+                            <span class="intelligence-time">
+                                RECENT
+                            </span>
+
+                        </div>
+
+                        <div class="intelligence-headline">
+                            INDUSTRIAL PRODUCTION SHOWS INCREASED ACTIVITY
+                        </div>
+
+                        <div class="intelligence-description">
+                            Production capacity in several regions
+                            appears to be expanding.
+                        </div>
 
                     </div>
 
 
-                    <div class="ron-data-row">
+                    <div class="intelligence-entry">
 
-                        <span class="ron-data-label">
-                            TRADE FLOW
-                        </span>
+                        <div class="intelligence-entry-header">
 
-                        <span
-                            class="ron-data-value"
-                            id="tradeFlow"
-                        >
-                            ACTIVE
-                        </span>
+                            <span class="intelligence-category">
+                                TECHNOLOGY
+                            </span>
+
+                            <span class="intelligence-time">
+                                RECENT
+                            </span>
+
+                        </div>
+
+                        <div class="intelligence-headline">
+                            NEW TECHNOLOGICAL DEVELOPMENT DETECTED
+                        </div>
+
+                        <div class="intelligence-description">
+                            Intelligence systems report the discovery
+                            of previously unknown technical capabilities.
+                        </div>
 
                     </div>
 
 
-                    <div class="ron-data-row">
+                    <div class="intelligence-entry">
 
-                        <span class="ron-data-label">
-                            RESOURCE DEMAND
-                        </span>
+                        <div class="intelligence-entry-header">
 
-                        <span
-                            class="ron-data-value"
-                            id="resourceDemand"
-                        >
-                            MODERATE
-                        </span>
+                            <span class="intelligence-category">
+                                SECURITY
+                            </span>
+
+                            <span class="intelligence-time">
+                                RECENT
+                            </span>
+
+                        </div>
+
+                        <div class="intelligence-headline">
+                            MILITARY READINESS LEVELS HAVE CHANGED
+                        </div>
+
+                        <div class="intelligence-description">
+                            Increased military activity has been
+                            detected in multiple areas.
+                        </div>
 
                     </div>
 
                 </div>
 
-            </div>
+            </section>
 
 
-            <div class="ron-card">
+
+            <!-- =========================
+                 GLOBAL STATUS
+            ========================== -->
+
+            <section class="ron-panel">
 
                 <div class="ron-panel-header">
 
                     <div class="ron-panel-title">
-                        MILITARY SITUATION
+                        GLOBAL STATUS
                     </div>
 
                     <div class="ron-panel-code">
-                        MIL
+                        INT-02
                     </div>
 
                 </div>
 
-                <div class="ron-data">
 
-                    <div class="ron-data-row">
+                <div class="intelligence-indicators">
 
-                        <span class="ron-data-label">
-                            READINESS
+                    <div class="intelligence-row">
+
+                        <span class="intelligence-label">
+                            GLOBAL ACTIVITY
                         </span>
 
-                        <span
-                            class="ron-data-value"
-                            id="readiness"
-                        >
-                            STANDARD
-                        </span>
-
-                    </div>
-
-
-                    <div class="ron-data-row">
-
-                        <span class="ron-data-label">
-                            MOBILIZATION
-                        </span>
-
-                        <span
-                            class="ron-data-value"
-                            id="mobilization"
-                        >
-                            LOW
+                        <span class="intelligence-value gold">
+                            ELEVATED
                         </span>
 
                     </div>
 
 
-                    <div class="ron-data-row">
+                    <div class="intelligence-row">
 
-                        <span class="ron-data-label">
-                            THREAT INDEX
+                        <span class="intelligence-label">
+                            INDUSTRIAL ACTIVITY
                         </span>
 
-                        <span
-                            class="ron-data-value"
-                            id="threatIndex"
-                        >
-                            28%
-                        </span>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="ron-card">
-
-                <div class="ron-panel-header">
-
-                    <div class="ron-panel-title">
-                        WORLD ACTIVITY
-                    </div>
-
-                    <div class="ron-panel-code">
-                        WORLD
-                    </div>
-
-                </div>
-
-                <div class="ron-data">
-
-                    <div class="ron-data-row">
-
-                        <span class="ron-data-label">
-                            CONSTRUCTION
-                        </span>
-
-                        <span
-                            class="ron-data-value"
-                            id="construction"
-                        >
-                            HIGH
-                        </span>
-
-                    </div>
-
-
-                    <div class="ron-data-row">
-
-                        <span class="ron-data-label">
-                            EXPLORATION
-                        </span>
-
-                        <span
-                            class="ron-data-value"
-                            id="exploration"
-                        >
-                            ACTIVE
-                        </span>
-
-                    </div>
-
-
-                    <div class="ron-data-row">
-
-                        <span class="ron-data-label">
-                            DISCOVERIES
-                        </span>
-
-                        <span
-                            class="ron-data-value"
-                            id="discoveries"
-                        >
+                        <span class="intelligence-value green">
                             INCREASING
                         </span>
 
                     </div>
 
+
+                    <div class="intelligence-row">
+
+                        <span class="intelligence-label">
+                            MILITARY ACTIVITY
+                        </span>
+
+                        <span class="intelligence-value gold">
+                            ACTIVE
+                        </span>
+
+                    </div>
+
+
+                    <div class="intelligence-row">
+
+                        <span class="intelligence-label">
+                            TECHNOLOGY
+                        </span>
+
+                        <span class="intelligence-value green">
+                            DEVELOPING
+                        </span>
+
+                    </div>
+
+
+                    <div class="intelligence-row">
+
+                        <span class="intelligence-label">
+                            UNKNOWN EVENTS
+                        </span>
+
+                        <span class="intelligence-value red">
+                            MONITORING
+                        </span>
+
+                    </div>
+
                 </div>
 
-            </div>
-
-        </div>
+            </section>
 
 
-        <!-- NOTICE -->
 
-        <div class="ron-alert">
+            <!-- =========================
+                 INTELLIGENCE FEED
+            ========================== -->
 
-            <strong>SIMULATION NOTICE</strong><br>
+            <section class="ron-panel intelligence-wide">
 
-            All intelligence reports, global indicators and
-            situation assessments displayed on this page are
-            simulated. They do not represent live Minecraft
-            server telemetry or real-world events.
+                <div class="ron-panel-header">
+
+                    <div class="ron-panel-title">
+                        GLOBAL INTELLIGENCE FEED
+                    </div>
+
+                    <div class="ron-panel-code">
+                        INT-03
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="intelligenceFeed"
+                    class="intelligence-feed"
+                >
+
+                    <!-- Entries werden per JavaScript erzeugt -->
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =========================
+                 ANALYSIS
+            ========================== -->
+
+            <section class="ron-panel">
+
+                <div class="ron-panel-header">
+
+                    <div class="ron-panel-title">
+                        ANALYSIS
+                    </div>
+
+                    <div class="ron-panel-code">
+                        INT-04
+                    </div>
+
+                </div>
+
+
+                <div class="intelligence-indicators">
+
+                    <div class="intelligence-row">
+
+                        <span class="intelligence-label">
+                            CURRENT SITUATION
+                        </span>
+
+                        <span
+                            class="intelligence-value"
+                            id="currentSituation"
+                        >
+                            PLATZHALTER
+                        </span>
+
+                    </div>
+
+
+                    <div class="intelligence-row">
+
+                        <span class="intelligence-label">
+                            GLOBAL STATUS
+                        </span>
+
+                        <span
+                            class="intelligence-value"
+                            id="globalStatus"
+                        >
+                            PLATZHALTER
+                        </span>
+
+                    </div>
+
+
+                    <div class="intelligence-row">
+
+                        <span class="intelligence-label">
+                            ALERT LEVEL
+                        </span>
+
+                        <span
+                            class="intelligence-value gold"
+                            id="alertLevel"
+                        >
+                            PLATZHALTER
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =========================
+                 MONITORING
+            ========================== -->
+
+            <section class="ron-panel">
+
+                <div class="ron-panel-header">
+
+                    <div class="ron-panel-title">
+                        MONITORING SYSTEM
+                    </div>
+
+                    <div class="ron-panel-code">
+                        INT-05
+                    </div>
+
+                </div>
+
+
+                <div class="intelligence-alert">
+
+                    Intelligence data displayed on this page is
+                    simulated website information intended to create
+                    the RISE OF NATIONS global situation interface.
+
+                    <br><br>
+
+                    No external intelligence service or live-world
+                    data source is required.
+
+                </div>
+
+            </section>
 
         </div>
 
     </main>
 
 
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
     <footer class="ron-footer">
 
         RISE OF NATIONS
+
         &nbsp; // &nbsp;
+
         <span id="footerVersion">
             SYSTEM
         </span>
+
         &nbsp; // &nbsp;
-        INTELLIGENCE COMMAND
+
+        GLOBAL INTELLIGENCE
 
     </footer>
 
 
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
     <script>
 
-        const intelMessages = [
+        /*
+        ==========================================
+        CONFIGURATION
+        ==========================================
+        */
 
-            ["ECONOMY", "Industrial production has increased across several monitored regions.", "NORMAL"],
-            ["ECONOMY", "Trade activity between major settlements is showing significant growth.", "NORMAL"],
-            ["ECONOMY", "Strategic resource demand has reached elevated levels.", "WARNING"],
-            ["ECONOMY", "New commercial routes are being established.", "NORMAL"],
-            ["ECONOMY", "Raw material reserves remain within acceptable limits.", "NORMAL"],
-            ["ECONOMY", "Market activity has increased following recent infrastructure expansion.", "NORMAL"],
-            ["ECONOMY", "Logistics networks are reporting higher cargo volumes.", "NORMAL"],
-            ["ECONOMY", "Resource prices are showing increased volatility.", "WARNING"],
+        if (typeof SITE_CONFIG !== "undefined") {
 
-            ["INDUSTRY", "Large-scale factory expansion detected.", "NORMAL"],
-            ["INDUSTRY", "Industrial machinery production is increasing.", "NORMAL"],
-            ["INDUSTRY", "New automated production lines have entered operation.", "NORMAL"],
-            ["INDUSTRY", "Energy consumption has reached a new local maximum.", "WARNING"],
-            ["INDUSTRY", "Manufacturing capacity continues to expand.", "NORMAL"],
-            ["INDUSTRY", "Heavy industry activity detected near established infrastructure.", "NORMAL"],
-            ["INDUSTRY", "New production facilities are under construction.", "NORMAL"],
-            ["INDUSTRY", "Industrial output exceeds previous monitoring estimates.", "NORMAL"],
+            document.getElementById("currentSituation").textContent =
+                SITE_CONFIG.intelligence.currentSituation;
 
-            ["MILITARY", "Defensive readiness has been increased in several monitored areas.", "WARNING"],
-            ["MILITARY", "Military logistics activity remains elevated.", "WARNING"],
-            ["MILITARY", "Strategic infrastructure is undergoing reinforcement.", "NORMAL"],
-            ["MILITARY", "Reconnaissance activity has increased.", "WARNING"],
-            ["MILITARY", "No immediate military escalation detected.", "NORMAL"],
-            ["MILITARY", "Defensive systems remain operational.", "NORMAL"],
-            ["MILITARY", "Military supply routes are operating normally.", "NORMAL"],
-            ["MILITARY", "Unusual activity has been detected near a monitored region.", "ALERT"],
+            document.getElementById("globalStatus").textContent =
+                SITE_CONFIG.intelligence.globalStatus;
 
-            ["TECHNOLOGY", "A new technological development has been reported.", "NORMAL"],
-            ["TECHNOLOGY", "Advanced machinery research continues.", "NORMAL"],
-            ["TECHNOLOGY", "Automation levels are increasing.", "NORMAL"],
-            ["TECHNOLOGY", "Experimental infrastructure has been detected.", "WARNING"],
-            ["TECHNOLOGY", "Energy technology development is accelerating.", "NORMAL"],
-            ["TECHNOLOGY", "New engineering techniques are being deployed.", "NORMAL"],
-            ["TECHNOLOGY", "Research activity has reached record levels.", "NORMAL"],
+            document.getElementById("alertLevel").textContent =
+                SITE_CONFIG.intelligence.alertLevel;
 
-            ["EXPLORATION", "Unknown terrain has been documented.", "NORMAL"],
-            ["EXPLORATION", "Exploration activity has increased significantly.", "NORMAL"],
-            ["EXPLORATION", "An unidentified structure has been discovered.", "WARNING"],
-            ["EXPLORATION", "New resource deposits have been located.", "NORMAL"],
-            ["EXPLORATION", "Long-range expeditions are currently underway.", "NORMAL"],
-            ["EXPLORATION", "A previously unrecorded area has entered the monitoring network.", "NORMAL"],
+            document.getElementById("footerVersion").textContent =
+                SITE_CONFIG.website.modpackVersion;
 
-            ["AGRICULTURE", "Agricultural production remains stable.", "NORMAL"],
-            ["AGRICULTURE", "Food production has increased following infrastructure upgrades.", "NORMAL"],
-            ["AGRICULTURE", "Several new agricultural facilities are operational.", "NORMAL"],
-            ["AGRICULTURE", "Food reserves remain within safe operating limits.", "NORMAL"],
-            ["AGRICULTURE", "Agricultural expansion is continuing.", "NORMAL"],
+        }
 
-            ["LOGISTICS", "Supply routes are operating at increased capacity.", "NORMAL"],
-            ["LOGISTICS", "Transport activity has reached elevated levels.", "WARNING"],
-            ["LOGISTICS", "New storage infrastructure has become operational.", "NORMAL"],
-            ["LOGISTICS", "Cargo movement continues without major disruption.", "NORMAL"],
-            ["LOGISTICS", "A temporary logistics bottleneck has been detected.", "WARNING"],
 
-            ["SOCIETY", "Population activity is increasing across monitored settlements.", "NORMAL"],
-            ["SOCIETY", "Several new construction projects have been reported.", "NORMAL"],
-            ["SOCIETY", "Settlement expansion continues at a steady rate.", "NORMAL"],
-            ["SOCIETY", "Population movement has increased.", "NORMAL"],
-            ["SOCIETY", "Urban infrastructure development is accelerating.", "NORMAL"],
+        /*
+        ==========================================
+        SIMULATED INTELLIGENCE FEED
+        ==========================================
+        */
 
-            ["DIPLOMACY", "Diplomatic activity between monitored powers has increased.", "NORMAL"],
-            ["DIPLOMACY", "New agreements are reportedly being negotiated.", "NORMAL"],
-            ["DIPLOMACY", "Communication channels remain active.", "NORMAL"],
-            ["DIPLOMACY", "Regional tensions remain under observation.", "WARNING"],
-            ["DIPLOMACY", "No major diplomatic escalation has been detected.", "NORMAL"],
+        const intelligenceEvents = [
 
-            ["ENVIRONMENT", "Environmental conditions remain stable.", "NORMAL"],
-            ["ENVIRONMENT", "Unusual environmental activity has been recorded.", "WARNING"],
-            ["ENVIRONMENT", "Resource extraction pressure is increasing.", "WARNING"],
-            ["ENVIRONMENT", "Environmental monitoring remains within normal parameters.", "NORMAL"],
+            {
+                category: "MILITARY",
+                headline: "MILITARY READINESS INCREASED",
+                description:
+                    "Military forces have increased their readiness levels in several monitored areas."
+            },
 
-            ["INTELLIGENCE", "New intelligence reports have entered the analysis network.", "NORMAL"],
-            ["INTELLIGENCE", "Signal activity has increased in several monitored sectors.", "WARNING"],
-            ["INTELLIGENCE", "Additional reconnaissance data is being processed.", "NORMAL"],
-            ["INTELLIGENCE", "Global monitoring systems remain operational.", "NORMAL"],
-            ["INTELLIGENCE", "Unconfirmed reports are currently under investigation.", "WARNING"],
+            {
+                category: "INDUSTRY",
+                headline: "INDUSTRIAL PRODUCTION EXPANDING",
+                description:
+                    "Industrial facilities report increased production capacity and resource demand."
+            },
 
-            ["BREAKING", "UNKNOWN STRUCTURE DETECTED.", "ALERT"],
-            ["BREAKING", "STRATEGIC RESOURCE DEPOSIT DISCOVERED.", "ALERT"],
-            ["BREAKING", "UNUSUAL INDUSTRIAL ACTIVITY DETECTED.", "WARNING"],
-            ["BREAKING", "MILITARY READINESS INCREASED.", "WARNING"],
-            ["BREAKING", "NEW DEVELOPMENT ZONE IDENTIFIED.", "NORMAL"],
-            ["BREAKING", "GLOBAL ACTIVITY INDEX HAS REACHED A NEW HIGH.", "ALERT"]
+            {
+                category: "TECHNOLOGY",
+                headline: "NEW TECHNOLOGY DETECTED",
+                description:
+                    "Intelligence analysts report the appearance of previously unknown technological developments."
+            },
+
+            {
+                category: "SECURITY",
+                headline: "SECURITY LEVELS HAVE CHANGED",
+                description:
+                    "Security systems have detected unusual activity requiring additional observation."
+            },
+
+            {
+                category: "ECONOMY",
+                headline: "RESOURCE MARKETS SHOW MOVEMENT",
+                description:
+                    "Strategic resources are experiencing increased activity across multiple regions."
+            },
+
+            {
+                category: "EXPLORATION",
+                headline: "UNKNOWN STRUCTURE DISCOVERED",
+                description:
+                    "An unidentified structure has been detected and is currently under investigation."
+            },
+
+            {
+                category: "ENERGY",
+                headline: "ENERGY PRODUCTION INCREASED",
+                description:
+                    "Energy production systems report increased output and expanded infrastructure."
+            },
+
+            {
+                category: "DIPLOMACY",
+                headline: "DIPLOMATIC ACTIVITY INCREASED",
+                description:
+                    "Increased diplomatic communication has been observed between multiple regions."
+            },
+
+            {
+                category: "RESEARCH",
+                headline: "RESEARCH PROJECT ENTERS NEW PHASE",
+                description:
+                    "A major research initiative has entered a new development phase."
+            },
+
+            {
+                category: "GLOBAL",
+                headline: "GLOBAL SITUATION REMAINS UNSTABLE",
+                description:
+                    "Current intelligence indicates continued changes across several strategic sectors."
+            },
+
+            {
+                category: "INFRASTRUCTURE",
+                headline: "MAJOR INFRASTRUCTURE PROJECT DETECTED",
+                description:
+                    "Large-scale infrastructure development is currently being monitored."
+            },
+
+            {
+                category: "COMMUNICATIONS",
+                headline: "COMMUNICATION NETWORK ACTIVITY INCREASED",
+                description:
+                    "Communication traffic has increased across several monitored channels."
+            }
 
         ];
 
 
-        const feed = document.getElementById("intelFeed");
-        const ticker = document.getElementById("tickerText");
+        function randomTime() {
 
+            const minutes =
+                Math.floor(Math.random() * 60);
 
-        let reportCounter = 0;
-
-
-        function randomNumber(min, max) {
-
-            return Math.floor(
-                Math.random() * (max - min + 1)
-            ) + min;
+            return minutes + " MIN AGO";
 
         }
 
 
-        function currentTime() {
+        function shuffleEvents(array) {
 
-            const now = new Date();
-
-            return now.toLocaleTimeString(
-                "de-DE",
-                {
-                    hour: "2-digit",
-                    minute: "2-digit",
-                    second: "2-digit"
-                }
-            );
+            return [...array]
+                .sort(() => Math.random() - 0.5);
 
         }
 
 
-        function addIntelReport() {
+        function renderIntelligenceFeed() {
 
-            const report =
-                intelMessages[
-                    Math.floor(
-                        Math.random() *
-                        intelMessages.length
-                    )
-                ];
+            const feed =
+                document.getElementById("intelligenceFeed");
+
+            feed.innerHTML = "";
 
 
-            const category = report[0];
-            const message = report[1];
-            const severity = report[2];
+            const events =
+                shuffleEvents(intelligenceEvents)
+                    .slice(0, 6);
 
 
-            reportCounter++;
+            events.forEach(event => {
+
+                const entry =
+                    document.createElement("div");
+
+                entry.className =
+                    "intelligence-entry";
 
 
-            document.getElementById("reportsToday")
-                .textContent =
-                String(reportCounter).padStart(3, "0");
+                entry.innerHTML = `
+
+                    <div class="intelligence-entry-header">
+
+                        <span class="intelligence-category">
+                            ${event.category}
+                        </span>
+
+                        <span class="intelligence-time">
+                            ${randomTime()}
+                        </span>
+
+                    </div>
 
 
-            const item =
-                document.createElement("div");
+                    <div class="intelligence-headline">
+                        ${event.headline}
+                    </div>
 
 
-            item.className =
-                "ron-data-row";
+                    <div class="intelligence-description">
+                        ${event.description}
+                    </div>
+
+                `;
 
 
-            let tagClass = "";
-
-            if (severity === "WARNING") {
-                tagClass = "gold";
-            }
-
-            if (severity === "ALERT") {
-                tagClass = "red";
-            }
-
-
-            item.innerHTML = `
-
-                <span class="ron-data-label">
-
-                    ${currentTime()}
-                    &nbsp; // &nbsp;
-                    ${category}
-
-                </span>
-
-                <span class="ron-data-value">
-
-                    <span class="ron-tag ${tagClass}">
-                        ${severity}
-                    </span>
-
-                    &nbsp;
-
-                    ${message}
-
-                </span>
-
-            `;
-
-
-            feed.prepend(item);
-
-
-            while (feed.children.length > 8) {
-
-                feed.removeChild(
-                    feed.lastElementChild
-                );
-
-            }
-
-
-            ticker.textContent =
-                message;
-
-        }
-
-
-        function updateIndicators() {
-
-            const values = [
-
-                ["industryValue", "industryBar"],
-                ["tradeValue", "tradeBar"],
-                ["militaryValue", "militaryBar"],
-                ["resourceValue", "resourceBar"],
-                ["populationValue", "populationBar"],
-                ["technologyValue", "technologyBar"]
-
-            ];
-
-
-            values.forEach(pair => {
-
-                const value =
-                    randomNumber(25, 94);
-
-
-                document.getElementById(pair[0])
-                    .textContent =
-                    value + "%";
-
-
-                document.getElementById(pair[1])
-                    .style.width =
-                    value + "%";
+                feed.appendChild(entry);
 
             });
 
-
-            const activity =
-                randomNumber(40, 94);
-
-
-            document.getElementById("worldActivity")
-                .textContent =
-                activity + "%";
-
-
-            const threat =
-                randomNumber(10, 65);
-
-
-            document.getElementById("threatIndex")
-                .textContent =
-                threat + "%";
-
-
-            const statuses = [
-
-                ["marketActivity",
-                    ["HIGH", "ACTIVE", "STABLE"]],
-
-                ["tradeFlow",
-                    ["ACTIVE", "HIGH", "STABLE"]],
-
-                ["resourceDemand",
-                    ["LOW", "MODERATE", "HIGH"]],
-
-                ["readiness",
-                    ["STANDARD", "ELEVATED", "HIGH"]],
-
-                ["mobilization",
-                    ["LOW", "MODERATE", "ELEVATED"]],
-
-                ["construction",
-                    ["HIGH", "ACTIVE", "MODERATE"]],
-
-                ["exploration",
-                    ["ACTIVE", "HIGH", "ONGOING"]],
-
-                ["discoveries",
-                    ["INCREASING", "STABLE", "ELEVATED"]]
-
-            ];
-
-
-            statuses.forEach(item => {
-
-                const element =
-                    document.getElementById(item[0]);
-
-
-                element.textContent =
-                    item[1][
-                        Math.floor(
-                            Math.random() *
-                            item[1].length
-                        )
-                    ];
-
-            });
-
-
-            const alertRoll =
-                Math.random();
-
-
-            const alertElement =
-                document.getElementById("alertLevel");
-
-
-            const globalElement =
-                document.getElementById("globalStatus");
-
-
-            if (alertRoll > 0.88) {
-
-                alertElement.textContent =
-                    "HIGH";
-
-                globalElement.textContent =
-                    "ELEVATED";
-
-            } else if (alertRoll > 0.62) {
-
-                alertElement.textContent =
-                    "MODERATE";
-
-                globalElement.textContent =
-                    "WATCH";
-
-            } else {
-
-                alertElement.textContent =
-                    "LOW";
-
-                globalElement.textContent =
-                    "STABLE";
-
-            }
-
         }
 
 
-        function initializeFeed() {
-
-            for (
-                let i = 0;
-                i < 4;
-                i++
-            ) {
-
-                addIntelReport();
-
-            }
-
-        }
+        renderIntelligenceFeed();
 
 
-        initializeFeed();
+        /*
+        ==========================================
+        PERIODIC UPDATE
+        ==========================================
+        */
 
+        setInterval(() => {
 
-        setInterval(
-            addIntelReport,
-            5500
-        );
+            renderIntelligenceFeed();
 
-
-        setInterval(
-            updateIndicators,
-            10000
-        );
-
-
-        if (
-            typeof SITE_CONFIG !==
-            "undefined"
-        ) {
-
-            document.getElementById(
-                "footerVersion"
-            ).textContent =
-                SITE_CONFIG.modpack.version;
-
-        }
+        }, 15000);
 
     </script>
 
