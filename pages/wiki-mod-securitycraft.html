@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RISE OF NATIONS // SECURITYCRAFT</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    background:
+        linear-gradient(rgba(7,12,17,.95), rgba(7,12,17,.98)),
+        repeating-linear-gradient(
+            135deg,
+            rgba(255,255,255,.018) 0px,
+            rgba(255,255,255,.018) 2px,
+            transparent 2px,
+            transparent 9px
+        );
+    color: #dbe3e8;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+header {
+    background: rgba(6,11,16,.97);
+    border-bottom: 1px solid #293944;
+    box-shadow: 0 5px 25px rgba(0,0,0,.45);
+}
+
+.header-inner {
+    max-width: 1500px;
+    margin: auto;
+    padding: 18px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+}
+
+.logo {
+    color: #d6b85c;
+    font-size: 22px;
+    font-weight: 950;
+    letter-spacing: 3px;
+}
+
+.logo span {
+    display: block;
+    color: #687b86;
+    font-size: 9px;
+    letter-spacing: 2px;
+    margin-top: 4px;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 7px;
+}
+
+nav a {
+    color: #9aabb4;
+    text-decoration: none;
+    padding: 9px 11px;
+    border: 1px solid transparent;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 1.2px;
+    transition: .2s;
+}
+
+nav a:hover {
+    color: #d6b85c;
+    background: #111b22;
+    border-color: #3b4d58;
+}
+
+main {
+    max-width: 1250px;
+    margin: auto;
+    padding: 70px 30px 100px;
+}
+
+.eyebrow {
+    color: #d6b85c;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+}
+
+h1 {
+    color: #edf2f4;
+    font-size: clamp(42px, 7vw, 82px);
+    line-height: .95;
+    letter-spacing: 5px;
+    font-weight: 950;
+}
+
+.subtitle {
+    max-width: 850px;
+    margin-top: 22px;
+    color: #8497a2;
+    line-height: 1.75;
+    font-size: 15px;
+}
+
+.meta {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 38px;
+}
+
+.meta-box {
+    padding: 18px;
+    background: #0d171d;
+    border: 1px solid #293c47;
+}
+
+.meta-label {
+    color: #596c77;
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+}
+
+.meta-value {
+    color: #d6b85c;
+    font-size: 13px;
+    font-weight: 900;
+}
+
+.section {
+    margin-top: 35px;
+    padding: 30px;
+    background: #0d171d;
+    border: 1px solid #293c47;
+}
+
+.section-number {
+    color: #526773;
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    margin-bottom: 9px;
+}
+
+h2 {
+    color: #e1e8eb;
+    font-size: 22px;
+    letter-spacing: 1px;
+    margin-bottom: 18px;
+}
+
+h3 {
+    color: #d6b85c;
+    font-size: 14px;
+    letter-spacing: 1px;
+    margin: 25px 0 10px;
+}
+
+p {
+    color: #899ba5;
+    font-size: 13px;
+    line-height: 1.8;
+    margin-bottom: 13px;
+}
+
+ul {
+    margin: 12px 0 18px 20px;
+}
+
+li {
+    color: #899ba5;
+    font-size: 13px;
+    line-height: 1.8;
+    padding-left: 5px;
+}
+
+strong {
+    color: #d9e2e6;
+}
+
+.note {
+    margin-top: 18px;
+    padding: 17px 18px;
+    background: #111c23;
+    border-left: 3px solid #4d91bd;
+}
+
+.note-title {
+    color: #4d91bd;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    margin-bottom: 7px;
+}
+
+.warning {
+    margin-top: 18px;
+    padding: 17px 18px;
+    background: #17140e;
+    border-left: 3px solid #d6b85c;
+}
+
+.warning-title {
+    color: #d6b85c;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    margin-bottom: 7px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 18px;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 13px 14px;
+    border: 1px solid #293c47;
+    font-size: 12px;
+}
+
+th {
+    color: #d6b85c;
+    background: #111c23;
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+td {
+    color: #8ea0a9;
+    background: #0a141a;
+}
+
+.sources {
+    display: grid;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.sources a {
+    display: block;
+    padding: 13px 15px;
+    background: #101b22;
+    border: 1px solid #293c47;
+    color: #9fb0b9;
+    text-decoration: none;
+    font-size: 12px;
+    transition: .2s;
+}
+
+.sources a:hover {
+    color: #d6b85c;
+    border-color: #d6b85c;
+}
+
+.back {
+    display: inline-block;
+    margin-top: 45px;
+    padding: 12px 16px;
+    color: #d6b85c;
+    border: 1px solid #4c4530;
+    text-decoration: none;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    transition: .2s;
+}
+
+.back:hover {
+    background: #17150f;
+    border-color: #d6b85c;
+}
+
+footer {
+    border-top: 1px solid #202e36;
+    padding: 25px 30px;
+    text-align: center;
+    color: #465861;
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+@media (max-width: 850px) {
+    .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav {
+        justify-content: flex-start;
+    }
+
+    .meta {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 550px) {
+    .meta {
+        grid-template-columns: 1fr;
+    }
+
+    main {
+        padding: 45px 18px 70px;
+    }
+
+    .section {
+        padding: 22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-inner">
+
+        <div class="logo">
+            RISE OF NATIONS
+            <span>TACTICAL KNOWLEDGE DATABASE</span>
+        </div>
+
+        <nav>
+            <a href="../index.html">COMMAND</a>
+            <a href="intelligence.html">INTELLIGENCE</a>
+            <a href="server.html">SERVER</a>
+            <a href="database.html">DATABASE</a>
+            <a href="download.html">DOWNLOAD</a>
+            <a href="communications.html">COMMUNICATIONS</a>
+            <a href="wiki.html">WIKI</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+
+    <div class="eyebrow">
+        PROFESSOR DATABASE // FACILITY SECURITY
+    </div>
+
+    <h1>SECURITYCRAFT</h1>
+
+    <p class="subtitle">
+        <strong>SecurityCraft</strong> erweitert RISE OF NATIONS um
+        technische Schutzsysteme für Basen, Türen, Lager, Bereiche und
+        sensible Infrastruktur. Die Mod ist besonders interessant für
+        Spieler, die ihre wichtigsten Anlagen nicht nur durch Claims,
+        sondern auch physisch absichern möchten.
+    </p>
+
+
+    <div class="meta">
+
+        <div class="meta-box">
+            <div class="meta-label">MOD</div>
+            <div class="meta-value">SECURITYCRAFT</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">VERSION</div>
+            <div class="meta-value">1.10.2.1</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">MINECRAFT</div>
+            <div class="meta-value">1.21.1</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">CATEGORY</div>
+            <div class="meta-value">SECURITY</div>
+        </div>
+
+    </div>
+
+
+    <section class="section">
+
+        <div class="section-number">01 // SYSTEM OVERVIEW</div>
+        <h2>Was ist SecurityCraft?</h2>
+
+        <p>
+            SecurityCraft stellt verschiedene Sicherheits- und
+            Überwachungssysteme bereit, mit denen Spieler ihre
+            Infrastruktur gegen unerwünschten Zugriff absichern können.
+        </p>
+
+        <p>
+            Dabei geht es nicht nur um eine einzelne Tür. Ein vollständiges
+            Sicherheitssystem kann aus Zugangskontrolle, geschützten
+            Blöcken, Überwachung und zusätzlichen Verteidigungsmaßnahmen
+            bestehen.
+        </p>
+
+        <div class="note">
+            <div class="note-title">RISE OF NATIONS // SECURITY DOCTRINE</div>
+            <p>
+                Die stärkste Verteidigung entsteht durch mehrere
+                Schutzschichten. Claims können das Gebiet absichern,
+                SecurityCraft kann anschließend einzelne Anlagen und
+                Zugänge zusätzlich schützen.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">02 // SECURITY LAYERS</div>
+        <h2>Mehrere Schutzschichten</h2>
+
+        <table>
+
+            <tr>
+                <th>SCHICHT</th>
+                <th>FUNKTION</th>
+                <th>ZIEL</th>
+            </tr>
+
+            <tr>
+                <td>CLAIM</td>
+                <td>Gebietsschutz</td>
+                <td>Unbefugtes Bauen und Interagieren verhindern</td>
+            </tr>
+
+            <tr>
+                <td>ACCESS CONTROL</td>
+                <td>Zugangskontrolle</td>
+                <td>Bestimmte Spieler zulassen oder ausschließen</td>
+            </tr>
+
+            <tr>
+                <td>PHYSICAL SECURITY</td>
+                <td>Gesicherte Infrastruktur</td>
+                <td>Wichtige Blöcke und Räume schützen</td>
+            </tr>
+
+            <tr>
+                <td>SURVEILLANCE</td>
+                <td>Überwachung</td>
+                <td>Aktivitäten beobachten</td>
+            </tr>
+
+            <tr>
+                <td>DEFENSE</td>
+                <td>Zusätzliche Abwehr</td>
+                <td>Besonders sensible Bereiche sichern</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">03 // ACCESS CONTROL</div>
+        <h2>Zugangskontrolle</h2>
+
+        <p>
+            Der wichtigste Einsatzbereich einer Sicherheitsmod ist die
+            Kontrolle darüber, wer einen bestimmten Bereich betreten oder
+            mit dessen Infrastruktur interagieren darf.
+        </p>
+
+        <h3>Hauptbasis</h3>
+
+        <p>
+            Ein zentraler Zugang kann beispielsweise als kontrollierter
+            Eingang für die eigene Basis verwendet werden.
+        </p>
+
+        <h3>Industrieanlagen</h3>
+
+        <p>
+            Hochwertige Maschinen, Lager und Produktionsbereiche können
+            separat vom normalen Wohnbereich abgesichert werden.
+        </p>
+
+        <h3>Waffenlager</h3>
+
+        <p>
+            Besonders wertvolle Ausrüstung sollte nicht automatisch für
+            jeden Spieler einer größeren Gemeinschaft zugänglich sein.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">04 // SECURED FACILITIES</div>
+        <h2>Welche Bereiche sollte man sichern?</h2>
+
+        <ul>
+            <li>Hauptlager</li>
+            <li>Waffen- und Munitionslager</li>
+            <li>Create-Produktionsanlagen</li>
+            <li>Energieanlagen</li>
+            <li>Server- und Technikräume</li>
+            <li>Private Wohnbereiche</li>
+            <li>Experimentelle Anlagen</li>
+            <li>Seltene Ressourcenlager</li>
+        </ul>
+
+        <div class="warning">
+            <div class="warning-title">SECURITY PRIORITY</div>
+            <p>
+                Nicht jede Tür muss maximal gesichert werden. Die
+                Sicherheitsstufe sollte dem tatsächlichen Wert des
+                dahinterliegenden Bereichs entsprechen.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">05 // SURVEILLANCE</div>
+        <h2>Überwachung</h2>
+
+        <p>
+            Überwachung ergänzt Zugangsschutz. Das Ziel besteht nicht
+            nur darin, einen Spieler aufzuhalten, sondern auch zu
+            erkennen, dass sich jemand in einem geschützten Bereich
+            bewegt.
+        </p>
+
+        <p>
+            Besonders sinnvoll ist Überwachung an Punkten, die von
+            außerhalb der eigenen Basis nicht direkt eingesehen werden
+            können.
+        </p>
+
+        <h3>Empfohlene Positionen</h3>
+
+        <ul>
+            <li>Haupteingänge</li>
+            <li>Lagerräume</li>
+            <li>Produktionshallen</li>
+            <li>Unterirdische Zugänge</li>
+            <li>Wichtige Außenposten</li>
+        </ul>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">06 // CLAIMS + SECURITYCRAFT</div>
+        <h2>Gebietsschutz und physische Sicherheit</h2>
+
+        <p>
+            Claims und SecurityCraft sollten nicht als konkurrierende
+            Systeme verstanden werden. Sie erfüllen unterschiedliche
+            Aufgaben.
+        </p>
+
+        <p>
+            Ein Claim kann das gesamte Grundstück schützen, während
+            SecurityCraft innerhalb dieses Grundstücks besonders wichtige
+            Bereiche zusätzlich absichert.
+        </p>
+
+        <div class="note">
+            <div class="note-title">BEISPIEL</div>
+            <p>
+                Eine große Industrieanlage liegt innerhalb eines Claims.
+                Das Haupttor, das Waffenlager und der Kontrollraum
+                erhalten zusätzlich eigene Zugangssicherung.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">07 // INDUSTRIAL SECURITY</div>
+        <h2>Security für Create-Anlagen</h2>
+
+        <p>
+            Große Create-Fabriken können erhebliche Mengen an Ressourcen
+            enthalten und mehrere Produktionsketten gleichzeitig betreiben.
+            Eine sinnvolle Sicherheitsstruktur sollte deshalb auch die
+            technische Infrastruktur berücksichtigen.
+        </p>
+
+        <ul>
+            <li>Produktionshalle schützen.</li>
+            <li>Zentralen Rohstoffzugang schützen.</li>
+            <li>Fertige Produkte separat lagern.</li>
+            <li>Kontrollräume absichern.</li>
+            <li>Wichtige Energie- und Versorgungssysteme schützen.</li>
+        </ul>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">08 // MULTIPLAYER OPERATIONS</div>
+        <h2>Sicherheit bei mehreren Spielern</h2>
+
+        <p>
+            In kleinen Gruppen kann eine gemeinsame Basis relativ einfach
+            organisiert werden. Mit zunehmender Spielerzahl wird eine
+            klare Trennung von Bereichen jedoch wichtiger.
+        </p>
+
+        <h3>Öffentlich</h3>
+
+        <p>
+            Bereiche wie Marktplätze, öffentliche Werkstätten oder
+            gemeinsame Versorgungseinrichtungen können frei zugänglich
+            bleiben.
+        </p>
+
+        <h3>Intern</h3>
+
+        <p>
+            Teamlager und gemeinsame Produktionsanlagen sollten nur
+            berechtigten Spielern offenstehen.
+        </p>
+
+        <h3>Privat</h3>
+
+        <p>
+            Persönliche Lager, Waffenbestände oder wertvolle Sammlungen
+            können zusätzlich geschützt werden.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">09 // COMMON PROBLEMS</div>
+        <h2>Häufige Probleme</h2>
+
+        <h3>Spieler kommt nicht durch die Tür</h3>
+
+        <p>
+            Zuerst die Berechtigungen und den verwendeten Zugangsschutz
+            überprüfen. Bei Multiplayer-Systemen muss außerdem geklärt
+            werden, ob der betreffende Spieler tatsächlich freigegeben
+            wurde.
+        </p>
+
+        <h3>Claim schützt Bereich bereits</h3>
+
+        <p>
+            Das ist kein Fehler. Claims und zusätzliche Security-Systeme
+            können gemeinsam eingesetzt werden.
+        </p>
+
+        <h3>Sicherheitsanlage funktioniert nicht wie erwartet</h3>
+
+        <p>
+            Bei technischen Problemen sollten zunächst die genaue
+            Blockfunktion, die Konfiguration sowie mögliche
+            Mod-Kompatibilitäten geprüft werden.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">10 // ADVANCED SECURITY DESIGN</div>
+        <h2>Eine professionelle Basis aufbauen</h2>
+
+        <p>
+            Für größere Basen empfiehlt sich eine klare Sicherheitsstruktur:
+        </p>
+
+        <ul>
+            <li>Äußerer Claim als erste Schutzschicht.</li>
+            <li>Definierter Haupteingang.</li>
+            <li>Separater Bereich für Produktion.</li>
+            <li>Gesichertes Hauptlager.</li>
+            <li>Separates Waffen- und Munitionslager.</li>
+            <li>Kontrollraum für wichtige Infrastruktur.</li>
+            <li>Überwachung an strategischen Punkten.</li>
+        </ul>
+
+        <p>
+            Dadurch entsteht ein System, bei dem ein Angreifer nicht mit
+            einer einzigen Schwachstelle sofort Zugriff auf sämtliche
+            Ressourcen erhält.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">11 // RISE OF NATIONS DOCTRINE</div>
+        <h2>Empfohlene Sicherheitsstruktur</h2>
+
+        <p>
+            Für RISE OF NATIONS ist folgende Kombination besonders sinnvoll:
+        </p>
+
+        <table>
+
+            <tr>
+                <th>SYSTEM</th>
+                <th>AUFGABE</th>
+            </tr>
+
+            <tr>
+                <td>Claim My Land / Open Parties and Claims</td>
+                <td>Grundlegender Gebietsschutz</td>
+            </tr>
+
+            <tr>
+                <td>SecurityCraft</td>
+                <td>Physische und technische Sicherheit</td>
+            </tr>
+
+            <tr>
+                <td>Sophisticated Storage</td>
+                <td>Organisierte Ressourcenlagerung</td>
+            </tr>
+
+            <tr>
+                <td>Sophisticated Backpacks</td>
+                <td>Mobile Ressourcen- und Ausrüstungslogistik</td>
+            </tr>
+
+            <tr>
+                <td>Simple Voice Chat</td>
+                <td>Koordination innerhalb der Gruppe</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">12 // REFERENCE DATA</div>
+        <h2>Originalquelle</h2>
+
+        <p>
+            Für konkrete Blockfunktionen, Rezepte, Konfigurationen und
+            versionsabhängige Änderungen sollte die aktuelle Projektquelle
+            konsultiert werden.
+        </p>
+
+        <div class="sources">
+
+            <a href="https://www.curseforge.com/minecraft/mc-mods/security-craft"
+               target="_blank"
+               rel="noopener">
+                CURSEFORGE // SECURITYCRAFT
+            </a>
+
+            <a href="https://modrinth.com/mod/security-craft"
+               target="_blank"
+               rel="noopener">
+                MODRINTH // SECURITYCRAFT
+            </a>
+
+            <a href="https://github.com/bl4ckscor3/SecurityCraft"
+               target="_blank"
+               rel="noopener">
+                GITHUB // SECURITYCRAFT
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <a class="back" href="wiki-important.html">
+        ← ZURÜCK ZU WIKI // IMPORTANT
+    </a>
+
+</main>
+
+<footer>
+    RISE OF NATIONS // SECURITYCRAFT // TACTICAL KNOWLEDGE DATABASE
+</footer>
+
+</body>
+</html>
