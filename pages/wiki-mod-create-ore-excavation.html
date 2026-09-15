@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RISE OF NATIONS // CREATE ORE EXCAVATION</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+    min-height:100vh;
+    background:
+        linear-gradient(rgba(7,12,17,.97),rgba(7,12,17,.99)),
+        repeating-linear-gradient(
+            135deg,
+            rgba(255,255,255,.018) 0 2px,
+            transparent 2px 9px
+        );
+    color:#dbe3e8;
+    font-family:"Segoe UI",Arial,sans-serif;
+}
+
+header{
+    background:rgba(6,11,16,.98);
+    border-bottom:1px solid #293944;
+    box-shadow:0 5px 25px rgba(0,0,0,.45);
+}
+
+.header-inner{
+    max-width:1500px;
+    margin:auto;
+    padding:18px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:30px;
+}
+
+.logo{
+    color:#d6b85c;
+    font-size:22px;
+    font-weight:950;
+    letter-spacing:3px;
+}
+
+.logo span{
+    display:block;
+    color:#687b86;
+    font-size:9px;
+    letter-spacing:2px;
+    margin-top:4px;
+}
+
+nav{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+    gap:7px;
+}
+
+nav a{
+    color:#9aabb4;
+    text-decoration:none;
+    padding:9px 11px;
+    border:1px solid transparent;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.2px;
+    transition:.2s;
+}
+
+nav a:hover{
+    color:#d6b85c;
+    background:#111b22;
+    border-color:#3b4d58;
+}
+
+main{
+    max-width:1250px;
+    margin:auto;
+    padding:70px 30px 100px;
+}
+
+.eyebrow{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:3px;
+    margin-bottom:15px;
+}
+
+h1{
+    color:#edf2f4;
+    font-size:clamp(40px,6.5vw,78px);
+    line-height:.95;
+    letter-spacing:4px;
+    font-weight:950;
+}
+
+.subtitle{
+    max-width:900px;
+    margin-top:22px;
+    color:#8497a2;
+    line-height:1.75;
+    font-size:15px;
+}
+
+.meta{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-top:38px;
+}
+
+.meta-box{
+    padding:18px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+
+.meta-label{
+    color:#596c77;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:8px;
+}
+
+.meta-value{
+    color:#d6b85c;
+    font-size:13px;
+    font-weight:900;
+}
+
+.section{
+    margin-top:35px;
+    padding:30px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+
+.section-number{
+    color:#526773;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:2px;
+    margin-bottom:9px;
+}
+
+h2{
+    color:#e1e8eb;
+    font-size:22px;
+    letter-spacing:1px;
+    margin-bottom:18px;
+}
+
+h3{
+    color:#d6b85c;
+    font-size:14px;
+    letter-spacing:1px;
+    margin:25px 0 10px;
+}
+
+p{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    margin-bottom:13px;
+}
+
+ul,ol{
+    margin:12px 0 18px 22px;
+}
+
+li{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    padding-left:5px;
+}
+
+strong{
+    color:#d9e2e6;
+}
+
+.note{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#111c23;
+    border-left:3px solid #4d91bd;
+}
+
+.note-title{
+    color:#4d91bd;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+
+.warning{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#17140e;
+    border-left:3px solid #d6b85c;
+}
+
+.warning-title{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:18px;
+}
+
+th,td{
+    text-align:left;
+    padding:13px 14px;
+    border:1px solid #293c47;
+    font-size:12px;
+}
+
+th{
+    color:#d6b85c;
+    background:#111c23;
+    font-size:10px;
+    letter-spacing:1px;
+}
+
+td{
+    color:#8ea0a9;
+    background:#0a141a;
+}
+
+.sources{
+    display:grid;
+    gap:10px;
+    margin-top:15px;
+}
+
+.sources a{
+    display:block;
+    padding:13px 15px;
+    background:#101b22;
+    border:1px solid #293c47;
+    color:#9fb0b9;
+    text-decoration:none;
+    font-size:12px;
+    transition:.2s;
+}
+
+.sources a:hover{
+    color:#d6b85c;
+    border-color:#d6b85c;
+}
+
+.back{
+    display:inline-block;
+    margin-top:45px;
+    padding:12px 16px;
+    color:#d6b85c;
+    border:1px solid #4c4530;
+    text-decoration:none;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    transition:.2s;
+}
+
+.back:hover{
+    background:#17150f;
+    border-color:#d6b85c;
+}
+
+footer{
+    border-top:1px solid #202e36;
+    padding:25px 30px;
+    text-align:center;
+    color:#465861;
+    font-size:9px;
+    letter-spacing:2px;
+}
+
+@media(max-width:850px){
+    .header-inner{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    nav{
+        justify-content:flex-start;
+    }
+
+    .meta{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:550px){
+    .meta{
+        grid-template-columns:1fr;
+    }
+
+    main{
+        padding:45px 18px 70px;
+    }
+
+    .section{
+        padding:22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-inner">
+
+        <div class="logo">
+            RISE OF NATIONS
+            <span>TACTICAL KNOWLEDGE DATABASE</span>
+        </div>
+
+        <nav>
+            <a href="../index.html">COMMAND</a>
+            <a href="intelligence.html">INTELLIGENCE</a>
+            <a href="server.html">SERVER</a>
+            <a href="database.html">DATABASE</a>
+            <a href="download.html">DOWNLOAD</a>
+            <a href="communications.html">COMMUNICATIONS</a>
+            <a href="wiki.html">WIKI</a>
+        </nav>
+
+    </div>
+</header>
+
+<main>
+
+    <div class="eyebrow">
+        PROFESSOR DATABASE // RESOURCE EXTRACTION
+    </div>
+
+    <h1>CREATE ORE EXCAVATION</h1>
+
+    <p class="subtitle">
+        Create Ore Excavation erweitert die Rohstoffgewinnung innerhalb
+        des Create-Ökosystems. Das System konzentriert sich auf die
+        effiziente Gewinnung von Erz und anderen unterirdischen
+        Ressourcen und eignet sich besonders für größere industrielle
+        Produktionsketten.
+    </p>
+
+    <div class="meta">
+
+        <div class="meta-box">
+            <div class="meta-label">MOD</div>
+            <div class="meta-value">CREATE ORE EXCAVATION</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">VERSION</div>
+            <div class="meta-value">1.6.8</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">MINECRAFT</div>
+            <div class="meta-value">1.21.1</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">SYSTEM</div>
+            <div class="meta-value">RESOURCE EXTRACTION</div>
+        </div>
+
+    </div>
+
+
+    <section class="section">
+
+        <div class="section-number">01 // SYSTEM OVERVIEW</div>
+        <h2>Was ist Create Ore Excavation?</h2>
+
+        <p>
+            Create Ore Excavation stellt Werkzeuge für eine automatisierte
+            oder teilautomatisierte Rohstoffgewinnung bereit.
+        </p>
+
+        <p>
+            Damit lässt sich ein Teil der klassischen manuellen
+            Mining-Arbeit in industrielle Produktionsketten überführen.
+        </p>
+
+        <div class="note">
+            <div class="note-title">INDUSTRIAL PRINCIPLE</div>
+            <p>
+                Das Ziel ist nicht einfach mehr Erz, sondern eine
+                zuverlässige Rohstoffversorgung für eine größere Fabrik.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">02 // WHY AUTOMATE MINING?</div>
+        <h2>Warum Rohstoffgewinnung automatisieren?</h2>
+
+        <p>
+            Große Create-Fabriken benötigen erhebliche Mengen an
+            Rohstoffen. Besonders bei Maschinen, Schienen, Komponenten
+            und komplexen Produktionsketten kann manueller Abbau schnell
+            zum Engpass werden.
+        </p>
+
+        <ul>
+            <li>Weniger manuelle Mining-Zeit</li>
+            <li>Planbare Rohstoffversorgung</li>
+            <li>Bessere Skalierbarkeit großer Fabriken</li>
+            <li>Integration in bestehende Logistik</li>
+            <li>Automatisierbare Materialzufuhr</li>
+        </ul>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">03 // EXTRACTION SYSTEM</div>
+        <h2>Das Extraktionsprinzip</h2>
+
+        <p>
+            Das grundlegende Konzept besteht darin, einen geeigneten
+            Extraktionsmechanismus mit einer passenden Energie- und
+            Materiallogistik zu verbinden.
+        </p>
+
+        <table>
+
+            <tr>
+                <th>BEREICH</th>
+                <th>AUFGABE</th>
+            </tr>
+
+            <tr>
+                <td>EXTRACTION</td>
+                <td>Rohstoffe gewinnen</td>
+            </tr>
+
+            <tr>
+                <td>POWER</td>
+                <td>Maschine betreiben</td>
+            </tr>
+
+            <tr>
+                <td>OUTPUT</td>
+                <td>Gewonnene Materialien sammeln</td>
+            </tr>
+
+            <tr>
+                <td>LOGISTICS</td>
+                <td>Material weitertransportieren</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">04 // RESOURCE PLANNING</div>
+        <h2>Welche Rohstoffe sollte man automatisieren?</h2>
+
+        <p>
+            Nicht jeder Rohstoff muss sofort automatisiert werden.
+            Entscheidend ist, welche Materialien in der eigenen
+            Produktionskette regelmäßig benötigt werden.
+        </p>
+
+        <h3>Hohe Priorität</h3>
+
+        <ul>
+            <li>Häufig benötigte Metalle</li>
+            <li>Rohstoffe für Create-Komponenten</li>
+            <li>Materialien für Maschinen</li>
+            <li>Rohstoffe für große Bauprojekte</li>
+        </ul>
+
+        <h3>Niedrige Priorität</h3>
+
+        <p>
+            Materialien, die nur selten benötigt werden, können weiterhin
+            manuell gewonnen oder über andere Produktionswege beschafft
+            werden.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">05 // INDUSTRIAL PIPELINE</div>
+        <h2>Von der Mine zur Fabrik</h2>
+
+        <ol>
+            <li>Rohstoffbedarf bestimmen.</li>
+            <li>Extraktionsanlage errichten.</li>
+            <li>Energieversorgung bereitstellen.</li>
+            <li>Ausgabe sammeln.</li>
+            <li>Material sortieren.</li>
+            <li>Material in das Hauptlager transportieren.</li>
+            <li>Produktionsmaschinen versorgen.</li>
+        </ol>
+
+        <div class="note">
+            <div class="note-title">LOGISTICS FIRST</div>
+            <p>
+                Eine starke Mining-Anlage ist nutzlos, wenn ihre Ausgabe
+                nicht zuverlässig abtransportiert und gelagert wird.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">06 // CREATE INTEGRATION</div>
+        <h2>Kombination mit Create</h2>
+
+        <p>
+            Die eigentliche Stärke entsteht durch die Verbindung mit
+            den bestehenden Create-Logistiksystemen.
+        </p>
+
+        <table>
+
+            <tr>
+                <th>SYSTEM</th>
+                <th>EINSATZ</th>
+            </tr>
+
+            <tr>
+                <td>BELTS</td>
+                <td>Materialtransport</td>
+            </tr>
+
+            <tr>
+                <td>FUNNELS</td>
+                <td>Ein- und Ausgabe</td>
+            </tr>
+
+            <tr>
+                <td>DEPOT</td>
+                <td>Zwischenlagerung und Verarbeitung</td>
+            </tr>
+
+            <tr>
+                <td>CHUTES</td>
+                <td>Vertikaler Materialtransport</td>
+            </tr>
+
+            <tr>
+                <td>STORAGE</td>
+                <td>Langfristige Materiallagerung</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">07 // POWER REQUIREMENTS</div>
+        <h2>Energie und Maschinenbetrieb</h2>
+
+        <p>
+            Eine automatisierte Extraktionsanlage sollte in die
+            Energieplanung der gesamten Fabrik eingebunden werden.
+        </p>
+
+        <p>
+            Gerade große Produktionsanlagen können gleichzeitig
+            erhebliche mechanische oder elektrische Lasten erzeugen.
+        </p>
+
+        <ul>
+            <li>Eigene Energieversorgung prüfen.</li>
+            <li>Reserven einplanen.</li>
+            <li>Neue Verbraucher nicht blind anschließen.</li>
+            <li>Produktionsspitzen berücksichtigen.</li>
+        </ul>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">08 // STORAGE</div>
+        <h2>Materiallagerung</h2>
+
+        <p>
+            Die gewonnene Ressource sollte nicht einfach irgendwo in
+            Kisten landen. Ein industrielles Lager benötigt eine klare
+            Struktur.
+        </p>
+
+        <h3>Empfohlener Aufbau</h3>
+
+        <ol>
+            <li>Extraktionsanlage</li>
+            <li>Ausgabepuffer</li>
+            <li>Sortierung</li>
+            <li>Rohstofflager</li>
+            <li>Produktionslager</li>
+        </ol>
+
+        <p>
+            Sophisticated Storage und Sophisticated Backpacks können
+            dabei als zusätzliche Lager- und Logistikkomponenten dienen.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">09 // PRODUCTION CHAIN</div>
+        <h2>Rohstoffbedarf richtig planen</h2>
+
+        <p>
+            Der beste Ansatz besteht darin, von der gewünschten
+            Endproduktion rückwärts zu planen.
+        </p>
+
+        <ol>
+            <li>Endprodukt bestimmen.</li>
+            <li>Benötigte Zwischenprodukte ermitteln.</li>
+            <li>Benötigte Rohstoffe bestimmen.</li>
+            <li>Verbrauch pro Produktionskette abschätzen.</li>
+            <li>Mining-Kapazität entsprechend dimensionieren.</li>
+        </ol>
+
+        <div class="note">
+            <div class="note-title">JEI INTEGRATION</div>
+            <p>
+                JEI eignet sich hervorragend, um die benötigten
+                Produktionsketten und Rezeptabhängigkeiten zu verfolgen.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">10 // COMMON FAILURES</div>
+        <h2>Häufige Probleme</h2>
+
+        <h3>Die Maschine produziert nicht</h3>
+
+        <p>
+            Zuerst Energieversorgung, Aktivierung und die benötigten
+            Voraussetzungen prüfen.
+        </p>
+
+        <h3>Das Lager läuft über</h3>
+
+        <p>
+            Die Extraktion ist möglicherweise deutlich größer als der
+            tatsächliche Verbrauch. In diesem Fall sollte die
+            Lagerkapazität oder die Produktionsplanung angepasst werden.
+        </p>
+
+        <h3>Die Fabrik bekommt nicht genug Rohstoffe</h3>
+
+        <p>
+            Prüfe nicht nur die Mining-Menge, sondern auch Transport,
+            Sortierung und Lagerung.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">11 // SCALING</div>
+        <h2>Von der kleinen Anlage zum Bergbaukomplex</h2>
+
+        <p>
+            Ein automatisiertes System sollte modular aufgebaut werden.
+            So kann die Kapazität später erweitert werden, ohne die
+            komplette Infrastruktur neu zu bauen.
+        </p>
+
+        <table>
+
+            <tr>
+                <th>STUFE</th>
+                <th>ANLAGE</th>
+            </tr>
+
+            <tr>
+                <td>I</td>
+                <td>Kleine Einzelanlage</td>
+            </tr>
+
+            <tr>
+                <td>II</td>
+                <td>Mehrere Extraktionsmaschinen</td>
+            </tr>
+
+            <tr>
+                <td>III</td>
+                <td>Zentrales Rohstofflager</td>
+            </tr>
+
+            <tr>
+                <td>IV</td>
+                <td>Automatisierte Sortierung</td>
+            </tr>
+
+            <tr>
+                <td>V</td>
+                <td>Großes industrielles Bergbauzentrum</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">12 // BASE DESIGN</div>
+        <h2>Bergbau als Infrastruktur</h2>
+
+        <p>
+            Für RISE OF NATIONS kann die Rohstoffgewinnung als eigener
+            Industriebereich innerhalb einer Stadt oder Basis geplant
+            werden.
+        </p>
+
+        <ul>
+            <li>Mine</li>
+            <li>Förderanlage</li>
+            <li>Transportwege</li>
+            <li>Verarbeitungsanlage</li>
+            <li>Rohstofflager</li>
+            <li>Hauptfabrik</li>
+        </ul>
+
+        <p>
+            Dadurch wird aus einer einzelnen Maschine ein vollständiger
+            industrieller Wirtschaftskreislauf.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">13 // ADVANCED STRATEGY</div>
+        <h2>Fortgeschrittene Planung</h2>
+
+        <p>
+            Fortgeschrittene Spieler sollten Mining nicht isoliert
+            betrachten. Die Kapazität sollte auf die gesamte
+            Produktionsinfrastruktur abgestimmt sein.
+        </p>
+
+        <ul>
+            <li>Rohstoffverbrauch dokumentieren.</li>
+            <li>Produktionsengpässe identifizieren.</li>
+            <li>Mining-Kapazität erweitern.</li>
+            <li>Transportwege optimieren.</li>
+            <li>Lagerbestände überwachen.</li>
+            <li>Überproduktion vermeiden.</li>
+        </ul>
+
+        <div class="warning">
+            <div class="warning-title">EFFICIENCY WARNING</div>
+            <p>
+                Mehr Mining ist nicht automatisch besser. Eine
+                überdimensionierte Anlage verbraucht Ressourcen und
+                Infrastruktur, ohne einen echten Produktionsvorteil
+                zu erzeugen.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">14 // RISE OF NATIONS DOCTRINE</div>
+        <h2>Die industrielle Rohstoffbasis</h2>
+
+        <p>
+            Create Ore Excavation ist besonders interessant, sobald die
+            eigene Basis einen hohen Rohstoffbedarf entwickelt.
+        </p>
+
+        <p>
+            Der entscheidende Gedanke lautet:
+            <strong>Rohstoffgewinnung ist der Anfang der Produktionskette.</strong>
+        </p>
+
+        <p>
+            Wer Mining, Lagerung, Transport und Verarbeitung gemeinsam
+            plant, kann deutlich größere industrielle Systeme betreiben,
+            ohne ständig manuell eingreifen zu müssen.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">15 // REFERENCE DATA</div>
+        <h2>Originalquellen</h2>
+
+        <p>
+            Für konkrete Rezepte, Maschinenwerte, unterstützte Ressourcen
+            und versionsabhängige Funktionen sollte immer die installierte
+            Version zusammen mit JEI und den offiziellen Projektseiten
+            geprüft werden.
+        </p>
+
+        <div class="sources">
+
+            <a href="https://modrinth.com/mod/create-ore-excavation"
+               target="_blank"
+               rel="noopener">
+                MODRINTH // CREATE ORE EXCAVATION
+            </a>
+
+            <a href="https://www.curseforge.com/minecraft/mc-mods/create-ore-excavation"
+               target="_blank"
+               rel="noopener">
+                CURSEFORGE // CREATE ORE EXCAVATION
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <a class="back" href="wiki.html">
+        ← ZURÜCK ZUR WIKI
+    </a>
+
+</main>
+
+<footer>
+    RISE OF NATIONS // CREATE ORE EXCAVATION // TACTICAL KNOWLEDGE DATABASE
+</footer>
+
+</body>
+</html>
