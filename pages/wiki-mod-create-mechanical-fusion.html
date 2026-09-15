@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RISE OF NATIONS // CREATE MECHANICAL FUSION</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+    min-height:100vh;
+    background:
+        linear-gradient(rgba(6,11,16,.97),rgba(6,11,16,.99)),
+        repeating-linear-gradient(
+            135deg,
+            rgba(255,255,255,.018) 0 2px,
+            transparent 2px 9px
+        );
+    color:#dbe3e8;
+    font-family:"Segoe UI",Arial,sans-serif;
+}
+
+header{
+    background:rgba(5,10,15,.98);
+    border-bottom:1px solid #293944;
+    box-shadow:0 5px 25px rgba(0,0,0,.45);
+}
+
+.header-inner{
+    max-width:1500px;
+    margin:auto;
+    padding:18px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:30px;
+}
+
+.logo{
+    color:#d6b85c;
+    font-size:22px;
+    font-weight:950;
+    letter-spacing:3px;
+}
+
+.logo span{
+    display:block;
+    color:#687b86;
+    font-size:9px;
+    letter-spacing:2px;
+    margin-top:4px;
+}
+
+nav{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+    gap:7px;
+}
+
+nav a{
+    color:#9aabb4;
+    text-decoration:none;
+    padding:9px 11px;
+    border:1px solid transparent;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.2px;
+    transition:.2s;
+}
+
+nav a:hover{
+    color:#d6b85c;
+    background:#111b22;
+    border-color:#3b4d58;
+}
+
+main{
+    max-width:1250px;
+    margin:auto;
+    padding:70px 30px 100px;
+}
+
+.eyebrow{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:3px;
+    margin-bottom:15px;
+}
+
+h1{
+    color:#edf2f4;
+    font-size:clamp(40px,6.5vw,78px);
+    line-height:.95;
+    letter-spacing:4px;
+    font-weight:950;
+}
+
+.subtitle{
+    max-width:920px;
+    margin-top:22px;
+    color:#8497a2;
+    line-height:1.75;
+    font-size:15px;
+}
+
+.meta{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-top:38px;
+}
+
+.meta-box{
+    padding:18px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+
+.meta-label{
+    color:#596c77;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:8px;
+}
+
+.meta-value{
+    color:#d6b85c;
+    font-size:13px;
+    font-weight:900;
+}
+
+.section{
+    margin-top:35px;
+    padding:30px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+
+.section-number{
+    color:#526773;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:2px;
+    margin-bottom:9px;
+}
+
+h2{
+    color:#e1e8eb;
+    font-size:22px;
+    letter-spacing:1px;
+    margin-bottom:18px;
+}
+
+h3{
+    color:#d6b85c;
+    font-size:14px;
+    letter-spacing:1px;
+    margin:25px 0 10px;
+}
+
+p{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    margin-bottom:13px;
+}
+
+ul,ol{
+    margin:12px 0 18px 22px;
+}
+
+li{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    padding-left:5px;
+}
+
+.note{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#111c23;
+    border-left:3px solid #4d91bd;
+}
+
+.note-title{
+    color:#4d91bd;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+
+.warning{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#17140e;
+    border-left:3px solid #d6b85c;
+}
+
+.warning-title{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:18px;
+}
+
+th,td{
+    text-align:left;
+    padding:13px 14px;
+    border:1px solid #293c47;
+    font-size:12px;
+}
+
+th{
+    color:#d6b85c;
+    background:#111c23;
+    font-size:10px;
+    letter-spacing:1px;
+}
+
+td{
+    color:#8ea0a9;
+    background:#0a141a;
+}
+
+.sources{
+    display:grid;
+    gap:10px;
+    margin-top:15px;
+}
+
+.sources a{
+    display:block;
+    padding:13px 15px;
+    background:#101b22;
+    border:1px solid #293c47;
+    color:#9fb0b9;
+    text-decoration:none;
+    font-size:12px;
+    transition:.2s;
+}
+
+.sources a:hover{
+    color:#d6b85c;
+    border-color:#d6b85c;
+}
+
+.back{
+    display:inline-block;
+    margin-top:45px;
+    padding:12px 16px;
+    color:#d6b85c;
+    border:1px solid #4c4530;
+    text-decoration:none;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    transition:.2s;
+}
+
+.back:hover{
+    background:#17150f;
+    border-color:#d6b85c;
+}
+
+footer{
+    border-top:1px solid #202e36;
+    padding:25px 30px;
+    text-align:center;
+    color:#465861;
+    font-size:9px;
+    letter-spacing:2px;
+}
+
+@media(max-width:850px){
+    .header-inner{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    nav{
+        justify-content:flex-start;
+    }
+
+    .meta{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:550px){
+    .meta{
+        grid-template-columns:1fr;
+    }
+
+    main{
+        padding:45px 18px 70px;
+    }
+
+    .section{
+        padding:22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-inner">
+
+        <div class="logo">
+            RISE OF NATIONS
+            <span>TACTICAL KNOWLEDGE DATABASE</span>
+        </div>
+
+        <nav>
+            <a href="../index.html">COMMAND</a>
+            <a href="intelligence.html">INTELLIGENCE</a>
+            <a href="server.html">SERVER</a>
+            <a href="database.html">DATABASE</a>
+            <a href="download.html">DOWNLOAD</a>
+            <a href="communications.html">COMMUNICATIONS</a>
+            <a href="wiki.html">WIKI</a>
+        </nav>
+
+    </div>
+</header>
+
+<main>
+
+    <div class="eyebrow">
+        PROFESSOR DATABASE // ADVANCED INDUSTRIAL SYSTEMS
+    </div>
+
+    <h1>CREATE MECHANICAL FUSION</h1>
+
+    <p class="subtitle">
+        Create Mechanical Fusion erweitert die Create-Technologie um
+        zusätzliche mechanische Produktionsprozesse und fortgeschrittene
+        Verarbeitung. Die Mod eignet sich vor allem für Spieler, die
+        komplexe industrielle Produktionsketten aufbauen möchten.
+    </p>
+
+    <div class="meta">
+
+        <div class="meta-box">
+            <div class="meta-label">MOD</div>
+            <div class="meta-value">CREATE MECHANICAL FUSION</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">VERSION</div>
+            <div class="meta-value">0.1.3</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">MINECRAFT</div>
+            <div class="meta-value">1.21.1</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">SYSTEM</div>
+            <div class="meta-value">ADVANCED INDUSTRY</div>
+        </div>
+
+    </div>
+
+
+    <section class="section">
+
+        <div class="section-number">01 // SYSTEM OVERVIEW</div>
+        <h2>Was ist Create Mechanical Fusion?</h2>
+
+        <p>
+            Create Mechanical Fusion ist eine Erweiterung innerhalb des
+            Create-Ökosystems. Der Schwerpunkt liegt auf zusätzlichen
+            technischen Produktionsmöglichkeiten und komplexeren
+            Verarbeitungsketten.
+        </p>
+
+        <p>
+            Für RISE OF NATIONS ist die Mod vor allem dann interessant,
+            wenn die normale Create-Industrie bereits verstanden wurde
+            und eine Fabrik weiter ausgebaut werden soll.
+        </p>
+
+        <div class="note">
+            <div class="note-title">PROGRESSION PRINCIPLE</div>
+            <p>
+                Fortgeschrittene Create-Addons sollten nicht als einzelne
+                Maschinen betrachtet werden. Ihr größter Nutzen entsteht
+                innerhalb einer bereits geplanten Produktionskette.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">02 // CREATE FOUNDATION</div>
+        <h2>Grundlagen von Create</h2>
+
+        <p>
+            Vor der Nutzung komplexerer Create-Erweiterungen sollten die
+            wichtigsten Create-Grundlagen beherrscht werden.
+        </p>
+
+        <ul>
+            <li>Rotation und Drehzahl.</li>
+            <li>Stress und Belastung.</li>
+            <li>Wellen und Zahnräder.</li>
+            <li>Belts und Item-Transport.</li>
+            <li>Funnels und Inventarzugriff.</li>
+            <li>Flüssigkeitssysteme.</li>
+            <li>Automatisierte Produktionsketten.</li>
+        </ul>
+
+        <p>
+            Wer diese Systeme beherrscht, kann die zusätzlichen
+            Mechaniken deutlich leichter in bestehende Fabriken
+            integrieren.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">03 // PRODUCTION CHAINS</div>
+        <h2>Produktionsketten planen</h2>
+
+        <p>
+            Bei komplexen Rezepten ist die wichtigste Fähigkeit nicht
+            das Craften einzelner Maschinen, sondern die Planung der
+            gesamten Produktionskette.
+        </p>
+
+        <ol>
+            <li>Endprodukt bestimmen.</li>
+            <li>Rezept in JEI öffnen.</li>
+            <li>Zwischenprodukte identifizieren.</li>
+            <li>Rohstoffquellen bestimmen.</li>
+            <li>Maschinen und Verarbeitung planen.</li>
+            <li>Transportwege festlegen.</li>
+            <li>Endprodukt automatisiert erzeugen.</li>
+        </ol>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">04 // MECHANICAL INFRASTRUCTURE</div>
+        <h2>Mechanische Infrastruktur</h2>
+
+        <p>
+            Eine große Create-Fabrik benötigt eine zuverlässige
+            mechanische Basis.
+        </p>
+
+        <table>
+
+            <tr>
+                <th>SYSTEM</th>
+                <th>FUNKTION</th>
+            </tr>
+
+            <tr>
+                <td>POWER SOURCE</td>
+                <td>Mechanische Energie bereitstellen</td>
+            </tr>
+
+            <tr>
+                <td>TRANSMISSION</td>
+                <td>Rotation verteilen</td>
+            </tr>
+
+            <tr>
+                <td>PROCESSING</td>
+                <td>Produkte verarbeiten</td>
+            </tr>
+
+            <tr>
+                <td>LOGISTICS</td>
+                <td>Material transportieren</td>
+            </tr>
+
+            <tr>
+                <td>STORAGE</td>
+                <td>Produkte puffern</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">05 // JEI RESEARCH</div>
+        <h2>JEI richtig verwenden</h2>
+
+        <p>
+            Bei einer umfangreichen Mod wie RISE OF NATIONS sollte JEI
+            als technische Datenbank betrachtet werden.
+        </p>
+
+        <h3>Empfohlener Ablauf</h3>
+
+        <ol>
+            <li>Gewünschten Gegenstand suchen.</li>
+            <li>Rezept öffnen.</li>
+            <li>Alle Zwischenprodukte untersuchen.</li>
+            <li>Alternative Rezepte vergleichen.</li>
+            <li>Benötigte Maschinen notieren.</li>
+        </ol>
+
+        <div class="note">
+            <div class="note-title">RESEARCH DOCTRINE</div>
+            <p>
+                Wenn ein Rezept unbekannt ist, nicht blind ausprobieren.
+                Erst die vollständige Produktionskette untersuchen und
+                anschließend die Fabrik bauen.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">06 // AUTOMATION</div>
+        <h2>Automatisierung</h2>
+
+        <p>
+            Der wichtigste Einsatzbereich von Create Mechanical Fusion
+            liegt in automatisierten Produktionsketten.
+        </p>
+
+        <ul>
+            <li>Rohstoffe automatisch zuführen.</li>
+            <li>Verarbeitungsschritte verbinden.</li>
+            <li>Zwischenprodukte transportieren.</li>
+            <li>Flüssigkeiten automatisiert bereitstellen.</li>
+            <li>Endprodukte automatisch lagern.</li>
+        </ul>
+
+        <p>
+            Eine gute Anlage benötigt dabei möglichst wenige manuelle
+            Eingriffe.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">07 // FACTORY ARCHITECTURE</div>
+        <h2>Fabriken modular bauen</h2>
+
+        <p>
+            Komplexe Produktionsanlagen sollten in einzelne Module
+            aufgeteilt werden.
+        </p>
+
+        <table>
+
+            <tr>
+                <th>MODUL</th>
+                <th>AUFGABE</th>
+            </tr>
+
+            <tr>
+                <td>RAW MATERIAL</td>
+                <td>Rohstoffe empfangen</td>
+            </tr>
+
+            <tr>
+                <td>PROCESSING</td>
+                <td>Material verarbeiten</td>
+            </tr>
+
+            <tr>
+                <td>ASSEMBLY</td>
+                <td>Komponenten herstellen</td>
+            </tr>
+
+            <tr>
+                <td>QUALITY / BUFFER</td>
+                <td>Produkte puffern</td>
+            </tr>
+
+            <tr>
+                <td>OUTPUT</td>
+                <td>Fertige Produkte lagern</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">08 // STRESS MANAGEMENT</div>
+        <h2>Stress und Leistung</h2>
+
+        <p>
+            Wie bei anderen Create-Anlagen müssen mechanische Systeme
+            hinsichtlich ihrer Belastung geplant werden.
+        </p>
+
+        <ul>
+            <li>Produktion nicht unnötig überdimensionieren.</li>
+            <li>Große Maschinenparks sinnvoll aufteilen.</li>
+            <li>Drehzahlen an die tatsächliche Aufgabe anpassen.</li>
+            <li>Mechanische Engpässe früh erkennen.</li>
+        </ul>
+
+        <div class="warning">
+            <div class="warning-title">COMMON ERROR</div>
+            <p>
+                Mehr Maschinen bedeuten nicht automatisch mehr
+                Produktionsleistung. Die mechanische Versorgung kann
+                selbst zum Engpass werden.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">09 // MATERIAL FLOW</div>
+        <h2>Materialfluss</h2>
+
+        <p>
+            Jeder Produktionsschritt sollte einen klaren Input und
+            Output besitzen.
+        </p>
+
+        <ol>
+            <li>Input definieren.</li>
+            <li>Verarbeitung durchführen.</li>
+            <li>Output automatisch weiterleiten.</li>
+            <li>Zwischenlager nur dort einsetzen, wo es sinnvoll ist.</li>
+            <li>Endprodukt zentral sammeln.</li>
+        </ol>
+
+        <p>
+            Dadurch lässt sich eine Anlage leichter erweitern und
+            Fehler lassen sich schneller finden.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">10 // ADVANCED INDUSTRY</div>
+        <h2>Fortgeschrittene Industrie</h2>
+
+        <p>
+            Sobald mehrere Create-Erweiterungen kombiniert werden,
+            entsteht ein echtes industrielles Netzwerk.
+        </p>
+
+        <ul>
+            <li>Create für die mechanische Basis.</li>
+            <li>Create Diesel Generators für industrielle Energie.</li>
+            <li>Create New Age für elektrische Systeme.</li>
+            <li>Create Ore Excavation für Rohstoffversorgung.</li>
+            <li>Create Railways Navigator für Transport.</li>
+            <li>Create Factory für zusätzliche Produktionsmöglichkeiten.</li>
+        </ul>
+
+        <p>
+            Dadurch kann aus einzelnen Maschinen eine vollständige
+            industrielle Infrastruktur entstehen.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">11 // TROUBLESHOOTING</div>
+        <h2>Fehleranalyse</h2>
+
+        <h3>Das Rezept funktioniert nicht</h3>
+
+        <p>
+            Prüfe zuerst die exakte JEI-Anzeige und ob alle benötigten
+            Voraussetzungen vorhanden sind.
+        </p>
+
+        <h3>Die Maschine produziert nichts</h3>
+
+        <p>
+            Prüfe Energieversorgung, Input, Output, mechanische
+            Verbindung und gegebenenfalls Flüssigkeitsversorgung.
+        </p>
+
+        <h3>Die Anlage ist zu langsam</h3>
+
+        <p>
+            Untersuche zunächst den tatsächlichen Engpass. Häufig ist
+            nicht die letzte Maschine das Problem, sondern die
+            Rohstoffzufuhr oder der Transport.
+        </p>
+
+        <h3>Die Fabrik ist unübersichtlich</h3>
+
+        <p>
+            Teile sie in Produktionsmodule und beschrifte die
+            wichtigsten Leitungen und Lagerbereiche.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">12 // OPTIMIZATION</div>
+        <h2>Produktionsoptimierung</h2>
+
+        <p>
+            Eine optimale Anlage produziert nicht einfach maximal,
+            sondern passend zum tatsächlichen Bedarf.
+        </p>
+
+        <table>
+
+            <tr>
+                <th>PROBLEM</th>
+                <th>LÖSUNG</th>
+            </tr>
+
+            <tr>
+                <td>Input fehlt</td>
+                <td>Rohstoffversorgung erhöhen</td>
+            </tr>
+
+            <tr>
+                <td>Output überläuft</td>
+                <td>Lager oder Verbrauch erhöhen</td>
+            </tr>
+
+            <tr>
+                <td>Mechanischer Engpass</td>
+                <td>Antrieb optimieren</td>
+            </tr>
+
+            <tr>
+                <td>Transport langsam</td>
+                <td>Logistik verbessern</td>
+            </tr>
+
+            <tr>
+                <td>Unnötige Produktion</td>
+                <td>Produktionsrate reduzieren</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">13 // MULTIPLAYER INDUSTRY</div>
+        <h2>Gemeinsame Fabriken</h2>
+
+        <p>
+            Im Multiplayer kann eine komplexe Create-Anlage auf mehrere
+            Spieler verteilt werden.
+        </p>
+
+        <ul>
+            <li>Spieler A betreibt Rohstoffgewinnung.</li>
+            <li>Spieler B betreibt Verarbeitung.</li>
+            <li>Spieler C betreibt Logistik.</li>
+            <li>Spieler D betreibt Endproduktion.</li>
+        </ul>
+
+        <p>
+            Dadurch wird die Fabrik zu einem gemeinsamen wirtschaftlichen
+            Projekt statt zu einer Einzelspieler-Anlage.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">14 // RISE OF NATIONS APPLICATION</div>
+        <h2>Einsatz im Modpack</h2>
+
+        <table>
+
+            <tr>
+                <th>BEREICH</th>
+                <th>EIGNUNG</th>
+            </tr>
+
+            <tr>
+                <td>INDUSTRIE</td>
+                <td>SEHR HOCH</td>
+            </tr>
+
+            <tr>
+                <td>AUTOMATION</td>
+                <td>SEHR HOCH</td>
+            </tr>
+
+            <tr>
+                <td>CREATE FACTORIES</td>
+                <td>SEHR HOCH</td>
+            </tr>
+
+            <tr>
+                <td>RESOURCE PROCESSING</td>
+                <td>HOCH</td>
+            </tr>
+
+            <tr>
+                <td>MULTIPLAYER INDUSTRY</td>
+                <td>HOCH</td>
+            </tr>
+
+        </table>
+
+        <p>
+            Die Mod passt besonders gut zu einer Spielweise, bei der
+            große Produktionsanlagen Schritt für Schritt ausgebaut
+            werden.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">15 // PROFESSOR DOCTRINE</div>
+        <h2>Das Wichtigste zum Mitnehmen</h2>
+
+        <ul>
+            <li>Create-Grundlagen zuerst beherrschen.</li>
+            <li>Rezepte vollständig analysieren.</li>
+            <li>Produktionsketten modular planen.</li>
+            <li>Materialfluss und mechanische Versorgung trennen.</li>
+            <li>Engpässe statt Symptome beheben.</li>
+            <li>Automatisierung vor manueller Produktion bevorzugen.</li>
+            <li>JEI als technische Datenbank verwenden.</li>
+        </ul>
+
+        <div class="note">
+            <div class="note-title">FINAL PRINCIPLE</div>
+            <p>
+                Fortgeschrittene Create-Technik wird dann mächtig, wenn
+                jede einzelne Maschine Teil eines größeren industriellen
+                Systems ist.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">16 // REFERENCE DATA</div>
+        <h2>Originalquellen</h2>
+
+        <p>
+            Für konkrete Rezepte, Blöcke und versionsabhängige Mechaniken
+            sollte die Projektseite der installierten Version zusammen
+            mit JEI verwendet werden.
+        </p>
+
+        <div class="sources">
+
+            <a href="https://modrinth.com/mod/create-mechanical-fusion"
+               target="_blank"
+               rel="noopener">
+                MODRINTH // CREATE MECHANICAL FUSION
+            </a>
+
+            <a href="https://www.curseforge.com/minecraft/mc-mods/create-mechanical-fusion"
+               target="_blank"
+               rel="noopener">
+                CURSEFORGE // CREATE MECHANICAL FUSION
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <a class="back" href="wiki.html">
+        ← ZURÜCK ZUR WIKI
+    </a>
+
+</main>
+
+<footer>
+    RISE OF NATIONS // CREATE MECHANICAL FUSION // TACTICAL KNOWLEDGE DATABASE
+</footer>
+
+</body>
+</html>
