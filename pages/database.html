@@ -1,136 +1,185 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>DATABASE // RISE OF NATIONS</title>
-
-    <meta
-        name="description"
-        content="RISE OF NATIONS — Modpack Database"
-    >
+    <title>RISE OF NATIONS // DATABASE</title>
 
     <link rel="stylesheet" href="../css/style.css">
 
     <style>
-        .database-page {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 70px 40px;
-        }
-
-        .database-header {
-            border-left: 3px solid #d8aa32;
-            padding-left: 22px;
-            margin-bottom: 45px;
-        }
-
-        .database-header h1 {
+        body {
             margin: 0;
-            color: #f2f7fb;
-            font-size: 52px;
-            letter-spacing: 6px;
-            text-shadow: 0 0 20px rgba(120, 190, 240, 0.25);
+            background:
+                linear-gradient(rgba(5, 10, 16, 0.94), rgba(5, 10, 16, 0.97)),
+                radial-gradient(circle at top, #263044 0%, #080c12 65%);
+            color: #dce8f2;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
-        .database-header p {
-            margin-top: 12px;
-            color: #789bb5;
-            font-size: 12px;
+        .page {
+            min-height: 100vh;
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #3c8dbc;
+            padding-bottom: 18px;
+            margin-bottom: 35px;
+        }
+
+        .brand {
+            color: #5da9d6;
+            font-size: 22px;
+            font-weight: bold;
             letter-spacing: 3px;
         }
 
-        .database-grid {
+        .status {
+            color: #6fcf97;
+            font-size: 12px;
+            letter-spacing: 2px;
+        }
+
+        .header {
+            margin-bottom: 35px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 46px;
+            letter-spacing: 6px;
+            color: #dce8f2;
+        }
+
+        .header p {
+            margin-top: 12px;
+            color: #8798a8;
+            letter-spacing: 2px;
+            font-size: 13px;
+        }
+
+        .system-info {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 18px;
+            gap: 15px;
+            margin-bottom: 35px;
         }
 
-        .database-card {
-            min-height: 150px;
-            padding: 24px;
-            border: 1px solid rgba(72, 139, 180, 0.45);
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(10, 34, 50, 0.95),
-                    rgba(3, 14, 24, 0.95)
-                );
-            transition: all 0.2s ease;
+        .info-box {
+            background: rgba(17, 25, 34, 0.9);
+            border: 1px solid #334453;
+            padding: 18px;
+            position: relative;
         }
 
-        .database-card:hover {
-            border-color: #4c9bd0;
-            transform: translateY(-3px);
-            box-shadow: 0 0 25px rgba(55, 145, 205, 0.15);
-        }
-
-        .database-card a {
-            display: block;
+        .info-box::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
             height: 100%;
-            color: inherit;
-            text-decoration: none;
+            background: #3c8dbc;
         }
 
-        .database-code {
-            color: #d8aa32;
+        .info-label {
+            color: #718292;
             font-size: 10px;
-            font-weight: 700;
             letter-spacing: 2px;
+            margin-bottom: 8px;
         }
 
-        .database-card h2 {
-            margin: 12px 0 10px;
-            color: #edf6ff;
-            font-size: 20px;
-            letter-spacing: 2px;
+        .info-value {
+            color: #dce8f2;
+            font-size: 17px;
+            font-weight: bold;
+            letter-spacing: 1px;
         }
 
-        .database-card p {
-            margin: 0;
-            color: #789bb5;
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .category {
+            display: block;
+            background: rgba(14, 21, 29, 0.95);
+            border: 1px solid #334453;
+            padding: 25px;
+            text-decoration: none;
+            transition: 0.2s ease;
+            position: relative;
+        }
+
+        .category:hover {
+            border-color: #3c8dbc;
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(60, 141, 188, 0.10);
+        }
+
+        .category-number {
+            color: #667888;
+            font-size: 11px;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .category-name {
+            color: #f0f3f5;
+            font-size: 21px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-bottom: 9px;
+        }
+
+        .category-description {
+            color: #8293a2;
             font-size: 12px;
             line-height: 1.6;
         }
 
-        .return-link {
-            display: inline-block;
-            margin-top: 35px;
-            color: #8fb9d6;
-            text-decoration: none;
+        .category-arrow {
+            margin-top: 15px;
+            color: #5da9d6;
             font-size: 11px;
             letter-spacing: 2px;
-            border: 1px solid rgba(72, 139, 180, 0.35);
-            padding: 10px 15px;
         }
 
-        .return-link:hover {
-            color: #ffffff;
-            border-color: #4c9bd0;
-            background: rgba(16, 55, 78, 0.8);
+        .footer {
+            margin-top: 35px;
+            padding-top: 20px;
+            border-top: 1px solid #263542;
         }
 
-        .database-footer {
-            margin-top: 45px;
-            padding-top: 18px;
-            border-top: 1px solid rgba(72, 139, 180, 0.25);
-            color: #56758c;
-            font-size: 10px;
+        .return {
+            color: #5da9d6;
+            text-decoration: none;
+            font-size: 12px;
             letter-spacing: 2px;
         }
 
-        @media (max-width: 900px) {
-            .database-page {
-                padding: 45px 20px;
+        .return:hover {
+            color: #ffffff;
+        }
+
+        @media (max-width: 800px) {
+            .page {
+                padding: 20px;
             }
 
-            .database-header h1 {
-                font-size: 34px;
-            }
-
-            .database-grid {
+            .system-info,
+            .categories {
                 grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 32px;
             }
         }
     </style>
@@ -138,303 +187,144 @@
 
 <body>
 
-    <div class="command-screen">
-
-        <header class="top-bar">
-
-            <div class="logo">
-                RISE <span>OF</span> NATIONS
-            </div>
-
-            <div class="system-status">
-                <span class="status-light"></span>
-                DATABASE ONLINE
-            </div>
-
-        </header>
-
-
-        <main class="database-page">
-
-            <div class="database-header">
-
-                <h1>MODPACK DATABASE</h1>
-
-                <p>
-                    R.O.N. // MODIFICATION &amp; SYSTEM ARCHIVE
-                </p>
-
-            </div>
-
-
-            <section class="database-grid">
-
-
-                <!-- TECHNOLOGY -->
-
-                <div class="database-card">
-
-                    <a href="technology.html">
-
-                        <div class="database-code">
-                            TECH-01
-                        </div>
-
-                        <h2>
-                            TECHNOLOGY
-                        </h2>
-
-                        <p>
-                            Create, Maschinen, Energie,
-                            Produktion und industrielle Systeme.
-                        </p>
-
-                    </a>
-
-                </div>
-
-
-                <!-- WEAPONS & VEHICLES -->
-
-                <div class="database-card">
-
-                    <a href="weapons.html">
-
-                        <div class="database-code">
-                            MIL-02
-                        </div>
-
-                        <h2>
-                            WEAPONS &amp; VEHICLES
-                        </h2>
-
-                        <p>
-                            Waffen, Fahrzeuge, Fluggeräte,
-                            Artillerie und militärische Systeme.
-                        </p>
-
-                    </a>
-
-                </div>
-
-
-                <!-- ADVENTURE -->
-
-                <div class="database-card">
-
-                    <div class="database-code">
-                        ADV-03
-                    </div>
-
-                    <h2>
-                        ADVENTURE
-                    </h2>
-
-                    <p>
-                        Dimensionen, Bosse, Monster
-                        und gefährliche Expeditionen.
-                    </p>
-
-                </div>
-
-
-                <!-- STRUCTURES -->
-
-                <div class="database-card">
-
-                    <div class="database-code">
-                        STR-04
-                    </div>
-
-                    <h2>
-                        STRUCTURES
-                    </h2>
-
-                    <p>
-                        Dörfer, Dungeons, Brücken,
-                        Minen und neue Weltstrukturen.
-                    </p>
-
-                </div>
-
-
-                <!-- BUILDING & DECORATION -->
-
-                <div class="database-card">
-
-                    <div class="database-code">
-                        BLD-05
-                    </div>
-
-                    <h2>
-                        BUILDING &amp; DECORATION
-                    </h2>
-
-                    <p>
-                        Bauen, Einrichtung, Dekoration
-                        und zusätzliche Bauelemente.
-                    </p>
-
-                </div>
-
-
-                <!-- FOOD & FARMING -->
-
-                <div class="database-card">
-
-                    <div class="database-code">
-                        FOD-06
-                    </div>
-
-                    <h2>
-                        FOOD &amp; FARMING
-                    </h2>
-
-                    <p>
-                        Landwirtschaft, Kochen, Getränke,
-                        Fischerei und Versorgung.
-                    </p>
-
-                </div>
-
-
-                <!-- QUALITY OF LIFE -->
-
-                <div class="database-card">
-
-                    <div class="database-code">
-                        QOL-07
-                    </div>
-
-                    <h2>
-                        QUALITY OF LIFE
-                    </h2>
-
-                    <p>
-                        Waystones, Karten, Inventar,
-                        Komfort und praktische Systeme.
-                    </p>
-
-                </div>
-
-
-                <!-- SURVIVAL & RPG -->
-
-                <div class="database-card">
-
-                    <div class="database-code">
-                        RPG-08
-                    </div>
-
-                    <h2>
-                        SURVIVAL &amp; RPG
-                    </h2>
-
-                    <p>
-                        Fähigkeiten, Artefakte, Claims,
-                        Jahreszeiten und Survival-Systeme.
-                    </p>
-
-                </div>
-
-
-                <!-- PERFORMANCE -->
-
-                <div class="database-card">
-
-                    <div class="database-code">
-                        SYS-09
-                    </div>
-
-                    <h2>
-                        PERFORMANCE
-                    </h2>
-
-                    <p>
-                        Optimierung, Speicherverwaltung,
-                        Chunk Loading und Serveranalyse.
-                    </p>
-
-                </div>
-
-
-                <!-- COMMUNICATIONS -->
-
-                <div class="database-card">
-
-                    <div class="database-code">
-                        COM-10
-                    </div>
-
-                    <h2>
-                        COMMUNICATIONS
-                    </h2>
-
-                    <p>
-                        Voice Chat und weitere Systeme
-                        für die Kommunikation.
-                    </p>
-
-                </div>
-
-
-                <!-- WORLD & CREATURES -->
-
-                <div class="database-card">
-
-                    <div class="database-code">
-                        ENV-11
-                    </div>
-
-                    <h2>
-                        WORLD &amp; CREATURES
-                    </h2>
-
-                    <p>
-                        Tiere, Kreaturen, NPCs und
-                        zusätzliche Weltelemente.
-                    </p>
-
-                </div>
-
-
-                <!-- ADDITIONAL SYSTEMS -->
-
-                <div class="database-card">
-
-                    <div class="database-code">
-                        MISC-12
-                    </div>
-
-                    <h2>
-                        ADDITIONAL SYSTEMS
-                    </h2>
-
-                    <p>
-                        Weitere Erweiterungen und
-                        unterstützende Modpack-Systeme.
-                    </p>
-
-                </div>
-
-            </section>
-
-
-            <a class="return-link" href="../index.html">
-                ← RETURN TO COMMAND
-            </a>
-
-
-            <div class="database-footer">
-                DATABASE STATUS: OPERATIONAL // MINECRAFT 1.21.1
-            </div>
-
-        </main>
+<div class="page">
+
+    <div class="top-bar">
+        <div class="brand">RISE OF NATIONS // DATABASE</div>
+        <div class="status">● SYSTEM OPERATIONAL</div>
+    </div>
+
+    <div class="header">
+        <h1>MODPACK DATABASE</h1>
+        <p>SYSTEMS // TECHNOLOGY // MILITARY // ADVENTURE // SURVIVAL</p>
+    </div>
+
+    <div class="system-info">
+
+        <div class="info-box">
+            <div class="info-label">DATABASE TYPE</div>
+            <div class="info-value">MODPACK SYSTEMS</div>
+        </div>
+
+        <div class="info-box">
+            <div class="info-label">MINECRAFT VERSION</div>
+            <div class="info-value">1.21.1</div>
+        </div>
+
+        <div class="info-box">
+            <div class="info-label">DATABASE STATUS</div>
+            <div class="info-value">OPERATIONAL</div>
+        </div>
 
     </div>
 
-</body>
-</html>
+    <div class="categories">
+
+        <a class="category" href="technology.html">
+            <div class="category-number">SYSTEM 01</div>
+            <div class="category-name">TECHNOLOGY</div>
+            <div class="category-description">
+                Industrial systems, Create machinery, automation,
+                energy and advanced production infrastructure.
+            </div>
+            <div class="category-arrow">
+                ACCESS DATABASE →
+            </div>
+        </a>
+
+        <a class="category" href="weapons.html">
+            <div class="category-number">SYSTEM 02</div>
+            <div class="category-name">WEAPONS & VEHICLES</div>
+            <div class="category-description">
+                Firearms, military equipment, aircraft, vehicles,
+                drones and battlefield technology.
+            </div>
+            <div class="category-arrow">
+                ACCESS DATABASE →
+            </div>
+        </a>
+
+        <a class="category" href="adventure.html">
+            <div class="category-number">SYSTEM 03</div>
+            <div class="category-name">ADVENTURE & DIMENSIONS</div>
+            <div class="category-description">
+                New dimensions, bosses, creatures, exploration,
+                supernatural threats and unknown territories.
+            </div>
+            <div class="category-arrow">
+                ACCESS DATABASE →
+            </div>
+        </a>
+
+        <div class="category">
+            <div class="category-number">SYSTEM 04</div>
+            <div class="category-name">STRUCTURES & VILLAGES</div>
+            <div class="category-description">
+                Villages, underground locations, bridges, strongholds,
+                dungeons and large-scale world generation.
+            </div>
+            <div class="category-arrow">
+                DATABASE LOCKED
+            </div>
+        </div>
+
+        <div class="category">
+            <div class="category-number">SYSTEM 05</div>
+            <div class="category-name">BUILDING & DECORATION</div>
+            <div class="category-description">
+                Construction systems, furniture, architecture,
+                decorative blocks and creative infrastructure.
+            </div>
+            <div class="category-arrow">
+                DATABASE LOCKED
+            </div>
+        </div>
+
+        <div class="category">
+            <div class="category-number">SYSTEM 06</div>
+            <div class="category-name">FOOD & AGRICULTURE</div>
+            <div class="category-description">
+                Farming, cooking, fishing, food production,
+                brewing and agricultural systems.
+            </div>
+            <div class="category-arrow">
+                DATABASE LOCKED
+            </div>
+        </div>
+
+        <div class="category">
+            <div class="category-number">SYSTEM 07</div>
+            <div class="category-name">SURVIVAL & RPG</div>
+            <div class="category-description">
+                Survival mechanics, skills, claims, equipment,
+                progression and role-playing systems.
+            </div>
+            <div class="category-arrow">
+                DATABASE LOCKED
+            </div>
+        </div>
+
+        <div class="category">
+            <div class="category-number">SYSTEM 08</div>
+            <div class="category-name">PERFORMANCE & UTILITIES</div>
+            <div class="category-description">
+                Performance optimization, monitoring, communication,
+                navigation and quality-of-life systems.
+            </div>
+            <div class="category-arrow">
+                DATABASE LOCKED
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <a class="return" href="../index.html">
+            ← RETURN TO COMMAND
+        </a>
+    </div>
+
+</div>
 
 </body>
 </html>
