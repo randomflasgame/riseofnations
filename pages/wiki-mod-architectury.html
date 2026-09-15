@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Architectury – RISE OF NATIONS Wiki</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Arial Narrow", Arial, sans-serif;
+    background:
+        linear-gradient(rgba(7, 12, 17, 0.94), rgba(7, 12, 17, 0.97)),
+        repeating-linear-gradient(
+            0deg,
+            rgba(255,255,255,0.025) 0px,
+            rgba(255,255,255,0.025) 1px,
+            transparent 1px,
+            transparent 5px
+        );
+    color: #d7e0e6;
+    min-height: 100vh;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(90deg, transparent 49.8%, rgba(40,130,180,0.04) 50%, transparent 50.2%),
+        linear-gradient(0deg, transparent 49.8%, rgba(40,130,180,0.03) 50%, transparent 50.2%);
+    background-size: 80px 80px;
+    z-index: -1;
+}
+
+header {
+    border-bottom: 1px solid #31566b;
+    background: rgba(8, 15, 21, 0.97);
+    padding: 18px 6%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.logo {
+    color: #d6ad55;
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    white-space: nowrap;
+}
+
+.logo span {
+    color: #7895a5;
+    display: block;
+    font-size: 10px;
+    letter-spacing: 2px;
+    margin-top: 4px;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: flex-end;
+}
+
+nav a {
+    color: #9db1bd;
+    text-decoration: none;
+    border: 1px solid #294552;
+    padding: 8px 11px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    background: rgba(12, 26, 34, 0.8);
+    transition: 0.2s;
+}
+
+nav a:hover {
+    color: #e1b75e;
+    border-color: #c49a42;
+    background: #162630;
+}
+
+.container {
+    width: min(1180px, 92%);
+    margin: auto;
+}
+
+.hero {
+    padding: 70px 0 45px;
+    border-bottom: 1px solid #263e4a;
+}
+
+.eyebrow {
+    color: #5e9fc0;
+    font-size: 12px;
+    letter-spacing: 4px;
+    font-weight: bold;
+    margin-bottom: 14px;
+}
+
+h1 {
+    margin: 0;
+    color: #f0f3f4;
+    font-size: clamp(42px, 7vw, 82px);
+    letter-spacing: 3px;
+    line-height: 0.95;
+}
+
+.subtitle {
+    margin-top: 20px;
+    max-width: 850px;
+    color: #91a7b3;
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+.meta {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.meta-box {
+    border: 1px solid #294b5c;
+    background: rgba(11, 27, 36, 0.85);
+    padding: 15px;
+}
+
+.meta-label {
+    color: #668b9c;
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+.meta-value {
+    margin-top: 7px;
+    color: #d6ad55;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+section {
+    padding: 42px 0;
+    border-bottom: 1px solid #213742;
+}
+
+h2 {
+    margin: 0 0 20px;
+    color: #d8b35b;
+    font-size: 24px;
+    letter-spacing: 2px;
+}
+
+h3 {
+    color: #a9c6d3;
+    font-size: 17px;
+    letter-spacing: 1px;
+    margin-top: 28px;
+}
+
+p {
+    color: #b2c0c7;
+    line-height: 1.75;
+    font-size: 15px;
+}
+
+ul, ol {
+    color: #b2c0c7;
+    line-height: 1.8;
+}
+
+li {
+    margin-bottom: 7px;
+}
+
+.panel {
+    border: 1px solid #294958;
+    background: rgba(10, 24, 32, 0.8);
+    padding: 24px;
+    margin: 20px 0;
+}
+
+.panel strong {
+    color: #e0b85d;
+}
+
+.info {
+    border-left: 4px solid #3d91ba;
+    background: rgba(24, 61, 78, 0.22);
+    padding: 18px 20px;
+    margin: 22px 0;
+}
+
+.warning {
+    border-left: 4px solid #c49a42;
+    background: rgba(91, 72, 26, 0.2);
+    padding: 18px 20px;
+    margin: 22px 0;
+}
+
+.danger {
+    border-left: 4px solid #a94b42;
+    background: rgba(92, 34, 29, 0.18);
+    padding: 18px 20px;
+    margin: 22px 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 22px 0;
+    background: rgba(8, 20, 27, 0.75);
+}
+
+th, td {
+    border: 1px solid #294653;
+    padding: 13px;
+    text-align: left;
+    vertical-align: top;
+}
+
+th {
+    background: #122a36;
+    color: #d8b35b;
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+td {
+    color: #b4c2c9;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+code {
+    color: #8ec4df;
+    background: #0c1a21;
+    border: 1px solid #243e49;
+    padding: 2px 6px;
+}
+
+.source-list {
+    display: grid;
+    gap: 10px;
+}
+
+.source-list a {
+    display: block;
+    color: #75b4d4;
+    text-decoration: none;
+    border: 1px solid #294958;
+    padding: 14px 16px;
+    background: rgba(11, 25, 32, 0.75);
+}
+
+.source-list a:hover {
+    color: #e0b85d;
+    border-color: #b18b3d;
+}
+
+.back {
+    display: inline-block;
+    margin: 35px 0 55px;
+    color: #d8b35b;
+    text-decoration: none;
+    border: 1px solid #866b32;
+    padding: 12px 18px;
+    letter-spacing: 1px;
+    font-size: 12px;
+}
+
+.back:hover {
+    background: #302719;
+}
+
+footer {
+    border-top: 1px solid #294553;
+    padding: 28px 6%;
+    text-align: center;
+    color: #607782;
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+@media (max-width: 800px) {
+    header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    nav {
+        justify-content: flex-start;
+    }
+
+    .meta {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 520px) {
+    .meta {
+        grid-template-columns: 1fr;
+    }
+
+    h1 {
+        font-size: 42px;
+    }
+
+    section {
+        padding: 30px 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">
+        RISE OF NATIONS
+        <span>TACTICAL KNOWLEDGE DATABASE</span>
+    </div>
+
+    <nav>
+        <a href="../index.html">COMMAND</a>
+        <a href="intelligence.html">INTELLIGENCE</a>
+        <a href="server.html">SERVER</a>
+        <a href="database.html">DATABASE</a>
+        <a href="download.html">DOWNLOAD</a>
+        <a href="communications.html">COMMUNICATIONS</a>
+        <a href="wiki.html">WIKI</a>
+    </nav>
+</header>
+
+<main class="container">
+
+    <div class="hero">
+        <div class="eyebrow">SYSTEM LIBRARY // API INFRASTRUCTURE</div>
+
+        <h1>ARCHITECTURY</h1>
+
+        <p class="subtitle">
+            Eine zentrale technische Bibliothek innerhalb von RISE OF NATIONS.
+            Architectury stellt gemeinsame Programmierschnittstellen bereit und
+            ermöglicht es Mod-Entwicklern, bestimmte Funktionen über verschiedene
+            Mod-Loader hinweg einheitlich umzusetzen.
+        </p>
+
+        <div class="meta">
+            <div class="meta-box">
+                <div class="meta-label">VERSION</div>
+                <div class="meta-value">13.0.11</div>
+            </div>
+
+            <div class="meta-box">
+                <div class="meta-label">MINECRAFT</div>
+                <div class="meta-value">1.21.1</div>
+            </div>
+
+            <div class="meta-box">
+                <div class="meta-label">TYP</div>
+                <div class="meta-value">LIBRARY / API</div>
+            </div>
+
+            <div class="meta-box">
+                <div class="meta-label">STATUS</div>
+                <div class="meta-value">ACTIVE</div>
+            </div>
+        </div>
+    </div>
+
+    <section>
+        <h2>01 // ÜBERSICHT</h2>
+
+        <p>
+            Architectury ist kein klassischer Content-Mod, der dem Spieler neue
+            Waffen, Blöcke, Dimensionen oder Maschinen zur Verfügung stellt.
+            Stattdessen handelt es sich um eine technische Grundlage für andere
+            Mods.
+        </p>
+
+        <p>
+            Die Bibliothek abstrahiert bestimmte Minecraft-Funktionen und stellt
+            Entwicklern eine gemeinsame API zur Verfügung. Dadurch können Mods
+            leichter für unterschiedliche technische Umgebungen entwickelt und
+            gewartet werden.
+        </p>
+
+        <div class="info">
+            <strong>WICHTIG:</strong>
+            Wenn Architectury installiert ist, bedeutet das nicht automatisch,
+            dass der Spieler neue Inhalte oder ein eigenes Benutzerinterface
+            erhält. Die wichtigste Funktion der Mod liegt im Hintergrund.
+        </div>
+    </section>
+
+    <section>
+        <h2>02 // WARUM IST ARCHITECTURY INSTALLIERT?</h2>
+
+        <p>
+            In einem großen Modpack wie RISE OF NATIONS werden zahlreiche Mods
+            gleichzeitig geladen. Viele davon benötigen Bibliotheken, damit ihre
+            eigenen Funktionen korrekt ausgeführt werden können.
+        </p>
+
+        <p>
+            Architectury kann dabei als gemeinsame technische Schicht dienen.
+            Wenn ein installierter Mod Architectury voraussetzt, muss die
+            Bibliothek ebenfalls vorhanden sein.
+        </p>
+
+        <div class="panel">
+            <strong>Grundprinzip:</strong><br><br>
+            Content-Mod → benötigt technische API → Architectury stellt diese
+            Schnittstelle bereit → der eigentliche Content-Mod funktioniert.
+        </div>
+    </section>
+
+    <section>
+        <h2>03 // LIBRARY STATT CONTENT-MOD</h2>
+
+        <table>
+            <tr>
+                <th>Bereich</th>
+                <th>Architectury</th>
+            </tr>
+            <tr>
+                <td>Neue Waffen</td>
+                <td>Nein</td>
+            </tr>
+            <tr>
+                <td>Neue Blöcke</td>
+                <td>Nein</td>
+            </tr>
+            <tr>
+                <td>Neue Dimension</td>
+                <td>Nein</td>
+            </tr>
+            <tr>
+                <td>API / Entwicklerfunktionen</td>
+                <td>Ja</td>
+            </tr>
+            <tr>
+                <td>Abhängigkeit anderer Mods</td>
+                <td>Häufig der eigentliche Zweck</td>
+            </tr>
+            <tr>
+                <td>Direkter Spieler-Content</td>
+                <td>Minimal bis nicht vorhanden</td>
+            </tr>
+        </table>
+    </section>
+
+    <section>
+        <h2>04 // API-KONZEPT</h2>
+
+        <p>
+            Eine API ist eine definierte Programmierschnittstelle. Sie beschreibt,
+            wie unterschiedliche Software-Komponenten miteinander kommunizieren
+            können.
+        </p>
+
+        <p>
+            Für Mod-Entwickler ist das besonders wichtig, weil Minecraft-Mods
+            teilweise auf unterschiedliche technische Plattformen und Loader
+            ausgerichtet sind.
+        </p>
+
+        <p>
+            Architectury stellt dafür abstrahierte Funktionen bereit. Entwickler
+            können dadurch bestimmte Aufgaben über eine gemeinsame Schnittstelle
+            ansprechen, statt jede Implementierung komplett getrennt behandeln
+            zu müssen.
+        </p>
+    </section>
+
+    <section>
+        <h2>05 // WAS MERKT DER SPIELER?</h2>
+
+        <p>
+            Normalerweise sehr wenig. Das ist bei einer Bibliothek ein gutes
+            Zeichen.
+        </p>
+
+        <p>
+            Wenn ein anderer Mod Architectury benötigt und dieser korrekt geladen
+            wurde, arbeitet die Bibliothek im Hintergrund. Der Spieler verwendet
+            anschließend hauptsächlich die Funktionen des Mods, der Architectury
+            voraussetzt.
+        </p>
+
+        <div class="info">
+            <strong>MERKSATZ:</strong>
+            Architectury ist Infrastruktur. Der sichtbare Inhalt stammt in der
+            Regel von einem anderen Mod.
+        </div>
+    </section>
+
+    <section>
+        <h2>06 // ABHÄNGIGKEITEN</h2>
+
+        <p>
+            Bibliotheken sind besonders wichtig für die Mod-Abhängigkeiten.
+            Entfernt man eine benötigte Library, kann der eigentliche Content-Mod
+            nicht mehr starten.
+        </p>
+
+        <p>
+            Deshalb sollte Architectury nicht einfach aus dem Mod-Ordner gelöscht
+            werden, nur weil keine eigenen Blöcke oder Items sichtbar sind.
+        </p>
+
+        <div class="danger">
+            <strong>ACHTUNG:</strong>
+            Das Entfernen einer Bibliothek kann dazu führen, dass ein oder mehrere
+            andere Mods beim Start einen Dependency-Fehler melden.
+        </div>
+    </section>
+
+    <section>
+        <h2>07 // CLIENT ODER SERVER?</h2>
+
+        <p>
+            Ob eine bestimmte Architectury-Komponente auf Client oder Server
+            benötigt wird, hängt von den Mods ab, die sie verwenden.
+        </p>
+
+        <p>
+            In einem Multiplayer-Modpack sollte daher nicht automatisch davon
+            ausgegangen werden, dass eine Library nur auf dem Client installiert
+            werden darf.
+        </p>
+
+        <table>
+            <tr>
+                <th>Situation</th>
+                <th>Vorgehen</th>
+            </tr>
+            <tr>
+                <td>Client startet nicht wegen fehlender Library</td>
+                <td>Installierte Abhängigkeiten prüfen</td>
+            </tr>
+            <tr>
+                <td>Server meldet Dependency-Fehler</td>
+                <td>Server-Modliste mit Client-Anforderungen vergleichen</td>
+            </tr>
+            <tr>
+                <td>Mod verlangt Architectury</td>
+                <td>Passende Version der Library verwenden</td>
+            </tr>
+        </table>
+    </section>
+
+    <section>
+        <h2>08 // VERSION 13.0.11</h2>
+
+        <p>
+            Im RISE OF NATIONS Modpack wird Architectury in der Version
+            <strong>13.0.11</strong> eingesetzt.
+        </p>
+
+        <p>
+            Da Libraries Bestandteil der technischen Mod-Abhängigkeitskette sind,
+            sollte die verwendete Version zur Minecraft-Version und zu den
+            abhängigen Mods passen.
+        </p>
+
+        <div class="warning">
+            <strong>VERSIONSDISZIPLIN:</strong>
+            Nicht einfach irgendeine neuere Architectury-Version installieren.
+            Bei Bibliotheken kann eine Versionsänderung Auswirkungen auf mehrere
+            andere Mods haben.
+        </div>
+    </section>
+
+    <section>
+        <h2>09 // FEHLERBEHEBUNG</h2>
+
+        <h3>Spiel startet überhaupt nicht</h3>
+
+        <p>
+            Zuerst den Log nach Begriffen wie <code>architectury</code>,
+            <code>dependency</code>, <code>missing</code> oder
+            <code>incompatible</code> durchsuchen.
+        </p>
+
+        <h3>Fehlende Abhängigkeit</h3>
+
+        <p>
+            Wenn Minecraft meldet, dass Architectury fehlt, muss die passende
+            Version in den entsprechenden Mod-Ordner installiert werden.
+        </p>
+
+        <h3>Versionskonflikt</h3>
+
+        <p>
+            Bei einer Meldung über eine inkompatible Version sollte nicht blind
+            aktualisiert werden. Zuerst feststellen, welcher andere Mod die
+            konkrete Architectury-Version erwartet.
+        </p>
+
+        <h3>Client funktioniert, Server nicht</h3>
+
+        <p>
+            In diesem Fall die Abhängigkeiten auf beiden Seiten vergleichen.
+            Besonders bei einem umfangreichen Modpack kann eine einzelne fehlende
+            Library den Serverstart verhindern.
+        </p>
+    </section>
+
+    <section>
+        <h2>10 // ARCHITECTURY UND MODPACK-PFLEGE</h2>
+
+        <p>
+            Bei großen Modpacks sollte eine Library wie Architectury möglichst
+            zentral verwaltet werden.
+        </p>
+
+        <ol>
+            <li>Aktuell installierte Version dokumentieren.</li>
+            <li>Abhängige Mods identifizieren.</li>
+            <li>Änderungen zuerst in einer Testinstallation prüfen.</li>
+            <li>Client und Server auf Kompatibilität kontrollieren.</li>
+            <li>Erst danach die produktive Modpack-Version aktualisieren.</li>
+        </ol>
+    </section>
+
+    <section>
+        <h2>11 // PERFORMANCE</h2>
+
+        <p>
+            Architectury ist keine klassische Performance-Mod. Die Library ist
+            in erster Linie eine technische Grundlage für andere Mods.
+        </p>
+
+        <p>
+            Wenn bei einem Modpack Performance-Probleme auftreten, sollte daher
+            nicht automatisch Architectury als Ursache angenommen werden.
+            Zuerst sollte festgestellt werden, welcher eigentliche Content- oder
+            System-Mod die betreffende Funktion verwendet.
+        </p>
+    </section>
+
+    <section>
+        <h2>12 // HÄUFIGE FEHLER</h2>
+
+        <div class="panel">
+            <strong>„Architectury macht nichts.“</strong>
+            <p>
+                Das ist bei einer Library normal. Ihre Aufgabe besteht darin,
+                anderen Mods technische Funktionen zur Verfügung zu stellen.
+            </p>
+        </div>
+
+        <div class="panel">
+            <strong>„Ich kann Architectury löschen, weil ich keine Items sehe.“</strong>
+            <p>
+                Nein. Andere Mods können Architectury als Abhängigkeit benötigen.
+            </p>
+        </div>
+
+        <div class="panel">
+            <strong>„Ich habe einfach die neueste Version installiert.“</strong>
+            <p>
+                Das kann bei Libraries zu Versionskonflikten führen. Entscheidend
+                ist die Kompatibilität mit dem gesamten Modpack.
+            </p>
+        </div>
+    </section>
+
+    <section>
+        <h2>13 // TIPPS FÜR RISE OF NATIONS</h2>
+
+        <ul>
+            <li>Architectury nicht ohne Grund aus dem Modpack entfernen.</li>
+            <li>Die Version <strong>13.0.11</strong> dokumentiert lassen.</li>
+            <li>Bei Dependency-Fehlern zuerst die Fehlermeldung lesen.</li>
+            <li>Bibliotheken nicht unabhängig vom restlichen Modpack aktualisieren.</li>
+            <li>Client und Server bei Änderungen gemeinsam testen.</li>
+            <li>Bei einem Crash nach einem Mod-Update auch die Libraries prüfen.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>14 // FAQ</h2>
+
+        <h3>Brauche ich Architectury als Spieler?</h3>
+        <p>
+            Wenn ein installierter Mod die Library benötigt: ja. Sie muss dann
+            einfach vorhanden sein. Eine zusätzliche Bedienung ist normalerweise
+            nicht erforderlich.
+        </p>
+
+        <h3>Gibt es ein eigenes Architectury-Menü?</h3>
+        <p>
+            Architectury ist primär eine technische Bibliothek und kein
+            eigenständiger Content-Mod.
+        </p>
+
+        <h3>Kann Architectury einfach gelöscht werden?</h3>
+        <p>
+            Nur wenn nachweislich kein anderer installierter Mod davon abhängig
+            ist. In einem großen Modpack sollte das nicht ohne Prüfung erfolgen.
+        </p>
+
+        <h3>Ist Architectury ein Performance-Mod?</h3>
+        <p>
+            Nein. Die Hauptaufgabe ist die Bereitstellung gemeinsamer APIs und
+            technischer Abstraktionen.
+        </p>
+    </section>
+
+    <section>
+        <h2>15 // RISE OF NATIONS STATUS</h2>
+
+        <table>
+            <tr>
+                <th>Parameter</th>
+                <th>Wert</th>
+            </tr>
+            <tr>
+                <td>Mod</td>
+                <td>Architectury</td>
+            </tr>
+            <tr>
+                <td>Version</td>
+                <td>13.0.11</td>
+            </tr>
+            <tr>
+                <td>Minecraft</td>
+                <td>1.21.1</td>
+            </tr>
+            <tr>
+                <td>Funktion</td>
+                <td>API / Library</td>
+            </tr>
+            <tr>
+                <td>Direkter Content</td>
+                <td>Keiner im klassischen Sinne</td>
+            </tr>
+            <tr>
+                <td>Relevanz</td>
+                <td>Technische Abhängigkeit anderer Mods</td>
+            </tr>
+        </table>
+
+        <div class="info">
+            <strong>DATABASE CLASSIFICATION:</strong>
+            ARCHITECTURY // CORE INFRASTRUCTURE // DEPENDENCY SYSTEM
+        </div>
+    </section>
+
+    <section>
+        <h2>16 // OFFIZIELLE QUELLEN</h2>
+
+        <div class="source-list">
+            <a href="https://modrinth.com/mod/architectury-api" target="_blank">
+                MODRINTH → ARCHITECTURY API
+            </a>
+
+            <a href="https://www.curseforge.com/minecraft/mc-mods/architectury-api" target="_blank">
+                CURSEFORGE → ARCHITECTURY API
+            </a>
+
+            <a href="https://github.com/architectury/architectury-api" target="_blank">
+                GITHUB → ARCHITECTURY API
+            </a>
+        </div>
+    </section>
+
+    <a class="back" href="wiki.html">
+        ← ZURÜCK ZUR WIKI-DATENBANK
+    </a>
+
+</main>
+
+<footer>
+    RISE OF NATIONS // TACTICAL KNOWLEDGE DATABASE // ARCHITECTURY
+</footer>
+
+</body>
+</html>
