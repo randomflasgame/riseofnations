@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RISE OF NATIONS // CREATE COLA FACTORY</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+    min-height:100vh;
+    background:
+        linear-gradient(rgba(5,10,15,.97),rgba(5,10,15,.99)),
+        repeating-linear-gradient(135deg,rgba(255,255,255,.018) 0 2px,transparent 2px 9px);
+    color:#dbe3e8;
+    font-family:"Segoe UI",Arial,sans-serif;
+}
+
+header{
+    background:rgba(5,10,15,.98);
+    border-bottom:1px solid #293944;
+    box-shadow:0 5px 25px rgba(0,0,0,.45);
+}
+
+.header-inner{
+    max-width:1500px;
+    margin:auto;
+    padding:18px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:30px;
+}
+
+.logo{
+    color:#d6b85c;
+    font-size:22px;
+    font-weight:950;
+    letter-spacing:3px;
+}
+
+.logo span{
+    display:block;
+    color:#687b86;
+    font-size:9px;
+    letter-spacing:2px;
+    margin-top:4px;
+}
+
+nav{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+    gap:7px;
+}
+
+nav a{
+    color:#9aabb4;
+    text-decoration:none;
+    padding:9px 11px;
+    border:1px solid transparent;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.2px;
+    transition:.2s;
+}
+
+nav a:hover{
+    color:#d6b85c;
+    background:#111b22;
+    border-color:#3b4d58;
+}
+
+main{
+    max-width:1250px;
+    margin:auto;
+    padding:70px 30px 100px;
+}
+
+.eyebrow{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:3px;
+    margin-bottom:15px;
+}
+
+h1{
+    color:#edf2f4;
+    font-size:clamp(40px,6.5vw,78px);
+    line-height:.95;
+    letter-spacing:4px;
+    font-weight:950;
+}
+
+.subtitle{
+    max-width:930px;
+    margin-top:22px;
+    color:#8497a2;
+    line-height:1.75;
+    font-size:15px;
+}
+
+.meta{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-top:38px;
+}
+
+.meta-box{
+    padding:18px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+
+.meta-label{
+    color:#596c77;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:8px;
+}
+
+.meta-value{
+    color:#d6b85c;
+    font-size:13px;
+    font-weight:900;
+}
+
+.section{
+    margin-top:35px;
+    padding:30px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+
+.section-number{
+    color:#526773;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:2px;
+    margin-bottom:9px;
+}
+
+h2{
+    color:#e1e8eb;
+    font-size:22px;
+    letter-spacing:1px;
+    margin-bottom:18px;
+}
+
+h3{
+    color:#d6b85c;
+    font-size:14px;
+    letter-spacing:1px;
+    margin:25px 0 10px;
+}
+
+p{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    margin-bottom:13px;
+}
+
+ul,ol{
+    margin:12px 0 18px 22px;
+}
+
+li{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    padding-left:5px;
+}
+
+.note{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#111c23;
+    border-left:3px solid #4d91bd;
+}
+
+.note-title{
+    color:#4d91bd;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+
+.warning{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#17140e;
+    border-left:3px solid #d6b85c;
+}
+
+.warning-title{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:18px;
+}
+
+th,td{
+    text-align:left;
+    padding:13px 14px;
+    border:1px solid #293c47;
+    font-size:12px;
+}
+
+th{
+    color:#d6b85c;
+    background:#111c23;
+    font-size:10px;
+    letter-spacing:1px;
+}
+
+td{
+    color:#8ea0a9;
+    background:#0a141a;
+}
+
+.sources{
+    display:grid;
+    gap:10px;
+    margin-top:15px;
+}
+
+.sources a{
+    display:block;
+    padding:13px 15px;
+    background:#101b22;
+    border:1px solid #293c47;
+    color:#9fb0b9;
+    text-decoration:none;
+    font-size:12px;
+    transition:.2s;
+}
+
+.sources a:hover{
+    color:#d6b85c;
+    border-color:#d6b85c;
+}
+
+.back{
+    display:inline-block;
+    margin-top:45px;
+    padding:12px 16px;
+    color:#d6b85c;
+    border:1px solid #4c4530;
+    text-decoration:none;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    transition:.2s;
+}
+
+.back:hover{
+    background:#17150f;
+    border-color:#d6b85c;
+}
+
+footer{
+    border-top:1px solid #202e36;
+    padding:25px 30px;
+    text-align:center;
+    color:#465861;
+    font-size:9px;
+    letter-spacing:2px;
+}
+
+@media(max-width:850px){
+    .header-inner{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    nav{
+        justify-content:flex-start;
+    }
+
+    .meta{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:550px){
+    .meta{
+        grid-template-columns:1fr;
+    }
+
+    main{
+        padding:45px 18px 70px;
+    }
+
+    .section{
+        padding:22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-inner">
+
+        <div class="logo">
+            RISE OF NATIONS
+            <span>TACTICAL KNOWLEDGE DATABASE</span>
+        </div>
+
+        <nav>
+            <a href="../index.html">COMMAND</a>
+            <a href="intelligence.html">INTELLIGENCE</a>
+            <a href="server.html">SERVER</a>
+            <a href="database.html">DATABASE</a>
+            <a href="download.html">DOWNLOAD</a>
+            <a href="communications.html">COMMUNICATIONS</a>
+            <a href="wiki.html">WIKI</a>
+        </nav>
+
+    </div>
+</header>
+
+<main>
+
+    <div class="eyebrow">
+        PROFESSOR DATABASE // FOOD INDUSTRY // CREATE
+    </div>
+
+    <h1>CREATE COLA FACTORY</h1>
+
+    <p class="subtitle">
+        Create Cola Factory erweitert das Create-System um eine
+        industrielle Getränkefabrik. Der Schwerpunkt liegt auf
+        der Herstellung, Verarbeitung und Logistik von Cola und
+        verwandten Produktionskomponenten.
+    </p>
+
+    <div class="meta">
+
+        <div class="meta-box">
+            <div class="meta-label">MOD</div>
+            <div class="meta-value">CREATE COLA FACTORY</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">VERSION</div>
+            <div class="meta-value">1.4</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">MINECRAFT</div>
+            <div class="meta-value">1.21.1</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">SYSTEM</div>
+            <div class="meta-value">FOOD / FLUID / INDUSTRY</div>
+        </div>
+
+    </div>
+
+
+    <section class="section">
+
+        <div class="section-number">01 // SYSTEM OVERVIEW</div>
+        <h2>Was ist Create Cola Factory?</h2>
+
+        <p>
+            Create Cola Factory ist eine thematische Erweiterung
+            für Create, die sich auf die Produktion von Cola und
+            die dafür benötigte industrielle Infrastruktur konzentriert.
+        </p>
+
+        <p>
+            Dadurch entsteht eine weitere Möglichkeit, eine
+            vollautomatisierte Lebensmittel- und Getränkeindustrie
+            innerhalb des Modpacks aufzubauen.
+        </p>
+
+        <div class="note">
+            <div class="note-title">CORE PRINCIPLE</div>
+            <p>
+                Das Ziel ist nicht nur ein einzelnes Getränk,
+                sondern eine komplette Produktionskette aus
+                Zutaten, Verarbeitung, Flüssigkeiten, Abfüllung
+                und Lagerung.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">02 // FACTORY PIPELINE</div>
+        <h2>Die Produktionskette</h2>
+
+        <p>
+            Eine Cola-Fabrik sollte als Reihe logisch verbundener
+            Produktionsstufen geplant werden.
+        </p>
+
+        <ol>
+            <li>Rohstoffe beschaffen.</li>
+            <li>Ausgangsmaterialien vorbereiten.</li>
+            <li>Zwischenprodukte herstellen.</li>
+            <li>Getränk beziehungsweise Flüssigkeit erzeugen.</li>
+            <li>Produkt weiterverarbeiten oder abfüllen.</li>
+            <li>Fertigprodukte lagern.</li>
+            <li>Produkte ausliefern.</li>
+        </ol>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">03 // RAW MATERIALS</div>
+        <h2>Rohstoffversorgung</h2>
+
+        <p>
+            Jede Getränkefabrik beginnt mit der zuverlässigen
+            Versorgung ihrer Produktionslinien.
+        </p>
+
+        <ul>
+            <li>Rohstoffe zentral sammeln.</li>
+            <li>Zutaten nach Produktionsschritt sortieren.</li>
+            <li>Zwischenprodukte separat lagern.</li>
+            <li>Produktionsengpässe überwachen.</li>
+        </ul>
+
+        <div class="warning">
+            <div class="warning-title">SUPPLY WARNING</div>
+            <p>
+                Eine automatisierte Fabrik sollte nicht dauerhaft
+                von einer einzelnen kleinen Zutatenquelle abhängig sein.
+                Bei hoher Produktion sind Reserven entscheidend.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">04 // FLUID ENGINEERING</div>
+        <h2>Flüssigkeitslogistik</h2>
+
+        <p>
+            Getränkesysteme unterscheiden sich von normalen
+            Item-Produktionslinien, weil Flüssigkeiten als eigener
+            Transportstrom behandelt werden müssen.
+        </p>
+
+        <ul>
+            <li>Flüssigkeitsquelle definieren.</li>
+            <li>Speichertanks einplanen.</li>
+            <li>Pumpen und Leitungen verbinden.</li>
+            <li>Produktionsmaschinen versorgen.</li>
+            <li>Fertige Flüssigkeiten zwischenspeichern.</li>
+        </ul>
+
+        <div class="note">
+            <div class="note-title">ENGINEERING RULE</div>
+            <p>
+                Große Anlagen sollten Flüssigkeitspuffer zwischen
+                wichtigen Produktionsstufen besitzen. Dadurch kann
+                eine kurzzeitige Unterbrechung abgefangen werden.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">05 // CREATE AUTOMATION</div>
+        <h2>Automation mit Create</h2>
+
+        <p>
+            Die Stärke des Systems entsteht durch die Verbindung
+            mit den allgemeinen Create-Mechaniken.
+        </p>
+
+        <table>
+
+            <tr>
+                <th>KOMPONENTE</th>
+                <th>AUFGABE</th>
+            </tr>
+
+            <tr>
+                <td>BELTS</td>
+                <td>Transport von Items</td>
+            </tr>
+
+            <tr>
+                <td>FUNNELS</td>
+                <td>Gezielte Itemübergabe</td>
+            </tr>
+
+            <tr>
+                <td>TANKS</td>
+                <td>Flüssigkeitsspeicherung</td>
+            </tr>
+
+            <tr>
+                <td>PUMPS</td>
+                <td>Flüssigkeitstransport</td>
+            </tr>
+
+            <tr>
+                <td>DEPOTS</td>
+                <td>Verarbeitung und Übergabe</td>
+            </tr>
+
+            <tr>
+                <td>STORAGE</td>
+                <td>Fertigwarenlagerung</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">06 // BOTTLING CONCEPT</div>
+        <h2>Abfüllung und Fertigprodukte</h2>
+
+        <p>
+            Eine industrielle Getränkefabrik sollte Produktion und
+            Lagerung klar voneinander trennen.
+        </p>
+
+        <ol>
+            <li>Getränk wird produziert.</li>
+            <li>Flüssigkeit wird zwischengespeichert.</li>
+            <li>Produkt wird für die Ausgabe vorbereitet.</li>
+            <li>Fertigprodukt wird in das Lager transportiert.</li>
+        </ol>
+
+        <p>
+            Dadurch kann die Produktionsanlage unabhängig von der
+            späteren Verteilung weiterarbeiten.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">07 // STORAGE SYSTEM</div>
+        <h2>Lagerkonzept</h2>
+
+        <p>
+            Bei größeren Produktionsmengen empfiehlt sich eine
+            Aufteilung in mehrere Lagerstufen.
+        </p>
+
+        <table>
+
+            <tr>
+                <th>LAGER</th>
+                <th>FUNKTION</th>
+            </tr>
+
+            <tr>
+                <td>RAW STORAGE</td>
+                <td>Rohstoffe</td>
+            </tr>
+
+            <tr>
+                <td>PROCESSING STORAGE</td>
+                <td>Zwischenprodukte</td>
+            </tr>
+
+            <tr>
+                <td>LIQUID BUFFER</td>
+                <td>Flüssigkeiten</td>
+            </tr>
+
+            <tr>
+                <td>PRODUCT STORAGE</td>
+                <td>Fertige Getränke</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">08 // FACTORY DESIGN</div>
+        <h2>Aufbau einer Cola-Fabrik</h2>
+
+        <p>
+            Eine große Fabrik sollte nicht als eine einzige
+            unübersichtliche Produktionsmaschine gebaut werden.
+        </p>
+
+        <ol>
+            <li>Rohstofflager.</li>
+            <li>Zutatenaufbereitung.</li>
+            <li>Produktionshalle.</li>
+            <li>Flüssigkeitssystem.</li>
+            <li>Abfüllbereich.</li>
+            <li>Fertigwarenlager.</li>
+            <li>Versandbereich.</li>
+        </ol>
+
+        <div class="note">
+            <div class="note-title">DESIGN PRINCIPLE</div>
+            <p>
+                Die physische Anordnung der Fabrik sollte dem
+                Produktionsfluss folgen. Das macht Fehler leichter
+                erkennbar und die Anlage realistischer.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">09 // DISTRIBUTION</div>
+        <h2>Verteilung der Getränke</h2>
+
+        <p>
+            Fertige Produkte können anschließend an verschiedene
+            Orte des eigenen Netzwerks geliefert werden.
+        </p>
+
+        <ul>
+            <li>Cafés.</li>
+            <li>Restaurants.</li>
+            <li>Hotels.</li>
+            <li>Bahnhöfe.</li>
+            <li>Stadtzentren.</li>
+            <li>Spielermärkte.</li>
+            <li>Andere Produktionsstandorte.</li>
+        </ul>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">10 // RAIL LOGISTICS</div>
+        <h2>Getränke per Create-Zug transportieren</h2>
+
+        <p>
+            Große Produktionsstandorte können mit dem Create-
+            Eisenbahnsystem verbunden werden.
+        </p>
+
+        <p>
+            Dadurch entsteht beispielsweise ein zentraler
+            Getränkehersteller, der mehrere Städte oder
+            Spielerbasen versorgt.
+        </p>
+
+        <ul>
+            <li>Zentrale Fabrik.</li>
+            <li>Verteilbahnhof.</li>
+            <li>Regionale Lager.</li>
+            <li>Lokale Verkaufsstellen.</li>
+        </ul>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">11 // MULTIPLAYER ECONOMY</div>
+        <h2>Cola als Handelsware</h2>
+
+        <p>
+            Auf einem Multiplayer-Server kann die Produktion
+            wirtschaftlich genutzt werden.
+        </p>
+
+        <ul>
+            <li>Getränkeproduktion als Spielerunternehmen.</li>
+            <li>Lieferverträge mit anderen Spielern.</li>
+            <li>Versorgung von Restaurants und Cafés.</li>
+            <li>Verkauf fertiger Produkte.</li>
+            <li>Aufbau einer eigenen Getränkemarke.</li>
+        </ul>
+
+        <div class="note">
+            <div class="note-title">ECONOMIC ROLE</div>
+            <p>
+                Eine automatisierte Fabrik kann eine Produktionsbasis
+                schaffen, während Handel und Logistik den eigentlichen
+                wirtschaftlichen Nutzen erzeugen.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">12 // MOD SYNERGY</div>
+        <h2>Zusammenspiel mit anderen Mods</h2>
+
+        <p>
+            Create Cola Factory entfaltet seinen größten Nutzen,
+            wenn die Getränkefabrik Teil eines größeren
+            Lebensmittelnetzwerks wird.
+        </p>
+
+        <ul>
+            <li>Create für Automation und Maschinen.</li>
+            <li>Create Café für Gastronomie.</li>
+            <li>Create Chocolate Fountain für Süßwarenproduktion.</li>
+            <li>Farmer’s Delight für Lebensmittelverarbeitung.</li>
+            <li>Cooking for Blockheads für Küchenorganisation.</li>
+            <li>Let’s Do: Brewery für weitere Getränke.</li>
+            <li>Let’s Do: Vinery für Getränkewirtschaft.</li>
+        </ul>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">13 // TROUBLESHOOTING</div>
+        <h2>Fehleranalyse</h2>
+
+        <h3>Produktion steht</h3>
+
+        <p>
+            Prüfe zuerst die Verfügbarkeit aller Eingabematerialien
+            und Zwischenprodukte.
+        </p>
+
+        <h3>Flüssigkeit kommt nicht an</h3>
+
+        <p>
+            Kontrolliere Tankfüllstand, Pumpe und Leitungsverbindungen.
+        </p>
+
+        <h3>Fertigprodukte verschwinden nicht aus der Produktion</h3>
+
+        <p>
+            Prüfe den angeschlossenen Transportweg und die Kapazität
+            des Ziellagers.
+        </p>
+
+        <h3>Fabrik produziert zu langsam</h3>
+
+        <p>
+            Identifiziere den Engpass. Häufig ist nicht die gesamte
+            Anlage zu langsam, sondern nur eine einzelne
+            Produktionsstufe.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">14 // SCALING</div>
+        <h2>Eine kleine Fabrik erweitern</h2>
+
+        <p>
+            Bei wachsender Nachfrage sollte die Produktionsanlage
+            modular erweitert werden.
+        </p>
+
+        <ol>
+            <li>Engpass bestimmen.</li>
+            <li>Betroffene Produktionsstufe erweitern.</li>
+            <li>Input erhöhen.</li>
+            <li>Flüssigkeitspuffer vergrößern.</li>
+            <li>Transportwege anpassen.</li>
+            <li>Fertigwarenlager erweitern.</li>
+        </ol>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">15 // RISE OF NATIONS APPLICATION</div>
+        <h2>Einsatz im Modpack</h2>
+
+        <p>
+            Create Cola Factory eignet sich hervorragend für die
+            wirtschaftliche und zivile Infrastruktur von
+            RISE OF NATIONS.
+        </p>
+
+        <ul>
+            <li>Große Getränkefabriken.</li>
+            <li>Städtische Cola-Werke.</li>
+            <li>Restaurants und Cafés.</li>
+            <li>Bahnhofsversorgung.</li>
+            <li>Handelsunternehmen.</li>
+            <li>Industrielle Produktionsviertel.</li>
+        </ul>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">16 // PROFESSOR DOCTRINE</div>
+        <h2>Das Wichtigste zum Mitnehmen</h2>
+
+        <ul>
+            <li>Getränkeproduktion funktioniert am besten als komplette Produktionskette.</li>
+            <li>Flüssigkeitslogistik muss separat geplant werden.</li>
+            <li>Zwischenlager erhöhen die Stabilität.</li>
+            <li>Create-Züge können große Verteilungsnetzwerke ermöglichen.</li>
+            <li>Eine Cola-Fabrik kann Teil einer Multiplayer-Wirtschaft werden.</li>
+            <li>Produktionsengpässe sollten gezielt statt pauschal behoben werden.</li>
+            <li>Die Fabrik kann gleichzeitig funktional und architektonisch gestaltet werden.</li>
+        </ul>
+
+        <div class="warning">
+            <div class="warning-title">FINAL PRINCIPLE</div>
+            <p>
+                Denke bei der Getränkefabrik nicht nur an das Endprodukt.
+                Plane Rohstoffe, Verarbeitung, Flüssigkeiten, Lager,
+                Transport und Vertrieb als ein einziges Netzwerk.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">17 // REFERENCE DATA</div>
+        <h2>Originalquellen</h2>
+
+        <p>
+            Für konkrete Rezepte, Maschinen und versionsabhängige
+            Mechaniken sollten die Projektseiten der verwendeten
+            Version konsultiert werden.
+        </p>
+
+        <div class="sources">
+
+            <a href="https://modrinth.com/mod/create-cola-factory"
+               target="_blank"
+               rel="noopener">
+                MODRINTH // CREATE COLA FACTORY
+            </a>
+
+            <a href="https://www.curseforge.com/minecraft/mc-mods/create-cola-factory"
+               target="_blank"
+               rel="noopener">
+                CURSEFORGE // CREATE COLA FACTORY
+            </a>
+
+            <a href="https://modrinth.com/mod/create"
+               target="_blank"
+               rel="noopener">
+                MODRINTH // CREATE
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <a class="back" href="wiki.html">
+        ← ZURÜCK ZUR WIKI
+    </a>
+
+</main>
+
+<footer>
+    RISE OF NATIONS // CREATE COLA FACTORY // TACTICAL KNOWLEDGE DATABASE
+</footer>
+
+</body>
+</html>
