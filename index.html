@@ -1,702 +1,1205 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>RISE OF NATIONS</title>
-
-<style>
-* {
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    margin: 0;
-    font-family: "Arial Narrow", Arial, sans-serif;
-    background:
-        linear-gradient(rgba(5, 10, 15, 0.94), rgba(5, 10, 15, 0.98)),
-        repeating-linear-gradient(
-            0deg,
-            rgba(255,255,255,0.025) 0px,
-            rgba(255,255,255,0.025) 1px,
-            transparent 1px,
-            transparent 5px
-        );
-    color: #d7e0e6;
-    min-height: 100vh;
-}
-
-/* INDUSTRIAL GRID */
-
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: -1;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent 49.8%,
-            rgba(50,130,170,0.035) 50%,
-            transparent 50.2%
-        ),
-        linear-gradient(
-            0deg,
-            transparent 49.8%,
-            rgba(50,130,170,0.03) 50%,
-            transparent 50.2%
-        );
-
-    background-size: 80px 80px;
-}
-
-/* HEADER */
-
-header {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    gap: 30px;
-
-    padding: 18px 6%;
-
-    background: rgba(7, 14, 20, 0.97);
-    border-bottom: 1px solid #31566b;
-}
-
-.logo {
-    color: #d7ae54;
-    font-size: 22px;
-    font-weight: 900;
-    letter-spacing: 3px;
-    white-space: nowrap;
-}
-
-.logo span {
-    display: block;
-    margin-top: 4px;
-
-    color: #718b99;
-    font-size: 9px;
-    letter-spacing: 2px;
-}
-
-/* NAVIGATION */
-
-nav {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    gap: 7px;
-}
-
-nav a {
-    padding: 8px 11px;
-
-    color: #9fb2bc;
-    text-decoration: none;
-
-    font-size: 10px;
-    letter-spacing: 1px;
-
-    border: 1px solid #294552;
-    background: rgba(12, 26, 34, 0.8);
-
-    transition: 0.2s;
-}
-
-nav a:hover {
-    color: #e0b65a;
-    border-color: #c49a42;
-    background: #172a34;
-}
-
-/* MAIN */
-
-.container {
-    width: min(1250px, 92%);
-    margin: auto;
-}
-
-/* HERO */
-
-.hero {
-    min-height: 620px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    padding: 90px 0;
-
-    border-bottom: 1px solid #263e4a;
-}
-
-.eyebrow {
-    color: #5f9dbb;
-    font-size: 12px;
-    letter-spacing: 4px;
-    font-weight: bold;
-
-    margin-bottom: 20px;
-}
-
-.hero h1 {
-    margin: 0;
-
-    color: #f0f3f4;
-
-    font-size: clamp(55px, 10vw, 120px);
-    line-height: 0.88;
-
-    letter-spacing: 5px;
-}
-
-.hero h1 span {
-    color: #d7ae54;
-}
-
-.hero-subtitle {
-    max-width: 850px;
-
-    margin-top: 30px;
-
-    color: #8fa5b1;
-
-    font-size: 17px;
-    line-height: 1.7;
-}
-
-.system-status {
-    display: inline-flex;
-    align-items: center;
-    gap: 9px;
-
-    width: fit-content;
-
-    margin-top: 35px;
-    padding: 9px 14px;
-
-    border: 1px solid #315c47;
-
-    background: rgba(19, 49, 36, 0.35);
-
-    color: #79bd91;
-
-    font-size: 10px;
-    letter-spacing: 2px;
-}
-
-.status-dot {
-    width: 7px;
-    height: 7px;
-
-    background: #5fc47c;
-
-    border-radius: 50%;
-
-    box-shadow: 0 0 10px rgba(95,196,124,0.7);
-}
-
-/* DASHBOARD */
-
-.dashboard {
-    padding: 55px 0;
-}
-
-.dashboard-title {
-    margin-bottom: 20px;
-
-    color: #d7ae54;
-
-    font-size: 17px;
-    letter-spacing: 3px;
-}
-
-.dashboard-grid {
-    display: grid;
-
-    grid-template-columns: repeat(3, 1fr);
-
-    gap: 14px;
-}
-
-/* PANELS */
-
-.panel {
-    min-height: 180px;
-
-    padding: 23px;
-
-    border: 1px solid #294957;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(17, 39, 50, 0.92),
-            rgba(7, 18, 24, 0.95)
-        );
-
-    position: relative;
-
-    transition: 0.2s;
-}
-
-.panel:hover {
-    border-color: #527f94;
-
-    transform: translateY(-2px);
-}
-
-.panel-wide {
-    grid-column: span 2;
-}
-
-.panel-title {
-    color: #d7ae54;
-
-    font-size: 11px;
-    letter-spacing: 2px;
-    font-weight: bold;
-
-    margin-bottom: 15px;
-}
-
-.panel-value {
-    color: #e1e8eb;
-
-    font-size: 25px;
-    font-weight: bold;
-
-    letter-spacing: 1px;
-}
-
-.panel-text {
-    margin-top: 12px;
-
-    color: #8299a5;
-
-    font-size: 13px;
-    line-height: 1.6;
-}
-
-.panel-link {
-    display: inline-block;
-
-    margin-top: 18px;
-
-    color: #73afd0;
-
-    text-decoration: none;
-
-    font-size: 10px;
-    letter-spacing: 1.5px;
-}
-
-.panel-link:hover {
-    color: #e0b65a;
-}
-
-/* DATA LINES */
-
-.data-line {
-    display: flex;
-    justify-content: space-between;
-
-    padding: 8px 0;
-
-    border-bottom: 1px solid #203b47;
-
-    color: #8299a5;
-
-    font-size: 11px;
-}
-
-.data-line:last-child {
-    border-bottom: none;
-}
-
-.data-line strong {
-    color: #cbd7dc;
-}
-
-/* FEATURE */
-
-.feature {
-    margin-top: 20px;
-
-    padding: 25px;
-
-    border: 1px solid #624e29;
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(64,50,24,0.35),
-            rgba(15,22,25,0.75)
-        );
-}
-
-.feature-title {
-    color: #d7ae54;
-
-    font-size: 12px;
-    letter-spacing: 3px;
-    font-weight: bold;
-}
-
-.feature p {
-    max-width: 850px;
-
-    color: #9aabb4;
-
-    font-size: 14px;
-    line-height: 1.7;
-}
-
-/* FOOTER */
-
-footer {
-    margin-top: 30px;
-
-    padding: 30px 6%;
-
-    text-align: center;
-
-    border-top: 1px solid #294553;
-
-    color: #607782;
-
-    font-size: 10px;
-    letter-spacing: 1.5px;
-}
-
-/* MOBILE */
-
-@media (max-width: 900px) {
-
-    header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    nav {
-        justify-content: flex-start;
-    }
-
-    .dashboard-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .panel-wide {
-        grid-column: span 2;
-    }
-}
-
-@media (max-width: 600px) {
-
-    .dashboard-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .panel-wide {
-        grid-column: span 1;
-    }
-
-    .hero {
-        min-height: 520px;
-    }
-
-    .hero h1 {
-        font-size: 52px;
-    }
-
-    nav a {
-        font-size: 9px;
-        padding: 7px 8px;
-    }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RISE OF NATIONS // COMMAND & CONTROL</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background:
+                radial-gradient(circle at 50% 20%, rgba(25, 65, 95, 0.25), transparent 35%),
+                linear-gradient(135deg, #05080b, #0a1117 45%, #05080b);
+            color: #dce8ef;
+            font-family: Arial, Helvetica, sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        body.intro-active {
+            overflow: hidden;
+        }
+
+        /* =========================================================
+           INTRO
+        ========================================================= */
+
+        #intro {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background:
+                radial-gradient(circle at 50% 45%, rgba(25, 75, 105, 0.18), transparent 30%),
+                linear-gradient(135deg, #020406, #080d12 50%, #020405);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            transition:
+                opacity 1s ease,
+                visibility 1s ease;
+        }
+
+        #intro.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .intro-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(65, 110, 135, 0.06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(65, 110, 135, 0.06) 1px, transparent 1px);
+            background-size: 45px 45px;
+            transform: perspective(500px) rotateX(55deg) scale(1.5);
+            transform-origin: center bottom;
+            opacity: 0;
+            animation: gridAppear 2s ease forwards 0.5s;
+        }
+
+        .intro-vignette {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle, transparent 25%, rgba(0,0,0,0.35) 65%, rgba(0,0,0,0.9) 100%);
+            pointer-events: none;
+        }
+
+        /* Industrial shapes */
+
+        .gear {
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            border: 18px dashed rgba(110, 135, 145, 0.12);
+            border-radius: 50%;
+            opacity: 0;
+        }
+
+        .gear::after {
+            content: "";
+            position: absolute;
+            inset: 35px;
+            border: 8px solid rgba(110, 135, 145, 0.1);
+            border-radius: 50%;
+        }
+
+        .gear.one {
+            left: -50px;
+            bottom: 8%;
+            animation:
+                gearAppear 1.5s ease forwards 0.5s,
+                rotateGear 25s linear infinite 2s;
+        }
+
+        .gear.two {
+            right: -65px;
+            top: 12%;
+            width: 230px;
+            height: 230px;
+            animation:
+                gearAppear 1.5s ease forwards 0.9s,
+                rotateGearReverse 32s linear infinite 2s;
+        }
+
+        .gear.three {
+            right: 18%;
+            bottom: -100px;
+            width: 270px;
+            height: 270px;
+            animation:
+                gearAppear 1.5s ease forwards 1.2s,
+                rotateGear 35s linear infinite 2s;
+        }
+
+        /* Lights */
+
+        .warning-light {
+            position: absolute;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #3da6d6;
+            box-shadow: 0 0 15px rgba(61,166,214,0.8);
+            opacity: 0;
+        }
+
+        .light-1 { left: 14%; top: 25%; animation: lightOn 1s ease forwards 1.4s, pulseLight 2.2s infinite 2.4s; }
+        .light-2 { left: 78%; top: 29%; animation: lightOn 1s ease forwards 1.7s, pulseLight 1.8s infinite 2.6s; }
+        .light-3 { left: 23%; top: 72%; animation: lightOn 1s ease forwards 2s, pulseLight 2.5s infinite 2.9s; }
+        .light-4 { left: 83%; top: 73%; animation: lightOn 1s ease forwards 2.3s, pulseLight 1.7s infinite 3.2s; }
+
+        .red-light {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: #c43c3c;
+            box-shadow: 0 0 12px rgba(196,60,60,0.8);
+            opacity: 0;
+        }
+
+        .red-1 {
+            left: 18%;
+            top: 45%;
+            animation: lightOn 1s ease forwards 2.1s, pulseRed 1.8s infinite 3s;
+        }
+
+        .red-2 {
+            right: 18%;
+            top: 57%;
+            animation: lightOn 1s ease forwards 2.4s, pulseRed 2s infinite 3.2s;
+        }
+
+        /* Intro content */
+
+        .intro-content {
+            position: relative;
+            z-index: 5;
+            width: min(900px, 90%);
+            text-align: center;
+        }
+
+        .system-label {
+            color: #5fa9cf;
+            font-size: 12px;
+            letter-spacing: 5px;
+            font-weight: bold;
+            opacity: 0;
+            animation: textAppear 1s ease forwards 1.8s;
+            margin-bottom: 25px;
+        }
+
+        .system-line {
+            width: 0;
+            height: 1px;
+            margin: 0 auto 28px;
+            background: linear-gradient(90deg, transparent, #5fa9cf, transparent);
+            animation: lineExpand 1.2s ease forwards 2.1s;
+        }
+
+        .intro-title {
+            font-size: clamp(46px, 9vw, 115px);
+            line-height: 0.9;
+            letter-spacing: 8px;
+            font-weight: 900;
+            color: #edf4f7;
+            text-shadow:
+                0 0 25px rgba(70, 150, 190, 0.25),
+                0 5px 0 rgba(0,0,0,0.6);
+            opacity: 0;
+            transform: scale(0.92);
+            animation: titleAppear 1.4s cubic-bezier(.16,1,.3,1) forwards 2.4s;
+        }
+
+        .intro-subtitle {
+            margin-top: 22px;
+            color: #a8bac4;
+            font-size: clamp(11px, 1.5vw, 15px);
+            letter-spacing: 6px;
+            opacity: 0;
+            animation: textAppear 1s ease forwards 3.3s;
+        }
+
+        .initialization {
+            margin-top: 55px;
+            color: #7194a6;
+            font-size: 11px;
+            letter-spacing: 3px;
+            opacity: 0;
+            animation: textAppear 1s ease forwards 3.8s;
+        }
+
+        .initialization::after {
+            content: "";
+            display: inline-block;
+            width: 25px;
+            height: 11px;
+            margin-left: 8px;
+            border-right: 2px solid #5fa9cf;
+            animation: blinkCursor 0.8s infinite;
+        }
+
+        .intro-status {
+            display: flex;
+            justify-content: center;
+            gap: 35px;
+            margin-top: 28px;
+            opacity: 0;
+            animation: textAppear 1s ease forwards 4.4s;
+        }
+
+        .status-item {
+            font-size: 9px;
+            letter-spacing: 2px;
+            color: #627985;
+        }
+
+        .status-item span {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            margin-right: 7px;
+            border-radius: 50%;
+            background: #3fa86b;
+            box-shadow: 0 0 8px rgba(63,168,107,0.8);
+        }
+
+        .skip-intro {
+            position: absolute;
+            z-index: 20;
+            bottom: 30px;
+            right: 35px;
+            background: rgba(5, 12, 17, 0.8);
+            border: 1px solid rgba(90, 145, 170, 0.35);
+            color: #7893a1;
+            padding: 11px 17px;
+            font-size: 10px;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: 0.25s ease;
+        }
+
+        .skip-intro:hover {
+            color: #dce8ef;
+            border-color: #5fa9cf;
+            background: rgba(15, 35, 45, 0.9);
+        }
+
+        .scanline {
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: rgba(80, 160, 200, 0.08);
+            box-shadow: 0 0 12px rgba(80, 160, 200, 0.08);
+            animation: scan 5s linear infinite;
+        }
+
+        /* =========================================================
+           MAIN WEBSITE
+        ========================================================= */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #1e3440;
+            background: rgba(5, 10, 14, 0.95);
+            backdrop-filter: blur(12px);
+        }
+
+        .header-inner {
+            width: min(1450px, 94%);
+            margin: auto;
+            min-height: 78px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .brand-emblem {
+            width: 43px;
+            height: 43px;
+            border: 2px solid #b89543;
+            display: grid;
+            place-items: center;
+            font-size: 19px;
+            font-weight: 900;
+            color: #b89543;
+            background: #101820;
+            transform: rotate(45deg);
+        }
+
+        .brand-emblem span {
+            transform: rotate(-45deg);
+        }
+
+        .brand-title {
+            font-weight: 900;
+            letter-spacing: 2px;
+            font-size: 16px;
+        }
+
+        .brand-subtitle {
+            margin-top: 4px;
+            color: #627985;
+            font-size: 8px;
+            letter-spacing: 2px;
+        }
+
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            gap: 6px;
+        }
+
+        nav a {
+            color: #8da5b1;
+            text-decoration: none;
+            padding: 11px 12px;
+            font-size: 10px;
+            letter-spacing: 1.5px;
+            border: 1px solid transparent;
+            transition: 0.2s ease;
+        }
+
+        nav a:hover {
+            color: #e8f3f8;
+            border-color: #294858;
+            background: #0b1820;
+        }
+
+        main {
+            width: min(1450px, 94%);
+            margin: auto;
+        }
+
+        .hero {
+            min-height: 470px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid #1c303b;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            right: -180px;
+            top: -180px;
+            border: 1px solid rgba(70, 120, 145, 0.15);
+            border-radius: 50%;
+            box-shadow:
+                0 0 0 60px rgba(70,120,145,0.03),
+                0 0 0 120px rgba(70,120,145,0.02);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            padding: 70px 0;
+        }
+
+        .eyebrow {
+            color: #b89543;
+            font-size: 10px;
+            letter-spacing: 4px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(48px, 8vw, 100px);
+            line-height: 0.9;
+            letter-spacing: 5px;
+            color: #edf4f7;
+            margin-bottom: 22px;
+        }
+
+        .hero h1 span {
+            color: #5da1c7;
+        }
+
+        .hero p {
+            max-width: 700px;
+            color: #849aa5;
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 32px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 13px 20px;
+            border: 1px solid #31586b;
+            background: #0b1922;
+            color: #dce8ef;
+            text-decoration: none;
+            font-size: 10px;
+            letter-spacing: 2px;
+            font-weight: bold;
+            transition: 0.2s ease;
+        }
+
+        .button:hover {
+            border-color: #6aa9c8;
+            background: #102936;
+            transform: translateY(-1px);
+        }
+
+        .button.gold {
+            border-color: #80672e;
+            color: #d3b766;
+        }
+
+        .section-title {
+            padding: 38px 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .section-title h2 {
+            font-size: 14px;
+            letter-spacing: 3px;
+            color: #cddbe1;
+        }
+
+        .section-title span {
+            color: #526a76;
+            font-size: 9px;
+            letter-spacing: 2px;
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            padding-bottom: 50px;
+        }
+
+        .panel {
+            position: relative;
+            min-height: 190px;
+            padding: 22px;
+            background:
+                linear-gradient(145deg, rgba(18,32,41,0.95), rgba(7,15,20,0.95));
+            border: 1px solid #1e3541;
+            overflow: hidden;
+            transition: 0.25s ease;
+        }
+
+        .panel:hover {
+            border-color: #3b6478;
+            transform: translateY(-2px);
+        }
+
+        .panel::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 70px;
+            height: 1px;
+            background: #426b7e;
+        }
+
+        .panel-number {
+            color: #4d7080;
+            font-size: 9px;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .panel h3 {
+            color: #e0ebef;
+            font-size: 15px;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .panel p {
+            color: #728994;
+            font-size: 11px;
+            line-height: 1.6;
+            margin-bottom: 18px;
+        }
+
+        .panel-link {
+            color: #5da1c7;
+            text-decoration: none;
+            font-size: 9px;
+            letter-spacing: 2px;
+        }
+
+        .panel-link:hover {
+            color: #b89543;
+        }
+
+        .status-bar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #61a878;
+            font-size: 9px;
+            letter-spacing: 2px;
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #61a878;
+            box-shadow: 0 0 10px rgba(97,168,120,0.7);
+        }
+
+        .feature {
+            border-top: 1px solid #1c303b;
+            border-bottom: 1px solid #1c303b;
+            padding: 65px 0;
+            margin-bottom: 50px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .feature h2 {
+            color: #e3edf1;
+            font-size: 29px;
+            letter-spacing: 2px;
+            margin-bottom: 18px;
+        }
+
+        .feature p {
+            color: #788e99;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .feature-box {
+            min-height: 230px;
+            border: 1px solid #213945;
+            background: #091219;
+            padding: 25px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .feature-item {
+            border: 1px solid #182d38;
+            padding: 18px;
+            background: #0b161d;
+        }
+
+        .feature-item strong {
+            display: block;
+            color: #b9cbd2;
+            font-size: 11px;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .feature-item span {
+            color: #607681;
+            font-size: 9px;
+            line-height: 1.5;
+        }
+
+        footer {
+            width: min(1450px, 94%);
+            margin: auto;
+            padding: 25px 0 40px;
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            color: #455c67;
+            font-size: 9px;
+            letter-spacing: 1.5px;
+        }
+
+        /* =========================================================
+           ANIMATIONS
+        ========================================================= */
+
+        @keyframes gridAppear {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes gearAppear {
+            from {
+                opacity: 0;
+                transform: scale(0.7);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes rotateGear {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes rotateGearReverse {
+            from { transform: rotate(360deg); }
+            to { transform: rotate(0deg); }
+        }
+
+        @keyframes lightOn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes pulseLight {
+            0%, 100% { opacity: 0.35; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes pulseRed {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes textAppear {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes lineExpand {
+            from { width: 0; }
+            to { width: min(500px, 70vw); }
+        }
+
+        @keyframes titleAppear {
+            from {
+                opacity: 0;
+                transform: scale(0.92);
+                filter: blur(8px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+                filter: blur(0);
+            }
+        }
+
+        @keyframes blinkCursor {
+            0%, 45% { opacity: 1; }
+            46%, 100% { opacity: 0; }
+        }
+
+        @keyframes scan {
+            from { top: -10%; }
+            to { top: 110%; }
+        }
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+        @media (max-width: 900px) {
+            .header-inner {
+                padding: 15px 0;
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            nav {
+                justify-content: flex-start;
+            }
+
+            .dashboard {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                min-height: 420px;
+            }
+
+            .intro-status {
+                gap: 12px;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .skip-intro {
+                right: 15px;
+                bottom: 15px;
+            }
+
+            footer {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
 
-<body>
+<body class="intro-active">
 
-<header>
+    <!-- =========================================================
+         CINEMATIC INTRO
+    ========================================================= -->
 
-    <div class="logo">
-        RISE OF NATIONS
-        <span>COMMAND & CONTROL NETWORK</span>
-    </div>
+    <section id="intro">
 
-    <nav>
-        <a href="pages/communications.html">COMMUNICATIONS</a>
-        <a href="pages/intelligence.html">INTELLIGENCE</a>
-        <a href="pages/server.html">SERVER</a>
-        <a href="pages/database.html">DATABASE</a>
-        <a href="pages/download.html">DOWNLOAD</a>
-        <a href="pages/wiki.html">WIKI</a>
-    </nav>
+        <div class="intro-grid"></div>
 
-</header>
+        <div class="gear one"></div>
+        <div class="gear two"></div>
+        <div class="gear three"></div>
 
+        <div class="warning-light light-1"></div>
+        <div class="warning-light light-2"></div>
+        <div class="warning-light light-3"></div>
+        <div class="warning-light light-4"></div>
 
-<main class="container">
+        <div class="red-light red-1"></div>
+        <div class="red-light red-2"></div>
 
-    <!-- HERO -->
+        <div class="scanline"></div>
 
-    <section class="hero">
+        <div class="intro-content">
 
-        <div class="eyebrow">
-            GLOBAL COMMAND SYSTEM // ONLINE
+            <div class="system-label">
+                RISE OF NATIONS // COMMAND & CONTROL NETWORK
+            </div>
+
+            <div class="system-line"></div>
+
+            <div class="intro-title">
+                RISE<br>OF NATIONS
+            </div>
+
+            <div class="intro-subtitle">
+                GLOBAL COMMAND // STRATEGY // INDUSTRY // SURVIVAL
+            </div>
+
+            <div class="initialization">
+                SYSTEM INITIALIZATION
+            </div>
+
+            <div class="intro-status">
+                <div class="status-item">
+                    <span></span>CORE ONLINE
+                </div>
+
+                <div class="status-item">
+                    <span></span>DATABASE ONLINE
+                </div>
+
+                <div class="status-item">
+                    <span></span>NETWORK ONLINE
+                </div>
+            </div>
+
         </div>
 
-        <h1>
-            RISE OF<br>
-            <span>NATIONS</span>
-        </h1>
+        <button class="skip-intro" id="skipIntro">
+            SKIP INTRO
+        </button>
 
-        <p class="hero-subtitle">
-            Ein umfangreiches Minecraft-Modpack für Industrie,
-            Technologie, Militär, Abenteuer, Landwirtschaft,
-            Infrastruktur und den Aufbau eigener Reiche.
-        </p>
-
-        <div class="system-status">
-            <div class="status-dot"></div>
-            SYSTEM ONLINE // ALL SYSTEMS OPERATIONAL
-        </div>
+        <div class="intro-vignette"></div>
 
     </section>
 
 
-    <!-- DASHBOARD -->
+    <!-- =========================================================
+         MAIN WEBSITE
+    ========================================================= -->
 
-    <section class="dashboard">
+    <header>
+        <div class="header-inner">
 
-        <div class="dashboard-title">
-            COMMAND DASHBOARD
+            <a href="index.html" class="brand">
+                <div class="brand-emblem">
+                    <span>R</span>
+                </div>
+
+                <div>
+                    <div class="brand-title">
+                        RISE OF NATIONS
+                    </div>
+
+                    <div class="brand-subtitle">
+                        COMMAND & CONTROL NETWORK
+                    </div>
+                </div>
+            </a>
+
+            <nav>
+                <a href="pages/communications.html">COMMUNICATIONS</a>
+                <a href="pages/intelligence.html">INTELLIGENCE</a>
+                <a href="pages/server.html">SERVER</a>
+                <a href="pages/database.html">DATABASE</a>
+                <a href="pages/download.html">DOWNLOAD</a>
+                <a href="pages/wiki.html">WIKI</a>
+            </nav>
+
+        </div>
+    </header>
+
+
+    <main>
+
+        <!-- HERO -->
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <div class="eyebrow">
+                    GLOBAL STRATEGIC COMMAND // ONLINE
+                </div>
+
+                <h1>
+                    RISE<br>
+                    <span>OF NATIONS</span>
+                </h1>
+
+                <p>
+                    Ein Minecraft-Projekt für Nationen, Industrie, Technologie,
+                    Krieg, Diplomatie, Handel und Überleben.
+                    Baue deine Nation auf, entwickle deine Industrie,
+                    erforsche neue Technologien und entscheide selbst,
+                    wie sich die Welt entwickelt.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="pages/wiki.html" class="button gold">
+                        ENTER WIKI
+                    </a>
+
+                    <a href="pages/download.html" class="button">
+                        DOWNLOAD MODPACK
+                    </a>
+
+                    <a href="pages/server.html" class="button">
+                        SERVER INFORMATION
+                    </a>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- COMMAND DASHBOARD -->
+
+        <div class="section-title">
+            <h2>COMMAND DASHBOARD</h2>
+            <span>SYSTEM STATUS // OPERATIONAL</span>
         </div>
 
+        <section class="dashboard">
 
-        <div class="dashboard-grid">
+            <article class="panel">
 
-            <!-- SERVER -->
-
-            <div class="panel">
-
-                <div class="panel-title">
-                    SERVER STATUS
+                <div class="panel-number">
+                    01 // SERVER
                 </div>
 
-                <div class="panel-value">
-                    ONLINE
+                <h3>SERVER STATUS</h3>
+
+                <p>
+                    Aktuelle Informationen über den Minecraft-Server,
+                    Version, Verbindung und wichtige Serverdaten.
+                </p>
+
+                <div class="status-bar">
+                    <div class="status-dot"></div>
+                    OPERATIONAL
                 </div>
 
-                <div class="panel-text">
-                    Der zentrale RISE OF NATIONS
-                    Multiplayer-Server.
-                </div>
+                <br>
 
-                <a class="panel-link" href="pages/server.html">
-                    OPEN SERVER CONTROL →
+                <a href="pages/server.html" class="panel-link">
+                    ACCESS SERVER DATA →
                 </a>
 
-            </div>
+            </article>
 
 
-            <!-- DEPLOYMENT -->
+            <article class="panel">
 
-            <div class="panel">
-
-                <div class="panel-title">
-                    CURRENT DEPLOYMENT
+                <div class="panel-number">
+                    02 // DEPLOYMENT
                 </div>
 
-                <div class="data-line">
-                    <span>MODPACK</span>
-                    <strong>VERSION 1.0.0</strong>
+                <h3>CURRENT DEPLOYMENT</h3>
+
+                <p>
+                    RISE OF NATIONS Modpack für Minecraft 1.21.1.
+                    Die aktuelle Zusammenstellung aus Industrie,
+                    Technologie, Abenteuer und Survival.
+                </p>
+
+                <a href="pages/download.html" class="panel-link">
+                    VIEW DEPLOYMENT →
+                </a>
+
+            </article>
+
+
+            <article class="panel">
+
+                <div class="panel-number">
+                    03 // INTELLIGENCE
                 </div>
 
-                <div class="data-line">
-                    <span>MINECRAFT</span>
-                    <strong>1.21.1</strong>
-                </div>
+                <h3>GLOBAL INTELLIGENCE</h3>
 
-                <div class="data-line">
-                    <span>STATUS</span>
-                    <strong>STABLE</strong>
-                </div>
+                <p>
+                    Aktuelle Lageberichte, Entwicklungen,
+                    neue Technologien und Ereignisse aus der Welt
+                    von RISE OF NATIONS.
+                </p>
 
-            </div>
-
-
-            <!-- INTELLIGENCE -->
-
-            <div class="panel">
-
-                <div class="panel-title">
-                    GLOBAL INTELLIGENCE
-                </div>
-
-                <div class="panel-value">
-                    ACTIVE
-                </div>
-
-                <div class="panel-text">
-                    Aktuelle Lageberichte,
-                    Entwicklungen und Meldungen
-                    aus der Welt von RISE OF NATIONS.
-                </div>
-
-                <a class="panel-link" href="pages/intelligence.html">
+                <a href="pages/intelligence.html" class="panel-link">
                     OPEN INTELLIGENCE →
                 </a>
 
-            </div>
+            </article>
 
 
-            <!-- DATABASE -->
+            <article class="panel">
 
-            <div class="panel panel-wide">
-
-                <div class="panel-title">
-                    MODPACK DATABASE
+                <div class="panel-number">
+                    04 // DATABASE
                 </div>
 
-                <div class="panel-value">
-                    DATABASE
-                </div>
+                <h3>MODPACK DATABASE</h3>
 
-                <div class="panel-text">
-                    Zugriff auf die verschiedenen
-                    Modpack-Systeme: Technologie,
-                    Waffen, Fahrzeuge, Abenteuer,
-                    Strukturen, Landwirtschaft,
-                    Survival und Performance.
-                </div>
+                <p>
+                    Durchsuche das Modpack und entdecke die
+                    verschiedenen Systeme, Technologien, Maschinen,
+                    Waffen und Gameplay-Erweiterungen.
+                </p>
 
-                <a class="panel-link" href="pages/database.html">
-                    OPEN MOD DATABASE →
+                <a href="pages/database.html" class="panel-link">
+                    ACCESS DATABASE →
                 </a>
 
-            </div>
+            </article>
 
 
-            <!-- WIKI -->
+            <article class="panel">
 
-            <div class="panel">
-
-                <div class="panel-title">
-                    KNOWLEDGE SYSTEM
+                <div class="panel-number">
+                    05 // KNOWLEDGE
                 </div>
 
-                <div class="panel-value">
-                    WIKI
-                </div>
+                <h3>KNOWLEDGE SYSTEM // WIKI</h3>
 
-                <div class="panel-text">
-                    Detaillierte Anleitungen,
-                    Mod-Dokumentationen,
-                    technische Daten und
-                    fortgeschrittene Systeme.
-                </div>
+                <p>
+                    Anleitungen und Informationen zu den wichtigsten
+                    Mods und Systemen des Modpacks.
+                </p>
 
-                <a class="panel-link" href="pages/wiki.html">
-                    OPEN WIKI →
+                <a href="pages/wiki.html" class="panel-link">
+                    ENTER KNOWLEDGE SYSTEM →
                 </a>
 
-            </div>
+            </article>
 
 
-            <!-- DOWNLOAD -->
+            <article class="panel">
 
-            <div class="panel">
-
-                <div class="panel-title">
-                    DEPLOYMENT PACKAGE
+                <div class="panel-number">
+                    06 // COMMUNICATIONS
                 </div>
 
-                <div class="panel-value">
-                    DOWNLOAD
-                </div>
+                <h3>COMMUNICATIONS</h3>
 
-                <div class="panel-text">
-                    Installationsdateien,
-                    Modpack-Versionen und
-                    Bereitstellungsinformationen.
-                </div>
+                <p>
+                    Community, Discord und Kommunikationskanäle
+                    für Spieler und Nationen.
+                </p>
 
-                <a class="panel-link" href="pages/download.html">
-                    OPEN DOWNLOAD CENTER →
-                </a>
-
-            </div>
-
-
-            <!-- COMMUNICATIONS -->
-
-            <div class="panel">
-
-                <div class="panel-title">
-                    COMMUNICATIONS
-                </div>
-
-                <div class="panel-value">
-                    NETWORK
-                </div>
-
-                <div class="panel-text">
-                    Community, Discord,
-                    Ankündigungen und
-                    Spielerkommunikation.
-                </div>
-
-                <a class="panel-link" href="pages/communications.html">
+                <a href="pages/communications.html" class="panel-link">
                     OPEN COMMUNICATIONS →
                 </a>
 
-            </div>
+            </article>
 
-        </div>
+        </section>
 
 
         <!-- FEATURE -->
 
-        <div class="feature">
+        <section class="feature">
 
-            <div class="feature-title">
-                COMMAND SYSTEM // READY
+            <div class="feature-grid">
+
+                <div>
+
+                    <div class="eyebrow">
+                        PLAYER DRIVEN WORLD
+                    </div>
+
+                    <h2>
+                        YOUR NATION.<br>
+                        YOUR DECISIONS.
+                    </h2>
+
+                    <p>
+                        RISE OF NATIONS ist keine Welt mit einer festgelegten
+                        Geschichte. Die Spieler erschaffen ihre eigenen Nationen,
+                        Bündnisse, Konflikte, Handelswege und Machtstrukturen.
+                        Jede neue Welt entwickelt sich durch die Entscheidungen
+                        ihrer Spieler.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-box">
+
+                    <div class="feature-item">
+                        <strong>NATIONS</strong>
+                        <span>
+                            Eigene Staaten, Gebiete und politische Systeme.
+                        </span>
+                    </div>
+
+                    <div class="feature-item">
+                        <strong>INDUSTRY</strong>
+                        <span>
+                            Fabriken, Maschinen und automatisierte Produktion.
+                        </span>
+                    </div>
+
+                    <div class="feature-item">
+                        <strong>TECHNOLOGY</strong>
+                        <span>
+                            Forschung und moderne technische Systeme.
+                        </span>
+                    </div>
+
+                    <div class="feature-item">
+                        <strong>CONFLICT</strong>
+                        <span>
+                            Diplomatie, Krieg und strategische Entscheidungen.
+                        </span>
+                    </div>
+
+                    <div class="feature-item">
+                        <strong>ADVENTURE</strong>
+                        <span>
+                            Erkundung, Strukturen, Dimensionen und Gefahren.
+                        </span>
+                    </div>
+
+                    <div class="feature-item">
+                        <strong>SURVIVAL</strong>
+                        <span>
+                            Ressourcen, Nahrung, Bauen und Überleben.
+                        </span>
+                    </div>
+
+                </div>
+
             </div>
 
-            <p>
-                RISE OF NATIONS ist nicht auf eine einzelne Nation
-                oder eine feste Weltordnung beschränkt. Spieler können
-                eigene Staaten, Städte, Industrien, Handelsnetzwerke
-                und militärische Strukturen aufbauen.
-            </p>
+        </section>
 
+    </main>
+
+
+    <footer>
+
+        <div>
+            RISE OF NATIONS // COMMAND & CONTROL NETWORK
         </div>
 
-    </section>
+        <div>
+            MINECRAFT 1.21.1 // SYSTEM ONLINE
+        </div>
 
-</main>
+    </footer>
 
 
-<footer>
-    RISE OF NATIONS // COMMAND & CONTROL NETWORK // 1.21.1
-</footer>
+    <!-- =========================================================
+         INTRO JAVASCRIPT
+    ========================================================= -->
+
+    <script>
+
+        const intro = document.getElementById("intro");
+        const skipIntro = document.getElementById("skipIntro");
+
+        function closeIntro() {
+
+            intro.classList.add("hidden");
+
+            document.body.classList.remove("intro-active");
+
+            localStorage.setItem("ronIntroSeen", "true");
+        }
+
+        skipIntro.addEventListener("click", closeIntro);
+
+
+        /*
+         * Intro automatisch beenden.
+         * Wenn der Spieler die Seite zum ersten Mal besucht,
+         * läuft die komplette Animation.
+         */
+
+        const introAlreadySeen =
+            localStorage.getItem("ronIntroSeen");
+
+
+        if (introAlreadySeen === "true") {
+
+            intro.classList.add("hidden");
+            document.body.classList.remove("intro-active");
+
+        } else {
+
+            setTimeout(() => {
+                closeIntro();
+            }, 6500);
+
+        }
+
+    </script>
 
 </body>
 </html>
