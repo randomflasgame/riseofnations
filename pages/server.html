@@ -6,352 +6,296 @@
 
     <title>SERVER // RISE OF NATIONS</title>
 
+    <script src="../config/site-config.js"></script>
+
     <style>
         * {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            margin: 0;
             min-height: 100vh;
-
             background:
-                radial-gradient(
-                    circle at 50% 0%,
-                    rgba(20, 55, 80, 0.25),
-                    transparent 45%
-                ),
-                linear-gradient(
-                    rgba(3, 8, 13, 0.97),
-                    rgba(4, 9, 14, 0.99)
-                );
-
-            color: #d8e2ea;
-            font-family: "Courier New", monospace;
+                radial-gradient(circle at 50% 10%, rgba(25, 70, 95, 0.22), transparent 35%),
+                linear-gradient(135deg, #05080b, #0a1117 50%, #05080b);
+            color: #dce8ef;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
         header {
             position: sticky;
             top: 0;
-            z-index: 1000;
+            z-index: 100;
+            border-bottom: 1px solid #1e3440;
+            background: rgba(5, 10, 14, 0.96);
+            backdrop-filter: blur(12px);
+        }
 
-            min-height: 76px;
-
+        .header-inner {
+            width: min(1450px, 94%);
+            margin: auto;
+            min-height: 78px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-
-            padding: 0 35px;
-
-            background:
-                linear-gradient(
-                    180deg,
-                    rgba(8, 20, 31, 0.98),
-                    rgba(5, 13, 21, 0.98)
-                );
-
-            border-bottom: 1px solid #29485f;
-
-            box-shadow:
-                0 4px 25px rgba(0, 0, 0, 0.45);
+            gap: 30px;
         }
 
-        .logo {
-            color: #d4af37;
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            color: #fff;
+            text-decoration: none;
+        }
 
-            font-size: 21px;
-            font-weight: bold;
+        .brand-emblem {
+            width: 43px;
+            height: 43px;
+            border: 2px solid #b89543;
+            display: grid;
+            place-items: center;
+            color: #b89543;
+            background: #101820;
+            font-size: 19px;
+            font-weight: 900;
+            transform: rotate(45deg);
+        }
 
-            letter-spacing: 3px;
+        .brand-emblem span {
+            transform: rotate(-45deg);
+        }
+
+        .brand-title {
+            font-size: 16px;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+
+        .brand-subtitle {
+            margin-top: 4px;
+            color: #627985;
+            font-size: 8px;
+            letter-spacing: 2px;
         }
 
         nav {
             display: flex;
-            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            gap: 6px;
         }
 
         nav a {
-            position: relative;
-
-            padding: 10px 14px;
-
-            color: #b8c9d6;
-
+            color: #8da5b1;
             text-decoration: none;
-
-            font-size: 12px;
-            font-weight: bold;
-
-            letter-spacing: 2px;
-
-            transition: 0.2s;
+            padding: 11px 12px;
+            font-size: 10px;
+            letter-spacing: 1.5px;
+            border: 1px solid transparent;
+            transition: 0.2s ease;
         }
 
         nav a:hover {
-            color: #ffffff;
-            background: rgba(79, 209, 255, 0.08);
-        }
-
-        nav a::after {
-            content: "";
-
-            position: absolute;
-
-            left: 0;
-            right: 0;
-            bottom: 3px;
-
-            height: 1px;
-
-            background: #4fd1ff;
-
-            transform: scaleX(0);
-
-            transition: 0.2s;
-        }
-
-        nav a:hover::after {
-            transform: scaleX(1);
-        }
-
-        .status {
-            color: #55d68a;
-
-            font-size: 11px;
-            font-weight: bold;
-
-            letter-spacing: 2px;
+            color: #e8f3f8;
+            border-color: #294858;
+            background: #0b1820;
         }
 
         main {
-            max-width: 1250px;
-
-            margin: 0 auto;
-
-            padding: 75px 30px;
+            width: min(1100px, 92%);
+            margin: auto;
+            padding: 80px 0;
         }
 
-        .classified {
-            color: #4fd1ff;
-
-            font-size: 12px;
+        .eyebrow {
+            color: #b89543;
+            font-size: 10px;
+            letter-spacing: 4px;
             font-weight: bold;
-
-            letter-spacing: 5px;
-
             margin-bottom: 18px;
         }
 
+        .hero {
+            padding: 50px 0 60px;
+            border-bottom: 1px solid #1c303b;
+        }
+
         h1 {
-            margin: 0;
-
-            color: #ffffff;
-
-            font-size: 64px;
-
-            letter-spacing: 8px;
+            font-size: clamp(42px, 7vw, 82px);
+            line-height: 0.95;
+            letter-spacing: 4px;
+            color: #edf4f7;
+            margin-bottom: 22px;
         }
 
-        .subtitle {
-            margin-top: 18px;
-
-            color: #8297a7;
-
-            font-size: 13px;
-
-            letter-spacing: 3px;
+        h1 span {
+            color: #5da1c7;
         }
 
-        .server-grid {
-            margin-top: 55px;
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(2, 1fr);
-
-            gap: 18px;
-        }
-
-        .panel {
-            position: relative;
-
-            padding: 28px;
-
-            min-height: 220px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(12, 27, 39, 0.97),
-                    rgba(6, 15, 23, 0.97)
-                );
-
-            border: 1px solid #29485f;
-
-            box-shadow:
-                inset 0 0 25px rgba(0, 0, 0, 0.25);
-
-            transition: 0.2s;
-        }
-
-        .panel:hover {
-            border-color: #4fd1ff;
-
-            transform: translateY(-2px);
-        }
-
-        .panel::after {
-            content: "";
-
-            position: absolute;
-
-            top: 0;
-            right: 0;
-
-            width: 35px;
-            height: 35px;
-
-            border-top: 1px solid #4fd1ff;
-            border-right: 1px solid #4fd1ff;
-
-            opacity: 0.45;
-        }
-
-        .panel h2 {
-            margin: 0 0 25px;
-
-            color: #ffffff;
-
-            font-size: 17px;
-
-            letter-spacing: 3px;
-        }
-
-        .row {
-            display: flex;
-
-            justify-content: space-between;
-
-            gap: 20px;
-
-            padding: 12px 0;
-
-            border-bottom: 1px solid #1d3445;
-
-            font-size: 12px;
-        }
-
-        .row:last-child {
-            border-bottom: none;
-        }
-
-        .label {
-            color: #6f8798;
-
-            letter-spacing: 2px;
-        }
-
-        .value {
-            color: #d8e2ea;
-
-            text-align: right;
-        }
-
-        .online {
-            color: #55d68a;
-        }
-
-        .gold {
-            color: #d4af37;
-        }
-
-        .blue {
-            color: #4fd1ff;
-        }
-
-        .red {
-            color: #d45b5b;
-        }
-
-        .command {
-            margin-top: 20px;
-
-            padding: 25px;
-
-            background: rgba(9, 19, 29, 0.95);
-
-            border: 1px solid #29485f;
-
-            border-left: 3px solid #d4af37;
-        }
-
-        .command-title {
-            color: #d4af37;
-
-            font-size: 11px;
-            font-weight: bold;
-
-            letter-spacing: 3px;
-
-            margin-bottom: 12px;
-        }
-
-        .command-text {
-            color: #8297a7;
-
-            font-size: 13px;
-
+        .hero p {
+            max-width: 760px;
+            color: #8197a2;
+            font-size: 14px;
             line-height: 1.8;
         }
 
-        .back {
-            display: inline-block;
-
+        .server-panel {
             margin-top: 35px;
+            border: 1px solid #294553;
+            background:
+                linear-gradient(145deg, rgba(17, 32, 41, 0.96), rgba(6, 13, 18, 0.96));
+            padding: 30px;
+        }
 
-            color: #4fd1ff;
+        .panel-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #1b323e;
+        }
 
-            text-decoration: none;
-
-            font-size: 11px;
+        .panel-title {
+            color: #dce8ef;
+            font-size: 13px;
+            letter-spacing: 2px;
             font-weight: bold;
+        }
 
+        .status {
+            font-size: 9px;
             letter-spacing: 2px;
         }
 
-        .back:hover {
-            color: #ffffff;
+        .status.online {
+            color: #61a878;
         }
 
-        @media (max-width: 900px) {
+        .status.warning {
+            color: #d3a84f;
+        }
 
-            header {
-                flex-wrap: wrap;
+        .status.offline {
+            color: #b85c5c;
+        }
 
-                gap: 15px;
+        .status::before {
+            content: "";
+            display: inline-block;
+            width: 7px;
+            height: 7px;
+            margin-right: 8px;
+            border-radius: 50%;
+            background: currentColor;
+            box-shadow: 0 0 9px currentColor;
+        }
 
-                padding: 18px 25px;
+        .server-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .server-item {
+            border: 1px solid #182f3a;
+            background: #09141b;
+            padding: 20px;
+        }
+
+        .label {
+            color: #506d79;
+            font-size: 8px;
+            letter-spacing: 2px;
+            margin-bottom: 9px;
+        }
+
+        .value {
+            color: #cbdbe1;
+            font-size: 14px;
+            font-weight: bold;
+            word-break: break-word;
+        }
+
+        .address {
+            color: #6da9c8;
+            font-family: monospace;
+        }
+
+        .emergency {
+            color: #c98787;
+            font-family: monospace;
+        }
+
+        .info-section {
+            margin-top: 45px;
+        }
+
+        .section-title {
+            color: #d5e1e6;
+            font-size: 13px;
+            letter-spacing: 3px;
+            margin-bottom: 18px;
+        }
+
+        .info-box {
+            border-left: 2px solid #315b70;
+            padding: 18px 22px;
+            background: rgba(9, 20, 27, 0.7);
+            color: #788f9a;
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        footer {
+            width: min(1100px, 92%);
+            margin: auto;
+            padding: 25px 0 40px;
+            border-top: 1px solid #1c303b;
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            color: #455c67;
+            font-size: 9px;
+            letter-spacing: 1.5px;
+        }
+
+        @media (max-width: 800px) {
+            .header-inner {
+                padding: 15px 0;
+                flex-direction: column;
+                align-items: flex-start;
             }
 
             nav {
-                order: 3;
-
-                width: 100%;
-
-                justify-content: center;
+                justify-content: flex-start;
             }
 
             .server-grid {
                 grid-template-columns: 1fr;
             }
+        }
 
-            h1 {
-                font-size: 42px;
+        @media (max-width: 550px) {
+            main {
+                padding-top: 45px;
             }
 
-            .status {
-                display: none;
+            .server-panel {
+                padding: 20px;
+            }
+
+            .panel-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            footer {
+                flex-direction: column;
             }
         }
     </style>
@@ -360,261 +304,173 @@
 <body>
 
 <header>
+    <div class="header-inner">
 
-    <div class="logo">
-        RISE OF NATIONS
+        <a href="../index.html" class="brand">
+
+            <div class="brand-emblem">
+                <span>R</span>
+            </div>
+
+            <div>
+                <div class="brand-title">
+                    RISE OF NATIONS
+                </div>
+
+                <div class="brand-subtitle">
+                    COMMAND & CONTROL NETWORK
+                </div>
+            </div>
+
+        </a>
+
+        <nav>
+            <a href="communications.html">COMMUNICATIONS</a>
+            <a href="intelligence.html">INTELLIGENCE</a>
+            <a href="server.html">SERVER</a>
+            <a href="database.html">DATABASE</a>
+            <a href="download.html">DOWNLOAD</a>
+            <a href="wiki.html">WIKI</a>
+        </nav>
+
     </div>
-
-    <nav>
-
-        <a href="../index.html">
-            COMMAND
-        </a>
-
-        <a href="../index.html#intelligence">
-            INTELLIGENCE
-        </a>
-
-        <a href="server.html">
-            SERVER
-        </a>
-
-        <a href="database.html">
-            DATABASE
-        </a>
-
-        <a href="download.html">
-            DOWNLOAD
-        </a>
-
-    </nav>
-
-    <div class="status">
-        ● SERVER ONLINE
-    </div>
-
 </header>
 
 
 <main>
 
-    <div class="classified">
-        COMMAND // SERVER INTELLIGENCE
-    </div>
+    <section class="hero">
+
+        <div class="eyebrow">
+            NETWORK OPERATIONS // SERVER
+        </div>
+
+        <h1>
+            SERVER<br>
+            <span>STATUS</span>
+        </h1>
+
+        <p>
+            Zentrale Informationen zum RISE OF NATIONS Minecraft-Server,
+            einschließlich Serveradresse, Status und Notfallverbindung.
+        </p>
+
+    </section>
 
 
-    <h1>
-        SERVER
-    </h1>
+    <section class="server-panel">
 
+        <div class="panel-header">
 
-    <div class="subtitle">
-        CURRENT SERVER STATUS & DEPLOYMENT INFORMATION
-    </div>
-
-
-    <section class="server-grid">
-
-
-        <!-- SERVER STATUS -->
-
-        <div class="panel">
-
-            <h2>
-                SERVER STATUS
-            </h2>
-
-            <div class="row">
-                <span class="label">
-                    STATUS
-                </span>
-
-                <span class="value online">
-                    ● ONLINE
-                </span>
+            <div class="panel-title">
+                SERVER CONNECTION
             </div>
 
-            <div class="row">
-                <span class="label">
-                    VERSION
-                </span>
-
-                <span class="value">
-                    1.0.0
-                </span>
-            </div>
-
-            <div class="row">
-                <span class="label">
-                    MINECRAFT
-                </span>
-
-                <span class="value">
-                    1.21.1
-                </span>
-            </div>
-
-            <div class="row">
-                <span class="label">
-                    MODPACK
-                </span>
-
-                <span class="value gold">
-                    RISE OF NATIONS
-                </span>
+            <div
+                id="serverStatus"
+                class="status online"
+            >
+                PLATZHALTER
             </div>
 
         </div>
 
 
-        <!-- CONNECTION -->
+        <div class="server-grid">
 
-        <div class="panel">
+            <div class="server-item">
 
-            <h2>
-                CONNECTION
-            </h2>
+                <div class="label">
+                    SERVER NAME
+                </div>
 
-            <div class="row">
-                <span class="label">
-                    SERVER IP
-                </span>
+                <div
+                    id="serverName"
+                    class="value"
+                >
+                    PLATZHALTER
+                </div>
 
-                <span class="value blue">
-                    COMING SOON
-                </span>
             </div>
 
-            <div class="row">
-                <span class="label">
-                    PORT
-                </span>
 
-                <span class="value">
-                    25565
-                </span>
+            <div class="server-item">
+
+                <div class="label">
+                    PRIMARY ADDRESS
+                </div>
+
+                <div
+                    id="serverAddress"
+                    class="value address"
+                >
+                    PLATZHALTER
+                </div>
+
             </div>
 
-            <div class="row">
-                <span class="label">
-                    ACCESS
-                </span>
 
-                <span class="value">
-                    PUBLIC
-                </span>
+            <div class="server-item">
+
+                <div class="label">
+                    EMERGENCY ADDRESS
+                </div>
+
+                <div
+                    id="emergencyAddress"
+                    class="value emergency"
+                >
+                    PLATZHALTER
+                </div>
+
             </div>
 
-            <div class="row">
-                <span class="label">
-                    WHITELIST
-                </span>
 
-                <span class="value red">
-                    NOT ACTIVE
-                </span>
+            <div class="server-item">
+
+                <div class="label">
+                    MINECRAFT VERSION
+                </div>
+
+                <div
+                    id="minecraftVersion"
+                    class="value"
+                >
+                    PLATZHALTER
+                </div>
+
             </div>
 
-        </div>
 
+            <div class="server-item">
 
-        <!-- DEPLOYMENT -->
+                <div class="label">
+                    PLAYERS
+                </div>
 
-        <div class="panel">
+                <div
+                    id="players"
+                    class="value"
+                >
+                    PLATZHALTER
+                </div>
 
-            <h2>
-                DEPLOYMENT
-            </h2>
-
-            <div class="row">
-                <span class="label">
-                    MODPACK
-                </span>
-
-                <span class="value">
-                    RISE OF NATIONS
-                </span>
             </div>
 
-            <div class="row">
-                <span class="label">
-                    RELEASE
-                </span>
 
-                <span class="value gold">
-                    STABLE
-                </span>
-            </div>
+            <div class="server-item">
 
-            <div class="row">
-                <span class="label">
-                    PLATFORM
-                </span>
+                <div class="label">
+                    NETWORK STATUS
+                </div>
 
-                <span class="value">
-                    JAVA EDITION
-                </span>
-            </div>
+                <div
+                    id="networkStatus"
+                    class="value"
+                >
+                    PLATZHALTER
+                </div>
 
-            <div class="row">
-                <span class="label">
-                    STATUS
-                </span>
-
-                <span class="value online">
-                    OPERATIONAL
-                </span>
-            </div>
-
-        </div>
-
-
-        <!-- SERVER POLICY -->
-
-        <div class="panel">
-
-            <h2>
-                SERVER POLICY
-            </h2>
-
-            <div class="row">
-                <span class="label">
-                    GRIEFING
-                </span>
-
-                <span class="value">
-                    RULES APPLY
-                </span>
-            </div>
-
-            <div class="row">
-                <span class="label">
-                    PVP
-                </span>
-
-                <span class="value">
-                    SERVER RULES
-                </span>
-            </div>
-
-            <div class="row">
-                <span class="label">
-                    CLAIMS
-                </span>
-
-                <span class="value">
-                    SUPPORTED
-                </span>
-            </div>
-
-            <div class="row">
-                <span class="label">
-                    VOICE CHAT
-                </span>
-
-                <span class="value online">
-                    AVAILABLE
-                </span>
             </div>
 
         </div>
@@ -622,30 +478,128 @@
     </section>
 
 
-    <div class="command">
+    <section class="info-section">
 
-        <div class="command-title">
-            SYSTEM MESSAGE // SERVER INFORMATION
+        <div class="section-title">
+            CONNECTION PROCEDURE
         </div>
 
-        <div class="command-text">
-            Der Server befindet sich derzeit in Vorbereitung.
-            Verbindungsdaten, Regeln und weitere Informationen
-            werden aktualisiert, sobald die Infrastruktur
-            bereitgestellt wurde.
+        <div class="info-box">
+
+            Öffne Minecraft mit der angegebenen Version und
+            verbinde dich über die Primary Address mit dem Server.
+            Sollte die Hauptverbindung nicht funktionieren,
+            kann die Emergency Address verwendet werden.
+
         </div>
 
-    </div>
+    </section>
 
 
-    <a
-        href="../index.html"
-        class="back"
-    >
-        ← RETURN TO COMMAND
-    </a>
+    <section class="info-section">
+
+        <div class="section-title">
+            SERVER INFORMATION
+        </div>
+
+        <div class="info-box">
+
+            Servername, Adressen, Status und weitere technische
+            Informationen werden zentral über die Datei
+            <strong>config/site-config.js</strong> gesteuert.
+
+        </div>
+
+    </section>
 
 </main>
+
+
+<footer>
+
+    <div>
+        RISE OF NATIONS // SERVER NETWORK
+    </div>
+
+    <div id="footerVersion">
+        MINECRAFT PLATZHALTER
+    </div>
+
+</footer>
+
+
+<script>
+
+    /*
+     * SERVER NAME
+     */
+
+    document.getElementById("serverName").textContent =
+        SITE_CONFIG.server.name;
+
+
+    /*
+     * PRIMARY SERVER ADDRESS
+     */
+
+    document.getElementById("serverAddress").textContent =
+        SITE_CONFIG.server.primary;
+
+
+    /*
+     * EMERGENCY ADDRESS
+     */
+
+    document.getElementById("emergencyAddress").textContent =
+        SITE_CONFIG.server.emergency;
+
+
+    /*
+     * MINECRAFT VERSION
+     */
+
+    document.getElementById("minecraftVersion").textContent =
+        SITE_CONFIG.serverInfo.version;
+
+
+    /*
+     * PLAYERS
+     */
+
+    document.getElementById("players").textContent =
+        SITE_CONFIG.serverInfo.players;
+
+
+    /*
+     * SERVER STATUS
+     */
+
+    const serverStatus =
+        document.getElementById("serverStatus");
+
+    serverStatus.textContent =
+        SITE_CONFIG.server.status;
+
+
+    /*
+     * NETWORK STATUS
+     */
+
+    document.getElementById("networkStatus").textContent =
+        SITE_CONFIG.serverInfo.status;
+
+
+    /*
+     * FOOTER
+     */
+
+    document.getElementById("footerVersion").textContent =
+        "MINECRAFT " +
+        SITE_CONFIG.serverInfo.version +
+        " // " +
+        SITE_CONFIG.modpack.version;
+
+</script>
 
 </body>
 </html>
