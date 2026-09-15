@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -9,1023 +11,1891 @@
     <script src="../config/site-config.js"></script>
 
     <style>
+
         * {
             box-sizing: border-box;
         }
 
+        html,
         body {
             margin: 0;
-            background:
-                linear-gradient(rgba(5, 12, 20, 0.88), rgba(5, 12, 20, 0.94)),
-                radial-gradient(circle at top, #18334b 0%, #07111b 55%, #03080d 100%);
-            color: #dcecff;
+            padding: 0;
+
+            background: #05080c;
+            color: #d7e2e9;
+
             font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
             min-height: 100vh;
         }
 
-        body::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            opacity: 0.08;
-            background-image:
-                linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
-            background-size: 40px 40px;
+        a {
+            color: inherit;
+            text-decoration: none;
         }
+
+        /* =========================================================
+           HEADER
+        ========================================================= */
 
         header {
-            position: sticky;
-            top: 0;
-            z-index: 10;
-            background: rgba(3, 9, 15, 0.96);
-            border-bottom: 1px solid #23445d;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.45);
-        }
+            min-height: 78px;
 
-        .topbar {
-            max-width: 1500px;
-            margin: auto;
-            padding: 16px 24px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 20px;
+
+            padding: 0 35px;
+
+            border-bottom: 1px solid rgba(100, 130, 150, 0.18);
+
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(12, 20, 28, 0.98),
+                    rgba(6, 11, 16, 0.98)
+                );
+
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
-        .logo {
-            font-weight: 900;
-            letter-spacing: 2px;
-            color: #ffffff;
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .brand-symbol {
+            width: 42px;
+            height: 42px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border: 1px solid #52728a;
+
+            color: #cbd9e2;
             font-size: 18px;
+            font-weight: 900;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(50, 100, 130, 0.22),
+                    rgba(5, 10, 15, 0.8)
+                );
         }
 
-        .logo span {
-            color: #d5ad4b;
+        .brand-title {
+            font-weight: 900;
+            letter-spacing: 3px;
+            font-size: 15px;
+        }
+
+        .brand-subtitle {
+            color: #668196;
+            font-size: 9px;
+            letter-spacing: 2px;
+            margin-top: 4px;
         }
 
         nav {
             display: flex;
+            gap: 5px;
             flex-wrap: wrap;
             justify-content: flex-end;
-            gap: 8px;
         }
 
         nav a {
-            color: #9fb8cc;
-            text-decoration: none;
-            font-size: 12px;
-            font-weight: bold;
-            letter-spacing: 1px;
-            padding: 9px 12px;
+            padding: 10px 12px;
+
+            color: #8198a8;
+
+            font-size: 10px;
+            letter-spacing: 1.5px;
+
             border: 1px solid transparent;
+
             transition: 0.2s;
         }
 
         nav a:hover,
         nav a.active {
-            color: #ffffff;
-            border-color: #2c6387;
-            background: rgba(24, 73, 105, 0.28);
+            color: #dbe8ef;
+
+            border-color:
+                rgba(95, 140, 170, 0.35);
+
+            background:
+                rgba(35, 65, 85, 0.18);
         }
 
-        main {
-            max-width: 1200px;
-            margin: auto;
-            padding: 55px 24px 100px;
+        /* =========================================================
+           PAGE
+        ========================================================= */
+
+        .page {
+            width: min(1450px, 92%);
+            margin: 0 auto;
+
+            padding: 60px 0 80px;
         }
 
-        .hero {
-            border-left: 4px solid #d5ad4b;
-            padding: 10px 0 10px 24px;
-            margin-bottom: 45px;
-        }
+        .classification {
+            color: #6388a0;
 
-        .eyebrow {
-            color: #d5ad4b;
-            font-size: 12px;
-            font-weight: bold;
-            letter-spacing: 3px;
-            margin-bottom: 10px;
+            font-size: 10px;
+            letter-spacing: 4px;
+
+            margin-bottom: 18px;
         }
 
         h1 {
             margin: 0;
-            font-size: clamp(38px, 6vw, 76px);
+
+            font-size: clamp(45px, 7vw, 90px);
             line-height: 0.95;
-            letter-spacing: 2px;
-            color: #ffffff;
+
+            letter-spacing: 5px;
+
+            color: #e4edf2;
         }
 
-        .hero p {
-            max-width: 800px;
-            color: #9eb4c6;
-            line-height: 1.7;
-            margin-top: 20px;
+        .intro {
+            max-width: 900px;
+
+            margin-top: 25px;
+
+            color: #7e96a5;
+
+            font-size: 14px;
+            line-height: 1.8;
         }
 
-        .warning {
-            background: rgba(130, 32, 32, 0.16);
-            border: 1px solid #743434;
-            border-left: 4px solid #d84a4a;
-            padding: 20px;
-            margin: 25px 0 45px;
-        }
+        /* =========================================================
+           IMPORTANT CONFIG
+        ========================================================= */
 
-        .warning strong {
-            color: #ff7777;
-        }
+        .configuration {
+            margin-top: 40px;
 
-        .section-title {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            margin: 55px 0 20px;
-        }
-
-        .section-title span {
-            color: #d5ad4b;
-            font-size: 11px;
-            letter-spacing: 2px;
-            font-weight: bold;
-        }
-
-        .section-title h2 {
-            margin: 0;
-            font-size: 25px;
-            color: #ffffff;
-        }
-
-        .step {
-            background: rgba(10, 24, 36, 0.82);
-            border: 1px solid #23445d;
-            margin-bottom: 14px;
-            padding: 24px;
-            position: relative;
-        }
-
-        .step-number {
-            position: absolute;
-            top: 20px;
-            right: 22px;
-            font-size: 12px;
-            color: #5d7f97;
-            letter-spacing: 2px;
-            font-weight: bold;
-        }
-
-        .step h3 {
-            margin: 0 80px 10px 0;
-            color: #ffffff;
-            font-size: 19px;
-        }
-
-        .step p {
-            margin: 8px 0;
-            color: #9eb4c6;
-            line-height: 1.65;
-        }
-
-        .step strong {
-            color: #ffffff;
-        }
-
-        .click {
-            display: inline-block;
-            margin: 8px 0;
-            padding: 9px 12px;
-            background: rgba(34, 87, 119, 0.25);
-            border: 1px solid #326887;
-            color: #bfe7ff;
-            font-weight: bold;
-        }
-
-        .success {
-            color: #70d69a !important;
-        }
-
-        .danger {
-            color: #ff7777 !important;
-        }
-
-        .faq-grid {
             display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 14px;
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 10px;
         }
 
-        .faq {
-            background: rgba(10, 24, 36, 0.82);
-            border: 1px solid #23445d;
-            padding: 22px;
+        .config-box {
+            padding: 20px;
+
+            border: 1px solid rgba(90, 125, 145, 0.28);
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(20, 34, 45, 0.9),
+                    rgba(7, 13, 19, 0.96)
+                );
         }
 
-        .faq h3 {
-            margin: 0 0 12px;
-            color: #ffffff;
-            font-size: 17px;
+        .config-label {
+            color: #587386;
+
+            font-size: 8px;
+            letter-spacing: 2px;
+
+            margin-bottom: 9px;
         }
 
-        .faq h3::before {
-            content: "Q // ";
-            color: #d5ad4b;
-            font-size: 11px;
+        .config-value {
+            color: #d4e0e7;
+
+            font-size: 15px;
+            font-weight: 700;
+
             letter-spacing: 1px;
         }
 
-        .faq p {
+        /* =========================================================
+           SECTION
+        ========================================================= */
+
+        .section {
+            margin-top: 50px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            margin-bottom: 15px;
+
+            border-bottom:
+                1px solid rgba(90, 120, 140, 0.2);
+
+            padding-bottom: 12px;
+        }
+
+        .section-header h2 {
             margin: 0;
-            color: #9eb4c6;
-            line-height: 1.65;
+
+            color: #cbd8df;
+
+            font-size: 14px;
+            letter-spacing: 3px;
         }
 
-        .faq ul,
-        .step ul {
-            color: #9eb4c6;
-            line-height: 1.7;
-            padding-left: 20px;
+        .section-number {
+            color: #4e7188;
+
+            font-size: 9px;
+            letter-spacing: 2px;
         }
 
-        .faq li strong,
-        .step li strong {
-            color: #ffffff;
-        }
+        /* =========================================================
+           INSTALLATION
+        ========================================================= */
 
-        .settings {
+        .steps {
             display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 14px;
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 10px;
+        }
+
+        .step {
+            position: relative;
+
+            padding: 25px;
+
+            border:
+                1px solid rgba(90, 125, 145, 0.22);
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(16, 28, 38, 0.94),
+                    rgba(7, 13, 19, 0.97)
+                );
+        }
+
+        .step-number {
+            color: #527b95;
+
+            font-size: 10px;
+            letter-spacing: 3px;
+
+            margin-bottom: 15px;
+        }
+
+        .step h3 {
+            margin: 0 0 10px;
+
+            color: #dbe5eb;
+
+            font-size: 17px;
+            letter-spacing: 1px;
+        }
+
+        .step p {
+            margin: 0;
+
+            color: #78909f;
+
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        .step strong {
+            color: #b9ceda;
+        }
+
+        .path {
+            display: inline-block;
+
+            margin-top: 12px;
+
+            padding: 8px 11px;
+
+            border:
+                1px solid rgba(90, 130, 155, 0.3);
+
+            background: rgba(3, 8, 12, 0.7);
+
+            color: #8eb2c8;
+
+            font-family: monospace;
+            font-size: 11px;
+        }
+
+        /* =========================================================
+           GOLDEN RULE
+        ========================================================= */
+
+        .golden-rule {
+            margin-top: 15px;
+
+            padding: 25px;
+
+            border:
+                1px solid rgba(166, 132, 55, 0.45);
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(67, 52, 20, 0.28),
+                    rgba(20, 17, 9, 0.75)
+                );
+        }
+
+        .golden-label {
+            color: #c9a956;
+
+            font-size: 9px;
+            letter-spacing: 3px;
+
+            margin-bottom: 10px;
+        }
+
+        .golden-rule p {
+            margin: 0;
+
+            color: #d7cfae;
+
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        /* =========================================================
+           SETTINGS
+        ========================================================= */
+
+        .settings-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 10px;
         }
 
         .setting {
-            background: rgba(10, 24, 36, 0.82);
-            border: 1px solid #23445d;
-            padding: 22px;
+            padding: 23px;
+
+            border:
+                1px solid rgba(90, 125, 145, 0.22);
+
+            background:
+                rgba(9, 16, 22, 0.9);
         }
 
         .setting h3 {
             margin: 0 0 10px;
-            color: #d5ad4b;
+
+            color: #d2dfe6;
+
             font-size: 15px;
-            letter-spacing: 1px;
         }
 
         .setting p {
-            color: #9eb4c6;
-            line-height: 1.65;
             margin: 0;
+
+            color: #748c9b;
+
+            font-size: 12px;
+            line-height: 1.7;
         }
 
-        .troubleshoot {
-            border-left: 3px solid #326887;
-            background: rgba(10, 24, 36, 0.72);
-            padding: 20px;
-            margin-bottom: 12px;
-        }
-
-        .troubleshoot h3 {
-            margin: 0 0 8px;
-            color: #ffffff;
-        }
-
-        .troubleshoot p {
-            margin: 0;
-            color: #9eb4c6;
-            line-height: 1.65;
-        }
-
-        code {
-            background: #02070b;
-            border: 1px solid #1b3345;
-            padding: 2px 6px;
-            color: #bde5ff;
-            font-family: Consolas, monospace;
-        }
-
-        .final-box {
-            margin-top: 50px;
-            padding: 28px;
-            background: rgba(22, 53, 74, 0.35);
-            border: 1px solid #326887;
-            text-align: center;
-        }
-
-        .final-box h2 {
-            margin: 0 0 10px;
-            color: #ffffff;
-        }
-
-        .final-box p {
-            color: #9eb4c6;
-            line-height: 1.6;
-        }
-
-        .button {
+        .recommended {
             display: inline-block;
+
             margin-top: 12px;
-            padding: 13px 20px;
-            background: #1d5779;
-            border: 1px solid #4e91b7;
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: bold;
+
+            padding: 7px 10px;
+
+            border:
+                1px solid rgba(76, 125, 150, 0.35);
+
+            color: #8eb3c9;
+
+            font-size: 9px;
             letter-spacing: 1px;
         }
 
-        .button:hover {
-            background: #286d94;
+        /* =========================================================
+           FAQ
+        ========================================================= */
+
+        .faq-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 10px;
         }
+
+        .faq-item {
+            padding: 23px;
+
+            border:
+                1px solid rgba(90, 125, 145, 0.2);
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(14, 25, 34, 0.92),
+                    rgba(7, 13, 19, 0.96)
+                );
+        }
+
+        .faq-item h3 {
+            margin: 0 0 12px;
+
+            color: #d3e0e7;
+
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .faq-item p {
+            margin: 0;
+
+            color: #758d9d;
+
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        /* =========================================================
+           TROUBLESHOOTING
+        ========================================================= */
+
+        .troubleshooting {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 10px;
+        }
+
+        .problem {
+            padding: 23px;
+
+            border:
+                1px solid rgba(100, 75, 55, 0.25);
+
+            background:
+                rgba(20, 14, 10, 0.72);
+        }
+
+        .problem h3 {
+            margin: 0 0 10px;
+
+            color: #d4b899;
+
+            font-size: 14px;
+        }
+
+        .problem p {
+            margin: 0;
+
+            color: #8d8076;
+
+            font-size: 11px;
+            line-height: 1.7;
+        }
+
+        /* =========================================================
+           SUPPORT PROTOCOL
+        ========================================================= */
+
+        .support {
+            padding: 30px;
+
+            border:
+                1px solid rgba(85, 120, 145, 0.3);
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(17, 31, 42, 0.94),
+                    rgba(6, 12, 18, 0.97)
+                );
+        }
+
+        .support h2 {
+            margin: 0 0 15px;
+
+            color: #d7e3ea;
+
+            font-size: 17px;
+            letter-spacing: 2px;
+        }
+
+        .support p {
+            margin: 0;
+
+            color: #7d95a4;
+
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        .support-list {
+            margin-top: 20px;
+            padding-left: 20px;
+
+            color: #91a8b7;
+
+            font-size: 12px;
+            line-height: 2;
+        }
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
 
         footer {
-            border-top: 1px solid #203b50;
-            padding: 25px;
-            text-align: center;
-            color: #60798d;
-            font-size: 11px;
-            letter-spacing: 1px;
+            border-top:
+                1px solid rgba(100, 130, 150, 0.18);
+
+            padding: 25px 5%;
+
+            display: flex;
+            justify-content: space-between;
+
+            color: #536a79;
+
+            font-size: 9px;
+            letter-spacing: 1.5px;
+
+            background:
+                rgba(4, 8, 12, 0.95);
         }
 
-        @media (max-width: 850px) {
+        /* =========================================================
+           MOBILE
+        ========================================================= */
+
+        @media (max-width: 1000px) {
+
+            header {
+                flex-direction: column;
+                gap: 15px;
+                padding: 18px;
+            }
+
+            .configuration {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .troubleshooting {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
+        @media (max-width: 700px) {
+
+            .page {
+                width: 90%;
+                padding-top: 40px;
+            }
+
+            .steps,
+            .settings-grid,
             .faq-grid,
-            .settings {
+            .troubleshooting {
                 grid-template-columns: 1fr;
             }
 
-            .topbar {
-                align-items: flex-start;
-                flex-direction: column;
+            .configuration {
+                grid-template-columns: 1fr;
             }
 
-            nav {
-                justify-content: flex-start;
+            h1 {
+                font-size: 48px;
             }
+
+            footer {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+
         }
+
     </style>
+
 </head>
+
 
 <body>
 
-<header>
-    <div class="topbar">
 
-        <div class="logo">
-            RISE <span>OF</span> NATIONS
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header>
+
+    <a href="../index.html" class="brand">
+
+        <div class="brand-symbol">
+            RN
         </div>
 
-        <nav>
-            <a href="../index.html">COMMAND</a>
-            <a href="communications.html">COMMUNICATIONS</a>
-            <a href="intelligence.html">INTELLIGENCE</a>
-            <a href="server.html">SERVER</a>
-            <a href="database.html">DATABASE</a>
-            <a href="download.html">DOWNLOAD</a>
-            <a href="wiki.html">WIKI</a>
-            <a href="faq.html" class="active">FAQ</a>
-        </nav>
+        <div>
 
-    </div>
+            <div class="brand-title">
+                RISE OF NATIONS
+            </div>
+
+            <div class="brand-subtitle">
+                COMMAND NETWORK
+            </div>
+
+        </div>
+
+    </a>
+
+
+    <nav>
+
+        <a href="communications.html">
+            COMMUNICATIONS
+        </a>
+
+        <a href="intelligence.html">
+            INTELLIGENCE
+        </a>
+
+        <a href="server.html">
+            SERVER
+        </a>
+
+        <a href="database.html">
+            DATABASE
+        </a>
+
+        <a href="download.html">
+            DOWNLOAD
+        </a>
+
+        <a href="wiki.html">
+            WIKI
+        </a>
+
+        <a href="faq.html" class="active">
+            FAQ
+        </a>
+
+    </nav>
+
 </header>
 
 
-<main>
+<!-- =========================================================
+     MAIN
+========================================================= -->
 
-    <section class="hero">
+<main class="page">
 
-        <div class="eyebrow">
-            TECHNICAL SUPPORT // PLAYER OPERATIONS
+    <div class="classification">
+        TECHNICAL SUPPORT // INSTALLATION // TROUBLESHOOTING
+    </div>
+
+    <h1>
+        FAQ
+    </h1>
+
+    <p class="intro">
+
+        Diese Seite erklärt die Installation und die wichtigsten
+        Einstellungen für das Rise of Nations Modpack.
+        Wenn etwas nicht funktioniert, bitte zuerst die Punkte
+        unten prüfen, bevor einzelne Mods verändert oder entfernt werden.
+
+    </p>
+
+
+    <!-- =====================================================
+         OFFICIAL CONFIGURATION
+    ====================================================== -->
+
+    <section class="configuration">
+
+        <div class="config-box">
+
+            <div class="config-label">
+                MINECRAFT VERSION
+            </div>
+
+            <div class="config-value">
+                1.21.1
+            </div>
+
         </div>
 
-        <h1>FAQ</h1>
 
-        <p>
-            Alles rund um Installation, CurseForge, Einstellungen,
-            Performance und typische Probleme bei
-            <strong>Rise of Nations</strong>.
-        </p>
+        <div class="config-box">
+
+            <div class="config-label">
+                MOD LOADER
+            </div>
+
+            <div class="config-value">
+                NeoForge 21.1.248
+            </div>
+
+        </div>
+
+
+        <div class="config-box">
+
+            <div class="config-label">
+                JAVA
+            </div>
+
+            <div class="config-value">
+                DEFAULT VERSION
+            </div>
+
+        </div>
+
+
+        <div class="config-box">
+
+            <div class="config-label">
+                EMPFOHLENER RAM
+            </div>
+
+            <div class="config-value">
+                8–12 GB
+            </div>
+
+        </div>
 
     </section>
 
 
-    <div class="warning">
+    <!-- =====================================================
+         INSTALLATION
+    ====================================================== -->
 
-        <strong>⚠ WICHTIG VOR DER INSTALLATION</strong>
+    <section class="section">
 
-        <p>
-            Rise of Nations ist ein Modpack. Du solltest es nicht einfach
-            in deinen normalen Minecraft-Ordner werfen und hoffen, dass es funktioniert.
-            Verwende ein eigenes CurseForge-Profil für das Modpack.
-        </p>
+        <div class="section-header">
 
-        <p>
-            Die mitgelieferte ZIP-Datei enthält bereits einen fertigen
-            <strong>mods</strong>-Ordner. Dieser muss in den
-            <strong>richtigen CurseForge-Minecraft-Ordner</strong>.
-        </p>
+            <h2>
+                MODPACK INSTALLIEREN
+            </h2>
 
-    </div>
+            <div class="section-number">
+                PROCEDURE // 01
+            </div>
 
-
-    <!-- INSTALLATION -->
-
-    <div class="section-title">
-        <span>01 // DEPLOYMENT</span>
-        <h2>Modpack installieren</h2>
-    </div>
-
-
-    <div class="step">
-
-        <div class="step-number">STEP 01</div>
-
-        <h3>CurseForge installieren</h3>
-
-        <p>
-            Falls du CurseForge noch nicht benutzt, installiere den
-            CurseForge Launcher und öffne Minecraft darüber.
-        </p>
-
-        <p>
-            <strong>Wichtig:</strong> Du brauchst keine einzelnen Mods
-            herunterzuladen. Das Modpack bringt seine Mod-Dateien bereits mit.
-        </p>
-
-    </div>
-
-
-    <div class="step">
-
-        <div class="step-number">STEP 02</div>
-
-        <h3>Ein eigenes CurseForge-Profil erstellen</h3>
-
-        <p>
-            Öffne in CurseForge den Bereich für Minecraft.
-        </p>
-
-        <p>
-            Erstelle dort ein <strong>eigenes Profil</strong> für
-            Rise of Nations.
-        </p>
-
-        <p class="click">
-            Minecraft → Create Custom Profile
-        </p>
-
-        <p>
-            Verwende dabei exakt die Minecraft-Version und den Modloader,
-            die für das Modpack angegeben sind.
-        </p>
-
-    </div>
-
-
-    <div class="step">
-
-        <div class="step-number">STEP 03</div>
-
-        <h3>Das Profil einmal starten</h3>
-
-        <p>
-            Starte das neue Profil einmal.
-        </p>
-
-        <p>
-            Dadurch erstellt CurseForge den benötigten Minecraft-Ordner
-            für dieses Profil.
-        </p>
-
-        <p class="success">
-            ✓ Danach Minecraft wieder schließen.
-        </p>
-
-    </div>
-
-
-    <div class="step">
-
-        <div class="step-number">STEP 04</div>
-
-        <h3>Den richtigen Ordner öffnen</h3>
-
-        <p>
-            Gehe in CurseForge wieder zu deinem Profil.
-        </p>
-
-        <p class="click">
-            ⋯ → Open Folder
-        </p>
-
-        <p>
-            <strong>Genau dieser Ordner ist wichtig.</strong>
-        </p>
-
-        <p>
-            Nicht irgendein Minecraft-Ordner aus Windows öffnen.
-            Nicht den normalen <code>.minecraft</code>-Ordner suchen,
-            wenn CurseForge einen eigenen Profilordner verwendet.
-        </p>
-
-    </div>
-
-
-    <div class="step">
-
-        <div class="step-number">STEP 05</div>
-
-        <h3>Die ZIP-Datei öffnen</h3>
-
-        <p>
-            Öffne jetzt die heruntergeladene Datei:
-        </p>
-
-        <p class="click">
-            im minecraft ordner entpacken.zip
-        </p>
-
-        <p>
-            Darin befindet sich bereits ein Ordner:
-        </p>
-
-        <p class="click">
-            mods
-        </p>
-
-    </div>
-
-
-    <div class="step">
-
-        <div class="step-number">STEP 06</div>
-
-        <h3>Den mods-Ordner kopieren</h3>
-
-        <p>
-            Öffne den <code>mods</code>-Ordner aus der ZIP-Datei.
-        </p>
-
-        <p>
-            Markiere den Inhalt beziehungsweise den
-            <strong>mods-Ordner</strong> und kopiere ihn in den
-            CurseForge-Profilordner aus Schritt 4.
-        </p>
-
-        <p>
-            Am Ende sollte es ungefähr so aussehen:
-        </p>
-
-        <p class="click">
-            CurseForge-Profil → mods → viele .jar-Dateien
-        </p>
-
-    </div>
-
-
-    <div class="step">
-
-        <div class="step-number">STEP 07</div>
-
-        <h3>CurseForge starten</h3>
-
-        <p>
-            Öffne CurseForge erneut und starte dein
-            Rise-of-Nations-Profil.
-        </p>
-
-        <p class="success">
-            ✓ Wenn Minecraft startet und die Mods geladen werden,
-            war die Installation erfolgreich.
-        </p>
-
-    </div>
-
-
-    <div class="step">
-
-        <div class="step-number">STEP 08</div>
-
-        <h3>Wenn CurseForge meldet, dass Mods fehlen</h3>
-
-        <p>
-            Keine Panik.
-        </p>
-
-        <p>
-            Prüfe zuerst, ob du wirklich den
-            <strong>Open Folder</strong>-Ordner des richtigen
-            CurseForge-Profils verwendet hast.
-        </p>
-
-        <p>
-            Der häufigste Fehler ist, dass die Mods in einen anderen
-            Minecraft-Ordner kopiert wurden.
-        </p>
-
-    </div>
-
-
-    <!-- GOLDENE REGEL -->
-
-    <div class="section-title">
-        <span>02 // GOLDEN RULE</span>
-        <h2>Die wichtigste Regel</h2>
-    </div>
-
-    <div class="step">
-
-        <h3>Wenn du nur eine Sache aus dieser Anleitung merkst:</h3>
-
-        <p>
-            <strong>
-                Nicht selbst nach dem Minecraft-Ordner suchen.
-            </strong>
-        </p>
-
-        <p>
-            Erstelle dein CurseForge-Profil → öffne die
-            <strong>⋯</strong>-Optionen → <strong>Open Folder</strong>
-            → und genau dort kommen die Mod-Dateien hinein.
-        </p>
-
-        <p>
-            Dadurch landet das Modpack in dem Ordner,
-            den CurseForge tatsächlich benutzt.
-        </p>
-
-    </div>
-
-
-    <!-- SETTINGS -->
-
-    <div class="section-title">
-        <span>03 // SYSTEM CONFIGURATION</span>
-        <h2>Empfohlene Einstellungen</h2>
-    </div>
-
-
-    <div class="settings">
-
-        <div class="setting">
-            <h3>RAM / ARBEITSSPEICHER</h3>
-            <p>
-                Für ein größeres Modpack sollte Minecraft genügend RAM bekommen.
-                Zu wenig RAM führt zu Abstürzen, langen Ladezeiten und
-                Nachladerucklern.
-            </p>
         </div>
 
-        <div class="setting">
-            <h3>RENDER DISTANCE</h3>
-            <p>
-                Wenn du Performance-Probleme hast, reduziere zuerst die
-                Sichtweite. Eine niedrigere Sichtweite bringt meistens
-                deutlich mehr FPS.
-            </p>
+
+        <div class="steps">
+
+
+            <article class="step">
+
+                <div class="step-number">
+                    STEP 01
+                </div>
+
+                <h3>
+                    CurseForge installieren
+                </h3>
+
+                <p>
+
+                    Installiere den <strong>CurseForge Launcher</strong>
+                    und öffne ihn.
+
+                    Du brauchst kein komplett neues Minecraft-Profil
+                    außerhalb von CurseForge anzulegen.
+
+                </p>
+
+            </article>
+
+
+            <article class="step">
+
+                <div class="step-number">
+                    STEP 02
+                </div>
+
+                <h3>
+                    Eigenes Profil erstellen
+                </h3>
+
+                <p>
+
+                    Erstelle in CurseForge ein eigenes
+                    <strong>Minecraft-Profil</strong>.
+
+                    Das Profil muss für die Version
+
+                    <strong>1.21.1</strong>
+
+                    erstellt werden.
+
+                    Als Modloader wird
+
+                    <strong>NeoForge 21.1.248</strong>
+
+                    verwendet.
+
+                </p>
+
+            </article>
+
+
+            <article class="step">
+
+                <div class="step-number">
+                    STEP 03
+                </div>
+
+                <h3>
+                    Profil einmal starten
+                </h3>
+
+                <p>
+
+                    Starte das neue Profil einmal.
+
+                    Dadurch erstellt CurseForge automatisch
+                    die benötigte Ordnerstruktur.
+
+                    Warte, bis Minecraft vollständig gestartet
+                    wurde und schließe es anschließend wieder.
+
+                </p>
+
+            </article>
+
+
+            <article class="step">
+
+                <div class="step-number">
+                    STEP 04
+                </div>
+
+                <h3>
+                    Profilordner öffnen
+                </h3>
+
+                <p>
+
+                    Gehe in CurseForge zu deinem Profil.
+
+                    Neben dem
+
+                    <strong>PLAY</strong>
+
+                    Button befindet sich das Menü
+
+                    <strong>⋯</strong>.
+
+                    Öffne dort
+
+                    <strong>Open Folder</strong>.
+
+                    <br><br>
+
+                    <strong>
+                        Genau diesen Ordner brauchen wir.
+                    </strong>
+
+                </p>
+
+            </article>
+
+
+            <article class="step">
+
+                <div class="step-number">
+                    STEP 05
+                </div>
+
+                <h3>
+                    Modpack-ZIP öffnen
+                </h3>
+
+                <p>
+
+                    Nimm die bereitgestellte Datei:
+
+                    <br>
+
+                    <span class="path">
+                        im minecraft ordner entpacken.zip
+                    </span>
+
+                    Öffne die ZIP-Datei.
+
+                    Darin befindet sich der fertige
+
+                    <strong>mods</strong>-Ordner.
+
+                </p>
+
+            </article>
+
+
+            <article class="step">
+
+                <div class="step-number">
+                    STEP 06
+                </div>
+
+                <h3>
+                    Mods-Ordner kopieren
+                </h3>
+
+                <p>
+
+                    Kopiere den
+
+                    <strong>mods</strong>-Ordner
+
+                    aus der ZIP-Datei in den gerade über
+                    CurseForge geöffneten Profilordner.
+
+                    Am Ende muss der Ordner ungefähr so aussehen:
+
+                    <br>
+
+                    <span class="path">
+                        DEIN_CURSEFORGE_PROFIL/mods/
+                    </span>
+
+                </p>
+
+            </article>
+
+
+            <article class="step">
+
+                <div class="step-number">
+                    STEP 07
+                </div>
+
+                <h3>
+                    CurseForge erneut öffnen
+                </h3>
+
+                <p>
+
+                    Schließe die ZIP-Datei.
+
+                    Starte anschließend dein CurseForge-Profil
+                    erneut.
+
+                    CurseForge sollte jetzt die Mods erkennen.
+
+                </p>
+
+            </article>
+
+
+            <article class="step">
+
+                <div class="step-number">
+                    STEP 08
+                </div>
+
+                <h3>
+                    Modpack starten
+                </h3>
+
+                <p>
+
+                    Drücke
+
+                    <strong>PLAY</strong>
+
+                    und warte.
+
+                    Der erste Start kann deutlich länger dauern
+                    als ein normales Minecraft.
+
+                    Das ist bei einem großen Modpack normal.
+
+                </p>
+
+            </article>
+
         </div>
 
-        <div class="setting">
-            <h3>SIMULATION DISTANCE</h3>
+
+        <div class="golden-rule">
+
+            <div class="golden-label">
+                GOLDEN RULE // VERY IMPORTANT
+            </div>
+
             <p>
-                Bei schwächeren PCs ebenfalls reduzieren.
-                Die Simulation Distance beeinflusst, wie viel in der Welt
-                gleichzeitig aktiv bleibt.
+
+                <strong>
+                    NICHT selbst nach dem normalen Minecraft-Ordner suchen.
+                </strong>
+
+                Öffne immer zuerst dein CurseForge-Profil und gehe über
+
+                <strong>
+                    ⋯ → Open Folder
+                </strong>.
+
+                Genau dort gehört der
+
+                <strong>
+                    mods
+                </strong>
+
+                Ordner hinein.
+
+                <br><br>
+
+                Wenn du den falschen Minecraft-Ordner öffnest,
+                kann es passieren, dass CurseForge die Mods nicht erkennt.
+
             </p>
+
         </div>
 
-        <div class="setting">
-            <h3>SHADER</h3>
-            <p>
-                Wenn das Spiel stark ruckelt, zunächst ohne Shader spielen.
-                Shader können bei einem großen Modpack sehr viel zusätzliche
-                GPU-Leistung benötigen.
-            </p>
+    </section>
+
+
+    <!-- =====================================================
+         SETTINGS
+    ====================================================== -->
+
+    <section class="section">
+
+        <div class="section-header">
+
+            <h2>
+                EMPFOHLENE EINSTELLUNGEN
+            </h2>
+
+            <div class="section-number">
+                CONFIGURATION // 02
+            </div>
+
         </div>
 
-        <div class="setting">
-            <h3>PARTICLES</h3>
-            <p>
-                Bei Performance-Problemen auf reduziert stellen.
-                Besonders große Maschinen, Explosionen und Effekte können
-                viele Partikel erzeugen.
-            </p>
+
+        <div class="settings-grid">
+
+
+            <article class="setting">
+
+                <h3>
+                    RAM / ARBEITSSPEICHER
+                </h3>
+
+                <p>
+
+                    Für das Modpack empfehlen wir grundsätzlich
+                    <strong>8 bis 12 GB RAM</strong> für das CurseForge-Profil.
+
+                    <br><br>
+
+                    Ich selbst verwende für mein Profil
+
+                    <strong>14 GB</strong>.
+
+                    Mehr RAM ist aber nicht automatisch besser.
+                    Wenn dein PC insgesamt wenig Arbeitsspeicher besitzt,
+                    solltest du nicht unnötig viel reservieren.
+
+                </p>
+
+                <div class="recommended">
+                    EMPFEHLUNG: 8–12 GB
+                </div>
+
+            </article>
+
+
+            <article class="setting">
+
+                <h3>
+                    JAVA
+                </h3>
+
+                <p>
+
+                    Für das Modpack soll die Java-Einstellung von
+                    CurseForge auf
+
+                    <strong>Default Version</strong>
+
+                    bleiben.
+
+                    Du musst normalerweise keine eigene Java-Version
+                    herunterladen oder manuell auswählen.
+
+                </p>
+
+                <div class="recommended">
+                    JAVA: DEFAULT VERSION
+                </div>
+
+            </article>
+
+
+            <article class="setting">
+
+                <h3>
+                    RENDER DISTANCE
+                </h3>
+
+                <p>
+
+                    Eine hohe Sichtweite sieht gut aus,
+                    benötigt bei großen Welten und vielen Mods
+                    aber deutlich mehr Leistung.
+
+                    Wenn du FPS-Probleme hast,
+                    reduziere zuerst die Render Distance.
+
+                </p>
+
+                <div class="recommended">
+                    BEI PROBLEMEN REDUZIEREN
+                </div>
+
+            </article>
+
+
+            <article class="setting">
+
+                <h3>
+                    SIMULATION DISTANCE
+                </h3>
+
+                <p>
+
+                    Die Simulation Distance bestimmt,
+                    wie weit Minecraft Spielmechaniken aktiv
+                    simuliert.
+
+                    Eine niedrigere Einstellung kann CPU-Leistung
+                    sparen.
+
+                </p>
+
+                <div class="recommended">
+                    MODERAT EINSTELLEN
+                </div>
+
+            </article>
+
+
+            <article class="setting">
+
+                <h3>
+                    SHADER
+                </h3>
+
+                <p>
+
+                    Shader sind nicht notwendig.
+
+                    Wenn du Probleme mit FPS oder Speicherverbrauch
+                    hast, solltest du Shader zunächst deaktivieren.
+
+                </p>
+
+                <div class="recommended">
+                    BEI SCHWACHER HARDWARE: AUS
+                </div>
+
+            </article>
+
+
+            <article class="setting">
+
+                <h3>
+                    PARTICLES
+                </h3>
+
+                <p>
+
+                    Bei Performance-Problemen können Partikel
+                    reduziert werden.
+
+                    Besonders bei großen Maschinen,
+                    Explosionen und vielen Effekten kann dies helfen.
+
+                </p>
+
+                <div class="recommended">
+                    BEI FPS-PROBLEMEN REDUZIEREN
+                </div>
+
+            </article>
+
+
+            <article class="setting">
+
+                <h3>
+                    ENTITY DISTANCE
+                </h3>
+
+                <p>
+
+                    Eine hohe Entity Distance kann bei vielen
+                    Tieren, Maschinen, Fahrzeugen und anderen
+                    Objekten zusätzliche Leistung benötigen.
+
+                </p>
+
+                <div class="recommended">
+                    NICHT UNNÖTIG MAXIMIEREN
+                </div>
+
+            </article>
+
+
+            <article class="setting">
+
+                <h3>
+                    JAVA / MODPACK GRUNDREGEL
+                </h3>
+
+                <p>
+
+                    Wenn das Modpack funktioniert,
+                    solltest du Java nicht manuell verändern.
+
+                    Erst wenn tatsächlich ein Java-Problem
+                    angezeigt wird, sollte die Java-Konfiguration
+                    untersucht werden.
+
+                </p>
+
+                <div class="recommended">
+                    DEFAULT BEIBEHALTEN
+                </div>
+
+            </article>
+
         </div>
 
-        <div class="setting">
-            <h3>ENTITY DISTANCE</h3>
-            <p>
-                Falls viele Tiere, Maschinen oder andere Entities vorhanden
-                sind und die FPS sinken, kann diese Einstellung reduziert werden.
-            </p>
+    </section>
+
+
+    <!-- =====================================================
+         FAQ
+    ====================================================== -->
+
+    <section class="section">
+
+        <div class="section-header">
+
+            <h2>
+                HÄUFIGE FRAGEN
+            </h2>
+
+            <div class="section-number">
+                FAQ // 03
+            </div>
+
         </div>
 
-    </div>
+
+        <div class="faq-grid">
 
 
-    <!-- FAQ -->
+            <article class="faq-item">
 
-    <div class="section-title">
-        <span>04 // FREQUENTLY ASKED QUESTIONS</span>
-        <h2>Häufige Fragen</h2>
-    </div>
+                <h3>
+                    Warum sehe ich meine Mods nicht?
+                </h3>
+
+                <p>
+
+                    Kontrolliere zuerst, ob du wirklich den
+                    richtigen CurseForge-Profilordner geöffnet hast.
+
+                    Gehe über
+
+                    <strong>
+                        ⋯ → Open Folder
+                    </strong>
+
+                    und kontrolliere, ob dort ein
+
+                    <strong>
+                        mods
+                    </strong>
+
+                    Ordner vorhanden ist.
+
+                </p>
+
+            </article>
 
 
-    <div class="faq-grid">
+            <article class="faq-item">
 
-        <div class="faq">
-            <h3>Kann ich die ZIP einfach doppelklicken?</h3>
-            <p>
-                Ja, du kannst sie öffnen. Wichtig ist aber,
-                dass der enthaltene <strong>mods</strong>-Ordner anschließend
-                in den richtigen CurseForge-Profilordner kopiert wird.
-            </p>
+                <h3>
+                    Ich habe jetzt mods/mods. Was ist passiert?
+                </h3>
+
+                <p>
+
+                    Das ist ein häufiger Fehler.
+
+                    Du brauchst nicht den Inhalt des Mods-Ordners
+                    in einen zweiten Mods-Ordner zu kopieren.
+
+                    Es muss ungefähr so aussehen:
+
+                    <br><br>
+
+                    <strong>
+                        Profilordner → mods → Mod-Dateien
+                    </strong>
+
+                    <br><br>
+
+                    Nicht:
+
+                    <strong>
+                        Profilordner → mods → mods → Mod-Dateien
+                    </strong>
+
+                </p>
+
+            </article>
+
+
+            <article class="faq-item">
+
+                <h3>
+                    Muss ich jeden Mod einzeln installieren?
+                </h3>
+
+                <p>
+
+                    Nein.
+
+                    Die bereitgestellte ZIP-Datei enthält bereits
+                    den fertigen
+
+                    <strong>
+                        mods
+                    </strong>
+
+                    Ordner.
+
+                    Du musst nicht jeden Mod einzeln suchen
+                    und herunterladen.
+
+                </p>
+
+            </article>
+
+
+            <article class="faq-item">
+
+                <h3>
+                    Kann ich das Modpack mit normalem Minecraft starten?
+                </h3>
+
+                <p>
+
+                    Nein.
+
+                    Das Modpack ist für
+
+                    <strong>
+                        Minecraft 1.21.1
+                    </strong>
+
+                    mit
+
+                    <strong>
+                        NeoForge 21.1.248
+                    </strong>
+
+                    vorgesehen.
+
+                    Verwende das dafür erstellte CurseForge-Profil.
+
+                </p>
+
+            </article>
+
+
+            <article class="faq-item">
+
+                <h3>
+                    Welche Java-Version soll ich verwenden?
+                </h3>
+
+                <p>
+
+                    Lass CurseForge auf
+
+                    <strong>
+                        Default Version
+                    </strong>
+
+                    stehen.
+
+                    Eine manuelle Java-Auswahl ist normalerweise
+                    nicht notwendig.
+
+                </p>
+
+            </article>
+
+
+            <article class="faq-item">
+
+                <h3>
+                    Wie viel RAM soll ich einstellen?
+                </h3>
+
+                <p>
+
+                    Wir empfehlen
+
+                    <strong>
+                        8 bis 12 GB RAM
+                    </strong>
+
+                    für das Profil.
+
+                    Das eigene Profil des Entwicklers ist mit
+
+                    <strong>
+                        14 GB
+                    </strong>
+
+                    konfiguriert.
+
+                    Mehr ist jedoch nicht automatisch besser.
+
+                </p>
+
+            </article>
+
+
+            <article class="faq-item">
+
+                <h3>
+                    Minecraft braucht ewig zum Starten. Ist das normal?
+                </h3>
+
+                <p>
+
+                    Bei einem großen Modpack kann der Start deutlich
+                    länger dauern als bei Vanilla Minecraft.
+
+                    Besonders der erste Start kann lange dauern.
+
+                    Nicht sofort den Launcher schließen.
+
+                </p>
+
+            </article>
+
+
+            <article class="faq-item">
+
+                <h3>
+                    Das Spiel stürzt beim Start ab. Was soll ich tun?
+                </h3>
+
+                <p>
+
+                    Prüfe zuerst:
+
+                    <br><br>
+
+                    Minecraft-Version: <strong>1.21.1</strong><br>
+                    NeoForge: <strong>21.1.248</strong><br>
+                    Java: <strong>Default Version</strong><br>
+                    Mods-Ordner: <strong>richtig platziert</strong>
+
+                    <br><br>
+
+                    Wenn alles stimmt, sollte der genaue
+                    Crash-Fehler weiter untersucht werden.
+
+                </p>
+
+            </article>
+
+
+            <article class="faq-item">
+
+                <h3>
+                    Kann ich zusätzliche Mods installieren?
+                </h3>
+
+                <p>
+
+                    Technisch möglicherweise ja.
+
+                    Für den offiziellen Server können zusätzliche
+                    Mods aber zu Problemen oder
+                    Versionskonflikten führen.
+
+                    Für das Standard-Setup solltest du das Modpack
+                    unverändert verwenden.
+
+                </p>
+
+            </article>
+
+
+            <article class="faq-item">
+
+                <h3>
+                    Kann ich Mods entfernen?
+                </h3>
+
+                <p>
+
+                    Nicht empfohlen.
+
+                    Manche Mods sind voneinander abhängig oder
+                    verändern gemeinsame Spielsysteme.
+
+                    Das Entfernen einzelner Mods kann deshalb
+                    zu Abstürzen oder fehlenden Inhalten führen.
+
+                </p>
+
+            </article>
+
+
+            <article class="faq-item">
+
+                <h3>
+                    Mein Spiel hat wenig FPS. Was mache ich?
+                </h3>
+
+                <p>
+
+                    Reduziere zuerst die
+
+                    <strong>
+                        Render Distance
+                    </strong>
+
+                    und
+
+                    <strong>
+                        Simulation Distance
+                    </strong>.
+
+                    Deaktiviere außerdem Shader und reduziere
+                    Partikel.
+
+                    Erst danach sollte man weitere Einstellungen
+                    verändern.
+
+                </p>
+
+            </article>
+
+
+            <article class="faq-item">
+
+                <h3>
+                    Ist mehr RAM immer besser?
+                </h3>
+
+                <p>
+
+                    Nein.
+
+                    16, 20 oder 24 GB RAM führen nicht automatisch
+                    zu mehr FPS.
+
+                    Wichtig ist, dass dein PC genug RAM für
+                    Minecraft und gleichzeitig für Windows und
+                    andere Programme behält.
+
+                    Deshalb empfehlen wir zunächst
+
+                    <strong>
+                        8–12 GB
+                    </strong>.
+
+                </p>
+
+            </article>
+
         </div>
 
-        <div class="faq">
-            <h3>Muss ich jeden Mod einzeln installieren?</h3>
-            <p>
-                Nein. Genau das soll die ZIP verhindern.
-                Die Mod-Dateien sind bereits vorbereitet.
-            </p>
+    </section>
+
+
+    <!-- =====================================================
+         TROUBLESHOOTING
+    ====================================================== -->
+
+    <section class="section">
+
+        <div class="section-header">
+
+            <h2>
+                SCHNELLHILFE
+            </h2>
+
+            <div class="section-number">
+                TROUBLESHOOTING // 04
+            </div>
+
         </div>
 
-        <div class="faq">
-            <h3>Warum sehe ich keine Mods?</h3>
-            <p>
-                Meistens wurde der falsche Ordner geöffnet.
-                Verwende immer <strong>⋯ → Open Folder</strong> direkt
-                beim richtigen CurseForge-Profil.
-            </p>
+
+        <div class="troubleshooting">
+
+
+            <article class="problem">
+
+                <h3>
+                    MODS FEHLEN
+                </h3>
+
+                <p>
+
+                    CurseForge-Profil öffnen → ⋯ → Open Folder.
+                    Kontrollieren, ob der mods-Ordner direkt
+                    im Profilordner liegt.
+
+                </p>
+
+            </article>
+
+
+            <article class="problem">
+
+                <h3>
+                    SPIEL CRASHT
+                </h3>
+
+                <p>
+
+                    Versionen kontrollieren:
+                    Minecraft 1.21.1,
+                    NeoForge 21.1.248,
+                    Java Default Version.
+
+                </p>
+
+            </article>
+
+
+            <article class="problem">
+
+                <h3>
+                    NIEDRIGE FPS
+                </h3>
+
+                <p>
+
+                    Render Distance reduzieren,
+                    Simulation Distance reduzieren,
+                    Shader deaktivieren und Partikel reduzieren.
+
+                </p>
+
+            </article>
+
+
+            <article class="problem">
+
+                <h3>
+                    START DAUERT LANG
+                </h3>
+
+                <p>
+
+                    Bei großen Modpacks normal.
+                    Besonders der erste Start kann deutlich länger dauern.
+
+                </p>
+
+            </article>
+
+
+            <article class="problem">
+
+                <h3>
+                    ZU WENIG RAM
+                </h3>
+
+                <p>
+
+                    Profil auf 8–12 GB einstellen,
+                    sofern dein PC genug Gesamtspeicher besitzt.
+
+                </p>
+
+            </article>
+
+
+            <article class="problem">
+
+                <h3>
+                    FALSCHER ORDNER
+                </h3>
+
+                <p>
+
+                    Niemals einfach irgendeinen Minecraft-Ordner
+                    auswählen. Immer über das CurseForge-Profil
+                    → ⋯ → Open Folder gehen.
+
+                </p>
+
+            </article>
+
         </div>
 
-        <div class="faq">
-            <h3>Kann ich mein normales Minecraft verwenden?</h3>
+    </section>
+
+
+    <!-- =====================================================
+         SUPPORT
+    ====================================================== -->
+
+    <section class="section">
+
+        <div class="support">
+
+            <h2>
+                SUPPORT PROTOCOL
+            </h2>
+
             <p>
-                Für das Modpack solltest du das dafür vorgesehene
-                CurseForge-Profil verwenden. Dadurch bleiben deine
-                normalen Minecraft-Installationen sauber.
+
+                Wenn das Modpack trotz dieser Anleitung nicht startet,
+                bitte nicht einfach Mods löschen oder Dateien verändern.
+
+                Für eine schnelle Fehleranalyse sind folgende
+                Informationen hilfreich:
+
             </p>
+
+
+            <ul class="support-list">
+
+                <li>
+                    Minecraft Version: 1.21.1
+                </li>
+
+                <li>
+                    NeoForge Version: 21.1.248
+                </li>
+
+                <li>
+                    Java: Default Version
+                </li>
+
+                <li>
+                    verwendeter RAM
+                </li>
+
+                <li>
+                    genaue Fehlermeldung
+                </li>
+
+                <li>
+                    Screenshot des Fehlers
+                </li>
+
+                <li>
+                    falls vorhanden: Crash-Report
+                </li>
+
+            </ul>
+
+            <p>
+
+                Je genauer die Informationen sind,
+                desto schneller kann das Problem gefunden werden.
+
+            </p>
+
         </div>
 
-        <div class="faq">
-            <h3>Das Spiel stürzt beim Start ab. Was mache ich?</h3>
-            <p>
-                Prüfe zuerst Minecraft-Version, Modloader und Profil.
-                Danach kontrolliere, ob die Mods wirklich im richtigen
-                Profilordner liegen.
-            </p>
-        </div>
+    </section>
 
-        <div class="faq">
-            <h3>Das Spiel lädt extrem lange.</h3>
-            <p>
-                Bei großen Modpacks kann der erste Start deutlich länger
-                dauern. Nicht sofort mehrfach auf Start klicken.
-                Gib Minecraft Zeit, die Mods zu laden.
-            </p>
-        </div>
-
-        <div class="faq">
-            <h3>Ich habe nur 8 GB RAM.</h3>
-            <p>
-                Das kann funktionieren, abhängig vom restlichen System.
-                Allerdings muss Windows ebenfalls RAM verwenden.
-                Wenn möglich, sollte Minecraft nicht den gesamten
-                verfügbaren Arbeitsspeicher bekommen.
-            </p>
-        </div>
-
-        <div class="faq">
-            <h3>Kann ich zusätzliche Mods installieren?</h3>
-            <p>
-                Nicht empfohlen, solange du nicht weißt, ob sie mit dem
-                Modpack kompatibel sind. Ein zusätzlicher Mod kann
-                Abhängigkeiten, Konflikte oder Abstürze verursachen.
-            </p>
-        </div>
-
-        <div class="faq">
-            <h3>Kann ich Mods entfernen?</h3>
-            <p>
-                Ebenfalls nicht empfohlen. Viele Mods können voneinander
-                abhängig sein. Entferne Mods nur, wenn ausdrücklich bekannt
-                ist, dass sie optional sind.
-            </p>
-        </div>
-
-        <div class="faq">
-            <h3>Mein Spiel friert kurz ein.</h3>
-            <p>
-                Kurze Freezes können beim Laden neuer Chunks,
-                beim Start oder bei großen Maschinen auftreten.
-                Wenn das Spiel danach weiterläuft, ist das nicht automatisch
-                ein Fehler.
-            </p>
-        </div>
-
-        <div class="faq">
-            <h3>Ich bekomme eine Java-Fehlermeldung.</h3>
-            <p>
-                Prüfe zuerst, ob CurseForge die für die verwendete
-                Minecraft-Version benötigte Java-Version verwendet.
-                Verwende möglichst die von CurseForge vorgeschlagene
-                beziehungsweise integrierte Java-Konfiguration.
-            </p>
-        </div>
-
-        <div class="faq">
-            <h3>Meine FPS sind sehr niedrig.</h3>
-            <p>
-                Shader deaktivieren, Render Distance reduzieren,
-                Simulation Distance reduzieren und Partikel reduzieren.
-                Danach erneut testen.
-            </p>
-        </div>
-
-    </div>
-
-
-    <!-- TROUBLESHOOTING -->
-
-    <div class="section-title">
-        <span>05 // TROUBLESHOOTING</span>
-        <h2>Wenn etwas nicht funktioniert</h2>
-    </div>
-
-
-    <div class="troubleshoot">
-
-        <h3>🔴 Minecraft startet gar nicht</h3>
-
-        <p>
-            1. CurseForge-Profil kontrollieren.
-            2. Minecraft-Version kontrollieren.
-            3. Modloader kontrollieren.
-            4. Mods-Ordner kontrollieren.
-            5. Fehlermeldung beziehungsweise Crash-Log aufbewahren.
-        </p>
-
-    </div>
-
-
-    <div class="troubleshoot">
-
-        <h3>🔴 „Missing Mods“ / „Mod fehlt“</h3>
-
-        <p>
-            Fast immer bedeutet das, dass Mods fehlen oder nicht im
-            richtigen Profil liegen. Öffne erneut
-            <strong>⋯ → Open Folder</strong> und kontrolliere den
-            <code>mods</code>-Ordner.
-        </p>
-
-    </div>
-
-
-    <div class="troubleshoot">
-
-        <h3>🔴 Spiel stürzt nach einem neuen Mod ab</h3>
-
-        <p>
-            Wenn du kurz davor einen zusätzlichen Mod installiert oder
-            entfernt hast, diesen zuerst wieder zurücksetzen.
-            Das offizielle Modpack möglichst unverändert verwenden.
-        </p>
-
-    </div>
-
-
-    <div class="troubleshoot">
-
-        <h3>🔴 Schwarzer Bildschirm / sehr lange Ladezeit</h3>
-
-        <p>
-            Zuerst warten. Große Modpacks können beim ersten Start lange
-            brauchen. Wenn es dauerhaft hängen bleibt, Minecraft schließen,
-            erneut starten und anschließend die Log- oder Crash-Datei sichern.
-        </p>
-
-    </div>
-
-
-    <div class="troubleshoot">
-
-        <h3>🔴 Welt lädt, aber alles ruckelt</h3>
-
-        <p>
-            Shader ausschalten → Render Distance reduzieren →
-            Simulation Distance reduzieren → Partikel reduzieren.
-            Wenn es danach deutlich besser läuft, liegt das Problem
-            wahrscheinlich an der Systemleistung.
-        </p>
-
-    </div>
-
-
-    <div class="troubleshoot">
-
-        <h3>🔴 Ich habe keine Ahnung, was kaputt ist</h3>
-
-        <p>
-            Kein Problem. Nicht zehn Sachen gleichzeitig verändern.
-            Schicke im Support möglichst die Fehlermeldung,
-            einen Screenshot und – wenn vorhanden – den Crash-Log.
-            So lässt sich der Fehler wesentlich schneller finden.
-        </p>
-
-    </div>
-
-
-    <!-- SUPPORT -->
-
-    <div class="section-title">
-        <span>06 // SUPPORT PROTOCOL</span>
-        <h2>Was du dem Support schicken solltest</h2>
-    </div>
-
-
-    <div class="step">
-
-        <h3>Bitte nicht nur „geht nicht“ schreiben. 😭</h3>
-
-        <p>
-            Je mehr Informationen vorhanden sind, desto schneller kann
-            geholfen werden.
-        </p>
-
-        <ul>
-            <li><strong>Was wolltest du machen?</strong></li>
-            <li><strong>Was ist stattdessen passiert?</strong></li>
-            <li><strong>Welche Fehlermeldung erscheint?</strong></li>
-            <li><strong>Screenshot der Fehlermeldung</strong></li>
-            <li><strong>Crash-Log, falls vorhanden</strong></li>
-            <li><strong>Welche Minecraft-Version?</strong></li>
-            <li><strong>Welches CurseForge-Profil?</strong></li>
-            <li><strong>Wurde etwas am Modpack verändert?</strong></li>
-        </ul>
-
-        <p class="success">
-            ✓ Mit diesen Informationen kann der Fehler meistens wesentlich
-            schneller eingegrenzt werden.
-        </p>
-
-    </div>
-
-
-    <!-- FINAL -->
-
-    <div class="final-box">
-
-        <h2>NO PANIC // SYSTEM RECOVERY</h2>
-
-        <p>
-            Wenn die Installation nicht funktioniert, bedeutet das nicht,
-            dass dein PC kaputt ist. In den meisten Fällen wurde entweder
-            der falsche Ordner verwendet, eine Einstellung passt nicht
-            oder eine Datei fehlt.
-        </p>
-
-        <p>
-            Erst die Grundlagen prüfen. Dann weitergehen.
-        </p>
-
-        <a class="button" href="download.html">
-            ZUR DOWNLOAD-SEITE
-        </a>
-
-    </div>
 
 </main>
 
 
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
 <footer>
 
-    RISE OF NATIONS //
-    FAQ & TECHNICAL SUPPORT //
-    <span id="footerVersion">SYSTEM</span>
+    <div>
+        RISE OF NATIONS // TECHNICAL SUPPORT
+    </div>
+
+    <div>
+
+        VERSION
+
+        <span id="footerVersion">
+            --
+        </span>
+
+    </div>
 
 </footer>
 
 
 <script>
 
-    // =========================================================
-    // CONFIG
-    // =========================================================
-
     if (typeof SITE_CONFIG !== "undefined") {
 
-        const footerVersion = document.getElementById("footerVersion");
+        const footerVersion =
+            document.getElementById("footerVersion");
 
         if (footerVersion) {
+
             footerVersion.textContent =
-                SITE_CONFIG.modpack.name +
-                " // " +
                 SITE_CONFIG.modpack.version;
+
         }
 
     }
 
 </script>
+
 
 </body>
 </html>
