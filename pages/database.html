@@ -1,330 +1,517 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RISE OF NATIONS // DATABASE</title>
 
-    <link rel="stylesheet" href="../css/style.css">
+    <title>DATABASE // RISE OF NATIONS</title>
 
-    <style>
-        body {
-            margin: 0;
-            background:
-                linear-gradient(rgba(5, 10, 16, 0.94), rgba(5, 10, 16, 0.97)),
-                radial-gradient(circle at top, #263044 0%, #080c12 65%);
-            color: #dce8f2;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        .page {
-            min-height: 100vh;
-            padding: 40px;
-            box-sizing: border-box;
-        }
-
-        .top-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #3c8dbc;
-            padding-bottom: 18px;
-            margin-bottom: 35px;
-        }
-
-        .brand {
-            color: #5da9d6;
-            font-size: 22px;
-            font-weight: bold;
-            letter-spacing: 3px;
-        }
-
-        .status {
-            color: #6fcf97;
-            font-size: 12px;
-            letter-spacing: 2px;
-        }
-
-        .header {
-            margin-bottom: 35px;
-        }
-
-        .header h1 {
-            margin: 0;
-            font-size: 46px;
-            letter-spacing: 6px;
-            color: #dce8f2;
-        }
-
-        .header p {
-            margin-top: 12px;
-            color: #8798a8;
-            letter-spacing: 2px;
-            font-size: 13px;
-        }
-
-        .system-info {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            margin-bottom: 35px;
-        }
-
-        .info-box {
-            background: rgba(17, 25, 34, 0.9);
-            border: 1px solid #334453;
-            padding: 18px;
-            position: relative;
-        }
-
-        .info-box::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: #3c8dbc;
-        }
-
-        .info-label {
-            color: #718292;
-            font-size: 10px;
-            letter-spacing: 2px;
-            margin-bottom: 8px;
-        }
-
-        .info-value {
-            color: #dce8f2;
-            font-size: 17px;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
-
-        .categories {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-        }
-
-        .category {
-            display: block;
-            background: rgba(14, 21, 29, 0.95);
-            border: 1px solid #334453;
-            padding: 25px;
-            text-decoration: none;
-            transition: 0.2s ease;
-            position: relative;
-        }
-
-        .category:hover {
-            border-color: #3c8dbc;
-            transform: translateY(-2px);
-            box-shadow: 0 0 20px rgba(60, 141, 188, 0.10);
-        }
-
-        .category-number {
-            color: #667888;
-            font-size: 11px;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-        }
-
-        .category-name {
-            color: #f0f3f5;
-            font-size: 21px;
-            font-weight: bold;
-            letter-spacing: 1px;
-            margin-bottom: 9px;
-        }
-
-        .category-description {
-            color: #8293a2;
-            font-size: 12px;
-            line-height: 1.6;
-        }
-
-        .category-arrow {
-            margin-top: 15px;
-            color: #5da9d6;
-            font-size: 11px;
-            letter-spacing: 2px;
-        }
-
-        .footer {
-            margin-top: 35px;
-            padding-top: 20px;
-            border-top: 1px solid #263542;
-        }
-
-        .return {
-            color: #5da9d6;
-            text-decoration: none;
-            font-size: 12px;
-            letter-spacing: 2px;
-        }
-
-        .return:hover {
-            color: #ffffff;
-        }
-
-        @media (max-width: 800px) {
-            .page {
-                padding: 20px;
-            }
-
-            .system-info,
-            .categories {
-                grid-template-columns: 1fr;
-            }
-
-            .header h1 {
-                font-size: 32px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="../style.css">
+    <script src="../config/site-config.js"></script>
 </head>
 
 <body>
 
-<div class="page">
+    <div class="top-line"></div>
 
-    <div class="top-bar">
-        <div class="brand">RISE OF NATIONS // DATABASE</div>
-        <div class="status">● SYSTEM OPERATIONAL</div>
-    </div>
+    <header>
+        <nav class="ron-nav">
 
-    <div class="header">
-        <h1>MODPACK DATABASE</h1>
-        <p>SYSTEMS // TECHNOLOGY // MILITARY // ADVENTURE // SURVIVAL</p>
-    </div>
+            <div class="ron-brand">
+                RISE OF NATIONS
+                <span>COMMAND DATABASE</span>
+            </div>
 
-    <div class="system-info">
+            <div class="ron-nav-links">
+                <a href="communications.html">COMMUNICATIONS</a>
+                <a href="intelligence.html">INTELLIGENCE</a>
+                <a href="server.html">SERVER</a>
+                <a href="database.html" class="active">DATABASE</a>
+                <a href="download.html">DOWNLOAD</a>
+                <a href="wiki.html">WIKI</a>
+                <a href="faq.html">FAQ</a>
+            </div>
 
-        <div class="info-box">
-            <div class="info-label">DATABASE TYPE</div>
-            <div class="info-value">MODPACK SYSTEMS</div>
+        </nav>
+    </header>
+
+
+    <main class="ron-page">
+
+        <div class="ron-classification">
+            <span>DATABASE // MODPACK ARCHIVE</span>
+            <span class="ron-live">● DATABASE ONLINE</span>
         </div>
 
-        <div class="info-box">
-            <div class="info-label">MINECRAFT VERSION</div>
-            <div class="info-value">1.21.1</div>
+
+        <h1 class="ron-page-title">DATABASE</h1>
+
+        <p class="ron-page-subtitle">
+            Central archive for installed systems, technologies,
+            equipment, utilities and other components of the
+            RISE OF NATIONS modpack.
+        </p>
+
+
+        <div class="ron-status-grid">
+
+            <div class="ron-status">
+                <div class="ron-status-label">MODPACK</div>
+
+                <div
+                    class="ron-status-value ron-gold"
+                    id="modpackName"
+                >
+                    —
+                </div>
+            </div>
+
+            <div class="ron-status">
+                <div class="ron-status-label">VERSION</div>
+
+                <div
+                    class="ron-status-value ron-blue"
+                    id="modpackVersion"
+                >
+                    —
+                </div>
+            </div>
+
+            <div class="ron-status">
+                <div class="ron-status-label">MINECRAFT</div>
+
+                <div
+                    class="ron-status-value"
+                    id="minecraftVersion"
+                >
+                    —
+                </div>
+            </div>
+
+            <div class="ron-status">
+                <div class="ron-status-label">DATABASE</div>
+
+                <div class="ron-status-value ron-green">
+                    ONLINE
+                </div>
+            </div>
+
         </div>
 
-        <div class="info-box">
-            <div class="info-label">DATABASE STATUS</div>
-            <div class="info-value">OPERATIONAL</div>
+
+        <div class="section-title">
+            SYSTEM CATEGORIES
+            <span>MODPACK ARCHIVE</span>
         </div>
 
-    </div>
 
-    <div class="categories">
+        <div class="ron-grid">
 
-        <a class="category" href="technology.html">
-            <div class="category-number">SYSTEM 01</div>
-            <div class="category-name">TECHNOLOGY</div>
-            <div class="category-description">
-                Industrial systems, Create machinery, automation,
-                energy and advanced production infrastructure.
-            </div>
-            <div class="category-arrow">
-                ACCESS DATABASE →
-            </div>
-        </a>
+            <a
+                href="../wiki-mod-create.html"
+                class="ron-card"
+                style="text-decoration:none;"
+            >
 
-        <a class="category" href="weapons.html">
-            <div class="category-number">SYSTEM 02</div>
-            <div class="category-name">WEAPONS & VEHICLES</div>
-            <div class="category-description">
-                Firearms, military equipment, aircraft, vehicles,
-                drones and battlefield technology.
-            </div>
-            <div class="category-arrow">
-                ACCESS DATABASE →
-            </div>
-        </a>
+                <div class="ron-panel-header">
+                    <div class="ron-panel-title">
+                        INDUSTRIAL SYSTEMS
+                    </div>
 
-        <a class="category" href="adventure.html">
-            <div class="category-number">SYSTEM 03</div>
-            <div class="category-name">ADVENTURE & DIMENSIONS</div>
-            <div class="category-description">
-                New dimensions, bosses, creatures, exploration,
-                supernatural threats and unknown territories.
-            </div>
-            <div class="category-arrow">
-                ACCESS DATABASE →
-            </div>
-        </a>
+                    <div class="ron-panel-code">
+                        DB-001
+                    </div>
+                </div>
 
-        <a class="category" href="structures.html">
-            <div class="category-number">SYSTEM 04</div>
-            <div class="category-name">STRUCTURES & VILLAGES</div>
-            <div class="category-description">
-                Villages, underground locations, bridges, strongholds,
-                dungeons and large-scale world generation.
-            </div>
-            <div class="category-arrow">
-                ACCESS DATABASE →
-            </div>
-        </a>
+                <div class="ron-data">
 
-        <a class="category" href="building.html">
-            <div class="category-number">SYSTEM 05</div>
-            <div class="category-name">BUILDING & DECORATION</div>
-            <div class="category-description">
-                Construction systems, furniture, architecture,
-                decorative blocks and creative infrastructure.
-            </div>
-            <div class="category-arrow">
-                ACCESS DATABASE →
-            </div>
-        </a>
+                    <div class="ron-data-row">
+                        <span class="ron-data-label">
+                            PRIMARY SYSTEM
+                        </span>
 
-        <a class="category" href="food.html">
-            <div class="category-number">SYSTEM 06</div>
-            <div class="category-name">FOOD & AGRICULTURE</div>
-            <div class="category-description">
-                Farming, cooking, fishing, food production,
-                brewing and agricultural systems.
-            </div>
-            <div class="category-arrow">
-                ACCESS DATABASE →
-            </div>
-        </a>
+                        <span class="ron-data-value">
+                            CREATE
+                        </span>
+                    </div>
 
-        <a class="category" href="survival.html">
-            <div class="category-number">SYSTEM 07</div>
-            <div class="category-name">SURVIVAL & RPG</div>
-            <div class="category-description">
-                Survival mechanics, skills, claims, equipment,
-                progression and role-playing systems.
-            </div>
-            <div class="category-arrow">
-                ACCESS DATABASE →
-            </div>
-        </a>
+                    <div class="ron-data-row">
+                        <span class="ron-data-label">
+                            CLASS
+                        </span>
 
-        <a class="category" href="performance.html">
-            <div class="category-number">SYSTEM 08</div>
-            <div class="category-name">PERFORMANCE & UTILITIES</div>
-            <div class="category-description">
-                Performance optimization, monitoring, communication,
-                navigation and quality-of-life systems.
+                        <span class="ron-data-value">
+                            INDUSTRIAL
+                        </span>
+                    </div>
+
+                </div>
+
+                <span class="ron-tag gold">
+                    OPEN ARCHIVE
+                </span>
+
+            </a>
+
+
+            <a
+                href="wiki.html"
+                class="ron-card"
+                style="text-decoration:none;"
+            >
+
+                <div class="ron-panel-header">
+                    <div class="ron-panel-title">
+                        TECHNOLOGY
+                    </div>
+
+                    <div class="ron-panel-code">
+                        DB-002
+                    </div>
+                </div>
+
+                <div class="ron-data">
+
+                    <div class="ron-data-row">
+                        <span class="ron-data-label">
+                            SYSTEM TYPE
+                        </span>
+
+                        <span class="ron-data-value">
+                            TECHNOLOGY
+                        </span>
+                    </div>
+
+                    <div class="ron-data-row">
+                        <span class="ron-data-label">
+                            DATABASE
+                        </span>
+
+                        <span class="ron-data-value">
+                            WIKI
+                        </span>
+                    </div>
+
+                </div>
+
+                <span class="ron-tag">
+                    OPEN WIKI
+                </span>
+
+            </a>
+
+
+            <a
+                href="download.html"
+                class="ron-card"
+                style="text-decoration:none;"
+            >
+
+                <div class="ron-panel-header">
+                    <div class="ron-panel-title">
+                        DEPLOYMENT
+                    </div>
+
+                    <div class="ron-panel-code">
+                        DB-003
+                    </div>
+                </div>
+
+                <div class="ron-data">
+
+                    <div class="ron-data-row">
+                        <span class="ron-data-label">
+                            PACKAGE
+                        </span>
+
+                        <span class="ron-data-value">
+                            MODPACK
+                        </span>
+                    </div>
+
+                    <div class="ron-data-row">
+                        <span class="ron-data-label">
+                            STATUS
+                        </span>
+
+                        <span class="ron-data-value ron-green">
+                            READY
+                        </span>
+                    </div>
+
+                </div>
+
+                <span class="ron-tag green">
+                    DOWNLOAD
+                </span>
+
+            </a>
+
+        </div>
+
+
+        <div class="section-title">
+            CORE SYSTEMS
+            <span>PRIMARY MODPACK COMPONENTS</span>
+        </div>
+
+
+        <div class="ron-grid">
+
+            <div class="ron-card">
+
+                <h3>CREATE</h3>
+
+                <p>
+                    Industrial automation, mechanical systems,
+                    factories, logistics and large-scale production.
+                </p>
+
+                <div class="ron-bar gold">
+                    <span style="width:96%;"></span>
+                </div>
+
+                <div style="margin-top:10px;">
+                    <span class="ron-tag gold">
+                        CORE SYSTEM
+                    </span>
+                </div>
+
             </div>
-            <div class="category-arrow">
-                ACCESS DATABASE →
+
+
+            <div class="ron-card">
+
+                <h3>JEI</h3>
+
+                <p>
+                    Central item and recipe reference for
+                    the modpack.
+                </p>
+
+                <div class="ron-bar">
+                    <span style="width:92%;"></span>
+                </div>
+
+                <div style="margin-top:10px;">
+                    <span class="ron-tag">
+                        REFERENCE
+                    </span>
+                </div>
+
             </div>
-        </a>
 
-    </div>
 
-    <div class="footer">
-        <a class="return" href="../index.html">
-            ← RETURN TO COMMAND
-        </a>
-    </div>
+            <div class="ron-card">
 
-</div>
+                <h3>WAYSTONES</h3>
+
+                <p>
+                    Fast-travel infrastructure connecting
+                    established locations.
+                </p>
+
+                <div class="ron-bar">
+                    <span style="width:88%;"></span>
+                </div>
+
+                <div style="margin-top:10px;">
+                    <span class="ron-tag">
+                        TRANSPORT
+                    </span>
+                </div>
+
+            </div>
+
+
+            <div class="ron-card">
+
+                <h3>SECURITYCRAFT</h3>
+
+                <p>
+                    Defensive infrastructure, security systems
+                    and protected installations.
+                </p>
+
+                <div class="ron-bar red">
+                    <span style="width:84%;"></span>
+                </div>
+
+                <div style="margin-top:10px;">
+                    <span class="ron-tag red">
+                        SECURITY
+                    </span>
+                </div>
+
+            </div>
+
+
+            <div class="ron-card">
+
+                <h3>FARMER'S DELIGHT</h3>
+
+                <p>
+                    Expanded agriculture, food production
+                    and civilian infrastructure.
+                </p>
+
+                <div class="ron-bar green">
+                    <span style="width:81%;"></span>
+                </div>
+
+                <div style="margin-top:10px;">
+                    <span class="ron-tag green">
+                        AGRICULTURE
+                    </span>
+                </div>
+
+            </div>
+
+
+            <div class="ron-card">
+
+                <h3>SOPHISTICATED SYSTEMS</h3>
+
+                <p>
+                    Advanced storage and logistics infrastructure
+                    for large-scale resource management.
+                </p>
+
+                <div class="ron-bar gold">
+                    <span style="width:87%;"></span>
+                </div>
+
+                <div style="margin-top:10px;">
+                    <span class="ron-tag gold">
+                        LOGISTICS
+                    </span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="section-title">
+            DATABASE ACCESS
+            <span>REFERENCE SYSTEMS</span>
+        </div>
+
+
+        <div class="ron-card">
+
+            <div class="ron-panel-header">
+
+                <div class="ron-panel-title">
+                    MODPACK KNOWLEDGE BASE
+                </div>
+
+                <div class="ron-panel-code">
+                    DATABASE // ACCESS
+                </div>
+
+            </div>
+
+            <div class="ron-data">
+
+                <div class="ron-data-row">
+                    <span class="ron-data-label">
+                        MOD INFORMATION
+                    </span>
+
+                    <span class="ron-data-value">
+                        AVAILABLE
+                    </span>
+                </div>
+
+                <div class="ron-data-row">
+                    <span class="ron-data-label">
+                        INSTALLATION DATA
+                    </span>
+
+                    <span class="ron-data-value">
+                        AVAILABLE
+                    </span>
+                </div>
+
+                <div class="ron-data-row">
+                    <span class="ron-data-label">
+                        TECHNICAL DOCUMENTATION
+                    </span>
+
+                    <span class="ron-data-value">
+                        AVAILABLE
+                    </span>
+                </div>
+
+            </div>
+
+            <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:18px;">
+
+                <a
+                    href="wiki.html"
+                    class="ron-button gold"
+                >
+                    OPEN WIKI
+                </a>
+
+                <a
+                    href="faq.html"
+                    class="ron-button"
+                >
+                    TECHNICAL SUPPORT
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="ron-alert">
+
+            <strong>DATABASE NOTICE</strong><br>
+
+            The database is designed as the central reference point
+            for RISE OF NATIONS. Individual mod systems can be expanded
+            with dedicated documentation and technical pages over time.
+
+        </div>
+
+    </main>
+
+
+    <footer class="ron-footer">
+
+        RISE OF NATIONS
+        &nbsp; // &nbsp;
+        <span id="footerVersion">SYSTEM</span>
+        &nbsp; // &nbsp;
+        COMMAND DATABASE
+
+    </footer>
+
+
+    <script>
+
+        if (typeof SITE_CONFIG !== "undefined") {
+
+            document.getElementById("modpackName").textContent =
+                SITE_CONFIG.modpack.name;
+
+            document.getElementById("modpackVersion").textContent =
+                SITE_CONFIG.modpack.version;
+
+            document.getElementById("minecraftVersion").textContent =
+                SITE_CONFIG.website.minecraftVersion;
+
+            document.getElementById("footerVersion").textContent =
+                SITE_CONFIG.modpack.version;
+
+        }
+
+    </script>
 
 </body>
+
 </html>
