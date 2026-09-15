@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RISE OF NATIONS // CREATE TREADMILL</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+    min-height:100vh;
+    background:
+        linear-gradient(rgba(5,10,15,.97),rgba(5,10,15,.99)),
+        repeating-linear-gradient(
+            135deg,
+            rgba(255,255,255,.018) 0 2px,
+            transparent 2px 9px
+        );
+    color:#dbe3e8;
+    font-family:"Segoe UI",Arial,sans-serif;
+}
+
+header{
+    background:rgba(5,10,15,.98);
+    border-bottom:1px solid #293944;
+    box-shadow:0 5px 25px rgba(0,0,0,.45);
+}
+
+.header-inner{
+    max-width:1500px;
+    margin:auto;
+    padding:18px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:30px;
+}
+
+.logo{
+    color:#d6b85c;
+    font-size:22px;
+    font-weight:950;
+    letter-spacing:3px;
+}
+
+.logo span{
+    display:block;
+    color:#687b86;
+    font-size:9px;
+    letter-spacing:2px;
+    margin-top:4px;
+}
+
+nav{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+    gap:7px;
+}
+
+nav a{
+    color:#9aabb4;
+    text-decoration:none;
+    padding:9px 11px;
+    border:1px solid transparent;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.2px;
+    transition:.2s;
+}
+
+nav a:hover{
+    color:#d6b85c;
+    background:#111b22;
+    border-color:#3b4d58;
+}
+
+main{
+    max-width:1250px;
+    margin:auto;
+    padding:70px 30px 100px;
+}
+
+.eyebrow{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:3px;
+    margin-bottom:15px;
+}
+
+h1{
+    color:#edf2f4;
+    font-size:clamp(40px,6.5vw,78px);
+    line-height:.95;
+    letter-spacing:4px;
+    font-weight:950;
+}
+
+.subtitle{
+    max-width:930px;
+    margin-top:22px;
+    color:#8497a2;
+    line-height:1.75;
+    font-size:15px;
+}
+
+.meta{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-top:38px;
+}
+
+.meta-box{
+    padding:18px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+
+.meta-label{
+    color:#596c77;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:8px;
+}
+
+.meta-value{
+    color:#d6b85c;
+    font-size:13px;
+    font-weight:900;
+}
+
+.section{
+    margin-top:35px;
+    padding:30px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+
+.section-number{
+    color:#526773;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:2px;
+    margin-bottom:9px;
+}
+
+h2{
+    color:#e1e8eb;
+    font-size:22px;
+    letter-spacing:1px;
+    margin-bottom:18px;
+}
+
+h3{
+    color:#d6b85c;
+    font-size:14px;
+    letter-spacing:1px;
+    margin:25px 0 10px;
+}
+
+p{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    margin-bottom:13px;
+}
+
+ul,ol{
+    margin:12px 0 18px 22px;
+}
+
+li{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    padding-left:5px;
+}
+
+.note{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#111c23;
+    border-left:3px solid #4d91bd;
+}
+
+.note-title{
+    color:#4d91bd;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+
+.warning{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#17140e;
+    border-left:3px solid #d6b85c;
+}
+
+.warning-title{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:18px;
+}
+
+th,td{
+    text-align:left;
+    padding:13px 14px;
+    border:1px solid #293c47;
+    font-size:12px;
+}
+
+th{
+    color:#d6b85c;
+    background:#111c23;
+    font-size:10px;
+    letter-spacing:1px;
+}
+
+td{
+    color:#8ea0a9;
+    background:#0a141a;
+}
+
+.sources{
+    display:grid;
+    gap:10px;
+    margin-top:15px;
+}
+
+.sources a{
+    display:block;
+    padding:13px 15px;
+    background:#101b22;
+    border:1px solid #293c47;
+    color:#9fb0b9;
+    text-decoration:none;
+    font-size:12px;
+    transition:.2s;
+}
+
+.sources a:hover{
+    color:#d6b85c;
+    border-color:#d6b85c;
+}
+
+.back{
+    display:inline-block;
+    margin-top:45px;
+    padding:12px 16px;
+    color:#d6b85c;
+    border:1px solid #4c4530;
+    text-decoration:none;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    transition:.2s;
+}
+
+.back:hover{
+    background:#17150f;
+    border-color:#d6b85c;
+}
+
+footer{
+    border-top:1px solid #202e36;
+    padding:25px 30px;
+    text-align:center;
+    color:#465861;
+    font-size:9px;
+    letter-spacing:2px;
+}
+
+@media(max-width:850px){
+    .header-inner{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    nav{
+        justify-content:flex-start;
+    }
+
+    .meta{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:550px){
+    .meta{
+        grid-template-columns:1fr;
+    }
+
+    main{
+        padding:45px 18px 70px;
+    }
+
+    .section{
+        padding:22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-inner">
+
+        <div class="logo">
+            RISE OF NATIONS
+            <span>TACTICAL KNOWLEDGE DATABASE</span>
+        </div>
+
+        <nav>
+            <a href="../index.html">COMMAND</a>
+            <a href="intelligence.html">INTELLIGENCE</a>
+            <a href="server.html">SERVER</a>
+            <a href="database.html">DATABASE</a>
+            <a href="download.html">DOWNLOAD</a>
+            <a href="communications.html">COMMUNICATIONS</a>
+            <a href="wiki.html">WIKI</a>
+        </nav>
+
+    </div>
+</header>
+
+<main>
+
+    <div class="eyebrow">
+        PROFESSOR DATABASE // MECHANICAL POWER
+    </div>
+
+    <h1>CREATE TREADMILL</h1>
+
+    <p class="subtitle">
+        Create Treadmill erweitert das Create-Ökosystem um eine
+        ungewöhnliche Möglichkeit, mechanische Energie über die
+        Aktivität von Entitäten zu erzeugen. Damit entstehen
+        interessante Systeme für automatische Anlagen, Testaufbauten
+        und kreative Energiegewinnung.
+    </p>
+
+    <div class="meta">
+
+        <div class="meta-box">
+            <div class="meta-label">MOD</div>
+            <div class="meta-value">CREATE TREADMILL</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">VERSION</div>
+            <div class="meta-value">1.13</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">MINECRAFT</div>
+            <div class="meta-value">1.21.1</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">SYSTEM</div>
+            <div class="meta-value">MECHANICAL POWER</div>
+        </div>
+
+    </div>
+
+
+    <section class="section">
+
+        <div class="section-number">01 // SYSTEM OVERVIEW</div>
+        <h2>Was ist Create Treadmill?</h2>
+
+        <p>
+            Create Treadmill verbindet das Create-Energiesystem mit
+            einer mechanischen Konstruktion, die Bewegung von
+            Entitäten zur Erzeugung beziehungsweise Bereitstellung
+            mechanischer Leistung nutzt.
+        </p>
+
+        <p>
+            Dadurch entsteht eine alternative und vor allem
+            experimentelle Möglichkeit, mechanische Systeme
+            anzutreiben.
+        </p>
+
+        <div class="note">
+            <div class="note-title">CORE IDEA</div>
+            <p>
+                Bewegung wird in mechanische Energie umgewandelt und
+                anschließend in ein bestehendes Create-System
+                eingespeist.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">02 // CREATE POWER</div>
+        <h2>Grundverständnis von Create-Energie</h2>
+
+        <p>
+            Create arbeitet bei seinen mechanischen Systemen mit
+            Rotation, Geschwindigkeit und Belastung. Eine zusätzliche
+            Energiequelle muss daher sinnvoll in das vorhandene
+            Antriebssystem integriert werden.
+        </p>
+
+        <ul>
+            <li>Mechanische Energie erzeugen.</li>
+            <li>Rotation weiterleiten.</li>
+            <li>Geschwindigkeit kontrollieren.</li>
+            <li>Belastung der Maschinen berücksichtigen.</li>
+            <li>Produktionsmaschinen an das Netz anschließen.</li>
+        </ul>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">03 // TREADMILL CONCEPT</div>
+        <h2>Das Grundprinzip</h2>
+
+        <p>
+            Das Treadmill-Konzept basiert auf Bewegung. Eine geeignete
+            Entität bewegt sich auf beziehungsweise innerhalb der
+            vorgesehenen Konstruktion und erzeugt dadurch die
+            mechanische Leistung des Systems.
+        </p>
+
+        <ol>
+            <li>Treadmill-System aufbauen.</li>
+            <li>Entität bereitstellen.</li>
+            <li>Bewegung ermöglichen.</li>
+            <li>Mechanische Energie abgreifen.</li>
+            <li>Energie an das Create-Netz weiterleiten.</li>
+        </ol>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">04 // MECHANICAL NETWORK</div>
+        <h2>Integration in eine Fabrik</h2>
+
+        <p>
+            Das erzeugte mechanische System kann anschließend wie
+            andere Create-Antriebe weitergeleitet werden.
+        </p>
+
+        <table>
+
+            <tr>
+                <th>BEREICH</th>
+                <th>AUFGABE</th>
+            </tr>
+
+            <tr>
+                <td>POWER SOURCE</td>
+                <td>Mechanische Energie erzeugen</td>
+            </tr>
+
+            <tr>
+                <td>TRANSMISSION</td>
+                <td>Rotation weiterleiten</td>
+            </tr>
+
+            <tr>
+                <td>GEARBOX</td>
+                <td>Drehzahl anpassen</td>
+            </tr>
+
+            <tr>
+                <td>MACHINE</td>
+                <td>Mechanische Leistung nutzen</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">05 // SPEED MANAGEMENT</div>
+        <h2>Geschwindigkeit kontrollieren</h2>
+
+        <p>
+            In Create ist nicht ausschließlich die Existenz von
+            Rotation wichtig. Die Geschwindigkeit muss zur jeweiligen
+            Maschine passen.
+        </p>
+
+        <ul>
+            <li>Zu hohe Geschwindigkeit vermeiden.</li>
+            <li>Zu niedrige Geschwindigkeit erkennen.</li>
+            <li>Übersetzungen sinnvoll einsetzen.</li>
+            <li>Belastung des Netzwerks überwachen.</li>
+        </ul>
+
+        <div class="warning">
+            <div class="warning-title">ENGINEERING NOTE</div>
+            <p>
+                Bei einem neuen Antrieb sollte zunächst ein kleines
+                Testsystem gebaut werden. Erst danach lohnt sich die
+                Integration in eine große Fabrik.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">06 // ENTITY MANAGEMENT</div>
+        <h2>Entitäten im System</h2>
+
+        <p>
+            Da das Konzept auf beweglichen Entitäten basiert, sollte
+            der Bereich entsprechend abgesichert werden.
+        </p>
+
+        <ul>
+            <li>Ausreichend Platz bereitstellen.</li>
+            <li>Entitäten innerhalb des Systems halten.</li>
+            <li>Ungewolltes Entkommen verhindern.</li>
+            <li>Bereich gegen externe Einflüsse schützen.</li>
+            <li>Wartungszugang einplanen.</li>
+        </ul>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">07 // AUTOMATION</div>
+        <h2>Automatisierte Energieversorgung</h2>
+
+        <p>
+            Das System kann als permanente Energiequelle für eine
+            kleinere oder experimentelle Create-Anlage dienen.
+        </p>
+
+        <ol>
+            <li>Energiequelle installieren.</li>
+            <li>Mechanisches Netzwerk anschließen.</li>
+            <li>Übertragung überprüfen.</li>
+            <li>Produktionsmaschine anschließen.</li>
+            <li>System unter realer Last testen.</li>
+        </ol>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">08 // FACTORY DESIGN</div>
+        <h2>Eine Treadmill-Anlage bauen</h2>
+
+        <p>
+            Für eine größere Anlage sollte die Energiequelle in einen
+            eigenen technischen Bereich ausgelagert werden.
+        </p>
+
+        <table>
+
+            <tr>
+                <th>ZONE</th>
+                <th>FUNKTION</th>
+            </tr>
+
+            <tr>
+                <td>ENTITY ZONE</td>
+                <td>Bewegungsbereich</td>
+            </tr>
+
+            <tr>
+                <td>POWER ZONE</td>
+                <td>Mechanische Energie</td>
+            </tr>
+
+            <tr>
+                <td>TRANSMISSION</td>
+                <td>Rotation verteilen</td>
+            </tr>
+
+            <tr>
+                <td>PRODUCTION</td>
+                <td>Maschinen betreiben</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">09 // USE CASES</div>
+        <h2>Wofür eignet sich das System?</h2>
+
+        <ul>
+            <li>Kleine Create-Testanlagen.</li>
+            <li>Experimentelle Energiequellen.</li>
+            <li>Dekorative Industriegebäude.</li>
+            <li>Mechanische Demonstrationsanlagen.</li>
+            <li>Ungewöhnliche Fabrikkonzepte.</li>
+            <li>Technische Multiplayer-Projekte.</li>
+        </ul>
+
+        <p>
+            Gerade für dekorative Industrieanlagen kann eine solche
+            Energiequelle interessant sein, weil die Mechanik sichtbar
+            in das Gebäude integriert werden kann.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">10 // EFFICIENCY</div>
+        <h2>Effizienz beurteilen</h2>
+
+        <p>
+            Nicht jede Energiequelle ist automatisch die beste Lösung.
+            Für große Produktionsanlagen sollte immer geprüft werden,
+            ob andere Create-Antriebe geeigneter sind.
+        </p>
+
+        <table>
+
+            <tr>
+                <th>KRITERIUM</th>
+                <th>FRAGE</th>
+            </tr>
+
+            <tr>
+                <td>OUTPUT</td>
+                <td>Reicht die Leistung für die Anlage?</td>
+            </tr>
+
+            <tr>
+                <td>STABILITY</td>
+                <td>Bleibt das System dauerhaft aktiv?</td>
+            </tr>
+
+            <tr>
+                <td>SPACE</td>
+                <td>Wie viel Platz benötigt die Anlage?</td>
+            </tr>
+
+            <tr>
+                <td>MAINTENANCE</td>
+                <td>Wie leicht ist das System zu warten?</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">11 // TROUBLESHOOTING</div>
+        <h2>Typische Probleme</h2>
+
+        <h3>Keine mechanische Leistung</h3>
+
+        <p>
+            Prüfe zunächst, ob das Treadmill korrekt aufgebaut wurde und
+            ob sich die vorgesehene Entität tatsächlich bewegt.
+        </p>
+
+        <h3>Maschine läuft nicht</h3>
+
+        <p>
+            Kontrolliere die Verbindung zwischen Energiequelle und
+            Maschine sowie die Geschwindigkeit des Netzwerks.
+        </p>
+
+        <h3>System stoppt</h3>
+
+        <p>
+            Prüfe, ob die Entität noch vorhanden ist und ob die
+            Bewegungsbedingungen weiterhin erfüllt werden.
+        </p>
+
+        <h3>Fabrik ist überlastet</h3>
+
+        <p>
+            Reduziere die Last oder teile das mechanische Netzwerk in
+            mehrere unabhängige Produktionsbereiche auf.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">12 // ADVANCED SYSTEMS</div>
+        <h2>Mehrere Energiequellen</h2>
+
+        <p>
+            Eine größere Fabrik kann mehrere mechanische Quellen
+            besitzen. Dabei sollte das Netzwerk sinnvoll strukturiert
+            werden.
+        </p>
+
+        <ul>
+            <li>Energiequellen nach Produktionsbereich trennen.</li>
+            <li>Große Maschinen nicht unnötig an kleine Netze hängen.</li>
+            <li>Übertragungswege kurz halten.</li>
+            <li>Einzelne Produktionslinien modular gestalten.</li>
+        </ul>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">13 // BUILDING APPLICATION</div>
+        <h2>Integration in Industriegebäude</h2>
+
+        <p>
+            Das Treadmill-System eignet sich hervorragend für sichtbare
+            Technik.
+        </p>
+
+        <ul>
+            <li>Glaswände für sichtbare Mechanik.</li>
+            <li>Wartungsstege.</li>
+            <li>Technikräume.</li>
+            <li>Beleuchtung und Warnanzeigen.</li>
+            <li>Separate Maschinenhallen.</li>
+        </ul>
+
+        <p>
+            Damit kann aus einer rein technischen Mechanik ein
+            glaubwürdiger Bestandteil einer Fabrikarchitektur werden.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">14 // RISE OF NATIONS APPLICATION</div>
+        <h2>Einsatz im Modpack</h2>
+
+        <p>
+            Create Treadmill ist vor allem für kreative und technische
+            Projekte interessant. Es erweitert die Möglichkeiten, wie
+            eine Create-Fabrik ihre mechanische Energie darstellen und
+            organisieren kann.
+        </p>
+
+        <ul>
+            <li>Kleine autonome Produktionsanlagen.</li>
+            <li>Experimentelle Fabriken.</li>
+            <li>Dekorative Energiezentralen.</li>
+            <li>Technische Demonstrationsgebäude.</li>
+            <li>Multiplayer-Industrieprojekte.</li>
+        </ul>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">15 // PROFESSOR DOCTRINE</div>
+        <h2>Das Wichtigste zum Mitnehmen</h2>
+
+        <ul>
+            <li>Das Treadmill-Konzept nutzt Bewegung als Energiequelle.</li>
+            <li>Erst klein testen, dann in große Fabriken integrieren.</li>
+            <li>Geschwindigkeit und Belastung des Create-Netzes beachten.</li>
+            <li>Entitäten zuverlässig im vorgesehenen Bereich halten.</li>
+            <li>Mechanische Netzwerke modular planen.</li>
+            <li>Für große Fabriken verschiedene Energiequellen vergleichen.</li>
+        </ul>
+
+        <div class="note">
+            <div class="note-title">FINAL PRINCIPLE</div>
+            <p>
+                Das interessanteste Energiesystem ist nicht immer das
+                effizienteste. In Create zählt auch, wie gut eine
+                technische Idee in die gesamte Fabrik integriert wird.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">16 // REFERENCE DATA</div>
+        <h2>Originalquellen</h2>
+
+        <p>
+            Für konkrete Bauteile, Energieerzeugung und
+            versionsabhängige Mechaniken sollte die zur Installation
+            passende Projektversion geprüft werden.
+        </p>
+
+        <div class="sources">
+
+            <a href="https://modrinth.com/mod/create-treadmill"
+               target="_blank"
+               rel="noopener">
+                MODRINTH // CREATE TREADMILL
+            </a>
+
+            <a href="https://www.curseforge.com/minecraft/mc-mods/create-treadmill"
+               target="_blank"
+               rel="noopener">
+                CURSEFORGE // CREATE TREADMILL
+            </a>
+
+            <a href="https://modrinth.com/mod/create"
+               target="_blank"
+               rel="noopener">
+                MODRINTH // CREATE
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <a class="back" href="wiki.html">
+        ← ZURÜCK ZUR WIKI
+    </a>
+
+</main>
+
+<footer>
+    RISE OF NATIONS // CREATE TREADMILL // TACTICAL KNOWLEDGE DATABASE
+</footer>
+
+</body>
+</html>
