@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Farmer's Delight // RISE OF NATIONS</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background:
+        linear-gradient(rgba(5,10,15,.94), rgba(5,10,15,.97)),
+        radial-gradient(circle at top right, rgba(190,150,50,.10), transparent 35%);
+    color: #d7dde3;
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background:
+        repeating-linear-gradient(
+            0deg,
+            transparent 0px,
+            transparent 3px,
+            rgba(255,255,255,.012) 4px
+        );
+    opacity: .45;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: rgba(7,13,19,.97);
+    border-bottom: 1px solid #273746;
+    box-shadow: 0 8px 30px rgba(0,0,0,.45);
+}
+
+.header-inner {
+    max-width: 1450px;
+    margin: auto;
+    min-height: 82px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 14px 24px;
+}
+
+.logo {
+    color: #d6b35a;
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    white-space: nowrap;
+}
+
+.logo span {
+    display: block;
+    margin-top: 5px;
+    color: #71808d;
+    font-size: 9px;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+nav a {
+    color: #9ba9b5;
+    text-decoration: none;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.4px;
+    padding: 9px 11px;
+    border: 1px solid transparent;
+    transition: .2s;
+}
+
+nav a:hover {
+    color: #e0bd63;
+    border-color: #40515f;
+    background: rgba(255,255,255,.025);
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 55px 24px 90px;
+}
+
+.topline {
+    color: #687987;
+    font-size: 10px;
+    letter-spacing: 2px;
+    font-weight: 800;
+    margin-bottom: 12px;
+}
+
+h1 {
+    margin: 0;
+    color: #e0bd63;
+    font-size: clamp(38px, 6vw, 72px);
+    letter-spacing: 4px;
+    line-height: 1;
+}
+
+.subtitle {
+    margin-top: 15px;
+    color: #82909b;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.statusbar {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.status {
+    background: rgba(14,23,31,.9);
+    border: 1px solid #293b49;
+    padding: 16px;
+}
+
+.status small {
+    display: block;
+    color: #687987;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    margin-bottom: 7px;
+}
+
+.status strong {
+    color: #cbd4da;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+.online {
+    color: #65c98b !important;
+}
+
+.warning {
+    color: #e0bd63 !important;
+}
+
+.section {
+    margin-top: 34px;
+    background: rgba(10,17,24,.92);
+    border: 1px solid #293b49;
+    box-shadow: 0 15px 40px rgba(0,0,0,.2);
+}
+
+.section-head {
+    padding: 18px 22px;
+    border-bottom: 1px solid #293b49;
+    background: rgba(255,255,255,.015);
+}
+
+.section-head h2 {
+    margin: 0;
+    color: #d7dde3;
+    font-size: 16px;
+    letter-spacing: 2px;
+}
+
+.section-head span {
+    display: block;
+    margin-top: 6px;
+    color: #61717e;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+}
+
+.section-body {
+    padding: 25px;
+}
+
+p {
+    color: #aeb9c2;
+    font-size: 13px;
+    line-height: 1.8;
+    margin: 0 0 15px;
+}
+
+p:last-child {
+    margin-bottom: 0;
+}
+
+strong {
+    color: #d7dde3;
+}
+
+ul {
+    margin: 10px 0 0;
+    padding-left: 20px;
+}
+
+li {
+    color: #aeb9c2;
+    font-size: 13px;
+    line-height: 1.8;
+    margin-bottom: 5px;
+}
+
+.data-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.data-card {
+    background: #0d161e;
+    border: 1px solid #263744;
+    padding: 18px;
+}
+
+.data-card h3 {
+    margin: 0 0 10px;
+    color: #d0ad55;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+}
+
+.data-card p {
+    font-size: 12px;
+}
+
+.command-box {
+    border-left: 3px solid #c5a24f;
+    background: rgba(197,162,79,.055);
+    padding: 18px;
+    margin-top: 18px;
+}
+
+.command-box strong {
+    color: #dfbd61;
+    letter-spacing: 1px;
+}
+
+.steps {
+    counter-reset: step;
+}
+
+.step {
+    position: relative;
+    padding: 18px 18px 18px 58px;
+    border: 1px solid #263744;
+    background: #0d161e;
+    margin-bottom: 10px;
+}
+
+.step::before {
+    counter-increment: step;
+    content: counter(step, decimal-leading-zero);
+    position: absolute;
+    left: 18px;
+    top: 18px;
+    color: #d0ad55;
+    font-size: 11px;
+    font-weight: 900;
+}
+
+.step h3 {
+    margin: 0 0 8px;
+    color: #d4dce2;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.step p {
+    margin: 0;
+    font-size: 12px;
+}
+
+.source-list a {
+    display: block;
+    color: #7faac8;
+    text-decoration: none;
+    font-size: 12px;
+    padding: 9px 0;
+    border-bottom: 1px solid #1e2b35;
+}
+
+.source-list a:hover {
+    color: #e0bd63;
+}
+
+.back {
+    display: inline-block;
+    margin-top: 38px;
+    color: #8393a0;
+    text-decoration: none;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    font-weight: 800;
+    border: 1px solid #334654;
+    padding: 12px 16px;
+}
+
+.back:hover {
+    color: #e0bd63;
+    border-color: #a5873f;
+}
+
+footer {
+    border-top: 1px solid #263744;
+    padding: 22px;
+    text-align: center;
+    color: #52616d;
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+@media (max-width: 800px) {
+    .header-inner {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    nav {
+        justify-content: flex-start;
+    }
+
+    .statusbar,
+    .data-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .container {
+        padding-top: 35px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-inner">
+
+        <div class="logo">
+            RISE OF NATIONS
+            <span>TACTICAL KNOWLEDGE DATABASE</span>
+        </div>
+
+        <nav>
+            <a href="../index.html">COMMAND</a>
+            <a href="../index.html#intelligence">INTELLIGENCE</a>
+            <a href="server.html">SERVER</a>
+            <a href="database.html">DATABASE</a>
+            <a href="download.html">DOWNLOAD</a>
+            <a href="communications.html">COMMUNICATIONS</a>
+            <a href="wiki.html">WIKI</a>
+        </nav>
+
+    </div>
+</header>
+
+<main class="container">
+
+    <div class="topline">WIKI // WICHTIG // AGRICULTURE & FOOD SYSTEM</div>
+
+    <h1>FARMER'S DELIGHT</h1>
+
+    <div class="subtitle">
+        FOOD PRODUCTION // FARMING // COOKING // SURVIVAL ECONOMY
+    </div>
+
+    <div class="statusbar">
+
+        <div class="status">
+            <small>DATABASE CLASS</small>
+            <strong>IMPORTANT</strong>
+        </div>
+
+        <div class="status">
+            <small>SYSTEM ROLE</small>
+            <strong>FOOD & FARMING</strong>
+        </div>
+
+        <div class="status">
+            <small>PLAYER VALUE</small>
+            <strong>HIGH</strong>
+        </div>
+
+        <div class="status">
+            <small>STATUS</small>
+            <strong class="online">OPERATIONAL</strong>
+        </div>
+
+    </div>
+
+
+    <section class="section">
+
+        <div class="section-head">
+            <h2>01 // SYSTEM OVERVIEW</h2>
+            <span>WARUM FARMER'S DELIGHT IM MODPACK WICHTIG IST</span>
+        </div>
+
+        <div class="section-body">
+
+            <p>
+                Farmer's Delight erweitert Minecrafts Landwirtschafts- und Ernährungssystem
+                erheblich. Das Ziel ist nicht einfach, mehr Essen hinzuzufügen, sondern aus
+                dem Sammeln und Anbauen von Rohstoffen eine vollständige Versorgungskette
+                zu machen.
+            </p>
+
+            <p>
+                Dadurch wird Nahrung in <strong>RISE OF NATIONS</strong> zu einem echten
+                Bestandteil der Survival-Ökonomie. Landwirtschaft kann als Selbstversorgung,
+                als Grundlage für längere Expeditionen oder als Produktionszweig für eine
+                größere Siedlung verwendet werden.
+            </p>
+
+            <p>
+                Besonders wichtig ist die Kombination aus Landwirtschaft, Verarbeitung,
+                Kochsystem und Lagerhaltung. Wer nur einzelne Nahrungsmittel anbaut,
+                nutzt nur einen kleinen Teil des Systems.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-head">
+            <h2>02 // GRUNDPRINZIP</h2>
+            <span>FROM RAW MATERIAL TO FOOD SUPPLY</span>
+        </div>
+
+        <div class="section-body">
+
+            <p>
+                Das grundlegende Prinzip lässt sich als Produktionskette verstehen:
+            </p>
+
+            <div class="data-grid">
+
+                <div class="data-card">
+                    <h3>ROHSTOFFE</h3>
+                    <p>
+                        Pflanzen, Getreide, Gemüse, Fleisch und andere Zutaten bilden
+                        die Ausgangsbasis.
+                    </p>
+                </div>
+
+                <div class="data-card">
+                    <h3>VERARBEITUNG</h3>
+                    <p>
+                        Rohstoffe können durch Werkzeuge und spezielle Blöcke weiter
+                        verarbeitet werden.
+                    </p>
+                </div>
+
+                <div class="data-card">
+                    <h3>ZUBEREITUNG</h3>
+                    <p>
+                        Mehrere Zutaten können zu komplexeren Gerichten kombiniert werden.
+                    </p>
+                </div>
+
+                <div class="data-card">
+                    <h3>VERSORGUNG</h3>
+                    <p>
+                        Die fertigen Lebensmittel dienen als zuverlässige Versorgung
+                        für Alltag, Reisen und Expeditionen.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="command-box">
+                <strong>OPERATIONS NOTE</strong><br><br>
+                Nicht jedes neue Lebensmittel ist automatisch besser als ein anderes.
+                Entscheidend sind Verfügbarkeit, Produktionsaufwand, Sättigung,
+                Haltbarkeit und die benötigten Zutaten.
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-head">
+            <h2>03 // LANDWIRTSCHAFT</h2>
+            <span>FIELD OPERATIONS</span>
+        </div>
+
+        <div class="section-body">
+
+            <p>
+                Farmer's Delight erweitert die Bedeutung von Feldern. Landwirtschaft
+                sollte deshalb nicht nur als kleine Notfallfarm betrachtet werden.
+                Eine gut geplante Farm kann langfristig eine komplette Siedlung versorgen.
+            </p>
+
+            <ul>
+                <li>Grundnahrungsmittel frühzeitig anbauen.</li>
+                <li>Mehrere verschiedene Pflanzen gleichzeitig kultivieren.</li>
+                <li>Felder in erreichbarer Nähe zur Verarbeitung errichten.</li>
+                <li>Überschüsse einlagern statt sofort alles zu verbrauchen.</li>
+                <li>Produktionsketten bereits beim Aufbau der Farm berücksichtigen.</li>
+            </ul>
+
+            <p style="margin-top:18px;">
+                Für größere Basen lohnt sich eine Trennung zwischen
+                <strong>Rohstoffproduktion</strong> und <strong>Lebensmittelverarbeitung</strong>.
+                Dadurch bleiben Lager und Produktionsbereiche übersichtlich.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-head">
+            <h2>04 // KNIFE & FOOD PREPARATION</h2>
+            <span>PRIMARY PROCESSING TOOLS</span>
+        </div>
+
+        <div class="section-body">
+
+            <p>
+                Ein wichtiger Bestandteil von Farmer's Delight ist die Verarbeitung
+                von Zutaten mit speziellen Küchen- und Handwerksmechaniken.
+            </p>
+
+            <p>
+                Das <strong>Knife</strong> ist dabei eines der zentralen Werkzeuge.
+                Es ermöglicht bestimmte Verarbeitungsschritte und erweitert dadurch
+                die Möglichkeiten gegenüber dem normalen Minecraft-Crafting.
+            </p>
+
+            <div class="command-box">
+                <strong>TACTICAL RULE</strong><br><br>
+                Ein Werkzeug nicht nur nach seinem Angriffsschaden beurteilen.
+                In Farmer's Delight besitzt das Knife eine wichtige Produktionsfunktion
+                und sollte deshalb früh verfügbar sein.
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-head">
+            <h2>05 // STOVE & COOKING</h2>
+            <span>FIELD KITCHEN / ADVANCED FOOD PRODUCTION</span>
+        </div>
+
+        <div class="section-body">
+
+            <p>
+                Die Küche ist einer der wichtigsten Gründe, warum Farmer's Delight
+                mehr ist als eine reine Sammlung zusätzlicher Food-Items.
+            </p>
+
+            <p>
+                Der <strong>Stove</strong> dient als zentraler Bestandteil vieler
+                Kochprozesse. Je nach Rezept können mehrere Zutaten kombiniert werden,
+                wodurch aus einfachen Rohstoffen komplexere Mahlzeiten entstehen.
+            </p>
+
+            <p>
+                Eine funktionierende Küche sollte deshalb möglichst nahe an Lager,
+                Farm und Lebensmittelversorgung liegen.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-head">
+            <h2>06 // CUTTING BOARD</h2>
+            <span>MANUAL PROCESSING STATION</span>
+        </div>
+
+        <div class="section-body">
+
+            <p>
+                Das Cutting Board ist eine zentrale Verarbeitungsstation.
+                Zusammen mit dem Knife können bestimmte Zutaten in neue Zwischenprodukte
+                oder verwendbare Lebensmittelbestandteile umgewandelt werden.
+            </p>
+
+            <p>
+                Das ist besonders wichtig, weil komplexere Rezepte häufig nicht direkt
+                aus einem einzelnen Rohstoff entstehen. Stattdessen wird eine
+                <strong>Zwischenstufe</strong> benötigt.
+            </p>
+
+            <div class="data-grid">
+
+                <div class="data-card">
+                    <h3>INPUT</h3>
+                    <p>Rohstoffe und Lebensmittelzutaten.</p>
+                </div>
+
+                <div class="data-card">
+                    <h3>PROCESS</h3>
+                    <p>Verarbeitung mit passendem Werkzeug.</p>
+                </div>
+
+                <div class="data-card">
+                    <h3>OUTPUT</h3>
+                    <p>Verarbeitete Zutaten oder neue Produkte.</p>
+                </div>
+
+                <div class="data-card">
+                    <h3>NEXT STEP</h3>
+                    <p>Weiterverarbeitung oder Verwendung in einem Rezept.</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-head">
+            <h2>07 // MEAL PLANNING</h2>
+            <span>LEBENSMITTEL NICHT NUR NACH SÄTTIGUNG BEURTEILEN</span>
+        </div>
+
+        <div class="section-body">
+
+            <p>
+                Ein häufiger Fehler besteht darin, jedes Essen ausschließlich nach
+                der Anzahl der aufgefüllten Hungerpunkte zu beurteilen.
+            </p>
+
+            <p>
+                In einem großen Modpack sollte man zusätzlich berücksichtigen:
+            </p>
+
+            <ul>
+                <li>Wie leicht sind die Zutaten verfügbar?</li>
+                <li>Wie viele Produktionsschritte sind notwendig?</li>
+                <li>Wie gut lässt sich das Gericht in großen Mengen herstellen?</li>
+                <li>Welche Rohstoffe müssen dauerhaft angebaut werden?</li>
+                <li>Ist das Essen für kurze Reisen oder lange Expeditionen geeignet?</li>
+                <li>Welche weiteren Mods können dieselben Ressourcen benötigen?</li>
+            </ul>
+
+            <p style="margin-top:18px;">
+                Dadurch entsteht eine richtige Lebensmittel-Logistik statt einer
+                zufälligen Sammlung von Snacks.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-head">
+            <h2>08 // FARM DESIGN</h2>
+            <span>RECOMMENDED AGRICULTURAL LAYOUT</span>
+        </div>
+
+        <div class="section-body">
+
+            <div class="steps">
+
+                <div class="step">
+                    <h3>GRUNDVERSORGUNG</h3>
+                    <p>
+                        Baue zuerst eine kleine Farm für zuverlässige Grundnahrungsmittel.
+                    </p>
+                </div>
+
+                <div class="step">
+                    <h3>ERWEITERUNG</h3>
+                    <p>
+                        Ergänze weitere Pflanzen und Rohstoffe, sobald die Basisversorgung
+                        stabil läuft.
+                    </p>
+                </div>
+
+                <div class="step">
+                    <h3>VERARBEITUNG</h3>
+                    <p>
+                        Errichte eine feste Küchenzone mit Cutting Board, Stove und Lager.
+                    </p>
+                </div>
+
+                <div class="step">
+                    <h3>LAGERUNG</h3>
+                    <p>
+                        Trenne Rohzutaten, Zwischenprodukte und fertige Mahlzeiten.
+                    </p>
+                </div>
+
+                <div class="step">
+                    <h3>AUTOMATISIERUNG</h3>
+                    <p>
+                        Erst wenn die Produktionskette verstanden wurde, lohnt sich
+                        die Integration in größere technische Systeme.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-head">
+            <h2>09 // FARMER'S DELIGHT + CREATE</h2>
+            <span>AGRICULTURE MEETS INDUSTRIAL AUTOMATION</span>
+        </div>
+
+        <div class="section-body">
+
+            <p>
+                In <strong>RISE OF NATIONS</strong> wird Farmer's Delight besonders
+                interessant in Verbindung mit Create.
+            </p>
+
+            <p>
+                Create kann Transport, Verarbeitung und Lagerlogistik übernehmen,
+                während Farmer's Delight die Lebensmittelproduktion erweitert.
+            </p>
+
+            <div class="data-grid">
+
+                <div class="data-card">
+                    <h3>FARM</h3>
+                    <p>
+                        Landwirtschaft produziert kontinuierlich Rohstoffe.
+                    </p>
+                </div>
+
+                <div class="data-card">
+                    <h3>TRANSPORT</h3>
+                    <p>
+                        Create kann Items zwischen Produktionsstationen transportieren.
+                    </p>
+                </div>
+
+                <div class="data-card">
+                    <h3>PROCESSING</h3>
+                    <p>
+                        Zwischenprodukte können in größere Produktionsketten integriert werden.
+                    </p>
+                </div>
+
+                <div class="data-card">
+                    <h3>STORAGE</h3>
+                    <p>
+                        Große Lageranlagen ermöglichen eine zentrale Versorgung.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="command-box">
+                <strong>ADVANCED CONCEPT</strong><br><br>
+                Denke bei großen Farmen nicht mehr in einzelnen Items, sondern in
+                Produktionsketten: INPUT → PROCESSING → STORAGE → CONSUMPTION.
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-head">
+            <h2>10 // FARMER'S DELIGHT + JEI</h2>
+            <span>RECIPE INTELLIGENCE</span>
+        </div>
+
+        <div class="section-body">
+
+            <p>
+                Aufgrund der Vielzahl an Rezepten sollte <strong>JEI</strong> als
+                primäres Nachschlagewerk verwendet werden.
+            </p>
+
+            <p>
+                Suche zunächst nach dem gewünschten Gericht und öffne anschließend
+                das Rezept. Prüfe danach jede benötigte Zutat einzeln.
+            </p>
+
+            <p>
+                Besonders bei komplexeren Mahlzeiten ist es sinnvoll, die gesamte
+                Produktionskette rückwärts zu verfolgen:
+            </p>
+
+            <div class="command-box">
+                <strong>MEAL → INGREDIENTS → PROCESSED INGREDIENTS → RAW MATERIALS</strong>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-head">
+            <h2>11 // COMMON ERRORS</h2>
+            <span>FIELD PROBLEMS & SOLUTIONS</span>
+        </div>
+
+        <div class="section-body">
+
+            <div class="data-grid">
+
+                <div class="data-card">
+                    <h3>PROBLEM // ZUTAT FEHLT</h3>
+                    <p>
+                        Rezept in JEI öffnen und die fehlende Zutat bis zur
+                        ursprünglichen Rohstoffquelle zurückverfolgen.
+                    </p>
+                </div>
+
+                <div class="data-card">
+                    <h3>PROBLEM // FARM ZU KLEIN</h3>
+                    <p>
+                        Nicht nur den aktuellen Verbrauch betrachten. Bei komplexen
+                        Rezepten steigt der Rohstoffbedarf schnell.
+                    </p>
+                </div>
+
+                <div class="data-card">
+                    <h3>PROBLEM // LAGER CHAOS</h3>
+                    <p>
+                        Rohstoffe, Zwischenprodukte und fertige Mahlzeiten getrennt lagern.
+                    </p>
+                </div>
+
+                <div class="data-card">
+                    <h3>PROBLEM // ZU VIEL PRODUKTION</h3>
+                    <p>
+                        Produktionsketten nicht unnötig überdimensionieren. Erst Verbrauch
+                        beobachten, dann automatisieren.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-head">
+            <h2>12 // ADVANCED SURVIVAL STRATEGY</h2>
+            <span>HOW TO TURN FOOD INTO INFRASTRUCTURE</span>
+        </div>
+
+        <div class="section-body">
+
+            <p>
+                Auf höheren Spielstufen sollte Nahrung nicht mehr als nebensächliches
+                Survival-Feature behandelt werden.
+            </p>
+
+            <p>
+                Eine größere Nation, Basis oder Industrieanlage benötigt eine
+                zuverlässige Versorgung. Deshalb lohnt sich eine zentrale
+                Landwirtschafts- und Lebensmittelzone.
+            </p>
+
+            <ul>
+                <li>Rohstoffproduktion zentralisieren.</li>
+                <li>Produktionsketten dokumentieren.</li>
+                <li>Große Lagerbestände für Expeditionen anlegen.</li>
+                <li>Überschüsse für Multiplayer-Spieler bereitstellen.</li>
+                <li>Lebensmittelproduktion mit Create-Logistik verbinden.</li>
+                <li>JEI für jede neue Produktionskette verwenden.</li>
+            </ul>
+
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-head">
+            <h2>13 // RECOMMENDED LEARNING ORDER</h2>
+            <span>FROM SURVIVAL TO INDUSTRIAL FOOD PRODUCTION</span>
+        </div>
+
+        <div class="section-body">
+
+            <div class="steps">
+
+                <div class="step">
+                    <h3>STUFE 01 // BASIC FARMING</h3>
+                    <p>
+                        Grundlegende Pflanzen und Lebensmittelversorgung aufbauen.
+                    </p>
+                </div>
+
+                <div class="step">
+                    <h3>STUFE 02 // PROCESSING</h3>
+                    <p>
+                        Knife und Cutting Board verstehen und erste Zutaten verarbeiten.
+                    </p>
+                </div>
+
+                <div class="step">
+                    <h3>STUFE 03 // COOKING</h3>
+                    <p>
+                        Stove und komplexere Gerichte einsetzen.
+                    </p>
+                </div>
+
+                <div class="step">
+                    <h3>STUFE 04 // STORAGE</h3>
+                    <p>
+                        Rohstoffe und fertige Lebensmittel systematisch lagern.
+                    </p>
+                </div>
+
+                <div class="step">
+                    <h3>STUFE 05 // INDUSTRIALIZATION</h3>
+                    <p>
+                        Farmer's Delight mit Create und den übrigen Produktionssystemen
+                        des Modpacks verbinden.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-head">
+            <h2>14 // RISE OF NATIONS FIELD NOTE</h2>
+            <span>MODPACK-SPEZIFISCHE EMPFEHLUNG</span>
+        </div>
+
+        <div class="section-body">
+
+            <p>
+                Farmer's Delight sollte in RISE OF NATIONS nicht als optionales
+                Dekorationssystem betrachtet werden. Die Kombination aus Farming,
+                Kochen, Lagerung und Create macht den Mod zu einem wichtigen Bestandteil
+                einer langfristigen Versorgungskette.
+            </p>
+
+            <p>
+                Gerade im Multiplayer kann eine gut organisierte Lebensmittelproduktion
+                eine komplette Gruppe oder Siedlung versorgen.
+            </p>
+
+            <div class="command-box">
+                <strong>MISSION OBJECTIVE</strong><br><br>
+                Errichte eine zuverlässige Lebensmittelversorgung, bevor deine
+                technischen Produktionsketten stark wachsen. Industrie benötigt
+                Rohstoffe – und Spieler benötigen Nahrung.
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-head">
+            <h2>15 // ORIGINAL SOURCES</h2>
+            <span>EXTERNAL DOCUMENTATION & PROJECT INFORMATION</span>
+        </div>
+
+        <div class="section-body source-list">
+
+            <a href="https://modrinth.com/mod/farmers-delight" target="_blank">
+                MODRINTH // FARMER'S DELIGHT
+            </a>
+
+            <a href="https://www.curseforge.com/minecraft/mc-mods/farmers-delight" target="_blank">
+                CURSEFORGE // FARMER'S DELIGHT
+            </a>
+
+            <a href="https://github.com/vectorwing/FarmersDelight" target="_blank">
+                GITHUB // FARMER'S DELIGHT
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <a class="back" href="wiki-important.html">
+        ← ZURÜCK ZU WICHTIG
+    </a>
+
+</main>
+
+<footer>
+    RISE OF NATIONS // TACTICAL KNOWLEDGE DATABASE // FARMER'S DELIGHT
+</footer>
+
+</body>
+</html>
