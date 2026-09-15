@@ -4,21 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>RISE OF NATIONS — COMMAND SYSTEM</title>
+    <title>Rise of Nations // Command</title>
 
     <link rel="stylesheet" href="style.css">
     <script src="config/site-config.js"></script>
 
     <style>
 
-        /* =====================================================
-           CINEMATIC INTRO
-        ===================================================== */
+        /* =========================================================
+           BASE
+        ========================================================= */
 
-        #ron-intro {
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            min-height: 100%;
+            background: #050a0f;
+            color: #dce6ed;
+            font-family:
+                "Arial Narrow",
+                "Segoe UI",
+                Arial,
+                sans-serif;
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        button,
+        input {
+            font: inherit;
+        }
+
+
+        /* =========================================================
+           INTRO
+        ========================================================= */
+
+        .ron-intro {
             position: fixed;
             inset: 0;
-            z-index: 99999;
+            z-index: 9999;
 
             display: flex;
             align-items: center;
@@ -29,451 +64,402 @@
             background:
                 radial-gradient(
                     circle at center,
-                    rgba(20,55,85,.25),
-                    rgba(0,0,0,.97) 65%
+                    rgba(25, 72, 105, 0.20),
+                    transparent 45%
                 ),
                 linear-gradient(
                     135deg,
-                    #05090d,
-                    #0b1117 50%,
-                    #020406
+                    #020507 0%,
+                    #071019 50%,
+                    #020507 100%
                 );
 
             transition:
-                opacity 1s ease,
-                visibility 1s ease;
+                opacity 0.8s ease,
+                visibility 0.8s ease;
         }
 
-        #ron-intro.hidden {
+        .ron-intro.hidden {
             opacity: 0;
             visibility: hidden;
             pointer-events: none;
         }
 
-        .intro-grid {
+        .ron-intro-grid {
             position: absolute;
             inset: 0;
 
             background-image:
                 linear-gradient(
-                    rgba(80,130,170,.05) 1px,
+                    rgba(70, 135, 180, 0.06) 1px,
                     transparent 1px
                 ),
                 linear-gradient(
                     90deg,
-                    rgba(80,130,170,.05) 1px,
+                    rgba(70, 135, 180, 0.06) 1px,
                     transparent 1px
                 );
 
             background-size: 55px 55px;
 
-            animation: gridMove 15s linear infinite;
+            animation: introGrid 12s linear infinite;
         }
 
-        @keyframes gridMove {
+        @keyframes introGrid {
             from {
-                transform: translate(0,0);
+                transform: translateY(0);
             }
 
             to {
-                transform: translate(55px,55px);
+                transform: translateY(55px);
             }
         }
 
-        .intro-glow {
+        .ron-intro-glow {
             position: absolute;
-
-            width: 600px;
-            height: 600px;
-
+            width: 700px;
+            height: 700px;
             border-radius: 50%;
 
-            background: rgba(30,110,160,.08);
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(38, 112, 160, 0.15),
+                    transparent 65%
+                );
 
-            filter: blur(80px);
-
-            animation: glowPulse 4s ease-in-out infinite;
+            animation: introGlow 4s ease-in-out infinite;
         }
 
-        @keyframes glowPulse {
-            0%,100% {
-                transform: scale(.9);
-                opacity: .3;
+        @keyframes introGlow {
+            0%,
+            100% {
+                transform: scale(0.95);
+                opacity: 0.5;
             }
 
             50% {
-                transform: scale(1.1);
-                opacity: .7;
+                transform: scale(1.08);
+                opacity: 1;
             }
         }
 
-        .intro-content {
+        .ron-intro-content {
             position: relative;
             z-index: 2;
 
-            width: 90%;
-            max-width: 1000px;
-
+            width: min(1050px, 90%);
             text-align: center;
         }
 
-        .intro-classification {
-            margin-bottom: 35px;
+        .ron-intro-classification {
+            margin-bottom: 25px;
 
-            color: #7fa6c4;
-
+            color: #628aa7;
             font-size: 11px;
+            font-weight: 900;
+            letter-spacing: 4px;
+        }
+
+        .ron-intro-title {
+            margin: 0;
+
+            color: #e5edf2;
+
+            font-size:
+                clamp(48px, 9vw, 125px);
+
+            font-weight: 1000;
+            letter-spacing: 7px;
+            line-height: 0.9;
+
+            text-shadow:
+                0 0 20px rgba(60, 145, 200, 0.18),
+                0 0 60px rgba(30, 100, 150, 0.10);
+        }
+
+        .ron-intro-subtitle {
+            margin-top: 25px;
+
+            color: #718a9b;
+
+            font-size: 12px;
+            font-weight: 800;
             letter-spacing: 5px;
         }
 
-        .intro-logo {
-            font-family:
-                Impact,
-                Haettenschweiler,
-                "Arial Narrow Bold",
-                sans-serif;
-
-            font-size: clamp(55px,9vw,125px);
-
-            line-height: .9;
-
-            letter-spacing: 8px;
-
-            color: #e8edf2;
-
-            text-shadow:
-                0 0 20px rgba(80,150,210,.35),
-                0 4px 0 #0a1117;
-
-            animation: logoReveal 2.5s ease forwards;
-        }
-
-        @keyframes logoReveal {
-            from {
-                opacity: 0;
-                transform: scale(.85);
-                filter: blur(10px);
-            }
-
-            to {
-                opacity: 1;
-                transform: scale(1);
-                filter: blur(0);
-            }
-        }
-
-        .intro-subtitle {
-            margin-top: 25px;
-
-            color: #b58b35;
-
-            font-size: 13px;
-            letter-spacing: 7px;
-
-            opacity: 0;
-
-            animation:
-                introFade 1.5s ease 1.2s forwards;
-        }
-
-        .intro-status {
+        .ron-intro-status {
             display: flex;
             justify-content: center;
+            gap: 12px;
             flex-wrap: wrap;
-            gap: 28px;
 
             margin-top: 55px;
-
-            opacity: 0;
-
-            animation:
-                introFade 1s ease 2s forwards;
         }
 
-        .intro-status span {
-            color: #6e8799;
+        .ron-intro-status span {
+            padding: 8px 13px;
 
-            font-size: 10px;
-            letter-spacing: 2px;
+            border: 1px solid rgba(90, 140, 175, 0.28);
+
+            background: rgba(7, 16, 24, 0.65);
+
+            color: #7892a4;
+
+            font-size: 9px;
+            font-weight: 900;
+            letter-spacing: 1.5px;
         }
 
-        .intro-status span::before {
-            content: "●";
-
-            margin-right: 8px;
-
-            color: #4d8fbd;
-        }
-
-        .intro-warning {
-            margin-top: 28px;
-
-            color: #8b969d;
-
-            font-size: 10px;
-            letter-spacing: 3px;
-
-            opacity: 0;
-
-            animation:
-                introFade 1s ease 2.8s forwards;
-        }
-
-        @keyframes introFade {
-            from {
-                opacity: 0;
-                transform: translateY(12px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .skip-intro {
+        .ron-intro-skip {
             position: absolute;
-
             right: 30px;
-            bottom: 30px;
+            bottom: 25px;
 
-            z-index: 5;
+            padding: 10px 16px;
 
-            padding: 10px 18px;
+            border: 1px solid rgba(90, 140, 175, 0.3);
+            background: rgba(5, 12, 18, 0.8);
 
-            background: rgba(5,10,15,.9);
-
-            border: 1px solid #38546a;
-
-            color: #8da9bd;
-
-            font-size: 10px;
-            letter-spacing: 2px;
+            color: #7d96a7;
 
             cursor: pointer;
+
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 2px;
+
+            transition: 0.2s ease;
         }
 
-        .skip-intro:hover {
-            background: #172733;
-            border-color: #759bb5;
-            color: #ffffff;
+        .ron-intro-skip:hover {
+            color: #dceeff;
+            border-color: rgba(90, 160, 210, 0.6);
+            background: rgba(20, 55, 80, 0.35);
         }
 
 
-        /* =====================================================
-           FIKTIVER LOGIN
-        ===================================================== */
+        /* =========================================================
+           LOGIN
+        ========================================================= */
 
-        #ron-login {
-            position: fixed;
-            inset: 0;
-            z-index: 9990;
+        .ron-login {
+            min-height: 100vh;
 
             display: flex;
-
             align-items: center;
             justify-content: center;
+
+            padding: 40px;
 
             background:
                 radial-gradient(
                     circle at center,
-                    rgba(20,55,80,.22),
-                    rgba(0,0,0,.97)
-                );
+                    rgba(20, 75, 110, 0.10),
+                    transparent 50%
+                ),
+                #050a0f;
         }
 
-        #ron-login.hidden {
+        .ron-login.hidden {
             display: none;
         }
 
-        .login-panel {
-            width: min(440px,90%);
-
-            box-sizing: border-box;
+        .ron-login-panel {
+            width: min(470px, 100%);
 
             padding: 38px;
+
+            border:
+                1px solid rgba(80, 140, 175, 0.35);
 
             background:
                 linear-gradient(
                     145deg,
-                    rgba(17,27,35,.98),
-                    rgba(5,10,14,.98)
+                    rgba(16, 28, 38, 0.98),
+                    rgba(5, 12, 18, 0.98)
                 );
 
-            border: 1px solid #36566d;
-
             box-shadow:
-                0 0 40px rgba(0,0,0,.7),
-                inset 0 0 25px rgba(50,100,130,.04);
+                0 25px 70px rgba(0, 0, 0, 0.45),
+                inset 0 0 35px rgba(40, 100, 140, 0.04);
         }
 
-        .login-classification {
-            margin-bottom: 12px;
-
-            color: #6f91a8;
+        .ron-login-classification {
+            color: #638aa5;
 
             font-size: 9px;
+            font-weight: 900;
             letter-spacing: 3px;
+
+            margin-bottom: 15px;
         }
 
-        .login-title {
-            margin-bottom: 8px;
+        .ron-login-title {
+            margin: 0;
 
-            color: #dce6ed;
-
-            font-size: 28px;
-            letter-spacing: 4px;
-        }
-
-        .login-subtitle {
-            margin-bottom: 30px;
-
-            color: #728897;
-
-            font-size: 10px;
+            font-size: 30px;
             letter-spacing: 2px;
+            font-weight: 1000;
         }
 
-        .login-panel label {
+        .ron-login-subtitle {
+            margin-top: 8px;
+
+            color: #708697;
+
+            font-size: 11px;
+            letter-spacing: 1.5px;
+        }
+
+        .ron-login-form {
+            margin-top: 30px;
+        }
+
+        .ron-login-label {
             display: block;
 
             margin-bottom: 7px;
 
-            color: #7794a8;
+            color: #718b9c;
 
             font-size: 9px;
+            font-weight: 900;
             letter-spacing: 2px;
         }
 
-        .login-panel input {
-            display: block;
-
+        .ron-login-input {
             width: 100%;
 
-            box-sizing: border-box;
-
-            padding: 13px;
-
             margin-bottom: 18px;
+            padding: 13px 14px;
 
-            background: #080e13;
-
-            border: 1px solid #304957;
+            border:
+                1px solid rgba(80, 130, 160, 0.35);
 
             outline: none;
 
+            background: #071018;
+
             color: #dce6ed;
 
-            font-family: inherit;
+            transition: 0.2s ease;
         }
 
-        .login-panel input:focus {
-            border-color: #5e8cac;
+        .ron-login-input:focus {
+            border-color: rgba(80, 155, 205, 0.7);
 
             box-shadow:
-                0 0 12px rgba(60,130,180,.15);
+                0 0 0 2px rgba(40, 110, 155, 0.08);
         }
 
-        .login-button {
+        .ron-login-button {
             width: 100%;
 
-            padding: 13px;
+            padding: 14px;
 
-            margin-top: 5px;
+            border: 1px solid rgba(75, 145, 195, 0.55);
 
             background:
                 linear-gradient(
                     180deg,
-                    #274b64,
-                    #162d3d
+                    rgba(25, 80, 115, 0.65),
+                    rgba(15, 52, 76, 0.75)
                 );
 
-            border: 1px solid #416d88;
-
-            color: #dceaf2;
-
-            font-weight: bold;
-
-            letter-spacing: 3px;
+            color: #dceeff;
 
             cursor: pointer;
+
+            font-size: 11px;
+            font-weight: 900;
+            letter-spacing: 2px;
+
+            transition: 0.2s ease;
         }
 
-        .login-button:hover {
+        .ron-login-button:hover {
+            border-color: rgba(100, 180, 230, 0.8);
+
             background:
                 linear-gradient(
                     180deg,
-                    #35627e,
-                    #1d3c50
+                    rgba(35, 100, 140, 0.75),
+                    rgba(18, 62, 88, 0.85)
                 );
         }
 
-        .login-error {
-            min-height: 16px;
+        .ron-login-error {
+            min-height: 18px;
 
-            margin-top: 15px;
+            margin-top: 14px;
 
-            color: #c45d5d;
+            color: #c95757;
 
             font-size: 10px;
+            font-weight: 900;
             letter-spacing: 1px;
         }
 
+        .ron-login-note {
+            margin-top: 25px;
+            padding-top: 18px;
 
-        /* =====================================================
-           COMMAND HEADER — INTELLIGENCE STYLE
-        ===================================================== */
+            border-top: 1px solid rgba(90, 130, 155, 0.16);
+
+            color: #607585;
+
+            font-size: 10px;
+            line-height: 1.6;
+        }
+
+
+        /* =========================================================
+           DASHBOARD
+        ========================================================= */
+
+        .ron-dashboard.hidden {
+            display: none;
+        }
 
         .ron-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
             display: flex;
-
             align-items: center;
+            gap: 28px;
 
-            justify-content: space-between;
+            padding: 13px 28px;
 
-            gap: 25px;
-
-            min-height: 62px;
-
-            padding: 0 28px;
+            border-bottom:
+                1px solid rgba(80, 145, 185, 0.25);
 
             background:
                 linear-gradient(
                     180deg,
-                    #0c151c,
-                    #070d12
+                    rgba(7, 16, 24, 0.98),
+                    rgba(4, 10, 15, 0.98)
                 );
 
-            border-top: 1px solid #203b4d;
-
-            border-bottom: 1px solid #294b61;
-
             box-shadow:
-                0 4px 18px rgba(0,0,0,.45);
+                0 8px 30px rgba(0, 0, 0, 0.2);
         }
 
         .ron-brand {
             position: relative;
 
-            display: flex;
+            display: block;
 
-            align-items: center;
+            padding-left: 38px;
 
-            min-height: 62px;
-
-            color: #dbe6ec !important;
-
+            color: #dce6ed !important;
             text-decoration: none !important;
 
-            font-family:
-                Impact,
-                Haettenschweiler,
-                "Arial Narrow Bold",
-                sans-serif;
-
-            font-size: 20px;
-
-            letter-spacing: 3px;
+            font-size: 15px;
+            font-weight: 1000;
+            letter-spacing: 2px;
 
             white-space: nowrap;
         }
@@ -481,178 +467,126 @@
         .ron-brand::before {
             content: "RON";
 
-            display: inline-flex;
+            position: absolute;
+            left: 0;
+            top: 50%;
 
+            transform: translateY(-50%);
+
+            width: 28px;
+            height: 28px;
+
+            display: flex;
             align-items: center;
             justify-content: center;
 
-            width: 34px;
-            height: 34px;
-
-            margin-right: 12px;
+            border: 1px solid rgba(90, 155, 200, 0.55);
 
             background:
                 linear-gradient(
-                    135deg,
-                    #1c3b50,
-                    #0c1d29
+                    145deg,
+                    #172d3d,
+                    #071018
                 );
 
-            border: 1px solid #426a82;
+            color: #9bc5df;
 
-            color: #9eb8c9;
-
-            font-family: Arial, sans-serif;
-
-            font-size: 8px;
-
-            letter-spacing: 1px;
-
-            box-shadow:
-                inset 0 0 10px rgba(80,150,190,.08);
+            font-size: 7px;
+            font-weight: 1000;
+            letter-spacing: 0.5px;
         }
 
-        .ron-brand:hover {
-            color: #ffffff !important;
+        .ron-brand span {
+            display: block;
 
-            text-decoration: none !important;
+            margin-top: 2px;
+
+            color: #5e829a;
+
+            font-size: 8px;
+            letter-spacing: 2.5px;
         }
 
         .ron-nav {
             display: flex;
-
-            align-items: stretch;
-
-            justify-content: flex-end;
-
-            gap: 0;
-
             flex-wrap: wrap;
-
-            height: 100%;
+            gap: 5px;
         }
 
         .ron-nav a {
-            position: relative;
+            padding: 8px 10px;
 
-            display: flex;
-
-            align-items: center;
-
-            padding: 0 13px;
-
-            min-height: 62px;
-
-            color: #7895a8 !important;
-
-            background: transparent !important;
-
-            border-left: 1px solid transparent;
-
-            border-right: 1px solid transparent;
-
+            color: #8299a9 !important;
             text-decoration: none !important;
+
+            border: 1px solid transparent;
 
             font-size: 9px;
+            font-weight: 900;
+            letter-spacing: 1.3px;
 
-            font-weight: bold;
-
-            letter-spacing: 1.6px;
-
-            transition:
-                color .2s ease,
-                background .2s ease,
-                border-color .2s ease;
-        }
-
-        .ron-nav a::after {
-            content: "";
-
-            position: absolute;
-
-            left: 13px;
-            right: 13px;
-
-            bottom: 0;
-
-            height: 2px;
-
-            background: #3f7b9d;
-
-            opacity: 0;
-
-            transition: opacity .2s ease;
-        }
-
-        .ron-nav a:visited {
-            color: #7895a8 !important;
-
-            text-decoration: none !important;
+            transition: 0.18s ease;
         }
 
         .ron-nav a:hover {
-            color: #dceaf2 !important;
+            color: #dceeff !important;
+
+            border-color:
+                rgba(75, 140, 180, 0.35);
 
             background:
-                rgba(40,75,95,.22) !important;
-
-            border-left-color: #203d4e;
-            border-right-color: #203d4e;
-
-            text-decoration: none !important;
+                rgba(20, 60, 85, 0.3);
         }
 
-        .ron-nav a:hover::after {
-            opacity: 1;
+        .ron-nav a.home {
+            color: #b8d1e0 !important;
         }
 
 
-        /* =====================================================
-           DASHBOARD
-        ===================================================== */
+        /* =========================================================
+           DASHBOARD CONTENT
+        ========================================================= */
 
-        #ron-dashboard.hidden {
-            display: none;
+        .ron-dashboard-main {
+            width: min(1400px, 94%);
+
+            margin: 0 auto;
+
+            padding:
+                45px 0 70px;
         }
 
-        .hero-panel {
+        .ron-classification {
+            color: #5f88a3;
+
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 3px;
+        }
+
+        .ron-hero {
             position: relative;
 
-            padding: 35px;
+            margin-top: 18px;
+            padding: 45px;
 
-            margin-bottom: 25px;
-
-            overflow: hidden;
+            border:
+                1px solid rgba(80, 140, 175, 0.32);
 
             background:
                 linear-gradient(
-                    135deg,
-                    rgba(20,38,50,.9),
-                    rgba(7,13,18,.96)
+                    145deg,
+                    rgba(18, 32, 43, 0.96),
+                    rgba(6, 14, 21, 0.97)
                 );
 
-            border: 1px solid #304d60;
+            overflow: hidden;
         }
 
-        .hero-panel::before {
+        .ron-hero::after {
             content: "";
 
             position: absolute;
-
-            top: 0;
-            left: 0;
-
-            width: 4px;
-            height: 100%;
-
-            background: #376b88;
-        }
-
-        .hero-panel::after {
-            content: "";
-
-            position: absolute;
-
             inset: 0;
 
             pointer-events: none;
@@ -661,747 +595,447 @@
                 linear-gradient(
                     90deg,
                     transparent,
-                    rgba(100,170,210,.03),
+                    rgba(80, 160, 210, 0.04),
                     transparent
                 );
 
-            animation:
-                dashboardScan 5s linear infinite;
+            transform: translateX(-100%);
+
+            animation: heroScan 7s linear infinite;
         }
 
-        @keyframes dashboardScan {
-            from {
+        @keyframes heroScan {
+            0% {
                 transform: translateX(-100%);
             }
 
-            to {
+            100% {
                 transform: translateX(100%);
             }
         }
 
-        .hero-kicker {
-            margin-bottom: 15px;
-
-            color: #668da5;
+        .ron-hero-code {
+            color: #6289a4;
 
             font-size: 9px;
-            font-weight: bold;
-
-            letter-spacing: 4px;
+            font-weight: 900;
+            letter-spacing: 2px;
         }
 
-        .hero-title {
-            margin: 0;
+        .ron-hero h1 {
+            margin: 15px 0 0;
 
-            color: #e4e9ed;
+            color: #e6edf1;
 
-            font-family:
-                Impact,
-                Haettenschweiler,
-                "Arial Narrow Bold",
-                sans-serif;
+            font-size:
+                clamp(42px, 7vw, 100px);
 
-            font-size: clamp(45px,7vw,90px);
-
+            font-weight: 1000;
             letter-spacing: 5px;
+            line-height: 0.95;
         }
 
-        .hero-description {
-            max-width: 750px;
+        .ron-hero p {
+            max-width: 760px;
 
-            margin-top: 15px;
+            margin-top: 22px;
 
-            color: #8194a2;
-
-            font-size: 13px;
+            color: #8296a5;
 
             line-height: 1.7;
+            font-size: 14px;
         }
 
-        .hero-actions {
+        .ron-hero-buttons {
             display: flex;
-
             flex-wrap: wrap;
-
             gap: 10px;
 
-            margin-top: 25px;
+            margin-top: 28px;
         }
 
-        .hero-actions .ron-button {
-            display: inline-flex;
+        .ron-button {
+            display: inline-block;
 
-            align-items: center;
+            padding: 12px 18px;
 
-            min-height: 38px;
-
-            box-sizing: border-box;
-
-            padding: 0 18px;
+            border:
+                1px solid rgba(75, 145, 195, 0.48);
 
             background:
                 linear-gradient(
                     180deg,
-                    #203e52,
-                    #142b3a
-                ) !important;
+                    rgba(25, 78, 108, 0.58),
+                    rgba(10, 37, 54, 0.72)
+                );
 
-            border: 1px solid #3d667d !important;
-
-            color: #c7d9e4 !important;
-
+            color: #dceeff !important;
             text-decoration: none !important;
 
-            font-size: 9px;
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 1.5px;
 
-            font-weight: bold;
-
-            letter-spacing: 1.8px;
-
-            transition:
-                background .2s ease,
-                border-color .2s ease,
-                color .2s ease,
-                transform .2s ease;
+            transition: 0.2s ease;
         }
 
-        .hero-actions .ron-button:hover {
+        .ron-button:hover {
+            border-color:
+                rgba(100, 180, 225, 0.75);
+
             transform: translateY(-1px);
+        }
+
+        .ron-button.gold {
+            border-color:
+                rgba(205, 165, 70, 0.55);
 
             background:
                 linear-gradient(
                     180deg,
-                    #2b536b,
-                    #1b3749
-                ) !important;
+                    rgba(105, 78, 24, 0.45),
+                    rgba(58, 42, 12, 0.65)
+                );
 
-            border-color: #638ba1 !important;
-
-            color: #ffffff !important;
+            color: #e4c77b !important;
         }
-
-
-        /* =====================================================
-           STATUS
-        ===================================================== */
 
         .ron-status-grid {
             display: grid;
 
             grid-template-columns:
-                repeat(4,minmax(0,1fr));
+                repeat(4, 1fr);
 
             gap: 12px;
 
-            margin-bottom: 30px;
+            margin-top: 15px;
         }
 
-        .ron-status {
-            min-height: 105px;
+        .ron-status-card {
+            padding: 20px;
 
-            padding: 18px;
-
-            box-sizing: border-box;
+            border:
+                1px solid rgba(80, 125, 155, 0.25);
 
             background:
-                linear-gradient(
-                    145deg,
-                    rgba(15,28,37,.95),
-                    rgba(7,12,16,.98)
-                );
-
-            border: 1px solid #294556;
-
-            position: relative;
+                rgba(9, 18, 26, 0.9);
         }
 
-        .ron-status::before {
-            content: "";
+        .ron-status-label {
+            color: #5e8097;
 
-            position: absolute;
-
-            top: 0;
-            left: 0;
-
-            width: 3px;
-            height: 100%;
-
-            background: #315d76;
-        }
-
-        .ron-panel-code {
-            color: #5e8197;
-
-            font-size: 8px;
-
+            font-size: 9px;
+            font-weight: 900;
             letter-spacing: 2px;
         }
 
-        .ron-panel-title {
-            margin-top: 7px;
+        .ron-status-value {
+            margin-top: 9px;
 
-            color: #b9c9d2;
+            color: #d8e5ec;
+
+            font-size: 15px;
+            font-weight: 900;
+        }
+
+        .ron-status-value.gold {
+            color: #d8b761;
+        }
+
+        .ron-section-title {
+            margin-top: 40px;
+
+            color: #8ba5b6;
 
             font-size: 10px;
-
-            font-weight: bold;
-
-            letter-spacing: 1.5px;
+            font-weight: 900;
+            letter-spacing: 3px;
         }
 
-        .status-value {
-            margin-top: 13px;
-
-            color: #d6e1e7;
-
-            font-size: 14px;
-
-            font-weight: bold;
-
-            letter-spacing: 1px;
-        }
-
-        .status-value.online {
-            display: flex;
-
-            align-items: center;
-
-            gap: 8px;
-        }
-
-        .status-light {
-            width: 7px;
-            height: 7px;
-
-            display: inline-block;
-
-            border-radius: 50%;
-
-            background: #4f9b76;
-
-            box-shadow:
-                0 0 8px rgba(79,155,118,.6);
-        }
-
-
-        /* =====================================================
-           MODULE CARDS
-        ===================================================== */
-
-        .module-grid {
+        .ron-module-grid {
             display: grid;
 
             grid-template-columns:
-                repeat(4,minmax(0,1fr));
+                repeat(4, 1fr);
 
             gap: 12px;
 
-            margin-top: 18px;
+            margin-top: 15px;
         }
 
-        .module-card {
+        .ron-module {
             display: block;
 
-            min-height: 120px;
+            min-height: 145px;
 
-            padding: 20px;
+            padding: 22px;
 
-            box-sizing: border-box;
+            border:
+                1px solid rgba(80, 125, 155, 0.25);
 
             background:
                 linear-gradient(
                     145deg,
-                    rgba(15,28,37,.95),
-                    rgba(7,12,16,.98)
+                    rgba(15, 27, 37, 0.95),
+                    rgba(6, 14, 21, 0.95)
                 );
 
-            border: 1px solid #294556;
-
-            text-decoration: none !important;
+            color: inherit;
+            text-decoration: none;
 
             transition:
-                transform .2s ease,
-                border-color .2s ease,
-                background .2s ease;
+                transform 0.2s ease,
+                border-color 0.2s ease,
+                background 0.2s ease;
         }
 
-        .module-card:visited {
-            text-decoration: none !important;
-        }
-
-        .module-card:hover {
+        .ron-module:hover {
             transform: translateY(-2px);
+
+            border-color:
+                rgba(75, 150, 200, 0.55);
 
             background:
                 linear-gradient(
                     145deg,
-                    rgba(24,45,58,.96),
-                    rgba(7,14,19,.98)
+                    rgba(20, 42, 56, 0.98),
+                    rgba(7, 17, 25, 0.98)
                 );
-
-            border-color: #4c738a;
         }
 
-        .module-code {
-            color: #5f8298;
+        .ron-module-code {
+            color: #527a93;
 
-            font-size: 8px;
-
-            font-weight: bold;
-
+            font-size: 9px;
+            font-weight: 900;
             letter-spacing: 2px;
         }
 
-        .module-title {
-            margin-top: 11px;
+        .ron-module h3 {
+            margin: 12px 0 8px;
 
-            color: #d5e0e6;
+            color: #dce6ed;
 
-            font-size: 13px;
-
-            font-weight: bold;
-
-            letter-spacing: 1.8px;
+            font-size: 16px;
+            letter-spacing: 1px;
         }
 
-        .module-description {
-            margin-top: 9px;
+        .ron-module p {
+            margin: 0;
 
-            color: #718692;
+            color: #708594;
 
-            font-size: 10px;
-
+            font-size: 11px;
             line-height: 1.5;
         }
 
-
-        /* =====================================================
-           FOOTER
-        ===================================================== */
-
         .ron-footer {
-            display: flex;
+            margin-top: 45px;
+            padding-top: 18px;
 
-            justify-content: space-between;
+            border-top:
+                1px solid rgba(80, 120, 145, 0.16);
 
-            gap: 20px;
+            color: #4f697b;
 
-            margin-top: 35px;
-
-            padding: 18px 0;
-
-            border-top: 1px solid #243d4d;
-
-            color: #536b7a;
-
-            font-size: 8px;
-
-            letter-spacing: 1.5px;
+            font-size: 9px;
+            font-weight: 900;
+            letter-spacing: 2px;
         }
 
 
-        /* =====================================================
+        /* =========================================================
            RESPONSIVE
-        ===================================================== */
+        ========================================================= */
 
         @media (max-width: 1050px) {
 
             .ron-header {
-                flex-direction: column;
-
                 align-items: flex-start;
-
-                padding: 12px 20px;
+                flex-direction: column;
             }
 
-            .ron-brand {
-                min-height: 45px;
-            }
-
-            .ron-nav {
-                width: 100%;
-
-                height: auto;
-            }
-
-            .ron-nav a {
-                min-height: 40px;
-            }
-
-            .ron-status-grid {
+            .ron-status-grid,
+            .ron-module-grid {
                 grid-template-columns:
-                    repeat(2,minmax(0,1fr));
+                    repeat(2, 1fr);
             }
 
-            .module-grid {
-                grid-template-columns:
-                    repeat(2,minmax(0,1fr));
-            }
         }
 
         @media (max-width: 650px) {
 
+            .ron-header {
+                padding: 13px 18px;
+            }
+
+            .ron-dashboard-main {
+                width: 92%;
+            }
+
+            .ron-hero {
+                padding: 28px;
+            }
+
+            .ron-status-grid,
+            .ron-module-grid {
+                grid-template-columns: 1fr;
+            }
+
             .ron-nav {
-                display: grid;
-
-                grid-template-columns:
-                    repeat(2,1fr);
-
-                width: 100%;
+                gap: 3px;
             }
 
             .ron-nav a {
-                min-height: 36px;
-
-                justify-content: center;
-
-                padding: 0 6px;
-
                 font-size: 8px;
+                padding: 7px 8px;
             }
 
-            .ron-status-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .module-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-panel {
-                padding: 25px 20px;
-            }
-
-            .ron-footer {
-                flex-direction: column;
-            }
-
-            .intro-logo {
-                letter-spacing: 4px;
-            }
-
-            .skip-intro {
-                right: 15px;
-                bottom: 15px;
-            }
-
-            .login-panel {
-                padding: 25px;
-            }
         }
 
     </style>
 </head>
 
+
 <body>
 
 
-<!-- =====================================================
-     INTRO
-===================================================== -->
+    <!-- =========================================================
+         INTRO
+    ========================================================= -->
 
-<div id="ron-intro">
+    <section
+        id="ron-intro"
+        class="ron-intro">
 
-    <div class="intro-grid"></div>
+        <div class="ron-intro-grid"></div>
+        <div class="ron-intro-glow"></div>
 
-    <div class="intro-glow"></div>
+        <div class="ron-intro-content">
 
-    <div class="intro-content">
-
-        <div class="intro-classification">
-            RISE OF NATIONS // GLOBAL COMMAND NETWORK
-        </div>
-
-        <div class="intro-logo">
-            RISE OF NATIONS
-        </div>
-
-        <div class="intro-subtitle">
-            COMMAND • INDUSTRY • INTELLIGENCE • SURVIVAL
-        </div>
-
-        <div class="intro-status">
-            <span>SYSTEM ONLINE</span>
-            <span>NETWORK INITIALIZED</span>
-            <span>DATABASE READY</span>
-        </div>
-
-        <div class="intro-warning">
-            INITIALIZING COMMAND ENVIRONMENT...
-        </div>
-
-    </div>
-
-    <button
-        class="skip-intro"
-        onclick="skipIntro()">
-
-        SKIP INTRO
-
-    </button>
-
-</div>
-
-
-<!-- =====================================================
-     FIKTIVER LOGIN
-===================================================== -->
-
-<div id="ron-login">
-
-    <div class="login-panel">
-
-        <div class="login-classification">
-            RISE OF NATIONS // SECURE ACCESS
-        </div>
-
-        <div class="login-title">
-            COMMAND LOGIN
-        </div>
-
-        <div class="login-subtitle">
-            SIMULATED ACCESS TERMINAL
-        </div>
-
-        <label for="login-user">
-            IDENTIFICATION
-        </label>
-
-        <input
-            id="login-user"
-            type="text"
-            placeholder="Enter identification">
-
-        <label for="login-password">
-            ACCESS CODE
-        </label>
-
-        <input
-            id="login-password"
-            type="password"
-            placeholder="Enter access code">
-
-        <button
-            class="login-button"
-            onclick="login()">
-
-            ACCESS COMMAND SYSTEM
-
-        </button>
-
-        <div
-            id="login-error"
-            class="login-error">
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- =====================================================
-     DASHBOARD
-===================================================== -->
-
-<div id="ron-dashboard" class="hidden">
-
-
-    <!-- HEADER -->
-
-    <header class="ron-header">
-
-        <a
-            href="index.html"
-            class="ron-brand">
-
-            RISE OF NATIONS
-
-        </a>
-
-
-        <nav class="ron-nav">
-
-            <a href="pages/communications.html">
-                COMMUNICATIONS
-            </a>
-
-            <a href="pages/intelligence.html">
-                INTELLIGENCE
-            </a>
-
-            <a href="pages/server.html">
-                SERVER
-            </a>
-
-            <a href="pages/database.html">
-                DATABASE
-            </a>
-
-            <a href="pages/download.html">
-                DOWNLOAD
-            </a>
-
-            <a href="pages/wiki.html">
-                WIKI
-            </a>
-
-            <a href="pages/faq.html">
-                FAQ
-            </a>
-
-        </nav>
-
-    </header>
-
-
-    <!-- MAIN -->
-
-    <main class="ron-page">
-
-        <div class="classification">
-            RISE OF NATIONS // GLOBAL COMMAND SYSTEM
-        </div>
-
-
-        <!-- HERO -->
-
-        <section class="hero-panel">
-
-            <div class="hero-kicker">
-                COMMAND DASHBOARD
+            <div class="ron-intro-classification">
+                NATO // COMMAND NETWORK // SYSTEM INITIALIZATION
             </div>
 
-            <h1 class="hero-title">
+            <h1 class="ron-intro-title">
                 RISE OF NATIONS
             </h1>
 
-            <p class="hero-description">
-                Global command interface for the Rise of Nations
-                Minecraft environment. Access server information,
-                intelligence reports, communications, database
-                systems and complete modpack documentation.
-            </p>
+            <div class="ron-intro-subtitle">
+                COMMAND • INDUSTRY • INTELLIGENCE • SURVIVAL
+            </div>
 
-            <div class="hero-actions">
+            <div class="ron-intro-status">
 
-                <a
-                    class="ron-button"
-                    href="pages/download.html">
+                <span>
+                    SYSTEM ONLINE
+                </span>
 
-                    DOWNLOAD MODPACK
+                <span>
+                    NETWORK READY
+                </span>
 
-                </a>
+                <span>
+                    DATABASE READY
+                </span>
 
-                <a
-                    class="ron-button"
-                    href="pages/server.html">
-
-                    SERVER STATUS
-
-                </a>
-
-                <a
-                    class="ron-button"
-                    href="pages/wiki.html">
-
-                    OPEN WIKI
-
-                </a>
+                <span>
+                    DEPLOYMENT READY
+                </span>
 
             </div>
 
-        </section>
-
-
-        <!-- STATUS -->
-
-        <div class="section-title">
-            SYSTEM STATUS
         </div>
 
+        <button
+            class="ron-intro-skip"
+            onclick="skipIntro()">
 
-        <div class="ron-status-grid">
+            SKIP INTRO
 
-            <div class="ron-status">
+        </button>
 
-                <div class="ron-panel-code">
-                    NETWORK
-                </div>
+    </section>
 
-                <div class="ron-panel-title">
-                    SERVER
-                </div>
 
-                <div class="status-value online">
 
-                    <span class="status-light"></span>
+    <!-- =========================================================
+         LOGIN
+    ========================================================= -->
 
-                    <span id="server-status">
-                        PLATZHALTER
-                    </span>
+    <section
+        id="ron-login"
+        class="ron-login">
 
-                </div>
+        <div class="ron-login-panel">
 
+            <div class="ron-login-classification">
+                RISE OF NATIONS // COMMAND NETWORK
+            </div>
+
+            <h1 class="ron-login-title">
+                ACCESS CONTROL
+            </h1>
+
+            <div class="ron-login-subtitle">
+                IDENTIFICATION REQUIRED
             </div>
 
 
-            <div class="ron-status">
+            <div class="ron-login-form">
 
-                <div class="ron-panel-code">
-                    DEPLOYMENT
-                </div>
+                <label
+                    class="ron-login-label"
+                    for="login-user">
 
-                <div class="ron-panel-title">
-                    MODPACK
-                </div>
+                    IDENTIFICATION
+
+                </label>
+
+                <input
+                    id="login-user"
+                    class="ron-login-input"
+                    type="text"
+                    autocomplete="username"
+                    placeholder="ENTER IDENTIFICATION">
+
+
+                <label
+                    class="ron-login-label"
+                    for="login-password">
+
+                    ACCESS CODE
+
+                </label>
+
+                <input
+                    id="login-password"
+                    class="ron-login-input"
+                    type="password"
+                    autocomplete="current-password"
+                    placeholder="ENTER ACCESS CODE">
+
+
+                <button
+                    class="ron-login-button"
+                    onclick="login()">
+
+                    INITIALIZE COMMAND ACCESS
+
+                </button>
+
 
                 <div
-                    class="status-value"
-                    id="modpack-version">
-
-                    PLATZHALTER
-
+                    id="login-error"
+                    class="ron-login-error">
                 </div>
 
-            </div>
 
+                <div class="ron-login-note">
 
-            <div class="ron-status">
-
-                <div class="ron-panel-code">
-                    ENVIRONMENT
-                </div>
-
-                <div class="ron-panel-title">
-                    MINECRAFT
-                </div>
-
-                <div
-                    class="status-value"
-                    id="minecraft-version">
-
-                    PLATZHALTER
-
-                </div>
-
-            </div>
-
-
-            <div class="ron-status">
-
-                <div class="ron-panel-code">
-                    COMMAND
-                </div>
-
-                <div class="ron-panel-title">
-                    SYSTEM
-                </div>
-
-                <div
-                    class="status-value"
-                    id="system-status">
-
-                    PLATZHALTER
+                    FICTIONAL COMMAND INTERFACE //
+                    THIS ACCESS SCREEN DOES NOT PROVIDE REAL
+                    AUTHENTICATION OR ACCOUNT SECURITY.
 
                 </div>
 
@@ -1409,305 +1043,554 @@
 
         </div>
 
-
-        <!-- MODULE -->
-
-        <div class="section-title">
-            COMMAND MODULES
-        </div>
+    </section>
 
 
-        <div class="module-grid">
+
+    <!-- =========================================================
+         DASHBOARD
+    ========================================================= -->
+
+    <section
+        id="ron-dashboard"
+        class="ron-dashboard hidden">
 
 
-            <a
-                href="pages/communications.html"
-                class="module-card">
+        <!-- HEADER -->
 
-                <div class="module-code">
-                    MODULE 01
-                </div>
-
-                <div class="module-title">
-                    COMMUNICATIONS
-                </div>
-
-                <div class="module-description">
-                    Community, Discord and communication channels.
-                </div>
-
-            </a>
+        <header class="ron-header">
 
 
             <a
-                href="pages/intelligence.html"
-                class="module-card">
+                href="index.html"
+                class="ron-brand">
 
-                <div class="module-code">
-                    MODULE 02
-                </div>
-
-                <div class="module-title">
-                    INTELLIGENCE
-                </div>
-
-                <div class="module-description">
-                    Global situation reports and strategic intelligence.
-                </div>
-
-            </a>
-
-
-            <a
-                href="pages/server.html"
-                class="module-card">
-
-                <div class="module-code">
-                    MODULE 03
-                </div>
-
-                <div class="module-title">
-                    SERVER
-                </div>
-
-                <div class="module-description">
-                    Server connection data and technical information.
-                </div>
-
-            </a>
-
-
-            <a
-                href="pages/database.html"
-                class="module-card">
-
-                <div class="module-code">
-                    MODULE 04
-                </div>
-
-                <div class="module-title">
-                    DATABASE
-                </div>
-
-                <div class="module-description">
-                    Modpack systems, technologies and installed modules.
-                </div>
-
-            </a>
-
-
-            <a
-                href="pages/download.html"
-                class="module-card">
-
-                <div class="module-code">
-                    MODULE 05
-                </div>
-
-                <div class="module-title">
-                    DOWNLOAD
-                </div>
-
-                <div class="module-description">
-                    Deploy the current Rise of Nations modpack.
-                </div>
-
-            </a>
-
-
-            <a
-                href="pages/wiki.html"
-                class="module-card">
-
-                <div class="module-code">
-                    MODULE 06
-                </div>
-
-                <div class="module-title">
-                    WIKI
-                </div>
-
-                <div class="module-description">
-                    Guides, mod documentation and gameplay information.
-                </div>
-
-            </a>
-
-
-            <a
-                href="pages/faq.html"
-                class="module-card">
-
-                <div class="module-code">
-                    MODULE 07
-                </div>
-
-                <div class="module-title">
-                    FAQ
-                </div>
-
-                <div class="module-description">
-                    Installation help and technical troubleshooting.
-                </div>
-
-            </a>
-
-        </div>
-
-
-        <!-- FOOTER -->
-
-        <footer class="ron-footer">
-
-            <div>
                 RISE OF NATIONS
+
+                <span>
+                    COMMAND NETWORK
+                </span>
+
+            </a>
+
+
+            <nav class="ron-nav">
+
+                <a
+                    href="index.html"
+                    class="home">
+
+                    HOME / COMMAND
+
+                </a>
+
+                <a href="pages/communications.html">
+                    COMMUNICATIONS
+                </a>
+
+                <a href="pages/intelligence.html">
+                    INTELLIGENCE
+                </a>
+
+                <a href="pages/server.html">
+                    SERVER
+                </a>
+
+                <a href="pages/database.html">
+                    DATABASE
+                </a>
+
+                <a href="pages/download.html">
+                    DOWNLOAD
+                </a>
+
+                <a href="pages/wiki.html">
+                    WIKI
+                </a>
+
+                <a href="pages/faq.html">
+                    FAQ
+                </a>
+
+            </nav>
+
+        </header>
+
+
+
+        <!-- MAIN -->
+
+        <main class="ron-dashboard-main">
+
+
+            <div class="ron-classification">
+                COMMAND NETWORK // CENTRAL OPERATIONS
             </div>
 
-            <div>
-                MODPACK:
-                <span id="footer-version">
+
+            <!-- HERO -->
+
+            <section class="ron-hero">
+
+                <div class="ron-hero-code">
+                    COMMAND DASHBOARD // RON-001
+                </div>
+
+                <h1>
+                    RISE OF NATIONS
+                </h1>
+
+                <p>
+                    Zentrale Kommandooberfläche für Modpack,
+                    Server, Kommunikation, globale Lageberichte
+                    und technische Informationen.
+                </p>
+
+
+                <div class="ron-hero-buttons">
+
+                    <a
+                        href="pages/download.html"
+                        class="ron-button">
+
+                        DOWNLOAD MODPACK
+
+                    </a>
+
+                    <a
+                        href="pages/server.html"
+                        class="ron-button">
+
+                        SERVER STATUS
+
+                    </a>
+
+                    <a
+                        href="pages/wiki.html"
+                        class="ron-button gold">
+
+                        OPEN WIKI
+
+                    </a>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- STATUS -->
+
+            <div class="ron-status-grid">
+
+
+                <div class="ron-status-card">
+
+                    <div class="ron-status-label">
+                        SERVER
+                    </div>
+
+                    <div
+                        id="dashboard-server"
+                        class="ron-status-value">
+                        PLATZHALTER
+                    </div>
+
+                </div>
+
+
+                <div class="ron-status-card">
+
+                    <div class="ron-status-label">
+                        MODPACK
+                    </div>
+
+                    <div
+                        id="dashboard-modpack"
+                        class="ron-status-value gold">
+                        PLATZHALTER
+                    </div>
+
+                </div>
+
+
+                <div class="ron-status-card">
+
+                    <div class="ron-status-label">
+                        MINECRAFT
+                    </div>
+
+                    <div
+                        id="dashboard-minecraft"
+                        class="ron-status-value">
+                        PLATZHALTER
+                    </div>
+
+                </div>
+
+
+                <div class="ron-status-card">
+
+                    <div class="ron-status-label">
+                        SYSTEM
+                    </div>
+
+                    <div
+                        id="dashboard-system"
+                        class="ron-status-value">
+                        PLATZHALTER
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- MODULES -->
+
+            <div class="ron-section-title">
+                COMMAND MODULES
+            </div>
+
+
+            <div class="ron-module-grid">
+
+
+                <a
+                    href="pages/communications.html"
+                    class="ron-module">
+
+                    <div class="ron-module-code">
+                        COM-001
+                    </div>
+
+                    <h3>
+                        COMMUNICATIONS
+                    </h3>
+
+                    <p>
+                        Community, Discord und zentrale
+                        Kommunikationskanäle.
+                    </p>
+
+                </a>
+
+
+                <a
+                    href="pages/intelligence.html"
+                    class="ron-module">
+
+                    <div class="ron-module-code">
+                        INT-001
+                    </div>
+
+                    <h3>
+                        INTELLIGENCE
+                    </h3>
+
+                    <p>
+                        Globale Lageberichte,
+                        Entwicklungen und aktuelle Meldungen.
+                    </p>
+
+                </a>
+
+
+                <a
+                    href="pages/server.html"
+                    class="ron-module">
+
+                    <div class="ron-module-code">
+                        SRV-001
+                    </div>
+
+                    <h3>
+                        SERVER
+                    </h3>
+
+                    <p>
+                        Serverstatus, Verbindung,
+                        Version und technische Informationen.
+                    </p>
+
+                </a>
+
+
+                <a
+                    href="pages/database.html"
+                    class="ron-module">
+
+                    <div class="ron-module-code">
+                        DB-001
+                    </div>
+
+                    <h3>
+                        DATABASE
+                    </h3>
+
+                    <p>
+                        Modpack-Datenbank,
+                        Kategorien und Systeminformationen.
+                    </p>
+
+                </a>
+
+
+                <a
+                    href="pages/download.html"
+                    class="ron-module">
+
+                    <div class="ron-module-code">
+                        DL-001
+                    </div>
+
+                    <h3>
+                        DOWNLOAD
+                    </h3>
+
+                    <p>
+                        Modpack, Launcher und
+                        zusätzliche Dateien.
+                    </p>
+
+                </a>
+
+
+                <a
+                    href="pages/wiki.html"
+                    class="ron-module">
+
+                    <div class="ron-module-code">
+                        WIKI-001
+                    </div>
+
+                    <h3>
+                        WIKI
+                    </h3>
+
+                    <p>
+                        Anleitungen, Wissen,
+                        Gameplay und technische Dokumentation.
+                    </p>
+
+                </a>
+
+
+                <a
+                    href="pages/faq.html"
+                    class="ron-module">
+
+                    <div class="ron-module-code">
+                        FAQ-001
+                    </div>
+
+                    <h3>
+                        FAQ
+                    </h3>
+
+                    <p>
+                        Häufige Fragen und
+                        technische Problemlösungen.
+                    </p>
+
+                </a>
+
+
+            </div>
+
+
+
+            <footer class="ron-footer">
+
+                RISE OF NATIONS //
+                COMMAND NETWORK //
+                MODPACK
+                <span id="dashboard-version">
                     PLATZHALTER
                 </span>
-            </div>
 
-            <div>
-                SYSTEM:
-                <span id="footer-system">
-                    PLATZHALTER
-                </span>
-            </div>
-
-        </footer>
-
-    </main>
-
-</div>
+            </footer>
 
 
-<script>
+        </main>
 
-/* =====================================================
-   ELEMENTE
-===================================================== */
-
-const intro =
-    document.getElementById("ron-intro");
-
-const loginScreen =
-    document.getElementById("ron-login");
-
-const dashboard =
-    document.getElementById("ron-dashboard");
+    </section>
 
 
-/* =====================================================
-   INTRO
-===================================================== */
 
-function skipIntro() {
+    <!-- =========================================================
+         SCRIPT
+    ========================================================= -->
 
-    intro.classList.add("hidden");
+    <script>
 
-}
+        const intro =
+            document.getElementById("ron-intro");
 
-setTimeout(() => {
+        const loginScreen =
+            document.getElementById("ron-login");
 
-    intro.classList.add("hidden");
-
-}, 6200);
-
-
-/* =====================================================
-   FIKTIVER LOGIN
-===================================================== */
-
-function login() {
-
-    const username =
-        document
-            .getElementById("login-user")
-            .value
-            .trim();
-
-    const password =
-        document
-            .getElementById("login-password")
-            .value;
-
-    const error =
-        document
-            .getElementById("login-error");
+        const dashboard =
+            document.getElementById("ron-dashboard");
 
 
-    if (
-        username.length > 0 &&
-        password.length > 0
-    ) {
-
-        loginScreen.classList.add("hidden");
-
-        dashboard.classList.remove("hidden");
-
-        error.textContent = "";
-
-    } else {
-
-        error.textContent =
-            "ACCESS DENIED // IDENTIFICATION REQUIRED";
-
-    }
-
-}
+        const sessionAccess =
+            sessionStorage.getItem("ron_access");
 
 
-/* =====================================================
-   CONFIG
-===================================================== */
+        function skipIntro() {
 
-document.addEventListener(
-    "DOMContentLoaded",
-    () => {
-
-        if (
-            typeof SITE_CONFIG !== "undefined"
-        ) {
-
-            document.getElementById(
-                "server-status"
-            ).textContent =
-                SITE_CONFIG.server.status;
-
-            document.getElementById(
-                "modpack-version"
-            ).textContent =
-                SITE_CONFIG.modpack.version;
-
-            document.getElementById(
-                "minecraft-version"
-            ).textContent =
-                SITE_CONFIG.website.minecraftVersion;
-
-            document.getElementById(
-                "system-status"
-            ).textContent =
-                SITE_CONFIG.system.status;
-
-            document.getElementById(
-                "footer-version"
-            ).textContent =
-                SITE_CONFIG.modpack.version;
-
-            document.getElementById(
-                "footer-system"
-            ).textContent =
-                SITE_CONFIG.system.status;
+            intro.classList.add("hidden");
 
         }
 
-    }
-);
 
-</script>
+        /*
+         * EXISTING SESSION
+         *
+         * Wenn bereits eingeloggt wurde,
+         * wird Login + Intro übersprungen.
+         */
+
+        if (sessionAccess === "granted") {
+
+            intro.classList.add("hidden");
+
+            loginScreen.classList.add("hidden");
+
+            dashboard.classList.remove("hidden");
+
+        }
+
+
+        /*
+         * INTRO TIMER
+         */
+
+        setTimeout(() => {
+
+            if (sessionAccess !== "granted") {
+
+                intro.classList.add("hidden");
+
+            }
+
+        }, 6200);
+
+
+        /*
+         * LOGIN
+         */
+
+        function login() {
+
+            const username =
+                document
+                    .getElementById("login-user")
+                    .value
+                    .trim();
+
+
+            const password =
+                document
+                    .getElementById("login-password")
+                    .value;
+
+
+            const error =
+                document
+                    .getElementById("login-error");
+
+
+            if (
+                username.length > 0 &&
+                password.length > 0
+            ) {
+
+                sessionStorage.setItem(
+                    "ron_access",
+                    "granted"
+                );
+
+
+                loginScreen.classList.add(
+                    "hidden"
+                );
+
+
+                dashboard.classList.remove(
+                    "hidden"
+                );
+
+
+                error.textContent = "";
+
+            } else {
+
+                error.textContent =
+                    "ACCESS DENIED // IDENTIFICATION REQUIRED";
+
+            }
+
+        }
+
+
+        /*
+         * ENTER-TASTE IM LOGIN
+         */
+
+        document
+            .getElementById("login-password")
+            .addEventListener(
+                "keydown",
+                function(event) {
+
+                    if (event.key === "Enter") {
+
+                        login();
+
+                    }
+
+                }
+            );
+
+
+        /*
+         * CONFIG
+         */
+
+        document.getElementById(
+            "dashboard-server"
+        ).textContent =
+            SITE_CONFIG.server.status;
+
+
+        document.getElementById(
+            "dashboard-modpack"
+        ).textContent =
+            SITE_CONFIG.website.modpackVersion;
+
+
+        document.getElementById(
+            "dashboard-minecraft"
+        ).textContent =
+            SITE_CONFIG.website.minecraftVersion;
+
+
+        document.getElementById(
+            "dashboard-system"
+        ).textContent =
+            SITE_CONFIG.system.status;
+
+
+        document.getElementById(
+            "dashboard-version"
+        ).textContent =
+            SITE_CONFIG.website.modpackVersion;
+
+    </script>
 
 </body>
 </html>
