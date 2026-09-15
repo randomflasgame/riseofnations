@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RISE OF NATIONS // CREATE CHOCOLATE FOUNTAIN</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+    min-height:100vh;
+    background:
+        linear-gradient(rgba(5,10,15,.97),rgba(5,10,15,.99)),
+        repeating-linear-gradient(135deg,rgba(255,255,255,.018) 0 2px,transparent 2px 9px);
+    color:#dbe3e8;
+    font-family:"Segoe UI",Arial,sans-serif;
+}
+
+header{
+    background:rgba(5,10,15,.98);
+    border-bottom:1px solid #293944;
+    box-shadow:0 5px 25px rgba(0,0,0,.45);
+}
+
+.header-inner{
+    max-width:1500px;
+    margin:auto;
+    padding:18px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:30px;
+}
+
+.logo{
+    color:#d6b85c;
+    font-size:22px;
+    font-weight:950;
+    letter-spacing:3px;
+}
+
+.logo span{
+    display:block;
+    color:#687b86;
+    font-size:9px;
+    letter-spacing:2px;
+    margin-top:4px;
+}
+
+nav{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+    gap:7px;
+}
+
+nav a{
+    color:#9aabb4;
+    text-decoration:none;
+    padding:9px 11px;
+    border:1px solid transparent;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.2px;
+    transition:.2s;
+}
+
+nav a:hover{
+    color:#d6b85c;
+    background:#111b22;
+    border-color:#3b4d58;
+}
+
+main{
+    max-width:1250px;
+    margin:auto;
+    padding:70px 30px 100px;
+}
+
+.eyebrow{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:3px;
+    margin-bottom:15px;
+}
+
+h1{
+    color:#edf2f4;
+    font-size:clamp(40px,6.5vw,78px);
+    line-height:.95;
+    letter-spacing:4px;
+    font-weight:950;
+}
+
+.subtitle{
+    max-width:930px;
+    margin-top:22px;
+    color:#8497a2;
+    line-height:1.75;
+    font-size:15px;
+}
+
+.meta{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-top:38px;
+}
+
+.meta-box{
+    padding:18px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+
+.meta-label{
+    color:#596c77;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:8px;
+}
+
+.meta-value{
+    color:#d6b85c;
+    font-size:13px;
+    font-weight:900;
+}
+
+.section{
+    margin-top:35px;
+    padding:30px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+
+.section-number{
+    color:#526773;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:2px;
+    margin-bottom:9px;
+}
+
+h2{
+    color:#e1e8eb;
+    font-size:22px;
+    letter-spacing:1px;
+    margin-bottom:18px;
+}
+
+h3{
+    color:#d6b85c;
+    font-size:14px;
+    letter-spacing:1px;
+    margin:25px 0 10px;
+}
+
+p{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    margin-bottom:13px;
+}
+
+ul,ol{
+    margin:12px 0 18px 22px;
+}
+
+li{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    padding-left:5px;
+}
+
+.note{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#111c23;
+    border-left:3px solid #4d91bd;
+}
+
+.note-title{
+    color:#4d91bd;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+
+.warning{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#17140e;
+    border-left:3px solid #d6b85c;
+}
+
+.warning-title{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:18px;
+}
+
+th,td{
+    text-align:left;
+    padding:13px 14px;
+    border:1px solid #293c47;
+    font-size:12px;
+}
+
+th{
+    color:#d6b85c;
+    background:#111c23;
+    font-size:10px;
+    letter-spacing:1px;
+}
+
+td{
+    color:#8ea0a9;
+    background:#0a141a;
+}
+
+.sources{
+    display:grid;
+    gap:10px;
+    margin-top:15px;
+}
+
+.sources a{
+    display:block;
+    padding:13px 15px;
+    background:#101b22;
+    border:1px solid #293c47;
+    color:#9fb0b9;
+    text-decoration:none;
+    font-size:12px;
+    transition:.2s;
+}
+
+.sources a:hover{
+    color:#d6b85c;
+    border-color:#d6b85c;
+}
+
+.back{
+    display:inline-block;
+    margin-top:45px;
+    padding:12px 16px;
+    color:#d6b85c;
+    border:1px solid #4c4530;
+    text-decoration:none;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    transition:.2s;
+}
+
+.back:hover{
+    background:#17150f;
+    border-color:#d6b85c;
+}
+
+footer{
+    border-top:1px solid #202e36;
+    padding:25px 30px;
+    text-align:center;
+    color:#465861;
+    font-size:9px;
+    letter-spacing:2px;
+}
+
+@media(max-width:850px){
+    .header-inner{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    nav{
+        justify-content:flex-start;
+    }
+
+    .meta{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:550px){
+    .meta{
+        grid-template-columns:1fr;
+    }
+
+    main{
+        padding:45px 18px 70px;
+    }
+
+    .section{
+        padding:22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-inner">
+
+        <div class="logo">
+            RISE OF NATIONS
+            <span>TACTICAL KNOWLEDGE DATABASE</span>
+        </div>
+
+        <nav>
+            <a href="../index.html">COMMAND</a>
+            <a href="intelligence.html">INTELLIGENCE</a>
+            <a href="server.html">SERVER</a>
+            <a href="database.html">DATABASE</a>
+            <a href="download.html">DOWNLOAD</a>
+            <a href="communications.html">COMMUNICATIONS</a>
+            <a href="wiki.html">WIKI</a>
+        </nav>
+
+    </div>
+</header>
+
+<main>
+
+    <div class="eyebrow">
+        PROFESSOR DATABASE // FOOD INDUSTRY // CREATE
+    </div>
+
+    <h1>CREATE CHOCOLATE FOUNTAIN</h1>
+
+    <p class="subtitle">
+        Create Chocolate Fountain ergänzt das Create-Ökosystem um
+        eine thematisch auf Schokolade und deren Verarbeitung
+        ausgerichtete Produktionsmechanik. Der Mod eignet sich
+        besonders für automatisierte Lebensmittelanlagen und
+        dekorative gastronomische Konstruktionen.
+    </p>
+
+    <div class="meta">
+
+        <div class="meta-box">
+            <div class="meta-label">MOD</div>
+            <div class="meta-value">CREATE CHOCOLATE FOUNTAIN</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">VERSION</div>
+            <div class="meta-value">1.1.0</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">MINECRAFT</div>
+            <div class="meta-value">1.21.1</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">SYSTEM</div>
+            <div class="meta-value">FOOD / FLUID / DECORATION</div>
+        </div>
+
+    </div>
+
+
+    <section class="section">
+
+        <div class="section-number">01 // SYSTEM OVERVIEW</div>
+        <h2>Was ist Create Chocolate Fountain?</h2>
+
+        <p>
+            Der Mod erweitert Create um Inhalte rund um Schokolade
+            und gastronomische Verarbeitung. Dabei verbindet er
+            Produktionsmechaniken mit einem auffälligen dekorativen
+            Element.
+        </p>
+
+        <p>
+            Dadurch eignet sich das System sowohl für automatisierte
+            Lebensmittelproduktion als auch für Cafés, Restaurants,
+            Märkte und andere öffentliche Gebäude.
+        </p>
+
+        <div class="note">
+            <div class="note-title">CORE PRINCIPLE</div>
+            <p>
+                Schokolade kann innerhalb einer Create-Anlage nicht
+                nur hergestellt, sondern als Teil eines sichtbaren
+                Produktionsprozesses präsentiert werden.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">02 // CHOCOLATE PRODUCTION</div>
+        <h2>Schokoladenproduktion</h2>
+
+        <p>
+            Wie bei anderen Create-Erweiterungen sollte auch die
+            Schokoladenproduktion als Produktionskette betrachtet
+            werden.
+        </p>
+
+        <ol>
+            <li>Ausgangsmaterialien bereitstellen.</li>
+            <li>Verarbeitungsschritte durchführen.</li>
+            <li>Schokoladenprodukt herstellen.</li>
+            <li>Produkt zwischenlagern.</li>
+            <li>Produkt weiterverarbeiten oder ausgeben.</li>
+        </ol>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">03 // INGREDIENT LOGISTICS</div>
+        <h2>Zutatenversorgung</h2>
+
+        <p>
+            Eine automatisierte Anlage benötigt einen stabilen
+            Materialfluss.
+        </p>
+
+        <ul>
+            <li>Rohstoffe zentral bereitstellen.</li>
+            <li>Verarbeitungsschritte voneinander trennen.</li>
+            <li>Zwischenprodukte puffern.</li>
+            <li>Fertige Produkte automatisch abtransportieren.</li>
+        </ul>
+
+        <div class="warning">
+            <div class="warning-title">LOGISTICS WARNING</div>
+            <p>
+                Bei mehreren Produktionslinien sollte die
+                Zutatenversorgung ausreichend dimensioniert sein.
+                Ein einzelner fehlender Bestandteil kann sonst die
+                gesamte Kette stoppen.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">04 // FLUID LOGISTICS</div>
+        <h2>Flüssigkeiten und Schokolade</h2>
+
+        <p>
+            Flüssigkeitsbasierte Produktionsprozesse benötigen
+            besonders klare Leitungs- und Speicherstrukturen.
+        </p>
+
+        <ul>
+            <li>Tanks als Puffer einsetzen.</li>
+            <li>Pumpen sinnvoll positionieren.</li>
+            <li>Leitungen übersichtlich führen.</li>
+            <li>Ein- und Ausgänge eindeutig definieren.</li>
+        </ul>
+
+        <p>
+            In großen Fabriken empfiehlt sich eine zentrale
+            Flüssigkeitsversorgung mit lokalen Puffern an den
+            einzelnen Produktionsstationen.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">05 // FOUNTAIN SYSTEM</div>
+        <h2>Die Schokoladenfontäne</h2>
+
+        <p>
+            Das namensgebende Element eignet sich besonders für
+            sichtbare gastronomische Anlagen.
+        </p>
+
+        <p>
+            Statt die Verarbeitung vollständig hinter Wänden zu
+            verstecken, kann die Fontäne als Teil des Designs
+            präsentiert werden.
+        </p>
+
+        <ul>
+            <li>Café-Theken.</li>
+            <li>Restaurants.</li>
+            <li>Marktplätze.</li>
+            <li>Fabrikhallen mit Lebensmittelproduktion.</li>
+            <li>Event- und Festgebäude.</li>
+        </ul>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">06 // AUTOMATION</div>
+        <h2>Automatisierung mit Create</h2>
+
+        <p>
+            Der eigentliche Mehrwert entsteht durch die Verbindung
+            mit den normalen Create-Transport- und Automationssystemen.
+        </p>
+
+        <table>
+
+            <tr>
+                <th>SYSTEM</th>
+                <th>FUNKTION</th>
+            </tr>
+
+            <tr>
+                <td>BELTS</td>
+                <td>Itemtransport</td>
+            </tr>
+
+            <tr>
+                <td>FUNNELS</td>
+                <td>Gezielte Ein- und Ausgabe</td>
+            </tr>
+
+            <tr>
+                <td>TANKS</td>
+                <td>Flüssigkeitspuffer</td>
+            </tr>
+
+            <tr>
+                <td>PIPES / PUMPS</td>
+                <td>Flüssigkeitstransport</td>
+            </tr>
+
+            <tr>
+                <td>CONTRAPTIONS</td>
+                <td>Spezialisierte Bewegungsabläufe</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">07 // BUFFER SYSTEMS</div>
+        <h2>Puffer und Lager</h2>
+
+        <p>
+            Zwischenlager sind besonders hilfreich, wenn die
+            Schokoladenproduktion mit anderen Lebensmittelketten
+            verbunden wird.
+        </p>
+
+        <ul>
+            <li>Rohstoffpuffer.</li>
+            <li>Flüssigkeitspuffer.</li>
+            <li>Zwischenproduktlager.</li>
+            <li>Fertigwarenlager.</li>
+        </ul>
+
+        <div class="note">
+            <div class="note-title">STABILITY</div>
+            <p>
+                Ein Puffer entkoppelt Produktionsschritte voneinander
+                und verhindert, dass kleine Schwankungen sofort
+                die komplette Anlage blockieren.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">08 // CAFÉ INTEGRATION</div>
+        <h2>Integration in ein Café</h2>
+
+        <p>
+            Eine Schokoladenfontäne eignet sich besonders für
+            öffentliche Gebäude.
+        </p>
+
+        <ol>
+            <li>Zutatenlager im hinteren Bereich.</li>
+            <li>Produktionsstation in der Küche.</li>
+            <li>Schokoladenversorgung zur Theke.</li>
+            <li>Fontäne als sichtbares Zentrum.</li>
+            <li>Ausgabe oder Dekoration im Gästebereich.</li>
+        </ol>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">09 // INDUSTRIAL FOOD FACTORY</div>
+        <h2>Große Lebensmittelanlage</h2>
+
+        <p>
+            Der Mod lässt sich auch in einen größeren
+            Lebensmittelkomplex integrieren.
+        </p>
+
+        <ul>
+            <li>Landwirtschaftliche Rohstoffe.</li>
+            <li>Zentrales Zutatenlager.</li>
+            <li>Schokoladenproduktion.</li>
+            <li>Weitere Lebensmittelverarbeitung.</li>
+            <li>Zentrales Fertigwarenlager.</li>
+            <li>Transport per Create-Zug.</li>
+        </ul>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">10 // DECORATIVE USE</div>
+        <h2>Dekorative Nutzung</h2>
+
+        <p>
+            Die Fontäne kann auch ohne eine riesige
+            Produktionsanlage als dekoratives Objekt eingesetzt werden.
+        </p>
+
+        <ul>
+            <li>Restaurants.</li>
+            <li>Hotels.</li>
+            <li>Stadtzentren.</li>
+            <li>Festhallen.</li>
+            <li>Marktplätze.</li>
+            <li>Luxusgebäude.</li>
+        </ul>
+
+        <p>
+            Besonders interessant ist die Kombination mit Create Deco
+            und anderen dekorativen Create-Erweiterungen.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">11 // MOD INTEGRATION</div>
+        <h2>Zusammenspiel mit anderen Mods</h2>
+
+        <p>
+            Für eine größere Lebensmittelindustrie kann Create
+            Chocolate Fountain mit weiteren Mods des Modpacks
+            kombiniert werden.
+        </p>
+
+        <ul>
+            <li>Farmer’s Delight für Lebensmittelverarbeitung.</li>
+            <li>Create Café für gastronomische Produktion.</li>
+            <li>Cooking for Blockheads für Küchenorganisation.</li>
+            <li>Let's Do: Brewery für Getränkeproduktion.</li>
+            <li>Let's Do: Farm & Charm für Landwirtschaft.</li>
+            <li>Create Deco für industrielle Architektur.</li>
+        </ul>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">12 // TROUBLESHOOTING</div>
+        <h2>Fehleranalyse</h2>
+
+        <h3>Keine Produktion</h3>
+
+        <p>
+            Prüfe zuerst, ob alle benötigten Ausgangsmaterialien
+            verfügbar sind.
+        </p>
+
+        <h3>Flüssigkeit erreicht die Anlage nicht</h3>
+
+        <p>
+            Kontrolliere Tank, Pumpe und Leitungsverbindung.
+        </p>
+
+        <h3>Output wird nicht weitertransportiert</h3>
+
+        <p>
+            Prüfe die angeschlossenen Funnels, Belts und Lager.
+        </p>
+
+        <h3>Produktionskette stoppt sporadisch</h3>
+
+        <p>
+            Suche nach fehlenden Puffern oder einem Produktionsschritt,
+            der langsamer als die übrige Anlage arbeitet.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">13 // MULTIPLAYER ECONOMY</div>
+        <h2>Schokolade als Handelsprodukt</h2>
+
+        <p>
+            In einer spielerbetriebenen Wirtschaft können
+            Lebensmittel und Süßwaren als Handelswaren eingesetzt
+            werden.
+        </p>
+
+        <ul>
+            <li>Cafés beliefern.</li>
+            <li>Restaurants versorgen.</li>
+            <li>Produkte auf Märkten anbieten.</li>
+            <li>Lebensmittelpakete zusammenstellen.</li>
+            <li>Produktionsüberschüsse exportieren.</li>
+        </ul>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">14 // RISE OF NATIONS APPLICATION</div>
+        <h2>Einsatz im Modpack</h2>
+
+        <p>
+            Create Chocolate Fountain ist weniger ein zentraler
+            Industrie-Mod als eine thematische Ergänzung für die
+            Lebensmittel- und Gastronomie-Infrastruktur.
+        </p>
+
+        <ul>
+            <li>Cafés.</li>
+            <li>Restaurants.</li>
+            <li>Hotels.</li>
+            <li>Lebensmittelfabriken.</li>
+            <li>Marktplätze.</li>
+            <li>Städtische Eventgebäude.</li>
+        </ul>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">15 // PROFESSOR DOCTRINE</div>
+        <h2>Das Wichtigste zum Mitnehmen</h2>
+
+        <ul>
+            <li>Schokoladenproduktion kann in Create-Automation integriert werden.</li>
+            <li>Flüssigkeitssysteme benötigen klare Leitungsstrukturen.</li>
+            <li>Puffer stabilisieren komplexe Produktionsketten.</li>
+            <li>Die Fontäne kann funktional und dekorativ eingesetzt werden.</li>
+            <li>Gastronomie lässt sich mit industrieller Logistik verbinden.</li>
+            <li>Der Mod ergänzt besonders gut andere Food- und Create-Mods.</li>
+        </ul>
+
+        <div class="warning">
+            <div class="warning-title">FINAL PRINCIPLE</div>
+            <p>
+                Eine gute Lebensmittelanlage produziert nicht nur
+                Nahrung – sie verbindet Versorgung, Verarbeitung,
+                Logistik und Präsentation zu einem vollständigen System.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">16 // REFERENCE DATA</div>
+        <h2>Originalquellen</h2>
+
+        <p>
+            Für konkrete Rezepte, Blockfunktionen und
+            versionsabhängige Mechaniken sollten die Projektseiten
+            der verwendeten Version konsultiert werden.
+        </p>
+
+        <div class="sources">
+
+            <a href="https://modrinth.com/mod/create-chocolate-fountain"
+               target="_blank"
+               rel="noopener">
+                MODRINTH // CREATE CHOCOLATE FOUNTAIN
+            </a>
+
+            <a href="https://www.curseforge.com/minecraft/mc-mods/create-chocolate-fountain"
+               target="_blank"
+               rel="noopener">
+                CURSEFORGE // CREATE CHOCOLATE FOUNTAIN
+            </a>
+
+            <a href="https://modrinth.com/mod/create"
+               target="_blank"
+               rel="noopener">
+                MODRINTH // CREATE
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <a class="back" href="wiki.html">
+        ← ZURÜCK ZUR WIKI
+    </a>
+
+</main>
+
+<footer>
+    RISE OF NATIONS // CREATE CHOCOLATE FOUNTAIN // TACTICAL KNOWLEDGE DATABASE
+</footer>
+
+</body>
+</html>
