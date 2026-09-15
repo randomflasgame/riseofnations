@@ -6,357 +6,291 @@
 
     <title>INTELLIGENCE // RISE OF NATIONS</title>
 
+    <script src="../config/site-config.js"></script>
+
     <style>
         * {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            margin: 0;
             min-height: 100vh;
-
             background:
-                radial-gradient(
-                    circle at 50% 0%,
-                    rgba(20, 55, 80, 0.25),
-                    transparent 45%
-                ),
-                linear-gradient(
-                    rgba(3, 8, 13, 0.97),
-                    rgba(4, 9, 14, 0.99)
-                );
-
-            color: #d8e2ea;
-            font-family: "Courier New", monospace;
+                radial-gradient(circle at 50% 10%, rgba(25, 70, 95, 0.22), transparent 35%),
+                linear-gradient(135deg, #05080b, #0a1117 50%, #05080b);
+            color: #dce8ef;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
         header {
             position: sticky;
             top: 0;
-            z-index: 1000;
+            z-index: 100;
+            border-bottom: 1px solid #1e3440;
+            background: rgba(5, 10, 14, 0.96);
+            backdrop-filter: blur(12px);
+        }
 
-            min-height: 76px;
-
+        .header-inner {
+            width: min(1450px, 94%);
+            margin: auto;
+            min-height: 78px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-
-            padding: 0 35px;
-
-            background:
-                linear-gradient(
-                    180deg,
-                    rgba(8, 20, 31, 0.98),
-                    rgba(5, 13, 21, 0.98)
-                );
-
-            border-bottom: 1px solid #29485f;
-
-            box-shadow:
-                0 4px 25px rgba(0, 0, 0, 0.45);
+            gap: 30px;
         }
 
-        .logo {
-            color: #d4af37;
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            color: #fff;
+            text-decoration: none;
+        }
 
-            font-size: 21px;
-            font-weight: bold;
+        .brand-emblem {
+            width: 43px;
+            height: 43px;
+            border: 2px solid #b89543;
+            display: grid;
+            place-items: center;
+            color: #b89543;
+            background: #101820;
+            font-size: 19px;
+            font-weight: 900;
+            transform: rotate(45deg);
+        }
 
-            letter-spacing: 3px;
+        .brand-emblem span {
+            transform: rotate(-45deg);
+        }
+
+        .brand-title {
+            font-size: 16px;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+
+        .brand-subtitle {
+            margin-top: 4px;
+            color: #627985;
+            font-size: 8px;
+            letter-spacing: 2px;
         }
 
         nav {
             display: flex;
-            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            gap: 6px;
         }
 
         nav a {
-            position: relative;
-
-            padding: 10px 14px;
-
-            color: #b8c9d6;
-
+            color: #8da5b1;
             text-decoration: none;
-
-            font-size: 12px;
-            font-weight: bold;
-
-            letter-spacing: 2px;
-
-            transition: 0.2s;
+            padding: 11px 12px;
+            font-size: 10px;
+            letter-spacing: 1.5px;
+            border: 1px solid transparent;
+            transition: 0.2s ease;
         }
 
         nav a:hover {
-            color: #ffffff;
-            background: rgba(79, 209, 255, 0.08);
-        }
-
-        nav a::after {
-            content: "";
-
-            position: absolute;
-
-            left: 0;
-            right: 0;
-            bottom: 3px;
-
-            height: 1px;
-
-            background: #4fd1ff;
-
-            transform: scaleX(0);
-
-            transition: 0.2s;
-        }
-
-        nav a:hover::after {
-            transform: scaleX(1);
-        }
-
-        .status {
-            color: #55d68a;
-
-            font-size: 11px;
-            font-weight: bold;
-
-            letter-spacing: 2px;
+            color: #e8f3f8;
+            border-color: #294858;
+            background: #0b1820;
         }
 
         main {
-            max-width: 1250px;
-
-            margin: 0 auto;
-
-            padding: 75px 30px;
+            width: min(1100px, 92%);
+            margin: auto;
+            padding: 80px 0;
         }
 
-        .classified {
-            color: #4fd1ff;
-
-            font-size: 12px;
+        .eyebrow {
+            color: #b89543;
+            font-size: 10px;
+            letter-spacing: 4px;
             font-weight: bold;
-
-            letter-spacing: 5px;
-
             margin-bottom: 18px;
+        }
+
+        .hero {
+            padding: 50px 0 60px;
+            border-bottom: 1px solid #1c303b;
         }
 
         h1 {
-            margin: 0;
-
-            color: #ffffff;
-
-            font-size: 64px;
-
-            letter-spacing: 8px;
+            font-size: clamp(42px, 7vw, 82px);
+            line-height: 0.95;
+            letter-spacing: 4px;
+            color: #edf4f7;
+            margin-bottom: 22px;
         }
 
-        .subtitle {
-            margin-top: 18px;
+        h1 span {
+            color: #5da1c7;
+        }
 
-            color: #8297a7;
+        .hero p {
+            max-width: 760px;
+            color: #8197a2;
+            font-size: 14px;
+            line-height: 1.8;
+        }
 
+        .status-panel {
+            margin-top: 35px;
+            border: 1px solid #294553;
+            background:
+                linear-gradient(145deg, rgba(17, 32, 41, 0.96), rgba(6, 13, 18, 0.96));
+            padding: 30px;
+        }
+
+        .panel-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #1b323e;
+        }
+
+        .panel-title {
+            color: #dce8ef;
             font-size: 13px;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
 
-            letter-spacing: 3px;
+        .alert {
+            font-size: 9px;
+            letter-spacing: 2px;
+            color: #d3a84f;
+        }
+
+        .alert::before {
+            content: "";
+            display: inline-block;
+            width: 7px;
+            height: 7px;
+            margin-right: 8px;
+            border-radius: 50%;
+            background: currentColor;
+            box-shadow: 0 0 9px currentColor;
         }
 
         .intel-grid {
-            margin-top: 55px;
-
             display: grid;
-
-            grid-template-columns:
-                repeat(2, 1fr);
-
-            gap: 18px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
         }
 
-        .intel-panel {
-            position: relative;
-
-            padding: 28px;
-
-            min-height: 235px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(12, 27, 39, 0.97),
-                    rgba(6, 15, 23, 0.97)
-                );
-
-            border: 1px solid #29485f;
-
-            box-shadow:
-                inset 0 0 25px rgba(0, 0, 0, 0.25);
-
-            transition: 0.2s;
+        .intel-item {
+            border: 1px solid #182f3a;
+            background: #09141b;
+            padding: 20px;
         }
 
-        .intel-panel:hover {
-            border-color: #4fd1ff;
-
-            transform: translateY(-2px);
-        }
-
-        .intel-panel::after {
-            content: "";
-
-            position: absolute;
-
-            top: 0;
-            right: 0;
-
-            width: 35px;
-            height: 35px;
-
-            border-top: 1px solid #4fd1ff;
-            border-right: 1px solid #4fd1ff;
-
-            opacity: 0.45;
-        }
-
-        .intel-panel h2 {
-            margin: 0 0 20px;
-
-            color: #ffffff;
-
-            font-size: 17px;
-
-            letter-spacing: 3px;
-        }
-
-        .priority {
-            display: inline-block;
-
-            margin-bottom: 18px;
-
-            padding: 5px 9px;
-
-            border: 1px solid #31566f;
-
-            color: #4fd1ff;
-
-            font-size: 9px;
-            font-weight: bold;
-
+        .label {
+            color: #506d79;
+            font-size: 8px;
             letter-spacing: 2px;
+            margin-bottom: 9px;
         }
 
-        .priority.warning {
-            color: #d4af37;
-
-            border-color: #66572a;
-        }
-
-        .priority.alert {
-            color: #d45b5b;
-
-            border-color: #6b3030;
-        }
-
-        .intel-text {
-            color: #9aabb7;
-
-            font-size: 13px;
-
-            line-height: 1.8;
-        }
-
-        .meta {
-            margin-top: 22px;
-
-            padding-top: 12px;
-
-            border-top: 1px solid #1d3445;
-
-            color: #60798a;
-
-            font-size: 10px;
-
-            letter-spacing: 1px;
+        .value {
+            color: #cbdbe1;
+            font-size: 14px;
+            font-weight: bold;
+            line-height: 1.5;
         }
 
         .situation {
-            margin-top: 20px;
-
-            padding: 25px;
-
-            background: rgba(9, 19, 29, 0.95);
-
-            border: 1px solid #29485f;
-
-            border-left: 3px solid #4fd1ff;
+            grid-column: 1 / -1;
         }
 
-        .situation-title {
-            color: #4fd1ff;
-
-            font-size: 11px;
-            font-weight: bold;
-
-            letter-spacing: 3px;
-
-            margin-bottom: 12px;
-        }
-
-        .situation-text {
-            color: #8297a7;
-
+        .situation .value {
+            color: #8db1c1;
             font-size: 13px;
+            font-weight: normal;
+        }
 
+        .info-section {
+            margin-top: 45px;
+        }
+
+        .section-title {
+            color: #d5e1e6;
+            font-size: 13px;
+            letter-spacing: 3px;
+            margin-bottom: 18px;
+        }
+
+        .info-box {
+            border-left: 2px solid #315b70;
+            padding: 18px 22px;
+            background: rgba(9, 20, 27, 0.7);
+            color: #788f9a;
+            font-size: 12px;
             line-height: 1.8;
         }
 
-        .back {
-            display: inline-block;
-
-            margin-top: 35px;
-
-            color: #4fd1ff;
-
-            text-decoration: none;
-
-            font-size: 11px;
-            font-weight: bold;
-
-            letter-spacing: 2px;
+        footer {
+            width: min(1100px, 92%);
+            margin: auto;
+            padding: 25px 0 40px;
+            border-top: 1px solid #1c303b;
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            color: #455c67;
+            font-size: 9px;
+            letter-spacing: 1.5px;
         }
 
-        .back:hover {
-            color: #ffffff;
-        }
+        @media (max-width: 800px) {
 
-        @media (max-width: 900px) {
-
-            header {
-                flex-wrap: wrap;
-
-                gap: 15px;
-
-                padding: 18px 25px;
+            .header-inner {
+                padding: 15px 0;
+                flex-direction: column;
+                align-items: flex-start;
             }
 
             nav {
-                order: 3;
-
-                width: 100%;
-
-                justify-content: center;
+                justify-content: flex-start;
             }
 
             .intel-grid {
                 grid-template-columns: 1fr;
             }
 
-            h1 {
-                font-size: 42px;
+            .situation {
+                grid-column: auto;
+            }
+        }
+
+        @media (max-width: 550px) {
+
+            main {
+                padding-top: 45px;
             }
 
-            .status {
-                display: none;
+            .status-panel {
+                padding: 20px;
+            }
+
+            .panel-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            footer {
+                flex-direction: column;
             }
         }
     </style>
@@ -366,36 +300,55 @@
 
 <header>
 
-    <div class="logo">
-        RISE OF NATIONS
-    </div>
+    <div class="header-inner">
 
-    <nav>
+        <a href="../index.html" class="brand">
 
-        <a href="../index.html">
-            COMMAND
+            <div class="brand-emblem">
+                <span>R</span>
+            </div>
+
+            <div>
+                <div class="brand-title">
+                    RISE OF NATIONS
+                </div>
+
+                <div class="brand-subtitle">
+                    COMMAND & CONTROL NETWORK
+                </div>
+            </div>
+
         </a>
 
-        <a href="intelligence.html">
-            INTELLIGENCE
-        </a>
 
-        <a href="server.html">
-            SERVER
-        </a>
+        <nav>
 
-        <a href="database.html">
-            DATABASE
-        </a>
+            <a href="communications.html">
+                COMMUNICATIONS
+            </a>
 
-        <a href="download.html">
-            DOWNLOAD
-        </a>
+            <a href="intelligence.html">
+                INTELLIGENCE
+            </a>
 
-    </nav>
+            <a href="server.html">
+                SERVER
+            </a>
 
-    <div class="status">
-        ● INTELLIGENCE ONLINE
+            <a href="database.html">
+                DATABASE
+            </a>
+
+            <a href="download.html">
+                DOWNLOAD
+            </a>
+
+            <a href="wiki.html">
+                WIKI
+            </a>
+
+        </nav>
+
     </div>
 
 </header>
@@ -403,200 +356,185 @@
 
 <main>
 
-    <div class="classified">
-        INTELLIGENCE // GLOBAL SITUATION
-    </div>
+    <section class="hero">
 
+        <div class="eyebrow">
+            GLOBAL SITUATION // INTELLIGENCE
+        </div>
 
-    <h1>
-        INTELLIGENCE
-    </h1>
+        <h1>
+            GLOBAL<br>
+            <span>INTELLIGENCE</span>
+        </h1>
 
-
-    <div class="subtitle">
-        CURRENT EVENTS // WORLD SITUATION // FIELD REPORTS
-    </div>
-
-
-    <section class="intel-grid">
-
-
-        <!-- REPORT 01 -->
-
-        <article class="intel-panel">
-
-            <div class="priority">
-                INFORMATION
-            </div>
-
-            <h2>
-                INDUSTRIAL PRODUCTION
-            </h2>
-
-            <div class="intel-text">
-                Die industrielle Produktion nimmt weiter zu.
-                Neue Produktionsanlagen und technische Systeme
-                werden in verschiedenen Regionen beobachtet.
-            </div>
-
-            <div class="meta">
-                REPORT // INDUSTRIAL SECTOR
-            </div>
-
-        </article>
-
-
-        <!-- REPORT 02 -->
-
-        <article class="intel-panel">
-
-            <div class="priority warning">
-                ELEVATED
-            </div>
-
-            <h2>
-                MILITARY READINESS
-            </h2>
-
-            <div class="intel-text">
-                Die militärische Bereitschaft wurde erhöht.
-                Mehrere Fraktionen verstärken ihre Ausrüstung
-                und bereiten sich auf mögliche Konflikte vor.
-            </div>
-
-            <div class="meta">
-                REPORT // DEFENSE NETWORK
-            </div>
-
-        </article>
-
-
-        <!-- REPORT 03 -->
-
-        <article class="intel-panel">
-
-            <div class="priority">
-                DISCOVERY
-            </div>
-
-            <h2>
-                NEW TECHNOLOGY
-            </h2>
-
-            <div class="intel-text">
-                Unbekannte technische Entwicklungen wurden
-                entdeckt. Der Ursprung und die möglichen
-                Einsatzgebiete werden derzeit untersucht.
-            </div>
-
-            <div class="meta">
-                REPORT // TECHNOLOGY DIVISION
-            </div>
-
-        </article>
-
-
-        <!-- REPORT 04 -->
-
-        <article class="intel-panel">
-
-            <div class="priority alert">
-                ALERT
-            </div>
-
-            <h2>
-                UNKNOWN STRUCTURE
-            </h2>
-
-            <div class="intel-text">
-                Eine unbekannte Struktur wurde entdeckt.
-                Weitere Informationen liegen derzeit nicht vor.
-                Aufklärungsteams wurden entsandt.
-            </div>
-
-            <div class="meta">
-                REPORT // EXPLORATION NETWORK
-            </div>
-
-        </article>
-
-
-        <!-- REPORT 05 -->
-
-        <article class="intel-panel">
-
-            <div class="priority">
-                OBSERVATION
-            </div>
-
-            <h2>
-                GLOBAL MOVEMENT
-            </h2>
-
-            <div class="intel-text">
-                Aktivitäten und Bewegungen nehmen weltweit zu.
-                Die aktuelle Lage bleibt dynamisch und kann
-                sich jederzeit verändern.
-            </div>
-
-            <div class="meta">
-                REPORT // GLOBAL MONITORING
-            </div>
-
-        </article>
-
-
-        <!-- REPORT 06 -->
-
-        <article class="intel-panel">
-
-            <div class="priority warning">
-                DEVELOPING
-            </div>
-
-            <h2>
-                THE WORLD CHANGES
-            </h2>
-
-            <div class="intel-text">
-                Neue Gebiete werden erschlossen, Handelsrouten
-                entstehen und unbekannte Regionen werden
-                zunehmend erforscht.
-            </div>
-
-            <div class="meta">
-                REPORT // WORLD DEVELOPMENT
-            </div>
-
-        </article>
+        <p>
+            Zentrale Übersicht über die aktuelle Lage,
+            weltweite Entwicklungen und den allgemeinen
+            Bereitschaftsstatus innerhalb von RISE OF NATIONS.
+        </p>
 
     </section>
 
 
-    <div class="situation">
+    <section class="status-panel">
 
-        <div class="situation-title">
-            CURRENT SITUATION // GLOBAL STATUS
+        <div class="panel-header">
+
+            <div class="panel-title">
+                CURRENT SITUATION
+            </div>
+
+            <div
+                id="alertLevel"
+                class="alert"
+            >
+                PLATZHALTER
+            </div>
+
         </div>
 
-        <div class="situation-text">
-            Die globale Lage wird kontinuierlich überwacht.
-            Dieser Bereich kann später jederzeit mit neuen
-            Lageberichten, Ereignissen und aktuellen
-            Entwicklungen erweitert werden.
+
+        <div class="intel-grid">
+
+            <div class="intel-item situation">
+
+                <div class="label">
+                    CURRENT SITUATION
+                </div>
+
+                <div
+                    id="currentSituation"
+                    class="value"
+                >
+                    PLATZHALTER
+                </div>
+
+            </div>
+
+
+            <div class="intel-item">
+
+                <div class="label">
+                    GLOBAL STATUS
+                </div>
+
+                <div
+                    id="globalStatus"
+                    class="value"
+                >
+                    PLATZHALTER
+                </div>
+
+            </div>
+
+
+            <div class="intel-item">
+
+                <div class="label">
+                    ALERT LEVEL
+                </div>
+
+                <div
+                    id="alertLevelSmall"
+                    class="value"
+                >
+                    PLATZHALTER
+                </div>
+
+            </div>
+
         </div>
 
-    </div>
+    </section>
 
 
-    <a
-        href="../index.html"
-        class="back"
-    >
-        ← RETURN TO COMMAND
-    </a>
+    <section class="info-section">
+
+        <div class="section-title">
+            INTELLIGENCE BRIEFING
+        </div>
+
+        <div class="info-box">
+            Die Lageinformationen werden zentral über
+            <strong>config/site-config.js</strong> gesteuert.
+            Dadurch können aktuelle Entwicklungen,
+            Statusmeldungen und der Bereitschaftsgrad geändert
+            werden, ohne die Seite selbst bearbeiten zu müssen.
+        </div>
+
+    </section>
+
+
+    <section class="info-section">
+
+        <div class="section-title">
+            WORLD STATUS
+        </div>
+
+        <div class="info-box">
+            Die Welt von RISE OF NATIONS bleibt dynamisch.
+            Spieler können neue Nationen gründen, bestehende
+            Staaten verändern und die globale Lage jederzeit
+            beeinflussen.
+        </div>
+
+    </section>
 
 </main>
+
+
+<footer>
+
+    <div>
+        RISE OF NATIONS // INTELLIGENCE NETWORK
+    </div>
+
+    <div id="footerVersion">
+        PLATZHALTER
+    </div>
+
+</footer>
+
+
+<script>
+
+    /*
+     * CURRENT SITUATION
+     */
+
+    document.getElementById("currentSituation").textContent =
+        SITE_CONFIG.intelligence.currentSituation;
+
+
+    /*
+     * GLOBAL STATUS
+     */
+
+    document.getElementById("globalStatus").textContent =
+        SITE_CONFIG.intelligence.globalStatus;
+
+
+    /*
+     * ALERT LEVEL
+     */
+
+    document.getElementById("alertLevel").textContent =
+        SITE_CONFIG.intelligence.alertLevel;
+
+    document.getElementById("alertLevelSmall").textContent =
+        SITE_CONFIG.intelligence.alertLevel;
+
+
+    /*
+     * FOOTER
+     */
+
+    document.getElementById("footerVersion").textContent =
+        SITE_CONFIG.website.name +
+        " // " +
+        SITE_CONFIG.modpack.version;
+
+</script>
 
 </body>
 </html>
