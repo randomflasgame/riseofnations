@@ -1,1 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RISE OF NATIONS // SURVIVAL DATABASE</title>
 
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+        body {
+            margin: 0;
+            background:
+                linear-gradient(rgba(5, 10, 16, 0.94), rgba(5, 10, 16, 0.97)),
+                radial-gradient(circle at top, #263044 0%, #080c12 65%);
+            color: #dce8f2;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .page {
+            min-height: 100vh;
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #3c8dbc;
+            padding-bottom: 18px;
+            margin-bottom: 35px;
+        }
+
+        .brand {
+            color: #5da9d6;
+            font-size: 22px;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        .status {
+            color: #6fcf97;
+            font-size: 12px;
+            letter-spacing: 2px;
+        }
+
+        .header {
+            margin-bottom: 35px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 46px;
+            letter-spacing: 6px;
+            color: #dce8f2;
+        }
+
+        .header p {
+            margin-top: 12px;
+            color: #8798a8;
+            letter-spacing: 2px;
+            font-size: 13px;
+        }
+
+        .system-info {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 35px;
+        }
+
+        .info-box {
+            background: rgba(17, 25, 34, 0.9);
+            border: 1px solid #334453;
+            padding: 18px;
+            position: relative;
+        }
+
+        .info-box::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: #3c8dbc;
+        }
+
+        .info-label {
+            color: #718292;
+            font-size: 10px;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .info-value {
+            color: #dce8f2;
+            font-size: 17px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .mods {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .mod {
+            background: rgba(14, 21, 29, 0.95);
+            border: 1px solid #334453;
+            padding: 22px;
+            transition: 0.2s ease;
+        }
+
+        .mod:hover {
+            border-color: #3c8dbc;
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(60, 141, 188, 0.10);
+        }
+
+        .mod-number {
+            color: #667888;
+            font-size: 11px;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .mod-name {
+            color: #f0f3f5;
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .mod-description {
+            color: #8293a2;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        .footer {
+            margin-top: 35px;
+            padding-top: 20px;
+            border-top: 1px solid #263542;
+        }
+
+        .return {
+            color: #5da9d6;
+            text-decoration: none;
+            font-size: 12px;
+            letter-spacing: 2px;
+        }
+
+        .return:hover {
+            color: #ffffff;
+        }
+
+        @media (max-width: 800px) {
+            .page {
+                padding: 20px;
+            }
+
+            .system-info,
+            .mods {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="page">
+
+    <div class="top-bar">
+        <div class="brand">RISE OF NATIONS // DATABASE</div>
+        <div class="status">● SYSTEM OPERATIONAL</div>
+    </div>
+
+    <div class="header">
+        <h1>SURVIVAL & RPG</h1>
+        <p>SURVIVAL // PROGRESSION // SKILLS // CLAIMS // SECURITY</p>
+    </div>
+
+    <div class="system-info">
+
+        <div class="info-box">
+            <div class="info-label">DATABASE CATEGORY</div>
+            <div class="info-value">SURVIVAL & RPG</div>
+        </div>
+
+        <div class="info-box">
+            <div class="info-label">REGISTERED SYSTEMS</div>
+            <div class="info-value">10 SYSTEMS</div>
+        </div>
+
+        <div class="info-box">
+            <div class="info-label">STATUS</div>
+            <div class="info-value">OPERATIONAL</div>
+        </div>
+
+    </div>
+
+    <div class="mods">
+
+        <div class="mod">
+            <div class="mod-number">SYSTEM 01</div>
+            <div class="mod-name">Thirst Was Taken</div>
+            <div class="mod-description">
+                Adds thirst mechanics to survival operations and creates
+                additional resource-management requirements.
+            </div>
+        </div>
+
+        <div class="mod">
+            <div class="mod-number">SYSTEM 02</div>
+            <div class="mod-name">Serene Seasons</div>
+            <div class="mod-description">
+                Introduces seasonal world changes that affect agriculture,
+                weather and the overall survival environment.
+            </div>
+        </div>
+
+        <div class="mod">
+            <div class="mod-number">SYSTEM 03</div>
+            <div class="mod-name">Puffish Skills</div>
+            <div class="mod-description">
+                Skill progression system allowing operators to develop
+                specialized abilities and improve their capabilities.
+            </div>
+        </div>
+
+        <div class="mod">
+            <div class="mod-number">SYSTEM 04</div>
+            <div class="mod-name">Artifacts</div>
+            <div class="mod-description">
+                Adds rare artifacts and powerful equipment that can
+                significantly improve field operations.
+            </div>
+        </div>
+
+        <div class="mod">
+            <div class="mod-number">SYSTEM 05</div>
+            <div class="mod-name">SecurityCraft</div>
+            <div class="mod-description">
+                Advanced security infrastructure including reinforced
+                systems, defenses and protected facilities.
+            </div>
+        </div>
+
+        <div class="mod">
+            <div class="mod-number">SYSTEM 06</div>
+            <div class="mod-name">Open Parties and Claims</div>
+            <div class="mod-description">
+                Provides group organization and territory protection
+                systems for coordinated operations.
+            </div>
+        </div>
+
+        <div class="mod">
+            <div class="mod-number">SYSTEM 07</div>
+            <div class="mod-name">Claim My Land</div>
+            <div class="mod-description">
+                Territory claiming and protection systems for player
+                settlements and controlled areas.
+            </div>
+        </div>
+
+        <div class="mod">
+            <div class="mod-number">SYSTEM 08</div>
+            <div class="mod-name">Corail Tombstone</div>
+            <div class="mod-description">
+                Death and recovery infrastructure designed to preserve
+                equipment and assist operators after fatal incidents.
+            </div>
+        </div>
+
+        <div class="mod">
+            <div class="mod-number">SYSTEM 09</div>
+            <div class="mod-name">Waystones</div>
+            <div class="mod-description">
+                Strategic fast-travel infrastructure connecting
+                important settlements and operational locations.
+            </div>
+        </div>
+
+        <div class="mod">
+            <div class="mod-number">SYSTEM 10</div>
+            <div class="mod-name">Comforts</div>
+            <div class="mod-description">
+                Portable sleeping and resting equipment designed to
+                improve survival operations away from permanent bases.
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <a class="return" href="database.html">
+            ← RETURN TO DATABASE
+        </a>
+    </div>
+
+</div>
+
+</body>
+</html>
