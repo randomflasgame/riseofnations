@@ -1,432 +1,211 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>RISE OF NATIONS // COMMAND</title>
+    <title>RISE OF NATIONS</title>
 
     <style>
         * {
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
             margin: 0;
-            min-height: 100vh;
-
             background:
-                radial-gradient(
-                    circle at 50% 0%,
-                    rgba(20, 55, 80, 0.28),
-                    transparent 45%
-                ),
-                linear-gradient(
-                    rgba(3, 8, 13, 0.97),
-                    rgba(4, 9, 14, 0.99)
-                );
-
-            color: #d8e2ea;
-            font-family: "Courier New", monospace;
+                radial-gradient(circle at top, #18232d 0%, #0b1117 45%, #05080b 100%);
+            color: #e8edf2;
+            font-family: Arial, Helvetica, sans-serif;
+            min-height: 100vh;
         }
 
-        /* =========================
-           HEADER
-        ========================= */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background:
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.35;
+        }
 
         header {
             position: sticky;
             top: 0;
-            z-index: 1000;
+            z-index: 10;
 
-            min-height: 76px;
-
+            height: 76px;
             display: flex;
             align-items: center;
             justify-content: space-between;
 
             padding: 0 35px;
 
-            background:
-                linear-gradient(
-                    180deg,
-                    rgba(8, 20, 31, 0.98),
-                    rgba(5, 13, 21, 0.98)
-                );
-
-            border-bottom: 1px solid #29485f;
-
-            box-shadow:
-                0 4px 25px rgba(0, 0, 0, 0.45);
+            background: rgba(7, 12, 17, 0.96);
+            border-bottom: 1px solid #1d5f91;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
         }
 
         .logo {
-            color: #d4af37;
-
-            font-size: 21px;
-            font-weight: bold;
-
+            color: #d6a83d;
+            font-size: 22px;
+            font-weight: 900;
             letter-spacing: 3px;
-
-            white-space: nowrap;
         }
 
         nav {
             display: flex;
-            align-items: center;
-            gap: 10px;
-
-            margin-left: 30px;
-            margin-right: 30px;
+            gap: 8px;
         }
 
         nav a {
-            position: relative;
-
-            padding: 10px 14px;
-
-            color: #b8c9d6;
-
+            color: #bfc9d2;
             text-decoration: none;
-
+            padding: 13px 17px;
             font-size: 12px;
             font-weight: bold;
-
-            letter-spacing: 2px;
-
-            transition:
-                color 0.2s ease,
-                background 0.2s ease,
-                border-color 0.2s ease;
-        }
-
-        nav a::before {
-            content: "";
-
-            position: absolute;
-
-            left: 0;
-            right: 0;
-            bottom: 3px;
-
-            height: 1px;
-
-            background: #4fd1ff;
-
-            transform: scaleX(0);
-
-            transition: transform 0.2s ease;
+            letter-spacing: 1.5px;
+            border: 1px solid transparent;
+            transition: 0.2s;
         }
 
         nav a:hover {
-            color: #ffffff;
-
-            background: rgba(79, 209, 255, 0.08);
-        }
-
-        nav a:hover::before {
-            transform: scaleX(1);
+            color: white;
+            background: rgba(18, 91, 143, 0.25);
+            border-color: #1d6fa8;
         }
 
         .status {
-            color: #55d68a;
-
+            color: #65d48a;
             font-size: 11px;
             font-weight: bold;
-
-            letter-spacing: 2px;
-
-            white-space: nowrap;
+            letter-spacing: 1px;
         }
-
-        /* =========================
-           MAIN
-        ========================= */
 
         main {
             max-width: 1400px;
-
-            margin: 0 auto;
-
-            padding: 80px 30px;
+            margin: auto;
+            padding: 70px 35px;
         }
 
-        .classified {
-            color: #4fd1ff;
+        .hero {
+            text-align: center;
+            padding: 55px 20px 70px;
+        }
 
-            font-size: 12px;
+        .small-title {
+            color: #5599c8;
+            font-size: 13px;
             font-weight: bold;
-
             letter-spacing: 5px;
-
             margin-bottom: 18px;
         }
 
         h1 {
             margin: 0;
-
-            color: #ffffff;
-
-            font-size: 72px;
-            line-height: 1;
-
-            letter-spacing: 9px;
-
-            text-shadow:
-                0 0 25px rgba(79, 209, 255, 0.08);
+            color: #d6a83d;
+            font-size: clamp(45px, 8vw, 105px);
+            font-weight: 900;
+            letter-spacing: 7px;
+            text-shadow: 0 0 30px rgba(214,168,61,0.15);
         }
 
         .subtitle {
             margin-top: 20px;
-
-            color: #8297a7;
-
-            font-size: 13px;
-
+            color: #8796a3;
             letter-spacing: 3px;
+            font-size: 13px;
         }
 
-        /* =========================
-           DASHBOARD
-        ========================= */
-
         .dashboard {
-            margin-top: 60px;
-
             display: grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
+            grid-template-columns: repeat(3, 1fr);
             gap: 18px;
         }
 
         .panel {
-            position: relative;
-
+            background: rgba(13, 21, 28, 0.94);
+            border: 1px solid #263846;
+            padding: 25px;
             min-height: 190px;
-
-            padding: 27px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(12, 27, 39, 0.97),
-                    rgba(6, 15, 23, 0.97)
-                );
-
-            border: 1px solid #29485f;
-
-            box-shadow:
-                inset 0 0 25px rgba(0, 0, 0, 0.25);
-
-            transition:
-                border-color 0.2s ease,
-                transform 0.2s ease,
-                box-shadow 0.2s ease;
-        }
-
-        .panel::after {
-            content: "";
-
-            position: absolute;
-
-            top: 0;
-            right: 0;
-
-            width: 35px;
-            height: 35px;
-
-            border-top: 1px solid #4fd1ff;
-            border-right: 1px solid #4fd1ff;
-
-            opacity: 0.45;
+            transition: 0.2s;
         }
 
         .panel:hover {
-            border-color: #4fd1ff;
-
+            border-color: #287bb5;
             transform: translateY(-2px);
-
-            box-shadow:
-                0 8px 25px rgba(0, 0, 0, 0.35),
-                0 0 18px rgba(79, 209, 255, 0.05);
         }
 
         .panel h2 {
-            margin: 0 0 22px;
-
-            color: #ffffff;
-
-            font-size: 16px;
-
-            letter-spacing: 3px;
-        }
-
-        .label {
-            color: #6f8798;
-
-            font-size: 10px;
-
+            margin: 0 0 18px;
+            color: #5aa3d5;
+            font-size: 14px;
             letter-spacing: 2px;
-        }
-
-        .value {
-            margin-top: 8px;
-
-            color: #d8e2ea;
-
-            font-size: 15px;
-        }
-
-        .online {
-            color: #55d68a;
-        }
-
-        .gold {
-            color: #d4af37;
-        }
-
-        .blue {
-            color: #4fd1ff;
-        }
-
-        .red {
-            color: #d45b5b;
         }
 
         .panel p {
-            color: #8499a8;
-
-            font-size: 13px;
-
+            color: #aab5be;
             line-height: 1.7;
+            font-size: 14px;
         }
 
-        /* =========================
-           BUTTONS
-        ========================= */
-
-        .action {
-            display: inline-block;
-
-            margin-top: 25px;
-
-            padding: 11px 17px;
-
-            border: 1px solid #31566f;
-
-            color: #4fd1ff;
-
-            text-decoration: none;
-
-            font-size: 10px;
+        .value {
+            color: #e8edf2;
+            font-size: 20px;
             font-weight: bold;
-
-            letter-spacing: 2px;
-
-            background: rgba(79, 209, 255, 0.025);
-
-            transition:
-                background 0.2s ease,
-                color 0.2s ease,
-                border-color 0.2s ease;
+            margin-bottom: 8px;
         }
 
-        .action:hover {
-            color: #061018;
-
-            background: #4fd1ff;
-
-            border-color: #4fd1ff;
-
-            box-shadow:
-                0 0 15px rgba(79, 209, 255, 0.18);
+        .online {
+            color: #65d48a;
         }
 
-        .wide {
-            grid-column: span 2;
+        .gold {
+            color: #d6a83d;
         }
 
-        /* =========================
-           FOOTER
-        ========================= */
+        .panel-link {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 15px;
+            color: white;
+            background: #124f78;
+            border: 1px solid #267db5;
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .panel-link:hover {
+            background: #196a9e;
+        }
 
         footer {
-            margin-top: 60px;
-
-            padding: 25px 30px;
-
-            border-top: 1px solid #21394b;
-
-            color: #526877;
-
-            font-size: 10px;
-
-            letter-spacing: 2px;
-
             text-align: center;
+            padding: 50px 20px;
+            color: #56636e;
+            font-size: 11px;
+            letter-spacing: 2px;
         }
 
-        /* =========================
-           MOBILE
-        ========================= */
-
-        @media (max-width: 1000px) {
-
+        @media (max-width: 900px) {
             header {
-                flex-wrap: wrap;
-
+                height: auto;
+                padding: 20px;
+                flex-direction: column;
                 gap: 15px;
-
-                padding: 18px 25px;
             }
 
             nav {
-                order: 3;
-
-                width: 100%;
-
+                flex-wrap: wrap;
                 justify-content: center;
-
-                margin: 0;
             }
 
             .dashboard {
                 grid-template-columns: 1fr;
-            }
-
-            .wide {
-                grid-column: span 1;
-            }
-        }
-
-        @media (max-width: 700px) {
-
-            h1 {
-                font-size: 42px;
-
-                letter-spacing: 5px;
-            }
-
-            nav {
-                gap: 3px;
-            }
-
-            nav a {
-                padding: 8px 7px;
-
-                font-size: 9px;
-
-                letter-spacing: 1px;
-            }
-
-            .status {
-                display: none;
             }
         }
     </style>
@@ -441,27 +220,16 @@
     </div>
 
     <nav>
+        <a href="index.html">COMMAND</a>
 
-        <a href="index.html">
-            COMMAND
-        </a>
+        <!-- WICHTIG: Dieser Knopf führt jetzt zur Intelligence-Seite -->
+        <a href="pages/intelligence.html">INTELLIGENCE</a>
 
-        <a href="#intelligence">
-            INTELLIGENCE
-        </a>
+        <a href="pages/server.html">SERVER</a>
 
-        <a href="pages/server.html">
-            SERVER
-        </a>
+        <a href="pages/database.html">DATABASE</a>
 
-        <a href="pages/database.html">
-            DATABASE
-        </a>
-
-        <a href="pages/download.html">
-            DOWNLOAD
-        </a>
-
+        <a href="pages/download.html">DOWNLOAD</a>
     </nav>
 
     <div class="status">
@@ -473,155 +241,129 @@
 
 <main>
 
-    <div class="classified">
-        NATO COMMAND NETWORK // SECURE CONNECTION
-    </div>
+    <section class="hero">
 
+        <div class="small-title">
+            MILITARY COMMAND NETWORK
+        </div>
 
-    <h1>
-        RISE OF NATIONS
-    </h1>
+        <h1>
+            RISE OF NATIONS
+        </h1>
 
+        <div class="subtitle">
+            GLOBAL COMMAND // OPERATIONS // INTELLIGENCE
+        </div>
 
-    <div class="subtitle">
-        GLOBAL COMMAND // INDUSTRIAL WARFARE // SURVIVAL
-    </div>
+    </section>
 
 
     <section class="dashboard">
 
-
-        <!-- SERVER -->
-
         <div class="panel">
 
-            <h2>
-                SERVER STATUS
-            </h2>
-
-            <div class="label">
-                CURRENT STATUS
-            </div>
+            <h2>SERVER STATUS</h2>
 
             <div class="value online">
                 ● ONLINE
             </div>
 
-            <a
-                href="pages/server.html"
-                class="action"
-            >
-                SERVER INTELLIGENCE →
+            <p>
+                Minecraft server infrastructure is currently operational.
+            </p>
+
+            <a class="panel-link" href="pages/server.html">
+                OPEN SERVER
             </a>
 
         </div>
 
 
-        <!-- VERSION -->
-
         <div class="panel">
 
-            <h2>
-                CURRENT DEPLOYMENT
-            </h2>
-
-            <div class="label">
-                MODPACK VERSION
-            </div>
+            <h2>CURRENT DEPLOYMENT</h2>
 
             <div class="value gold">
                 VERSION 1.0.0
             </div>
 
-            <div
-                class="label"
-                style="margin-top:20px;"
-            >
-                MINECRAFT
-            </div>
-
-            <div class="value">
-                1.21.1
-            </div>
-
-        </div>
-
-
-        <!-- DOWNLOAD -->
-
-        <div class="panel">
-
-            <h2>
-                DOWNLOAD
-            </h2>
-
-            <div class="label">
-                DEPLOYMENT PACKAGE
-            </div>
-
-            <div class="value">
-                OFFICIAL MODPACK
-            </div>
-
-            <a
-                href="pages/download.html"
-                class="action"
-            >
-                OPEN DOWNLOAD →
-            </a>
-
-        </div>
-
-
-        <!-- INTELLIGENCE -->
-
-        <div
-            class="panel wide"
-            id="intelligence"
-        >
-
-            <h2>
-                GLOBAL INTELLIGENCE
-            </h2>
-
-            <div class="label">
-                CURRENT SITUATION
-            </div>
-
-            <div class="value blue">
-                GLOBAL SITUATION MONITORED
-            </div>
-
             <p>
-                Neue Entwicklungen werden kontinuierlich
-                überwacht. Weitere Lageberichte folgen.
+                Minecraft 1.21.1<br>
+                RISE OF NATIONS Modpack
             </p>
 
         </div>
 
 
-        <!-- DATABASE -->
+        <div class="panel">
+
+            <h2>INTELLIGENCE</h2>
+
+            <div class="value">
+                GLOBAL SITUATION
+            </div>
+
+            <p>
+                Current world events, reports and developing situations.
+            </p>
+
+            <a class="panel-link" href="pages/intelligence.html">
+                OPEN INTELLIGENCE
+            </a>
+
+        </div>
+
 
         <div class="panel">
 
-            <h2>
-                DATABASE
-            </h2>
-
-            <div class="label">
-                MODPACK SYSTEMS
-            </div>
+            <h2>DATABASE</h2>
 
             <div class="value">
-                MOD DATABASE
+                MODPACK DATABASE
             </div>
 
-            <a
-                href="pages/database.html"
-                class="action"
-            >
-                OPEN DATABASE →
+            <p>
+                Access technology, weapons, structures, survival systems
+                and other deployed systems.
+            </p>
+
+            <a class="panel-link" href="pages/database.html">
+                OPEN DATABASE
             </a>
+
+        </div>
+
+
+        <div class="panel">
+
+            <h2>DOWNLOAD</h2>
+
+            <div class="value">
+                DEPLOYMENT PACKAGE
+            </div>
+
+            <p>
+                Download and deploy the official RISE OF NATIONS modpack.
+            </p>
+
+            <a class="panel-link" href="pages/download.html">
+                OPEN DOWNLOAD
+            </a>
+
+        </div>
+
+
+        <div class="panel">
+
+            <h2>COMMUNICATIONS</h2>
+
+            <div class="value">
+                COMMUNITY
+            </div>
+
+            <p>
+                Community communications and future Discord integration.
+            </p>
 
         </div>
 
@@ -631,13 +373,7 @@
 
 
 <footer>
-
-    RISE OF NATIONS
-    //
-    COMMAND NETWORK
-    //
-    SYSTEM OPERATIONAL
-
+    RISE OF NATIONS // COMMAND NETWORK // SYSTEM ONLINE
 </footer>
 
 </body>
