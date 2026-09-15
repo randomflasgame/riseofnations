@@ -1,0 +1,1017 @@
+```html
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RISE OF NATIONS // WIKI // CREATE</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background:
+        linear-gradient(rgba(5,10,16,0.94), rgba(5,10,16,0.97)),
+        repeating-linear-gradient(
+            0deg,
+            rgba(255,255,255,0.02) 0px,
+            rgba(255,255,255,0.02) 1px,
+            transparent 1px,
+            transparent 4px
+        );
+    color: #d7e0e8;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.65;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(90deg, rgba(0,80,130,0.04) 1px, transparent 1px),
+        linear-gradient(rgba(0,80,130,0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(7,13,20,0.96);
+    border-bottom: 1px solid #263746;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.45);
+}
+
+.header-inner {
+    max-width: 1400px;
+    margin: auto;
+    min-height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+}
+
+.logo {
+    color: #d7aa3a;
+    font-weight: 900;
+    letter-spacing: 3px;
+    font-size: 20px;
+}
+
+.logo span {
+    display: block;
+    color: #758796;
+    font-size: 9px;
+    letter-spacing: 3px;
+    margin-top: 3px;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    justify-content: flex-end;
+}
+
+nav a {
+    color: #aebdca;
+    text-decoration: none;
+    border: 1px solid #263746;
+    padding: 9px 12px;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    transition: 0.2s;
+}
+
+nav a:hover {
+    color: #fff;
+    border-color: #d7aa3a;
+    background: rgba(215,170,58,0.08);
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 60px 24px 100px;
+}
+
+.status {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    border: 1px solid #31503b;
+    color: #79c68c;
+    padding: 7px 12px;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #58c879;
+    box-shadow: 0 0 10px #58c879;
+}
+
+h1 {
+    margin: 0;
+    color: #d7aa3a;
+    font-size: clamp(42px, 7vw, 86px);
+    line-height: 0.95;
+    letter-spacing: 4px;
+    font-weight: 900;
+}
+
+.subtitle {
+    color: #80909e;
+    font-size: 13px;
+    letter-spacing: 3px;
+    margin-top: 16px;
+    margin-bottom: 45px;
+}
+
+.info-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.info-box {
+    background: rgba(13,23,32,0.9);
+    border: 1px solid #263746;
+    padding: 18px;
+}
+
+.info-label {
+    color: #697b89;
+    font-size: 9px;
+    letter-spacing: 2px;
+    margin-bottom: 7px;
+}
+
+.info-value {
+    color: #d7e0e8;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.section {
+    background: rgba(10,18,26,0.92);
+    border: 1px solid #263746;
+    margin-top: 18px;
+    padding: 28px;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.2);
+}
+
+.section h2 {
+    color: #d7aa3a;
+    font-size: 18px;
+    letter-spacing: 2px;
+    margin: 0 0 18px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #263746;
+}
+
+.section h3 {
+    color: #cbd6de;
+    font-size: 14px;
+    letter-spacing: 1px;
+    margin-top: 27px;
+}
+
+.section p {
+    color: #aab7c1;
+    font-size: 14px;
+}
+
+.section ul {
+    color: #aab7c1;
+    padding-left: 22px;
+}
+
+.section li {
+    margin-bottom: 8px;
+}
+
+.warning {
+    border-left: 3px solid #c94d4d;
+    background: rgba(120,30,30,0.08);
+    padding: 17px 20px;
+    margin: 20px 0;
+    color: #c7a6a6;
+}
+
+.tip {
+    border-left: 3px solid #d7aa3a;
+    background: rgba(215,170,58,0.06);
+    padding: 17px 20px;
+    margin: 20px 0;
+    color: #c8c0aa;
+}
+
+.command {
+    background: #050b10;
+    border: 1px solid #1d2c38;
+    padding: 16px 18px;
+    color: #7fc8e8;
+    font-family: "Courier New", monospace;
+    font-size: 13px;
+    overflow-x: auto;
+    margin: 15px 0;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+}
+
+.card {
+    border: 1px solid #263746;
+    background: rgba(14,24,33,0.8);
+    padding: 20px;
+}
+
+.card strong {
+    display: block;
+    color: #d7aa3a;
+    font-size: 13px;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.card span {
+    color: #93a4b0;
+    font-size: 13px;
+}
+
+.sources a {
+    color: #7fc8e8;
+    text-decoration: none;
+}
+
+.sources a:hover {
+    text-decoration: underline;
+}
+
+.back {
+    display: inline-block;
+    margin-top: 35px;
+    color: #d7aa3a;
+    border: 1px solid #5a4925;
+    padding: 12px 18px;
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+}
+
+.back:hover {
+    background: rgba(215,170,58,0.1);
+}
+
+footer {
+    border-top: 1px solid #263746;
+    padding: 30px 24px;
+    text-align: center;
+    color: #536370;
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+@media (max-width: 850px) {
+    .header-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 14px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+
+    nav {
+        justify-content: flex-start;
+    }
+
+    .info-strip,
+    .grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 560px) {
+    .container {
+        padding: 40px 15px 70px;
+    }
+
+    .info-strip,
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section {
+        padding: 20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-inner">
+
+        <div class="logo">
+            RISE OF NATIONS
+            <span>TACTICAL KNOWLEDGE DATABASE</span>
+        </div>
+
+        <nav>
+            <a href="../index.html">COMMAND</a>
+            <a href="../index.html#intelligence">INTELLIGENCE</a>
+            <a href="server.html">SERVER</a>
+            <a href="database.html">DATABASE</a>
+            <a href="download.html">DOWNLOAD</a>
+            <a href="communications.html">COMMUNICATIONS</a>
+            <a href="wiki.html">WIKI</a>
+        </nav>
+
+    </div>
+</header>
+
+<main class="container">
+
+    <div class="status">
+        <span class="status-dot"></span>
+        DATABASE // SYSTEM OPERATIONAL
+    </div>
+
+    <h1>CREATE</h1>
+
+    <div class="subtitle">
+        INDUSTRIAL ENGINEERING // ROTATIONAL POWER // AUTOMATION
+    </div>
+
+    <div class="info-strip">
+
+        <div class="info-box">
+            <div class="info-label">SYSTEM</div>
+            <div class="info-value">CREATE</div>
+        </div>
+
+        <div class="info-box">
+            <div class="info-label">MINECRAFT</div>
+            <div class="info-value">1.21.1</div>
+        </div>
+
+        <div class="info-box">
+            <div class="info-label">ROLE</div>
+            <div class="info-value">ENGINEERING</div>
+        </div>
+
+        <div class="info-box">
+            <div class="info-label">STATUS</div>
+            <div class="info-value">OPERATIONAL</div>
+        </div>
+
+    </div>
+
+    <section class="section">
+
+        <h2>01 // SYSTEM OVERVIEW</h2>
+
+        <p>
+            Create ist eines der zentralen Technik-Systeme von RISE OF NATIONS.
+            Das Mod erweitert Minecraft um mechanische Maschinen, rotierende Kraft,
+            Produktionsanlagen, Transporttechnik, bewegliche Konstruktionen,
+            Logistik und weitreichende Automatisierung.
+        </p>
+
+        <p>
+            Der wichtigste Unterschied zu vielen klassischen Tech-Mods:
+            Create zwingt dich nicht einfach dazu, eine Maschine aufzustellen und
+            auf einen Fortschrittsbalken zu warten. Du baust die Maschine selbst.
+            Zahnräder, Wellen, Riemen, Übersetzungen, Antriebe und Transportsysteme
+            müssen räumlich miteinander verbunden werden.
+        </p>
+
+        <div class="tip">
+            <strong>GRUNDPRINZIP:</strong>
+            Create denkt in mechanischen Systemen. Wenn du ein Problem hast,
+            solltest du zuerst überlegen: Wo kommt die Kraft her? Wie wird sie
+            übertragen? Was soll sich bewegen? Und wie werden die Materialien
+            transportiert?
+        </div>
+
+    </section>
+
+    <section class="section">
+
+        <h2>02 // DER WICHTIGSTE GRUNDGEDANKE</h2>
+
+        <p>
+            Fast jede größere Create-Anlage lässt sich auf vier Bestandteile
+            zurückführen:
+        </p>
+
+        <div class="grid">
+
+            <div class="card">
+                <strong>01 // POWER</strong>
+                <span>
+                    Eine Quelle erzeugt Rotationsenergie. Beispiele sind
+                    Water Wheels, Windmills oder Steam Engines.
+                </span>
+            </div>
+
+            <div class="card">
+                <strong>02 // TRANSMISSION</strong>
+                <span>
+                    Shafts, Cogwheels, Belts und ähnliche Komponenten
+                    transportieren die Rotation.
+                </span>
+            </div>
+
+            <div class="card">
+                <strong>03 // PROCESSING</strong>
+                <span>
+                    Maschinen verwenden die Rotation, um Materialien zu
+                    verarbeiten oder Produktionsschritte auszuführen.
+                </span>
+            </div>
+
+            <div class="card">
+                <strong>04 // LOGISTICS</strong>
+                <span>
+                    Belts, Funnels, Chutes, Depots, Pipes und andere Systeme
+                    bewegen Gegenstände und Flüssigkeiten.
+                </span>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="section">
+
+        <h2>03 // PONDER – DIE INGAME-DOKUMENTATION</h2>
+
+        <p>
+            Create besitzt ein eigenes Ingame-Dokumentationssystem namens
+            <strong>Ponder</strong>. Viele Create-Komponenten können direkt im
+            Spiel erklärt werden.
+        </p>
+
+        <p>
+            Wenn du einen Create-Gegenstand in JEI untersuchst und eine
+            Ponder-Ansicht verfügbar ist, solltest du diese zuerst öffnen.
+            Sie zeigt häufig Schritt für Schritt, wie eine Mechanik funktioniert.
+        </p>
+
+        <div class="tip">
+            Ponder ist besonders wichtig, weil Create sehr viele Maschinen
+            besitzt. Statt jedes Rezept auswendig zu lernen, solltest du zuerst
+            die Funktionsweise verstehen.
+        </div>
+
+    </section>
+
+    <section class="section">
+
+        <h2>04 // ROTATION</h2>
+
+        <p>
+            Rotation ist das Fundament von Create.
+            Eine Anlage funktioniert normalerweise nur dann, wenn sie mit einem
+            passenden rotierenden Antrieb verbunden ist.
+        </p>
+
+        <h3>Geschwindigkeit</h3>
+
+        <p>
+            Rotierende Systeme arbeiten mit einer bestimmten Drehgeschwindigkeit.
+            Je nach Maschine und Anwendung kann eine höhere oder niedrigere
+            Drehzahl benötigt werden.
+        </p>
+
+        <h3>Richtung</h3>
+
+        <p>
+            Zahnräder können die Drehrichtung ändern. Dadurch lässt sich ein
+            mechanisches Netzwerk gezielt aufbauen.
+        </p>
+
+        <h3>Übersetzung</h3>
+
+        <p>
+            Unterschiedlich große Zahnräder ermöglichen es, Drehzahl und
+            Drehmoment innerhalb eines Systems zu verändern.
+        </p>
+
+        <div class="warning">
+            Eine Anlage sollte nicht einfach immer schneller gemacht werden.
+            Geschwindigkeit, Belastung und die Anforderungen der einzelnen
+            Maschinen müssen zusammenpassen.
+        </div>
+
+    </section>
+
+    <section class="section">
+
+        <h2>05 // STRESS & BELASTUNG</h2>
+
+        <p>
+            Ein entscheidendes Create-Konzept ist die mechanische Belastung,
+            häufig als <strong>Stress</strong> bezeichnet.
+        </p>
+
+        <p>
+            Eine Energiequelle kann nur eine bestimmte Menge an mechanischer
+            Arbeit bereitstellen. Werden zu viele Maschinen an ein Netzwerk
+            angeschlossen, kann das System überlastet werden.
+        </p>
+
+        <p>
+            Deshalb reicht es nicht aus, nur eine Rotationsquelle zu besitzen.
+            Du musst auch darauf achten, wie viel Belastung dein gesamtes
+            Netzwerk erzeugt.
+        </p>
+
+        <div class="tip">
+            Wenn eine große Fabrik plötzlich nicht mehr funktioniert,
+            überprüfe zuerst dein mechanisches Netzwerk und seine Belastung,
+            bevor du einzelne Maschinen abbaust.
+        </div>
+
+    </section>
+
+    <section class="section">
+
+        <h2>06 // WICHTIGE ANTRIEBE</h2>
+
+        <div class="grid">
+
+            <div class="card">
+                <strong>WATER WHEEL</strong>
+                <span>
+                    Ein früher und vergleichsweise einfacher Weg,
+                    Rotationsenergie zu erzeugen.
+                </span>
+            </div>
+
+            <div class="card">
+                <strong>WINDMILL</strong>
+                <span>
+                    Nutzt Windkraft und eignet sich besonders für größere
+                    mechanische Anlagen.
+                </span>
+            </div>
+
+            <div class="card">
+                <strong>STEAM ENGINE</strong>
+                <span>
+                    Eine leistungsfähige industrielle Energiequelle für
+                    fortgeschrittene Produktionsanlagen.
+                </span>
+            </div>
+
+            <div class="card">
+                <strong>ENGINEERING</strong>
+                <span>
+                    Fortgeschrittene Anlagen kombinieren mehrere Antriebe,
+                    Übersetzungen und Produktionsbereiche.
+                </span>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="section">
+
+        <h2>07 // SHAFTS & COGWHEELS</h2>
+
+        <p>
+            <strong>Shafts</strong> übertragen Rotation über größere Distanzen.
+            Sie sind damit die mechanischen Leitungen eines Create-Systems.
+        </p>
+
+        <p>
+            <strong>Cogwheels</strong> verbinden verschiedene Rotationsachsen
+            miteinander. Unterschiedliche Größen ermöglichen mechanische
+            Übersetzungen.
+        </p>
+
+        <p>
+            Für große Fabriken empfiehlt sich eine klare Struktur:
+            Hauptantrieb → Übertragung → Maschinenbereich → Produktionslinie.
+        </p>
+
+        <div class="tip">
+            Baue große Maschinenparks nicht völlig ungeordnet.
+            Eine saubere Trennung zwischen Antrieb und Verarbeitung macht
+            spätere Erweiterungen wesentlich einfacher.
+        </div>
+
+    </section>
+
+    <section class="section">
+
+        <h2>08 // BELTS & ITEM TRANSPORT</h2>
+
+        <p>
+            Create besitzt ein eigenes Transportsystem für Gegenstände.
+            Besonders wichtig sind Förderbänder und die dazugehörigen
+            Ein- und Ausgabekomponenten.
+        </p>
+
+        <p>
+            Dadurch können Produktionslinien gebaut werden, bei denen Items
+            automatisch von einer Maschine zur nächsten transportiert werden.
+        </p>
+
+        <h3>Typische Produktionslinie</h3>
+
+        <div class="command">
+            INPUT → TRANSPORT → PROCESSING → TRANSPORT → PROCESSING → OUTPUT
+        </div>
+
+        <p>
+            Das ist die Grundlage für automatisierte Fabriken.
+            Je weiter deine Produktion wächst, desto wichtiger wird eine
+            übersichtliche Item-Logistik.
+        </p>
+
+    </section>
+
+    <section class="section">
+
+        <h2>09 // FUNNELS & FILTER</h2>
+
+        <p>
+            Funnels ermöglichen kontrollierte Übergaben von Items.
+            In Kombination mit Filtern lassen sich Produktionslinien gezielt
+            steuern.
+        </p>
+
+        <p>
+            Das ist besonders wichtig, wenn eine Maschine mehrere Materialien
+            verarbeitet oder unterschiedliche Gegenstände an verschiedene
+            Produktionsstationen verteilt werden müssen.
+        </p>
+
+        <div class="tip">
+            Nutze Filter frühzeitig. Eine saubere Sortierung verhindert,
+            dass später komplette Produktionsanlagen umgebaut werden müssen.
+        </div>
+
+    </section>
+
+    <section class="section">
+
+        <h2>10 // FLÜSSIGKEITEN</h2>
+
+        <p>
+            Create besitzt ebenfalls Systeme für Flüssigkeiten.
+            Flüssigkeiten können gespeichert, transportiert und in
+            Produktionsprozessen verwendet werden.
+        </p>
+
+        <p>
+            Bei komplexeren Anlagen solltest du Flüssigkeitsleitungen getrennt
+            von Item-Transport und mechanischer Rotation planen.
+        </p>
+
+        <div class="command">
+            SOURCE → FLUID TRANSPORT → MACHINE → OUTPUT
+        </div>
+
+    </section>
+
+    <section class="section">
+
+        <h2>11 // CONTRAPTIONS</h2>
+
+        <p>
+            Eine der besonderen Stärken von Create sind sogenannte
+            <strong>Contraptions</strong>.
+        </p>
+
+        <p>
+            Dabei handelt es sich um bewegliche Konstruktionen, die aus
+            Minecraft-Blöcken und Create-Komponenten aufgebaut werden.
+        </p>
+
+        <p>
+            Damit lassen sich beispielsweise bewegliche Maschinen,
+            Erntesysteme, Türen, Brücken, Bohrsysteme und andere mechanische
+            Konstruktionen realisieren.
+        </p>
+
+        <div class="tip">
+            Contraptions sind nicht einfach normale Redstone-Maschinen.
+            Denke in beweglichen mechanischen Konstruktionen.
+        </div>
+
+    </section>
+
+    <section class="section">
+
+        <h2>12 // AUTOMATISIERUNG</h2>
+
+        <p>
+            Create eignet sich hervorragend für Produktionsketten.
+            Statt jedes Item manuell herzustellen, kannst du mehrere
+            Verarbeitungsschritte miteinander verbinden.
+        </p>
+
+        <h3>Beispiel einer einfachen Fabrik</h3>
+
+        <div class="command">
+            MATERIAL
+            ↓
+            INPUT
+            ↓
+            MILL / CRUSH / CUT
+            ↓
+            TRANSPORT
+            ↓
+            SECONDARY PROCESSING
+            ↓
+            STORAGE
+        </div>
+
+        <p>
+            Das Ziel sollte nicht sein, möglichst viele Maschinen nebeneinander
+            zu stellen. Eine gute Create-Fabrik besitzt einen nachvollziehbaren
+            Materialfluss.
+        </p>
+
+    </section>
+
+    <section class="section">
+
+        <h2>13 // CREATE + JEI</h2>
+
+        <p>
+            In RISE OF NATIONS ist JEI ein wichtiger Bestandteil der
+            Produktionsplanung.
+        </p>
+
+        <p>
+            Verwende JEI, um Rezepte zu finden und anschließend über Ponder
+            beziehungsweise die Create-Dokumentation zu verstehen, wie die
+            benötigte Maschine aufgebaut und betrieben wird.
+        </p>
+
+        <div class="tip">
+            JEI beantwortet hauptsächlich die Frage:
+            <strong>„Was brauche ich?“</strong>
+            Create/Ponder beantwortet zusätzlich:
+            <strong>„Wie funktioniert die Maschine?“</strong>
+        </div>
+
+    </section>
+
+    <section class="section">
+
+        <h2>14 // PRODUKTIONSPLANUNG</h2>
+
+        <p>
+            Bei großen Anlagen solltest du zuerst den Produktionsprozess
+            aufschreiben und erst danach bauen.
+        </p>
+
+        <ul>
+            <li>Welche Ressource kommt hinein?</li>
+            <li>Welche Zwischenprodukte entstehen?</li>
+            <li>Welche Maschinen werden benötigt?</li>
+            <li>Wie viel Rotation benötigen die Maschinen?</li>
+            <li>Wie werden Items transportiert?</li>
+            <li>Welche Flüssigkeiten werden benötigt?</li>
+            <li>Wo werden fertige Produkte gespeichert?</li>
+            <li>Kann die Anlage später erweitert werden?</li>
+        </ul>
+
+        <div class="tip">
+            Eine Fabrik, die von Anfang an erweiterbar gebaut wurde, ist
+            langfristig wesentlich wertvoller als eine kompakte Anlage,
+            die später komplett abgerissen werden muss.
+        </div>
+
+    </section>
+
+    <section class="section">
+
+        <h2>15 // HÄUFIGE PROBLEME</h2>
+
+        <h3>Maschine bewegt sich nicht</h3>
+
+        <p>
+            Prüfe zuerst, ob überhaupt eine gültige Rotationsquelle vorhanden
+            ist und ob die Maschine korrekt mit dem mechanischen Netzwerk
+            verbunden wurde.
+        </p>
+
+        <h3>Netzwerk überlastet</h3>
+
+        <p>
+            Prüfe die Belastung des Systems und reduziere entweder die
+            angeschlossenen Maschinen oder erweitere die Energieversorgung.
+        </p>
+
+        <h3>Items kommen nicht an</h3>
+
+        <p>
+            Prüfe die Transportrichtung, Übergabepunkte, Filter und die Position
+            der Maschinen.
+        </p>
+
+        <h3>Produktionslinie produziert nichts</h3>
+
+        <p>
+            Prüfe den kompletten Ablauf vom Eingangsmaterial bis zum fertigen
+            Produkt. Häufig liegt das Problem nicht an der letzten Maschine,
+            sondern an einem vorherigen Verarbeitungsschritt.
+        </p>
+
+    </section>
+
+    <section class="section">
+
+        <h2>16 // FORTGESCHRITTENE STRATEGIE</h2>
+
+        <p>
+            Wenn du Create wirklich beherrschen möchtest, solltest du nicht
+            nur einzelne Maschinen lernen.
+        </p>
+
+        <p>
+            Das eigentliche Ziel ist, komplette industrielle Systeme zu planen.
+        </p>
+
+        <ul>
+            <li>zentrale Energieversorgung</li>
+            <li>mechanische Hauptleitungen</li>
+            <li>getrennte Produktionsbereiche</li>
+            <li>standardisierte Item-Logistik</li>
+            <li>automatische Materialzufuhr</li>
+            <li>Zwischenlager</li>
+            <li>Endlager</li>
+            <li>erweiterbare Fabrikstruktur</li>
+        </ul>
+
+        <p>
+            Genau hier wird Create für RISE OF NATIONS besonders interessant:
+            Aus einzelnen Maschinen kann eine komplette industrielle
+            Infrastruktur entstehen.
+        </p>
+
+    </section>
+
+    <section class="section">
+
+        <h2>17 // CREATE IM MODPACK</h2>
+
+        <p>
+            RISE OF NATIONS enthält mehrere Create-Erweiterungen.
+            Dadurch ist Create nicht als isoliertes System gedacht.
+        </p>
+
+        <div class="grid">
+
+            <div class="card">
+                <strong>CREATE AERONAUTICS</strong>
+                <span>
+                    Erweiterungen rund um bewegliche beziehungsweise
+                    luftfahrtbezogene Konstruktionen.
+                </span>
+            </div>
+
+            <div class="card">
+                <strong>CREATE BIG CANNONS</strong>
+                <span>
+                    Verbindet Create-Technik mit schweren Artilleriesystemen.
+                </span>
+            </div>
+
+            <div class="card">
+                <strong>CREATE DIESEL GENERATORS</strong>
+                <span>
+                    Erweitert den industriellen Energiebereich um
+                    dieselbasierte Energieerzeugung.
+                </span>
+            </div>
+
+            <div class="card">
+                <strong>CREATE NEW AGE</strong>
+                <span>
+                    Ergänzt Create um weitere elektrische und technische
+                    Systeme.
+                </span>
+            </div>
+
+            <div class="card">
+                <strong>CREATE DECO</strong>
+                <span>
+                    Liefert zusätzliche industrielle und dekorative Bauteile.
+                </span>
+            </div>
+
+            <div class="card">
+                <strong>CREATE RAILWAYS NAVIGATOR</strong>
+                <span>
+                    Unterstützt die Nutzung und Planung des Create-Bahnverkehrs.
+                </span>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="section">
+
+        <h2>18 // EMPFOHLENE LERNREIHENFOLGE</h2>
+
+        <ol>
+            <li>Rotation verstehen</li>
+            <li>einfache Energiequelle bauen</li>
+            <li>Shafts und Cogwheels kennenlernen</li>
+            <li>erste Maschine betreiben</li>
+            <li>Belastung und Geschwindigkeit verstehen</li>
+            <li>Items automatisch transportieren</li>
+            <li>erste Produktionskette bauen</li>
+            <li>Flüssigkeitssysteme kennenlernen</li>
+            <li>Contraptions bauen</li>
+            <li>große automatisierte Fabriken planen</li>
+        </ol>
+
+        <div class="tip">
+            Arbeite diese Reihenfolge nicht blind ab. Nutze sie als
+            Orientierung. Sobald du eine Produktionsaufgabe im Spiel hast,
+            springst du direkt zu den dafür benötigten Mechaniken.
+        </div>
+
+    </section>
+
+    <section class="section sources">
+
+        <h2>19 // ORIGINALQUELLEN & WEITERFÜHRENDE INFORMATIONEN</h2>
+
+        <p>
+            Diese Seite ist eine eigenständige Zusammenfassung für
+            RISE OF NATIONS. Für vollständige technische Details und
+            aktuelle Änderungen solltest du zusätzlich die Originalquellen
+            konsultieren.
+        </p>
+
+        <ul>
+            <li>
+                <a href="https://wiki.createmod.net/" target="_blank">
+                    Create Official Wiki
+                </a>
+            </li>
+
+            <li>
+                <a href="https://createmod.net/" target="_blank">
+                    Create Mod – Official Website
+                </a>
+            </li>
+
+            <li>
+                <a href="https://maven.createmod.net/" target="_blank">
+                    Create Official Maven / Version Files
+                </a>
+            </li>
+        </ul>
+
+        <p>
+            Die für Minecraft 1.21.1 verfügbare Create-Reihe umfasst 6.0.x;
+            die offizielle Maven-Ablage führt mehrere 1.21.1-Builds.
+        </p>
+
+    </section>
+
+    <a class="back" href="wiki-important.html">
+        ← ZURÜCK ZU WICHTIG
+    </a>
+
+</main>
+
+<footer>
+    RISE OF NATIONS // TACTICAL KNOWLEDGE DATABASE // CREATE
+</footer>
+
+</body>
+</html>
+```
