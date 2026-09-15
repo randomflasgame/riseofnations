@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SERVER // RISE OF NATIONS</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background:
+                linear-gradient(rgba(5, 10, 16, 0.94), rgba(5, 10, 16, 0.97)),
+                repeating-linear-gradient(
+                    0deg,
+                    rgba(255,255,255,0.025) 0px,
+                    rgba(255,255,255,0.025) 1px,
+                    transparent 1px,
+                    transparent 4px
+                );
+            color: #d8e2ea;
+            font-family: "Courier New", monospace;
+            min-height: 100vh;
+        }
+
+        header {
+            border-bottom: 1px solid #31506a;
+            background: #08111a;
+            padding: 18px 35px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: #d4af37;
+            font-size: 22px;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        .status {
+            color: #4fd1ff;
+            font-size: 13px;
+            letter-spacing: 2px;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 25px;
+        }
+
+        .classified {
+            color: #4fd1ff;
+            letter-spacing: 4px;
+            font-size: 13px;
+            margin-bottom: 12px;
+        }
+
+        h1 {
+            margin: 0;
+            color: #ffffff;
+            font-size: 52px;
+            letter-spacing: 7px;
+        }
+
+        .subtitle {
+            margin-top: 12px;
+            color: #71889a;
+            letter-spacing: 2px;
+        }
+
+        .grid {
+            margin-top: 45px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .panel {
+            border: 1px solid #31506a;
+            background: rgba(9, 19, 29, 0.95);
+            padding: 28px;
+            min-height: 180px;
+            position: relative;
+        }
+
+        .panel::before {
+            content: "SERVER SYSTEM";
+            position: absolute;
+            top: -9px;
+            left: 18px;
+            background: #09131d;
+            color: #4fd1ff;
+            padding: 0 9px;
+            font-size: 10px;
+            letter-spacing: 2px;
+        }
+
+        .panel h2 {
+            margin: 5px 0 20px;
+            color: #ffffff;
+            font-size: 19px;
+            letter-spacing: 3px;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #1d3040;
+            padding: 11px 0;
+            font-size: 13px;
+        }
+
+        .row:last-child {
+            border-bottom: none;
+        }
+
+        .label {
+            color: #71889a;
+        }
+
+        .value {
+            color: #d8e2ea;
+        }
+
+        .online {
+            color: #55d68a;
+        }
+
+        .gold {
+            color: #d4af37;
+        }
+
+        .red {
+            color: #d45b5b;
+        }
+
+        .command {
+            margin-top: 20px;
+            border: 1px solid #263d50;
+            padding: 20px;
+            background: #0b1823;
+        }
+
+        .command-title {
+            color: #d4af37;
+            letter-spacing: 2px;
+            font-size: 12px;
+            margin-bottom: 12px;
+        }
+
+        .command-text {
+            color: #8fa2b0;
+            line-height: 1.7;
+            font-size: 13px;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 35px;
+            color: #4fd1ff;
+            text-decoration: none;
+            letter-spacing: 2px;
+            font-size: 13px;
+        }
+
+        .back:hover {
+            color: #ffffff;
+        }
+
+        @media (max-width: 800px) {
+            h1 {
+                font-size: 35px;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">RISE OF NATIONS</div>
+    <div class="status">SERVER // ONLINE</div>
+</header>
+
+<main>
+
+    <div class="classified">COMMAND // SERVER INTELLIGENCE</div>
+
+    <h1>SERVER</h1>
+
+    <div class="subtitle">
+        CURRENT SERVER STATUS & DEPLOYMENT INFORMATION
+    </div>
+
+    <section class="grid">
+
+        <div class="panel">
+            <h2>SERVER STATUS</h2>
+
+            <div class="row">
+                <span class="label">STATUS</span>
+                <span class="value online">● ONLINE</span>
+            </div>
+
+            <div class="row">
+                <span class="label">VERSION</span>
+                <span class="value">1.0.0</span>
+            </div>
+
+            <div class="row">
+                <span class="label">MINECRAFT</span>
+                <span class="value">1.21.1</span>
+            </div>
+
+            <div class="row">
+                <span class="label">MODPACK</span>
+                <span class="value gold">RISE OF NATIONS</span>
+            </div>
+        </div>
+
+        <div class="panel">
+            <h2>CONNECTION</h2>
+
+            <div class="row">
+                <span class="label">SERVER IP</span>
+                <span class="value">COMING SOON</span>
+            </div>
+
+            <div class="row">
+                <span class="label">PORT</span>
+                <span class="value">25565</span>
+            </div>
+
+            <div class="row">
+                <span class="label">ACCESS</span>
+                <span class="value">PUBLIC</span>
+            </div>
+
+            <div class="row">
+                <span class="label">WHITELIST</span>
+                <span class="value red">NOT ACTIVE</span>
+            </div>
+        </div>
+
+        <div class="panel">
+            <h2>DEPLOYMENT</h2>
+
+            <div class="row">
+                <span class="label">MODPACK</span>
+                <span class="value">RISE OF NATIONS</span>
+            </div>
+
+            <div class="row">
+                <span class="label">RELEASE</span>
+                <span class="value">STABLE</span>
+            </div>
+
+            <div class="row">
+                <span class="label">PLATFORM</span>
+                <span class="value">JAVA EDITION</span>
+            </div>
+
+            <div class="row">
+                <span class="label">STATUS</span>
+                <span class="value online">OPERATIONAL</span>
+            </div>
+        </div>
+
+        <div class="panel">
+            <h2>SERVER POLICY</h2>
+
+            <div class="row">
+                <span class="label">GRIEFING</span>
+                <span class="value">RULES APPLY</span>
+            </div>
+
+            <div class="row">
+                <span class="label">PVP</span>
+                <span class="value">SERVER RULES</span>
+            </div>
+
+            <div class="row">
+                <span class="label">CLAIMS</span>
+                <span class="value">SUPPORTED</span>
+            </div>
+
+            <div class="row">
+                <span class="label">VOICE CHAT</span>
+                <span class="value online">AVAILABLE</span>
+            </div>
+        </div>
+
+    </section>
+
+    <div class="command">
+        <div class="command-title">SYSTEM MESSAGE // SERVER INFORMATION</div>
+
+        <div class="command-text">
+            Der Server befindet sich derzeit in Vorbereitung.
+            Verbindungsdaten, Regeln und weitere Informationen werden
+            aktualisiert, sobald die Infrastruktur bereitgestellt wurde.
+        </div>
+    </div>
+
+    <a href="../index.html" class="back">
+        ← RETURN TO COMMAND
+    </a>
+
+</main>
+
+</body>
+</html>
