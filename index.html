@@ -3,62 +3,198 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>RISE OF NATIONS</title>
-
-    <meta
-        name="description"
-        content="RISE OF NATIONS — Minecraft 1.21.1 Modpack"
-    >
-
-    <link rel="stylesheet" href="css/style.css">
+    <title>RISE OF NATIONS // COMMAND</title>
 
     <style>
-        .command-nav {
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background:
+                linear-gradient(rgba(5, 10, 16, 0.94), rgba(5, 10, 16, 0.97)),
+                repeating-linear-gradient(
+                    0deg,
+                    rgba(255,255,255,0.025) 0px,
+                    rgba(255,255,255,0.025) 1px,
+                    transparent 1px,
+                    transparent 4px
+                );
+            color: #d8e2ea;
+            font-family: "Courier New", monospace;
+            min-height: 100vh;
+        }
+
+        header {
+            border-bottom: 1px solid #31506a;
+            background: #08111a;
+            padding: 18px 35px;
             display: flex;
-            gap: 10px;
+            justify-content: space-between;
             align-items: center;
+        }
+
+        .logo {
+            color: #d4af37;
+            font-size: 22px;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
             flex-wrap: wrap;
         }
 
-        .command-nav a {
-            color: #8fb9d6;
+        nav a {
+            color: #8fa2b0;
+            text-decoration: none;
+            font-size: 12px;
+            letter-spacing: 2px;
+            transition: 0.2s;
+        }
+
+        nav a:hover {
+            color: #4fd1ff;
+        }
+
+        .status {
+            color: #55d68a;
+            font-size: 12px;
+            letter-spacing: 2px;
+        }
+
+        main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 70px 30px;
+        }
+
+        .classified {
+            color: #4fd1ff;
+            letter-spacing: 5px;
+            font-size: 13px;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            margin: 0;
+            color: #ffffff;
+            font-size: 70px;
+            letter-spacing: 9px;
+            line-height: 1;
+        }
+
+        .subtitle {
+            margin-top: 18px;
+            color: #71889a;
+            letter-spacing: 3px;
+            font-size: 14px;
+        }
+
+        .dashboard {
+            margin-top: 60px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .panel {
+            border: 1px solid #31506a;
+            background: rgba(9, 19, 29, 0.95);
+            padding: 25px;
+            min-height: 180px;
+            position: relative;
+        }
+
+        .panel:hover {
+            border-color: #4fd1ff;
+        }
+
+        .panel h2 {
+            margin: 0 0 20px;
+            color: #ffffff;
+            font-size: 17px;
+            letter-spacing: 3px;
+        }
+
+        .label {
+            color: #71889a;
+            font-size: 11px;
+            letter-spacing: 2px;
+        }
+
+        .value {
+            margin-top: 8px;
+            color: #d8e2ea;
+            font-size: 16px;
+        }
+
+        .online {
+            color: #55d68a;
+        }
+
+        .gold {
+            color: #d4af37;
+        }
+
+        .blue {
+            color: #4fd1ff;
+        }
+
+        .red {
+            color: #d45b5b;
+        }
+
+        .action {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 18px;
+            border: 1px solid #31506a;
+            color: #4fd1ff;
             text-decoration: none;
             font-size: 11px;
-            font-weight: 700;
             letter-spacing: 2px;
-            padding: 10px 14px;
-            border: 1px solid rgba(72, 139, 180, 0.35);
-            background: rgba(5, 22, 34, 0.75);
-            transition: all 0.2s ease;
+            transition: 0.2s;
         }
 
-        .command-nav a::before {
-            content: "[ ";
-            color: #d8aa32;
+        .action:hover {
+            background: #4fd1ff;
+            color: #08111a;
         }
 
-        .command-nav a::after {
-            content: " ]";
-            color: #d8aa32;
+        .wide {
+            grid-column: span 2;
         }
 
-        .command-nav a:hover {
-            color: #ffffff;
-            border-color: #4c9bd0;
-            background: rgba(16, 55, 78, 0.9);
-            box-shadow: 0 0 15px rgba(55, 145, 205, 0.2);
-            transform: translateY(-1px);
+        footer {
+            border-top: 1px solid #263d50;
+            margin-top: 70px;
+            padding: 25px 30px;
+            color: #526877;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-align: center;
         }
 
         @media (max-width: 900px) {
-            .command-nav {
-                justify-content: center;
+            h1 {
+                font-size: 45px;
             }
 
-            .command-nav a {
-                font-size: 9px;
-                padding: 8px 10px;
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+
+            .wide {
+                grid-column: span 1;
+            }
+
+            header {
+                flex-direction: column;
+                gap: 20px;
             }
         }
     </style>
@@ -66,130 +202,144 @@
 
 <body>
 
-    <div class="command-screen">
+<header>
 
-        <header class="top-bar">
-
-            <div class="logo">
-                RISE <span>OF</span> NATIONS
-            </div>
-
-            <nav class="command-nav">
-                <a href="#command">COMMAND</a>
-                <a href="#intelligence">INTELLIGENCE</a>
-                <a href="#operations">OPERATIONS</a>
-
-                <!-- DATABASE führt jetzt zur neuen Datenbank-Seite -->
-                <a href="pages/database.html">DATABASE</a>
-
-                <a href="#communications">COMMUNICATIONS</a>
-            </nav>
-
-            <div class="system-status">
-                <span class="status-light"></span>
-                SYSTEM ONLINE
-            </div>
-
-        </header>
-
-
-        <main class="main-content" id="command">
-
-            <h1 class="title">
-                RISE<br>
-                OF NATIONS
-            </h1>
-
-            <div class="subtitle">
-                GLOBAL COMMAND &amp; INTELLIGENCE SYSTEM
-            </div>
-
-
-            <section class="command-panel">
-
-                <div class="panel">
-                    <div class="panel-label">
-                        SERVER STATUS
-                    </div>
-
-                    <div class="panel-value">
-                        ONLINE
-                    </div>
-                </div>
-
-
-                <div class="panel">
-                    <div class="panel-label">
-                        CURRENT DEPLOYMENT
-                    </div>
-
-                    <div class="panel-value gold">
-                        VERSION 1.0.0
-                    </div>
-                </div>
-
-
-                <div class="panel">
-                    <div class="panel-label">
-                        MINECRAFT
-                    </div>
-
-                    <div class="panel-value">
-                        1.21.1
-                    </div>
-                </div>
-
-
-                <div class="panel" id="intelligence">
-                    <div class="panel-label">
-                        INTELLIGENCE
-                    </div>
-
-                    <div class="panel-value">
-                        ACTIVE
-                    </div>
-                </div>
-
-
-                <div class="panel" id="database">
-                    <div class="panel-label">
-                        DATABASE
-                    </div>
-
-                    <div class="panel-value">
-                        READY
-                    </div>
-                </div>
-
-
-                <div class="panel" id="communications">
-                    <div class="panel-label">
-                        COMMUNICATIONS
-                    </div>
-
-                    <div class="panel-value">
-                        ONLINE
-                    </div>
-                </div>
-
-            </section>
-
-        </main>
-
-
-        <footer class="footer">
-
-            <span>
-                R.O.N. COMMAND SYSTEM
-            </span>
-
-            <span>
-                ACCESS LEVEL: PUBLIC
-            </span>
-
-        </footer>
-
+    <div class="logo">
+        RISE OF NATIONS
     </div>
+
+    <nav>
+        <a href="index.html">COMMAND</a>
+        <a href="#intelligence">INTELLIGENCE</a>
+        <a href="pages/server.html">SERVER</a>
+        <a href="pages/database.html">DATABASE</a>
+        <a href="pages/download.html">DOWNLOAD</a>
+    </nav>
+
+    <div class="status">
+        ● SYSTEM ONLINE
+    </div>
+
+</header>
+
+<main>
+
+    <div class="classified">
+        NATO COMMAND NETWORK // SECURE CONNECTION
+    </div>
+
+    <h1>
+        RISE OF NATIONS
+    </h1>
+
+    <div class="subtitle">
+        GLOBAL COMMAND // INDUSTRIAL WARFARE // SURVIVAL
+    </div>
+
+    <section class="dashboard">
+
+        <div class="panel">
+
+            <h2>SERVER STATUS</h2>
+
+            <div class="label">
+                CURRENT STATUS
+            </div>
+
+            <div class="value online">
+                ● ONLINE
+            </div>
+
+            <a href="pages/server.html" class="action">
+                SERVER INTELLIGENCE →
+            </a>
+
+        </div>
+
+        <div class="panel">
+
+            <h2>CURRENT DEPLOYMENT</h2>
+
+            <div class="label">
+                MODPACK VERSION
+            </div>
+
+            <div class="value gold">
+                VERSION 1.0.0
+            </div>
+
+            <div class="label" style="margin-top:20px;">
+                MINECRAFT
+            </div>
+
+            <div class="value">
+                1.21.1
+            </div>
+
+        </div>
+
+        <div class="panel">
+
+            <h2>DOWNLOAD</h2>
+
+            <div class="label">
+                DEPLOYMENT PACKAGE
+            </div>
+
+            <div class="value">
+                OFFICIAL MODPACK
+            </div>
+
+            <a href="pages/download.html" class="action">
+                OPEN DOWNLOAD →
+            </a>
+
+        </div>
+
+        <div class="panel wide" id="intelligence">
+
+            <h2>GLOBAL INTELLIGENCE</h2>
+
+            <div class="label">
+                CURRENT SITUATION
+            </div>
+
+            <div class="value blue">
+                GLOBAL SITUATION MONITORED
+            </div>
+
+            <p>
+                Neue Entwicklungen werden kontinuierlich
+                überwacht. Weitere Lageberichte folgen.
+            </p>
+
+        </div>
+
+        <div class="panel">
+
+            <h2>DATABASE</h2>
+
+            <div class="label">
+                MODPACK SYSTEMS
+            </div>
+
+            <div class="value">
+                MOD DATABASE
+            </div>
+
+            <a href="pages/database.html" class="action">
+                OPEN DATABASE →
+            </a>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+    RISE OF NATIONS // COMMAND NETWORK // SYSTEM OPERATIONAL
+</footer>
 
 </body>
 </html>
