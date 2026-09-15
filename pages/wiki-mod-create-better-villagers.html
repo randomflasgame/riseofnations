@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RISE OF NATIONS // CREATE BETTER VILLAGERS</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+    min-height:100vh;
+    background:
+        linear-gradient(rgba(5,10,15,.97),rgba(5,10,15,.99)),
+        repeating-linear-gradient(135deg,rgba(255,255,255,.018) 0 2px,transparent 2px 9px);
+    color:#dbe3e8;
+    font-family:"Segoe UI",Arial,sans-serif;
+}
+
+header{
+    background:rgba(5,10,15,.98);
+    border-bottom:1px solid #293944;
+    box-shadow:0 5px 25px rgba(0,0,0,.45);
+}
+
+.header-inner{
+    max-width:1500px;
+    margin:auto;
+    padding:18px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:30px;
+}
+
+.logo{
+    color:#d6b85c;
+    font-size:22px;
+    font-weight:950;
+    letter-spacing:3px;
+}
+
+.logo span{
+    display:block;
+    color:#687b86;
+    font-size:9px;
+    letter-spacing:2px;
+    margin-top:4px;
+}
+
+nav{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+    gap:7px;
+}
+
+nav a{
+    color:#9aabb4;
+    text-decoration:none;
+    padding:9px 11px;
+    border:1px solid transparent;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.2px;
+    transition:.2s;
+}
+
+nav a:hover{
+    color:#d6b85c;
+    background:#111b22;
+    border-color:#3b4d58;
+}
+
+main{
+    max-width:1250px;
+    margin:auto;
+    padding:70px 30px 100px;
+}
+
+.eyebrow{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:3px;
+    margin-bottom:15px;
+}
+
+h1{
+    color:#edf2f4;
+    font-size:clamp(40px,6.5vw,78px);
+    line-height:.95;
+    letter-spacing:4px;
+    font-weight:950;
+}
+
+.subtitle{
+    max-width:930px;
+    margin-top:22px;
+    color:#8497a2;
+    line-height:1.75;
+    font-size:15px;
+}
+
+.meta{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-top:38px;
+}
+
+.meta-box{
+    padding:18px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+
+.meta-label{
+    color:#596c77;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:8px;
+}
+
+.meta-value{
+    color:#d6b85c;
+    font-size:13px;
+    font-weight:900;
+}
+
+.section{
+    margin-top:35px;
+    padding:30px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+
+.section-number{
+    color:#526773;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:2px;
+    margin-bottom:9px;
+}
+
+h2{
+    color:#e1e8eb;
+    font-size:22px;
+    letter-spacing:1px;
+    margin-bottom:18px;
+}
+
+h3{
+    color:#d6b85c;
+    font-size:14px;
+    letter-spacing:1px;
+    margin:25px 0 10px;
+}
+
+p{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    margin-bottom:13px;
+}
+
+ul,ol{
+    margin:12px 0 18px 22px;
+}
+
+li{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    padding-left:5px;
+}
+
+.note{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#111c23;
+    border-left:3px solid #4d91bd;
+}
+
+.note-title{
+    color:#4d91bd;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+
+.warning{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#17140e;
+    border-left:3px solid #d6b85c;
+}
+
+.warning-title{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:18px;
+}
+
+th,td{
+    text-align:left;
+    padding:13px 14px;
+    border:1px solid #293c47;
+    font-size:12px;
+}
+
+th{
+    color:#d6b85c;
+    background:#111c23;
+    font-size:10px;
+    letter-spacing:1px;
+}
+
+td{
+    color:#8ea0a9;
+    background:#0a141a;
+}
+
+.sources{
+    display:grid;
+    gap:10px;
+    margin-top:15px;
+}
+
+.sources a{
+    display:block;
+    padding:13px 15px;
+    background:#101b22;
+    border:1px solid #293c47;
+    color:#9fb0b9;
+    text-decoration:none;
+    font-size:12px;
+    transition:.2s;
+}
+
+.sources a:hover{
+    color:#d6b85c;
+    border-color:#d6b85c;
+}
+
+.back{
+    display:inline-block;
+    margin-top:45px;
+    padding:12px 16px;
+    color:#d6b85c;
+    border:1px solid #4c4530;
+    text-decoration:none;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    transition:.2s;
+}
+
+.back:hover{
+    background:#17150f;
+    border-color:#d6b85c;
+}
+
+footer{
+    border-top:1px solid #202e36;
+    padding:25px 30px;
+    text-align:center;
+    color:#465861;
+    font-size:9px;
+    letter-spacing:2px;
+}
+
+@media(max-width:850px){
+    .header-inner{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    nav{
+        justify-content:flex-start;
+    }
+
+    .meta{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:550px){
+    .meta{
+        grid-template-columns:1fr;
+    }
+
+    main{
+        padding:45px 18px 70px;
+    }
+
+    .section{
+        padding:22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-inner">
+
+        <div class="logo">
+            RISE OF NATIONS
+            <span>TACTICAL KNOWLEDGE DATABASE</span>
+        </div>
+
+        <nav>
+            <a href="../index.html">COMMAND</a>
+            <a href="intelligence.html">INTELLIGENCE</a>
+            <a href="server.html">SERVER</a>
+            <a href="database.html">DATABASE</a>
+            <a href="download.html">DOWNLOAD</a>
+            <a href="communications.html">COMMUNICATIONS</a>
+            <a href="wiki.html">WIKI</a>
+        </nav>
+
+    </div>
+</header>
+
+<main>
+
+    <div class="eyebrow">
+        PROFESSOR DATABASE // VILLAGE SYSTEMS // CREATE
+    </div>
+
+    <h1>CREATE BETTER VILLAGERS</h1>
+
+    <p class="subtitle">
+        Create Better Villagers erweitert das Zusammenspiel zwischen
+        Create und Dorfbewohnern und macht Dörfer und ihre Bewohner
+        für technische und industrielle Spielkonzepte interessanter.
+    </p>
+
+    <div class="meta">
+
+        <div class="meta-box">
+            <div class="meta-label">MOD</div>
+            <div class="meta-value">CREATE BETTER VILLAGERS</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">VERSION</div>
+            <div class="meta-value">1.3.2</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">MINECRAFT</div>
+            <div class="meta-value">1.21.1</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">SYSTEM</div>
+            <div class="meta-value">VILLAGE / ECONOMY</div>
+        </div>
+
+    </div>
+
+
+    <section class="section">
+
+        <div class="section-number">01 // SYSTEM OVERVIEW</div>
+        <h2>Was ist Create Better Villagers?</h2>
+
+        <p>
+            Create Better Villagers ergänzt das Create-Ökosystem um
+            Mechaniken rund um Dörfer und Dorfbewohner.
+        </p>
+
+        <p>
+            Dadurch können Dörfer stärker als Bestandteil einer
+            industriellen oder wirtschaftlichen Infrastruktur
+            betrachtet werden.
+        </p>
+
+        <div class="note">
+            <div class="note-title">CORE PRINCIPLE</div>
+            <p>
+                Dorfbewohner sind nicht nur NPCs. In einer
+                automatisierten Welt können sie Arbeitskräfte,
+                Händler und wichtige Bestandteile einer Siedlung sein.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">02 // VILLAGE ECONOMY</div>
+        <h2>Dörfer als Wirtschaftssystem</h2>
+
+        <p>
+            Ein gut aufgebautes Dorf kann mehrere Funktionen
+            gleichzeitig erfüllen.
+        </p>
+
+        <ul>
+            <li>Handelszentrum.</li>
+            <li>Wohngebiet.</li>
+            <li>Arbeitsstandort.</li>
+            <li>Versorgungszentrum.</li>
+            <li>Ausgangspunkt für industrielle Projekte.</li>
+        </ul>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">03 // INDUSTRIAL INTEGRATION</div>
+        <h2>Dorf und Fabrik verbinden</h2>
+
+        <p>
+            Besonders interessant wird die Kombination mit Create,
+            wenn ein Dorf in die umliegende Industrie eingebunden wird.
+        </p>
+
+        <ol>
+            <li>Dorfzentrum bestimmen.</li>
+            <li>Arbeitsbereiche identifizieren.</li>
+            <li>Industrie außerhalb des Wohnbereichs errichten.</li>
+            <li>Transportwege planen.</li>
+            <li>Lager und Handelsbereiche verbinden.</li>
+        </ol>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">04 // WORKSTATIONS</div>
+        <h2>Arbeitsplätze organisieren</h2>
+
+        <p>
+            Bei größeren Siedlungen sollte die Position von
+            Arbeitsplätzen bewusst geplant werden.
+        </p>
+
+        <table>
+
+            <tr>
+                <th>BEREICH</th>
+                <th>FUNKTION</th>
+            </tr>
+
+            <tr>
+                <td>RESIDENTIAL</td>
+                <td>Wohnbereich</td>
+            </tr>
+
+            <tr>
+                <td>COMMERCIAL</td>
+                <td>Handel</td>
+            </tr>
+
+            <tr>
+                <td>INDUSTRIAL</td>
+                <td>Produktion</td>
+            </tr>
+
+            <tr>
+                <td>AGRICULTURAL</td>
+                <td>Landwirtschaft</td>
+            </tr>
+
+            <tr>
+                <td>LOGISTICS</td>
+                <td>Lager und Transport</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">05 // VILLAGE DESIGN</div>
+        <h2>Ein funktionierendes Dorf bauen</h2>
+
+        <p>
+            Ein gutes Dorf sollte nicht nur schön aussehen, sondern
+            auch logisch aufgebaut sein.
+        </p>
+
+        <ul>
+            <li>Wohnbereiche zentral oder geschützt.</li>
+            <li>Handel gut erreichbar.</li>
+            <li>Landwirtschaft am Rand.</li>
+            <li>Industrie außerhalb dichter Wohngebiete.</li>
+            <li>Klare Straßen und Wege.</li>
+            <li>Ausreichende Beleuchtung.</li>
+        </ul>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">06 // AUTOMATION</div>
+        <h2>Create und Dorfsysteme</h2>
+
+        <p>
+            Create kann verwendet werden, um die Infrastruktur
+            rund um ein Dorf zu automatisieren.
+        </p>
+
+        <ul>
+            <li>Rohstofftransport.</li>
+            <li>Lebensmittelproduktion.</li>
+            <li>Lagerung.</li>
+            <li>Verarbeitung.</li>
+            <li>Transport zwischen Produktionsstandorten.</li>
+        </ul>
+
+        <div class="note">
+            <div class="note-title">DESIGN PRINCIPLE</div>
+            <p>
+                Automatisiere möglichst die Versorgung der Siedlung,
+                statt jede einzelne Aufgabe direkt am Wohnort zu erledigen.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">07 // TRADING</div>
+        <h2>Handel</h2>
+
+        <p>
+            Dorfbewohner können wichtige Handelsoptionen bereitstellen.
+            Für größere Projekte sollte deshalb ein eigener Handelsbereich
+            eingeplant werden.
+        </p>
+
+        <ul>
+            <li>Händler zentral sammeln.</li>
+            <li>Arbeitsplätze sauber organisieren.</li>
+            <li>Handelsbereich schützen.</li>
+            <li>Wichtige Handelsangebote dokumentieren.</li>
+            <li>Versorgung und Zugang sicherstellen.</li>
+        </ul>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">08 // SECURITY</div>
+        <h2>Sicherheit für Dörfer</h2>
+
+        <p>
+            Ein großes Dorf mit wertvollen Handelsmöglichkeiten
+            sollte entsprechend geschützt werden.
+        </p>
+
+        <ul>
+            <li>Beleuchtung.</li>
+            <li>Kontrollierte Zugänge.</li>
+            <li>Geschützte Händlerbereiche.</li>
+            <li>Ausreichende Verteidigung.</li>
+            <li>Abstand zu gefährlichen Industrieanlagen.</li>
+        </ul>
+
+        <div class="warning">
+            <div class="warning-title">SECURITY WARNING</div>
+            <p>
+                Maschinen, gefährliche Produktionsanlagen und
+                Wohnbereiche sollten möglichst klar voneinander
+                getrennt werden.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">09 // MULTIPLAYER</div>
+        <h2>Dörfer als gemeinsame Infrastruktur</h2>
+
+        <p>
+            Auf einem Multiplayer-Server können Dörfer als neutrale
+            wirtschaftliche Zentren dienen.
+        </p>
+
+        <ul>
+            <li>Handelsplätze.</li>
+            <li>Gemeinsame Versorgung.</li>
+            <li>Spielerwohnungen.</li>
+            <li>Industriegebiete.</li>
+            <li>Transportknoten.</li>
+        </ul>
+
+        <div class="note">
+            <div class="note-title">COMMUNITY APPLICATION</div>
+            <p>
+                Ein gemeinsam aufgebautes Dorf kann sich zu einem
+                wichtigen sozialen und wirtschaftlichen Mittelpunkt
+                des Servers entwickeln.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">10 // MOD SYNERGY</div>
+        <h2>Zusammenspiel mit anderen Mods</h2>
+
+        <p>
+            Create Better Villagers kann besonders gut mit den
+            anderen Siedlungs- und Wirtschaftssystemen des Modpacks
+            kombiniert werden.
+        </p>
+
+        <ul>
+            <li>Create für Automation.</li>
+            <li>Guard Villagers für stärkere Dorfverteidigung.</li>
+            <li>Farmer’s Delight für Lebensmittelversorgung.</li>
+            <li>Waystones für Reiseverbindungen.</li>
+            <li>Macaw’s-Serie für Stadtarchitektur.</li>
+            <li>Lightman’s Currency für Wirtschaftssysteme.</li>
+            <li>Open Parties and Claims für Gebietsverwaltung.</li>
+        </ul>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">11 // EXPANSION</div>
+        <h2>Vom Dorf zur Stadt</h2>
+
+        <p>
+            Ein bestehendes Dorf kann als Kern einer größeren
+            Stadtentwicklung verwendet werden.
+        </p>
+
+        <ol>
+            <li>Dorfzentrum sichern.</li>
+            <li>Wohngebiete erweitern.</li>
+            <li>Handelszentrum ausbauen.</li>
+            <li>Landwirtschaft organisieren.</li>
+            <li>Industriegebiet außerhalb errichten.</li>
+            <li>Straßen und Transportwege ergänzen.</li>
+            <li>Stadt mit weiteren Standorten verbinden.</li>
+        </ol>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">12 // TROUBLESHOOTING</div>
+        <h2>Fehleranalyse</h2>
+
+        <h3>Dorfbewohner arbeiten nicht wie erwartet</h3>
+
+        <p>
+            Prüfe zunächst Arbeitsplatz, Umgebung und die Zuordnung
+            des jeweiligen Dorfbewohners.
+        </p>
+
+        <h3>Dorf wirkt chaotisch</h3>
+
+        <p>
+            Trenne Wohn-, Handels-, Landwirtschafts- und
+            Industriebereiche räumlich voneinander.
+        </p>
+
+        <h3>Industrie stört das Dorf</h3>
+
+        <p>
+            Verlege Maschinen, Lager und laute Produktionsanlagen
+            in ein separates Industrieviertel.
+        </p>
+
+        <h3>Handel ist schwer zugänglich</h3>
+
+        <p>
+            Richte einen zentralen Marktplatz beziehungsweise
+            Handelsbereich mit klaren Wegen ein.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">13 // RISE OF NATIONS APPLICATION</div>
+        <h2>Einsatz im Modpack</h2>
+
+        <p>
+            Create Better Villagers passt hervorragend zu einer
+            Welt, in der Städte, Handel, Industrie und Spielerprojekte
+            miteinander verbunden werden.
+        </p>
+
+        <ul>
+            <li>Städtische Handelszentren.</li>
+            <li>Industrielle Randgebiete.</li>
+            <li>Landwirtschaftliche Gemeinden.</li>
+            <li>Versorgungsdörfer.</li>
+            <li>Spielerstädte.</li>
+            <li>Gemeinsame Wirtschaftszentren.</li>
+        </ul>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">14 // PROFESSOR DOCTRINE</div>
+        <h2>Das Wichtigste zum Mitnehmen</h2>
+
+        <ul>
+            <li>Dörfer können Teil einer größeren Industrie sein.</li>
+            <li>Handel sollte zentral und geschützt organisiert werden.</li>
+            <li>Wohn- und Industriegebiete sollten getrennt werden.</li>
+            <li>Create eignet sich für die Versorgung und Logistik rund um Dörfer.</li>
+            <li>Ein kleines Dorf kann zum Kern einer vollständigen Stadt werden.</li>
+            <li>Im Multiplayer können Dörfer wichtige neutrale Wirtschaftszentren sein.</li>
+        </ul>
+
+        <div class="warning">
+            <div class="warning-title">FINAL PRINCIPLE</div>
+            <p>
+                Plane ein Dorf nicht nur als Ansammlung von Häusern.
+                Plane es als funktionierende Siedlung mit Wohnraum,
+                Arbeit, Handel, Versorgung, Logistik und Schutz.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">15 // REFERENCE DATA</div>
+        <h2>Originalquellen</h2>
+
+        <p>
+            Für konkrete Mechaniken, Rezepte und versionsabhängige
+            Funktionen sollten die Projektseiten der verwendeten
+            Version konsultiert werden.
+        </p>
+
+        <div class="sources">
+
+            <a href="https://modrinth.com/mod/create-better-villagers"
+               target="_blank"
+               rel="noopener">
+                MODRINTH // CREATE BETTER VILLAGERS
+            </a>
+
+            <a href="https://www.curseforge.com/minecraft/mc-mods/create-better-villagers"
+               target="_blank"
+               rel="noopener">
+                CURSEFORGE // CREATE BETTER VILLAGERS
+            </a>
+
+            <a href="https://modrinth.com/mod/create"
+               target="_blank"
+               rel="noopener">
+                MODRINTH // CREATE
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <a class="back" href="wiki.html">
+        ← ZURÜCK ZUR WIKI
+    </a>
+
+</main>
+
+<footer>
+    RISE OF NATIONS // CREATE BETTER VILLAGERS // TACTICAL KNOWLEDGE DATABASE
+</footer>
+
+</body>
+</html>
