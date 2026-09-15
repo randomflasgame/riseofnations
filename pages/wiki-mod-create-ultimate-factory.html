@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RISE OF NATIONS // CREATE ULTIMATE FACTORY</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+    min-height:100vh;
+    background:
+        linear-gradient(rgba(5,10,15,.97),rgba(5,10,15,.99)),
+        repeating-linear-gradient(
+            135deg,
+            rgba(255,255,255,.018) 0 2px,
+            transparent 2px 9px
+        );
+    color:#dbe3e8;
+    font-family:"Segoe UI",Arial,sans-serif;
+}
+
+header{
+    background:rgba(5,10,15,.98);
+    border-bottom:1px solid #293944;
+    box-shadow:0 5px 25px rgba(0,0,0,.45);
+}
+
+.header-inner{
+    max-width:1500px;
+    margin:auto;
+    padding:18px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:30px;
+}
+
+.logo{
+    color:#d6b85c;
+    font-size:22px;
+    font-weight:950;
+    letter-spacing:3px;
+}
+
+.logo span{
+    display:block;
+    color:#687b86;
+    font-size:9px;
+    letter-spacing:2px;
+    margin-top:4px;
+}
+
+nav{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+    gap:7px;
+}
+
+nav a{
+    color:#9aabb4;
+    text-decoration:none;
+    padding:9px 11px;
+    border:1px solid transparent;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.2px;
+    transition:.2s;
+}
+
+nav a:hover{
+    color:#d6b85c;
+    background:#111b22;
+    border-color:#3b4d58;
+}
+
+main{
+    max-width:1250px;
+    margin:auto;
+    padding:70px 30px 100px;
+}
+
+.eyebrow{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:3px;
+    margin-bottom:15px;
+}
+
+h1{
+    color:#edf2f4;
+    font-size:clamp(40px,6.5vw,78px);
+    line-height:.95;
+    letter-spacing:4px;
+    font-weight:950;
+}
+
+.subtitle{
+    max-width:930px;
+    margin-top:22px;
+    color:#8497a2;
+    line-height:1.75;
+    font-size:15px;
+}
+
+.meta{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-top:38px;
+}
+
+.meta-box{
+    padding:18px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+
+.meta-label{
+    color:#596c77;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:8px;
+}
+
+.meta-value{
+    color:#d6b85c;
+    font-size:13px;
+    font-weight:900;
+}
+
+.section{
+    margin-top:35px;
+    padding:30px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+
+.section-number{
+    color:#526773;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:2px;
+    margin-bottom:9px;
+}
+
+h2{
+    color:#e1e8eb;
+    font-size:22px;
+    letter-spacing:1px;
+    margin-bottom:18px;
+}
+
+h3{
+    color:#d6b85c;
+    font-size:14px;
+    letter-spacing:1px;
+    margin:25px 0 10px;
+}
+
+p{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    margin-bottom:13px;
+}
+
+ul,ol{
+    margin:12px 0 18px 22px;
+}
+
+li{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    padding-left:5px;
+}
+
+.note{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#111c23;
+    border-left:3px solid #4d91bd;
+}
+
+.note-title{
+    color:#4d91bd;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+
+.warning{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#17140e;
+    border-left:3px solid #d6b85c;
+}
+
+.warning-title{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:18px;
+}
+
+th,td{
+    text-align:left;
+    padding:13px 14px;
+    border:1px solid #293c47;
+    font-size:12px;
+}
+
+th{
+    color:#d6b85c;
+    background:#111c23;
+    font-size:10px;
+    letter-spacing:1px;
+}
+
+td{
+    color:#8ea0a9;
+    background:#0a141a;
+}
+
+.sources{
+    display:grid;
+    gap:10px;
+    margin-top:15px;
+}
+
+.sources a{
+    display:block;
+    padding:13px 15px;
+    background:#101b22;
+    border:1px solid #293c47;
+    color:#9fb0b9;
+    text-decoration:none;
+    font-size:12px;
+    transition:.2s;
+}
+
+.sources a:hover{
+    color:#d6b85c;
+    border-color:#d6b85c;
+}
+
+.back{
+    display:inline-block;
+    margin-top:45px;
+    padding:12px 16px;
+    color:#d6b85c;
+    border:1px solid #4c4530;
+    text-decoration:none;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    transition:.2s;
+}
+
+.back:hover{
+    background:#17150f;
+    border-color:#d6b85c;
+}
+
+footer{
+    border-top:1px solid #202e36;
+    padding:25px 30px;
+    text-align:center;
+    color:#465861;
+    font-size:9px;
+    letter-spacing:2px;
+}
+
+@media(max-width:850px){
+    .header-inner{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    nav{
+        justify-content:flex-start;
+    }
+
+    .meta{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:550px){
+    .meta{
+        grid-template-columns:1fr;
+    }
+
+    main{
+        padding:45px 18px 70px;
+    }
+
+    .section{
+        padding:22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-inner">
+
+        <div class="logo">
+            RISE OF NATIONS
+            <span>TACTICAL KNOWLEDGE DATABASE</span>
+        </div>
+
+        <nav>
+            <a href="../index.html">COMMAND</a>
+            <a href="intelligence.html">INTELLIGENCE</a>
+            <a href="server.html">SERVER</a>
+            <a href="database.html">DATABASE</a>
+            <a href="download.html">DOWNLOAD</a>
+            <a href="communications.html">COMMUNICATIONS</a>
+            <a href="wiki.html">WIKI</a>
+        </nav>
+
+    </div>
+</header>
+
+<main>
+
+    <div class="eyebrow">
+        PROFESSOR DATABASE // ADVANCED INDUSTRIAL SYSTEMS
+    </div>
+
+    <h1>CREATE ULTIMATE FACTORY</h1>
+
+    <p class="subtitle">
+        Create Ultimate Factory erweitert die Möglichkeiten des
+        Create-Produktionssystems und richtet sich an komplexe,
+        mehrstufige Fabriken. Der entscheidende Punkt ist die
+        Verbindung vieler einzelner Verarbeitungsschritte zu einer
+        kontrollierten industriellen Produktionskette.
+    </p>
+
+    <div class="meta">
+
+        <div class="meta-box">
+            <div class="meta-label">MOD</div>
+            <div class="meta-value">CREATE ULTIMATE FACTORY</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">VERSION</div>
+            <div class="meta-value">2.2.4</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">MINECRAFT</div>
+            <div class="meta-value">1.21.1</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">SYSTEM</div>
+            <div class="meta-value">INDUSTRIAL PRODUCTION</div>
+        </div>
+
+    </div>
+
+
+    <section class="section">
+
+        <div class="section-number">01 // SYSTEM OVERVIEW</div>
+        <h2>Was ist Create Ultimate Factory?</h2>
+
+        <p>
+            Create Ultimate Factory erweitert das industrielle
+            Potenzial von Create und unterstützt Produktionsanlagen,
+            die mehrere Verarbeitungsschritte miteinander verbinden.
+        </p>
+
+        <p>
+            Das wichtigste Konzept ist dabei nicht eine einzelne
+            Maschine, sondern die Planung einer vollständigen
+            Produktionskette.
+        </p>
+
+        <div class="note">
+            <div class="note-title">CORE PRINCIPLE</div>
+            <p>
+                Eine gute Fabrik verwandelt Rohstoffe Schritt für
+                Schritt in ein Endprodukt und kontrolliert dabei
+                Materialfluss, Energie, Lagerung und Output.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">02 // PRODUCTION CHAINS</div>
+        <h2>Produktionsketten verstehen</h2>
+
+        <p>
+            Eine komplexe Fabrik sollte in einzelne Produktionsstufen
+            zerlegt werden.
+        </p>
+
+        <ol>
+            <li>Rohstoffgewinnung.</li>
+            <li>Rohstoffaufbereitung.</li>
+            <li>Zwischenprodukte herstellen.</li>
+            <li>Zwischenprodukte kombinieren.</li>
+            <li>Endprodukt herstellen.</li>
+            <li>Produkt lagern oder versenden.</li>
+        </ol>
+
+        <p>
+            Diese Struktur macht die Fabrik übersichtlich und erleichtert
+            spätere Erweiterungen.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">03 // FACTORY ARCHITECTURE</div>
+        <h2>Eine Fabrik richtig aufteilen</h2>
+
+        <table>
+
+            <tr>
+                <th>ZONE</th>
+                <th>AUFGABE</th>
+            </tr>
+
+            <tr>
+                <td>RAW MATERIAL</td>
+                <td>Rohstoffe empfangen</td>
+            </tr>
+
+            <tr>
+                <td>PROCESSING</td>
+                <td>Grundverarbeitung</td>
+            </tr>
+
+            <tr>
+                <td>ASSEMBLY</td>
+                <td>Produkte zusammenbauen</td>
+            </tr>
+
+            <tr>
+                <td>QUALITY / BUFFER</td>
+                <td>Zwischenlagerung</td>
+            </tr>
+
+            <tr>
+                <td>FINAL OUTPUT</td>
+                <td>Endprodukte sammeln</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">04 // MATERIAL FLOW</div>
+        <h2>Materialfluss</h2>
+
+        <p>
+            Einer der häufigsten Fehler bei großen Fabriken ist ein
+            unklarer Materialfluss.
+        </p>
+
+        <ul>
+            <li>Input und Output klar trennen.</li>
+            <li>Produktionsrichtungen festlegen.</li>
+            <li>Zwischenlager einplanen.</li>
+            <li>Transportwege möglichst kurz halten.</li>
+            <li>Rückläufe und Nebenprodukte berücksichtigen.</li>
+        </ul>
+
+        <div class="warning">
+            <div class="warning-title">FACTORY WARNING</div>
+            <p>
+                Wenn Materialkreisläufe kreuz und quer durch eine Fabrik
+                laufen, wird die Fehlersuche schnell schwierig. Eine
+                klare Produktionsrichtung spart später viel Arbeit.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">05 // MECHANICAL POWER</div>
+        <h2>Mechanische Energie</h2>
+
+        <p>
+            Jede Create-Anlage benötigt ein passend dimensioniertes
+            mechanisches Netzwerk.
+        </p>
+
+        <ul>
+            <li>Energiequellen zentral oder modular planen.</li>
+            <li>Rotation über Wellen und Getriebe verteilen.</li>
+            <li>Produktionsbereiche getrennt strukturieren.</li>
+            <li>Geschwindigkeit an Maschinen anpassen.</li>
+            <li>Überlastungen vermeiden.</li>
+        </ul>
+
+        <p>
+            Bei einer sehr großen Fabrik kann es sinnvoll sein,
+            mehrere unabhängige mechanische Netzwerke aufzubauen.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">06 // ITEM LOGISTICS</div>
+        <h2>Items automatisch transportieren</h2>
+
+        <p>
+            Die Verarbeitung funktioniert nur zuverlässig, wenn
+            Materialien zur richtigen Zeit an der richtigen Stelle
+            ankommen.
+        </p>
+
+        <table>
+
+            <tr>
+                <th>TRANSPORTSYSTEM</th>
+                <th>EINSATZ</th>
+            </tr>
+
+            <tr>
+                <td>BELTS</td>
+                <td>Kontinuierlicher Itemtransport</td>
+            </tr>
+
+            <tr>
+                <td>FUNNELS</td>
+                <td>Gezielte Ein- und Ausgabe</td>
+            </tr>
+
+            <tr>
+                <td>CONTAINERS</td>
+                <td>Zwischenlagerung</td>
+            </tr>
+
+            <tr>
+                <td>TRAINS</td>
+                <td>Große Distanzen</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">07 // FLUID SYSTEMS</div>
+        <h2>Flüssigkeitsverarbeitung</h2>
+
+        <p>
+            Moderne Create-Produktionsketten enthalten häufig auch
+            Flüssigkeiten. Diese sollten als eigener Teil der Fabrik
+            geplant werden.
+        </p>
+
+        <ul>
+            <li>Flüssigkeitsquellen definieren.</li>
+            <li>Tanks als Puffer verwenden.</li>
+            <li>Pumpen sinnvoll platzieren.</li>
+            <li>Leitungen eindeutig strukturieren.</li>
+            <li>Flüssigkeiten nicht unnötig vermischen.</li>
+        </ul>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">08 // BUFFER STORAGE</div>
+        <h2>Zwischenlager</h2>
+
+        <p>
+            Zwischenlager verhindern, dass eine kleine Störung sofort
+            die komplette Produktionskette stoppt.
+        </p>
+
+        <ul>
+            <li>Rohstoffpuffer.</li>
+            <li>Zwischenproduktpuffer.</li>
+            <li>Flüssigkeitspuffer.</li>
+            <li>Endproduktlager.</li>
+        </ul>
+
+        <div class="note">
+            <div class="note-title">RESILIENCE</div>
+            <p>
+                Eine Fabrik mit sinnvollen Puffern kann kurzfristige
+                Schwankungen im Input oder Output wesentlich besser
+                ausgleichen.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">09 // AUTOMATION</div>
+        <h2>Vollautomatische Produktion</h2>
+
+        <p>
+            Das Ziel einer fortgeschrittenen Fabrik ist ein möglichst
+            geringer manueller Eingriff.
+        </p>
+
+        <ol>
+            <li>Rohstoffe automatisch zuführen.</li>
+            <li>Verarbeitung automatisch starten.</li>
+            <li>Zwischenprodukte weitertransportieren.</li>
+            <li>Endprodukte automatisch lagern.</li>
+            <li>Überschüsse weiterleiten oder exportieren.</li>
+        </ol>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">10 // FACTORY SCALING</div>
+        <h2>Eine kleine Fabrik vergrößern</h2>
+
+        <p>
+            Eine gute Produktionsanlage sollte modular erweiterbar sein.
+        </p>
+
+        <table>
+
+            <tr>
+                <th>STUFE</th>
+                <th>STRUKTUR</th>
+            </tr>
+
+            <tr>
+                <td>LEVEL 1</td>
+                <td>Manuelle Einzelmaschine</td>
+            </tr>
+
+            <tr>
+                <td>LEVEL 2</td>
+                <td>Teilautomatisierte Linie</td>
+            </tr>
+
+            <tr>
+                <td>LEVEL 3</td>
+                <td>Vollautomatische Produktionslinie</td>
+            </tr>
+
+            <tr>
+                <td>LEVEL 4</td>
+                <td>Mehrere parallele Linien</td>
+            </tr>
+
+            <tr>
+                <td>LEVEL 5</td>
+                <td>Industrielles Produktionszentrum</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">11 // PARALLEL PRODUCTION</div>
+        <h2>Mehrere Produktionslinien</h2>
+
+        <p>
+            Wenn eine einzelne Linie nicht genug Output erzeugt, muss
+            nicht zwingend die komplette Anlage neu gebaut werden.
+        </p>
+
+        <p>
+            Stattdessen können identische Produktionsmodule parallel
+            betrieben werden.
+        </p>
+
+        <ul>
+            <li>Input gemeinsam zuführen.</li>
+            <li>Verarbeitung auf mehrere Maschinen verteilen.</li>
+            <li>Output zentral sammeln.</li>
+            <li>Gemeinsames Lager verwenden.</li>
+        </ul>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">12 // TROUBLESHOOTING</div>
+        <h2>Fehleranalyse</h2>
+
+        <h3>Input fehlt</h3>
+
+        <p>
+            Verfolge den Materialfluss vom Rohstofflager bis zur
+            betroffenen Maschine.
+        </p>
+
+        <h3>Produktion steht</h3>
+
+        <p>
+            Prüfe Energieversorgung, Rezeptbedingungen, Input und
+            Outputlager.
+        </p>
+
+        <h3>Output staut sich</h3>
+
+        <p>
+            Vergrößere das Lager oder beschleunige den Abtransport der
+            fertigen Produkte.
+        </p>
+
+        <h3>Eine Maschine ist der Flaschenhals</h3>
+
+        <p>
+            Identifiziere den langsamsten Produktionsschritt und
+            vervielfache gegebenenfalls genau diesen Teil der Anlage.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">13 // MULTIPLAYER INDUSTRY</div>
+        <h2>Großfabriken für mehrere Spieler</h2>
+
+        <p>
+            In RISE OF NATIONS kann eine große Fabrik zu einem
+            gemeinschaftlichen Industriezentrum werden.
+        </p>
+
+        <ul>
+            <li>Rohstoffe von mehreren Spielern annehmen.</li>
+            <li>Produkte zentral herstellen.</li>
+            <li>Fertige Waren verteilen.</li>
+            <li>Überschüsse für den Handel verwenden.</li>
+            <li>Zugverbindungen zu anderen Produktionsstätten aufbauen.</li>
+        </ul>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">14 // ADVANCED FACTORY DESIGN</div>
+        <h2>Das industrielle Endgame</h2>
+
+        <p>
+            Eine fortgeschrittene Create-Fabrik sollte wie ein
+            Produktionskomplex behandelt werden.
+        </p>
+
+        <ol>
+            <li>Rohstoffgebiete anbinden.</li>
+            <li>Rohstoffe zentral lagern.</li>
+            <li>Mehrere Verarbeitungslinien betreiben.</li>
+            <li>Zwischenprodukte puffern.</li>
+            <li>Endprodukte zentral sammeln.</li>
+            <li>Überschüsse per Zug verteilen.</li>
+        </ol>
+
+        <div class="note">
+            <div class="note-title">PROFESSOR LEVEL</div>
+            <p>
+                Ab diesem Punkt ist die Fabrik nicht mehr nur eine
+                Maschine, sondern eine eigene industrielle Infrastruktur.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">15 // RISE OF NATIONS APPLICATION</div>
+        <h2>Einsatz im Modpack</h2>
+
+        <p>
+            Create Ultimate Factory passt besonders gut zum
+            industriellen Schwerpunkt des Modpacks und kann mit
+            mehreren Create-Erweiterungen kombiniert werden.
+        </p>
+
+        <ul>
+            <li>Create New Age für Energie- und Elektroniksysteme.</li>
+            <li>Create Diesel Generators für industrielle Energie.</li>
+            <li>Create Ore Excavation für Rohstoffversorgung.</li>
+            <li>Create Liquid Fuel für Flüssigkeitsketten.</li>
+            <li>Create Railways Navigator für Transportplanung.</li>
+            <li>Create Train Parts für spezialisierte Züge.</li>
+            <li>Create Numismatics für wirtschaftliche Nutzung.</li>
+        </ul>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">16 // PROFESSOR DOCTRINE</div>
+        <h2>Das Wichtigste zum Mitnehmen</h2>
+
+        <ul>
+            <li>Produktionsketten immer als Gesamtsystem betrachten.</li>
+            <li>Rohstoff, Verarbeitung, Lager und Output verbinden.</li>
+            <li>Mechanische Energie ausreichend dimensionieren.</li>
+            <li>Materialflüsse klar und nachvollziehbar halten.</li>
+            <li>Zwischenlager für stabile Produktion einsetzen.</li>
+            <li>Flaschenhälse gezielt identifizieren.</li>
+            <li>Produktionsmodule parallel erweitern.</li>
+            <li>Große Fabriken modular und erweiterbar bauen.</li>
+        </ul>
+
+        <div class="warning">
+            <div class="warning-title">FINAL PRINCIPLE</div>
+            <p>
+                Die stärkste Fabrik ist nicht die mit den meisten
+                Maschinen. Es ist die Fabrik, bei der jeder Schritt
+                zuverlässig mit dem nächsten verbunden ist.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">17 // REFERENCE DATA</div>
+        <h2>Originalquellen</h2>
+
+        <p>
+            Für konkrete Rezepte, zusätzliche Maschinen und
+            versionsabhängige Mechaniken sollte die Projektseite der
+            installierten Version zusammen mit JEI verwendet werden.
+        </p>
+
+        <div class="sources">
+
+            <a href="https://modrinth.com/mod/create-ultimate-factory"
+               target="_blank"
+               rel="noopener">
+                MODRINTH // CREATE ULTIMATE FACTORY
+            </a>
+
+            <a href="https://www.curseforge.com/minecraft/mc-mods/create-ultimate-factory"
+               target="_blank"
+               rel="noopener">
+                CURSEFORGE // CREATE ULTIMATE FACTORY
+            </a>
+
+            <a href="https://modrinth.com/mod/create"
+               target="_blank"
+               rel="noopener">
+                MODRINTH // CREATE
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <a class="back" href="wiki.html">
+        ← ZURÜCK ZUR WIKI
+    </a>
+
+</main>
+
+<footer>
+    RISE OF NATIONS // CREATE ULTIMATE FACTORY // TACTICAL KNOWLEDGE DATABASE
+</footer>
+
+</body>
+</html>
