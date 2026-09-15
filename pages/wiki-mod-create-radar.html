@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RISE OF NATIONS // CREATE RADAR</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+    min-height:100vh;
+    background:
+        linear-gradient(rgba(7,12,17,.97),rgba(7,12,17,.99)),
+        repeating-linear-gradient(
+            135deg,
+            rgba(255,255,255,.018) 0 2px,
+            transparent 2px 9px
+        );
+    color:#dbe3e8;
+    font-family:"Segoe UI",Arial,sans-serif;
+}
+
+header{
+    background:rgba(6,11,16,.98);
+    border-bottom:1px solid #293944;
+    box-shadow:0 5px 25px rgba(0,0,0,.45);
+}
+
+.header-inner{
+    max-width:1500px;
+    margin:auto;
+    padding:18px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:30px;
+}
+
+.logo{
+    color:#d6b85c;
+    font-size:22px;
+    font-weight:950;
+    letter-spacing:3px;
+}
+
+.logo span{
+    display:block;
+    color:#687b86;
+    font-size:9px;
+    letter-spacing:2px;
+    margin-top:4px;
+}
+
+nav{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+    gap:7px;
+}
+
+nav a{
+    color:#9aabb4;
+    text-decoration:none;
+    padding:9px 11px;
+    border:1px solid transparent;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.2px;
+    transition:.2s;
+}
+
+nav a:hover{
+    color:#d6b85c;
+    background:#111b22;
+    border-color:#3b4d58;
+}
+
+main{
+    max-width:1250px;
+    margin:auto;
+    padding:70px 30px 100px;
+}
+
+.eyebrow{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:3px;
+    margin-bottom:15px;
+}
+
+h1{
+    color:#edf2f4;
+    font-size:clamp(40px,6.5vw,78px);
+    line-height:.95;
+    letter-spacing:4px;
+    font-weight:950;
+}
+
+.subtitle{
+    max-width:900px;
+    margin-top:22px;
+    color:#8497a2;
+    line-height:1.75;
+    font-size:15px;
+}
+
+.meta{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-top:38px;
+}
+
+.meta-box{
+    padding:18px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+
+.meta-label{
+    color:#596c77;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:8px;
+}
+
+.meta-value{
+    color:#d6b85c;
+    font-size:13px;
+    font-weight:900;
+}
+
+.section{
+    margin-top:35px;
+    padding:30px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+
+.section-number{
+    color:#526773;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:2px;
+    margin-bottom:9px;
+}
+
+h2{
+    color:#e1e8eb;
+    font-size:22px;
+    letter-spacing:1px;
+    margin-bottom:18px;
+}
+
+h3{
+    color:#d6b85c;
+    font-size:14px;
+    letter-spacing:1px;
+    margin:25px 0 10px;
+}
+
+p{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    margin-bottom:13px;
+}
+
+ul,ol{
+    margin:12px 0 18px 22px;
+}
+
+li{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    padding-left:5px;
+}
+
+strong{
+    color:#d9e2e6;
+}
+
+.note{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#111c23;
+    border-left:3px solid #4d91bd;
+}
+
+.note-title{
+    color:#4d91bd;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+
+.warning{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#17140e;
+    border-left:3px solid #d6b85c;
+}
+
+.warning-title{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:18px;
+}
+
+th,td{
+    text-align:left;
+    padding:13px 14px;
+    border:1px solid #293c47;
+    font-size:12px;
+}
+
+th{
+    color:#d6b85c;
+    background:#111c23;
+    font-size:10px;
+    letter-spacing:1px;
+}
+
+td{
+    color:#8ea0a9;
+    background:#0a141a;
+}
+
+.sources{
+    display:grid;
+    gap:10px;
+    margin-top:15px;
+}
+
+.sources a{
+    display:block;
+    padding:13px 15px;
+    background:#101b22;
+    border:1px solid #293c47;
+    color:#9fb0b9;
+    text-decoration:none;
+    font-size:12px;
+    transition:.2s;
+}
+
+.sources a:hover{
+    color:#d6b85c;
+    border-color:#d6b85c;
+}
+
+.back{
+    display:inline-block;
+    margin-top:45px;
+    padding:12px 16px;
+    color:#d6b85c;
+    border:1px solid #4c4530;
+    text-decoration:none;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    transition:.2s;
+}
+
+.back:hover{
+    background:#17150f;
+    border-color:#d6b85c;
+}
+
+footer{
+    border-top:1px solid #202e36;
+    padding:25px 30px;
+    text-align:center;
+    color:#465861;
+    font-size:9px;
+    letter-spacing:2px;
+}
+
+@media(max-width:850px){
+    .header-inner{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    nav{
+        justify-content:flex-start;
+    }
+
+    .meta{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:550px){
+    .meta{
+        grid-template-columns:1fr;
+    }
+
+    main{
+        padding:45px 18px 70px;
+    }
+
+    .section{
+        padding:22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-inner">
+
+        <div class="logo">
+            RISE OF NATIONS
+            <span>TACTICAL KNOWLEDGE DATABASE</span>
+        </div>
+
+        <nav>
+            <a href="../index.html">COMMAND</a>
+            <a href="intelligence.html">INTELLIGENCE</a>
+            <a href="server.html">SERVER</a>
+            <a href="database.html">DATABASE</a>
+            <a href="download.html">DOWNLOAD</a>
+            <a href="communications.html">COMMUNICATIONS</a>
+            <a href="wiki.html">WIKI</a>
+        </nav>
+
+    </div>
+</header>
+
+<main>
+
+    <div class="eyebrow">
+        PROFESSOR DATABASE // DETECTION SYSTEMS
+    </div>
+
+    <h1>CREATE RADAR</h1>
+
+    <p class="subtitle">
+        Create Radar ergänzt das Create-Ökosystem um ein technisches
+        Erkennungs- und Überwachungssystem. Es eignet sich besonders
+        für große Fabriken, Basen und technische Anlagen, in denen
+        Informationen über die Umgebung Teil der Infrastruktur werden.
+    </p>
+
+    <div class="meta">
+
+        <div class="meta-box">
+            <div class="meta-label">MOD</div>
+            <div class="meta-value">CREATE RADAR</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">VERSION</div>
+            <div class="meta-value">0.4.9.4</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">MINECRAFT</div>
+            <div class="meta-value">1.21.1</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">SYSTEM</div>
+            <div class="meta-value">DETECTION</div>
+        </div>
+
+    </div>
+
+
+    <section class="section">
+
+        <div class="section-number">01 // SYSTEM OVERVIEW</div>
+        <h2>Was ist Create Radar?</h2>
+
+        <p>
+            Create Radar fügt dem technischen Umfeld von Create
+            Systeme hinzu, mit denen Informationen über Objekte oder
+            Aktivitäten in einem bestimmten Bereich erfasst werden
+            können.
+        </p>
+
+        <p>
+            Dadurch entsteht eine weitere Ebene für technische
+            Überwachung und Informationsverarbeitung innerhalb einer
+            industriellen Anlage.
+        </p>
+
+        <div class="note">
+            <div class="note-title">RISE OF NATIONS // SENSOR NETWORK</div>
+            <p>
+                Ein Radar sollte nicht als einzelner Block betrachtet
+                werden. Sein eigentlicher Nutzen entsteht durch die
+                Verbindung von Erkennung, Anzeige und Reaktion.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">02 // DETECTION CONCEPT</div>
+        <h2>Das Grundprinzip</h2>
+
+        <p>
+            Ein technisches Überwachungssystem lässt sich vereinfacht
+            in drei Bereiche aufteilen:
+        </p>
+
+        <table>
+
+            <tr>
+                <th>BEREICH</th>
+                <th>FUNKTION</th>
+            </tr>
+
+            <tr>
+                <td>SENSOR</td>
+                <td>Informationen erfassen</td>
+            </tr>
+
+            <tr>
+                <td>PROCESSING</td>
+                <td>Informationen auswerten</td>
+            </tr>
+
+            <tr>
+                <td>DISPLAY</td>
+                <td>Informationen sichtbar machen</td>
+            </tr>
+
+        </table>
+
+        <p>
+            Diese Trennung hilft besonders beim Bau größerer
+            Überwachungsanlagen.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">03 // INSTALLATION</div>
+        <h2>Radarstation errichten</h2>
+
+        <p>
+            Eine Radarstation sollte nicht direkt neben einem
+            Produktionsbereich versteckt werden. Für größere Basen
+            eignet sich ein eigener Technikbereich.
+        </p>
+
+        <ol>
+            <li>Standort bestimmen.</li>
+            <li>Radar- bzw. Sensoreinheit installieren.</li>
+            <li>Benötigte technische Komponenten bereitstellen.</li>
+            <li>Anzeige oder Auswertung einrichten.</li>
+            <li>Reichweite und Funktion testen.</li>
+        </ol>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">04 // SENSOR RANGE</div>
+        <h2>Reichweite verstehen</h2>
+
+        <p>
+            Bei jedem Erkennungssystem muss zwischen theoretischer
+            Reichweite und praktisch nutzbarer Information unterschieden
+            werden.
+        </p>
+
+        <p>
+            Je nach Konfiguration können Reichweite, Aktualisierung und
+            erkannte Objekte unterschiedliche Grenzen besitzen.
+        </p>
+
+        <div class="warning">
+            <div class="warning-title">VERSION CHECK</div>
+            <p>
+                Konkrete Reichweiten und unterstützte Erkennungsarten
+                sollten immer in der installierten Mod-Version geprüft
+                werden. Für versionsabhängige Details ist die
+                Projekt-Dokumentation maßgeblich.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">05 // INFORMATION FLOW</div>
+        <h2>Von der Erkennung zur Information</h2>
+
+        <p>
+            Eine gute technische Anlage verarbeitet Informationen in
+            einer nachvollziehbaren Kette.
+        </p>
+
+        <ol>
+            <li>Objekt oder Ereignis wird erkannt.</li>
+            <li>Sensor erzeugt Informationen.</li>
+            <li>Daten werden verarbeitet.</li>
+            <li>Anzeige oder System reagiert.</li>
+            <li>Spieler kann die Situation beurteilen.</li>
+        </ol>
+
+        <div class="note">
+            <div class="note-title">COMMAND PRINCIPLE</div>
+            <p>
+                Informationen sind erst dann nützlich, wenn der Spieler
+                daraus eine Entscheidung ableiten kann.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">06 // CREATE INTEGRATION</div>
+        <h2>Integration in technische Anlagen</h2>
+
+        <p>
+            Create Radar kann besonders interessant werden, wenn
+            Erkennungssysteme in bestehende Create-Konstruktionen
+            integriert werden.
+        </p>
+
+        <ul>
+            <li>Kontrollräume</li>
+            <li>Fabriken</li>
+            <li>Bahnhöfe</li>
+            <li>Häfen</li>
+            <li>Große Lager</li>
+            <li>Technische Forschungsanlagen</li>
+        </ul>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">07 // CONTROL ROOM</div>
+        <h2>Die Kommandozentrale</h2>
+
+        <p>
+            Eine Radarstation wird besonders nützlich, wenn ihre Daten
+            in einem eigenen Kontrollraum dargestellt werden.
+        </p>
+
+        <h3>Empfohlene Komponenten</h3>
+
+        <ul>
+            <li>Radar- oder Sensoreinheit</li>
+            <li>Anzeigeelemente</li>
+            <li>Redstone-Steuerung</li>
+            <li>Technische Beleuchtung</li>
+            <li>Beschriftungen</li>
+            <li>Notstromversorgung</li>
+        </ul>
+
+        <p>
+            So entsteht nicht nur ein funktionierendes System, sondern
+            ein glaubwürdiger Teil der Basis.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">08 // AUTOMATION</div>
+        <h2>Automatische Reaktionen</h2>
+
+        <p>
+            Erkennung kann mit anderen technischen Systemen verbunden
+            werden, sodass auf bestimmte Zustände automatisch reagiert
+            wird.
+        </p>
+
+        <p>
+            Im Minecraft-Kontext können solche Reaktionen beispielsweise
+            über Redstone und andere technische Mechaniken umgesetzt
+            werden.
+        </p>
+
+        <table>
+
+            <tr>
+                <th>ERKENNUNG</th>
+                <th>MÖGLICHE REAKTION</th>
+            </tr>
+
+            <tr>
+                <td>AKTIVITÄT</td>
+                <td>Anzeige aktualisieren</td>
+            </tr>
+
+            <tr>
+                <td>BESTIMMTER ZUSTAND</td>
+                <td>Redstone-Signal auslösen</td>
+            </tr>
+
+            <tr>
+                <td>WARNUNG</td>
+                <td>Beleuchtung oder Anzeige aktivieren</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">09 // BASE SECURITY</div>
+        <h2>Überwachung großer Basen</h2>
+
+        <p>
+            Bei großen Spielerbasen kann ein einzelnes Sensorsystem
+            schnell unübersichtlich werden.
+        </p>
+
+        <p>
+            Deshalb empfiehlt sich eine Unterteilung in verschiedene
+            Überwachungssektoren.
+        </p>
+
+        <ul>
+            <li>NORDSEKTOR</li>
+            <li>SÜDSEKTOR</li>
+            <li>INDUSTRIESEKTOR</li>
+            <li>TRANSPORTSEKTOR</li>
+            <li>WOHNSEKTOR</li>
+            <li>PERIMETER</li>
+        </ul>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">10 // REDSTONE INTEGRATION</div>
+        <h2>Radar und Redstone</h2>
+
+        <p>
+            Redstone kann verwendet werden, um Informationen oder
+            Zustände aus einem technischen Überwachungssystem in andere
+            Teile der Anlage weiterzugeben.
+        </p>
+
+        <h3>Beispielhafte Architektur</h3>
+
+        <ol>
+            <li>Radar erkennt relevanten Zustand.</li>
+            <li>Signal wird verarbeitet.</li>
+            <li>Redstone-Schaltung reagiert.</li>
+            <li>Anzeige wird aktiviert.</li>
+            <li>Spieler erhält eine visuelle Rückmeldung.</li>
+        </ol>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">11 // COMMON MISTAKES</div>
+        <h2>Häufige Fehler</h2>
+
+        <h3>Radar ohne Zweck</h3>
+
+        <p>
+            Ein Sensor ist wenig hilfreich, wenn niemand seine
+            Informationen verwendet. Vor dem Bau sollte daher festgelegt
+            werden, welche Information benötigt wird.
+        </p>
+
+        <h3>Keine zentrale Anzeige</h3>
+
+        <p>
+            Bei großen Anlagen sollte die Information möglichst an einem
+            klar definierten Ort zusammenlaufen.
+        </p>
+
+        <h3>Zu viele Sensoren</h3>
+
+        <p>
+            Mehr Sensoren bedeuten nicht automatisch bessere Kontrolle.
+            Ein gut strukturiertes System ist meist übersichtlicher als
+            eine unkoordinierte Ansammlung von Sensoren.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">12 // ADVANCED NETWORK</div>
+        <h2>Mehrere Radarstationen</h2>
+
+        <p>
+            Fortgeschrittene Basen können mehrere Überwachungsstationen
+            miteinander kombinieren.
+        </p>
+
+        <table>
+
+            <tr>
+                <th>STUFE</th>
+                <th>STRUKTUR</th>
+            </tr>
+
+            <tr>
+                <td>I</td>
+                <td>Einzelner Sensor</td>
+            </tr>
+
+            <tr>
+                <td>II</td>
+                <td>Sensor + Anzeige</td>
+            </tr>
+
+            <tr>
+                <td>III</td>
+                <td>Mehrere Sensoren</td>
+            </tr>
+
+            <tr>
+                <td>IV</td>
+                <td>Zentrale Kontrollstation</td>
+            </tr>
+
+            <tr>
+                <td>V</td>
+                <td>Vollständiges Überwachungsnetz</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">13 // INDUSTRIAL APPLICATION</div>
+        <h2>Weitere Einsatzgebiete</h2>
+
+        <p>
+            Radar- und Sensorsysteme müssen nicht ausschließlich zur
+            Sicherheitsüberwachung eingesetzt werden.
+        </p>
+
+        <ul>
+            <li>Überwachung von Industrieanlagen</li>
+            <li>Technische Forschungsstationen</li>
+            <li>Große Transportzentren</li>
+            <li>Hafenanlagen</li>
+            <li>Bahnhöfe</li>
+            <li>Große Bauprojekte</li>
+            <li>Kontrollräume</li>
+        </ul>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">14 // RISE OF NATIONS DOCTRINE</div>
+        <h2>Information ist Infrastruktur</h2>
+
+        <p>
+            Create Radar passt besonders gut zu RISE OF NATIONS, weil
+            große industrielle Basen irgendwann nicht mehr nur aus
+            Maschinen bestehen.
+        </p>
+
+        <p>
+            Sie benötigen auch Informationssysteme: Anzeigen,
+            Kontrollräume, Sensoren und technische Netzwerke.
+        </p>
+
+        <div class="note">
+            <div class="note-title">FINAL PRINCIPLE</div>
+            <p>
+                Ein gutes Überwachungssystem sammelt nicht einfach Daten.
+                Es verwandelt Daten in verständliche Informationen.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">15 // REFERENCE DATA</div>
+        <h2>Originalquellen</h2>
+
+        <p>
+            Für konkrete Funktionen, Reichweiten, erkannte Objekte,
+            Rezepte und versionsabhängige Mechaniken sollte die
+            installierte Version des Mods geprüft werden.
+        </p>
+
+        <div class="sources">
+
+            <a href="https://modrinth.com/mod/create-radar"
+               target="_blank"
+               rel="noopener">
+                MODRINTH // CREATE RADAR
+            </a>
+
+            <a href="https://www.curseforge.com/minecraft/mc-mods/create-radar"
+               target="_blank"
+               rel="noopener">
+                CURSEFORGE // CREATE RADAR
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <a class="back" href="wiki.html">
+        ← ZURÜCK ZUR WIKI
+    </a>
+
+</main>
+
+<footer>
+    RISE OF NATIONS // CREATE RADAR // TACTICAL KNOWLEDGE DATABASE
+</footer>
+
+</body>
+</html>
