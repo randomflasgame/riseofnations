@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RISE OF NATIONS // CREATE DIESEL GENERATORS</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+    min-height:100vh;
+    background:
+    linear-gradient(rgba(7,12,17,.96),rgba(7,12,17,.99)),
+    repeating-linear-gradient(135deg,rgba(255,255,255,.018) 0 2px,transparent 2px 9px);
+    color:#dbe3e8;
+    font-family:"Segoe UI",Arial,sans-serif;
+}
+header{
+    background:rgba(6,11,16,.98);
+    border-bottom:1px solid #293944;
+    box-shadow:0 5px 25px rgba(0,0,0,.45);
+}
+.header-inner{
+    max-width:1500px;
+    margin:auto;
+    padding:18px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:30px;
+}
+.logo{
+    color:#d6b85c;
+    font-size:22px;
+    font-weight:950;
+    letter-spacing:3px;
+}
+.logo span{
+    display:block;
+    color:#687b86;
+    font-size:9px;
+    letter-spacing:2px;
+    margin-top:4px;
+}
+nav{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+    gap:7px;
+}
+nav a{
+    color:#9aabb4;
+    text-decoration:none;
+    padding:9px 11px;
+    border:1px solid transparent;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.2px;
+    transition:.2s;
+}
+nav a:hover{
+    color:#d6b85c;
+    background:#111b22;
+    border-color:#3b4d58;
+}
+main{
+    max-width:1250px;
+    margin:auto;
+    padding:70px 30px 100px;
+}
+.eyebrow{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:3px;
+    margin-bottom:15px;
+}
+h1{
+    color:#edf2f4;
+    font-size:clamp(40px,6.5vw,78px);
+    line-height:.95;
+    letter-spacing:4px;
+    font-weight:950;
+}
+.subtitle{
+    max-width:900px;
+    margin-top:22px;
+    color:#8497a2;
+    line-height:1.75;
+    font-size:15px;
+}
+.meta{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-top:38px;
+}
+.meta-box{
+    padding:18px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+.meta-label{
+    color:#596c77;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:8px;
+}
+.meta-value{
+    color:#d6b85c;
+    font-size:13px;
+    font-weight:900;
+}
+.section{
+    margin-top:35px;
+    padding:30px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+.section-number{
+    color:#526773;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:2px;
+    margin-bottom:9px;
+}
+h2{
+    color:#e1e8eb;
+    font-size:22px;
+    letter-spacing:1px;
+    margin-bottom:18px;
+}
+h3{
+    color:#d6b85c;
+    font-size:14px;
+    letter-spacing:1px;
+    margin:25px 0 10px;
+}
+p{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    margin-bottom:13px;
+}
+ul,ol{margin:12px 0 18px 22px}
+li{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    padding-left:5px;
+}
+strong{color:#d9e2e6}
+.note{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#111c23;
+    border-left:3px solid #4d91bd;
+}
+.note-title{
+    color:#4d91bd;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+.warning{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#17140e;
+    border-left:3px solid #d6b85c;
+}
+.warning-title{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:18px;
+}
+th,td{
+    text-align:left;
+    padding:13px 14px;
+    border:1px solid #293c47;
+    font-size:12px;
+}
+th{
+    color:#d6b85c;
+    background:#111c23;
+    font-size:10px;
+    letter-spacing:1px;
+}
+td{
+    color:#8ea0a9;
+    background:#0a141a;
+}
+.sources{
+    display:grid;
+    gap:10px;
+    margin-top:15px;
+}
+.sources a{
+    display:block;
+    padding:13px 15px;
+    background:#101b22;
+    border:1px solid #293c47;
+    color:#9fb0b9;
+    text-decoration:none;
+    font-size:12px;
+    transition:.2s;
+}
+.sources a:hover{
+    color:#d6b85c;
+    border-color:#d6b85c;
+}
+.back{
+    display:inline-block;
+    margin-top:45px;
+    padding:12px 16px;
+    color:#d6b85c;
+    border:1px solid #4c4530;
+    text-decoration:none;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    transition:.2s;
+}
+.back:hover{
+    background:#17150f;
+    border-color:#d6b85c;
+}
+footer{
+    border-top:1px solid #202e36;
+    padding:25px 30px;
+    text-align:center;
+    color:#465861;
+    font-size:9px;
+    letter-spacing:2px;
+}
+@media(max-width:850px){
+    .header-inner{flex-direction:column;align-items:flex-start}
+    nav{justify-content:flex-start}
+    .meta{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:550px){
+    .meta{grid-template-columns:1fr}
+    main{padding:45px 18px 70px}
+    .section{padding:22px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-inner">
+
+        <div class="logo">
+            RISE OF NATIONS
+            <span>TACTICAL KNOWLEDGE DATABASE</span>
+        </div>
+
+        <nav>
+            <a href="../index.html">COMMAND</a>
+            <a href="intelligence.html">INTELLIGENCE</a>
+            <a href="server.html">SERVER</a>
+            <a href="database.html">DATABASE</a>
+            <a href="download.html">DOWNLOAD</a>
+            <a href="communications.html">COMMUNICATIONS</a>
+            <a href="wiki.html">WIKI</a>
+        </nav>
+
+    </div>
+</header>
+
+<main>
+
+    <div class="eyebrow">
+        PROFESSOR DATABASE // INDUSTRIAL POWER SYSTEMS
+    </div>
+
+    <h1>CREATE DIESEL GENERATORS</h1>
+
+    <p class="subtitle">
+        Create Diesel Generators erweitert das Create-Universum um
+        dieselbasierte Energieerzeugung. Die Mod ist besonders für
+        industrielle Anlagen interessant, bei denen große
+        Produktionsketten zuverlässig mit Energie versorgt werden müssen.
+    </p>
+
+    <div class="meta">
+
+        <div class="meta-box">
+            <div class="meta-label">MOD</div>
+            <div class="meta-value">CREATE DIESEL GENERATORS</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">VERSION</div>
+            <div class="meta-value">1.3.14</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">MINECRAFT</div>
+            <div class="meta-value">1.21.1</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">SYSTEM</div>
+            <div class="meta-value">POWER</div>
+        </div>
+
+    </div>
+
+
+    <section class="section">
+
+        <div class="section-number">01 // SYSTEM OVERVIEW</div>
+        <h2>Was macht die Mod?</h2>
+
+        <p>
+            Create Diesel Generators führt dieselbasierte Generatoren
+            und die dazugehörige Infrastruktur in das Create-System ein.
+        </p>
+
+        <p>
+            Dadurch entsteht eine weitere Möglichkeit, mechanische
+            Energie innerhalb einer industriellen Anlage bereitzustellen.
+            Besonders große Fabriken profitieren von einer zentral
+            geplanten Energieversorgung.
+        </p>
+
+        <div class="note">
+            <div class="note-title">RISE OF NATIONS // POWER GRID</div>
+            <p>
+                Energie sollte in einer großen Basis wie eine eigene
+                Infrastruktur behandelt werden. Produktionsmaschinen
+                benötigen eine stabile und planbare Versorgung.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">02 // CREATE FOUNDATION</div>
+        <h2>Grundlagen</h2>
+
+        <p>
+            Die wichtigste Voraussetzung ist ein solides Verständnis des
+            Create-Energiesystems.
+        </p>
+
+        <ul>
+            <li>Rotation und Geschwindigkeit</li>
+            <li>Stress und Belastung</li>
+            <li>Wellen und Zahnräder</li>
+            <li>Getriebe und Übersetzungen</li>
+            <li>Mechanische Energieübertragung</li>
+        </ul>
+
+        <p>
+            Der Generator ist nicht nur ein einzelner Block. Seine
+            Leistung muss anschließend sinnvoll im gesamten Fabriknetz
+            verteilt werden.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">03 // FUEL SYSTEM</div>
+        <h2>Brennstoffversorgung</h2>
+
+        <p>
+            Ein Dieselgenerator benötigt einen geeigneten Brennstoff.
+            Deshalb sollte die Energieproduktion immer gemeinsam mit
+            einem Brennstofflager geplant werden.
+        </p>
+
+        <table>
+
+            <tr>
+                <th>BEREICH</th>
+                <th>FUNKTION</th>
+            </tr>
+
+            <tr>
+                <td>FUEL PRODUCTION</td>
+                <td>Herstellung des benötigten Brennstoffs</td>
+            </tr>
+
+            <tr>
+                <td>FUEL STORAGE</td>
+                <td>Zwischenlagerung</td>
+            </tr>
+
+            <tr>
+                <td>GENERATOR</td>
+                <td>Energieerzeugung</td>
+            </tr>
+
+            <tr>
+                <td>POWER NETWORK</td>
+                <td>Verteilung der erzeugten Energie</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">04 // GENERATOR INSTALLATION</div>
+        <h2>Generator richtig einsetzen</h2>
+
+        <p>
+            Ein Generator sollte möglichst dort stehen, wo er sinnvoll
+            in das industrielle Netzwerk eingebunden werden kann.
+        </p>
+
+        <h3>Empfohlener Aufbau</h3>
+
+        <ol>
+            <li>Brennstoffversorgung vorbereiten.</li>
+            <li>Generator aufstellen.</li>
+            <li>Mechanische Verbindung herstellen.</li>
+            <li>Geschwindigkeit und Belastung prüfen.</li>
+            <li>Produktionsmaschinen anschließen.</li>
+            <li>Gesamtsystem unter Last testen.</li>
+        </ol>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">05 // STRESS MANAGEMENT</div>
+        <h2>Stress und Leistung</h2>
+
+        <p>
+            Bei Create ist die erzeugte Energie nicht automatisch
+            unbegrenzt verfügbar. Maschinen verbrauchen Belastbarkeit
+            innerhalb des mechanischen Systems.
+        </p>
+
+        <p>
+            Wenn mehr Maschinen angeschlossen werden, steigt die
+            Belastung. Deshalb sollte ein Fabriknetz regelmäßig geprüft
+            und bei Bedarf erweitert werden.
+        </p>
+
+        <div class="warning">
+            <div class="warning-title">IMPORTANT</div>
+            <p>
+                Ein Generator, der im Leerlauf ausreichend erscheint,
+                kann unter maximaler Produktionslast zu klein sein.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">06 // POWER DISTRIBUTION</div>
+        <h2>Energie im Fabriknetz verteilen</h2>
+
+        <p>
+            Große Produktionsanlagen sollten nicht als ein einziger
+            riesiger Maschinenblock betrachtet werden.
+        </p>
+
+        <p>
+            Sinnvoller ist eine Aufteilung in mehrere Produktionsbereiche.
+        </p>
+
+        <ul>
+            <li>Rohstoffverarbeitung</li>
+            <li>Metallverarbeitung</li>
+            <li>Lebensmittelproduktion</li>
+            <li>Logistik</li>
+            <li>Schwere Industrie</li>
+            <li>Forschung und Spezialmaschinen</li>
+        </ul>
+
+        <p>
+            So lässt sich später leichter feststellen, welcher Bereich
+            zusätzliche Leistung benötigt.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">07 // CREATE INTEGRATION</div>
+        <h2>Zusammenspiel mit Create</h2>
+
+        <p>
+            Die Stärke der Mod entsteht vor allem durch ihre Kombination
+            mit den restlichen Create-Systemen.
+        </p>
+
+        <table>
+
+            <tr>
+                <th>SYSTEM</th>
+                <th>ROLLE</th>
+            </tr>
+
+            <tr>
+                <td>CREATE</td>
+                <td>Mechanische Maschinen</td>
+            </tr>
+
+            <tr>
+                <td>DIESEL GENERATORS</td>
+                <td>Energiequelle</td>
+            </tr>
+
+            <tr>
+                <td>SOPHISTICATED STORAGE</td>
+                <td>Ressourcenlagerung</td>
+            </tr>
+
+            <tr>
+                <td>JEI</td>
+                <td>Rezept- und Produktionsplanung</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">08 // INDUSTRIAL ARCHITECTURE</div>
+        <h2>Eine echte Industrieanlage planen</h2>
+
+        <p>
+            Für große Basen lohnt sich ein eigener Energiebezirk.
+        </p>
+
+        <ul>
+            <li>Generatorhalle</li>
+            <li>Brennstofflager</li>
+            <li>Wartungsbereich</li>
+            <li>Hauptübertragung</li>
+            <li>Produktionshallen</li>
+            <li>Notversorgung</li>
+        </ul>
+
+        <p>
+            Dadurch entsteht nicht nur eine funktionierende Maschine,
+            sondern eine glaubwürdige industrielle Infrastruktur.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">09 // AUTOMATION</div>
+        <h2>Automatisierte Energieversorgung</h2>
+
+        <p>
+            Der nächste Entwicklungsschritt besteht darin, den
+            Brennstoffkreislauf möglichst weit zu automatisieren.
+        </p>
+
+        <ol>
+            <li>Rohstoffe automatisch zuführen.</li>
+            <li>Brennstoff produzieren.</li>
+            <li>Brennstoff lagern.</li>
+            <li>Generator automatisch versorgen.</li>
+            <li>Produktionsnetz überwachen.</li>
+        </ol>
+
+        <div class="note">
+            <div class="note-title">PROFESSOR METHOD</div>
+            <p>
+                Automatisiere zuerst die Versorgung. Erst danach lohnt
+                sich eine komplexe zentrale Steuerung.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">10 // FAILURE ANALYSIS</div>
+        <h2>Wenn die Fabrik ausfällt</h2>
+
+        <h3>Generator läuft nicht</h3>
+
+        <p>
+            Prüfe Brennstoffversorgung, Generatorzustand und die
+            mechanische Verbindung zum restlichen System.
+        </p>
+
+        <h3>Maschinen stoppen</h3>
+
+        <p>
+            Prüfe, ob das gesamte System unter zu hoher Belastung steht
+            und ob die Energieübertragung korrekt aufgebaut wurde.
+        </p>
+
+        <h3>Brennstoff geht zu schnell aus</h3>
+
+        <p>
+            Prüfe Produktionsrate und Verbrauch. Ein großes Fabriknetz
+            kann deutlich mehr Brennstoff benötigen als eine kleine
+            Testanlage.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">11 // EXPANSION</div>
+        <h2>Wann sollte man erweitern?</h2>
+
+        <p>
+            Ein bestehendes System sollte erweitert werden, wenn die
+            Produktionsanlagen regelmäßig an ihre Leistungsgrenzen
+            stoßen oder zusätzliche Fabrikbereiche geplant werden.
+        </p>
+
+        <p>
+            Statt einen einzelnen Generator immer weiter zu belasten,
+            kann eine modulare Energieinfrastruktur langfristig
+            einfacher zu verwalten sein.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">12 // RISE OF NATIONS DOCTRINE</div>
+        <h2>Empfohlener Energieaufbau</h2>
+
+        <table>
+
+            <tr>
+                <th>STUFE</th>
+                <th>STRATEGIE</th>
+            </tr>
+
+            <tr>
+                <td>EARLY</td>
+                <td>Kleine lokale Energiequelle</td>
+            </tr>
+
+            <tr>
+                <td>MID GAME</td>
+                <td>Separater Generatorbereich</td>
+            </tr>
+
+            <tr>
+                <td>INDUSTRIAL</td>
+                <td>Zentrales Energiezentrum</td>
+            </tr>
+
+            <tr>
+                <td>MEGA FACTORY</td>
+                <td>Modulares Energie- und Produktionsnetz</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">13 // REFERENCE DATA</div>
+        <h2>Originalquellen</h2>
+
+        <p>
+            Für genaue Rezepte, Brennstoffe, Generatorwerte und
+            versionsabhängige Mechaniken sollten die offiziellen
+            Projektquellen verwendet werden.
+        </p>
+
+        <div class="sources">
+
+            <a href="https://modrinth.com/mod/create-diesel-generators"
+               target="_blank"
+               rel="noopener">
+                MODRINTH // CREATE DIESEL GENERATORS
+            </a>
+
+            <a href="https://www.curseforge.com/minecraft/mc-mods/create-diesel-generators"
+               target="_blank"
+               rel="noopener">
+                CURSEFORGE // CREATE DIESEL GENERATORS
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <a class="back" href="wiki.html">
+        ← ZURÜCK ZUR WIKI
+    </a>
+
+</main>
+
+<footer>
+    RISE OF NATIONS // CREATE DIESEL GENERATORS // TACTICAL KNOWLEDGE DATABASE
+</footer>
+
+</body>
+</html>
