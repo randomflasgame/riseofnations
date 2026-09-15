@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RISE OF NATIONS // CLAIMS</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    background:
+        linear-gradient(rgba(7,12,17,.95), rgba(7,12,17,.98)),
+        repeating-linear-gradient(
+            135deg,
+            rgba(255,255,255,.018) 0px,
+            rgba(255,255,255,.018) 2px,
+            transparent 2px,
+            transparent 9px
+        );
+    color: #dbe3e8;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+header {
+    background: rgba(6,11,16,.97);
+    border-bottom: 1px solid #293944;
+    box-shadow: 0 5px 25px rgba(0,0,0,.45);
+}
+
+.header-inner {
+    max-width: 1500px;
+    margin: auto;
+    padding: 18px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+}
+
+.logo {
+    color: #d6b85c;
+    font-size: 22px;
+    font-weight: 950;
+    letter-spacing: 3px;
+}
+
+.logo span {
+    display: block;
+    color: #687b86;
+    font-size: 9px;
+    letter-spacing: 2px;
+    margin-top: 4px;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 7px;
+}
+
+nav a {
+    color: #9aabb4;
+    text-decoration: none;
+    padding: 9px 11px;
+    border: 1px solid transparent;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 1.2px;
+    transition: .2s;
+}
+
+nav a:hover {
+    color: #d6b85c;
+    background: #111b22;
+    border-color: #3b4d58;
+}
+
+main {
+    max-width: 1250px;
+    margin: auto;
+    padding: 70px 30px 100px;
+}
+
+.eyebrow {
+    color: #d6b85c;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+}
+
+h1 {
+    color: #edf2f4;
+    font-size: clamp(42px, 7vw, 82px);
+    line-height: .95;
+    letter-spacing: 5px;
+    font-weight: 950;
+}
+
+.subtitle {
+    max-width: 850px;
+    margin-top: 22px;
+    color: #8497a2;
+    line-height: 1.75;
+    font-size: 15px;
+}
+
+.meta {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 38px;
+}
+
+.meta-box {
+    padding: 18px;
+    background: #0d171d;
+    border: 1px solid #293c47;
+}
+
+.meta-label {
+    color: #596c77;
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+}
+
+.meta-value {
+    color: #d6b85c;
+    font-size: 13px;
+    font-weight: 900;
+}
+
+.section {
+    margin-top: 35px;
+    padding: 30px;
+    background: #0d171d;
+    border: 1px solid #293c47;
+}
+
+.section-number {
+    color: #526773;
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    margin-bottom: 9px;
+}
+
+h2 {
+    color: #e1e8eb;
+    font-size: 22px;
+    letter-spacing: 1px;
+    margin-bottom: 18px;
+}
+
+h3 {
+    color: #d6b85c;
+    font-size: 14px;
+    letter-spacing: 1px;
+    margin: 25px 0 10px;
+}
+
+p {
+    color: #899ba5;
+    font-size: 13px;
+    line-height: 1.8;
+    margin-bottom: 13px;
+}
+
+ul {
+    margin: 12px 0 18px 20px;
+}
+
+li {
+    color: #899ba5;
+    font-size: 13px;
+    line-height: 1.8;
+    padding-left: 5px;
+}
+
+strong {
+    color: #d9e2e6;
+}
+
+.note {
+    margin-top: 18px;
+    padding: 17px 18px;
+    background: #111c23;
+    border-left: 3px solid #4d91bd;
+}
+
+.note-title {
+    color: #4d91bd;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    margin-bottom: 7px;
+}
+
+.warning {
+    margin-top: 18px;
+    padding: 17px 18px;
+    background: #17140e;
+    border-left: 3px solid #d6b85c;
+}
+
+.warning-title {
+    color: #d6b85c;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    margin-bottom: 7px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 18px;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 13px 14px;
+    border: 1px solid #293c47;
+    font-size: 12px;
+}
+
+th {
+    color: #d6b85c;
+    background: #111c23;
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+td {
+    color: #8ea0a9;
+    background: #0a141a;
+}
+
+.sources {
+    display: grid;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.sources a {
+    display: block;
+    padding: 13px 15px;
+    background: #101b22;
+    border: 1px solid #293c47;
+    color: #9fb0b9;
+    text-decoration: none;
+    font-size: 12px;
+    transition: .2s;
+}
+
+.sources a:hover {
+    color: #d6b85c;
+    border-color: #d6b85c;
+}
+
+.back {
+    display: inline-block;
+    margin-top: 45px;
+    padding: 12px 16px;
+    color: #d6b85c;
+    border: 1px solid #4c4530;
+    text-decoration: none;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    transition: .2s;
+}
+
+.back:hover {
+    background: #17150f;
+    border-color: #d6b85c;
+}
+
+footer {
+    border-top: 1px solid #202e36;
+    padding: 25px 30px;
+    text-align: center;
+    color: #465861;
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+@media (max-width: 850px) {
+    .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav {
+        justify-content: flex-start;
+    }
+
+    .meta {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 550px) {
+    .meta {
+        grid-template-columns: 1fr;
+    }
+
+    main {
+        padding: 45px 18px 70px;
+    }
+
+    .section {
+        padding: 22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-inner">
+
+        <div class="logo">
+            RISE OF NATIONS
+            <span>TACTICAL KNOWLEDGE DATABASE</span>
+        </div>
+
+        <nav>
+            <a href="../index.html">COMMAND</a>
+            <a href="intelligence.html">INTELLIGENCE</a>
+            <a href="server.html">SERVER</a>
+            <a href="database.html">DATABASE</a>
+            <a href="download.html">DOWNLOAD</a>
+            <a href="communications.html">COMMUNICATIONS</a>
+            <a href="wiki.html">WIKI</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+
+    <div class="eyebrow">
+        PROFESSOR DATABASE // TERRITORY CONTROL
+    </div>
+
+    <h1>CLAIMS</h1>
+
+    <p class="subtitle">
+        Gebietsschutz, Spielerrechte und gemeinsame Territorien sind
+        besonders im Multiplayer wichtig. In RISE OF NATIONS stehen
+        dafür unter anderem <strong>Claim My Land</strong> und
+        <strong>Open Parties and Claims</strong> zur Verfügung.
+    </p>
+
+
+    <div class="meta">
+
+        <div class="meta-box">
+            <div class="meta-label">SYSTEM</div>
+            <div class="meta-value">CLAIMS</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">PRIMARY USE</div>
+            <div class="meta-value">PROTECTION</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">ENVIRONMENT</div>
+            <div class="meta-value">MULTIPLAYER</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">MC VERSION</div>
+            <div class="meta-value">1.21.1</div>
+        </div>
+
+    </div>
+
+
+    <section class="section">
+
+        <div class="section-number">01 // SYSTEM OVERVIEW</div>
+        <h2>Was ist ein Claim?</h2>
+
+        <p>
+            Ein Claim ist ein geschützter Bereich der Welt. Je nach
+            verwendeter Claim-Mod können Spieler damit verhindern,
+            dass andere Spieler ihre Gebäude, Lager oder Maschinen
+            unerlaubt verändern.
+        </p>
+
+        <p>
+            Für einen Multiplayer-Server wie RISE OF NATIONS ist dieses
+            System besonders wichtig, weil große Basen häufig aus
+            wertvollen Maschinen, Lagerbeständen und langfristigen
+            Bauprojekten bestehen.
+        </p>
+
+        <div class="note">
+            <div class="note-title">GRUNDREGEL</div>
+            <p>
+                Ein Claim schützt nicht automatisch jedes Problem.
+                Spieler sollten zusätzlich Serverregeln und die
+                tatsächlich konfigurierten Berechtigungen beachten.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">02 // TERRITORY PLANNING</div>
+        <h2>Wie sollte man ein Gebiet planen?</h2>
+
+        <p>
+            Ein häufiger Fehler ist es, nur den unmittelbaren Bereich
+            eines Gebäudes zu schützen. Bei größeren Projekten sollte
+            bereits beim Bau über die spätere Erweiterung nachgedacht
+            werden.
+        </p>
+
+        <h3>Basis</h3>
+
+        <p>
+            Der zentrale Wohn- und Lagerbereich sollte möglichst
+            vollständig innerhalb des eigenen Schutzbereichs liegen.
+        </p>
+
+        <h3>Industrie</h3>
+
+        <p>
+            Maschinenhallen, Create-Anlagen, Energieanlagen und
+            Produktionsketten sollten ebenfalls berücksichtigt werden.
+        </p>
+
+        <h3>Versorgung</h3>
+
+        <p>
+            Landwirtschaft, Tierhaltung, Lagerflächen und wichtige
+            Transportpunkte können ebenfalls Teil des geschützten
+            Territoriums werden.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">03 // IMPORTANT ASSETS</div>
+        <h2>Was sollte geschützt werden?</h2>
+
+        <table>
+
+            <tr>
+                <th>BEREICH</th>
+                <th>PRIORITÄT</th>
+                <th>GRUND</th>
+            </tr>
+
+            <tr>
+                <td>Hauptbasis</td>
+                <td>SEHR HOCH</td>
+                <td>Zentraler Wohn- und Lagerbereich</td>
+            </tr>
+
+            <tr>
+                <td>Lager</td>
+                <td>SEHR HOCH</td>
+                <td>Ressourcen und wertvolle Gegenstände</td>
+            </tr>
+
+            <tr>
+                <td>Create-Fabrik</td>
+                <td>HOCH</td>
+                <td>Komplexe Maschinen und Produktionsketten</td>
+            </tr>
+
+            <tr>
+                <td>Energieanlagen</td>
+                <td>HOCH</td>
+                <td>Versorgung technischer Systeme</td>
+            </tr>
+
+            <tr>
+                <td>Landwirtschaft</td>
+                <td>MITTEL</td>
+                <td>Langfristige Lebensmittelversorgung</td>
+            </tr>
+
+            <tr>
+                <td>Außenposten</td>
+                <td>ABHÄNGIG</td>
+                <td>Position und strategischer Wert</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">04 // TEAM OPERATIONS</div>
+        <h2>Gemeinsame Gebiete</h2>
+
+        <p>
+            Multiplayer-Basen funktionieren am besten, wenn klar geregelt
+            ist, welche Spieler auf welche Bereiche zugreifen dürfen.
+        </p>
+
+        <ul>
+            <li>Gemeinsame Hauptbasis definieren.</li>
+            <li>Teammitglieder entsprechend berechtigen.</li>
+            <li>Private Bereiche von gemeinsamen Bereichen trennen.</li>
+            <li>Große Industrieanlagen gemeinsam planen.</li>
+            <li>Wichtige Lager nicht unnötig öffentlich zugänglich machen.</li>
+        </ul>
+
+        <div class="warning">
+            <div class="warning-title">MULTIPLAYER SECURITY</div>
+            <p>
+                Nicht jeder Spieler innerhalb einer Gruppe muss automatisch
+                Zugriff auf jedes Lager oder jede Maschine erhalten.
+                Bei größeren Gemeinschaften sollte die Rechtevergabe
+                bewusst geplant werden.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">05 // CLAIMS & CREATE</div>
+        <h2>Technische Anlagen schützen</h2>
+
+        <p>
+            Besonders wichtig wird der Gebietsschutz bei großen
+            Create-Produktionsanlagen. Eine einzige Fabrik kann aus
+            zahlreichen Maschinen, Depots, Tanks, Funnels, Pipes und
+            beweglichen Contraptions bestehen.
+        </p>
+
+        <p>
+            Deshalb sollte ein Industriegebiet nicht erst nach Abschluss
+            der Fabrik geschützt werden. Der Schutz sollte bereits während
+            der Planung berücksichtigt werden.
+        </p>
+
+        <ul>
+            <li>Produktionshalle schützen.</li>
+            <li>Rohstofflager schützen.</li>
+            <li>Energieversorgung berücksichtigen.</li>
+            <li>Transportwege planen.</li>
+            <li>Erweiterungsflächen freihalten.</li>
+        </ul>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">06 // SECURITYCRAFT INTEGRATION</div>
+        <h2>Claims + SecurityCraft</h2>
+
+        <p>
+            Claims und SecurityCraft erfüllen unterschiedliche Aufgaben.
+            Der Claim schützt ein Gebiet beziehungsweise dessen Rechte,
+            während SecurityCraft zusätzliche physische und technische
+            Schutzsysteme bereitstellen kann.
+        </p>
+
+        <p>
+            Für besonders wichtige Einrichtungen können beide Systeme
+            kombiniert werden.
+        </p>
+
+        <div class="note">
+            <div class="note-title">DEFENSIVE LAYERING</div>
+            <p>
+                Gebietsschutz sollte als erste Schutzschicht betrachtet
+                werden. Zusätzliche technische Sicherheit kann anschließend
+                auf besonders wertvolle Räume angewendet werden.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">07 // LOGISTICS</div>
+        <h2>Claims für große Projekte</h2>
+
+        <p>
+            Bei großen Bauprojekten sollte nicht nur die fertige Basis
+            betrachtet werden. Auch Baustellen, Rohstofflager und
+            Produktionsflächen können vorübergehend geschützt werden.
+        </p>
+
+        <h3>Baustellen</h3>
+
+        <p>
+            Wertvolle Materialien und Werkzeuge können während langer
+            Bauphasen geschützt gelagert werden.
+        </p>
+
+        <h3>Außenstandorte</h3>
+
+        <p>
+            Temporäre Minen, Farmen oder Produktionsanlagen können je
+            nach Serverregeln ebenfalls sinnvoll geschützt werden.
+        </p>
+
+        <h3>Transport</h3>
+
+        <p>
+            Bei größeren Projekten lohnt es sich, Produktions- und
+            Lagerstandorte geografisch zu planen und entsprechend
+            abzusichern.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">08 // COMMON PROBLEMS</div>
+        <h2>Häufige Probleme</h2>
+
+        <h3>Ein Freund kann nicht bauen</h3>
+
+        <p>
+            Prüfe zunächst, ob der Spieler tatsächlich die erforderlichen
+            Rechte innerhalb des betreffenden Gebiets besitzt.
+        </p>
+
+        <h3>Eine Maschine funktioniert nicht</h3>
+
+        <p>
+            Nicht jede technische Fehlfunktion ist ein Claim-Problem.
+            Prüfe zusätzlich Energie, Rotation, Redstone, Ressourcen,
+            Chunk-Laden und die eigentliche Maschinenkonfiguration.
+        </p>
+
+        <h3>Gebiet ist zu klein</h3>
+
+        <p>
+            Bei großen Projekten sollte die Claim-Fläche frühzeitig
+            geplant werden. Eine nachträgliche Erweiterung kann je nach
+            verwendeter Mod und Serverkonfiguration zusätzliche Arbeit
+            verursachen.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">09 // ADVANCED TERRITORY DESIGN</div>
+        <h2>Gebiete wie eine Infrastruktur planen</h2>
+
+        <p>
+            Fortgeschrittene Spieler können Claims nicht nur als Schutz,
+            sondern als Teil ihrer gesamten Basisplanung betrachten.
+        </p>
+
+        <ul>
+            <li>Wohngebiet</li>
+            <li>Industriegebiet</li>
+            <li>Landwirtschaft</li>
+            <li>Lagerbereich</li>
+            <li>Transportknoten</li>
+            <li>Außenposten</li>
+            <li>Expeditionsstandorte</li>
+        </ul>
+
+        <p>
+            Dadurch entsteht eine klare Trennung zwischen verschiedenen
+            Funktionen der eigenen Infrastruktur.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">10 // RISE OF NATIONS DOCTRINE</div>
+        <h2>Empfohlene Vorgehensweise</h2>
+
+        <p>
+            Für RISE OF NATIONS empfiehlt sich folgende Reihenfolge:
+        </p>
+
+        <ol style="margin: 12px 0 18px 20px;">
+            <li style="color:#899ba5; line-height:1.8;">
+                Standort auswählen.
+            </li>
+            <li style="color:#899ba5; line-height:1.8;">
+                Geplante Basisfläche bestimmen.
+            </li>
+            <li style="color:#899ba5; line-height:1.8;">
+                Hauptgebiet schützen.
+            </li>
+            <li style="color:#899ba5; line-height:1.8;">
+                Teammitglieder berechtigen.
+            </li>
+            <li style="color:#899ba5; line-height:1.8;">
+                Industrie- und Lagerbereiche einplanen.
+            </li>
+            <li style="color:#899ba5; line-height:1.8;">
+                Besonders wertvolle Bereiche zusätzlich absichern.
+            </li>
+        </ol>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">11 // REFERENCE DATA</div>
+        <h2>Originalquellen</h2>
+
+        <p>
+            Die genauen Befehle, Menüs, Berechtigungen und
+            Konfigurationsmöglichkeiten können abhängig von Mod-Version
+            und Serverkonfiguration variieren. Für konkrete technische
+            Details sollten die jeweiligen Projektseiten verwendet werden.
+        </p>
+
+        <div class="sources">
+
+            <a href="https://www.curseforge.com/minecraft/mc-mods/claim-my-land"
+               target="_blank"
+               rel="noopener">
+                CURSEFORGE // CLAIM MY LAND
+            </a>
+
+            <a href="https://modrinth.com/mod/open-parties-and-claims"
+               target="_blank"
+               rel="noopener">
+                MODRINTH // OPEN PARTIES AND CLAIMS
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <a class="back" href="wiki-important.html">
+        ← ZURÜCK ZU WIKI // IMPORTANT
+    </a>
+
+</main>
+
+<footer>
+    RISE OF NATIONS // CLAIMS // TACTICAL KNOWLEDGE DATABASE
+</footer>
+
+</body>
+</html>
