@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sophisticated Backpacks // RISE OF NATIONS</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background:
+        linear-gradient(rgba(5,10,15,.94), rgba(5,10,15,.97)),
+        radial-gradient(circle at top right, rgba(190,150,50,.10), transparent 35%);
+    color: #d7dde3;
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent 0px,
+        transparent 3px,
+        rgba(255,255,255,.012) 4px
+    );
+    opacity: .45;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: rgba(7,13,19,.97);
+    border-bottom: 1px solid #273746;
+    box-shadow: 0 8px 30px rgba(0,0,0,.45);
+}
+
+.header-inner {
+    max-width: 1450px;
+    margin: auto;
+    min-height: 82px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 14px 24px;
+}
+
+.logo {
+    color: #d6b35a;
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    white-space: nowrap;
+}
+
+.logo span {
+    display: block;
+    margin-top: 5px;
+    color: #71808d;
+    font-size: 9px;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+nav a {
+    color: #9ba9b5;
+    text-decoration: none;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.4px;
+    padding: 9px 11px;
+    border: 1px solid transparent;
+    transition: .2s;
+}
+
+nav a:hover {
+    color: #e0bd63;
+    border-color: #40515f;
+    background: rgba(255,255,255,.025);
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 55px 24px 90px;
+}
+
+.topline {
+    color: #687987;
+    font-size: 10px;
+    letter-spacing: 2px;
+    font-weight: 800;
+    margin-bottom: 12px;
+}
+
+h1 {
+    margin: 0;
+    color: #e0bd63;
+    font-size: clamp(38px, 6vw, 72px);
+    letter-spacing: 4px;
+    line-height: 1;
+}
+
+.subtitle {
+    margin-top: 15px;
+    color: #82909b;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.statusbar {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.status {
+    background: rgba(14,23,31,.9);
+    border: 1px solid #293b49;
+    padding: 16px;
+}
+
+.status small {
+    display: block;
+    color: #687987;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    margin-bottom: 7px;
+}
+
+.status strong {
+    color: #cbd4da;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+.online {
+    color: #65c98b !important;
+}
+
+.section {
+    margin-top: 34px;
+    background: rgba(10,17,24,.92);
+    border: 1px solid #293b49;
+    box-shadow: 0 15px 40px rgba(0,0,0,.2);
+}
+
+.section-head {
+    padding: 18px 22px;
+    border-bottom: 1px solid #293b49;
+    background: rgba(255,255,255,.015);
+}
+
+.section-head h2 {
+    margin: 0;
+    color: #d7dde3;
+    font-size: 16px;
+    letter-spacing: 2px;
+}
+
+.section-head span {
+    display: block;
+    margin-top: 6px;
+    color: #61717e;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+}
+
+.section-body {
+    padding: 25px;
+}
+
+p {
+    color: #aeb9c2;
+    font-size: 13px;
+    line-height: 1.8;
+    margin: 0 0 15px;
+}
+
+p:last-child {
+    margin-bottom: 0;
+}
+
+strong {
+    color: #d7dde3;
+}
+
+ul {
+    margin: 10px 0 0;
+    padding-left: 20px;
+}
+
+li {
+    color: #aeb9c2;
+    font-size: 13px;
+    line-height: 1.8;
+    margin-bottom: 5px;
+}
+
+.data-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.data-card {
+    background: #0d161e;
+    border: 1px solid #263744;
+    padding: 18px;
+}
+
+.data-card h3 {
+    margin: 0 0 10px;
+    color: #d0ad55;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+}
+
+.data-card p {
+    font-size: 12px;
+}
+
+.command-box {
+    border-left: 3px solid #c5a24f;
+    background: rgba(197,162,79,.055);
+    padding: 18px;
+    margin-top: 18px;
+}
+
+.command-box strong {
+    color: #dfbd61;
+    letter-spacing: 1px;
+}
+
+.steps {
+    counter-reset: step;
+}
+
+.step {
+    position: relative;
+    padding: 18px 18px 18px 58px;
+    border: 1px solid #263744;
+    background: #0d161e;
+    margin-bottom: 10px;
+}
+
+.step::before {
+    counter-increment: step;
+    content: counter(step, decimal-leading-zero);
+    position: absolute;
+    left: 18px;
+    top: 18px;
+    color: #d0ad55;
+    font-size: 11px;
+    font-weight: 900;
+}
+
+.step h3 {
+    margin: 0 0 8px;
+    color: #d4dce2;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.step p {
+    margin: 0;
+    font-size: 12px;
+}
+
+.source-list a {
+    display: block;
+    color: #7faac8;
+    text-decoration: none;
+    font-size: 12px;
+    padding: 9px 0;
+    border-bottom: 1px solid #1e2b35;
+}
+
+.source-list a:hover {
+    color: #e0bd63;
+}
+
+.back {
+    display: inline-block;
+    margin-top: 38px;
+    color: #8393a0;
+    text-decoration: none;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    font-weight: 800;
+    border: 1px solid #334654;
+    padding: 12px 16px;
+}
+
+.back:hover {
+    color: #e0bd63;
+    border-color: #a5873f;
+}
+
+footer {
+    border-top: 1px solid #263744;
+    padding: 22px;
+    text-align: center;
+    color: #52616d;
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+@media (max-width: 800px) {
+    .header-inner {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    nav {
+        justify-content: flex-start;
+    }
+
+    .statusbar,
+    .data-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .container {
+        padding-top: 35px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-inner">
+
+        <div class="logo">
+            RISE OF NATIONS
+            <span>TACTICAL KNOWLEDGE DATABASE</span>
+        </div>
+
+        <nav>
+            <a href="../index.html">COMMAND</a>
+            <a href="../index.html#intelligence">INTELLIGENCE</a>
+            <a href="server.html">SERVER</a>
+            <a href="database.html">DATABASE</a>
+            <a href="download.html">DOWNLOAD</a>
+            <a href="communications.html">COMMUNICATIONS</a>
+            <a href="wiki.html">WIKI</a>
+        </nav>
+
+    </div>
+</header>
+
+<main class="container">
+
+    <div class="topline">WIKI // WICHTIG // LOGISTICS & STORAGE</div>
+
+    <h1>SOPHISTICATED BACKPACKS</h1>
+
+    <div class="subtitle">
+        MOBILE STORAGE // ITEM MANAGEMENT // LOGISTICS // UPGRADES
+    </div>
+
+    <div class="statusbar">
+
+        <div class="status">
+            <small>DATABASE CLASS</small>
+            <strong>IMPORTANT</strong>
+        </div>
+
+        <div class="status">
+            <small>SYSTEM ROLE</small>
+            <strong>MOBILE STORAGE</strong>
+        </div>
+
+        <div class="status">
+            <small>PLAYER VALUE</small>
+            <strong>HIGH</strong>
+        </div>
+
+        <div class="status">
+            <small>STATUS</small>
+            <strong class="online">OPERATIONAL</strong>
+        </div>
+
+    </div>
+
+
+    <section class="section">
+
+        <div class="section-head">
+            <h2>01 // SYSTEM OVERVIEW</h2>
+            <span>MOBILE LOGISTICS FOR FIELD OPERATIONS</span>
+        </div>
+
+        <div class="section-body">
+
+            <p>
+                Sophisticated Backpacks erweitert das Inventar von Minecraft um
+                tragbare Rucksäcke mit deutlich mehr Funktionen als ein normales
+                Zusatzinventar.
+            </p>
+
+            <p>
+                Der große Vorteil liegt nicht nur im zusätzlichen Stauraum.
+                Rucksäcke können durch verschiedene Upgrades an bestimmte Aufgaben
+                angepasst werden. Dadurch kann ein Spieler einen Backpack als
+                mobilen Lagerraum, Sammelbehälter oder Bestandteil einer größeren
+                Logistikkette einsetzen.
+            </p>
+
+            <p>
+                Für <strong>RISE OF NATIONS</strong> ist das besonders bei
+                Expeditionen, Bergbau, Bauprojekten und technischen Großprojekten
+                relevant.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-head">
+            <h2>02 // BACKPACK TIERS</h2>
+            <span>PROGRESSION THROUGH STORAGE CAPACITY</span>
+        </div>
+
+        <div class="section-body">
+
+            <p>
+                Sophisticated Backpacks besitzt unterschiedliche Qualitätsstufen.
+                Mit höheren Stufen steigen die Möglichkeiten und Kapazitäten des
+                Rucksacks.
+            </p>
+
+            <div class="data-grid">
+
+                <div class="data-card">
+                    <h3>BASE BACKPACK</h3>
+                    <p>
+                        Einstieg in das mobile Lagerungssystem und deutlich mehr
+                        Platz als das normale Spielerinventar.
+                    </p>
+                </div>
+
+                <div class="data-card">
+                    <h3>IRON</h3>
+                    <p>
+                        Verbesserte Variante für Spieler, die regelmäßig größere
+                        Mengen an Ressourcen transportieren.
+                    </p>
+                </div>
+
+                <div class="data-card">
+                    <h3>GOLD</h3>
+                    <p>
+                        Hochwertigere Speicherstufe mit weiter verbesserten
+                        Lagerungsmöglichkeiten.
+                    </p>
+                </div>
+
+                <div class="data-card">
+                    <h3>DIAMOND / NETHERITE</h3>
+                    <p>
+                        Späte Ausbaustufen für umfangreiche Logistik und besonders
+                        anspruchsvolle Expeditionen.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="command-box">
+                <strong>IMPORTANT</strong><br><br>
+                Nicht automatisch die höchste Stufe herstellen, sobald sie verfügbar
+                ist. Für viele Aufgaben reicht ein niedrigerer Backpack völlig aus.
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-head">
+            <h2>03 // STORAGE MANAGEMENT</h2>
+            <span>MOBILE INVENTORY CONTROL</span>
+        </div>
+
+        <div class="section-body">
+
+            <p>
+                Ein Backpack sollte nicht einfach als zweites chaotisches Inventar
+                verwendet werden. Mit einem festen System wird er zu einem echten
+                Werkzeug.
+            </p>
+
+            <ul>
+                <li>Baumaterialien für Bauprojekte getrennt halten.</li>
+                <li>Mining-Ressourcen für Expeditionen vorbereiten.</li>
+                <li>Werkzeuge und Verbrauchsgegenstände gezielt mitführen.</li>
+                <li>Lebensmittel und Notfallausrüstung separat organisieren.</li>
+                <li>Rohstoffe für Create-Projekte in einem eigenen Backpack bündeln.</li>
+            </ul>
+
+            <p style="margin-top:18px;">
+                Besonders effektiv ist ein Backpack, der bereits vor einer Expedition
+                vollständig vorbereitet wird.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-head">
+            <h2>04 // UPGRADES</h2>
+            <span>FUNCTIONAL SPECIALIZATION</span>
+        </div>
+
+        <div class="section-body">
+
+            <p>
+                Die eigentliche Stärke des Mods liegt in den verschiedenen Upgrades.
+                Sie verändern einen einfachen Speicher in ein spezialisiertes
+                Logistikwerkzeug.
+            </p>
+
+            <div class="data-grid">
+
+                <div class="data-card">
+                    <h3>STACK UPGRADE</h3>
+                    <p>
+                        Erhöht die Menge bestimmter Items, die innerhalb des
+                        Backpack-Systems effizient gelagert werden können.
+                    </p>
+                </div>
+
+                <div class="data-card">
+                    <h3>MAGNET / PICKUP</h3>
+                    <p>
+                        Unterstützt das Einsammeln bestimmter Items und reduziert
+                        manuelle Inventarverwaltung.
+                    </p>
+                </div>
+
+                <div class="data-card">
+                    <h3>COMPRESSION</h3>
+                    <p>
+                        Kann große Mengen bestimmter Ressourcen platzsparender
+                        verwalten.
+                    </p>
+                </div>
+
+                <div class="data-card">
+                    <h3>FILTER</h3>
+                    <p>
+                        Ermöglicht eine kontrolliertere Item-Verwaltung und verhindert
+                        ungewolltes Einsortieren.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-head">
+            <h2>05 // PICKUP & COLLECTION</h2>
+            <span>FIELD RESOURCE COLLECTION</span>
+        </div>
+
+        <div class="section-body">
+
+            <p>
+                Bei Mining- und Sammeloperationen entstehen sehr schnell große Mengen
+                an Items. Genau hier spielt Sophisticated Backpacks seine Stärke aus.
+            </p>
+
+            <p>
+                Ein geeigneter Pickup- oder Filtermechanismus kann dafür sorgen,
+                dass bestimmte Ressourcen direkt in den Backpack gelangen, während
+                andere Items im normalen Inventar bleiben.
+            </p>
+
+            <div class="command-box">
+                <strong>FIELD RULE</strong><br><br>
+                Vor einer langen Expedition zuerst festlegen, welche Ressourcen
+                gesammelt werden sollen. Ein Filter spart später sehr viel
+                Inventararbeit.
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-head">
+            <h2>06 // FEEDING & AUTOMATION</h2>
+            <span>SELF-SUPPORT SYSTEMS</span>
+        </div>
+
+        <div class="section-body">
+
+            <p>
+                Je nach eingesetzten Upgrades kann ein Backpack Aufgaben übernehmen,
+                die normalerweise manuell durchgeführt werden müssten.
+            </p>
+
+            <p>
+                Dazu gehören beispielsweise die automatische Versorgung mit
+                bestimmten Verbrauchsgegenständen oder die gezielte Verwaltung
+                von Items.
+            </p>
+
+            <p>
+                Das ist besonders auf langen Reisen interessant, weil der Spieler
+                weniger Zeit mit Inventarmanagement verbringen muss.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-head">
+            <h2>07 // BACKPACKS + CREATE</h2>
+            <span>MOBILE STORAGE MEETS INDUSTRIAL LOGISTICS</span>
+        </div>
+
+        <div class="section-body">
+
+            <p>
+                In Kombination mit Create werden Sophisticated Backpacks besonders
+                interessant. Create konzentriert sich auf stationäre und bewegliche
+                Logistik, während der Backpack die persönliche mobile Logistik
+                übernimmt.
+            </p>
+
+            <div class="data-grid">
+
+                <div class="data-card">
+                    <h3>MINING</h3>
+                    <p>
+                        Backpack als mobiles Lager für Erz, Stein und Nebenprodukte.
+                    </p>
+                </div>
+
+                <div class="data-card">
+                    <h3>CONSTRUCTION</h3>
+                    <p>
+                        Unterschiedliche Materialien für ein Bauprojekt direkt
+                        am Einsatzort verfügbar halten.
+                    </p>
+                </div>
+
+                <div class="data-card">
+                    <h3>FACTORY</h3>
+                    <p>
+                        Komponenten und Materialien zwischen Produktionsbereichen
+                        transportieren.
+                    </p>
+                </div>
+
+                <div class="data-card">
+                    <h3>EXPEDITION</h3>
+                    <p>
+                        Versorgung mit Nahrung, Werkzeugen und Ersatzmaterialien.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-head">
+            <h2>08 // BACKPACKS + SOPHISTICATED STORAGE</h2>
+            <span>PERSONAL STORAGE VS. BASE STORAGE</span>
+        </div>
+
+        <div class="section-body">
+
+            <p>
+                Sophisticated Backpacks und Sophisticated Storage ergänzen sich.
+                Der Backpack ist primär für den Spieler gedacht, während Storage
+                größere stationäre Lagerstrukturen ermöglicht.
+            </p>
+
+            <p>
+                Dadurch entsteht eine sinnvolle Trennung:
+            </p>
+
+            <div class="command-box">
+                <strong>PLAYER</strong><br>
+                MOBILE BACKPACK<br><br>
+
+                <strong>BASE</strong><br>
+                CENTRAL STORAGE<br><br>
+
+                <strong>FACTORY</strong><br>
+                AUTOMATED LOGISTICS
+            </div>
+
+            <p style="margin-top:18px;">
+                Diese Struktur verhindert, dass jede Ressource dauerhaft im
+                Spielerinventar transportiert werden muss.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-head">
+            <h2>09 // EXPEDITION LOADOUT</h2>
+            <span>RECOMMENDED FIELD CONFIGURATION</span>
+        </div>
+
+        <div class="section-body">
+
+            <div class="steps">
+
+                <div class="step">
+                    <h3>MINING</h3>
+                    <p>
+                        Fokus auf Spitzhacken, Fackeln, Nahrung, Ersatzwerkzeuge
+                        und freie Lagerkapazität.
+                    </p>
+                </div>
+
+                <div class="step">
+                    <h3>BUILDING</h3>
+                    <p>
+                        Häufig benötigte Baustoffe nach Materialgruppen organisieren.
+                    </p>
+                </div>
+
+                <div class="step">
+                    <h3>EXPLORATION</h3>
+                    <p>
+                        Nahrung, Werkzeuge, Ersatzmaterialien und zusätzliche
+                        Lagerkapazität priorisieren.
+                    </p>
+                </div>
+
+                <div class="step">
+                    <h3>MILITARY / COMBAT</h3>
+                    <p>
+                        Munition, Ersatzmaterialien, Heilung und Versorgung so
+                        organisieren, dass wichtige Gegenstände schnell erreichbar sind.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-head">
+            <h2>10 // COMMON ERRORS</h2>
+            <span>LOGISTICS FAILURES</span>
+        </div>
+
+        <div class="section-body">
+
+            <div class="data-grid">
+
+                <div class="data-card">
+                    <h3>PROBLEM // CHAOS</h3>
+                    <p>
+                        Ohne feste Item-Kategorien wird der Backpack schnell zu
+                        einem zweiten unübersichtlichen Inventar.
+                    </p>
+                </div>
+
+                <div class="data-card">
+                    <h3>PROBLEM // FALSCHES UPGRADE</h3>
+                    <p>
+                        Upgrades immer an die tatsächliche Aufgabe des Backpacks
+                        anpassen.
+                    </p>
+                </div>
+
+                <div class="data-card">
+                    <h3>PROBLEM // ZU VIEL TRANSPORT</h3>
+                    <p>
+                        Nicht jede Ressource muss dauerhaft mitgeführt werden.
+                        Stationäre Lager bleiben wichtig.
+                    </p>
+                </div>
+
+                <div class="data-card">
+                    <h3>PROBLEM // BACKUP FEHLT</h3>
+                    <p>
+                        Bei gefährlichen Expeditionen wertvolle Ressourcen nicht
+                        ausschließlich im Backpack aufbewahren.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-head">
+            <h2>11 // ADVANCED LOGISTICS</h2>
+            <span>BACKPACKS AS MOBILE INFRASTRUCTURE</span>
+        </div>
+
+        <div class="section-body">
+
+            <p>
+                Auf höheren Spielstufen kann ein Spieler mehrere Backpacks für
+                unterschiedliche Aufgaben vorbereiten.
+            </p>
+
+            <ul>
+                <li>Mining Backpack</li>
+                <li>Building Backpack</li>
+                <li>Food & Survival Backpack</li>
+                <li>Create Components Backpack</li>
+                <li>Exploration Backpack</li>
+                <li>Emergency / Backup Backpack</li>
+            </ul>
+
+            <p style="margin-top:18px;">
+                Dadurch muss nicht ständig derselbe Rucksack neu konfiguriert werden.
+                Für große Bau- oder Industrieprojekte kann sogar jedes Teammitglied
+                einen eigenen spezialisierten Backpack führen.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-head">
+            <h2>12 // RECOMMENDED LEARNING ORDER</h2>
+            <span>FROM BASIC STORAGE TO ADVANCED LOGISTICS</span>
+        </div>
+
+        <div class="section-body">
+
+            <div class="steps">
+
+                <div class="step">
+                    <h3>STUFE 01 // BASIC BACKPACK</h3>
+                    <p>
+                        Einen ersten Backpack herstellen und das Inventarsystem
+                        kennenlernen.
+                    </p>
+                </div>
+
+                <div class="step">
+                    <h3>STUFE 02 // TIER PROGRESSION</h3>
+                    <p>
+                        Die verschiedenen Materialstufen verstehen und sinnvoll
+                        auswählen.
+                    </p>
+                </div>
+
+                <div class="step">
+                    <h3>STUFE 03 // UPGRADES</h3>
+                    <p>
+                        Upgrades entsprechend der eigenen Spielweise auswählen.
+                    </p>
+                </div>
+
+                <div class="step">
+                    <h3>STUFE 04 // SPECIALIZATION</h3>
+                    <p>
+                        Für unterschiedliche Aufgaben eigene Loadouts erstellen.
+                    </p>
+                </div>
+
+                <div class="step">
+                    <h3>STUFE 05 // LOGISTICS</h3>
+                    <p>
+                        Backpacks mit Base Storage und Create-Logistik kombinieren.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-head">
+            <h2>13 // RISE OF NATIONS FIELD NOTE</h2>
+            <span>MODPACK-SPEZIFISCHE EMPFEHLUNG</span>
+        </div>
+
+        <div class="section-body">
+
+            <p>
+                Sophisticated Backpacks sollte im Modpack als persönliches
+                Logistiksystem verstanden werden. Der Backpack ersetzt keine
+                große Lagerhalle und keine automatisierte Fabrik.
+            </p>
+
+            <p>
+                Seine Stärke liegt darin, die Lücke zwischen Spielerinventar und
+                stationärer Infrastruktur zu schließen.
+            </p>
+
+            <div class="command-box">
+                <strong>MISSION OBJECTIVE</strong><br><br>
+                Baue deine Backpacks nicht einfach möglichst groß. Baue sie
+                möglichst sinnvoll.
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-head">
+            <h2>14 // ORIGINAL SOURCES</h2>
+            <span>EXTERNAL DOCUMENTATION & PROJECT INFORMATION</span>
+        </div>
+
+        <div class="section-body source-list">
+
+            <a href="https://modrinth.com/mod/sophisticated-backpacks" target="_blank">
+                MODRINTH // SOPHISTICATED BACKPACKS
+            </a>
+
+            <a href="https://www.curseforge.com/minecraft/mc-mods/sophisticated-backpacks" target="_blank">
+                CURSEFORGE // SOPHISTICATED BACKPACKS
+            </a>
+
+            <a href="https://github.com/P3pp3rF1y/SophisticatedBackpacks" target="_blank">
+                GITHUB // SOPHISTICATED BACKPACKS
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <a class="back" href="wiki-important.html">
+        ← ZURÜCK ZU WICHTIG
+    </a>
+
+</main>
+
+<footer>
+    RISE OF NATIONS // TACTICAL KNOWLEDGE DATABASE // SOPHISTICATED BACKPACKS
+</footer>
+
+</body>
+</html>
