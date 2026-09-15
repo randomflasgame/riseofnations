@@ -6,16 +6,14 @@
 
     <title>RISE OF NATIONS — COMMAND SYSTEM</title>
 
-    <!-- ZENTRALES DESIGN -->
     <link rel="stylesheet" href="style.css">
-
-    <!-- ZENTRALE KONFIGURATION -->
     <script src="config/site-config.js"></script>
 
     <style>
-        /* =========================================================
-           CINEMATIC INTRO
-        ========================================================= */
+
+        /* =====================================================
+           INTRO
+        ===================================================== */
 
         #ron-intro {
             position: fixed;
@@ -26,11 +24,13 @@
             align-items: center;
             justify-content: center;
 
+            overflow: hidden;
+
             background:
                 radial-gradient(
                     circle at center,
-                    rgba(20, 55, 85, 0.25),
-                    rgba(0, 0, 0, 0.96) 65%
+                    rgba(20,55,85,.25),
+                    rgba(0,0,0,.97) 65%
                 ),
                 linear-gradient(
                     135deg,
@@ -38,8 +38,6 @@
                     #0b1117 50%,
                     #020406
                 );
-
-            overflow: hidden;
 
             transition:
                 opacity 1s ease,
@@ -90,7 +88,7 @@
 
             border-radius: 50%;
 
-            background: rgba(20,100,150,.08);
+            background: rgba(30,110,160,.08);
 
             filter: blur(80px);
 
@@ -100,7 +98,7 @@
         @keyframes glowPulse {
             0%,100% {
                 transform: scale(.9);
-                opacity: .35;
+                opacity: .3;
             }
 
             50% {
@@ -113,7 +111,8 @@
             position: relative;
             z-index: 2;
 
-            width: min(900px, 90%);
+            width: 90%;
+            max-width: 1000px;
 
             text-align: center;
         }
@@ -124,11 +123,7 @@
             color: #7fa6c4;
 
             font-size: 11px;
-
             letter-spacing: 5px;
-
-            animation:
-                introFade 1s ease forwards;
         }
 
         .intro-logo {
@@ -138,7 +133,7 @@
                 "Arial Narrow Bold",
                 sans-serif;
 
-            font-size: clamp(55px, 9vw, 125px);
+            font-size: clamp(55px,9vw,125px);
 
             line-height: .9;
 
@@ -150,8 +145,21 @@
                 0 0 20px rgba(80,150,210,.35),
                 0 4px 0 #0a1117;
 
-            animation:
-                logoReveal 2.5s ease forwards;
+            animation: logoReveal 2.5s ease forwards;
+        }
+
+        @keyframes logoReveal {
+            from {
+                opacity: 0;
+                transform: scale(.85);
+                filter: blur(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+                filter: blur(0);
+            }
         }
 
         .intro-subtitle {
@@ -160,7 +168,6 @@
             color: #b58b35;
 
             font-size: 13px;
-
             letter-spacing: 7px;
 
             opacity: 0;
@@ -171,12 +178,9 @@
 
         .intro-status {
             display: flex;
-
             justify-content: center;
-
-            gap: 28px;
-
             flex-wrap: wrap;
+            gap: 28px;
 
             margin-top: 55px;
 
@@ -190,7 +194,6 @@
             color: #6e8799;
 
             font-size: 10px;
-
             letter-spacing: 2px;
         }
 
@@ -205,10 +208,9 @@
         .intro-warning {
             margin-top: 28px;
 
-            color: #9a9a9a;
+            color: #8b969d;
 
             font-size: 10px;
-
             letter-spacing: 3px;
 
             opacity: 0;
@@ -217,87 +219,56 @@
                 introFade 1s ease 2.8s forwards;
         }
 
+        @keyframes introFade {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .skip-intro {
             position: absolute;
 
-            right: 35px;
+            right: 30px;
             bottom: 30px;
 
             z-index: 5;
 
             padding: 10px 18px;
 
-            background: rgba(5,10,15,.8);
+            background: rgba(5,10,15,.9);
 
             border: 1px solid #38546a;
 
             color: #8da9bd;
 
             font-size: 10px;
-
             letter-spacing: 2px;
 
             cursor: pointer;
-
-            transition: .2s ease;
         }
 
         .skip-intro:hover {
-            background: rgba(20,45,65,.9);
+            background: #172733;
 
-            border-color: #8caec8;
+            border-color: #759bb5;
 
-            color: white;
-        }
-
-        @keyframes introFade {
-            from {
-                opacity: 0;
-
-                transform:
-                    translateY(12px);
-            }
-
-            to {
-                opacity: 1;
-
-                transform:
-                    translateY(0);
-            }
-        }
-
-        @keyframes logoReveal {
-            from {
-                opacity: 0;
-
-                transform:
-                    scale(.85);
-
-                filter:
-                    blur(10px);
-            }
-
-            to {
-                opacity: 1;
-
-                transform:
-                    scale(1);
-
-                filter:
-                    blur(0);
-            }
+            color: #ffffff;
         }
 
 
-        /* =========================================================
+        /* =====================================================
            LOGIN
-        ========================================================= */
+        ===================================================== */
 
         #ron-login {
             position: fixed;
-
             inset: 0;
-
             z-index: 9990;
 
             display: flex;
@@ -309,7 +280,7 @@
                 radial-gradient(
                     circle at center,
                     rgba(20,55,80,.22),
-                    rgba(0,0,0,.96)
+                    rgba(0,0,0,.97)
                 );
         }
 
@@ -318,7 +289,9 @@
         }
 
         .login-panel {
-            width: min(440px, 90%);
+            width: min(440px,90%);
+
+            box-sizing: border-box;
 
             padding: 38px;
 
@@ -334,8 +307,6 @@
             box-shadow:
                 0 0 40px rgba(0,0,0,.7),
                 inset 0 0 25px rgba(50,100,130,.04);
-
-            text-align: left;
         }
 
         .login-classification {
@@ -344,7 +315,6 @@
             color: #6f91a8;
 
             font-size: 9px;
-
             letter-spacing: 3px;
         }
 
@@ -354,7 +324,6 @@
             color: #dce6ed;
 
             font-size: 28px;
-
             letter-spacing: 4px;
         }
 
@@ -364,7 +333,6 @@
             color: #728897;
 
             font-size: 10px;
-
             letter-spacing: 2px;
         }
 
@@ -376,14 +344,15 @@
             color: #7794a8;
 
             font-size: 9px;
-
             letter-spacing: 2px;
         }
 
         .login-panel input {
-            box-sizing: border-box;
+            display: block;
 
             width: 100%;
+
+            box-sizing: border-box;
 
             padding: 13px;
 
@@ -449,18 +418,119 @@
             color: #c45d5d;
 
             font-size: 10px;
-
             letter-spacing: 1px;
         }
 
 
-        /* =========================================================
+        /* =====================================================
            DASHBOARD
-        ========================================================= */
+        ===================================================== */
 
         #ron-dashboard.hidden {
             display: none;
         }
+
+        .ron-header {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 25px;
+
+            padding: 15px 28px;
+
+            background: #080d12;
+
+            border-bottom: 1px solid #29485c;
+
+            box-shadow:
+                0 4px 20px rgba(0,0,0,.45);
+        }
+
+        .ron-brand {
+            display: block;
+
+            color: #dce6ed !important;
+
+            text-decoration: none !important;
+
+            font-weight: bold;
+
+            font-size: 18px;
+
+            letter-spacing: 3px;
+
+            white-space: nowrap;
+        }
+
+        .ron-brand:hover {
+            color: #ffffff !important;
+
+            text-decoration: none !important;
+        }
+
+        .ron-nav {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: flex-end;
+
+            gap: 4px;
+
+            flex-wrap: wrap;
+        }
+
+        .ron-nav a {
+            display: block;
+
+            padding: 9px 11px;
+
+            color: #8fa7b8 !important;
+
+            background: transparent !important;
+
+            text-decoration: none !important;
+
+            border: 1px solid transparent;
+
+            font-size: 10px;
+
+            letter-spacing: 1.5px;
+
+            transition:
+                color .2s ease,
+                border-color .2s ease,
+                background .2s ease;
+        }
+
+        .ron-nav a:visited {
+            color: #8fa7b8 !important;
+            text-decoration: none !important;
+        }
+
+        .ron-nav a:hover {
+            color: #dbe8f0 !important;
+
+            text-decoration: none !important;
+
+            background: rgba(40,75,95,.35) !important;
+
+            border-color: #36566b;
+        }
+
+        .ron-nav a:active {
+            color: #ffffff !important;
+
+            text-decoration: none !important;
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
 
         .hero-panel {
             position: relative;
@@ -485,7 +555,6 @@
             content: "";
 
             position: absolute;
-
             inset: 0;
 
             pointer-events: none;
@@ -499,18 +568,16 @@
                 );
 
             animation:
-                scan 5s linear infinite;
+                dashboardScan 5s linear infinite;
         }
 
-        @keyframes scan {
+        @keyframes dashboardScan {
             from {
-                transform:
-                    translateX(-100%);
+                transform: translateX(-100%);
             }
 
             to {
-                transform:
-                    translateX(100%);
+                transform: translateX(100%);
             }
         }
 
@@ -520,12 +587,13 @@
             color: #7598ad;
 
             font-size: 10px;
-
             letter-spacing: 4px;
         }
 
         .hero-title {
             margin: 0;
+
+            color: #e4e9ed;
 
             font-family:
                 Impact,
@@ -533,11 +601,9 @@
                 "Arial Narrow Bold",
                 sans-serif;
 
-            font-size: clamp(45px, 7vw, 90px);
+            font-size: clamp(45px,7vw,90px);
 
             letter-spacing: 5px;
-
-            color: #e4e9ed;
         }
 
         .hero-description {
@@ -555,23 +621,23 @@
         .hero-actions {
             display: flex;
 
-            gap: 12px;
-
             flex-wrap: wrap;
+
+            gap: 12px;
 
             margin-top: 25px;
         }
 
 
-        /* =========================================================
+        /* =====================================================
            MODULES
-        ========================================================= */
+        ===================================================== */
 
         .module-grid {
             display: grid;
 
             grid-template-columns:
-                repeat(4, minmax(0, 1fr));
+                repeat(4,minmax(0,1fr));
 
             gap: 14px;
 
@@ -594,24 +660,19 @@
 
             border: 1px solid #2b4556;
 
-            text-decoration: none;
+            text-decoration: none !important;
 
             transition:
                 transform .2s ease,
-                border-color .2s ease,
-                background .2s ease;
+                border-color .2s ease;
+        }
+
+        .module-card:visited {
+            text-decoration: none !important;
         }
 
         .module-card:hover {
-            transform:
-                translateY(-3px);
-
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(25,43,55,.98),
-                    rgba(8,15,20,.98)
-                );
+            transform: translateY(-3px);
 
             border-color: #567991;
         }
@@ -620,7 +681,6 @@
             color: #64859b;
 
             font-size: 9px;
-
             letter-spacing: 2px;
         }
 
@@ -630,7 +690,6 @@
             color: #dbe4e9;
 
             font-size: 15px;
-
             letter-spacing: 2px;
         }
 
@@ -645,20 +704,42 @@
         }
 
 
-        /* =========================================================
-           RESPONSIVE
-        ========================================================= */
+        /* =====================================================
+           MOBILE
+        ===================================================== */
 
         @media (max-width: 1000px) {
 
+            .ron-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .ron-nav {
+                justify-content: flex-start;
+            }
+
             .module-grid {
                 grid-template-columns:
-                    repeat(2, minmax(0, 1fr));
+                    repeat(2,minmax(0,1fr));
             }
 
         }
 
         @media (max-width: 650px) {
+
+            .ron-header {
+                padding: 14px 18px;
+            }
+
+            .ron-nav {
+                width: 100%;
+            }
+
+            .ron-nav a {
+                font-size: 9px;
+                padding: 7px 8px;
+            }
 
             .module-grid {
                 grid-template-columns: 1fr;
@@ -682,15 +763,16 @@
             }
 
         }
+
     </style>
 </head>
 
 <body>
 
 
-<!-- =========================================================
+<!-- =====================================================
      CINEMATIC INTRO
-========================================================= -->
+===================================================== -->
 
 <div id="ron-intro">
 
@@ -714,17 +796,11 @@
 
         <div class="intro-status">
 
-            <span>
-                SYSTEM ONLINE
-            </span>
+            <span>SYSTEM ONLINE</span>
 
-            <span>
-                NETWORK INITIALIZED
-            </span>
+            <span>NETWORK INITIALIZED</span>
 
-            <span>
-                DATABASE READY
-            </span>
+            <span>DATABASE READY</span>
 
         </div>
 
@@ -745,9 +821,9 @@
 </div>
 
 
-<!-- =========================================================
+<!-- =====================================================
      FIKTIVER LOGIN
-========================================================= -->
+===================================================== -->
 
 <div id="ron-login">
 
@@ -801,18 +877,16 @@
 </div>
 
 
-<!-- =========================================================
+<!-- =====================================================
      DASHBOARD
-========================================================= -->
+===================================================== -->
 
 <div
     id="ron-dashboard"
     class="hidden">
 
-    <div class="ron-top-line"></div>
 
-
-    <!-- NAVIGATION -->
+    <!-- HEADER -->
 
     <header class="ron-header">
 
@@ -860,10 +934,9 @@
     </header>
 
 
-    <!-- MAIN -->
+    <!-- CONTENT -->
 
     <main class="ron-page">
-
 
         <div class="classification">
             RISE OF NATIONS // GLOBAL COMMAND SYSTEM
@@ -900,7 +973,6 @@
 
                 </a>
 
-
                 <a
                     class="ron-button"
                     href="pages/server.html">
@@ -908,7 +980,6 @@
                     SERVER STATUS
 
                 </a>
-
 
                 <a
                     class="ron-button"
@@ -923,7 +994,7 @@
         </section>
 
 
-        <!-- STATUS -->
+        <!-- SYSTEM STATUS -->
 
         <div class="section-title">
             SYSTEM STATUS
@@ -1021,7 +1092,7 @@
         </div>
 
 
-        <!-- MODULE -->
+        <!-- COMMAND MODULES -->
 
         <div class="section-title">
             COMMAND MODULES
@@ -1190,7 +1261,6 @@
 
         </footer>
 
-
     </main>
 
 </div>
@@ -1198,9 +1268,9 @@
 
 <script>
 
-/* =========================================================
-   INTRO
-========================================================= */
+/* =====================================================
+   ELEMENTE
+===================================================== */
 
 const intro =
     document.getElementById("ron-intro");
@@ -1212,6 +1282,10 @@ const dashboard =
     document.getElementById("ron-dashboard");
 
 
+/* =====================================================
+   INTRO ÜBERSPRINGEN
+===================================================== */
+
 function skipIntro() {
 
     intro.classList.add("hidden");
@@ -1219,9 +1293,9 @@ function skipIntro() {
 }
 
 
-/*
-   Intro automatisch nach 6,2 Sekunden beenden.
-*/
+/* =====================================================
+   INTRO AUTOMATISCH BEENDEN
+===================================================== */
 
 setTimeout(() => {
 
@@ -1230,32 +1304,27 @@ setTimeout(() => {
 }, 6200);
 
 
-/* =========================================================
+/* =====================================================
    FIKTIVER LOGIN
-========================================================= */
+===================================================== */
 
 /*
-   WICHTIG:
+   KEIN ECHTER LOGIN.
 
-   Das hier ist KEIN echter Login.
+   Es gibt keine Datenbank.
+   Es gibt keine Benutzerkonten.
+   Es werden keine Passwörter gespeichert.
 
-   Es gibt:
-   - keine Benutzer-Datenbank
-   - keine Accounts
-   - keine gespeicherten Passwörter
-   - keine echte Authentifizierung
-
-   Jeder beliebige Benutzername und jedes beliebige
-   Passwort funktionieren.
+   Jeder Benutzername und jedes Passwort
+   funktionieren, solange beide Felder
+   ausgefüllt sind.
 
    Beispiele:
 
    hansjpürgen / 123
    admin / rise
    test / test
-   hans / hallo
-
-   Die Daten werden nirgendwo gespeichert.
+   irgendwas / hallo123
 */
 
 function login() {
@@ -1275,11 +1344,6 @@ function login() {
         document
             .getElementById("login-error");
 
-
-    /*
-       Nur prüfen, ob überhaupt etwas
-       eingegeben wurde.
-    */
 
     if (
         username.length > 0 &&
@@ -1302,9 +1366,9 @@ function login() {
 }
 
 
-/* =========================================================
-   CONFIG
-========================================================= */
+/* =====================================================
+   ZENTRALE KONFIGURATION LADEN
+===================================================== */
 
 document.addEventListener(
     "DOMContentLoaded",
