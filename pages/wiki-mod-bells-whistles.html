@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RISE OF NATIONS // BELLS & WHISTLES</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+    min-height:100vh;
+    background:
+        linear-gradient(rgba(5,10,15,.97),rgba(5,10,15,.99)),
+        repeating-linear-gradient(135deg,rgba(255,255,255,.018) 0 2px,transparent 2px 9px);
+    color:#dbe3e8;
+    font-family:"Segoe UI",Arial,sans-serif;
+}
+header{
+    background:rgba(5,10,15,.98);
+    border-bottom:1px solid #293944;
+    box-shadow:0 5px 25px rgba(0,0,0,.45);
+}
+.header-inner{
+    max-width:1500px;
+    margin:auto;
+    padding:18px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:30px;
+}
+.logo{
+    color:#d6b85c;
+    font-size:22px;
+    font-weight:950;
+    letter-spacing:3px;
+}
+.logo span{
+    display:block;
+    color:#687b86;
+    font-size:9px;
+    letter-spacing:2px;
+    margin-top:4px;
+}
+nav{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+    gap:7px;
+}
+nav a{
+    color:#9aabb4;
+    text-decoration:none;
+    padding:9px 11px;
+    border:1px solid transparent;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.2px;
+    transition:.2s;
+}
+nav a:hover{
+    color:#d6b85c;
+    background:#111b22;
+    border-color:#3b4d58;
+}
+main{
+    max-width:1250px;
+    margin:auto;
+    padding:70px 30px 100px;
+}
+.eyebrow{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:3px;
+    margin-bottom:15px;
+}
+h1{
+    color:#edf2f4;
+    font-size:clamp(40px,6.5vw,78px);
+    line-height:.95;
+    letter-spacing:4px;
+    font-weight:950;
+}
+.subtitle{
+    max-width:950px;
+    margin-top:22px;
+    color:#8497a2;
+    line-height:1.75;
+    font-size:15px;
+}
+.meta{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-top:38px;
+}
+.meta-box{
+    padding:18px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+.meta-label{
+    color:#596c77;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:8px;
+}
+.meta-value{
+    color:#d6b85c;
+    font-size:13px;
+    font-weight:900;
+}
+.section{
+    margin-top:35px;
+    padding:30px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+.section-number{
+    color:#526773;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:2px;
+    margin-bottom:9px;
+}
+h2{
+    color:#e1e8eb;
+    font-size:22px;
+    letter-spacing:1px;
+    margin-bottom:18px;
+}
+h3{
+    color:#d6b85c;
+    font-size:14px;
+    letter-spacing:1px;
+    margin:25px 0 10px;
+}
+p{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    margin-bottom:13px;
+}
+ul,ol{
+    margin:12px 0 18px 22px;
+}
+li{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    padding-left:5px;
+}
+.note{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#111c23;
+    border-left:3px solid #4d91bd;
+}
+.note-title{
+    color:#4d91bd;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+.warning{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#17140e;
+    border-left:3px solid #d6b85c;
+}
+.warning-title{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:18px;
+}
+th,td{
+    text-align:left;
+    padding:13px 14px;
+    border:1px solid #293c47;
+    font-size:12px;
+}
+th{
+    color:#d6b85c;
+    background:#111c23;
+    font-size:10px;
+    letter-spacing:1px;
+}
+td{
+    color:#8ea0a9;
+    background:#0a141a;
+}
+.sources{
+    display:grid;
+    gap:10px;
+    margin-top:15px;
+}
+.sources a{
+    display:block;
+    padding:13px 15px;
+    background:#101b22;
+    border:1px solid #293c47;
+    color:#9fb0b9;
+    text-decoration:none;
+    font-size:12px;
+    transition:.2s;
+}
+.sources a:hover{
+    color:#d6b85c;
+    border-color:#d6b85c;
+}
+.back{
+    display:inline-block;
+    margin-top:45px;
+    padding:12px 16px;
+    color:#d6b85c;
+    border:1px solid #4c4530;
+    text-decoration:none;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+}
+footer{
+    border-top:1px solid #202e36;
+    padding:25px 30px;
+    text-align:center;
+    color:#465861;
+    font-size:9px;
+    letter-spacing:2px;
+}
+@media(max-width:850px){
+    .header-inner{flex-direction:column;align-items:flex-start}
+    nav{justify-content:flex-start}
+    .meta{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:550px){
+    .meta{grid-template-columns:1fr}
+    main{padding:45px 18px 70px}
+    .section{padding:22px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="header-inner">
+
+<div class="logo">
+RISE OF NATIONS
+<span>TACTICAL KNOWLEDGE DATABASE</span>
+</div>
+
+<nav>
+<a href="../index.html">COMMAND</a>
+<a href="intelligence.html">INTELLIGENCE</a>
+<a href="server.html">SERVER</a>
+<a href="database.html">DATABASE</a>
+<a href="download.html">DOWNLOAD</a>
+<a href="communications.html">COMMUNICATIONS</a>
+<a href="wiki.html">WIKI</a>
+</nav>
+
+</div>
+</header>
+
+<main>
+
+<div class="eyebrow">
+PROFESSOR DATABASE // CREATE ECOSYSTEM // RAILWAY & INDUSTRIAL DETAIL
+</div>
+
+<h1>BELLS & WHISTLES</h1>
+
+<p class="subtitle">
+Bells & Whistles ergänzt das Create-Eisenbahn- und Industrieumfeld um
+zusätzliche visuelle und funktionale Details. Der Mod richtet sich
+vor allem an Spieler, die ihre Bahnhöfe, Gleisanlagen und technischen
+Standorte deutlich glaubwürdiger und detaillierter gestalten möchten.
+</p>
+
+<div class="meta">
+
+<div class="meta-box">
+<div class="meta-label">MOD</div>
+<div class="meta-value">BELLS & WHISTLES</div>
+</div>
+
+<div class="meta-box">
+<div class="meta-label">VERSION</div>
+<div class="meta-value">0.4.7</div>
+</div>
+
+<div class="meta-box">
+<div class="meta-label">MINECRAFT</div>
+<div class="meta-value">1.21.1</div>
+</div>
+
+<div class="meta-box">
+<div class="meta-label">SYSTEM</div>
+<div class="meta-value">RAILWAY DETAIL</div>
+</div>
+
+</div>
+
+
+<section class="section">
+<div class="section-number">01 // SYSTEM OVERVIEW</div>
+<h2>Was ist Bells & Whistles?</h2>
+
+<p>
+Bells & Whistles erweitert das Create-Zugumfeld um zusätzliche
+Elemente, mit denen Eisenbahnstrecken und Bahnhöfe realistischer
+gestaltet werden können.
+</p>
+
+<p>
+Der Schwerpunkt liegt damit weniger auf einer komplett neuen
+Produktionskette und stärker auf der Ausgestaltung bestehender
+Create-Railway-Systeme.
+</p>
+
+<div class="note">
+<div class="note-title">CORE PRINCIPLE</div>
+<p>
+Ein funktionierender Bahnhof ist gut. Ein Bahnhof, der auch wie ein
+echter Bahnhof aussieht, macht das gesamte Verkehrsnetz glaubwürdiger.
+</p>
+</div>
+</section>
+
+
+<section class="section">
+<div class="section-number">02 // RAILWAY ENVIRONMENT</div>
+<h2>Die Eisenbahn als Infrastruktur</h2>
+
+<p>
+Create-Züge sind in RISE OF NATIONS nicht nur Transportmittel,
+sondern können einen wichtigen Teil der gesamten Weltinfrastruktur
+bilden.
+</p>
+
+<table>
+<tr>
+<th>BEREICH</th>
+<th>FUNKTION</th>
+</tr>
+<tr>
+<td>Gleis</td>
+<td>Verkehrsweg</td>
+</tr>
+<tr>
+<td>Bahnhof</td>
+<td>Personen- und Güterumschlag</td>
+</tr>
+<tr>
+<td>Signalisierung</td>
+<td>Verkehrsorganisation</td>
+</tr>
+<tr>
+<td>Industrieanschluss</td>
+<td>Rohstofftransport</td>
+</tr>
+<tr>
+<td>Detailobjekte</td>
+<td>Realistische Gestaltung</td>
+</tr>
+</table>
+</section>
+
+
+<section class="section">
+<div class="section-number">03 // STATION DESIGN</div>
+<h2>Bahnhöfe gestalten</h2>
+
+<p>
+Ein glaubwürdiger Bahnhof benötigt mehr als ein Gleis und einen
+Train Station-Block.
+</p>
+
+<ul>
+<li>Empfangsgebäude.</li>
+<li>Bahnsteige.</li>
+<li>Überdachungen.</li>
+<li>Beleuchtung.</li>
+<li>Wartebereiche.</li>
+<li>Gepäck- und Güterbereiche.</li>
+<li>Beschilderung.</li>
+<li>Technische Nebenanlagen.</li>
+</ul>
+
+<p>
+Bells & Whistles eignet sich besonders dafür, diese Übergänge
+zwischen reiner Create-Funktion und sichtbarer Infrastruktur
+auszugestalten.
+</p>
+</section>
+
+
+<section class="section">
+<div class="section-number">04 // INDUSTRIAL RAILWAYS</div>
+<h2>Industriebahnen</h2>
+
+<p>
+Neben Personenbahnhöfen können Create-Züge hervorragend für
+industrielle Logistik eingesetzt werden.
+</p>
+
+<ol>
+<li>Mine oder Rohstoffgebiet anbinden.</li>
+<li>Rohstoffe zum Verarbeitungsstandort transportieren.</li>
+<li>Produkte in ein Zentrallager bringen.</li>
+<li>Fertige Waren weiterverteilen.</li>
+<li>Bahnhöfe mit eindeutiger Funktion kennzeichnen.</li>
+</ol>
+
+<div class="note">
+<div class="note-title">LOGISTICS PRINCIPLE</div>
+<p>
+Ein gutes Bahnnetz sollte nicht nur viele Gleise besitzen. Jede
+Strecke sollte einen nachvollziehbaren Zweck erfüllen.
+</p>
+</div>
+</section>
+
+
+<section class="section">
+<div class="section-number">05 // VISUAL LANGUAGE</div>
+<h2>Einheitliches Bahndesign</h2>
+
+<p>
+Für große Netzwerke empfiehlt sich eine einheitliche Designsprache.
+</p>
+
+<table>
+<tr>
+<th>ELEMENT</th>
+<th>EMPFEHLUNG</th>
+</tr>
+<tr>
+<td>Bahnhof</td>
+<td>Wiedererkennbares Grunddesign</td>
+</tr>
+<tr>
+<td>Bahnsteig</td>
+<td>Einheitliche Beleuchtung</td>
+</tr>
+<tr>
+<td>Güterterminal</td>
+<td>Industrielle Materialien</td>
+</tr>
+<tr>
+<td>Signale</td>
+<td>Klar erkennbare Positionen</td>
+</tr>
+<tr>
+<td>Werkstatt</td>
+<td>Technischer Baustil</td>
+</tr>
+</table>
+</section>
+
+
+<section class="section">
+<div class="section-number">06 // CREATE INTEGRATION</div>
+<h2>Zusammenspiel mit Create</h2>
+
+<p>
+Bells & Whistles sollte gemeinsam mit den eigentlichen Create-
+Eisenbahnsystemen betrachtet werden.
+</p>
+
+<ul>
+<li>Train Stations.</li>
+<li>Train Stops.</li>
+<li>Track Systems.</li>
+<li>Train Controls.</li>
+<li>Train Signals.</li>
+<li>Train Schedules.</li>
+<li>Contraptions.</li>
+</ul>
+
+<p>
+Die dekorativen Elemente ersetzen die eigentliche Eisenbahnlogik
+nicht. Sie ergänzen sie.
+</p>
+</section>
+
+
+<section class="section">
+<div class="section-number">07 // CITY CONNECTION</div>
+<h2>Städte und Bahnnetze</h2>
+
+<p>
+Ein großes Spielerprojekt kann durch eine Bahnverbindung deutlich
+größer wirken.
+</p>
+
+<ul>
+<li>Stadtbahnhof.</li>
+<li>Industriebahnhof.</li>
+<li>Hafenanschluss.</li>
+<li>Minenbahnhof.</li>
+<li>Militärischer Versorgungsknoten.</li>
+<li>Außenposten.</li>
+</ul>
+
+<p>
+Damit kann aus einzelnen Basen ein zusammenhängendes Verkehrsnetz
+entstehen.
+</p>
+</section>
+
+
+<section class="section">
+<div class="section-number">08 // MULTIPLAYER</div>
+<h2>Multiplayer-Anwendung</h2>
+
+<p>
+Auf einem Server können Spieler gemeinsam ein öffentliches
+Eisenbahnnetz errichten.
+</p>
+
+<p>
+Besonders interessant wird das, wenn Bahnhöfe nicht nur als
+private Infrastruktur dienen, sondern von mehreren Spielern
+angefahren werden können.
+</p>
+
+<div class="warning">
+<div class="warning-title">NETWORK POLICY</div>
+<p>
+Bei einem gemeinsam genutzten Schienennetz sollten Bahnhofsnamen,
+Routen und Zuständigkeiten dokumentiert werden. Das verhindert
+Verwirrung, wenn das Netzwerk größer wird.
+</p>
+</div>
+</section>
+
+
+<section class="section">
+<div class="section-number">09 // PERFORMANCE</div>
+<h2>Performance</h2>
+
+<p>
+Dekoration allein ist normalerweise weniger problematisch als eine
+große Anzahl dauerhaft aktiver Create-Systeme.
+</p>
+
+<ul>
+<li>Gleisnetze sinnvoll planen.</li>
+<li>Unnötige aktive Maschinen vermeiden.</li>
+<li>Sehr große Konstruktionen modular aufbauen.</li>
+<li>Bei Serverproblemen Tickzeiten untersuchen.</li>
+</ul>
+</section>
+
+
+<section class="section">
+<div class="section-number">10 // TROUBLESHOOTING</div>
+<h2>Fehleranalyse</h2>
+
+<h3>Elemente erscheinen nicht</h3>
+<p>
+Prüfen, ob der betreffende Block oder Gegenstand tatsächlich von der
+installierten Version unterstützt wird und ob alle benötigten
+Abhängigkeiten vorhanden sind.
+</p>
+
+<h3>Probleme mit Create-Zügen</h3>
+<p>
+Wenn die eigentliche Zugmechanik fehlerhaft ist, sollte zuerst
+Create beziehungsweise die Railway-Erweiterung untersucht werden.
+Bells & Whistles ist primär eine Ergänzung des Systems.
+</p>
+
+<h3>Darstellungsprobleme</h3>
+<p>
+Bei visuellen Problemen Ressourcenpakete, Shader und andere
+Rendering-Mods testweise deaktivieren.
+</p>
+</section>
+
+
+<section class="section">
+<div class="section-number">11 // ADVANCED DESIGN</div>
+<h2>Fortgeschrittene Bahnhofsgestaltung</h2>
+
+<p>
+Ein großer Bahnhof kann in mehrere Funktionszonen aufgeteilt werden:
+</p>
+
+<ol>
+<li>Haupteingang.</li>
+<li>Personenbereich.</li>
+<li>Güterbereich.</li>
+<li>Technische Anlagen.</li>
+<li>Wartungshalle.</li>
+<li>Abstellgleise.</li>
+<li>Lokomotivbereich.</li>
+</ol>
+
+<p>
+Diese Struktur verhindert, dass ein Bahnhof wie eine einzige große
+leere Plattform wirkt.
+</p>
+</section>
+
+
+<section class="section">
+<div class="section-number">12 // RISE OF NATIONS APPLICATION</div>
+<h2>Einsatz im Modpack</h2>
+
+<p>
+RISE OF NATIONS besitzt ein besonders großes Create-Ökosystem.
+Bells & Whistles passt deshalb hervorragend zu einem Netzwerk aus
+Fabriken, Städten, Rohstoffgebieten und militärischen Standorten.
+</p>
+
+<ul>
+<li>Create.</li>
+<li>Create Railways Navigator.</li>
+<li>Create Threaded Trains.</li>
+<li>Create Train Parts.</li>
+<li>Create Factory.</li>
+<li>Create Ultimate Factory.</li>
+<li>Create Deco.</li>
+<li>Create Rustic Structures.</li>
+</ul>
+</section>
+
+
+<section class="section">
+<div class="section-number">13 // PROFESSOR DOCTRINE</div>
+<h2>Das Wichtigste zum Mitnehmen</h2>
+
+<ul>
+<li>Bells & Whistles erweitert das Create-Eisenbahnumfeld.</li>
+<li>Der Fokus liegt stark auf Infrastruktur und visuellen Details.</li>
+<li>Bahnhöfe können dadurch deutlich glaubwürdiger gestaltet werden.</li>
+<li>Industriebahnen profitieren besonders von einer klaren Gestaltung.</li>
+<li>Im Multiplayer lohnt sich ein dokumentiertes gemeinsames Bahnnetz.</li>
+<li>Die eigentliche Create-Zuglogik bleibt die technische Grundlage.</li>
+</ul>
+
+<div class="warning">
+<div class="warning-title">FINAL PRINCIPLE</div>
+<p>
+Ein Eisenbahnnetz ist erst dann wirklich groß, wenn man nicht nur
+die Züge sieht, sondern die Infrastruktur dahinter versteht.
+</p>
+</div>
+</section>
+
+
+<section class="section">
+<div class="section-number">14 // REFERENCE DATA</div>
+<h2>Originalquellen</h2>
+
+<div class="sources">
+
+<a href="https://modrinth.com/"
+   target="_blank"
+   rel="noopener">
+MODRINTH // MOD DATABASE
+</a>
+
+<a href="https://www.curseforge.com/minecraft/mc-mods"
+   target="_blank"
+   rel="noopener">
+CURSEFORGE // MINECRAFT MOD DATABASE
+</a>
+
+</div>
+</section>
+
+
+<a class="back" href="wiki.html">
+← ZURÜCK ZUR WIKI
+</a>
+
+</main>
+
+<footer>
+RISE OF NATIONS // BELLS & WHISTLES // TACTICAL KNOWLEDGE DATABASE
+</footer>
+
+</body>
+</html>
