@@ -3,177 +3,311 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>DOWNLOAD // RISE OF NATIONS</title>
+
+    <!-- ZENTRALE CONFIG -->
+    <script src="../config/site-config.js"></script>
 
     <style>
         * {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            margin: 0;
-            background:
-                linear-gradient(rgba(5, 10, 16, 0.94), rgba(5, 10, 16, 0.97)),
-                repeating-linear-gradient(
-                    0deg,
-                    rgba(255,255,255,0.025) 0px,
-                    rgba(255,255,255,0.025) 1px,
-                    transparent 1px,
-                    transparent 4px
-                );
-            color: #d8e2ea;
-            font-family: "Courier New", monospace;
             min-height: 100vh;
+            background:
+                radial-gradient(circle at 50% 10%, rgba(25, 70, 95, 0.22), transparent 35%),
+                linear-gradient(135deg, #05080b, #0a1117 50%, #05080b);
+            color: #dce8ef;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
         header {
-            border-bottom: 1px solid #31506a;
-            background: #08111a;
-            padding: 18px 35px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #1e3440;
+            background: rgba(5, 10, 14, 0.96);
+            backdrop-filter: blur(12px);
+        }
+
+        .header-inner {
+            width: min(1450px, 94%);
+            margin: auto;
+            min-height: 78px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
+            gap: 30px;
         }
 
-        .logo {
-            color: #d4af37;
-            font-size: 22px;
-            font-weight: bold;
-            letter-spacing: 3px;
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            color: #fff;
+            text-decoration: none;
         }
 
-        .status {
-            color: #4fd1ff;
-            font-size: 13px;
+        .brand-emblem {
+            width: 43px;
+            height: 43px;
+            border: 2px solid #b89543;
+            display: grid;
+            place-items: center;
+            color: #b89543;
+            background: #101820;
+            font-size: 19px;
+            font-weight: 900;
+            transform: rotate(45deg);
+        }
+
+        .brand-emblem span {
+            transform: rotate(-45deg);
+        }
+
+        .brand-title {
+            font-size: 16px;
+            font-weight: 900;
             letter-spacing: 2px;
+        }
+
+        .brand-subtitle {
+            margin-top: 4px;
+            color: #627985;
+            font-size: 8px;
+            letter-spacing: 2px;
+        }
+
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            gap: 6px;
+        }
+
+        nav a {
+            color: #8da5b1;
+            text-decoration: none;
+            padding: 11px 12px;
+            font-size: 10px;
+            letter-spacing: 1.5px;
+            border: 1px solid transparent;
+            transition: 0.2s ease;
+        }
+
+        nav a:hover {
+            color: #e8f3f8;
+            border-color: #294858;
+            background: #0b1820;
         }
 
         main {
-            max-width: 1200px;
-            margin: 50px auto;
-            padding: 0 25px;
+            width: min(1100px, 92%);
+            margin: auto;
+            padding: 80px 0;
         }
 
-        .classified {
-            color: #4fd1ff;
+        .eyebrow {
+            color: #b89543;
+            font-size: 10px;
             letter-spacing: 4px;
-            font-size: 13px;
-            margin-bottom: 12px;
+            font-weight: bold;
+            margin-bottom: 18px;
+        }
+
+        .hero {
+            padding: 50px 0 60px;
+            border-bottom: 1px solid #1c303b;
         }
 
         h1 {
-            margin: 0;
-            color: #ffffff;
-            font-size: 52px;
-            letter-spacing: 7px;
+            font-size: clamp(42px, 7vw, 82px);
+            line-height: 0.95;
+            letter-spacing: 4px;
+            color: #edf4f7;
+            margin-bottom: 22px;
         }
 
-        .subtitle {
-            margin-top: 12px;
-            color: #71889a;
-            letter-spacing: 2px;
+        h1 span {
+            color: #5da1c7;
         }
 
-        .download-panel {
-            margin-top: 45px;
-            border: 1px solid #31506a;
-            background: rgba(9, 19, 29, 0.95);
-            padding: 35px;
-            position: relative;
+        .hero p {
+            max-width: 760px;
+            color: #8197a2;
+            font-size: 14px;
+            line-height: 1.8;
         }
 
-        .download-panel::before {
-            content: "DEPLOYMENT PACKAGE";
-            position: absolute;
-            top: -10px;
-            left: 20px;
-            background: #09131d;
-            color: #d4af37;
-            padding: 0 10px;
-            font-size: 12px;
-            letter-spacing: 2px;
+        .download-console {
+            margin-top: 35px;
+            border: 1px solid #294553;
+            background:
+                linear-gradient(145deg, rgba(17, 32, 41, 0.96), rgba(6, 13, 18, 0.96));
+            padding: 30px;
         }
 
-        .version {
-            color: #4fd1ff;
-            font-size: 18px;
-            letter-spacing: 3px;
+        .console-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding-bottom: 20px;
             margin-bottom: 25px;
+            border-bottom: 1px solid #1b323e;
         }
 
-        .info-grid {
+        .console-title {
+            color: #dce8ef;
+            font-size: 13px;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+
+        .console-status {
+            color: #61a878;
+            font-size: 9px;
+            letter-spacing: 2px;
+        }
+
+        .console-status::before {
+            content: "";
+            display: inline-block;
+            width: 7px;
+            height: 7px;
+            margin-right: 8px;
+            border-radius: 50%;
+            background: #61a878;
+            box-shadow: 0 0 9px rgba(97, 168, 120, 0.7);
+        }
+
+        .data-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-            margin-bottom: 35px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
         }
 
-        .info-box {
-            border: 1px solid #263d50;
+        .data-item {
+            border: 1px solid #182f3a;
+            background: #09141b;
             padding: 18px;
-            background: #0b1823;
         }
 
-        .label {
-            color: #71889a;
-            font-size: 11px;
+        .data-label {
+            color: #506d79;
+            font-size: 8px;
             letter-spacing: 2px;
             margin-bottom: 8px;
         }
 
-        .value {
-            color: #ffffff;
-            font-size: 15px;
+        .data-value {
+            color: #cbdbe1;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .download-area {
+            margin-top: 28px;
+            padding-top: 25px;
+            border-top: 1px solid #1b323e;
+            text-align: center;
         }
 
         .download-button {
             display: inline-block;
-            padding: 18px 35px;
-            border: 1px solid #d4af37;
-            color: #d4af37;
+            padding: 16px 30px;
+            border: 1px solid #8a7137;
+            background: #15140e;
+            color: #d7bb6c;
             text-decoration: none;
+            font-size: 11px;
             font-weight: bold;
-            letter-spacing: 3px;
-            background: rgba(212, 175, 55, 0.05);
-            transition: 0.2s;
+            letter-spacing: 2px;
+            transition: 0.25s ease;
         }
 
         .download-button:hover {
-            background: #d4af37;
-            color: #08111a;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.25);
+            background: #252113;
+            border-color: #c5a957;
+            transform: translateY(-2px);
         }
 
-        .notice {
-            margin-top: 25px;
-            padding: 18px;
-            border-left: 3px solid #c43b3b;
-            background: rgba(196, 59, 59, 0.07);
-            color: #aebbc5;
+        .download-note {
+            margin-top: 14px;
+            color: #596f79;
+            font-size: 9px;
+            letter-spacing: 1px;
+        }
+
+        .info-section {
+            margin-top: 45px;
+        }
+
+        .section-title {
+            color: #d5e1e6;
             font-size: 13px;
-            line-height: 1.7;
+            letter-spacing: 3px;
+            margin-bottom: 18px;
         }
 
-        .back {
-            display: inline-block;
-            margin-top: 35px;
-            color: #4fd1ff;
-            text-decoration: none;
-            letter-spacing: 2px;
-            font-size: 13px;
+        .info-box {
+            border-left: 2px solid #315b70;
+            padding: 18px 22px;
+            background: rgba(9, 20, 27, 0.7);
+            color: #788f9a;
+            font-size: 12px;
+            line-height: 1.8;
         }
 
-        .back:hover {
-            color: #ffffff;
+        footer {
+            width: min(1100px, 92%);
+            margin: auto;
+            padding: 25px 0 40px;
+            border-top: 1px solid #1c303b;
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            color: #455c67;
+            font-size: 9px;
+            letter-spacing: 1.5px;
         }
 
         @media (max-width: 800px) {
-            h1 {
-                font-size: 35px;
+            .header-inner {
+                padding: 15px 0;
+                flex-direction: column;
+                align-items: flex-start;
             }
 
-            .info-grid {
-                grid-template-columns: repeat(2, 1fr);
+            nav {
+                justify-content: flex-start;
+            }
+
+            .data-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 550px) {
+            main {
+                padding-top: 45px;
+            }
+
+            .download-console {
+                padding: 20px;
+            }
+
+            .console-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            footer {
+                flex-direction: column;
             }
         }
     </style>
@@ -181,69 +315,309 @@
 
 <body>
 
-<header>
-    <div class="logo">RISE OF NATIONS</div>
-    <div class="status">SYSTEM // ONLINE</div>
-</header>
+    <!-- =========================================================
+         HEADER
+    ========================================================= -->
 
-<main>
+    <header>
 
-    <div class="classified">OPERATIONS // DEPLOYMENT</div>
+        <div class="header-inner">
 
-    <h1>DOWNLOAD</h1>
+            <a href="../index.html" class="brand">
 
-    <div class="subtitle">
-        OFFICIAL MODPACK DEPLOYMENT PACKAGE
-    </div>
+                <div class="brand-emblem">
+                    <span>R</span>
+                </div>
 
-    <section class="download-panel">
+                <div>
 
-        <div class="version">
-            VERSION 1.0.0 // STABLE RELEASE
+                    <div class="brand-title">
+                        RISE OF NATIONS
+                    </div>
+
+                    <div class="brand-subtitle">
+                        COMMAND & CONTROL NETWORK
+                    </div>
+
+                </div>
+
+            </a>
+
+
+            <nav>
+
+                <a href="communications.html">
+                    COMMUNICATIONS
+                </a>
+
+                <a href="intelligence.html">
+                    INTELLIGENCE
+                </a>
+
+                <a href="server.html">
+                    SERVER
+                </a>
+
+                <a href="database.html">
+                    DATABASE
+                </a>
+
+                <a href="download.html">
+                    DOWNLOAD
+                </a>
+
+                <a href="wiki.html">
+                    WIKI
+                </a>
+
+            </nav>
+
         </div>
 
-        <div class="info-grid">
+    </header>
 
-            <div class="info-box">
-                <div class="label">MINECRAFT</div>
-                <div class="value">1.21.1</div>
+
+    <!-- =========================================================
+         MAIN
+    ========================================================= -->
+
+    <main>
+
+        <section class="hero">
+
+            <div class="eyebrow">
+                DEPLOYMENT SYSTEM // DOWNLOAD
+            </div>
+
+            <h1>
+                DOWNLOAD<br>
+                <span>MODPACK</span>
+            </h1>
+
+            <p>
+                Lade die aktuelle RISE OF NATIONS Deployment-Version
+                herunter und bereite dein Minecraft-System für den
+                Einsatz vor.
+            </p>
+
+        </section>
+
+
+        <!-- DOWNLOAD CONSOLE -->
+
+        <section class="download-console">
+
+            <div class="console-header">
+
+                <div class="console-title">
+                    DEPLOYMENT PACKAGE
+                </div>
+
+                <div class="console-status">
+                    READY
+                </div>
+
+            </div>
+
+
+            <div class="data-grid">
+
+                <div class="data-item">
+
+                    <div class="data-label">
+                        MODPACK
+                    </div>
+
+                    <div
+                        class="data-value"
+                        id="modpackName"
+                    >
+                        PLATZHALTER
+                    </div>
+
+                </div>
+
+
+                <div class="data-item">
+
+                    <div class="data-label">
+                        MODPACK VERSION
+                    </div>
+
+                    <div
+                        class="data-value"
+                        id="modpackVersion"
+                    >
+                        PLATZHALTER
+                    </div>
+
+                </div>
+
+
+                <div class="data-item">
+
+                    <div class="data-label">
+                        MINECRAFT VERSION
+                    </div>
+
+                    <div
+                        class="data-value"
+                        id="minecraftVersion"
+                    >
+                        PLATZHALTER
+                    </div>
+
+                </div>
+
+
+                <div class="data-item">
+
+                    <div class="data-label">
+                        LOADER
+                    </div>
+
+                    <div
+                        class="data-value"
+                        id="loader"
+                    >
+                        PLATZHALTER
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="download-area">
+
+                <a
+                    id="modpackDownload"
+                    href="#"
+                    class="download-button"
+                >
+                    DOWNLOAD MODPACK →
+                </a>
+
+                <div class="download-note">
+                    EXTERNE DOWNLOAD-VERBINDUNG // DEPLOYMENT PACKAGE
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- INSTALLATION -->
+
+        <section class="info-section">
+
+            <div class="section-title">
+                INSTALLATION
             </div>
 
             <div class="info-box">
-                <div class="label">MODPACK</div>
-                <div class="value">RISE OF NATIONS</div>
+                Lade das Modpack herunter und installiere es mit
+                deinem bevorzugten Minecraft-Launcher.
+                Verwende dabei die in dieser Seite angezeigte
+                Minecraft-Version und den angegebenen Modloader.
+            </div>
+
+        </section>
+
+
+        <!-- ADDITIONAL -->
+
+        <section class="info-section">
+
+            <div class="section-title">
+                ADDITIONAL DEPLOYMENT
             </div>
 
             <div class="info-box">
-                <div class="label">RELEASE</div>
-                <div class="value">STABLE</div>
+                Zusätzliche Downloads und Werkzeuge werden hier
+                verfügbar gemacht, sobald sie in der zentralen
+                Website-Konfiguration hinterlegt wurden.
             </div>
 
-            <div class="info-box">
-                <div class="label">STATUS</div>
-                <div class="value">OPERATIONAL</div>
-            </div>
+        </section>
 
+    </main>
+
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================= -->
+
+    <footer>
+
+        <div>
+            RISE OF NATIONS // DEPLOYMENT SYSTEM
         </div>
 
-        <!-- Später hier den echten Download-Link einsetzen -->
-        <a href="#" class="download-button">
-            [ INITIATE DOWNLOAD ]
-        </a>
-
-        <div class="notice">
-            NOTICE // Der offizielle Download-Link wird hier hinterlegt.
-            Sobald die Modpack-Datei bereitsteht, kann dieser Bereich direkt
-            mit dem entsprechenden Download verbunden werden.
+        <div id="footerVersion">
+            MINECRAFT PLATZHALTER
         </div>
 
-    </section>
+    </footer>
 
-    <a href="../index.html" class="back">
-        ← RETURN TO COMMAND
-    </a>
 
-</main>
+    <!-- =========================================================
+         CONFIG LOGIC
+    ========================================================= -->
+
+    <script>
+
+        /*
+         * MODPACK NAME
+         */
+
+        document.getElementById("modpackName").textContent =
+            SITE_CONFIG.modpack.name;
+
+
+        /*
+         * MODPACK VERSION
+         */
+
+        document.getElementById("modpackVersion").textContent =
+            SITE_CONFIG.modpack.version;
+
+
+        /*
+         * MINECRAFT VERSION
+         */
+
+        document.getElementById("minecraftVersion").textContent =
+            SITE_CONFIG.modpack.minecraftVersion;
+
+
+        /*
+         * MODLOADER
+         */
+
+        document.getElementById("loader").textContent =
+            SITE_CONFIG.modpack.loader;
+
+
+        /*
+         * MODPACK DOWNLOAD
+         */
+
+        document.getElementById("modpackDownload").href =
+            SITE_CONFIG.download.modpack;
+
+
+        /*
+         * FOOTER
+         */
+
+        document.getElementById("footerVersion").textContent =
+            "MINECRAFT " +
+            SITE_CONFIG.modpack.minecraftVersion +
+            " // " +
+            SITE_CONFIG.modpack.version;
+
+    </script>
 
 </body>
 </html>
