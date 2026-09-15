@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>RISE OF NATIONS // COMMAND</title>
 
     <style>
@@ -10,126 +11,276 @@
             box-sizing: border-box;
         }
 
-        body {
-            margin: 0;
-            background:
-                linear-gradient(rgba(5, 10, 16, 0.94), rgba(5, 10, 16, 0.97)),
-                repeating-linear-gradient(
-                    0deg,
-                    rgba(255,255,255,0.025) 0px,
-                    rgba(255,255,255,0.025) 1px,
-                    transparent 1px,
-                    transparent 4px
-                );
-            color: #d8e2ea;
-            font-family: "Courier New", monospace;
-            min-height: 100vh;
+        html {
+            scroll-behavior: smooth;
         }
 
+        body {
+            margin: 0;
+            min-height: 100vh;
+
+            background:
+                radial-gradient(
+                    circle at 50% 0%,
+                    rgba(20, 55, 80, 0.28),
+                    transparent 45%
+                ),
+                linear-gradient(
+                    rgba(3, 8, 13, 0.97),
+                    rgba(4, 9, 14, 0.99)
+                );
+
+            color: #d8e2ea;
+            font-family: "Courier New", monospace;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
         header {
-            border-bottom: 1px solid #31506a;
-            background: #08111a;
-            padding: 18px 35px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            min-height: 76px;
+
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
+
+            padding: 0 35px;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(8, 20, 31, 0.98),
+                    rgba(5, 13, 21, 0.98)
+                );
+
+            border-bottom: 1px solid #29485f;
+
+            box-shadow:
+                0 4px 25px rgba(0, 0, 0, 0.45);
         }
 
         .logo {
             color: #d4af37;
-            font-size: 22px;
+
+            font-size: 21px;
             font-weight: bold;
+
             letter-spacing: 3px;
+
+            white-space: nowrap;
         }
 
         nav {
             display: flex;
-            gap: 24px;
-            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px;
+
+            margin-left: 30px;
+            margin-right: 30px;
         }
 
         nav a {
-            color: #8fa2b0;
+            position: relative;
+
+            padding: 10px 14px;
+
+            color: #b8c9d6;
+
             text-decoration: none;
+
             font-size: 12px;
+            font-weight: bold;
+
             letter-spacing: 2px;
-            transition: 0.2s;
+
+            transition:
+                color 0.2s ease,
+                background 0.2s ease,
+                border-color 0.2s ease;
+        }
+
+        nav a::before {
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            right: 0;
+            bottom: 3px;
+
+            height: 1px;
+
+            background: #4fd1ff;
+
+            transform: scaleX(0);
+
+            transition: transform 0.2s ease;
         }
 
         nav a:hover {
-            color: #4fd1ff;
+            color: #ffffff;
+
+            background: rgba(79, 209, 255, 0.08);
+        }
+
+        nav a:hover::before {
+            transform: scaleX(1);
         }
 
         .status {
             color: #55d68a;
-            font-size: 12px;
+
+            font-size: 11px;
+            font-weight: bold;
+
             letter-spacing: 2px;
+
+            white-space: nowrap;
         }
+
+        /* =========================
+           MAIN
+        ========================= */
 
         main {
             max-width: 1400px;
+
             margin: 0 auto;
-            padding: 70px 30px;
+
+            padding: 80px 30px;
         }
 
         .classified {
             color: #4fd1ff;
+
+            font-size: 12px;
+            font-weight: bold;
+
             letter-spacing: 5px;
-            font-size: 13px;
-            margin-bottom: 15px;
+
+            margin-bottom: 18px;
         }
 
         h1 {
             margin: 0;
+
             color: #ffffff;
-            font-size: 70px;
-            letter-spacing: 9px;
+
+            font-size: 72px;
             line-height: 1;
+
+            letter-spacing: 9px;
+
+            text-shadow:
+                0 0 25px rgba(79, 209, 255, 0.08);
         }
 
         .subtitle {
-            margin-top: 18px;
-            color: #71889a;
+            margin-top: 20px;
+
+            color: #8297a7;
+
+            font-size: 13px;
+
             letter-spacing: 3px;
-            font-size: 14px;
         }
+
+        /* =========================
+           DASHBOARD
+        ========================= */
 
         .dashboard {
             margin-top: 60px;
+
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 18px;
         }
 
         .panel {
-            border: 1px solid #31506a;
-            background: rgba(9, 19, 29, 0.95);
-            padding: 25px;
-            min-height: 180px;
             position: relative;
+
+            min-height: 190px;
+
+            padding: 27px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(12, 27, 39, 0.97),
+                    rgba(6, 15, 23, 0.97)
+                );
+
+            border: 1px solid #29485f;
+
+            box-shadow:
+                inset 0 0 25px rgba(0, 0, 0, 0.25);
+
+            transition:
+                border-color 0.2s ease,
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        .panel::after {
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            right: 0;
+
+            width: 35px;
+            height: 35px;
+
+            border-top: 1px solid #4fd1ff;
+            border-right: 1px solid #4fd1ff;
+
+            opacity: 0.45;
         }
 
         .panel:hover {
             border-color: #4fd1ff;
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 8px 25px rgba(0, 0, 0, 0.35),
+                0 0 18px rgba(79, 209, 255, 0.05);
         }
 
         .panel h2 {
-            margin: 0 0 20px;
+            margin: 0 0 22px;
+
             color: #ffffff;
-            font-size: 17px;
+
+            font-size: 16px;
+
             letter-spacing: 3px;
         }
 
         .label {
-            color: #71889a;
-            font-size: 11px;
+            color: #6f8798;
+
+            font-size: 10px;
+
             letter-spacing: 2px;
         }
 
         .value {
             margin-top: 8px;
+
             color: #d8e2ea;
-            font-size: 16px;
+
+            font-size: 15px;
         }
 
         .online {
@@ -148,40 +299,101 @@
             color: #d45b5b;
         }
 
+        .panel p {
+            color: #8499a8;
+
+            font-size: 13px;
+
+            line-height: 1.7;
+        }
+
+        /* =========================
+           BUTTONS
+        ========================= */
+
         .action {
             display: inline-block;
+
             margin-top: 25px;
-            padding: 12px 18px;
-            border: 1px solid #31506a;
+
+            padding: 11px 17px;
+
+            border: 1px solid #31566f;
+
             color: #4fd1ff;
+
             text-decoration: none;
-            font-size: 11px;
+
+            font-size: 10px;
+            font-weight: bold;
+
             letter-spacing: 2px;
-            transition: 0.2s;
+
+            background: rgba(79, 209, 255, 0.025);
+
+            transition:
+                background 0.2s ease,
+                color 0.2s ease,
+                border-color 0.2s ease;
         }
 
         .action:hover {
+            color: #061018;
+
             background: #4fd1ff;
-            color: #08111a;
+
+            border-color: #4fd1ff;
+
+            box-shadow:
+                0 0 15px rgba(79, 209, 255, 0.18);
         }
 
         .wide {
             grid-column: span 2;
         }
 
+        /* =========================
+           FOOTER
+        ========================= */
+
         footer {
-            border-top: 1px solid #263d50;
-            margin-top: 70px;
+            margin-top: 60px;
+
             padding: 25px 30px;
+
+            border-top: 1px solid #21394b;
+
             color: #526877;
-            font-size: 11px;
+
+            font-size: 10px;
+
             letter-spacing: 2px;
+
             text-align: center;
         }
 
-        @media (max-width: 900px) {
-            h1 {
-                font-size: 45px;
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 1000px) {
+
+            header {
+                flex-wrap: wrap;
+
+                gap: 15px;
+
+                padding: 18px 25px;
+            }
+
+            nav {
+                order: 3;
+
+                width: 100%;
+
+                justify-content: center;
+
+                margin: 0;
             }
 
             .dashboard {
@@ -191,10 +403,30 @@
             .wide {
                 grid-column: span 1;
             }
+        }
 
-            header {
-                flex-direction: column;
-                gap: 20px;
+        @media (max-width: 700px) {
+
+            h1 {
+                font-size: 42px;
+
+                letter-spacing: 5px;
+            }
+
+            nav {
+                gap: 3px;
+            }
+
+            nav a {
+                padding: 8px 7px;
+
+                font-size: 9px;
+
+                letter-spacing: 1px;
+            }
+
+            .status {
+                display: none;
             }
         }
     </style>
@@ -209,11 +441,27 @@
     </div>
 
     <nav>
-        <a href="index.html">COMMAND</a>
-        <a href="#intelligence">INTELLIGENCE</a>
-        <a href="pages/server.html">SERVER</a>
-        <a href="pages/database.html">DATABASE</a>
-        <a href="pages/download.html">DOWNLOAD</a>
+
+        <a href="index.html">
+            COMMAND
+        </a>
+
+        <a href="#intelligence">
+            INTELLIGENCE
+        </a>
+
+        <a href="pages/server.html">
+            SERVER
+        </a>
+
+        <a href="pages/database.html">
+            DATABASE
+        </a>
+
+        <a href="pages/download.html">
+            DOWNLOAD
+        </a>
+
     </nav>
 
     <div class="status">
@@ -222,25 +470,34 @@
 
 </header>
 
+
 <main>
 
     <div class="classified">
         NATO COMMAND NETWORK // SECURE CONNECTION
     </div>
 
+
     <h1>
         RISE OF NATIONS
     </h1>
+
 
     <div class="subtitle">
         GLOBAL COMMAND // INDUSTRIAL WARFARE // SURVIVAL
     </div>
 
+
     <section class="dashboard">
+
+
+        <!-- SERVER -->
 
         <div class="panel">
 
-            <h2>SERVER STATUS</h2>
+            <h2>
+                SERVER STATUS
+            </h2>
 
             <div class="label">
                 CURRENT STATUS
@@ -250,15 +507,23 @@
                 ● ONLINE
             </div>
 
-            <a href="pages/server.html" class="action">
+            <a
+                href="pages/server.html"
+                class="action"
+            >
                 SERVER INTELLIGENCE →
             </a>
 
         </div>
 
+
+        <!-- VERSION -->
+
         <div class="panel">
 
-            <h2>CURRENT DEPLOYMENT</h2>
+            <h2>
+                CURRENT DEPLOYMENT
+            </h2>
 
             <div class="label">
                 MODPACK VERSION
@@ -268,7 +533,10 @@
                 VERSION 1.0.0
             </div>
 
-            <div class="label" style="margin-top:20px;">
+            <div
+                class="label"
+                style="margin-top:20px;"
+            >
                 MINECRAFT
             </div>
 
@@ -278,9 +546,14 @@
 
         </div>
 
+
+        <!-- DOWNLOAD -->
+
         <div class="panel">
 
-            <h2>DOWNLOAD</h2>
+            <h2>
+                DOWNLOAD
+            </h2>
 
             <div class="label">
                 DEPLOYMENT PACKAGE
@@ -290,15 +563,26 @@
                 OFFICIAL MODPACK
             </div>
 
-            <a href="pages/download.html" class="action">
+            <a
+                href="pages/download.html"
+                class="action"
+            >
                 OPEN DOWNLOAD →
             </a>
 
         </div>
 
-        <div class="panel wide" id="intelligence">
 
-            <h2>GLOBAL INTELLIGENCE</h2>
+        <!-- INTELLIGENCE -->
+
+        <div
+            class="panel wide"
+            id="intelligence"
+        >
+
+            <h2>
+                GLOBAL INTELLIGENCE
+            </h2>
 
             <div class="label">
                 CURRENT SITUATION
@@ -315,9 +599,14 @@
 
         </div>
 
+
+        <!-- DATABASE -->
+
         <div class="panel">
 
-            <h2>DATABASE</h2>
+            <h2>
+                DATABASE
+            </h2>
 
             <div class="label">
                 MODPACK SYSTEMS
@@ -327,7 +616,10 @@
                 MOD DATABASE
             </div>
 
-            <a href="pages/database.html" class="action">
+            <a
+                href="pages/database.html"
+                class="action"
+            >
                 OPEN DATABASE →
             </a>
 
@@ -337,8 +629,15 @@
 
 </main>
 
+
 <footer>
-    RISE OF NATIONS // COMMAND NETWORK // SYSTEM OPERATIONAL
+
+    RISE OF NATIONS
+    //
+    COMMAND NETWORK
+    //
+    SYSTEM OPERATIONAL
+
 </footer>
 
 </body>
