@@ -1,310 +1,263 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>COMMUNICATIONS // RISE OF NATIONS</title>
 
+    <script src="../config/site-config.js"></script>
+
     <style>
         * {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            margin: 0;
             min-height: 100vh;
-
             background:
-                radial-gradient(circle at top, #18232d 0%, #0b1117 45%, #05080b 100%);
-
-            color: #e8edf2;
+                radial-gradient(circle at 50% 10%, rgba(25, 70, 95, 0.22), transparent 35%),
+                linear-gradient(135deg, #05080b, #0a1117 50%, #05080b);
+            color: #dce8ef;
             font-family: Arial, Helvetica, sans-serif;
-        }
-
-        body::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-
-            background:
-                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-
-            background-size: 40px 40px;
-            opacity: 0.35;
         }
 
         header {
             position: sticky;
             top: 0;
-            z-index: 10;
+            z-index: 100;
+            border-bottom: 1px solid #1e3440;
+            background: rgba(5, 10, 14, 0.96);
+            backdrop-filter: blur(12px);
+        }
 
-            min-height: 76px;
-
+        .header-inner {
+            width: min(1450px, 94%);
+            margin: auto;
+            min-height: 78px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-
-            padding: 15px 35px;
-
-            background: rgba(7, 12, 17, 0.96);
-            border-bottom: 1px solid #1d5f91;
-
-            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            gap: 30px;
         }
 
-        .logo {
-            color: #d6a83d;
-            font-size: 22px;
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .brand-emblem {
+            width: 43px;
+            height: 43px;
+            border: 2px solid #b89543;
+            display: grid;
+            place-items: center;
+            color: #b89543;
+            background: #101820;
+            font-size: 19px;
             font-weight: 900;
-            letter-spacing: 3px;
+            transform: rotate(45deg);
+        }
+
+        .brand-emblem span {
+            transform: rotate(-45deg);
+        }
+
+        .brand-title {
+            font-size: 16px;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+
+        .brand-subtitle {
+            margin-top: 4px;
+            color: #627985;
+            font-size: 8px;
+            letter-spacing: 2px;
         }
 
         nav {
             display: flex;
-            gap: 8px;
             flex-wrap: wrap;
-            justify-content: center;
+            justify-content: flex-end;
+            gap: 6px;
         }
 
         nav a {
-            color: #bfc9d2;
+            color: #8da5b1;
             text-decoration: none;
-
-            padding: 13px 17px;
-
-            font-size: 12px;
-            font-weight: bold;
+            padding: 11px 12px;
+            font-size: 10px;
             letter-spacing: 1.5px;
-
             border: 1px solid transparent;
-
-            transition: 0.2s;
+            transition: 0.2s ease;
         }
 
-        nav a:hover,
-        nav a.active {
-            color: white;
-            background: rgba(18, 91, 143, 0.25);
-            border-color: #1d6fa8;
-        }
-
-        .status {
-            color: #65d48a;
-            font-size: 11px;
-            font-weight: bold;
-            letter-spacing: 1px;
-            white-space: nowrap;
+        nav a:hover {
+            color: #e8f3f8;
+            border-color: #294858;
+            background: #0b1820;
         }
 
         main {
-            max-width: 1250px;
+            width: min(1100px, 92%);
             margin: auto;
-            padding: 70px 35px;
+            padding: 80px 0;
         }
 
-        .page-header {
-            text-align: center;
-            margin-bottom: 55px;
-        }
-
-        .small-title {
-            color: #5599c8;
-            font-size: 13px;
+        .eyebrow {
+            color: #b89543;
+            font-size: 10px;
+            letter-spacing: 4px;
             font-weight: bold;
-            letter-spacing: 5px;
             margin-bottom: 18px;
         }
 
+        .hero {
+            padding: 50px 0 60px;
+            border-bottom: 1px solid #1c303b;
+        }
+
         h1 {
-            margin: 0;
-
-            color: #d6a83d;
-
-            font-size: clamp(45px, 7vw, 85px);
-            font-weight: 900;
-            letter-spacing: 7px;
+            font-size: clamp(42px, 7vw, 82px);
+            line-height: 0.95;
+            letter-spacing: 4px;
+            color: #edf4f7;
+            margin-bottom: 22px;
         }
 
-        .subtitle {
-            margin-top: 18px;
-
-            color: #8796a3;
-
-            font-size: 13px;
-            letter-spacing: 3px;
+        h1 span {
+            color: #5da1c7;
         }
 
-        .communications-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
-
-        .panel {
-            background: rgba(13, 21, 28, 0.94);
-
-            border: 1px solid #263846;
-
-            padding: 30px;
-
-            min-height: 230px;
-
-            transition: 0.2s;
-        }
-
-        .panel:hover {
-            border-color: #287bb5;
-            transform: translateY(-2px);
-        }
-
-        .panel h2 {
-            margin: 0 0 18px;
-
-            color: #5aa3d5;
-
-            font-size: 15px;
-            letter-spacing: 2px;
-        }
-
-        .panel p {
-            color: #aab5be;
-
+        .hero p {
+            max-width: 760px;
+            color: #8197a2;
             font-size: 14px;
             line-height: 1.8;
         }
 
-        .panel-status {
-            display: inline-block;
+        .comms-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+            margin-top: 35px;
+        }
 
-            margin-top: 10px;
-            padding: 7px 11px;
+        .comms-card {
+            border: 1px solid #294553;
+            background:
+                linear-gradient(145deg, rgba(17, 32, 41, 0.96), rgba(6, 13, 18, 0.96));
+            padding: 30px;
+        }
 
-            border: 1px solid #38505f;
+        .card-label {
+            color: #506d79;
+            font-size: 8px;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
 
-            color: #7e8d99;
-
-            font-size: 10px;
+        .card-title {
+            color: #dce8ef;
+            font-size: 18px;
+            letter-spacing: 2px;
             font-weight: bold;
-            letter-spacing: 1.5px;
+            margin-bottom: 12px;
         }
 
-        .online {
-            color: #65d48a;
-            border-color: #27653f;
-        }
-
-        .discord {
-            margin-top: 20px;
-
-            display: inline-block;
-
-            padding: 12px 18px;
-
-            color: white;
-            background: #124f78;
-
-            border: 1px solid #267db5;
-
-            text-decoration: none;
-
-            font-size: 11px;
-            font-weight: bold;
-            letter-spacing: 1px;
-
-            transition: 0.2s;
-        }
-
-        .discord:hover {
-            background: #196a9e;
-        }
-
-        .notice {
-            grid-column: 1 / -1;
-
-            background: rgba(13, 21, 28, 0.94);
-
-            border-left: 3px solid #d6a83d;
-            border-top: 1px solid #263846;
-            border-right: 1px solid #263846;
-            border-bottom: 1px solid #263846;
-
-            padding: 22px 25px;
-        }
-
-        .notice-title {
-            color: #d6a83d;
-
+        .card-text {
+            color: #788f9a;
             font-size: 12px;
-            font-weight: bold;
-
-            letter-spacing: 2px;
-
-            margin-bottom: 8px;
+            line-height: 1.8;
+            margin-bottom: 22px;
         }
 
-        .notice p {
-            margin: 0;
-
-            color: #8f9ba5;
-
-            font-size: 13px;
-            line-height: 1.6;
-        }
-
-        .back {
-            display: block;
-
-            width: fit-content;
-
-            margin: 45px auto 0;
-
-            color: #9ba8b2;
-
+        .comms-button {
+            display: inline-block;
+            padding: 13px 20px;
+            border: 1px solid #315b70;
+            color: #6da9c8;
+            background: #09141b;
             text-decoration: none;
-
-            font-size: 11px;
-            font-weight: bold;
-
+            font-size: 10px;
             letter-spacing: 2px;
-
-            padding: 12px 18px;
-
-            border: 1px solid #263846;
+            font-weight: bold;
+            transition: 0.2s ease;
         }
 
-        .back:hover {
-            color: white;
-            border-color: #287bb5;
-            background: rgba(18, 91, 143, 0.2);
+        .comms-button:hover {
+            border-color: #6da9c8;
+            background: #0d202b;
+        }
+
+        .info-section {
+            margin-top: 45px;
+        }
+
+        .section-title {
+            color: #d5e1e6;
+            font-size: 13px;
+            letter-spacing: 3px;
+            margin-bottom: 18px;
+        }
+
+        .info-box {
+            border-left: 2px solid #315b70;
+            padding: 18px 22px;
+            background: rgba(9, 20, 27, 0.7);
+            color: #788f9a;
+            font-size: 12px;
+            line-height: 1.8;
         }
 
         footer {
-            text-align: center;
-
-            padding: 50px 20px;
-
-            color: #56636e;
-
-            font-size: 11px;
-            letter-spacing: 2px;
+            width: min(1100px, 92%);
+            margin: auto;
+            padding: 25px 0 40px;
+            border-top: 1px solid #1c303b;
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            color: #455c67;
+            font-size: 9px;
+            letter-spacing: 1.5px;
         }
 
-        @media (max-width: 900px) {
+        @media (max-width: 800px) {
 
-            header {
+            .header-inner {
+                padding: 15px 0;
                 flex-direction: column;
-                gap: 15px;
+                align-items: flex-start;
             }
 
-            .communications-grid {
+            nav {
+                justify-content: flex-start;
+            }
+
+            .comms-grid {
                 grid-template-columns: 1fr;
             }
+        }
 
-            .notice {
-                grid-column: auto;
+        @media (max-width: 550px) {
+
+            main {
+                padding-top: 45px;
+            }
+
+            .comms-card {
+                padding: 22px;
+            }
+
+            footer {
+                flex-direction: column;
             }
         }
     </style>
@@ -314,40 +267,55 @@
 
 <header>
 
-    <div class="logo">
-        RISE OF NATIONS
-    </div>
+    <div class="header-inner">
 
-    <nav>
+        <a href="../index.html" class="brand">
 
-        <a href="../index.html">
-            COMMAND
+            <div class="brand-emblem">
+                <span>R</span>
+            </div>
+
+            <div>
+                <div class="brand-title">
+                    RISE OF NATIONS
+                </div>
+
+                <div class="brand-subtitle">
+                    COMMAND & CONTROL NETWORK
+                </div>
+            </div>
+
         </a>
 
-        <a href="intelligence.html">
-            INTELLIGENCE
-        </a>
 
-        <a href="server.html">
-            SERVER
-        </a>
+        <nav>
 
-        <a href="database.html">
-            DATABASE
-        </a>
+            <a href="communications.html">
+                COMMUNICATIONS
+            </a>
 
-        <a href="download.html">
-            DOWNLOAD
-        </a>
+            <a href="intelligence.html">
+                INTELLIGENCE
+            </a>
 
-        <a href="communications.html" class="active">
-            COMMUNICATIONS
-        </a>
+            <a href="server.html">
+                SERVER
+            </a>
 
-    </nav>
+            <a href="database.html">
+                DATABASE
+            </a>
 
-    <div class="status">
-        ● SYSTEM ONLINE
+            <a href="download.html">
+                DOWNLOAD
+            </a>
+
+            <a href="wiki.html">
+                WIKI
+            </a>
+
+        </nav>
+
     </div>
 
 </header>
@@ -355,136 +323,173 @@
 
 <main>
 
-    <section class="page-header">
+    <section class="hero">
 
-        <div class="small-title">
-            SECURE COMMUNICATION NETWORK
+        <div class="eyebrow">
+            NETWORK OPERATIONS // COMMUNICATIONS
         </div>
 
         <h1>
-            COMMUNICATIONS
+            COMMUNI<span>CATIONS</span>
         </h1>
 
-        <div class="subtitle">
-            COMMUNITY // DISCORD // TRANSMISSIONS
-        </div>
+        <p>
+            Zentrale Kommunikationsschnittstelle für die
+            RISE OF NATIONS Community.
+            Verbinde dich mit anderen Spielern, erhalte Updates
+            und bleibe über aktuelle Entwicklungen informiert.
+        </p>
 
     </section>
 
 
-    <section class="communications-grid">
+    <section class="comms-grid">
 
+        <!-- DISCORD -->
 
-        <div class="panel">
+        <div class="comms-card">
 
-            <h2>DISCORD NETWORK</h2>
-
-            <p>
-                The official RISE OF NATIONS community will be connected
-                through Discord.
-            </p>
-
-            <p>
-                Join the community to communicate with other players,
-                receive announcements and coordinate operations.
-            </p>
-
-            <span class="panel-status">
-                CONNECTION PENDING
-            </span>
-
-            <!--
-            SPÄTER HIER DEN DISCORD-LINK EINTRAGEN
-            -->
-
-        </div>
-
-
-        <div class="panel">
-
-            <h2>COMMUNITY STATUS</h2>
-
-            <p>
-                Community communication systems are currently being
-                prepared for deployment.
-            </p>
-
-            <p>
-                More communication channels, announcements and community
-                features will become available as the project develops.
-            </p>
-
-            <span class="panel-status online">
-                NETWORK OPERATIONAL
-            </span>
-
-        </div>
-
-
-        <div class="panel">
-
-            <h2>ANNOUNCEMENTS</h2>
-
-            <p>
-                Important server information, updates and deployment
-                announcements will be published through the official
-                communication channels.
-            </p>
-
-            <span class="panel-status">
-                AWAITING TRANSMISSIONS
-            </span>
-
-        </div>
-
-
-        <div class="panel">
-
-            <h2>PLAYER COMMUNICATION</h2>
-
-            <p>
-                Coordinate with other players, organize nations and
-                prepare for upcoming operations.
-            </p>
-
-            <p>
-                The world of RISE OF NATIONS is shaped by its players.
-            </p>
-
-            <span class="panel-status online">
-                COMMUNITY ACTIVE
-            </span>
-
-        </div>
-
-
-        <div class="notice">
-
-            <div class="notice-title">
-                SYSTEM NOTICE
+            <div class="card-label">
+                PRIMARY CHANNEL
             </div>
 
-            <p>
-                The official Discord connection has not been configured yet.
-                Once the Discord server is ready, its invitation link can
-                be added to this communication terminal.
-            </p>
+            <div class="card-title">
+                DISCORD
+            </div>
+
+            <div class="card-text">
+                Der zentrale Treffpunkt der Community.
+                Kommunikation, Support, Neuigkeiten,
+                Serverinformationen und Austausch mit anderen Spielern.
+            </div>
+
+            <a
+                id="discordLink"
+                href="#"
+                class="comms-button"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                OPEN DISCORD →
+            </a>
+
+        </div>
+
+
+        <!-- COMMUNITY -->
+
+        <div class="comms-card">
+
+            <div class="card-label">
+                COMMUNITY NETWORK
+            </div>
+
+            <div class="card-title">
+                COMMUNITY
+            </div>
+
+            <div class="card-text">
+                Weitere Community-Angebote und externe
+                Kommunikationsmöglichkeiten werden hier
+                zentral bereitgestellt.
+            </div>
+
+            <a
+                id="communityLink"
+                href="#"
+                class="comms-button"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                OPEN COMMUNITY →
+            </a>
 
         </div>
 
     </section>
 
 
-    <a class="back" href="../index.html">
-        ← RETURN TO COMMAND
-    </a>
+    <section class="info-section">
+
+        <div class="section-title">
+            COMMUNICATION PROTOCOL
+        </div>
+
+        <div class="info-box">
+            Offizielle Ankündigungen, wichtige Serverinformationen
+            und Community-Updates werden über die zentralen
+            Kommunikationskanäle veröffentlicht.
+        </div>
+
+    </section>
+
+
+    <section class="info-section">
+
+        <div class="section-title">
+            NETWORK STATUS
+        </div>
+
+        <div class="info-box">
+            <strong id="networkStatus">
+                PLATZHALTER
+            </strong>
+        </div>
+
+    </section>
 
 </main>
 
 
 <footer>
-    RISE OF NATIONS // COMMUNICATION NETWORK // SYSTEM ONLINE
+
+    <div>
+        RISE OF NATIONS // COMMUNICATION NETWORK
+    </div>
+
+    <div id="footerVersion">
+        PLATZHALTER
+    </div>
+
 </footer>
+
+
+<script>
+
+    /*
+     * DISCORD
+     */
+
+    document.getElementById("discordLink").href =
+        SITE_CONFIG.communications.discord;
+
+
+    /*
+     * COMMUNITY
+     */
+
+    document.getElementById("communityLink").href =
+        SITE_CONFIG.communications.community;
+
+
+    /*
+     * NETWORK STATUS
+     */
+
+    document.getElementById("networkStatus").textContent =
+        SITE_CONFIG.system.network;
+
+
+    /*
+     * FOOTER
+     */
+
+    document.getElementById("footerVersion").textContent =
+        SITE_CONFIG.website.name +
+        " // " +
+        SITE_CONFIG.modpack.version;
+
+</script>
 
 </body>
 </html>
