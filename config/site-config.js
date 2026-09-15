@@ -15,7 +15,7 @@ const SITE_CONFIG = {
 
     website: {
 
-        name: "PLATZHALTER",
+        name: "RISEOFNATIONS",
 
         subtitle: "PLATZHALTER",
 
