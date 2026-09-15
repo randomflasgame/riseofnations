@@ -1,36 +1,49 @@
 <!DOCTYPE html>
 <html lang="de">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>RISE OF NATIONS // COMMAND DASHBOARD</title>
+    <title>RISE OF NATIONS — COMMAND SYSTEM</title>
 
+    <!-- ZENTRALES DESIGN -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- ZENTRALE KONFIGURATION -->
     <script src="config/site-config.js"></script>
 
     <style>
-
-        /* =====================================================
+        /* =========================================================
            CINEMATIC INTRO
-        ===================================================== */
+        ========================================================= */
 
-        #intro {
+        #ron-intro {
             position: fixed;
             inset: 0;
-            z-index: 9999;
-            background:
-                radial-gradient(circle at center, rgba(20, 55, 80, 0.18), transparent 45%),
-                linear-gradient(180deg, #020508 0%, #05090d 50%, #020406 100%);
+            z-index: 99999;
+
             display: flex;
             align-items: center;
             justify-content: center;
+
+            background:
+                radial-gradient(circle at center,
+                    rgba(20, 55, 85, 0.25),
+                    rgba(0, 0, 0, 0.96) 65%),
+                linear-gradient(
+                    135deg,
+                    #05090d,
+                    #0b1117 50%,
+                    #020406
+                );
+
             overflow: hidden;
-            transition: opacity 1s ease, visibility 1s ease;
+            transition:
+                opacity 1s ease,
+                visibility 1s ease;
         }
 
-        #intro.hidden {
+        #ron-intro.hidden {
             opacity: 0;
             visibility: hidden;
             pointer-events: none;
@@ -39,156 +52,185 @@
         .intro-grid {
             position: absolute;
             inset: 0;
-            opacity: 0.16;
+
             background-image:
-                linear-gradient(rgba(65, 145, 190, 0.12) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(65, 145, 190, 0.12) 1px, transparent 1px);
+                linear-gradient(rgba(80,130,170,.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(80,130,170,.05) 1px, transparent 1px);
+
             background-size: 55px 55px;
+
+            animation: gridMove 15s linear infinite;
         }
 
-        .intro-scan {
-            position: absolute;
-            inset: 0;
-            background:
-                repeating-linear-gradient(
-                    0deg,
-                    transparent 0px,
-                    transparent 4px,
-                    rgba(255,255,255,0.012) 5px
-                );
-            pointer-events: none;
+        @keyframes gridMove {
+            from {
+                transform: translate(0,0);
+            }
+
+            to {
+                transform: translate(55px,55px);
+            }
         }
 
-        .intro-vignette {
+        .intro-glow {
             position: absolute;
-            inset: 0;
-            background:
-                radial-gradient(
-                    ellipse at center,
-                    transparent 25%,
-                    rgba(0,0,0,0.78) 100%
-                );
+            width: 600px;
+            height: 600px;
+
+            border-radius: 50%;
+
+            background: rgba(20,100,150,.08);
+
+            filter: blur(80px);
+
+            animation: glowPulse 4s ease-in-out infinite;
+        }
+
+        @keyframes glowPulse {
+            0%,100% {
+                transform: scale(.9);
+                opacity: .35;
+            }
+
+            50% {
+                transform: scale(1.1);
+                opacity: .7;
+            }
         }
 
         .intro-content {
             position: relative;
-            z-index: 5;
-            width: min(900px, 90%);
+            z-index: 2;
+
             text-align: center;
+
+            width: min(900px, 90%);
         }
 
         .intro-classification {
-            color: #7ca8bd;
             font-size: 11px;
             letter-spacing: 5px;
-            margin-bottom: 28px;
-            opacity: 0;
-            animation: introFade 1s ease 0.8s forwards;
+            color: #7fa6c4;
+
+            margin-bottom: 35px;
+
+            animation: introFade 1s ease forwards;
         }
 
-        .intro-title {
-            margin: 0;
-            color: #d9e8ef;
-            font-size: clamp(48px, 9vw, 110px);
-            line-height: 0.9;
+        .intro-logo {
+            font-family:
+                Impact,
+                Haettenschweiler,
+                "Arial Narrow Bold",
+                sans-serif;
+
+            font-size: clamp(55px, 9vw, 125px);
+
             letter-spacing: 8px;
-            font-weight: 900;
+
+            color: #e8edf2;
+
             text-shadow:
-                0 0 18px rgba(80, 170, 220, 0.18),
-                0 0 50px rgba(30, 110, 160, 0.12);
-            opacity: 0;
+                0 0 20px rgba(80,150,210,.35),
+                0 4px 0 #0a1117;
+
+            line-height: .9;
+
             animation:
-                introTitle 1.6s cubic-bezier(.16,.8,.25,1) 1.3s forwards;
+                logoReveal 2.5s ease forwards;
         }
 
         .intro-subtitle {
             margin-top: 25px;
-            color: #9aaeb9;
-            font-size: 12px;
-            letter-spacing: 6px;
-            opacity: 0;
-            animation: introFade 1s ease 2.5s forwards;
-        }
 
-        .intro-line {
-            width: 0;
-            height: 1px;
-            margin: 35px auto;
-            background: #4d91b4;
-            box-shadow: 0 0 12px rgba(70,150,190,0.45);
-            animation: introLine 1.2s ease 2.9s forwards;
+            font-size: 13px;
+            letter-spacing: 7px;
+
+            color: #b58b35;
+
+            opacity: 0;
+
+            animation:
+                introFade 1.5s ease 1.2s forwards;
         }
 
         .intro-status {
-            color: #718995;
-            font-family: monospace;
-            font-size: 11px;
-            letter-spacing: 2px;
-            min-height: 20px;
+            margin-top: 55px;
+
+            display: flex;
+            justify-content: center;
+            gap: 28px;
+            flex-wrap: wrap;
+
             opacity: 0;
-            animation: introFade 0.8s ease 3.4s forwards;
+
+            animation:
+                introFade 1s ease 2s forwards;
         }
 
-        .intro-skip {
-            position: absolute;
-            right: 30px;
-            bottom: 25px;
-            z-index: 10;
-            border: 1px solid rgba(120,160,180,0.35);
-            background: rgba(5,10,14,0.72);
-            color: #8299a5;
-            padding: 9px 15px;
+        .intro-status span {
             font-size: 10px;
             letter-spacing: 2px;
-            cursor: pointer;
-            transition: 0.2s ease;
+            color: #6e8799;
         }
 
-        .intro-skip:hover {
-            color: #d9e8ef;
-            border-color: #6c9db7;
-            background: rgba(20,40,50,0.8);
+        .intro-status span::before {
+            content: "●";
+
+            margin-right: 8px;
+
+            color: #4d8fbd;
         }
 
-        .intro-light {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            border-radius: 50%;
-            background: #77b9d8;
-            box-shadow: 0 0 15px #4c9ac0;
+        .intro-warning {
+            margin-top: 28px;
+
+            font-size: 10px;
+            letter-spacing: 3px;
+
+            color: #9a9a9a;
+
             opacity: 0;
-            animation: lightPulse 3s infinite;
+
+            animation:
+                introFade 1s ease 2.8s forwards;
         }
 
-        .intro-light.one {
-            left: 18%;
-            top: 32%;
-            animation-delay: 1s;
+        .skip-intro {
+            position: absolute;
+
+            bottom: 30px;
+            right: 35px;
+
+            z-index: 5;
+
+            padding: 10px 18px;
+
+            background: rgba(5,10,15,.8);
+
+            border: 1px solid #38546a;
+
+            color: #8da9bd;
+
+            font-size: 10px;
+            letter-spacing: 2px;
+
+            cursor: pointer;
+
+            transition: .2s ease;
         }
 
-        .intro-light.two {
-            right: 20%;
-            top: 42%;
-            animation-delay: 1.8s;
-        }
+        .skip-intro:hover {
+            color: white;
+            border-color: #8caec8;
 
-        .intro-light.three {
-            left: 25%;
-            bottom: 24%;
-            animation-delay: 2.4s;
-        }
-
-        .intro-light.four {
-            right: 28%;
-            bottom: 30%;
-            animation-delay: 3s;
+            background: rgba(20,45,65,.9);
         }
 
         @keyframes introFade {
             from {
                 opacity: 0;
-                transform: translateY(8px);
+                transform: translateY(12px);
             }
 
             to {
@@ -197,11 +239,11 @@
             }
         }
 
-        @keyframes introTitle {
+        @keyframes logoReveal {
             from {
                 opacity: 0;
-                transform: scale(1.08);
-                filter: blur(8px);
+                transform: scale(.85);
+                filter: blur(10px);
             }
 
             to {
@@ -211,173 +253,505 @@
             }
         }
 
-        @keyframes introLine {
+        /* =========================================================
+           LOGIN
+        ========================================================= */
+
+        #ron-login {
+            position: fixed;
+            inset: 0;
+
+            z-index: 9990;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(20,55,80,.22),
+                    rgba(0,0,0,.96)
+                );
+        }
+
+        #ron-login.hidden {
+            display: none;
+        }
+
+        .login-panel {
+            width: min(440px, 90%);
+
+            padding: 38px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(17,27,35,.98),
+                    rgba(5,10,14,.98)
+                );
+
+            border: 1px solid #36566d;
+
+            box-shadow:
+                0 0 40px rgba(0,0,0,.7),
+                inset 0 0 25px rgba(50,100,130,.04);
+
+            text-align: left;
+        }
+
+        .login-classification {
+            font-size: 9px;
+            letter-spacing: 3px;
+            color: #6f91a8;
+
+            margin-bottom: 12px;
+        }
+
+        .login-title {
+            font-size: 28px;
+
+            letter-spacing: 4px;
+
+            color: #dce6ed;
+
+            margin-bottom: 8px;
+        }
+
+        .login-subtitle {
+            font-size: 10px;
+
+            letter-spacing: 2px;
+
+            color: #728897;
+
+            margin-bottom: 30px;
+        }
+
+        .login-panel label {
+            display: block;
+
+            margin-bottom: 7px;
+
+            font-size: 9px;
+            letter-spacing: 2px;
+
+            color: #7794a8;
+        }
+
+        .login-panel input {
+            width: 100%;
+
+            box-sizing: border-box;
+
+            padding: 13px;
+
+            margin-bottom: 18px;
+
+            background: #080e13;
+
+            border: 1px solid #304957;
+
+            color: #dce6ed;
+
+            outline: none;
+
+            font-family: inherit;
+        }
+
+        .login-panel input:focus {
+            border-color: #5e8cac;
+
+            box-shadow:
+                0 0 12px rgba(60,130,180,.15);
+        }
+
+        .login-button {
+            width: 100%;
+
+            padding: 13px;
+
+            margin-top: 5px;
+
+            border: 1px solid #6f5830;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #6e572e,
+                    #46391f
+                );
+
+            color: #f2e6ca;
+
+            font-weight: bold;
+
+            letter-spacing: 3px;
+
+            cursor: pointer;
+        }
+
+        .login-button:hover {
+            background:
+                linear-gradient(
+                    180deg,
+                    #856a38,
+                    #554323
+                );
+        }
+
+        .login-error {
+            min-height: 16px;
+
+            margin-top: 15px;
+
+            color: #c45d5d;
+
+            font-size: 10px;
+
+            letter-spacing: 1px;
+        }
+
+        /* =========================================================
+           DASHBOARD
+        ========================================================= */
+
+        #ron-dashboard.hidden {
+            display: none;
+        }
+
+        .hero-panel {
+            position: relative;
+
+            padding: 35px;
+
+            margin-bottom: 25px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(20,38,50,.9),
+                    rgba(7,13,18,.96)
+                );
+
+            border: 1px solid #304d60;
+
+            overflow: hidden;
+        }
+
+        .hero-panel::after {
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            pointer-events: none;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(100,170,210,.03),
+                    transparent
+                );
+
+            animation: scan 5s linear infinite;
+        }
+
+        @keyframes scan {
             from {
-                width: 0;
+                transform: translateX(-100%);
             }
 
             to {
-                width: 260px;
+                transform: translateX(100%);
             }
         }
 
-        @keyframes lightPulse {
+        .hero-kicker {
+            color: #7598ad;
 
-            0%,
-            100% {
-                opacity: 0.15;
-            }
-
-            50% {
-                opacity: 0.9;
-            }
-
-        }
-
-
-        /* =====================================================
-           DASHBOARD
-        ===================================================== */
-
-        .dashboard-hero {
-            margin-bottom: 35px;
-        }
-
-        .dashboard-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 18px;
-        }
-
-        .dashboard-link {
-            text-decoration: none;
-            color: inherit;
-            display: block;
-        }
-
-        .dashboard-link .ron-card {
-            height: 100%;
-        }
-
-        .dashboard-description {
-            color: #8296a1;
-            font-size: 13px;
-            line-height: 1.7;
-            margin: 12px 0 20px;
-        }
-
-        .dashboard-action {
-            color: #7eb3d0;
             font-size: 10px;
-            letter-spacing: 2px;
+
+            letter-spacing: 4px;
+
+            margin-bottom: 15px;
         }
 
-        .dashboard-action::after {
-            content: "  →";
+        .hero-title {
+            margin: 0;
+
+            font-family:
+                Impact,
+                Haettenschweiler,
+                "Arial Narrow Bold",
+                sans-serif;
+
+            font-size: clamp(45px, 7vw, 90px);
+
+            letter-spacing: 5px;
+
+            color: #e4e9ed;
         }
 
-        .dashboard-warning {
+        .hero-description {
+            max-width: 750px;
+
+            margin-top: 15px;
+
+            color: #8194a2;
+
+            line-height: 1.7;
+
+            font-size: 13px;
+        }
+
+        .hero-actions {
+            display: flex;
+
+            gap: 12px;
+
+            flex-wrap: wrap;
+
             margin-top: 25px;
         }
 
-        @media (max-width: 800px) {
+        /* =========================================================
+           COMMAND MODULES
+        ========================================================= */
 
-            .dashboard-grid {
+        .module-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, minmax(0, 1fr));
+
+            gap: 14px;
+
+            margin-top: 20px;
+        }
+
+        .module-card {
+            display: block;
+
+            padding: 22px;
+
+            min-height: 120px;
+
+            text-decoration: none;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(17,28,37,.95),
+                    rgba(7,12,16,.98)
+                );
+
+            border: 1px solid #2b4556;
+
+            transition:
+                transform .2s ease,
+                border-color .2s ease,
+                background .2s ease;
+        }
+
+        .module-card:hover {
+            transform: translateY(-3px);
+
+            border-color: #567991;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(25,43,55,.98),
+                    rgba(8,15,20,.98)
+                );
+        }
+
+        .module-code {
+            color: #64859b;
+
+            font-size: 9px;
+
+            letter-spacing: 2px;
+        }
+
+        .module-title {
+            margin-top: 12px;
+
+            color: #dbe4e9;
+
+            font-size: 15px;
+
+            letter-spacing: 2px;
+        }
+
+        .module-description {
+            margin-top: 8px;
+
+            color: #718492;
+
+            font-size: 11px;
+
+            line-height: 1.5;
+        }
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+        @media (max-width: 1000px) {
+            .module-grid {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 650px) {
+            .module-grid {
                 grid-template-columns: 1fr;
             }
 
-            .intro-title {
+            .hero-panel {
+                padding: 24px;
+            }
+
+            .intro-logo {
                 letter-spacing: 4px;
             }
 
-            .intro-subtitle {
-                letter-spacing: 3px;
+            .skip-intro {
+                right: 15px;
+                bottom: 15px;
             }
 
+            .login-panel {
+                padding: 25px;
+            }
         }
-
     </style>
-
 </head>
 
-
 <body>
-
 
 <!-- =========================================================
      CINEMATIC INTRO
 ========================================================= -->
 
-<div id="intro">
+<div id="ron-intro">
 
     <div class="intro-grid"></div>
-    <div class="intro-scan"></div>
-    <div class="intro-vignette"></div>
-
-    <div class="intro-light one"></div>
-    <div class="intro-light two"></div>
-    <div class="intro-light three"></div>
-    <div class="intro-light four"></div>
+    <div class="intro-glow"></div>
 
     <div class="intro-content">
 
         <div class="intro-classification">
-            RISE OF NATIONS // COMMAND NETWORK
+            RISE OF NATIONS // GLOBAL COMMAND NETWORK
         </div>
 
-        <h1 class="intro-title">
-            RISE OF<br>NATIONS
-        </h1>
+        <div class="intro-logo">
+            RISE OF NATIONS
+        </div>
 
         <div class="intro-subtitle">
-            GLOBAL COMMAND SYSTEM
+            COMMAND • INDUSTRY • INTELLIGENCE • SURVIVAL
         </div>
 
-        <div class="intro-line"></div>
+        <div class="intro-status">
+            <span>SYSTEM ONLINE</span>
+            <span>NETWORK INITIALIZED</span>
+            <span>DATABASE READY</span>
+        </div>
 
-        <div
-            class="intro-status"
-            id="introStatus"
-        >
-            INITIALIZING COMMAND NETWORK...
+        <div class="intro-warning">
+            INITIALIZING COMMAND ENVIRONMENT...
         </div>
 
     </div>
 
     <button
-        class="intro-skip"
-        id="skipIntro"
-    >
+        class="skip-intro"
+        onclick="skipIntro()">
         SKIP INTRO
     </button>
 
 </div>
 
 
-
 <!-- =========================================================
-     MAIN WEBSITE
+     LOGIN
 ========================================================= -->
 
-<div class="top-line"></div>
+<div id="ron-login">
+
+    <div class="login-panel">
+
+        <div class="login-classification">
+            RISE OF NATIONS // SECURE ACCESS
+        </div>
+
+        <div class="login-title">
+            COMMAND LOGIN
+        </div>
+
+        <div class="login-subtitle">
+            AUTHORIZED PERSONNEL ONLY
+        </div>
+
+        <label for="login-user">
+            IDENTIFICATION
+        </label>
+
+        <input
+            id="login-user"
+            type="text"
+            placeholder="Enter identification">
+
+        <label for="login-password">
+            ACCESS CODE
+        </label>
+
+        <input
+            id="login-password"
+            type="password"
+            placeholder="Enter access code">
+
+        <button
+            class="login-button"
+            onclick="login()">
+            ACCESS COMMAND SYSTEM
+        </button>
+
+        <div
+            id="login-error"
+            class="login-error">
+        </div>
+
+    </div>
+
+</div>
 
 
-<header>
+<!-- =========================================================
+     MAIN DASHBOARD
+========================================================= -->
 
-    <nav class="ron-nav">
+<div id="ron-dashboard" class="hidden">
 
-        <div class="ron-brand">
+    <div class="ron-top-line"></div>
+
+    <header class="ron-header">
+
+        <a
+            href="index.html"
+            class="ron-brand">
 
             RISE OF NATIONS
 
-            <span>
-                COMMAND DASHBOARD
-            </span>
+        </a>
 
-        </div>
-
-
-        <div class="ron-nav-links">
+        <nav class="ron-nav">
 
             <a href="pages/communications.html">
                 COMMUNICATIONS
@@ -407,837 +781,435 @@
                 FAQ
             </a>
 
+        </nav>
+
+    </header>
+
+
+    <main class="ron-page">
+
+        <div class="classification">
+            RISE OF NATIONS // GLOBAL COMMAND SYSTEM
         </div>
 
-    </nav>
+        <section class="hero-panel">
 
-</header>
-
-
-
-<main class="ron-page">
-
-
-    <!-- =====================================================
-         CLASSIFICATION
-    ====================================================== -->
-
-    <div class="ron-classification">
-
-        <span>
-            RISE OF NATIONS // COMMAND DASHBOARD
-        </span>
-
-        <span class="ron-live">
-            ● SYSTEM ONLINE
-        </span>
-
-    </div>
-
-
-
-    <!-- =====================================================
-         HERO
-    ====================================================== -->
-
-    <section class="dashboard-hero">
-
-        <h1 class="ron-page-title">
-            COMMAND DASHBOARD
-        </h1>
-
-        <p class="ron-page-subtitle">
-            Central command interface for server operations,
-            intelligence, communications and modpack systems.
-        </p>
-
-    </section>
-
-
-
-    <!-- =====================================================
-         SYSTEM STATUS
-    ====================================================== -->
-
-    <div class="section-title">
-
-        SYSTEM STATUS
-
-        <span>
-            NETWORK MONITORING
-        </span>
-
-    </div>
-
-
-    <div class="ron-status-grid">
-
-
-        <div class="ron-status">
-
-            <div class="ron-status-label">
-                SERVER
+            <div class="hero-kicker">
+                COMMAND DASHBOARD
             </div>
 
-            <div
-                class="ron-status-value ron-green"
-                id="serverStatus"
-            >
-                ONLINE
-            </div>
-
-        </div>
-
-
-        <div class="ron-status">
-
-            <div class="ron-status-label">
-                MODPACK
-            </div>
-
-            <div
-                class="ron-status-value ron-blue"
-                id="modpackVersion"
-            >
-                SYSTEM
-            </div>
-
-        </div>
-
-
-        <div class="ron-status">
-
-            <div class="ron-status-label">
-                MINECRAFT
-            </div>
-
-            <div
-                class="ron-status-value ron-gold"
-                id="minecraftVersion"
-            >
-                SYSTEM
-            </div>
-
-        </div>
-
-
-        <div class="ron-status">
-
-            <div class="ron-status-label">
-                NETWORK
-            </div>
-
-            <div
-                class="ron-status-value ron-green"
-            >
-                OPERATIONAL
-            </div>
-
-        </div>
-
-
-    </div>
-
-
-
-    <!-- =====================================================
-         COMMAND MODULES
-    ====================================================== -->
-
-    <div class="section-title">
-
-        COMMAND MODULES
-
-        <span>
-            AVAILABLE SYSTEMS
-        </span>
-
-    </div>
-
-
-    <div class="dashboard-grid">
-
-
-        <!-- COMMUNICATIONS -->
-
-        <a
-            class="dashboard-link"
-            href="pages/communications.html"
-        >
-
-            <div class="ron-card">
-
-                <div class="ron-panel-header">
-
-                    <div class="ron-panel-title">
-                        COMMUNICATIONS
-                    </div>
-
-                    <div class="ron-panel-code">
-                        COM-01
-                    </div>
-
-                </div>
-
-                <div class="dashboard-description">
-
-                    Community communications, Discord access
-                    and external coordination channels.
-
-                </div>
-
-                <div class="dashboard-action">
-                    COMMUNITY & DISCORD
-                </div>
-
-            </div>
-
-        </a>
-
-
-
-        <!-- INTELLIGENCE -->
-
-        <a
-            class="dashboard-link"
-            href="pages/intelligence.html"
-        >
-
-            <div class="ron-card">
-
-                <div class="ron-panel-header">
-
-                    <div class="ron-panel-title">
-                        INTELLIGENCE
-                    </div>
-
-                    <div class="ron-panel-code">
-                        INT-01
-                    </div>
-
-                </div>
-
-                <div class="dashboard-description">
-
-                    Global situation reports, strategic indicators
-                    and simulated world intelligence.
-
-                </div>
-
-                <div class="dashboard-action">
-                    GLOBAL SITUATION
-                </div>
-
-            </div>
-
-        </a>
-
-
-
-        <!-- SERVER -->
-
-        <a
-            class="dashboard-link"
-            href="pages/server.html"
-        >
-
-            <div class="ron-card">
-
-                <div class="ron-panel-header">
-
-                    <div class="ron-panel-title">
-                        SERVER
-                    </div>
-
-                    <div class="ron-panel-code">
-                        SRV-01
-                    </div>
-
-                </div>
-
-                <div class="dashboard-description">
-
-                    Minecraft server information, connection
-                    data, technical status and emergency access.
-
-                </div>
-
-                <div class="dashboard-action">
-                    SERVER OPERATIONS
-                </div>
-
-            </div>
-
-        </a>
-
-
-
-        <!-- DATABASE -->
-
-        <a
-            class="dashboard-link"
-            href="pages/database.html"
-        >
-
-            <div class="ron-card">
-
-                <div class="ron-panel-header">
-
-                    <div class="ron-panel-title">
-                        DATABASE
-                    </div>
-
-                    <div class="ron-panel-code">
-                        DAT-01
-                    </div>
-
-                </div>
-
-                <div class="dashboard-description">
-
-                    Modpack systems, technologies, gameplay
-                    categories and technical documentation.
-
-                </div>
-
-                <div class="dashboard-action">
-                    MODPACK DATABASE
-                </div>
-
-            </div>
-
-        </a>
-
-
-
-        <!-- DOWNLOAD -->
-
-        <a
-            class="dashboard-link"
-            href="pages/download.html"
-        >
-
-            <div class="ron-card">
-
-                <div class="ron-panel-header">
-
-                    <div class="ron-panel-title">
-                        DOWNLOAD
-                    </div>
-
-                    <div class="ron-panel-code">
-                        DLS-01
-                    </div>
-
-                </div>
-
-                <div class="dashboard-description">
-
-                    Access the current Rise of Nations modpack
-                    and installation information.
-
-                </div>
-
-                <div class="dashboard-action">
-                    DEPLOY MODPACK
-                </div>
-
-            </div>
-
-        </a>
-
-
-
-        <!-- WIKI -->
-
-        <a
-            class="dashboard-link"
-            href="pages/wiki.html"
-        >
-
-            <div class="ron-card">
-
-                <div class="ron-panel-header">
-
-                    <div class="ron-panel-title">
-                        WIKI
-                    </div>
-
-                    <div class="ron-panel-code">
-                        WIK-01
-                    </div>
-
-                </div>
-
-                <div class="dashboard-description">
-
-                    Knowledge database containing important,
-                    useful and advanced modpack information.
-
-                </div>
-
-                <div class="dashboard-action">
-                    KNOWLEDGE DATABASE
-                </div>
-
-            </div>
-
-        </a>
-
-
-
-        <!-- FAQ -->
-
-        <a
-            class="dashboard-link"
-            href="pages/faq.html"
-        >
-
-            <div class="ron-card">
-
-                <div class="ron-panel-header">
-
-                    <div class="ron-panel-title">
-                        FAQ
-                    </div>
-
-                    <div class="ron-panel-code">
-                        SUP-01
-                    </div>
-
-                </div>
-
-                <div class="dashboard-description">
-
-                    Installation instructions, technical
-                    requirements and troubleshooting information.
-
-                </div>
-
-                <div class="dashboard-action">
-                    TECHNICAL SUPPORT
-                </div>
-
-            </div>
-
-        </a>
-
-
-    </div>
-
-
-
-    <!-- =====================================================
-         DIRECT ACCESS
-    ====================================================== -->
-
-    <div class="section-title">
-
-        DIRECT ACCESS
-
-        <span>
-            PRIMARY OPERATIONS
-        </span>
-
-    </div>
-
-
-    <div class="ron-grid">
-
-
-        <div class="ron-card">
-
-            <div class="ron-panel-header">
-
-                <div class="ron-panel-title">
-                    DEPLOY MODPACK
-                </div>
-
-                <div class="ron-panel-code">
-                    QUICK-01
-                </div>
-
-            </div>
-
-            <p>
-                Download the current modpack and prepare
-                the installation environment.
+            <h1 class="hero-title">
+                RISE OF NATIONS
+            </h1>
+
+            <p class="hero-description">
+                Global command interface for the Rise of Nations
+                Minecraft environment. Access server information,
+                intelligence reports, communications, database
+                systems and the complete modpack documentation.
             </p>
 
-            <a
-                class="ron-button"
-                id="heroDownload"
-                href="pages/download.html"
-            >
-                DOWNLOAD
-            </a>
+            <div class="hero-actions">
+
+                <a
+                    class="ron-button"
+                    href="pages/download.html">
+                    DOWNLOAD MODPACK
+                </a>
+
+                <a
+                    class="ron-button"
+                    href="pages/server.html">
+                    SERVER STATUS
+                </a>
+
+                <a
+                    class="ron-button"
+                    href="pages/wiki.html">
+                    OPEN WIKI
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- STATUS -->
+
+        <div class="section-title">
+            SYSTEM STATUS
+        </div>
+
+        <div class="ron-status-grid">
+
+            <div class="ron-status">
+                <div class="ron-panel-code">
+                    NETWORK
+                </div>
+
+                <div class="ron-panel-title">
+                    SERVER
+                </div>
+
+                <div class="status-value online">
+                    <span class="status-light"></span>
+                    <span id="server-status">
+                        PLATZHALTER
+                    </span>
+                </div>
+            </div>
+
+
+            <div class="ron-status">
+                <div class="ron-panel-code">
+                    DEPLOYMENT
+                </div>
+
+                <div class="ron-panel-title">
+                    MODPACK
+                </div>
+
+                <div
+                    class="status-value"
+                    id="modpack-version">
+                    PLATZHALTER
+                </div>
+            </div>
+
+
+            <div class="ron-status">
+                <div class="ron-panel-code">
+                    ENVIRONMENT
+                </div>
+
+                <div class="ron-panel-title">
+                    MINECRAFT
+                </div>
+
+                <div
+                    class="status-value"
+                    id="minecraft-version">
+                    PLATZHALTER
+                </div>
+            </div>
+
+
+            <div class="ron-status">
+                <div class="ron-panel-code">
+                    COMMAND
+                </div>
+
+                <div class="ron-panel-title">
+                    SYSTEM
+                </div>
+
+                <div
+                    class="status-value"
+                    id="system-status">
+                    PLATZHALTER
+                </div>
+            </div>
 
         </div>
 
 
+        <!-- COMMAND MODULES -->
 
-        <div class="ron-card">
-
-            <div class="ron-panel-header">
-
-                <div class="ron-panel-title">
-                    SERVER ACCESS
-                </div>
-
-                <div class="ron-panel-code">
-                    QUICK-02
-                </div>
-
-            </div>
-
-            <p>
-                Open server information and connection
-                instructions.
-            </p>
-
-            <a
-                class="ron-button"
-                href="pages/server.html"
-            >
-                SERVER INFO
-            </a>
-
+        <div class="section-title">
+            COMMAND MODULES
         </div>
 
-
-
-        <div class="ron-card">
-
-            <div class="ron-panel-header">
-
-                <div class="ron-panel-title">
-                    COMMUNITY
-                </div>
-
-                <div class="ron-panel-code">
-                    QUICK-03
-                </div>
-
-            </div>
-
-            <p>
-                Access the community communication channels
-                and Discord network.
-            </p>
+        <div class="module-grid">
 
             <a
-                class="ron-button"
-                id="discordButton"
                 href="pages/communications.html"
-            >
-                COMMUNICATIONS
+                class="module-card">
+
+                <div class="module-code">
+                    MODULE 01
+                </div>
+
+                <div class="module-title">
+                    COMMUNICATIONS
+                </div>
+
+                <div class="module-description">
+                    Community, Discord and communication channels.
+                </div>
+
+            </a>
+
+
+            <a
+                href="pages/intelligence.html"
+                class="module-card">
+
+                <div class="module-code">
+                    MODULE 02
+                </div>
+
+                <div class="module-title">
+                    INTELLIGENCE
+                </div>
+
+                <div class="module-description">
+                    Global situation reports and strategic intelligence.
+                </div>
+
+            </a>
+
+
+            <a
+                href="pages/server.html"
+                class="module-card">
+
+                <div class="module-code">
+                    MODULE 03
+                </div>
+
+                <div class="module-title">
+                    SERVER
+                </div>
+
+                <div class="module-description">
+                    Server connection data and technical information.
+                </div>
+
+            </a>
+
+
+            <a
+                href="pages/database.html"
+                class="module-card">
+
+                <div class="module-code">
+                    MODULE 04
+                </div>
+
+                <div class="module-title">
+                    DATABASE
+                </div>
+
+                <div class="module-description">
+                    Modpack systems, technologies and installed modules.
+                </div>
+
+            </a>
+
+
+            <a
+                href="pages/download.html"
+                class="module-card">
+
+                <div class="module-code">
+                    MODULE 05
+                </div>
+
+                <div class="module-title">
+                    DOWNLOAD
+                </div>
+
+                <div class="module-description">
+                    Deploy the current Rise of Nations modpack.
+                </div>
+
+            </a>
+
+
+            <a
+                href="pages/wiki.html"
+                class="module-card">
+
+                <div class="module-code">
+                    MODULE 06
+                </div>
+
+                <div class="module-title">
+                    WIKI
+                </div>
+
+                <div class="module-description">
+                    Guides, mod documentation and gameplay information.
+                </div>
+
+            </a>
+
+
+            <a
+                href="pages/faq.html"
+                class="module-card">
+
+                <div class="module-code">
+                    MODULE 07
+                </div>
+
+                <div class="module-title">
+                    FAQ
+                </div>
+
+                <div class="module-description">
+                    Installation help and technical troubleshooting.
+                </div>
+
             </a>
 
         </div>
 
 
-    </div>
+        <footer class="ron-footer">
 
+            <div>
+                RISE OF NATIONS
+            </div>
 
+            <div>
+                MODPACK:
+                <span id="footer-version">
+                    PLATZHALTER
+                </span>
+            </div>
 
-    <!-- =====================================================
-         SYSTEM NOTICE
-    ====================================================== -->
+            <div>
+                SYSTEM:
+                <span id="footer-system">
+                    PLATZHALTER
+                </span>
+            </div>
 
-    <div class="ron-alert gold">
+        </footer>
 
-        <strong>
-            COMMAND NETWORK NOTICE
-        </strong>
+    </main>
 
-        <br>
+</div>
 
-        Rise of Nations command systems are operational.
-        Server, intelligence, database and communication
-        modules are available through the navigation network.
-
-    </div>
-
-
-</main>
-
-
-
-<!-- =========================================================
-     FOOTER
-========================================================= -->
-
-<footer class="ron-footer">
-
-    RISE OF NATIONS
-    &nbsp; // &nbsp;
-
-    <span id="footerVersion">
-        SYSTEM
-    </span>
-
-    &nbsp; // &nbsp;
-
-    <span id="footerStatus">
-        COMMAND NETWORK ONLINE
-    </span>
-
-</footer>
-
-
-
-<!-- =========================================================
-     CONFIG + INTRO SCRIPT
-========================================================= -->
 
 <script>
 
-    /* =====================================================
-       CONFIGURATION
-    ===================================================== */
+/* =========================================================
+   INTRO
+========================================================= */
 
-    if (typeof SITE_CONFIG !== "undefined") {
+const intro = document.getElementById("ron-intro");
+const loginScreen = document.getElementById("ron-login");
+const dashboard = document.getElementById("ron-dashboard");
 
-        const config = SITE_CONFIG;
 
-        /*
-         * Website / Version
-         */
+function skipIntro() {
 
-        const modpackVersion =
-            config.modpack?.version ||
-            "PLATZHALTER";
+    intro.classList.add("hidden");
 
-        const minecraftVersion =
-            config.website?.minecraftVersion ||
-            config.modpack?.minecraftVersion ||
-            "PLATZHALTER";
+}
 
 
-        /*
-         * Footer
-         */
+/* Intro automatisch beenden */
 
-        const footerVersion =
-            document.getElementById("footerVersion");
+setTimeout(() => {
 
-        if (footerVersion) {
+    intro.classList.add("hidden");
 
-            footerVersion.textContent =
-                modpackVersion;
+}, 6200);
 
-        }
 
+/* =========================================================
+   LOGIN
+========================================================= */
 
-        /*
-         * Minecraft Version
-         */
+function login() {
 
-        const minecraftElement =
-            document.getElementById("minecraftVersion");
+    const username =
+        document.getElementById("login-user").value.trim();
 
-        if (minecraftElement) {
+    const password =
+        document.getElementById("login-password").value;
 
-            minecraftElement.textContent =
-                minecraftVersion;
-
-        }
-
-
-        /*
-         * Modpack Version
-         */
-
-        const modpackElement =
-            document.getElementById("modpackVersion");
-
-        if (modpackElement) {
-
-            modpackElement.textContent =
-                modpackVersion;
-
-        }
-
-
-        /*
-         * Server Status
-         */
-
-        const serverStatus =
-            document.getElementById("serverStatus");
-
-        if (
-            serverStatus &&
-            config.server &&
-            config.server.status
-        ) {
-
-            serverStatus.textContent =
-                config.server.status;
-
-        }
-
-
-        /*
-         * Download
-         */
-
-        const heroDownload =
-            document.getElementById("heroDownload");
-
-        if (
-            heroDownload &&
-            config.download &&
-            config.download.modpack &&
-            config.download.modpack !== "PLATZHALTER"
-        ) {
-
-            heroDownload.href =
-                config.download.modpack;
-
-        }
-
-
-        /*
-         * Discord
-         */
-
-        const discordButton =
-            document.getElementById("discordButton");
-
-        if (
-            discordButton &&
-            config.communications &&
-            config.communications.discord &&
-            config.communications.discord !== "PLATZHALTER"
-        ) {
-
-            discordButton.href =
-                config.communications.discord;
-
-        }
-
-    }
-
-
-
-    /* =====================================================
-       CINEMATIC INTRO
-    ===================================================== */
-
-    const intro =
-        document.getElementById("intro");
-
-    const skipIntro =
-        document.getElementById("skipIntro");
-
-    const introStatus =
-        document.getElementById("introStatus");
-
-
-    const introMessages = [
-
-        "INITIALIZING COMMAND NETWORK...",
-
-        "ESTABLISHING SECURE CONNECTION...",
-
-        "LOADING STRATEGIC DATABASE...",
-
-        "CHECKING COMMUNICATION SYSTEMS...",
-
-        "INITIALIZING INTELLIGENCE NETWORK...",
-
-        "VERIFYING SERVER SYSTEMS...",
-
-        "COMMAND NETWORK READY."
-
-    ];
-
-
-    let introIndex = 0;
-
-
-    function updateIntroStatus() {
-
-        if (!introStatus) {
-            return;
-        }
-
-        if (introIndex >= introMessages.length) {
-            return;
-        }
-
-        introStatus.textContent =
-            introMessages[introIndex];
-
-        introIndex++;
-
-    }
-
-
-    const introInterval =
-        setInterval(
-            updateIntroStatus,
-            650
-        );
-
-
-    function closeIntro() {
-
-        clearInterval(introInterval);
-
-        if (!intro) {
-            return;
-        }
-
-        intro.classList.add("hidden");
-
-        setTimeout(
-            () => {
-
-                intro.style.display =
-                    "none";
-
-            },
-            1100
-        );
-
-    }
-
-
-    if (skipIntro) {
-
-        skipIntro.addEventListener(
-            "click",
-            closeIntro
-        );
-
-    }
+    const error =
+        document.getElementById("login-error");
 
 
     /*
-     * Start status sequence
-     */
+       Aktuell bewusst einfache Demo-Anmeldung.
 
-    setTimeout(
-        updateIntroStatus,
-        400
-    );
+       Benutzer:
+       admin
+
+       Passwort:
+       rise
+    */
+
+    if (
+        username.toLowerCase() === "admin" &&
+        password === "rise"
+    ) {
+
+        loginScreen.classList.add("hidden");
+
+        dashboard.classList.remove("hidden");
+
+        error.textContent = "";
+
+    } else {
+
+        error.textContent =
+            "ACCESS DENIED // INVALID CREDENTIALS";
+
+    }
+
+}
 
 
-    /*
-     * Automatically finish intro.
-     */
+/* =========================================================
+   CONFIG
+========================================================= */
 
-    setTimeout(
-        closeIntro,
-        6200
-    );
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
 
+        if (
+            typeof SITE_CONFIG !== "undefined"
+        ) {
+
+            document.getElementById(
+                "server-status"
+            ).textContent =
+                SITE_CONFIG.server.status;
+
+
+            document.getElementById(
+                "modpack-version"
+            ).textContent =
+                SITE_CONFIG.modpack.version;
+
+
+            document.getElementById(
+                "minecraft-version"
+            ).textContent =
+                SITE_CONFIG.website.minecraftVersion;
+
+
+            document.getElementById(
+                "system-status"
+            ).textContent =
+                SITE_CONFIG.system.status;
+
+
+            document.getElementById(
+                "footer-version"
+            ).textContent =
+                SITE_CONFIG.modpack.version;
+
+
+            document.getElementById(
+                "footer-system"
+            ).textContent =
+                SITE_CONFIG.system.status;
+
+        }
+
+    }
+);
 
 </script>
 
-
 </body>
-
 </html>
