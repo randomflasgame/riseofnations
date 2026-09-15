@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>RISE OF NATIONS // COMMAND & CONTROL</title>
+
+    <!-- ZENTRALE CONFIG -->
+    <script src="config/site-config.js"></script>
 
     <style>
         * {
@@ -77,8 +81,6 @@
             pointer-events: none;
         }
 
-        /* Industrial shapes */
-
         .gear {
             position: absolute;
             width: 180px;
@@ -124,8 +126,6 @@
                 rotateGear 35s linear infinite 2s;
         }
 
-        /* Lights */
-
         .warning-light {
             position: absolute;
             width: 7px;
@@ -136,10 +136,37 @@
             opacity: 0;
         }
 
-        .light-1 { left: 14%; top: 25%; animation: lightOn 1s ease forwards 1.4s, pulseLight 2.2s infinite 2.4s; }
-        .light-2 { left: 78%; top: 29%; animation: lightOn 1s ease forwards 1.7s, pulseLight 1.8s infinite 2.6s; }
-        .light-3 { left: 23%; top: 72%; animation: lightOn 1s ease forwards 2s, pulseLight 2.5s infinite 2.9s; }
-        .light-4 { left: 83%; top: 73%; animation: lightOn 1s ease forwards 2.3s, pulseLight 1.7s infinite 3.2s; }
+        .light-1 {
+            left: 14%;
+            top: 25%;
+            animation:
+                lightOn 1s ease forwards 1.4s,
+                pulseLight 2.2s infinite 2.4s;
+        }
+
+        .light-2 {
+            left: 78%;
+            top: 29%;
+            animation:
+                lightOn 1s ease forwards 1.7s,
+                pulseLight 1.8s infinite 2.6s;
+        }
+
+        .light-3 {
+            left: 23%;
+            top: 72%;
+            animation:
+                lightOn 1s ease forwards 2s,
+                pulseLight 2.5s infinite 2.9s;
+        }
+
+        .light-4 {
+            left: 83%;
+            top: 73%;
+            animation:
+                lightOn 1s ease forwards 2.3s,
+                pulseLight 1.7s infinite 3.2s;
+        }
 
         .red-light {
             position: absolute;
@@ -154,16 +181,18 @@
         .red-1 {
             left: 18%;
             top: 45%;
-            animation: lightOn 1s ease forwards 2.1s, pulseRed 1.8s infinite 3s;
+            animation:
+                lightOn 1s ease forwards 2.1s,
+                pulseRed 1.8s infinite 3s;
         }
 
         .red-2 {
             right: 18%;
             top: 57%;
-            animation: lightOn 1s ease forwards 2.4s, pulseRed 2s infinite 3.2s;
+            animation:
+                lightOn 1s ease forwards 2.4s,
+                pulseRed 2s infinite 3.2s;
         }
-
-        /* Intro content */
 
         .intro-content {
             position: relative;
@@ -201,7 +230,8 @@
                 0 5px 0 rgba(0,0,0,0.6);
             opacity: 0;
             transform: scale(0.92);
-            animation: titleAppear 1.4s cubic-bezier(.16,1,.3,1) forwards 2.4s;
+            animation:
+                titleAppear 1.4s cubic-bezier(.16,1,.3,1) forwards 2.4s;
         }
 
         .intro-subtitle {
@@ -289,7 +319,7 @@
         }
 
         /* =========================================================
-           MAIN WEBSITE
+           HEADER
         ========================================================= */
 
         header {
@@ -371,6 +401,10 @@
             border-color: #294858;
             background: #0b1820;
         }
+
+        /* =========================================================
+           MAIN
+        ========================================================= */
 
         main {
             width: min(1450px, 94%);
@@ -650,6 +684,7 @@
                 opacity: 0;
                 transform: scale(0.7);
             }
+
             to {
                 opacity: 1;
                 transform: scale(1);
@@ -686,6 +721,7 @@
                 opacity: 0;
                 transform: translateY(12px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -703,6 +739,7 @@
                 transform: scale(0.92);
                 filter: blur(8px);
             }
+
             to {
                 opacity: 1;
                 transform: scale(1);
@@ -720,11 +757,8 @@
             to { top: 110%; }
         }
 
-        /* =========================================================
-           RESPONSIVE
-        ========================================================= */
-
         @media (max-width: 900px) {
+
             .header-inner {
                 padding: 15px 0;
                 align-items: flex-start;
@@ -745,6 +779,7 @@
         }
 
         @media (max-width: 600px) {
+
             .dashboard {
                 grid-template-columns: 1fr;
             }
@@ -770,6 +805,7 @@
         }
     </style>
 </head>
+
 
 <body class="intro-active">
 
@@ -804,7 +840,8 @@
             <div class="system-line"></div>
 
             <div class="intro-title">
-                RISE<br>OF NATIONS
+                RISE<br>
+                OF NATIONS
             </div>
 
             <div class="intro-subtitle">
@@ -816,17 +853,22 @@
             </div>
 
             <div class="intro-status">
+
                 <div class="status-item">
-                    <span></span>CORE ONLINE
+                    <span></span>
+                    CORE ONLINE
                 </div>
 
                 <div class="status-item">
-                    <span></span>DATABASE ONLINE
+                    <span></span>
+                    DATABASE ONLINE
                 </div>
 
                 <div class="status-item">
-                    <span></span>NETWORK ONLINE
+                    <span></span>
+                    NETWORK ONLINE
                 </div>
+
             </div>
 
         </div>
@@ -841,18 +883,21 @@
 
 
     <!-- =========================================================
-         MAIN WEBSITE
+         HEADER
     ========================================================= -->
 
     <header>
+
         <div class="header-inner">
 
             <a href="index.html" class="brand">
+
                 <div class="brand-emblem">
                     <span>R</span>
                 </div>
 
                 <div>
+
                     <div class="brand-title">
                         RISE OF NATIONS
                     </div>
@@ -860,23 +905,51 @@
                     <div class="brand-subtitle">
                         COMMAND & CONTROL NETWORK
                     </div>
+
                 </div>
+
             </a>
 
+
             <nav>
-                <a href="pages/communications.html">COMMUNICATIONS</a>
-                <a href="pages/intelligence.html">INTELLIGENCE</a>
-                <a href="pages/server.html">SERVER</a>
-                <a href="pages/database.html">DATABASE</a>
-                <a href="pages/download.html">DOWNLOAD</a>
-                <a href="pages/wiki.html">WIKI</a>
+
+                <a href="pages/communications.html">
+                    COMMUNICATIONS
+                </a>
+
+                <a href="pages/intelligence.html">
+                    INTELLIGENCE
+                </a>
+
+                <a href="pages/server.html">
+                    SERVER
+                </a>
+
+                <a href="pages/database.html">
+                    DATABASE
+                </a>
+
+                <a href="pages/download.html">
+                    DOWNLOAD
+                </a>
+
+                <a href="pages/wiki.html">
+                    WIKI
+                </a>
+
             </nav>
 
         </div>
+
     </header>
 
 
+    <!-- =========================================================
+         MAIN
+    ========================================================= -->
+
     <main>
+
 
         <!-- HERO -->
 
@@ -894,25 +967,32 @@
                 </h1>
 
                 <p>
-                    Ein Minecraft-Projekt für Nationen, Industrie, Technologie,
-                    Krieg, Diplomatie, Handel und Überleben.
+                    Ein Minecraft-Projekt für Nationen, Industrie,
+                    Technologie, Krieg, Diplomatie, Handel und Überleben.
                     Baue deine Nation auf, entwickle deine Industrie,
                     erforsche neue Technologien und entscheide selbst,
                     wie sich die Welt entwickelt.
                 </p>
 
+
                 <div class="hero-buttons">
+
                     <a href="pages/wiki.html" class="button gold">
                         ENTER WIKI
                     </a>
 
-                    <a href="pages/download.html" class="button">
+                    <a
+                        id="heroDownload"
+                        href="#"
+                        class="button"
+                    >
                         DOWNLOAD MODPACK
                     </a>
 
                     <a href="pages/server.html" class="button">
                         SERVER INFORMATION
                     </a>
+
                 </div>
 
             </div>
@@ -920,14 +1000,25 @@
         </section>
 
 
-        <!-- COMMAND DASHBOARD -->
+        <!-- DASHBOARD -->
 
         <div class="section-title">
-            <h2>COMMAND DASHBOARD</h2>
-            <span>SYSTEM STATUS // OPERATIONAL</span>
+
+            <h2>
+                COMMAND DASHBOARD
+            </h2>
+
+            <span id="systemStatus">
+                SYSTEM STATUS // OPERATIONAL
+            </span>
+
         </div>
 
+
         <section class="dashboard">
+
+
+            <!-- SERVER -->
 
             <article class="panel">
 
@@ -935,7 +1026,9 @@
                     01 // SERVER
                 </div>
 
-                <h3>SERVER STATUS</h3>
+                <h3>
+                    SERVER STATUS
+                </h3>
 
                 <p>
                     Aktuelle Informationen über den Minecraft-Server,
@@ -943,18 +1036,28 @@
                 </p>
 
                 <div class="status-bar">
+
                     <div class="status-dot"></div>
-                    OPERATIONAL
+
+                    <span id="serverStatus">
+                        PLATZHALTER
+                    </span>
+
                 </div>
 
                 <br>
 
-                <a href="pages/server.html" class="panel-link">
+                <a
+                    href="pages/server.html"
+                    class="panel-link"
+                >
                     ACCESS SERVER DATA →
                 </a>
 
             </article>
 
+
+            <!-- DEPLOYMENT -->
 
             <article class="panel">
 
@@ -962,20 +1065,30 @@
                     02 // DEPLOYMENT
                 </div>
 
-                <h3>CURRENT DEPLOYMENT</h3>
+                <h3>
+                    CURRENT DEPLOYMENT
+                </h3>
 
                 <p>
-                    RISE OF NATIONS Modpack für Minecraft 1.21.1.
+                    RISE OF NATIONS Modpack für
+                    <span id="minecraftVersion">
+                        PLATZHALTER
+                    </span>.
                     Die aktuelle Zusammenstellung aus Industrie,
                     Technologie, Abenteuer und Survival.
                 </p>
 
-                <a href="pages/download.html" class="panel-link">
+                <a
+                    href="pages/download.html"
+                    class="panel-link"
+                >
                     VIEW DEPLOYMENT →
                 </a>
 
             </article>
 
+
+            <!-- INTELLIGENCE -->
 
             <article class="panel">
 
@@ -983,7 +1096,9 @@
                     03 // INTELLIGENCE
                 </div>
 
-                <h3>GLOBAL INTELLIGENCE</h3>
+                <h3>
+                    GLOBAL INTELLIGENCE
+                </h3>
 
                 <p>
                     Aktuelle Lageberichte, Entwicklungen,
@@ -991,12 +1106,17 @@
                     von RISE OF NATIONS.
                 </p>
 
-                <a href="pages/intelligence.html" class="panel-link">
+                <a
+                    href="pages/intelligence.html"
+                    class="panel-link"
+                >
                     OPEN INTELLIGENCE →
                 </a>
 
             </article>
 
+
+            <!-- DATABASE -->
 
             <article class="panel">
 
@@ -1004,7 +1124,9 @@
                     04 // DATABASE
                 </div>
 
-                <h3>MODPACK DATABASE</h3>
+                <h3>
+                    MODPACK DATABASE
+                </h3>
 
                 <p>
                     Durchsuche das Modpack und entdecke die
@@ -1012,12 +1134,17 @@
                     Waffen und Gameplay-Erweiterungen.
                 </p>
 
-                <a href="pages/database.html" class="panel-link">
+                <a
+                    href="pages/database.html"
+                    class="panel-link"
+                >
                     ACCESS DATABASE →
                 </a>
 
             </article>
 
+
+            <!-- WIKI -->
 
             <article class="panel">
 
@@ -1025,19 +1152,26 @@
                     05 // KNOWLEDGE
                 </div>
 
-                <h3>KNOWLEDGE SYSTEM // WIKI</h3>
+                <h3>
+                    KNOWLEDGE SYSTEM // WIKI
+                </h3>
 
                 <p>
                     Anleitungen und Informationen zu den wichtigsten
                     Mods und Systemen des Modpacks.
                 </p>
 
-                <a href="pages/wiki.html" class="panel-link">
+                <a
+                    href="pages/wiki.html"
+                    class="panel-link"
+                >
                     ENTER KNOWLEDGE SYSTEM →
                 </a>
 
             </article>
 
+
+            <!-- COMMUNICATIONS -->
 
             <article class="panel">
 
@@ -1045,14 +1179,19 @@
                     06 // COMMUNICATIONS
                 </div>
 
-                <h3>COMMUNICATIONS</h3>
+                <h3>
+                    COMMUNICATIONS
+                </h3>
 
                 <p>
                     Community, Discord und Kommunikationskanäle
                     für Spieler und Nationen.
                 </p>
 
-                <a href="pages/communications.html" class="panel-link">
+                <a
+                    href="pages/communications.html"
+                    class="panel-link"
+                >
                     OPEN COMMUNICATIONS →
                 </a>
 
@@ -1067,6 +1206,7 @@
 
             <div class="feature-grid">
 
+
                 <div>
 
                     <div class="eyebrow">
@@ -1079,11 +1219,12 @@
                     </h2>
 
                     <p>
-                        RISE OF NATIONS ist keine Welt mit einer festgelegten
-                        Geschichte. Die Spieler erschaffen ihre eigenen Nationen,
-                        Bündnisse, Konflikte, Handelswege und Machtstrukturen.
-                        Jede neue Welt entwickelt sich durch die Entscheidungen
-                        ihrer Spieler.
+                        RISE OF NATIONS ist keine Welt mit einer
+                        festgelegten Geschichte. Die Spieler erschaffen
+                        ihre eigenen Nationen, Bündnisse, Konflikte,
+                        Handelswege und Machtstrukturen.
+                        Jede neue Welt entwickelt sich durch die
+                        Entscheidungen ihrer Spieler.
                     </p>
 
                 </div>
@@ -1092,45 +1233,80 @@
                 <div class="feature-box">
 
                     <div class="feature-item">
-                        <strong>NATIONS</strong>
+
+                        <strong>
+                            NATIONS
+                        </strong>
+
                         <span>
                             Eigene Staaten, Gebiete und politische Systeme.
                         </span>
+
                     </div>
 
+
                     <div class="feature-item">
-                        <strong>INDUSTRY</strong>
+
+                        <strong>
+                            INDUSTRY
+                        </strong>
+
                         <span>
                             Fabriken, Maschinen und automatisierte Produktion.
                         </span>
+
                     </div>
 
+
                     <div class="feature-item">
-                        <strong>TECHNOLOGY</strong>
+
+                        <strong>
+                            TECHNOLOGY
+                        </strong>
+
                         <span>
                             Forschung und moderne technische Systeme.
                         </span>
+
                     </div>
 
+
                     <div class="feature-item">
-                        <strong>CONFLICT</strong>
+
+                        <strong>
+                            CONFLICT
+                        </strong>
+
                         <span>
                             Diplomatie, Krieg und strategische Entscheidungen.
                         </span>
+
                     </div>
 
+
                     <div class="feature-item">
-                        <strong>ADVENTURE</strong>
+
+                        <strong>
+                            ADVENTURE
+                        </strong>
+
                         <span>
                             Erkundung, Strukturen, Dimensionen und Gefahren.
                         </span>
+
                     </div>
 
+
                     <div class="feature-item">
-                        <strong>SURVIVAL</strong>
+
+                        <strong>
+                            SURVIVAL
+                        </strong>
+
                         <span>
                             Ressourcen, Nahrung, Bauen und Überleben.
                         </span>
+
                     </div>
 
                 </div>
@@ -1142,59 +1318,141 @@
     </main>
 
 
+    <!-- =========================================================
+         FOOTER
+    ========================================================= -->
+
     <footer>
 
         <div>
             RISE OF NATIONS // COMMAND & CONTROL NETWORK
         </div>
 
-        <div>
-            MINECRAFT 1.21.1 // SYSTEM ONLINE
+        <div id="footerVersion">
+            MINECRAFT PLATZHALTER // SYSTEM ONLINE
         </div>
 
     </footer>
 
 
     <!-- =========================================================
-         INTRO JAVASCRIPT
+         CONFIG LOGIC
     ========================================================= -->
 
     <script>
 
-        const intro = document.getElementById("intro");
-        const skipIntro = document.getElementById("skipIntro");
+        /*
+         * =======================================================
+         * ZENTRALE CONFIG VERWENDEN
+         * =======================================================
+         */
+
+        document.title =
+            SITE_CONFIG.website.name +
+            " // COMMAND & CONTROL";
+
+
+        /*
+         * DOWNLOAD
+         */
+
+        const heroDownload =
+            document.getElementById("heroDownload");
+
+        heroDownload.href =
+            SITE_CONFIG.download.modpack;
+
+
+        /*
+         * SERVER STATUS
+         */
+
+        document.getElementById("serverStatus").textContent =
+            SITE_CONFIG.server.status;
+
+
+        /*
+         * MINECRAFT VERSION
+         */
+
+        document.getElementById("minecraftVersion").textContent =
+            SITE_CONFIG.website.minecraftVersion;
+
+
+        /*
+         * SYSTEM STATUS
+         */
+
+        document.getElementById("systemStatus").textContent =
+            "SYSTEM STATUS // " +
+            SITE_CONFIG.system.status;
+
+
+        /*
+         * FOOTER VERSION
+         */
+
+        document.getElementById("footerVersion").textContent =
+            "MINECRAFT " +
+            SITE_CONFIG.website.minecraftVersion +
+            " // " +
+            SITE_CONFIG.system.status;
+
+
+        /*
+         * =======================================================
+         * INTRO
+         * =======================================================
+         */
+
+        const intro =
+            document.getElementById("intro");
+
+        const skipIntro =
+            document.getElementById("skipIntro");
+
 
         function closeIntro() {
 
             intro.classList.add("hidden");
 
-            document.body.classList.remove("intro-active");
+            document.body.classList.remove(
+                "intro-active"
+            );
 
-            localStorage.setItem("ronIntroSeen", "true");
+            localStorage.setItem(
+                "ronIntroSeen",
+                "true"
+            );
         }
 
-        skipIntro.addEventListener("click", closeIntro);
 
+        skipIntro.addEventListener(
+            "click",
+            closeIntro
+        );
 
-        /*
-         * Intro automatisch beenden.
-         * Wenn der Spieler die Seite zum ersten Mal besucht,
-         * läuft die komplette Animation.
-         */
 
         const introAlreadySeen =
-            localStorage.getItem("ronIntroSeen");
+            localStorage.getItem(
+                "ronIntroSeen"
+            );
 
 
         if (introAlreadySeen === "true") {
 
             intro.classList.add("hidden");
-            document.body.classList.remove("intro-active");
+
+            document.body.classList.remove(
+                "intro-active"
+            );
 
         } else {
 
             setTimeout(() => {
+
                 closeIntro();
+
             }, 6500);
 
         }
