@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RISE OF NATIONS // CREATE AERONAUTICS LIFT PATCH</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+    min-height:100vh;
+    background:
+        linear-gradient(rgba(5,10,15,.97),rgba(5,10,15,.99)),
+        repeating-linear-gradient(135deg,rgba(255,255,255,.018) 0 2px,transparent 2px 9px);
+    color:#dbe3e8;
+    font-family:"Segoe UI",Arial,sans-serif;
+}
+header{
+    background:rgba(5,10,15,.98);
+    border-bottom:1px solid #293944;
+    box-shadow:0 5px 25px rgba(0,0,0,.45);
+}
+.header-inner{
+    max-width:1500px;
+    margin:auto;
+    padding:18px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:30px;
+}
+.logo{
+    color:#d6b85c;
+    font-size:22px;
+    font-weight:950;
+    letter-spacing:3px;
+}
+.logo span{
+    display:block;
+    color:#687b86;
+    font-size:9px;
+    letter-spacing:2px;
+    margin-top:4px;
+}
+nav{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+    gap:7px;
+}
+nav a{
+    color:#9aabb4;
+    text-decoration:none;
+    padding:9px 11px;
+    border:1px solid transparent;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.2px;
+    transition:.2s;
+}
+nav a:hover{
+    color:#d6b85c;
+    background:#111b22;
+    border-color:#3b4d58;
+}
+main{
+    max-width:1250px;
+    margin:auto;
+    padding:70px 30px 100px;
+}
+.eyebrow{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:3px;
+    margin-bottom:15px;
+}
+h1{
+    color:#edf2f4;
+    font-size:clamp(40px,6.5vw,78px);
+    line-height:.95;
+    letter-spacing:4px;
+    font-weight:950;
+}
+.subtitle{
+    max-width:930px;
+    margin-top:22px;
+    color:#8497a2;
+    line-height:1.75;
+    font-size:15px;
+}
+.meta{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-top:38px;
+}
+.meta-box{
+    padding:18px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+.meta-label{
+    color:#596c77;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:8px;
+}
+.meta-value{
+    color:#d6b85c;
+    font-size:13px;
+    font-weight:900;
+}
+.section{
+    margin-top:35px;
+    padding:30px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+.section-number{
+    color:#526773;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:2px;
+    margin-bottom:9px;
+}
+h2{
+    color:#e1e8eb;
+    font-size:22px;
+    letter-spacing:1px;
+    margin-bottom:18px;
+}
+h3{
+    color:#d6b85c;
+    font-size:14px;
+    letter-spacing:1px;
+    margin:25px 0 10px;
+}
+p{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    margin-bottom:13px;
+}
+ul,ol{
+    margin:12px 0 18px 22px;
+}
+li{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    padding-left:5px;
+}
+.note{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#111c23;
+    border-left:3px solid #4d91bd;
+}
+.note-title{
+    color:#4d91bd;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+.warning{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#17140e;
+    border-left:3px solid #d6b85c;
+}
+.warning-title{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:18px;
+}
+th,td{
+    text-align:left;
+    padding:13px 14px;
+    border:1px solid #293c47;
+    font-size:12px;
+}
+th{
+    color:#d6b85c;
+    background:#111c23;
+    font-size:10px;
+    letter-spacing:1px;
+}
+td{
+    color:#8ea0a9;
+    background:#0a141a;
+}
+.sources{
+    display:grid;
+    gap:10px;
+    margin-top:15px;
+}
+.sources a{
+    display:block;
+    padding:13px 15px;
+    background:#101b22;
+    border:1px solid #293c47;
+    color:#9fb0b9;
+    text-decoration:none;
+    font-size:12px;
+    transition:.2s;
+}
+.sources a:hover{
+    color:#d6b85c;
+    border-color:#d6b85c;
+}
+.back{
+    display:inline-block;
+    margin-top:45px;
+    padding:12px 16px;
+    color:#d6b85c;
+    border:1px solid #4c4530;
+    text-decoration:none;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    transition:.2s;
+}
+.back:hover{
+    background:#17150f;
+    border-color:#d6b85c;
+}
+footer{
+    border-top:1px solid #202e36;
+    padding:25px 30px;
+    text-align:center;
+    color:#465861;
+    font-size:9px;
+    letter-spacing:2px;
+}
+@media(max-width:850px){
+    .header-inner{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+    nav{justify-content:flex-start}
+    .meta{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:550px){
+    .meta{grid-template-columns:1fr}
+    main{padding:45px 18px 70px}
+    .section{padding:22px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="header-inner">
+
+<div class="logo">
+RISE OF NATIONS
+<span>TACTICAL KNOWLEDGE DATABASE</span>
+</div>
+
+<nav>
+<a href="../index.html">COMMAND</a>
+<a href="intelligence.html">INTELLIGENCE</a>
+<a href="server.html">SERVER</a>
+<a href="database.html">DATABASE</a>
+<a href="download.html">DOWNLOAD</a>
+<a href="communications.html">COMMUNICATIONS</a>
+<a href="wiki.html">WIKI</a>
+</nav>
+
+</div>
+</header>
+
+<main>
+
+<div class="eyebrow">
+PROFESSOR DATABASE // AERONAUTICS // COMPATIBILITY
+</div>
+
+<h1>CREATE AERONAUTICS LIFT PATCH</h1>
+
+<p class="subtitle">
+Ein kleiner Kompatibilitäts-Patch für das Zusammenspiel mit Create Aeronautics.
+Die Erweiterung gehört nicht zu den großen eigenständigen Inhaltssystemen,
+sondern dient vor allem dazu, bestimmte Lift- beziehungsweise
+Flugmechaniken zuverlässig mit der verwendeten Modpack-Konfiguration
+zusammenarbeiten zu lassen.
+</p>
+
+<div class="meta">
+
+<div class="meta-box">
+<div class="meta-label">MOD</div>
+<div class="meta-value">AERONAUTICS LIFT PATCH</div>
+</div>
+
+<div class="meta-box">
+<div class="meta-label">VERSION</div>
+<div class="meta-value">1.1.0</div>
+</div>
+
+<div class="meta-box">
+<div class="meta-label">MINECRAFT</div>
+<div class="meta-value">1.21.1</div>
+</div>
+
+<div class="meta-box">
+<div class="meta-label">SYSTEM</div>
+<div class="meta-value">COMPATIBILITY</div>
+</div>
+
+</div>
+
+
+<section class="section">
+
+<div class="section-number">01 // SYSTEM OVERVIEW</div>
+<h2>Was ist der Lift Patch?</h2>
+
+<p>
+Der Create Aeronautics Lift Patch ist eine unterstützende Erweiterung
+für das Aeronautics-System. Sein Zweck besteht nicht darin, ein neues
+großes Gameplay-System einzuführen, sondern bestimmte Abläufe rund um
+Lift- und Flugmechaniken zu korrigieren oder kompatibler zu machen.
+</p>
+
+<p>
+Solche kleine Kompatibilitätsmods sind besonders wichtig in einem
+großen Modpack, weil mehrere komplexe Systeme gleichzeitig auf dieselben
+Minecraft-Mechaniken zugreifen können.
+</p>
+
+<div class="note">
+<div class="note-title">CORE PRINCIPLE</div>
+<p>
+Ein Patch dieser Art sollte normalerweise im Hintergrund arbeiten.
+Wenn alles korrekt funktioniert, muss der Spieler kaum merken,
+dass er überhaupt installiert ist.
+</p>
+</div>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">02 // DEPENDENCY</div>
+<h2>Zusammenspiel mit Create Aeronautics</h2>
+
+<p>
+Der Patch ist als Ergänzung zu Create Aeronautics gedacht und sollte
+nicht als eigenständige Flugmod betrachtet werden.
+</p>
+
+<table>
+
+<tr>
+<th>SYSTEM</th>
+<th>ROLLE</th>
+</tr>
+
+<tr>
+<td>CREATE</td>
+<td>Grundlegende technische Infrastruktur</td>
+</tr>
+
+<tr>
+<td>CREATE AERONAUTICS</td>
+<td>Flug- und Luftfahrtsystem</td>
+</tr>
+
+<tr>
+<td>LIFT PATCH</td>
+<td>Kompatibilität beziehungsweise Fehlerbehebung</td>
+</tr>
+
+</table>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">03 // LIFT SYSTEM</div>
+<h2>Was bedeutet Lift?</h2>
+
+<p>
+Bei einem Luftfahrtsystem bezeichnet Lift grundsätzlich den Auftrieb,
+der ein Fluggerät in der Luft halten kann.
+</p>
+
+<p>
+In einem Create-basierten Flugzeugsystem muss dabei nicht nur die
+Bewegung des Fahrzeugs berücksichtigt werden. Auch Masse,
+Konstruktion, Flugphysik und die Verarbeitung des beweglichen
+Aufbaus können eine Rolle spielen.
+</p>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">04 // WHY A PATCH?</div>
+<h2>Warum braucht ein System einen Patch?</h2>
+
+<p>
+Große technische Mods bestehen aus vielen miteinander verbundenen
+Systemen. Kleine Änderungen an einer Berechnung oder einem
+internen Verhalten können deshalb unerwartete Auswirkungen haben.
+</p>
+
+<ul>
+<li>Bewegliche Konstruktionen.</li>
+<li>Physikberechnungen.</li>
+<li>Blockzusammensetzung.</li>
+<li>Gewichts- und Auftriebsberechnung.</li>
+<li>Kompatibilität mit anderen Aeronautics-Komponenten.</li>
+</ul>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">05 // AIRCRAFT DESIGN</div>
+<h2>Flugzeuge sinnvoll konstruieren</h2>
+
+<p>
+Auch mit einem Kompatibilitätspatch bleibt die Konstruktion eines
+Fluggeräts entscheidend.
+</p>
+
+<ul>
+<li>Gewicht möglichst gleichmäßig verteilen.</li>
+<li>Tragflächen sinnvoll dimensionieren.</li>
+<li>Schwerpunkt berücksichtigen.</li>
+<li>Antrieb nicht unnötig weit vom Rumpf entfernen.</li>
+<li>Bewegliche Komponenten sauber integrieren.</li>
+</ul>
+
+<div class="warning">
+<div class="warning-title">ENGINEERING WARNING</div>
+<p>
+Ein Patch kann Fehler in einem System beheben, ersetzt aber keine
+funktionierende Flugzeugkonstruktion.
+</p>
+</div>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">06 // CREATE INTEGRATION</div>
+<h2>Verbindung mit Create</h2>
+
+<p>
+Create Aeronautics baut auf dem technischen Grundprinzip von Create auf.
+Damit können Fluggeräte Teil einer wesentlich größeren industriellen
+Infrastruktur werden.
+</p>
+
+<ul>
+<li>Hangars.</li>
+<li>Produktionsanlagen.</li>
+<li>Treppen und Wartungsplattformen.</li>
+<li>Transportanlagen.</li>
+<li>Mechanische Fertigung.</li>
+<li>Versorgungs- und Treibstoffbereiche.</li>
+</ul>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">07 // AIRPORT INFRASTRUCTURE</div>
+<h2>Flughäfen in RISE OF NATIONS</h2>
+
+<p>
+Ein Flughafen muss nicht nur aus einer Startbahn bestehen. In einem
+großen Modpack kann er als vollständiger industrieller Standort
+aufgebaut werden.
+</p>
+
+<table>
+
+<tr>
+<th>BEREICH</th>
+<th>FUNKTION</th>
+</tr>
+
+<tr>
+<td>RUNWAY</td>
+<td>Start und Landung</td>
+</tr>
+
+<tr>
+<td>HANGAR</td>
+<td>Wartung und Lagerung</td>
+</tr>
+
+<tr>
+<td>CONTROL</td>
+<td>Flugüberwachung</td>
+</tr>
+
+<tr>
+<td>FUEL</td>
+<td>Versorgung</td>
+</tr>
+
+<tr>
+<td>WORKSHOP</td>
+<td>Produktion und Reparatur</td>
+</tr>
+
+</table>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">08 // TROUBLESHOOTING</div>
+<h2>Wenn ein Fluggerät nicht funktioniert</h2>
+
+<h3>Auftrieb funktioniert nicht wie erwartet</h3>
+
+<p>
+Zuerst sollte die Konstruktion auf Gewicht, Tragflächen und
+Zusammensetzung überprüft werden.
+</p>
+
+<h3>Fluggerät bewegt sich ungewöhnlich</h3>
+
+<p>
+Prüfe zunächst die Konstruktion und die beteiligten Aeronautics-
+Komponenten, bevor andere Mods als Ursache angenommen werden.
+</p>
+
+<h3>Nach einem Modpack-Update tritt ein Fehler auf</h3>
+
+<p>
+Versionskombinationen kontrollieren. Gerade bei Addons und
+Kompatibilitätspatches können kleine Versionsänderungen relevant sein.
+</p>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">09 // MODPACK UPDATES</div>
+<h2>Warum Versionen wichtig sind</h2>
+
+<p>
+Kompatibilitätsmods sind besonders abhängig von den Versionen der
+Mods, die sie unterstützen.
+</p>
+
+<ul>
+<li>Create-Version kontrollieren.</li>
+<li>Create Aeronautics-Version kontrollieren.</li>
+<li>Patch-Version kontrollieren.</li>
+<li>Nach Updates Fluggeräte testen.</li>
+<li>Bei Fehlern zuerst die zuletzt geänderte Komponente untersuchen.</li>
+</ul>
+
+<div class="note">
+<div class="note-title">UPDATE DOCTRINE</div>
+<p>
+Wenn ein funktionierendes Fluggerät nach einem Modpack-Update plötzlich
+nicht mehr korrekt arbeitet, sollte die vorherige Modkombination
+dokumentiert und mit der neuen Version verglichen werden.
+</p>
+</div>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">10 // MULTIPLAYER</div>
+<h2>Auf dem Server</h2>
+
+<p>
+Fluggeräte können im Multiplayer besonders interessant sein,
+weil sie Spielerbasen, Städte und Industriegebiete miteinander
+verbinden.
+</p>
+
+<ul>
+<li>Flughäfen als öffentliche Infrastruktur.</li>
+<li>Transport zwischen Spielergebieten.</li>
+<li>Militärische Luftfahrtprojekte.</li>
+<li>Logistik zwischen Industriezentren.</li>
+<li>Große gemeinsame Hangars.</li>
+</ul>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">11 // PERFORMANCE</div>
+<h2>Performance berücksichtigen</h2>
+
+<p>
+Große bewegliche Konstruktionen können auf Client und Server
+anspruchsvoller sein als statische Gebäude.
+</p>
+
+<p>
+Deshalb sollten Flughäfen, Hangars und große Fluggeräte nicht
+unnötig mit hunderten zusätzlichen beweglichen Komponenten
+überladen werden.
+</p>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">12 // ENGINEERING WORKFLOW</div>
+<h2>Empfohlener Arbeitsablauf</h2>
+
+<ol>
+<li>Flugzeugkonzept planen.</li>
+<li>Rumpf und Tragflächen bauen.</li>
+<li>Gewicht und Schwerpunkt überprüfen.</li>
+<li>Antrieb integrieren.</li>
+<li>Ersten Testflug durchführen.</li>
+<li>Probleme isolieren.</li>
+<li>Konstruktion optimieren.</li>
+<li>Erst danach dekorative Details hinzufügen.</li>
+</ol>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">13 // RISE OF NATIONS APPLICATION</div>
+<h2>Einsatz im Modpack</h2>
+
+<p>
+Create Aeronautics eröffnet im Modpack eine zusätzliche Transportebene.
+Zusammen mit Create, Zügen, Fahrzeugen und weiteren technischen Mods
+kann dadurch ein vollständiges Logistiknetz entstehen.
+</p>
+
+<ul>
+<li>Regionale Flughäfen.</li>
+<li>Industrieflugplätze.</li>
+<li>Militärische Luftwaffenstützpunkte.</li>
+<li>Private Spielerhangars.</li>
+<li>Transportflugzeuge.</li>
+<li>Große internationale Verkehrsnetze.</li>
+</ul>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">14 // PROFESSOR DOCTRINE</div>
+<h2>Das Wichtigste zum Mitnehmen</h2>
+
+<ul>
+<li>Der Lift Patch ist eine unterstützende Komponente.</li>
+<li>Er ersetzt Create Aeronautics nicht.</li>
+<li>Flugzeugkonstruktion bleibt entscheidend.</li>
+<li>Versionskompatibilität ist besonders wichtig.</li>
+<li>Flugzeuge können Teil einer großen Create-Logistik werden.</li>
+<li>Bei Fehlern zuerst die beteiligten Versionen und Konstruktionen prüfen.</li>
+</ul>
+
+<div class="warning">
+<div class="warning-title">FINAL PRINCIPLE</div>
+<p>
+Bei technischen Addons gilt: Je kleiner der Patch, desto wichtiger
+ist die Kompatibilität. Nicht jede sichtbare Fehlfunktion bedeutet,
+dass das komplette Flugzeugsystem defekt ist.
+</p>
+</div>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">15 // REFERENCE DATA</div>
+<h2>Originalquellen</h2>
+
+<div class="sources">
+
+<a href="https://modrinth.com/mod/create-aeronautics"
+   target="_blank"
+   rel="noopener">
+CREATE AERONAUTICS // MODRINTH
+</a>
+
+<a href="https://modrinth.com/mod/create"
+   target="_blank"
+   rel="noopener">
+CREATE // MODRINTH
+</a>
+
+</div>
+
+</section>
+
+
+<a class="back" href="wiki.html">
+← ZURÜCK ZUR WIKI
+</a>
+
+</main>
+
+<footer>
+RISE OF NATIONS // CREATE AERONAUTICS LIFT PATCH // TACTICAL KNOWLEDGE DATABASE
+</footer>
+
+</body>
+</html>
