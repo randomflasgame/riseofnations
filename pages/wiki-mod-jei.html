@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RISE OF NATIONS // WIKI // JEI</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background:
+        linear-gradient(rgba(5,10,16,0.95), rgba(5,10,16,0.98)),
+        repeating-linear-gradient(
+            0deg,
+            rgba(255,255,255,0.02) 0px,
+            rgba(255,255,255,0.02) 1px,
+            transparent 1px,
+            transparent 4px
+        );
+    color: #d7e0e8;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.65;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(90deg, rgba(0,80,130,0.04) 1px, transparent 1px),
+        linear-gradient(rgba(0,80,130,0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(7,13,20,0.97);
+    border-bottom: 1px solid #263746;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.45);
+}
+
+.header-inner {
+    max-width: 1400px;
+    margin: auto;
+    min-height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+}
+
+.logo {
+    color: #d7aa3a;
+    font-weight: 900;
+    letter-spacing: 3px;
+    font-size: 20px;
+}
+
+.logo span {
+    display: block;
+    color: #758796;
+    font-size: 9px;
+    letter-spacing: 3px;
+    margin-top: 3px;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    justify-content: flex-end;
+}
+
+nav a {
+    color: #aebdca;
+    text-decoration: none;
+    border: 1px solid #263746;
+    padding: 9px 12px;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    transition: 0.2s;
+}
+
+nav a:hover {
+    color: #fff;
+    border-color: #d7aa3a;
+    background: rgba(215,170,58,0.08);
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 60px 24px 100px;
+}
+
+.status {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    border: 1px solid #31503b;
+    color: #79c68c;
+    padding: 7px 12px;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #58c879;
+    box-shadow: 0 0 10px #58c879;
+}
+
+h1 {
+    margin: 0;
+    color: #d7aa3a;
+    font-size: clamp(42px, 7vw, 86px);
+    line-height: 0.95;
+    letter-spacing: 4px;
+    font-weight: 900;
+}
+
+.subtitle {
+    color: #80909e;
+    font-size: 13px;
+    letter-spacing: 3px;
+    margin-top: 16px;
+    margin-bottom: 45px;
+}
+
+.info-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.info-box {
+    background: rgba(13,23,32,0.9);
+    border: 1px solid #263746;
+    padding: 18px;
+}
+
+.info-label {
+    color: #697b89;
+    font-size: 9px;
+    letter-spacing: 2px;
+    margin-bottom: 7px;
+}
+
+.info-value {
+    color: #d7e0e8;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.section {
+    background: rgba(10,18,26,0.92);
+    border: 1px solid #263746;
+    margin-top: 18px;
+    padding: 28px;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.2);
+}
+
+.section h2 {
+    color: #d7aa3a;
+    font-size: 18px;
+    letter-spacing: 2px;
+    margin: 0 0 18px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #263746;
+}
+
+.section h3 {
+    color: #cbd6de;
+    font-size: 14px;
+    letter-spacing: 1px;
+    margin-top: 27px;
+}
+
+.section p {
+    color: #aab7c1;
+    font-size: 14px;
+}
+
+.section ul,
+.section ol {
+    color: #aab7c1;
+    padding-left: 24px;
+}
+
+.section li {
+    margin-bottom: 8px;
+}
+
+.tip {
+    border-left: 3px solid #d7aa3a;
+    background: rgba(215,170,58,0.06);
+    padding: 17px 20px;
+    margin: 20px 0;
+    color: #c8c0aa;
+}
+
+.warning {
+    border-left: 3px solid #c94d4d;
+    background: rgba(120,30,30,0.08);
+    padding: 17px 20px;
+    margin: 20px 0;
+    color: #c7a6a6;
+}
+
+.command {
+    background: #050b10;
+    border: 1px solid #1d2c38;
+    padding: 16px 18px;
+    color: #7fc8e8;
+    font-family: "Courier New", monospace;
+    font-size: 13px;
+    overflow-x: auto;
+    margin: 15px 0;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+}
+
+.card {
+    border: 1px solid #263746;
+    background: rgba(14,24,33,0.8);
+    padding: 20px;
+}
+
+.card strong {
+    display: block;
+    color: #d7aa3a;
+    font-size: 13px;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.card span {
+    color: #93a4b0;
+    font-size: 13px;
+}
+
+.sources a {
+    color: #7fc8e8;
+    text-decoration: none;
+}
+
+.sources a:hover {
+    text-decoration: underline;
+}
+
+.back {
+    display: inline-block;
+    margin-top: 35px;
+    color: #d7aa3a;
+    border: 1px solid #5a4925;
+    padding: 12px 18px;
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+}
+
+.back:hover {
+    background: rgba(215,170,58,0.1);
+}
+
+footer {
+    border-top: 1px solid #263746;
+    padding: 30px 24px;
+    text-align: center;
+    color: #536370;
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+@media (max-width: 850px) {
+    .header-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 14px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+
+    nav {
+        justify-content: flex-start;
+    }
+
+    .info-strip,
+    .grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 560px) {
+    .container {
+        padding: 40px 15px 70px;
+    }
+
+    .info-strip,
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section {
+        padding: 20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-inner">
+
+        <div class="logo">
+            RISE OF NATIONS
+            <span>TACTICAL KNOWLEDGE DATABASE</span>
+        </div>
+
+        <nav>
+            <a href="../index.html">COMMAND</a>
+            <a href="../index.html#intelligence">INTELLIGENCE</a>
+            <a href="server.html">SERVER</a>
+            <a href="database.html">DATABASE</a>
+            <a href="download.html">DOWNLOAD</a>
+            <a href="communications.html">COMMUNICATIONS</a>
+            <a href="wiki.html">WIKI</a>
+        </nav>
+
+    </div>
+</header>
+
+<main class="container">
+
+    <div class="status">
+        <span class="status-dot"></span>
+        DATABASE // SYSTEM OPERATIONAL
+    </div>
+
+    <h1>JEI</h1>
+
+    <div class="subtitle">
+        ITEM DATABASE // RECIPE ANALYSIS // PRODUCTION INTELLIGENCE
+    </div>
+
+    <div class="info-strip">
+
+        <div class="info-box">
+            <div class="info-label">SYSTEM</div>
+            <div class="info-value">JEI</div>
+        </div>
+
+        <div class="info-box">
+            <div class="info-label">MINECRAFT</div>
+            <div class="info-value">1.21.1</div>
+        </div>
+
+        <div class="info-box">
+            <div class="info-label">ROLE</div>
+            <div class="info-value">DATABASE</div>
+        </div>
+
+        <div class="info-box">
+            <div class="info-label">STATUS</div>
+            <div class="info-value">OPERATIONAL</div>
+        </div>
+
+    </div>
+
+    <section class="section">
+
+        <h2>01 // SYSTEM OVERVIEW</h2>
+
+        <p>
+            JEI steht für <strong>Just Enough Items</strong> und ist eine der
+            wichtigsten Informationsschnittstellen im RISE OF NATIONS-Modpack.
+        </p>
+
+        <p>
+            Statt Rezepte auswendig lernen oder ständig externe Webseiten
+            durchsuchen zu müssen, kannst du direkt im Spiel nach Items,
+            Blöcken und Rezepten suchen.
+        </p>
+
+        <p>
+            Gerade bei einem großen Modpack wie RISE OF NATIONS ist JEI
+            praktisch unverzichtbar. Das Modpack enthält sehr viele Mods,
+            Gegenstände, Maschinen und Produktionsketten.
+        </p>
+
+        <div class="tip">
+            <strong>GRUNDREGEL:</strong>
+            Wenn du nicht weißt, wie ein Gegenstand hergestellt wird,
+            suche ihn zuerst in JEI.
+        </div>
+
+    </section>
+
+    <section class="section">
+
+        <h2>02 // DIE SUCHLEISTE</h2>
+
+        <p>
+            Die Suchfunktion ist das wichtigste Werkzeug von JEI.
+            Du kannst dort nach Namen von Items, Blöcken und anderen
+            Einträgen suchen.
+        </p>
+
+        <p>
+            Während du tippst, wird die Liste automatisch eingeschränkt.
+            Dadurch kannst du selbst in einem riesigen Modpack schnell
+            bestimmte Einträge finden.
+        </p>
+
+        <h3>Effiziente Suche</h3>
+
+        <ol>
+            <li>Öffne dein Inventar.</li>
+            <li>Suche das benötigte Item.</li>
+            <li>Schränke die Suche mit wenigen eindeutigen Begriffen ein.</li>
+            <li>Wähle den passenden Eintrag aus.</li>
+            <li>Untersuche anschließend Rezept und Verwendung.</li>
+        </ol>
+
+        <div class="tip">
+            Suche nicht immer nach dem kompletten Namen.
+            Ein markanter Teil des Namens reicht häufig aus.
+        </div>
+
+    </section>
+
+    <section class="section">
+
+        <h2>03 // REZEPT ANZEIGEN</h2>
+
+        <p>
+            Wenn du ein Item gefunden hast, kannst du dir normalerweise
+            anzeigen lassen, wie es hergestellt wird.
+        </p>
+
+        <p>
+            Dadurch kannst du die komplette Produktionskette rückwärts
+            untersuchen.
+        </p>
+
+        <div class="command">
+            PRODUKT
+            ↓
+            REZEPT
+            ↓
+            ZUTATEN
+            ↓
+            ZUTATEN DER ZUTATEN
+            ↓
+            GRUNDRESSOURCEN
+        </div>
+
+        <p>
+            Genau diese Funktion macht JEI besonders wertvoll:
+            Du kannst von einem Endprodukt bis zu den benötigten
+            Ausgangsmaterialien zurückgehen.
+        </p>
+
+    </section>
+
+    <section class="section">
+
+        <h2>04 // VERWENDUNG EINES ITEMS</h2>
+
+        <p>
+            Die umgekehrte Richtung ist genauso wichtig.
+            Statt zu fragen, wie ein Item hergestellt wird, kannst du
+            herausfinden, wofür es verwendet wird.
+        </p>
+
+        <p>
+            Das ist besonders hilfreich bei Ressourcen, die in mehreren
+            Mods verwendet werden.
+        </p>
+
+        <div class="tip">
+            Wenn du einen Rohstoff gefunden hast, überprüfe seine
+            Verwendungen. Dadurch erkennst du oft schon früh, welche
+            Produktionsketten später wichtig werden.
+        </div>
+
+    </section>
+
+    <section class="section">
+
+        <h2>05 // JEI BEI CREATE</h2>
+
+        <p>
+            In RISE OF NATIONS spielt die Kombination aus JEI und Create
+            eine besonders wichtige Rolle.
+        </p>
+
+        <p>
+            JEI zeigt dir, welche Zutaten und Verarbeitungsschritte
+            benötigt werden. Create beziehungsweise Ponder hilft dir
+            anschließend dabei, die mechanische Umsetzung zu verstehen.
+        </p>
+
+        <div class="command">
+            JEI
+            =
+            WAS WIRD BENÖTIGT?
+
+            CREATE / PONDER
+            =
+            WIE WIRD ES PRODUZIERT?
+        </div>
+
+        <p>
+            Für komplexe Create-Produktionen solltest du deshalb beide
+            Systeme zusammen verwenden.
+        </p>
+
+    </section>
+
+    <section class="section">
+
+        <h2>06 // REZEPTE SIND NICHT IMMER EINFACH</h2>
+
+        <p>
+            In einem großen Modpack kann ein Item mehrere verschiedene
+            Rezepte besitzen.
+        </p>
+
+        <p>
+            Das bedeutet, dass die erste angezeigte Möglichkeit nicht
+            automatisch die beste oder einzige Lösung ist.
+        </p>
+
+        <p>
+            Besonders bei Ressourcen und Zwischenprodukten solltest du
+            überprüfen, ob weitere Rezepte existieren.
+        </p>
+
+        <div class="warning">
+            Verlasse dich bei komplexen Produktionsketten nicht blind auf
+            das erste gefundene Rezept. Prüfe alternative Herstellungswege.
+        </div>
+
+    </section>
+
+    <section class="section">
+
+        <h2>07 // ALTERNATIVE PRODUKTIONSWEGE</h2>
+
+        <p>
+            Ein Rohstoff kann beispielsweise auf verschiedene Arten
+            verarbeitet werden.
+        </p>
+
+        <p>
+            Das ist für RISE OF NATIONS besonders interessant, weil Create,
+            Farmer's Delight, Aquaculture, technische Erweiterungen und
+            weitere Mods miteinander interagieren können.
+        </p>
+
+        <p>
+            Bei der Planung einer Fabrik solltest du deshalb nicht nur fragen:
+        </p>
+
+        <div class="command">
+            "KANN ICH DAS HERSTELLEN?"
+        </div>
+
+        <p>
+            sondern auch:
+        </p>
+
+        <div class="command">
+            "WELCHER HERSTELLUNGSWEG IST FÜR MEINE FABRIK AM SINNVOLLSTEN?"
+        </div>
+
+    </section>
+
+    <section class="section">
+
+        <h2>08 // ITEM-DETAILS</h2>
+
+        <p>
+            JEI dient nicht nur dazu, Rezepte zu zeigen.
+            Je nach Eintrag können zusätzliche Informationen verfügbar sein,
+            beispielsweise der Mod, aus dem ein Gegenstand stammt.
+        </p>
+
+        <p>
+            Bei einem großen Modpack ist diese Information sehr wertvoll,
+            weil ähnliche Gegenstände von unterschiedlichen Mods existieren
+            können.
+        </p>
+
+        <div class="grid">
+
+            <div class="card">
+                <strong>ITEM IDENTIFICATION</strong>
+                <span>
+                    Erkennen, welchen Gegenstand du tatsächlich vor dir hast.
+                </span>
+            </div>
+
+            <div class="card">
+                <strong>MOD SOURCE</strong>
+                <span>
+                    Erkennen, welcher Mod den Eintrag bereitstellt.
+                </span>
+            </div>
+
+            <div class="card">
+                <strong>RECIPE</strong>
+                <span>
+                    Herausfinden, wie der Gegenstand hergestellt wird.
+                </span>
+            </div>
+
+            <div class="card">
+                <strong>USAGES</strong>
+                <span>
+                    Herausfinden, wo der Gegenstand verwendet werden kann.
+                </span>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="section">
+
+        <h2>09 // JEI UND INVENTARPLANUNG</h2>
+
+        <p>
+            JEI kann dir helfen, deine nächsten Produktionsschritte zu planen,
+            bevor du überhaupt Materialien gesammelt hast.
+        </p>
+
+        <p>
+            Beispiel:
+        </p>
+
+        <div class="command">
+            ZIEL: FORTGESCHRITTENE MASCHINE
+
+            ↓
+
+            BENÖTIGTE KOMPONENTEN
+
+            ↓
+
+            ZWISCHENPRODUKTE
+
+            ↓
+
+            GRUNDRESSOURCEN
+
+            ↓
+
+            SAMMEL- UND PRODUKTIONSPLAN
+        </div>
+
+        <p>
+            Dadurch kannst du große Bauprojekte vorbereiten, anstatt während
+            des Bauens ständig feststellen zu müssen, dass wichtige
+            Komponenten fehlen.
+        </p>
+
+    </section>
+
+    <section class="section">
+
+        <h2>10 // JEI ALS LERNWERKZEUG</h2>
+
+        <p>
+            JEI ist nicht nur eine Rezeptliste.
+            Bei einem großen Modpack kannst du es als Lernwerkzeug verwenden.
+        </p>
+
+        <p>
+            Wenn du einen neuen Mod entdeckst, kannst du seine Gegenstände
+            durchsuchen und dabei erkennen, welche Materialien, Maschinen
+            und Produktionswege zusammengehören.
+        </p>
+
+        <p>
+            Auf diese Weise bekommst du mit der Zeit ein Verständnis dafür,
+            wie die verschiedenen Systeme des Modpacks miteinander verbunden
+            sind.
+        </p>
+
+    </section>
+
+    <section class="section">
+
+        <h2>11 // JEI + FARMING</h2>
+
+        <p>
+            Auch bei Landwirtschaft und Nahrung ist JEI wichtig.
+        </p>
+
+        <p>
+            Bei Mods wie Farmer's Delight, Vinery, Brewery oder anderen
+            Nahrungs- und Landwirtschaftssystemen können Zutaten mehrfach
+            verarbeitet werden.
+        </p>
+
+        <p>
+            Wenn du ein bestimmtes Gericht oder Produkt herstellen möchtest,
+            kannst du dich vom fertigen Produkt rückwärts zu den benötigten
+            Zutaten arbeiten.
+        </p>
+
+    </section>
+
+    <section class="section">
+
+        <h2>12 // JEI + TECHNIK</h2>
+
+        <p>
+            Bei technischen Mods ist JEI besonders wertvoll, weil Maschinen
+            häufig mehrere Komponenten benötigen.
+        </p>
+
+        <p>
+            Anstatt alle benötigten Materialien einzeln zu notieren, kannst
+            du die Rezeptkette direkt im Spiel verfolgen.
+        </p>
+
+        <div class="tip">
+            Bei komplexen Maschinen lohnt es sich, die komplette Kette
+            zunächst von oben nach unten zu analysieren.
+        </div>
+
+    </section>
+
+    <section class="section">
+
+        <h2>13 // HÄUFIGE FEHLER</h2>
+
+        <h3>Falsches Item ausgewählt</h3>
+
+        <p>
+            Viele Mods besitzen ähnliche oder identisch benannte Materialien.
+            Prüfe deshalb immer, ob du den richtigen Eintrag ausgewählt hast.
+        </p>
+
+        <h3>Nur ein Rezept angesehen</h3>
+
+        <p>
+            Bei mehreren Rezepten kann eine Alternative wesentlich effizienter
+            sein.
+        </p>
+
+        <h3>Verwendungen ignoriert</h3>
+
+        <p>
+            Gerade bei seltenen Ressourcen solltest du prüfen, wofür sie
+            später noch gebraucht werden.
+        </p>
+
+        <h3>Produktionskette nicht vollständig geprüft</h3>
+
+        <p>
+            Ein Rezept kann mehrere Zwischenprodukte benötigen.
+            Gehe deshalb gegebenenfalls mehrere Ebenen zurück.
+        </p>
+
+    </section>
+
+    <section class="section">
+
+        <h2>14 // EFFIZIENTE ARBEITSWEISE</h2>
+
+        <ol>
+            <li>Definiere dein Zielprodukt.</li>
+            <li>Suche das Produkt in JEI.</li>
+            <li>Prüfe alle verfügbaren Rezepte.</li>
+            <li>Untersuche die benötigten Zwischenprodukte.</li>
+            <li>Verfolge die Kette bis zu den Grundressourcen.</li>
+            <li>Überlege, welche Ressourcen du bereits besitzt.</li>
+            <li>Plane anschließend deine Produktion.</li>
+        </ol>
+
+        <div class="tip">
+            Diese Methode spart bei großen Modpacks sehr viel Zeit,
+            weil du nicht planlos Materialien sammelst.
+        </div>
+
+    </section>
+
+    <section class="section">
+
+        <h2>15 // JEI IM MULTIPLAYER</h2>
+
+        <p>
+            Auf einem Multiplayer-Server ist JEI besonders hilfreich,
+            wenn mehrere Spieler unterschiedliche Aufgaben übernehmen.
+        </p>
+
+        <p>
+            Ein Spieler kann beispielsweise Rohstoffe beschaffen,
+            während ein anderer die Produktionsanlage baut.
+            Über JEI können beide exakt nachvollziehen, welche Materialien
+            benötigt werden.
+        </p>
+
+        <div class="command">
+            RESSOURCEN
+            →
+            PRODUKTION
+            →
+            LOGISTIK
+            →
+            ENDPRODUKT
+        </div>
+
+    </section>
+
+    <section class="section">
+
+        <h2>16 // WANN DU JEI NICHT ALLEINE VERWENDEN SOLLTEST</h2>
+
+        <p>
+            JEI zeigt dir vor allem Rezepte und Verwendungen.
+            Es erklärt nicht automatisch jede komplexe Spielmechanik eines
+            Mods vollständig.
+        </p>
+
+        <p>
+            Bei Create solltest du beispielsweise zusätzlich Ponder verwenden.
+            Bei anderen Mods können deren eigene Dokumentationssysteme oder
+            Wikis wesentlich mehr Informationen enthalten.
+        </p>
+
+        <div class="warning">
+            JEI beantwortet nicht automatisch jede Frage über ein Mod.
+            Es zeigt dir hauptsächlich, wie Gegenstände miteinander
+            verbunden sind.
+        </div>
+
+    </section>
+
+    <section class="section">
+
+        <h2>17 // DIE WICHTIGSTE JEI-DENKWEISE</h2>
+
+        <p>
+            Wenn du einen Gegenstand nicht kennst, musst du nicht sofort
+            das Internet durchsuchen.
+        </p>
+
+        <div class="command">
+            ITEM UNBEKANNT?
+            ↓
+            JEI SUCHEN
+            ↓
+            REZEPT PRÜFEN
+            ↓
+            VERWENDUNGEN PRÜFEN
+            ↓
+            MOD IDENTIFIZIEREN
+            ↓
+            BEI BEDARF WIKI / PONDER ÖFFNEN
+        </div>
+
+        <p>
+            Damit wird JEI zur zentralen ersten Anlaufstelle innerhalb
+            des Modpacks.
+        </p>
+
+    </section>
+
+    <section class="section">
+
+        <h2>18 // RISE OF NATIONS EMPFEHLUNG</h2>
+
+        <p>
+            Da RISE OF NATIONS sehr viele Mods miteinander kombiniert,
+            solltest du JEI möglichst früh aktiv nutzen.
+        </p>
+
+        <p>
+            Besonders bei Create, Farmer's Delight, technischen Erweiterungen,
+            Fahrzeugen und anderen komplexen Systemen hilft JEI dabei,
+            die Vielzahl der verfügbaren Gegenstände überschaubar zu halten.
+        </p>
+
+        <div class="tip">
+            <strong>MERKSATZ:</strong>
+            Nicht wissen ist kein Problem.
+            Nicht nachschauen ist das Problem.
+        </div>
+
+    </section>
+
+    <section class="section sources">
+
+        <h2>19 // ORIGINALQUELLEN</h2>
+
+        <p>
+            Diese Wiki-Seite ist eine eigenständige Erklärung für
+            RISE OF NATIONS. Für technische Details, Änderungen und
+            versionsabhängige Informationen solltest du zusätzlich die
+            offiziellen Quellen des Mods verwenden.
+        </p>
+
+        <ul>
+            <li>
+                <a href="https://modrinth.com/mod/jei" target="_blank">
+                    JEI auf Modrinth
+                </a>
+            </li>
+
+            <li>
+                <a href="https://www.curseforge.com/minecraft/mc-mods/jei" target="_blank">
+                    JEI auf CurseForge
+                </a>
+            </li>
+
+            <li>
+                <a href="https://github.com/mezz/JustEnoughItems" target="_blank">
+                    JEI auf GitHub
+                </a>
+            </li>
+        </ul>
+
+    </section>
+
+    <a class="back" href="wiki-important.html">
+        ← ZURÜCK ZU WICHTIG
+    </a>
+
+</main>
+
+<footer>
+    RISE OF NATIONS // TACTICAL KNOWLEDGE DATABASE // JEI
+</footer>
+
+</body>
+</html>
