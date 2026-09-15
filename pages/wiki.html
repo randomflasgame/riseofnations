@@ -1,529 +1,541 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Wiki – RISE OF NATIONS</title>
+    <title>WIKI // RISE OF NATIONS</title>
 
-<style>
-* {
-    box-sizing: border-box;
-}
+    <script src="../config/site-config.js"></script>
 
-body {
-    margin: 0;
-    font-family: "Arial Narrow", Arial, sans-serif;
-    background:
-        linear-gradient(rgba(7, 12, 17, 0.95), rgba(7, 12, 17, 0.98)),
-        repeating-linear-gradient(
-            0deg,
-            rgba(255,255,255,0.025) 0px,
-            rgba(255,255,255,0.025) 1px,
-            transparent 1px,
-            transparent 5px
-        );
-    color: #d7e0e6;
-    min-height: 100vh;
-}
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-header {
-    border-bottom: 1px solid #31566b;
-    background: rgba(8, 15, 21, 0.97);
-    padding: 18px 6%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 30px;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-}
+        body {
+            min-height: 100vh;
+            background:
+                radial-gradient(circle at 50% 10%, rgba(25, 70, 95, 0.22), transparent 35%),
+                linear-gradient(135deg, #05080b, #0a1117 50%, #05080b);
+            color: #dce8ef;
+            font-family: Arial, Helvetica, sans-serif;
+        }
 
-.logo {
-    color: #d6ad55;
-    font-size: 22px;
-    font-weight: 900;
-    letter-spacing: 3px;
-    white-space: nowrap;
-}
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #1e3440;
+            background: rgba(5, 10, 14, 0.96);
+            backdrop-filter: blur(12px);
+        }
 
-.logo span {
-    display: block;
-    color: #7895a5;
-    font-size: 10px;
-    letter-spacing: 2px;
-    margin-top: 4px;
-}
+        .header-inner {
+            width: min(1450px, 94%);
+            margin: auto;
+            min-height: 78px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
 
-nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    justify-content: flex-end;
-}
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            color: #fff;
+            text-decoration: none;
+        }
 
-nav a {
-    color: #9db1bd;
-    text-decoration: none;
-    border: 1px solid #294552;
-    padding: 8px 11px;
-    font-size: 11px;
-    letter-spacing: 1px;
-    background: rgba(12, 26, 34, 0.8);
-    transition: 0.2s;
-}
+        .brand-emblem {
+            width: 43px;
+            height: 43px;
+            border: 2px solid #b89543;
+            display: grid;
+            place-items: center;
+            color: #b89543;
+            background: #101820;
+            font-size: 19px;
+            font-weight: 900;
+            transform: rotate(45deg);
+        }
 
-nav a:hover {
-    color: #e1b75e;
-    border-color: #c49a42;
-    background: #162630;
-}
+        .brand-emblem span {
+            transform: rotate(-45deg);
+        }
 
-.container {
-    width: min(1180px, 92%);
-    margin: auto;
-}
+        .brand-title {
+            font-size: 16px;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
 
-.hero {
-    padding: 70px 0 45px;
-    border-bottom: 1px solid #263e4a;
-}
+        .brand-subtitle {
+            margin-top: 4px;
+            color: #627985;
+            font-size: 8px;
+            letter-spacing: 2px;
+        }
 
-.eyebrow {
-    color: #5e9fc0;
-    font-size: 12px;
-    letter-spacing: 4px;
-    font-weight: bold;
-    margin-bottom: 14px;
-}
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            gap: 6px;
+        }
 
-h1 {
-    margin: 0;
-    color: #f0f3f4;
-    font-size: clamp(48px, 8vw, 90px);
-    letter-spacing: 4px;
-    line-height: 0.95;
-}
+        nav a {
+            color: #8da5b1;
+            text-decoration: none;
+            padding: 11px 12px;
+            font-size: 10px;
+            letter-spacing: 1.5px;
+            border: 1px solid transparent;
+            transition: 0.2s ease;
+        }
 
-.subtitle {
-    max-width: 850px;
-    margin-top: 22px;
-    color: #91a7b3;
-    font-size: 17px;
-    line-height: 1.7;
-}
+        nav a:hover {
+            color: #e8f3f8;
+            border-color: #294858;
+            background: #0b1820;
+        }
 
-/* CATEGORY AREA */
+        main {
+            width: min(1100px, 92%);
+            margin: auto;
+            padding: 80px 0;
+        }
 
-.section-title {
-    margin-top: 45px;
-    margin-bottom: 20px;
-    color: #d6ad55;
-    font-size: 18px;
-    letter-spacing: 2px;
-}
+        .eyebrow {
+            color: #b89543;
+            font-size: 10px;
+            letter-spacing: 4px;
+            font-weight: bold;
+            margin-bottom: 18px;
+        }
 
-.category-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-}
+        .hero {
+            padding: 50px 0 60px;
+            border-bottom: 1px solid #1c303b;
+        }
 
-.category {
-    display: block;
-    text-decoration: none;
-    color: inherit;
-    border: 1px solid #294958;
-    background:
-        linear-gradient(
-            135deg,
-            rgba(18, 42, 54, 0.95),
-            rgba(8, 19, 26, 0.95)
-        );
-    padding: 25px;
-    min-height: 150px;
-    position: relative;
-    transition: 0.2s;
-}
+        h1 {
+            font-size: clamp(42px, 7vw, 82px);
+            line-height: 0.95;
+            letter-spacing: 4px;
+            color: #edf4f7;
+            margin-bottom: 22px;
+        }
 
-.category:hover {
-    transform: translateY(-3px);
-    border-color: #c49a42;
-    background:
-        linear-gradient(
-            135deg,
-            rgba(31, 57, 70, 0.98),
-            rgba(12, 27, 35, 0.98)
-        );
-}
+        h1 span {
+            color: #5da1c7;
+        }
 
-.category::after {
-    content: "OPEN DATABASE →";
-    position: absolute;
-    right: 18px;
-    bottom: 15px;
-    color: #5c8293;
-    font-size: 9px;
-    letter-spacing: 1px;
-}
+        .hero p {
+            max-width: 760px;
+            color: #8197a2;
+            font-size: 14px;
+            line-height: 1.8;
+        }
 
-.category-icon {
-    font-size: 28px;
-    margin-bottom: 12px;
-}
+        .wiki-header {
+            margin-top: 35px;
+            border: 1px solid #294553;
+            background:
+                linear-gradient(145deg, rgba(17, 32, 41, 0.96), rgba(6, 13, 18, 0.96));
+            padding: 30px;
+        }
 
-.category h2 {
-    margin: 0 0 8px;
-    color: #e0b85d;
-    font-size: 18px;
-    letter-spacing: 1px;
-}
+        .wiki-label {
+            color: #506d79;
+            font-size: 8px;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
 
-.category p {
-    margin: 0;
-    color: #8ea3ae;
-    font-size: 13px;
-    line-height: 1.6;
-}
+        .wiki-title {
+            color: #dce8ef;
+            font-size: 22px;
+            letter-spacing: 2px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
 
-/* MOD DATABASE */
+        .wiki-description {
+            color: #788f9a;
+            font-size: 12px;
+            line-height: 1.8;
+        }
 
-.mod-section {
-    margin-top: 55px;
-    padding-top: 35px;
-    border-top: 1px solid #263e4a;
-}
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 14px;
+        }
 
-.mod-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-}
+        .category {
+            display: block;
+            padding: 24px;
+            border: 1px solid #203b49;
+            background: #09141b;
+            color: #dce8ef;
+            text-decoration: none;
+            transition: 0.2s ease;
+        }
 
-.mod-card {
-    display: block;
-    text-decoration: none;
-    border: 1px solid #243f4c;
-    background: rgba(9, 22, 29, 0.85);
-    padding: 16px;
-    color: #b9c8cf;
-    transition: 0.2s;
-}
+        .category:hover {
+            transform: translateY(-3px);
+            border-color: #5da1c7;
+            background: #0c1b24;
+        }
 
-.mod-card:hover {
-    border-color: #568ca7;
-    color: #e0b85d;
-    background: rgba(18, 39, 49, 0.95);
-}
+        .category-label {
+            color: #b89543;
+            font-size: 8px;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
 
-.mod-name {
-    font-weight: bold;
-    font-size: 14px;
-    letter-spacing: 0.5px;
-}
+        .category-title {
+            font-size: 15px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
 
-.mod-type {
-    margin-top: 6px;
-    color: #627f8c;
-    font-size: 9px;
-    letter-spacing: 1.5px;
-}
+        .category-text {
+            color: #657d88;
+            font-size: 10px;
+            line-height: 1.6;
+        }
 
-.notice {
-    margin: 35px 0;
-    padding: 20px;
-    border-left: 4px solid #3d91ba;
-    background: rgba(24, 61, 78, 0.22);
-    color: #9fb4bf;
-    line-height: 1.7;
-}
+        .info-section {
+            margin-top: 45px;
+        }
 
-.back {
-    display: inline-block;
-    margin: 45px 0 60px;
-    color: #d8b35b;
-    text-decoration: none;
-    border: 1px solid #866b32;
-    padding: 12px 18px;
-    font-size: 12px;
-    letter-spacing: 1px;
-}
+        .section-title {
+            color: #d5e1e6;
+            font-size: 13px;
+            letter-spacing: 3px;
+            margin-bottom: 18px;
+        }
 
-.back:hover {
-    background: #302719;
-}
+        .info-box {
+            border-left: 2px solid #315b70;
+            padding: 18px 22px;
+            background: rgba(9, 20, 27, 0.7);
+            color: #788f9a;
+            font-size: 12px;
+            line-height: 1.8;
+        }
 
-footer {
-    border-top: 1px solid #294553;
-    padding: 28px 6%;
-    text-align: center;
-    color: #607782;
-    font-size: 11px;
-    letter-spacing: 1px;
-}
+        footer {
+            width: min(1100px, 92%);
+            margin: auto;
+            padding: 25px 0 40px;
+            border-top: 1px solid #1c303b;
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            color: #455c67;
+            font-size: 9px;
+            letter-spacing: 1.5px;
+        }
 
-@media (max-width: 850px) {
-    .category-grid,
-    .mod-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+        @media (max-width: 800px) {
 
-    header {
-        align-items: flex-start;
-        flex-direction: column;
-    }
+            .header-inner {
+                padding: 15px 0;
+                flex-direction: column;
+                align-items: flex-start;
+            }
 
-    nav {
-        justify-content: flex-start;
-    }
-}
+            nav {
+                justify-content: flex-start;
+            }
 
-@media (max-width: 550px) {
-    .category-grid,
-    .mod-grid {
-        grid-template-columns: 1fr;
-    }
+            .category-grid {
+                grid-template-columns: 1fr;
+            }
+        }
 
-    h1 {
-        font-size: 50px;
-    }
-}
-</style>
+        @media (max-width: 550px) {
+
+            main {
+                padding-top: 45px;
+            }
+
+            .wiki-header {
+                padding: 22px;
+            }
+
+            footer {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
 <header>
 
-    <div class="logo">
-        RISE OF NATIONS
-        <span>TACTICAL KNOWLEDGE DATABASE</span>
-    </div>
+    <div class="header-inner">
 
-    <nav>
-        <a href="../index.html">COMMAND</a>
-        <a href="intelligence.html">INTELLIGENCE</a>
-        <a href="server.html">SERVER</a>
-        <a href="database.html">DATABASE</a>
-        <a href="download.html">DOWNLOAD</a>
-        <a href="communications.html">COMMUNICATIONS</a>
-        <a href="wiki.html">WIKI</a>
-    </nav>
+        <a href="../index.html" class="brand">
+
+            <div class="brand-emblem">
+                <span>R</span>
+            </div>
+
+            <div>
+                <div class="brand-title">
+                    RISE OF NATIONS
+                </div>
+
+                <div class="brand-subtitle">
+                    COMMAND & CONTROL NETWORK
+                </div>
+            </div>
+
+        </a>
+
+
+        <nav>
+
+            <a href="communications.html">
+                COMMUNICATIONS
+            </a>
+
+            <a href="intelligence.html">
+                INTELLIGENCE
+            </a>
+
+            <a href="server.html">
+                SERVER
+            </a>
+
+            <a href="database.html">
+                DATABASE
+            </a>
+
+            <a href="download.html">
+                DOWNLOAD
+            </a>
+
+            <a href="wiki.html">
+                WIKI
+            </a>
+
+        </nav>
+
+    </div>
 
 </header>
 
-<main class="container">
+
+<main>
 
     <section class="hero">
 
         <div class="eyebrow">
-            KNOWLEDGE SYSTEM // PLAYER DATABASE
+            KNOWLEDGE SYSTEM // WIKI
         </div>
 
-        <h1>WIKI</h1>
+        <h1>
+            RISE OF<br>
+            <span>NATIONS WIKI</span>
+        </h1>
 
-        <p class="subtitle">
-            Technische Dokumentation, Mod-Anleitungen und Informationen
-            für das RISE OF NATIONS Modpack.
-            Von grundlegenden Systemen bis zu komplexen Maschinen,
-            Waffen und Automatisierung.
+        <p id="heroDescription">
+            PLATZHALTER
         </p>
 
     </section>
 
 
-    <!-- HAUPTKATEGORIEN -->
+    <section class="wiki-header">
 
-    <div class="section-title">
-        KNOWLEDGE CATEGORIES
-    </div>
+        <div class="wiki-label">
+            KNOWLEDGE DATABASE
+        </div>
 
-    <div class="category-grid">
+        <div
+            id="wikiTitle"
+            class="wiki-title"
+        >
+            PLATZHALTER
+        </div>
 
-        <a class="category" href="wiki-important.html">
-            <div class="category-icon">🔴</div>
-            <h2>WICHTIG</h2>
-            <p>
-                Die wichtigsten Mods und Systeme,
-                die jeder Spieler kennen sollte.
-            </p>
+        <div
+            id="wikiDescription"
+            class="wiki-description"
+        >
+            PLATZHALTER
+        </div>
+
+    </section>
+
+
+    <section class="category-grid">
+
+        <a
+            href="wiki-important.html"
+            class="category"
+        >
+
+            <div class="category-label">
+                PRIORITY
+            </div>
+
+            <div class="category-title">
+                WICHTIG
+            </div>
+
+            <div class="category-text">
+                Grundlegende Informationen,
+                wichtige Mods und zentrale
+                Spielmechaniken.
+            </div>
+
         </a>
 
-        <a class="category" href="wiki-useful.html">
-            <div class="category-icon">🟡</div>
-            <h2>NÜTZLICH</h2>
-            <p>
-                Hilfreiche Mods, Werkzeuge und Systeme
-                für den normalen Spielbetrieb.
-            </p>
+
+        <a
+            href="wiki-useful.html"
+            class="category"
+        >
+
+            <div class="category-label">
+                REFERENCE
+            </div>
+
+            <div class="category-title">
+                NÜTZLICH
+            </div>
+
+            <div class="category-text">
+                Hilfreiche Systeme, Werkzeuge,
+                Funktionen und zusätzliche
+                Informationen.
+            </div>
+
         </a>
 
-        <a class="category" href="wiki-professor.html">
-            <div class="category-icon">🧠</div>
-            <h2>PROFESSOR</h2>
-            <p>
-                Komplexe Systeme, fortgeschrittene Technik
-                und tiefergehende Mechaniken.
-            </p>
+
+        <a
+            href="wiki-professor.html"
+            class="category"
+        >
+
+            <div class="category-label">
+                ADVANCED
+            </div>
+
+            <div class="category-title">
+                PROFESSOR
+            </div>
+
+            <div class="category-text">
+                Fortgeschrittene Systeme,
+                technische Zusammenhänge
+                und tiefere Modpack-Mechaniken.
+            </div>
+
         </a>
 
-    </div>
+    </section>
 
 
-    <!-- DIREKTER MOD-ZUGRIFF -->
+    <section class="info-section">
 
-    <section class="mod-section">
+        <div class="section-title">
+            DATABASE STATUS
+        </div>
+
+        <div class="info-box">
+
+            Das Wiki wird fortlaufend erweitert.
+            Neue Modifikationen, Systeme und Anleitungen
+            können jederzeit ergänzt werden.
+
+        </div>
+
+    </section>
+
+
+    <section class="info-section">
 
         <div class="section-title">
             DIRECT MOD ACCESS
         </div>
 
-        <p class="subtitle">
-            Bereits dokumentierte Mods können hier direkt geöffnet werden.
-            Weitere Einträge werden später ergänzt.
-        </p>
+        <div class="info-box">
 
-        <div class="mod-grid">
-
-            <a class="mod-card" href="wiki-mod-create.html">
-                <div class="mod-name">Create</div>
-                <div class="mod-type">TECHNOLOGY // AUTOMATION</div>
-            </a>
-
-            <a class="mod-card" href="wiki-mod-jei.html">
-                <div class="mod-name">JEI</div>
-                <div class="mod-type">UTILITY // RECIPES</div>
-            </a>
-
-            <a class="mod-card" href="wiki-mod-waystones.html">
-                <div class="mod-name">Waystones</div>
-                <div class="mod-type">TRAVEL // TELEPORTATION</div>
-            </a>
-
-            <a class="mod-card" href="wiki-mod-simple-voice-chat.html">
-                <div class="mod-name">Simple Voice Chat</div>
-                <div class="mod-type">COMMUNICATIONS // VOICE</div>
-            </a>
-
-            <a class="mod-card" href="wiki-mod-farmers-delight.html">
-                <div class="mod-name">Farmer's Delight</div>
-                <div class="mod-type">FOOD // AGRICULTURE</div>
-            </a>
-
-            <a class="mod-card" href="wiki-mod-sophisticated-backpacks.html">
-                <div class="mod-name">Sophisticated Backpacks</div>
-                <div class="mod-type">STORAGE // INVENTORY</div>
-            </a>
-
-            <a class="mod-card" href="wiki-mod-sophisticated-storage.html">
-                <div class="mod-name">Sophisticated Storage</div>
-                <div class="mod-type">STORAGE // LOGISTICS</div>
-            </a>
-
-            <a class="mod-card" href="wiki-mod-securitycraft.html">
-                <div class="mod-name">SecurityCraft</div>
-                <div class="mod-type">SECURITY // DEFENSE</div>
-            </a>
-
-            <a class="mod-card" href="wiki-mod-claims.html">
-                <div class="mod-name">Claim My Land</div>
-                <div class="mod-type">TERRITORY // PROTECTION</div>
-            </a>
-
-            <a class="mod-card" href="wiki-mod-timeless.html">
-                <div class="mod-name">Timeless & Classics</div>
-                <div class="mod-type">WEAPONS // FIREARMS</div>
-            </a>
-
-            <a class="mod-card" href="wiki-mod-aerocopycats.html">
-                <div class="mod-name">AeroCopycats</div>
-                <div class="mod-type">CREATE // BUILDING</div>
-            </a>
-
-            <a class="mod-card" href="wiki-mod-aerowarfare-compat.html">
-                <div class="mod-name">Aerowarfare Compat</div>
-                <div class="mod-type">COMPATIBILITY // WARFARE</div>
-            </a>
-
-            <a class="mod-card" href="wiki-mod-accelerated-decay.html">
-                <div class="mod-name">Accelerated Decay</div>
-                <div class="mod-type">WORLD // ENVIRONMENT</div>
-            </a>
-
-            <a class="mod-card" href="wiki-mod-adorable-hamster-pets.html">
-                <div class="mod-name">Adorable Hamster Pets</div>
-                <div class="mod-type">PETS // CREATURES</div>
-            </a>
-
-            <a class="mod-card" href="wiki-mod-alltheleaks.html">
-                <div class="mod-name">AllTheLeaks</div>
-                <div class="mod-type">UTILITY // DEBUGGING</div>
-            </a>
-
-            <a class="mod-card" href="wiki-mod-allthemodium.html">
-                <div class="mod-name">AllTheModium</div>
-                <div class="mod-type">RESOURCES // MATERIALS</div>
-            </a>
-
-            <a class="mod-card" href="wiki-mod-ambient-sounds.html">
-                <div class="mod-name">Ambient Sounds</div>
-                <div class="mod-type">AUDIO // IMMERSION</div>
-            </a>
-
-            <a class="mod-card" href="wiki-mod-appleskin.html">
-                <div class="mod-name">AppleSkin</div>
-                <div class="mod-type">UTILITY // FOOD</div>
-            </a>
-
-            <a class="mod-card" href="wiki-mod-aquacompat.html">
-                <div class="mod-name">AquaCompat</div>
-                <div class="mod-type">COMPATIBILITY // FISHING</div>
-            </a>
-
-            <a class="mod-card" href="wiki-mod-aquaculture-2.html">
-                <div class="mod-name">Aquaculture 2</div>
-                <div class="mod-type">FISHING // RESOURCES</div>
-            </a>
-
-            <a class="mod-card" href="wiki-mod-aquaculture-lava-fishing.html">
-                <div class="mod-name">Aquaculture Lava Fishing</div>
-                <div class="mod-type">FISHING // EXPANSION</div>
-            </a>
-
-            <a class="mod-card" href="wiki-mod-aquaculture-delight.html">
-                <div class="mod-name">Aquaculture Delight</div>
-                <div class="mod-type">FOOD // AQUACULTURE</div>
-            </a>
-
-            <a class="mod-card" href="wiki-mod-architectury.html">
-                <div class="mod-name">Architectury</div>
-                <div class="mod-type">LIBRARY // API</div>
-            </a>
+            Die wichtigsten bereits dokumentierten Mods sind
+            über die jeweiligen Wiki-Kategorien erreichbar.
 
         </div>
 
     </section>
 
-
-    <div class="notice">
-        <strong>DATABASE STATUS:</strong><br>
-        Die Wiki befindet sich im Aufbau.
-        Bereits vorhandene Dokumentationen sind direkt erreichbar.
-        Weitere Mod-Seiten können später Schritt für Schritt ergänzt werden.
-    </div>
-
-
-    <a class="back" href="../index.html">
-        ← ZURÜCK ZUM COMMAND CENTER
-    </a>
-
 </main>
 
 
 <footer>
-    RISE OF NATIONS // WIKI DATABASE // KNOWLEDGE SYSTEM
+
+    <div>
+        RISE OF NATIONS // KNOWLEDGE SYSTEM
+    </div>
+
+    <div id="footerVersion">
+        PLATZHALTER
+    </div>
+
 </footer>
+
+
+<script>
+
+    /*
+     * WIKI TITLE
+     */
+
+    document.getElementById("wikiTitle").textContent =
+        SITE_CONFIG.wiki.title;
+
+
+    /*
+     * WIKI DESCRIPTION
+     */
+
+    document.getElementById("wikiDescription").textContent =
+        SITE_CONFIG.wiki.description;
+
+
+    /*
+     * HERO DESCRIPTION
+     */
+
+    document.getElementById("heroDescription").textContent =
+        SITE_CONFIG.wiki.description;
+
+
+    /*
+     * FOOTER
+     */
+
+    document.getElementById("footerVersion").textContent =
+        SITE_CONFIG.website.name +
+        " // " +
+        SITE_CONFIG.modpack.version;
+
+</script>
 
 </body>
 </html>
