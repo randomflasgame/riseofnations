@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RISE OF NATIONS // ADORABLE HAMSTER PETS</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+    min-height:100vh;
+    background:
+        linear-gradient(rgba(5,10,15,.97),rgba(5,10,15,.99)),
+        repeating-linear-gradient(135deg,rgba(255,255,255,.018) 0 2px,transparent 2px 9px);
+    color:#dbe3e8;
+    font-family:"Segoe UI",Arial,sans-serif;
+}
+header{
+    background:rgba(5,10,15,.98);
+    border-bottom:1px solid #293944;
+    box-shadow:0 5px 25px rgba(0,0,0,.45);
+}
+.header-inner{
+    max-width:1500px;
+    margin:auto;
+    padding:18px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:30px;
+}
+.logo{
+    color:#d6b85c;
+    font-size:22px;
+    font-weight:950;
+    letter-spacing:3px;
+}
+.logo span{
+    display:block;
+    color:#687b86;
+    font-size:9px;
+    letter-spacing:2px;
+    margin-top:4px;
+}
+nav{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+    gap:7px;
+}
+nav a{
+    color:#9aabb4;
+    text-decoration:none;
+    padding:9px 11px;
+    border:1px solid transparent;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.2px;
+    transition:.2s;
+}
+nav a:hover{
+    color:#d6b85c;
+    background:#111b22;
+    border-color:#3b4d58;
+}
+main{
+    max-width:1250px;
+    margin:auto;
+    padding:70px 30px 100px;
+}
+.eyebrow{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:3px;
+    margin-bottom:15px;
+}
+h1{
+    color:#edf2f4;
+    font-size:clamp(38px,6vw,72px);
+    line-height:.95;
+    letter-spacing:3px;
+    font-weight:950;
+}
+.subtitle{
+    max-width:950px;
+    margin-top:22px;
+    color:#8497a2;
+    line-height:1.75;
+    font-size:15px;
+}
+.meta{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-top:38px;
+}
+.meta-box{
+    padding:18px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+.meta-label{
+    color:#596c77;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:8px;
+}
+.meta-value{
+    color:#d6b85c;
+    font-size:13px;
+    font-weight:900;
+}
+.section{
+    margin-top:35px;
+    padding:30px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+.section-number{
+    color:#526773;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:2px;
+    margin-bottom:9px;
+}
+h2{
+    color:#e1e8eb;
+    font-size:22px;
+    letter-spacing:1px;
+    margin-bottom:18px;
+}
+h3{
+    color:#d6b85c;
+    font-size:14px;
+    letter-spacing:1px;
+    margin:25px 0 10px;
+}
+p{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    margin-bottom:13px;
+}
+ul,ol{
+    margin:12px 0 18px 22px;
+}
+li{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    padding-left:5px;
+}
+.note{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#111c23;
+    border-left:3px solid #4d91bd;
+}
+.note-title{
+    color:#4d91bd;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+.warning{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#17140e;
+    border-left:3px solid #d6b85c;
+}
+.warning-title{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:18px;
+}
+th,td{
+    text-align:left;
+    padding:13px 14px;
+    border:1px solid #293c47;
+    font-size:12px;
+}
+th{
+    color:#d6b85c;
+    background:#111c23;
+    font-size:10px;
+    letter-spacing:1px;
+}
+td{
+    color:#8ea0a9;
+    background:#0a141a;
+}
+.sources{
+    display:grid;
+    gap:10px;
+    margin-top:15px;
+}
+.sources a{
+    display:block;
+    padding:13px 15px;
+    background:#101b22;
+    border:1px solid #293c47;
+    color:#9fb0b9;
+    text-decoration:none;
+    font-size:12px;
+    transition:.2s;
+}
+.sources a:hover{
+    color:#d6b85c;
+    border-color:#d6b85c;
+}
+.back{
+    display:inline-block;
+    margin-top:45px;
+    padding:12px 16px;
+    color:#d6b85c;
+    border:1px solid #4c4530;
+    text-decoration:none;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+}
+footer{
+    border-top:1px solid #202e36;
+    padding:25px 30px;
+    text-align:center;
+    color:#465861;
+    font-size:9px;
+    letter-spacing:2px;
+}
+@media(max-width:850px){
+    .header-inner{flex-direction:column;align-items:flex-start}
+    nav{justify-content:flex-start}
+    .meta{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:550px){
+    .meta{grid-template-columns:1fr}
+    main{padding:45px 18px 70px}
+    .section{padding:22px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="header-inner">
+
+<div class="logo">
+RISE OF NATIONS
+<span>TACTICAL KNOWLEDGE DATABASE</span>
+</div>
+
+<nav>
+<a href="../index.html">COMMAND</a>
+<a href="intelligence.html">INTELLIGENCE</a>
+<a href="server.html">SERVER</a>
+<a href="database.html">DATABASE</a>
+<a href="download.html">DOWNLOAD</a>
+<a href="communications.html">COMMUNICATIONS</a>
+<a href="wiki.html">WIKI</a>
+</nav>
+
+</div>
+</header>
+
+<main>
+
+<div class="eyebrow">
+PROFESSOR DATABASE // FAUNA // COMPANION SYSTEMS
+</div>
+
+<h1>ADORABLE HAMSTER PETS</h1>
+
+<p class="subtitle">
+Adorable Hamster Pets erweitert RISE OF NATIONS um kleine
+Hamster-Begleiter. Der Mod konzentriert sich auf Haustiere,
+Atmosphäre und die persönliche Gestaltung des eigenen
+Spielerlebens.
+</p>
+
+<div class="meta">
+
+<div class="meta-box">
+<div class="meta-label">MOD</div>
+<div class="meta-value">ADORABLE HAMSTER PETS</div>
+</div>
+
+<div class="meta-box">
+<div class="meta-label">VERSION</div>
+<div class="meta-value">3.6.1</div>
+</div>
+
+<div class="meta-box">
+<div class="meta-label">MINECRAFT</div>
+<div class="meta-value">1.21.1</div>
+</div>
+
+<div class="meta-box">
+<div class="meta-label">SYSTEM</div>
+<div class="meta-value">COMPANION</div>
+</div>
+
+</div>
+
+
+<section class="section">
+<div class="section-number">01 // SYSTEM OVERVIEW</div>
+<h2>Was ist Adorable Hamster Pets?</h2>
+
+<p>
+Der Mod fügt Hamster als zusätzliche Haustiere beziehungsweise
+Begleiter hinzu. Damit entsteht ein kleiner, nicht-industrieller
+Teil des Modpacks, der vor allem Atmosphäre und Individualisierung
+erweitert.
+</p>
+
+<p>
+Im Gegensatz zu vielen technischen Mods geht es hier nicht darum,
+eine Produktionskette zu optimieren. Der Wert liegt in der
+Beziehung zwischen Spieler, Haustier und eigener Basis.
+</p>
+
+<div class="note">
+<div class="note-title">COMPANION PRINCIPLE</div>
+<p>
+Nicht jedes System in RISE OF NATIONS muss effizient sein. Manche
+Systeme sollen einfach dafür sorgen, dass sich die eigene Basis
+lebendig anfühlt.
+</p>
+</div>
+</section>
+
+
+<section class="section">
+<div class="section-number">02 // HAMSTER SYSTEM</div>
+<h2>Hamster als Begleiter</h2>
+
+<p>
+Hamster können als kleine Begleiter in die eigene Welt integriert
+werden. Besonders in großen Basen können sie dazu beitragen, dass
+Wohnbereiche und persönliche Räume weniger steril wirken.
+</p>
+
+<ul>
+<li>Persönliche Haustierhaltung.</li>
+<li>Dekoration von Wohnbereichen.</li>
+<li>Begleiter für Spieler.</li>
+<li>Zusätzliche Atmosphäre.</li>
+<li>Individuelle Gestaltung der eigenen Basis.</li>
+</ul>
+</section>
+
+
+<section class="section">
+<div class="section-number">03 // HOME DESIGN</div>
+<h2>Hamster in der Basis</h2>
+
+<p>
+Für eine glaubwürdige Haustierhaltung sollte ein eigener kleiner
+Bereich eingerichtet werden.
+</p>
+
+<table>
+<tr>
+<th>BEREICH</th>
+<th>IDEEN</th>
+</tr>
+<tr>
+<td>Wohnzimmer</td>
+<td>Kleiner Haustierbereich</td>
+</tr>
+<tr>
+<td>Schlafzimmer</td>
+<td>Persönlicher Begleiter</td>
+</tr>
+<tr>
+<td>Farm</td>
+<td>Tier- und Landwirtschaftsbereich</td>
+</tr>
+<tr>
+<td>Tierstation</td>
+<td>Gemeinsamer Haustierbereich</td>
+</tr>
+<tr>
+<td>Dorf</td>
+<td>Kleine Tierhaltung</td>
+</tr>
+</table>
+</section>
+
+
+<section class="section">
+<div class="section-number">04 // SURVIVAL INTEGRATION</div>
+<h2>Integration in den Survival-Alltag</h2>
+
+<p>
+Ein Haustiermod funktioniert besonders gut, wenn die Spieler ihre
+Basis nicht nur als technische Produktionsstätte betrachten.
+</p>
+
+<p>
+Zwischen Fabriken, Lagern und Maschinen können Wohnräume,
+Gemeinschaftsbereiche und kleine Tierstationen eine wichtige
+soziale Ebene schaffen.
+</p>
+
+<ul>
+<li>Wohnviertel.</li>
+<li>Spielerhäuser.</li>
+<li>Gemeinschaftsgebäude.</li>
+<li>Tierbereiche.</li>
+<li>Gärten und Innenhöfe.</li>
+</ul>
+</section>
+
+
+<section class="section">
+<div class="section-number">05 // MULTIPLAYER</div>
+<h2>Haustiere im Multiplayer</h2>
+
+<p>
+Auf einem Multiplayer-Server können Haustiere Teil der Identität
+eines Spielers werden.
+</p>
+
+<p>
+Gerade auf großen Servern können unterschiedliche Spieler ihre
+eigenen Tiere und persönlichen Wohnbereiche besitzen.
+</p>
+
+<div class="note">
+<div class="note-title">COMMUNITY USE</div>
+<p>
+Haustiere können auch dabei helfen, Spielerbasen persönlicher und
+leichter wiedererkennbar zu machen.
+</p>
+</div>
+</section>
+
+
+<section class="section">
+<div class="section-number">06 // BASE BUILDING</div>
+<h2>Passende Gebäude</h2>
+
+<p>
+Für Haustiere eignen sich besonders kleine Gebäude und
+Nebeneinrichtungen.
+</p>
+
+<ul>
+<li>Tierhäuser.</li>
+<li>Kleine Ställe.</li>
+<li>Gartenhäuser.</li>
+<li>Wohngebäude.</li>
+<li>Innenhöfe.</li>
+<li>Dorfhäuser.</li>
+<li>Private Rückzugsräume.</li>
+</ul>
+
+<p>
+Mit den zahlreichen Bau- und Dekorationsmods von RISE OF NATIONS
+lassen sich solche Bereiche deutlich detaillierter gestalten.
+</p>
+</section>
+
+
+<section class="section">
+<div class="section-number">07 // DECORATION ECOSYSTEM</div>
+<h2>Zusammenspiel mit anderen Mods</h2>
+
+<p>
+Adorable Hamster Pets profitiert besonders von Mods, die
+Gebäude und Innenräume erweitern.
+</p>
+
+<table>
+<tr>
+<th>MOD-BEREICH</th>
+<th>NUTZEN</th>
+</tr>
+<tr>
+<td>Refurbished Furniture</td>
+<td>Einrichtung von Wohnräumen</td>
+</tr>
+<tr>
+<td>Macaw's Mods</td>
+<td>Türen, Fenster und Bauelemente</td>
+</tr>
+<tr>
+<td>Supplementaries</td>
+<td>Kleine Dekorationen und Utility</td>
+</tr>
+<tr>
+<td>Quark</td>
+<td>Zusätzliche Bau- und Weltfeatures</td>
+</tr>
+<tr>
+<td>Decocraft Nature</td>
+<td>Natürliche Gestaltung</td>
+</tr>
+</table>
+</section>
+
+
+<section class="section">
+<div class="section-number">08 // PET MANAGEMENT</div>
+<h2>Haustiere sinnvoll organisieren</h2>
+
+<p>
+Bei mehreren Tieren sollte darauf geachtet werden, dass sie nicht
+versehentlich in gefährliche Bereiche gelangen.
+</p>
+
+<ul>
+<li>Haustierbereiche absichern.</li>
+<li>Gefahrenzonen vermeiden.</li>
+<li>Produktionsanlagen abtrennen.</li>
+<li>Private Tierbereiche markieren.</li>
+<li>Bei Multiplayer-Projekten Besitz respektieren.</li>
+</ul>
+
+<div class="warning">
+<div class="warning-title">SAFETY NOTE</div>
+<p>
+Große Create-Anlagen, Kampfgebiete und automatisierte Maschinen
+sollten nicht direkt mit sensiblen Haustierbereichen verbunden
+werden.
+</p>
+</div>
+</section>
+
+
+<section class="section">
+<div class="section-number">09 // EXPLORATION</div>
+<h2>Haustier und Expedition</h2>
+
+<p>
+Begleiter können das Survival-Erlebnis persönlicher machen. Bei
+Expeditionen sollte jedoch berücksichtigt werden, dass nicht jedes
+Haustier für gefährliche Gebiete geeignet ist.
+</p>
+
+<p>
+Insbesondere Dimensionen und Kampfgebiete aus dem Modpack können
+deutlich gefährlicher sein als die normale Oberwelt.
+</p>
+</section>
+
+
+<section class="section">
+<div class="section-number">10 // PERFORMANCE</div>
+<h2>Performance</h2>
+
+<p>
+Einzelne kleine Haustiere sind normalerweise kein zentraler
+Performance-Faktor. Bei sehr großen Tieransammlungen können jedoch
+Entity-Anzahl und AI-Aktivität relevant werden.
+</p>
+
+<ul>
+<li>Keine unnötig großen Tiergruppen erzeugen.</li>
+<li>Große Tierbereiche sinnvoll begrenzen.</li>
+<li>Bei Serverproblemen Entity-Zahlen überprüfen.</li>
+<li>Performance-Probleme mit Spark untersuchen.</li>
+</ul>
+</section>
+
+
+<section class="section">
+<div class="section-number">11 // TROUBLESHOOTING</div>
+<h2>Fehleranalyse</h2>
+
+<h3>Haustier nicht sichtbar</h3>
+<p>
+Zunächst prüfen, ob der betreffende Bereich korrekt geladen wurde
+und ob andere Entity- oder Rendering-Mods Probleme verursachen.
+</p>
+
+<h3>Probleme nach einem Update</h3>
+<p>
+Bei Mod-Updates zuerst kontrollieren, ob die verwendete Version
+weiterhin für Minecraft 1.21.1 vorgesehen ist.
+</p>
+
+<h3>Probleme mit vielen Entities</h3>
+<p>
+Bei ungewöhnlich vielen Haustieren sollte die Anzahl reduziert und
+anschließend die Serverleistung erneut geprüft werden.
+</p>
+</section>
+
+
+<section class="section">
+<div class="section-number">12 // ROLEPLAY VALUE</div>
+<h2>Rollenspiel und Atmosphäre</h2>
+
+<p>
+Haustiere können auch als Bestandteil des persönlichen Rollenspiels
+verwendet werden.
+</p>
+
+<p>
+Ein Spieler kann beispielsweise als Farmer, Händler, Ingenieur,
+Militärangehöriger oder Bewohner einer Stadt auftreten und sein
+Haustier entsprechend in seine Geschichte integrieren.
+</p>
+
+<div class="note">
+<div class="note-title">WORLD BUILDING</div>
+<p>
+Kleine persönliche Details machen große Multiplayer-Welten
+glaubwürdiger.
+</p>
+</div>
+</section>
+
+
+<section class="section">
+<div class="section-number">13 // RISE OF NATIONS APPLICATION</div>
+<h2>Einsatz im Modpack</h2>
+
+<p>
+In RISE OF NATIONS ergänzt Adorable Hamster Pets die zahlreichen
+technischen, militärischen und abenteuerorientierten Mods um eine
+ruhigere und persönlichere Ebene.
+</p>
+
+<p>
+Besonders gut passt der Mod zu Spielerhäusern, Städten,
+Landwirtschaftsprojekten und dekorativen Basen.
+</p>
+
+<ul>
+<li>Private Spielerhäuser.</li>
+<li>Stadtviertel.</li>
+<li>Landwirtschaftliche Siedlungen.</li>
+<li>Gemeinschaftsgebäude.</li>
+<li>Tierstationen.</li>
+</ul>
+</section>
+
+
+<section class="section">
+<div class="section-number">14 // PROFESSOR DOCTRINE</div>
+<h2>Das Wichtigste zum Mitnehmen</h2>
+
+<ul>
+<li>Adorable Hamster Pets ist ein Companion- und Haustiermod.</li>
+<li>Der Schwerpunkt liegt auf Atmosphäre und Individualisierung.</li>
+<li>Haustierbereiche können in Spielerbasen integriert werden.</li>
+<li>Bau- und Dekorationsmods erweitern die Gestaltungsmöglichkeiten.</li>
+<li>Im Multiplayer können Haustiere Teil der Spieleridentität werden.</li>
+<li>Sehr große Entity-Mengen sollten aus Performance-Gründen vermieden werden.</li>
+</ul>
+
+<div class="warning">
+<div class="warning-title">FINAL PRINCIPLE</div>
+<p>
+Auch eine industrielle Welt braucht Orte, die nicht produzieren,
+kämpfen oder transportieren – manchmal braucht sie einfach ein
+kleines Haustier.
+</p>
+</div>
+</section>
+
+
+<section class="section">
+<div class="section-number">15 // REFERENCE DATA</div>
+<h2>Originalquellen</h2>
+
+<div class="sources">
+
+<a href="https://modrinth.com/"
+   target="_blank"
+   rel="noopener">
+MODRINTH // MOD DATABASE
+</a>
+
+<a href="https://www.curseforge.com/minecraft/mc-mods"
+   target="_blank"
+   rel="noopener">
+CURSEFORGE // MINECRAFT MOD DATABASE
+</a>
+
+</div>
+</section>
+
+
+<a class="back" href="wiki.html">
+← ZURÜCK ZUR WIKI
+</a>
+
+</main>
+
+<footer>
+RISE OF NATIONS // ADORABLE HAMSTER PETS // TACTICAL KNOWLEDGE DATABASE
+</footer>
+
+</body>
+</html>
