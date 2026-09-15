@@ -2,1900 +2,744 @@
 <html lang="de">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>FAQ // RISE OF NATIONS</title>
 
+    <link rel="stylesheet" href="../style.css">
     <script src="../config/site-config.js"></script>
-
-    <style>
-
-        * {
-            box-sizing: border-box;
-        }
-
-        html,
-        body {
-            margin: 0;
-            padding: 0;
-
-            background: #05080c;
-            color: #d7e2e9;
-
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        body {
-            min-height: 100vh;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        /* =========================================================
-           HEADER
-        ========================================================= */
-
-        header {
-            min-height: 78px;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            padding: 0 35px;
-
-            border-bottom: 1px solid rgba(100, 130, 150, 0.18);
-
-            background:
-                linear-gradient(
-                    180deg,
-                    rgba(12, 20, 28, 0.98),
-                    rgba(6, 11, 16, 0.98)
-                );
-
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-
-        .brand-symbol {
-            width: 42px;
-            height: 42px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            border: 1px solid #52728a;
-
-            color: #cbd9e2;
-            font-size: 18px;
-            font-weight: 900;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(50, 100, 130, 0.22),
-                    rgba(5, 10, 15, 0.8)
-                );
-        }
-
-        .brand-title {
-            font-weight: 900;
-            letter-spacing: 3px;
-            font-size: 15px;
-        }
-
-        .brand-subtitle {
-            color: #668196;
-            font-size: 9px;
-            letter-spacing: 2px;
-            margin-top: 4px;
-        }
-
-        nav {
-            display: flex;
-            gap: 5px;
-            flex-wrap: wrap;
-            justify-content: flex-end;
-        }
-
-        nav a {
-            padding: 10px 12px;
-
-            color: #8198a8;
-
-            font-size: 10px;
-            letter-spacing: 1.5px;
-
-            border: 1px solid transparent;
-
-            transition: 0.2s;
-        }
-
-        nav a:hover,
-        nav a.active {
-            color: #dbe8ef;
-
-            border-color:
-                rgba(95, 140, 170, 0.35);
-
-            background:
-                rgba(35, 65, 85, 0.18);
-        }
-
-        /* =========================================================
-           PAGE
-        ========================================================= */
-
-        .page {
-            width: min(1450px, 92%);
-            margin: 0 auto;
-
-            padding: 60px 0 80px;
-        }
-
-        .classification {
-            color: #6388a0;
-
-            font-size: 10px;
-            letter-spacing: 4px;
-
-            margin-bottom: 18px;
-        }
-
-        h1 {
-            margin: 0;
-
-            font-size: clamp(45px, 7vw, 90px);
-            line-height: 0.95;
-
-            letter-spacing: 5px;
-
-            color: #e4edf2;
-        }
-
-        .intro {
-            max-width: 900px;
-
-            margin-top: 25px;
-
-            color: #7e96a5;
-
-            font-size: 14px;
-            line-height: 1.8;
-        }
-
-        /* =========================================================
-           IMPORTANT CONFIG
-        ========================================================= */
-
-        .configuration {
-            margin-top: 40px;
-
-            display: grid;
-            grid-template-columns:
-                repeat(4, 1fr);
-
-            gap: 10px;
-        }
-
-        .config-box {
-            padding: 20px;
-
-            border: 1px solid rgba(90, 125, 145, 0.28);
-
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(20, 34, 45, 0.9),
-                    rgba(7, 13, 19, 0.96)
-                );
-        }
-
-        .config-label {
-            color: #587386;
-
-            font-size: 8px;
-            letter-spacing: 2px;
-
-            margin-bottom: 9px;
-        }
-
-        .config-value {
-            color: #d4e0e7;
-
-            font-size: 15px;
-            font-weight: 700;
-
-            letter-spacing: 1px;
-        }
-
-        /* =========================================================
-           SECTION
-        ========================================================= */
-
-        .section {
-            margin-top: 50px;
-        }
-
-        .section-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            margin-bottom: 15px;
-
-            border-bottom:
-                1px solid rgba(90, 120, 140, 0.2);
-
-            padding-bottom: 12px;
-        }
-
-        .section-header h2 {
-            margin: 0;
-
-            color: #cbd8df;
-
-            font-size: 14px;
-            letter-spacing: 3px;
-        }
-
-        .section-number {
-            color: #4e7188;
-
-            font-size: 9px;
-            letter-spacing: 2px;
-        }
-
-        /* =========================================================
-           INSTALLATION
-        ========================================================= */
-
-        .steps {
-            display: grid;
-            grid-template-columns:
-                repeat(2, 1fr);
-
-            gap: 10px;
-        }
-
-        .step {
-            position: relative;
-
-            padding: 25px;
-
-            border:
-                1px solid rgba(90, 125, 145, 0.22);
-
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(16, 28, 38, 0.94),
-                    rgba(7, 13, 19, 0.97)
-                );
-        }
-
-        .step-number {
-            color: #527b95;
-
-            font-size: 10px;
-            letter-spacing: 3px;
-
-            margin-bottom: 15px;
-        }
-
-        .step h3 {
-            margin: 0 0 10px;
-
-            color: #dbe5eb;
-
-            font-size: 17px;
-            letter-spacing: 1px;
-        }
-
-        .step p {
-            margin: 0;
-
-            color: #78909f;
-
-            font-size: 12px;
-            line-height: 1.8;
-        }
-
-        .step strong {
-            color: #b9ceda;
-        }
-
-        .path {
-            display: inline-block;
-
-            margin-top: 12px;
-
-            padding: 8px 11px;
-
-            border:
-                1px solid rgba(90, 130, 155, 0.3);
-
-            background: rgba(3, 8, 12, 0.7);
-
-            color: #8eb2c8;
-
-            font-family: monospace;
-            font-size: 11px;
-        }
-
-        /* =========================================================
-           GOLDEN RULE
-        ========================================================= */
-
-        .golden-rule {
-            margin-top: 15px;
-
-            padding: 25px;
-
-            border:
-                1px solid rgba(166, 132, 55, 0.45);
-
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(67, 52, 20, 0.28),
-                    rgba(20, 17, 9, 0.75)
-                );
-        }
-
-        .golden-label {
-            color: #c9a956;
-
-            font-size: 9px;
-            letter-spacing: 3px;
-
-            margin-bottom: 10px;
-        }
-
-        .golden-rule p {
-            margin: 0;
-
-            color: #d7cfae;
-
-            font-size: 13px;
-            line-height: 1.8;
-        }
-
-        /* =========================================================
-           SETTINGS
-        ========================================================= */
-
-        .settings-grid {
-            display: grid;
-
-            grid-template-columns:
-                repeat(2, 1fr);
-
-            gap: 10px;
-        }
-
-        .setting {
-            padding: 23px;
-
-            border:
-                1px solid rgba(90, 125, 145, 0.22);
-
-            background:
-                rgba(9, 16, 22, 0.9);
-        }
-
-        .setting h3 {
-            margin: 0 0 10px;
-
-            color: #d2dfe6;
-
-            font-size: 15px;
-        }
-
-        .setting p {
-            margin: 0;
-
-            color: #748c9b;
-
-            font-size: 12px;
-            line-height: 1.7;
-        }
-
-        .recommended {
-            display: inline-block;
-
-            margin-top: 12px;
-
-            padding: 7px 10px;
-
-            border:
-                1px solid rgba(76, 125, 150, 0.35);
-
-            color: #8eb3c9;
-
-            font-size: 9px;
-            letter-spacing: 1px;
-        }
-
-        /* =========================================================
-           FAQ
-        ========================================================= */
-
-        .faq-grid {
-            display: grid;
-
-            grid-template-columns:
-                repeat(2, 1fr);
-
-            gap: 10px;
-        }
-
-        .faq-item {
-            padding: 23px;
-
-            border:
-                1px solid rgba(90, 125, 145, 0.2);
-
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(14, 25, 34, 0.92),
-                    rgba(7, 13, 19, 0.96)
-                );
-        }
-
-        .faq-item h3 {
-            margin: 0 0 12px;
-
-            color: #d3e0e7;
-
-            font-size: 14px;
-            line-height: 1.5;
-        }
-
-        .faq-item p {
-            margin: 0;
-
-            color: #758d9d;
-
-            font-size: 12px;
-            line-height: 1.8;
-        }
-
-        /* =========================================================
-           TROUBLESHOOTING
-        ========================================================= */
-
-        .troubleshooting {
-            display: grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
-            gap: 10px;
-        }
-
-        .problem {
-            padding: 23px;
-
-            border:
-                1px solid rgba(100, 75, 55, 0.25);
-
-            background:
-                rgba(20, 14, 10, 0.72);
-        }
-
-        .problem h3 {
-            margin: 0 0 10px;
-
-            color: #d4b899;
-
-            font-size: 14px;
-        }
-
-        .problem p {
-            margin: 0;
-
-            color: #8d8076;
-
-            font-size: 11px;
-            line-height: 1.7;
-        }
-
-        /* =========================================================
-           SUPPORT PROTOCOL
-        ========================================================= */
-
-        .support {
-            padding: 30px;
-
-            border:
-                1px solid rgba(85, 120, 145, 0.3);
-
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(17, 31, 42, 0.94),
-                    rgba(6, 12, 18, 0.97)
-                );
-        }
-
-        .support h2 {
-            margin: 0 0 15px;
-
-            color: #d7e3ea;
-
-            font-size: 17px;
-            letter-spacing: 2px;
-        }
-
-        .support p {
-            margin: 0;
-
-            color: #7d95a4;
-
-            font-size: 12px;
-            line-height: 1.8;
-        }
-
-        .support-list {
-            margin-top: 20px;
-            padding-left: 20px;
-
-            color: #91a8b7;
-
-            font-size: 12px;
-            line-height: 2;
-        }
-
-        /* =========================================================
-           FOOTER
-        ========================================================= */
-
-        footer {
-            border-top:
-                1px solid rgba(100, 130, 150, 0.18);
-
-            padding: 25px 5%;
-
-            display: flex;
-            justify-content: space-between;
-
-            color: #536a79;
-
-            font-size: 9px;
-            letter-spacing: 1.5px;
-
-            background:
-                rgba(4, 8, 12, 0.95);
-        }
-
-        /* =========================================================
-           MOBILE
-        ========================================================= */
-
-        @media (max-width: 1000px) {
-
-            header {
-                flex-direction: column;
-                gap: 15px;
-                padding: 18px;
-            }
-
-            .configuration {
-                grid-template-columns:
-                    repeat(2, 1fr);
-            }
-
-            .troubleshooting {
-                grid-template-columns:
-                    repeat(2, 1fr);
-            }
-
-        }
-
-        @media (max-width: 700px) {
-
-            .page {
-                width: 90%;
-                padding-top: 40px;
-            }
-
-            .steps,
-            .settings-grid,
-            .faq-grid,
-            .troubleshooting {
-                grid-template-columns: 1fr;
-            }
-
-            .configuration {
-                grid-template-columns: 1fr;
-            }
-
-            h1 {
-                font-size: 48px;
-            }
-
-            footer {
-                flex-direction: column;
-                gap: 10px;
-                text-align: center;
-            }
-
-        }
-
-    </style>
-
 </head>
-
 
 <body>
 
+    <div class="top-line"></div>
 
-<!-- =========================================================
-     HEADER
-========================================================= -->
+    <header>
+        <nav class="ron-nav">
 
-<header>
-
-    <a href="../index.html" class="brand">
-
-        <div class="brand-symbol">
-            RN
-        </div>
-
-        <div>
-
-            <div class="brand-title">
+            <div class="ron-brand">
                 RISE OF NATIONS
+                <span>SUPPORT COMMAND</span>
             </div>
 
-            <div class="brand-subtitle">
-                COMMAND NETWORK
+            <div class="ron-nav-links">
+                <a href="communications.html">COMMUNICATIONS</a>
+                <a href="intelligence.html">INTELLIGENCE</a>
+                <a href="server.html">SERVER</a>
+                <a href="database.html">DATABASE</a>
+                <a href="download.html">DOWNLOAD</a>
+                <a href="wiki.html">WIKI</a>
+                <a href="faq.html" class="active">FAQ</a>
             </div>
 
-        </div>
-
-    </a>
-
-
-    <nav>
-
-        <a href="communications.html">
-            COMMUNICATIONS
-        </a>
-
-        <a href="intelligence.html">
-            INTELLIGENCE
-        </a>
-
-        <a href="server.html">
-            SERVER
-        </a>
-
-        <a href="database.html">
-            DATABASE
-        </a>
-
-        <a href="download.html">
-            DOWNLOAD
-        </a>
-
-        <a href="wiki.html">
-            WIKI
-        </a>
-
-        <a href="faq.html" class="active">
-            FAQ
-        </a>
-
-    </nav>
-
-</header>
+        </nav>
+    </header>
 
 
-<!-- =========================================================
-     MAIN
-========================================================= -->
+    <main class="ron-page">
 
-<main class="page">
-
-    <div class="classification">
-        TECHNICAL SUPPORT // INSTALLATION // TROUBLESHOOTING
-    </div>
-
-    <h1>
-        FAQ
-    </h1>
-
-    <p class="intro">
-
-        Diese Seite erklärt die Installation und die wichtigsten
-        Einstellungen für das Rise of Nations Modpack.
-        Wenn etwas nicht funktioniert, bitte zuerst die Punkte
-        unten prüfen, bevor einzelne Mods verändert oder entfernt werden.
-
-    </p>
-
-
-    <!-- =====================================================
-         OFFICIAL CONFIGURATION
-    ====================================================== -->
-
-    <section class="configuration">
-
-        <div class="config-box">
-
-            <div class="config-label">
-                MINECRAFT VERSION
-            </div>
-
-            <div class="config-value">
-                1.21.1
-            </div>
-
+        <div class="ron-classification">
+            <span>SUPPORT // FAQ & TROUBLESHOOTING</span>
+            <span class="ron-live">● SUPPORT SYSTEM ONLINE</span>
         </div>
 
 
-        <div class="config-box">
+        <h1 class="ron-page-title">FAQ</h1>
 
-            <div class="config-label">
-                MOD LOADER
-            </div>
-
-            <div class="config-value">
-                NeoForge 21.1.248
-            </div>
-
-        </div>
+        <p class="ron-page-subtitle">
+            Installation, configuration and troubleshooting information
+            for the RISE OF NATIONS Minecraft modpack.
+        </p>
 
 
-        <div class="config-box">
+        <div class="ron-status-grid">
 
-            <div class="config-label">
-                JAVA
-            </div>
-
-            <div class="config-value">
-                DEFAULT VERSION
-            </div>
-
-        </div>
-
-
-        <div class="config-box">
-
-            <div class="config-label">
-                EMPFOHLENER RAM
-            </div>
-
-            <div class="config-value">
-                8–12 GB
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         INSTALLATION
-    ====================================================== -->
-
-    <section class="section">
-
-        <div class="section-header">
-
-            <h2>
-                MODPACK INSTALLIEREN
-            </h2>
-
-            <div class="section-number">
-                PROCEDURE // 01
-            </div>
-
-        </div>
-
-
-        <div class="steps">
-
-
-            <article class="step">
-
-                <div class="step-number">
-                    STEP 01
+            <div class="ron-status">
+                <div class="ron-status-label">
+                    MINECRAFT
                 </div>
 
-                <h3>
-                    CurseForge installieren
-                </h3>
-
-                <p>
-
-                    Installiere den <strong>CurseForge Launcher</strong>
-                    und öffne ihn.
-
-                    Du brauchst kein komplett neues Minecraft-Profil
-                    außerhalb von CurseForge anzulegen.
-
-                </p>
-
-            </article>
-
-
-            <article class="step">
-
-                <div class="step-number">
-                    STEP 02
+                <div
+                    class="ron-status-value ron-gold"
+                    id="minecraftVersion"
+                >
+                    —
                 </div>
-
-                <h3>
-                    Eigenes Profil erstellen
-                </h3>
-
-                <p>
-
-                    Erstelle in CurseForge ein eigenes
-                    <strong>Minecraft-Profil</strong>.
-
-                    Das Profil muss für die Version
-
-                    <strong>1.21.1</strong>
-
-                    erstellt werden.
-
-                    Als Modloader wird
-
-                    <strong>NeoForge 21.1.248</strong>
-
-                    verwendet.
-
-                </p>
-
-            </article>
-
-
-            <article class="step">
-
-                <div class="step-number">
-                    STEP 03
-                </div>
-
-                <h3>
-                    Profil einmal starten
-                </h3>
-
-                <p>
-
-                    Starte das neue Profil einmal.
-
-                    Dadurch erstellt CurseForge automatisch
-                    die benötigte Ordnerstruktur.
-
-                    Warte, bis Minecraft vollständig gestartet
-                    wurde und schließe es anschließend wieder.
-
-                </p>
-
-            </article>
-
-
-            <article class="step">
-
-                <div class="step-number">
-                    STEP 04
-                </div>
-
-                <h3>
-                    Profilordner öffnen
-                </h3>
-
-                <p>
-
-                    Gehe in CurseForge zu deinem Profil.
-
-                    Neben dem
-
-                    <strong>PLAY</strong>
-
-                    Button befindet sich das Menü
-
-                    <strong>⋯</strong>.
-
-                    Öffne dort
-
-                    <strong>Open Folder</strong>.
-
-                    <br><br>
-
-                    <strong>
-                        Genau diesen Ordner brauchen wir.
-                    </strong>
-
-                </p>
-
-            </article>
-
-
-            <article class="step">
-
-                <div class="step-number">
-                    STEP 05
-                </div>
-
-                <h3>
-                    Modpack-ZIP öffnen
-                </h3>
-
-                <p>
-
-                    Nimm die bereitgestellte Datei:
-
-                    <br>
-
-                    <span class="path">
-                        im minecraft ordner entpacken.zip
-                    </span>
-
-                    Öffne die ZIP-Datei.
-
-                    Darin befindet sich der fertige
-
-                    <strong>mods</strong>-Ordner.
-
-                </p>
-
-            </article>
-
-
-            <article class="step">
-
-                <div class="step-number">
-                    STEP 06
-                </div>
-
-                <h3>
-                    Mods-Ordner kopieren
-                </h3>
-
-                <p>
-
-                    Kopiere den
-
-                    <strong>mods</strong>-Ordner
-
-                    aus der ZIP-Datei in den gerade über
-                    CurseForge geöffneten Profilordner.
-
-                    Am Ende muss der Ordner ungefähr so aussehen:
-
-                    <br>
-
-                    <span class="path">
-                        DEIN_CURSEFORGE_PROFIL/mods/
-                    </span>
-
-                </p>
-
-            </article>
-
-
-            <article class="step">
-
-                <div class="step-number">
-                    STEP 07
-                </div>
-
-                <h3>
-                    CurseForge erneut öffnen
-                </h3>
-
-                <p>
-
-                    Schließe die ZIP-Datei.
-
-                    Starte anschließend dein CurseForge-Profil
-                    erneut.
-
-                    CurseForge sollte jetzt die Mods erkennen.
-
-                </p>
-
-            </article>
-
-
-            <article class="step">
-
-                <div class="step-number">
-                    STEP 08
-                </div>
-
-                <h3>
-                    Modpack starten
-                </h3>
-
-                <p>
-
-                    Drücke
-
-                    <strong>PLAY</strong>
-
-                    und warte.
-
-                    Der erste Start kann deutlich länger dauern
-                    als ein normales Minecraft.
-
-                    Das ist bei einem großen Modpack normal.
-
-                </p>
-
-            </article>
-
-        </div>
-
-
-        <div class="golden-rule">
-
-            <div class="golden-label">
-                GOLDEN RULE // VERY IMPORTANT
             </div>
 
-            <p>
-
-                <strong>
-                    NICHT selbst nach dem normalen Minecraft-Ordner suchen.
-                </strong>
-
-                Öffne immer zuerst dein CurseForge-Profil und gehe über
-
-                <strong>
-                    ⋯ → Open Folder
-                </strong>.
-
-                Genau dort gehört der
-
-                <strong>
-                    mods
-                </strong>
-
-                Ordner hinein.
-
-                <br><br>
-
-                Wenn du den falschen Minecraft-Ordner öffnest,
-                kann es passieren, dass CurseForge die Mods nicht erkennt.
-
-            </p>
-
-        </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         SETTINGS
-    ====================================================== -->
-
-    <section class="section">
-
-        <div class="section-header">
-
-            <h2>
-                EMPFOHLENE EINSTELLUNGEN
-            </h2>
-
-            <div class="section-number">
-                CONFIGURATION // 02
-            </div>
-
-        </div>
-
-
-        <div class="settings-grid">
-
-
-            <article class="setting">
-
-                <h3>
-                    RAM / ARBEITSSPEICHER
-                </h3>
-
-                <p>
-
-                    Für das Modpack empfehlen wir grundsätzlich
-                    <strong>8 bis 12 GB RAM</strong> für das CurseForge-Profil.
-
-                    <br><br>
-
-                    Ich selbst verwende für mein Profil
-
-                    <strong>14 GB</strong>.
-
-                    Mehr RAM ist aber nicht automatisch besser.
-                    Wenn dein PC insgesamt wenig Arbeitsspeicher besitzt,
-                    solltest du nicht unnötig viel reservieren.
-
-                </p>
-
-                <div class="recommended">
-                    EMPFEHLUNG: 8–12 GB
+            <div class="ron-status">
+                <div class="ron-status-label">
+                    NEOFORGE
                 </div>
 
-            </article>
+                <div
+                    class="ron-status-value ron-blue"
+                    id="neoforgeVersion"
+                >
+                    —
+                </div>
+            </div>
 
-
-            <article class="setting">
-
-                <h3>
+            <div class="ron-status">
+                <div class="ron-status-label">
                     JAVA
-                </h3>
-
-                <p>
-
-                    Für das Modpack soll die Java-Einstellung von
-                    CurseForge auf
-
-                    <strong>Default Version</strong>
-
-                    bleiben.
-
-                    Du musst normalerweise keine eigene Java-Version
-                    herunterladen oder manuell auswählen.
-
-                </p>
-
-                <div class="recommended">
-                    JAVA: DEFAULT VERSION
                 </div>
 
-            </article>
+                <div class="ron-status-value">
+                    DEFAULT
+                </div>
+            </div>
 
-
-            <article class="setting">
-
-                <h3>
-                    RENDER DISTANCE
-                </h3>
-
-                <p>
-
-                    Eine hohe Sichtweite sieht gut aus,
-                    benötigt bei großen Welten und vielen Mods
-                    aber deutlich mehr Leistung.
-
-                    Wenn du FPS-Probleme hast,
-                    reduziere zuerst die Render Distance.
-
-                </p>
-
-                <div class="recommended">
-                    BEI PROBLEMEN REDUZIEREN
+            <div class="ron-status">
+                <div class="ron-status-label">
+                    RAM
                 </div>
 
-            </article>
-
-
-            <article class="setting">
-
-                <h3>
-                    SIMULATION DISTANCE
-                </h3>
-
-                <p>
-
-                    Die Simulation Distance bestimmt,
-                    wie weit Minecraft Spielmechaniken aktiv
-                    simuliert.
-
-                    Eine niedrigere Einstellung kann CPU-Leistung
-                    sparen.
-
-                </p>
-
-                <div class="recommended">
-                    MODERAT EINSTELLEN
+                <div class="ron-status-value ron-green">
+                    8–12 GB
                 </div>
-
-            </article>
-
-
-            <article class="setting">
-
-                <h3>
-                    SHADER
-                </h3>
-
-                <p>
-
-                    Shader sind nicht notwendig.
-
-                    Wenn du Probleme mit FPS oder Speicherverbrauch
-                    hast, solltest du Shader zunächst deaktivieren.
-
-                </p>
-
-                <div class="recommended">
-                    BEI SCHWACHER HARDWARE: AUS
-                </div>
-
-            </article>
-
-
-            <article class="setting">
-
-                <h3>
-                    PARTICLES
-                </h3>
-
-                <p>
-
-                    Bei Performance-Problemen können Partikel
-                    reduziert werden.
-
-                    Besonders bei großen Maschinen,
-                    Explosionen und vielen Effekten kann dies helfen.
-
-                </p>
-
-                <div class="recommended">
-                    BEI FPS-PROBLEMEN REDUZIEREN
-                </div>
-
-            </article>
-
-
-            <article class="setting">
-
-                <h3>
-                    ENTITY DISTANCE
-                </h3>
-
-                <p>
-
-                    Eine hohe Entity Distance kann bei vielen
-                    Tieren, Maschinen, Fahrzeugen und anderen
-                    Objekten zusätzliche Leistung benötigen.
-
-                </p>
-
-                <div class="recommended">
-                    NICHT UNNÖTIG MAXIMIEREN
-                </div>
-
-            </article>
-
-
-            <article class="setting">
-
-                <h3>
-                    JAVA / MODPACK GRUNDREGEL
-                </h3>
-
-                <p>
-
-                    Wenn das Modpack funktioniert,
-                    solltest du Java nicht manuell verändern.
-
-                    Erst wenn tatsächlich ein Java-Problem
-                    angezeigt wird, sollte die Java-Konfiguration
-                    untersucht werden.
-
-                </p>
-
-                <div class="recommended">
-                    DEFAULT BEIBEHALTEN
-                </div>
-
-            </article>
-
-        </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         FAQ
-    ====================================================== -->
-
-    <section class="section">
-
-        <div class="section-header">
-
-            <h2>
-                HÄUFIGE FRAGEN
-            </h2>
-
-            <div class="section-number">
-                FAQ // 03
             </div>
 
         </div>
 
 
-        <div class="faq-grid">
+        <div class="section-title">
+            INSTALLATION
+            <span>STANDARD DEPLOYMENT PROCEDURE</span>
+        </div>
 
 
-            <article class="faq-item">
+        <div class="ron-grid">
 
-                <h3>
-                    Warum sehe ich meine Mods nicht?
-                </h3>
+            <div class="ron-card">
+
+                <div class="ron-panel-header">
+                    <div class="ron-panel-title">
+                        STEP 01
+                    </div>
+
+                    <div class="ron-panel-code">
+                        PROFILE
+                    </div>
+                </div>
+
+                <h3>CREATE CURSEFORGE PROFILE</h3>
 
                 <p>
-
-                    Kontrolliere zuerst, ob du wirklich den
-                    richtigen CurseForge-Profilordner geöffnet hast.
-
-                    Gehe über
-
-                    <strong>
-                        ⋯ → Open Folder
-                    </strong>
-
-                    und kontrolliere, ob dort ein
-
-                    <strong>
-                        mods
-                    </strong>
-
-                    Ordner vorhanden ist.
-
+                    Open CurseForge and create or select the
+                    Minecraft profile used for RISE OF NATIONS.
                 </p>
 
-            </article>
+            </div>
 
 
-            <article class="faq-item">
+            <div class="ron-card">
 
-                <h3>
-                    Ich habe jetzt mods/mods. Was ist passiert?
-                </h3>
+                <div class="ron-panel-header">
+                    <div class="ron-panel-title">
+                        STEP 02
+                    </div>
+
+                    <div class="ron-panel-code">
+                        FOLDER
+                    </div>
+                </div>
+
+                <h3>OPEN PROFILE FOLDER</h3>
 
                 <p>
-
-                    Das ist ein häufiger Fehler.
-
-                    Du brauchst nicht den Inhalt des Mods-Ordners
-                    in einen zweiten Mods-Ordner zu kopieren.
-
-                    Es muss ungefähr so aussehen:
-
-                    <br><br>
-
-                    <strong>
-                        Profilordner → mods → Mod-Dateien
-                    </strong>
-
-                    <br><br>
-
-                    Nicht:
-
-                    <strong>
-                        Profilordner → mods → mods → Mod-Dateien
-                    </strong>
-
+                    Click the three dots next to the Play button
+                    and select <strong>Open Folder</strong>.
                 </p>
 
-            </article>
+            </div>
 
 
-            <article class="faq-item">
+            <div class="ron-card">
 
-                <h3>
-                    Muss ich jeden Mod einzeln installieren?
-                </h3>
+                <div class="ron-panel-header">
+                    <div class="ron-panel-title">
+                        STEP 03
+                    </div>
+
+                    <div class="ron-panel-code">
+                        PACKAGE
+                    </div>
+                </div>
+
+                <h3>DOWNLOAD PACKAGE</h3>
 
                 <p>
-
-                    Nein.
-
-                    Die bereitgestellte ZIP-Datei enthält bereits
-                    den fertigen
-
-                    <strong>
-                        mods
-                    </strong>
-
-                    Ordner.
-
-                    Du musst nicht jeden Mod einzeln suchen
-                    und herunterladen.
-
+                    Download the official RISE OF NATIONS package
+                    from the Download section.
                 </p>
 
-            </article>
+            </div>
 
 
-            <article class="faq-item">
+            <div class="ron-card">
 
-                <h3>
-                    Kann ich das Modpack mit normalem Minecraft starten?
-                </h3>
+                <div class="ron-panel-header">
+                    <div class="ron-panel-title">
+                        STEP 04
+                    </div>
+
+                    <div class="ron-panel-code">
+                        EXTRACT
+                    </div>
+                </div>
+
+                <h3>EXTRACT THE PACKAGE</h3>
 
                 <p>
-
-                    Nein.
-
-                    Das Modpack ist für
-
-                    <strong>
-                        Minecraft 1.21.1
-                    </strong>
-
-                    mit
-
-                    <strong>
-                        NeoForge 21.1.248
-                    </strong>
-
-                    vorgesehen.
-
-                    Verwende das dafür erstellte CurseForge-Profil.
-
+                    Extract the contents of the package directly
+                    into the CurseForge profile folder.
                 </p>
 
-            </article>
+            </div>
 
 
-            <article class="faq-item">
+            <div class="ron-card">
 
-                <h3>
-                    Welche Java-Version soll ich verwenden?
-                </h3>
+                <div class="ron-panel-header">
+                    <div class="ron-panel-title">
+                        STEP 05
+                    </div>
+
+                    <div class="ron-panel-code">
+                        VERIFY
+                    </div>
+                </div>
+
+                <h3>CHECK MODS FOLDER</h3>
 
                 <p>
-
-                    Lass CurseForge auf
-
-                    <strong>
-                        Default Version
-                    </strong>
-
-                    stehen.
-
-                    Eine manuelle Java-Auswahl ist normalerweise
-                    nicht notwendig.
-
+                    Make sure the profile contains the actual
+                    <strong>mods</strong> folder and not another
+                    nested <strong>mods/mods</strong> directory.
                 </p>
 
-            </article>
+            </div>
 
 
-            <article class="faq-item">
+            <div class="ron-card">
 
-                <h3>
-                    Wie viel RAM soll ich einstellen?
-                </h3>
+                <div class="ron-panel-header">
+                    <div class="ron-panel-title">
+                        STEP 06
+                    </div>
+
+                    <div class="ron-panel-code">
+                        LAUNCH
+                    </div>
+                </div>
+
+                <h3>START MINECRAFT</h3>
 
                 <p>
-
-                    Wir empfehlen
-
-                    <strong>
-                        8 bis 12 GB RAM
-                    </strong>
-
-                    für das Profil.
-
-                    Das eigene Profil des Entwicklers ist mit
-
-                    <strong>
-                        14 GB
-                    </strong>
-
-                    konfiguriert.
-
-                    Mehr ist jedoch nicht automatisch besser.
-
+                    Return to CurseForge and start the profile.
+                    The correct NeoForge installation should load.
                 </p>
 
-            </article>
+            </div>
+
+        </div>
 
 
-            <article class="faq-item">
+        <div class="ron-alert gold">
 
-                <h3>
-                    Minecraft braucht ewig zum Starten. Ist das normal?
-                </h3>
+            <strong>IMPORTANT</strong><br>
+
+            The most common installation mistake is extracting
+            the package into the wrong directory. Always use
+            <strong>CurseForge → Profile → ⋯ → Open Folder</strong>
+            before extracting the package.
+
+        </div>
+
+
+        <div class="section-title">
+            TECHNICAL CONFIGURATION
+            <span>RECOMMENDED SETTINGS</span>
+        </div>
+
+
+        <div class="ron-grid">
+
+            <div class="ron-card">
+
+                <h3>MINECRAFT VERSION</h3>
+
+                <div class="ron-data">
+
+                    <div class="ron-data-row">
+
+                        <span class="ron-data-label">
+                            REQUIRED
+                        </span>
+
+                        <span
+                            class="ron-data-value"
+                            id="configMinecraft"
+                        >
+                            —
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="ron-card">
+
+                <h3>NEOFORGE</h3>
+
+                <div class="ron-data">
+
+                    <div class="ron-data-row">
+
+                        <span class="ron-data-label">
+                            REQUIRED
+                        </span>
+
+                        <span
+                            class="ron-data-value"
+                            id="configNeoForge"
+                        >
+                            —
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="ron-card">
+
+                <h3>JAVA</h3>
+
+                <div class="ron-data">
+
+                    <div class="ron-data-row">
+
+                        <span class="ron-data-label">
+                            VERSION
+                        </span>
+
+                        <span class="ron-data-value">
+                            DEFAULT VERSION
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="ron-card">
+
+                <h3>RAM</h3>
+
+                <div class="ron-data">
+
+                    <div class="ron-data-row">
+
+                        <span class="ron-data-label">
+                            RECOMMENDED
+                        </span>
+
+                        <span class="ron-data-value">
+                            8–12 GB
+                        </span>
+
+                    </div>
+
+                    <div class="ron-data-row">
+
+                        <span class="ron-data-label">
+                            HIGH-END
+                        </span>
+
+                        <span class="ron-data-value">
+                            14 GB+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="section-title">
+            COMMON PROBLEMS
+            <span>TROUBLESHOOTING</span>
+        </div>
+
+
+        <div class="ron-grid">
+
+            <div class="ron-card">
+
+                <div class="ron-panel-header">
+                    <div class="ron-panel-title">
+                        PROBLEM 01
+                    </div>
+
+                    <div class="ron-panel-code">
+                        INSTALLATION
+                    </div>
+                </div>
+
+                <h3>MINECRAFT CRASHES ON START</h3>
 
                 <p>
-
-                    Bei einem großen Modpack kann der Start deutlich
-                    länger dauern als bei Vanilla Minecraft.
-
-                    Besonders der erste Start kann lange dauern.
-
-                    Nicht sofort den Launcher schließen.
-
+                    Verify the Minecraft version, NeoForge version
+                    and CurseForge profile. Make sure the package
+                    was extracted into the correct profile folder.
                 </p>
 
-            </article>
+                <div style="margin-top:14px;">
+                    <span class="ron-tag red">
+                        CHECK VERSION
+                    </span>
+                </div>
+
+            </div>
 
 
-            <article class="faq-item">
+            <div class="ron-card">
 
-                <h3>
-                    Das Spiel stürzt beim Start ab. Was soll ich tun?
-                </h3>
+                <div class="ron-panel-header">
+                    <div class="ron-panel-title">
+                        PROBLEM 02
+                    </div>
+
+                    <div class="ron-panel-code">
+                        MEMORY
+                    </div>
+                </div>
+
+                <h3>GAME RUNS OUT OF MEMORY</h3>
 
                 <p>
-
-                    Prüfe zuerst:
-
-                    <br><br>
-
-                    Minecraft-Version: <strong>1.21.1</strong><br>
-                    NeoForge: <strong>21.1.248</strong><br>
-                    Java: <strong>Default Version</strong><br>
-                    Mods-Ordner: <strong>richtig platziert</strong>
-
-                    <br><br>
-
-                    Wenn alles stimmt, sollte der genaue
-                    Crash-Fehler weiter untersucht werden.
-
+                    Increase the allocated RAM if your computer
+                    has enough available memory. Around 8–12 GB
+                    is recommended for the modpack.
                 </p>
 
-            </article>
+                <div style="margin-top:14px;">
+                    <span class="ron-tag gold">
+                        CHECK RAM
+                    </span>
+                </div>
+
+            </div>
 
 
-            <article class="faq-item">
+            <div class="ron-card">
 
-                <h3>
-                    Kann ich zusätzliche Mods installieren?
-                </h3>
+                <div class="ron-panel-header">
+                    <div class="ron-panel-title">
+                        PROBLEM 03
+                    </div>
+
+                    <div class="ron-panel-code">
+                        FILES
+                    </div>
+                </div>
+
+                <h3>MODS ARE NOT LOADING</h3>
 
                 <p>
-
-                    Technisch möglicherweise ja.
-
-                    Für den offiziellen Server können zusätzliche
-                    Mods aber zu Problemen oder
-                    Versionskonflikten führen.
-
-                    Für das Standard-Setup solltest du das Modpack
-                    unverändert verwenden.
-
+                    Check whether the mods are located directly
+                    inside the profile's <strong>mods</strong>
+                    folder and not inside a second nested folder.
                 </p>
 
-            </article>
+                <div style="margin-top:14px;">
+                    <span class="ron-tag red">
+                        CHECK PATH
+                    </span>
+                </div>
+
+            </div>
 
 
-            <article class="faq-item">
+            <div class="ron-card">
 
-                <h3>
-                    Kann ich Mods entfernen?
-                </h3>
+                <div class="ron-panel-header">
+                    <div class="ron-panel-title">
+                        PROBLEM 04
+                    </div>
+
+                    <div class="ron-panel-code">
+                        PERFORMANCE
+                    </div>
+                </div>
+
+                <h3>GAME RUNS SLOWLY</h3>
 
                 <p>
-
-                    Nicht empfohlen.
-
-                    Manche Mods sind voneinander abhängig oder
-                    verändern gemeinsame Spielsysteme.
-
-                    Das Entfernen einzelner Mods kann deshalb
-                    zu Abstürzen oder fehlenden Inhalten führen.
-
+                    Lower render distance, simulation distance,
+                    particles and entity distance. Disable shaders
+                    if necessary.
                 </p>
 
-            </article>
+                <div style="margin-top:14px;">
+                    <span class="ron-tag">
+                        PERFORMANCE
+                    </span>
+                </div>
+
+            </div>
+
+        </div>
 
 
-            <article class="faq-item">
-
-                <h3>
-                    Mein Spiel hat wenig FPS. Was mache ich?
-                </h3>
-
-                <p>
-
-                    Reduziere zuerst die
-
-                    <strong>
-                        Render Distance
-                    </strong>
-
-                    und
-
-                    <strong>
-                        Simulation Distance
-                    </strong>.
-
-                    Deaktiviere außerdem Shader und reduziere
-                    Partikel.
-
-                    Erst danach sollte man weitere Einstellungen
-                    verändern.
-
-                </p>
-
-            </article>
+        <div class="section-title">
+            PERFORMANCE SETTINGS
+            <span>RECOMMENDED BASELINE</span>
+        </div>
 
 
-            <article class="faq-item">
+        <div class="ron-card">
 
-                <h3>
-                    Ist mehr RAM immer besser?
-                </h3>
+            <div class="ron-panel-header">
 
-                <p>
+                <div class="ron-panel-title">
+                    PERFORMANCE CONFIGURATION
+                </div>
 
-                    Nein.
+                <div class="ron-panel-code">
+                    PERF // BASELINE
+                </div>
 
-                    16, 20 oder 24 GB RAM führen nicht automatisch
-                    zu mehr FPS.
+            </div>
 
-                    Wichtig ist, dass dein PC genug RAM für
-                    Minecraft und gleichzeitig für Windows und
-                    andere Programme behält.
 
-                    Deshalb empfehlen wir zunächst
+            <div class="ron-data">
 
-                    <strong>
+                <div class="ron-data-row">
+                    <span class="ron-data-label">
+                        RAM
+                    </span>
+
+                    <span class="ron-data-value">
                         8–12 GB
-                    </strong>.
+                    </span>
+                </div>
 
-                </p>
+                <div class="ron-data-row">
+                    <span class="ron-data-label">
+                        RENDER DISTANCE
+                    </span>
 
-            </article>
+                    <span class="ron-data-value">
+                        MODERATE
+                    </span>
+                </div>
 
-        </div>
+                <div class="ron-data-row">
+                    <span class="ron-data-label">
+                        SIMULATION DISTANCE
+                    </span>
 
-    </section>
+                    <span class="ron-data-value">
+                        MODERATE
+                    </span>
+                </div>
 
+                <div class="ron-data-row">
+                    <span class="ron-data-label">
+                        SHADERS
+                    </span>
 
-    <!-- =====================================================
-         TROUBLESHOOTING
-    ====================================================== -->
+                    <span class="ron-data-value">
+                        OPTIONAL
+                    </span>
+                </div>
 
-    <section class="section">
+                <div class="ron-data-row">
+                    <span class="ron-data-label">
+                        PARTICLES
+                    </span>
 
-        <div class="section-header">
+                    <span class="ron-data-value">
+                        DECREASE IF NEEDED
+                    </span>
+                </div>
 
-            <h2>
-                SCHNELLHILFE
-            </h2>
+                <div class="ron-data-row">
+                    <span class="ron-data-label">
+                        ENTITY DISTANCE
+                    </span>
 
-            <div class="section-number">
-                TROUBLESHOOTING // 04
+                    <span class="ron-data-value">
+                        MODERATE
+                    </span>
+                </div>
+
             </div>
 
         </div>
 
 
-        <div class="troubleshooting">
+        <div class="section-title">
+            SUPPORT PROCEDURE
+            <span>WHEN NOTHING ELSE WORKS</span>
+        </div>
 
 
-            <article class="problem">
+        <div class="ron-card">
 
-                <h3>
-                    MODS FEHLEN
-                </h3>
+            <div class="ron-panel-header">
 
-                <p>
+                <div class="ron-panel-title">
+                    SUPPORT REQUEST
+                </div>
 
-                    CurseForge-Profil öffnen → ⋯ → Open Folder.
-                    Kontrollieren, ob der mods-Ordner direkt
-                    im Profilordner liegt.
+                <div class="ron-panel-code">
+                    SUPPORT // PROTOCOL
+                </div>
 
-                </p>
+            </div>
 
-            </article>
+            <div class="ron-data">
 
+                <div class="ron-data-row">
+                    <span class="ron-data-label">
+                        STEP 01
+                    </span>
 
-            <article class="problem">
+                    <span class="ron-data-value">
+                        CHECK FAQ
+                    </span>
+                </div>
 
-                <h3>
-                    SPIEL CRASHT
-                </h3>
+                <div class="ron-data-row">
+                    <span class="ron-data-label">
+                        STEP 02
+                    </span>
 
-                <p>
+                    <span class="ron-data-value">
+                        CHECK VERSION
+                    </span>
+                </div>
 
-                    Versionen kontrollieren:
-                    Minecraft 1.21.1,
-                    NeoForge 21.1.248,
-                    Java Default Version.
+                <div class="ron-data-row">
+                    <span class="ron-data-label">
+                        STEP 03
+                    </span>
 
-                </p>
+                    <span class="ron-data-value">
+                        CHECK MODS FOLDER
+                    </span>
+                </div>
 
-            </article>
+                <div class="ron-data-row">
+                    <span class="ron-data-label">
+                        STEP 04
+                    </span>
 
+                    <span class="ron-data-value">
+                        CONTACT COMMUNITY
+                    </span>
+                </div>
 
-            <article class="problem">
+            </div>
 
-                <h3>
-                    NIEDRIGE FPS
-                </h3>
+            <div style="margin-top:18px; display:flex; gap:10px; flex-wrap:wrap;">
 
-                <p>
+                <a
+                    href="communications.html"
+                    class="ron-button gold"
+                >
+                    CONTACT COMMUNITY
+                </a>
 
-                    Render Distance reduzieren,
-                    Simulation Distance reduzieren,
-                    Shader deaktivieren und Partikel reduzieren.
+                <a
+                    href="download.html"
+                    class="ron-button"
+                >
+                    DOWNLOAD PAGE
+                </a>
 
-                </p>
+                <a
+                    href="server.html"
+                    class="ron-button"
+                >
+                    SERVER INFORMATION
+                </a>
 
-            </article>
-
-
-            <article class="problem">
-
-                <h3>
-                    START DAUERT LANG
-                </h3>
-
-                <p>
-
-                    Bei großen Modpacks normal.
-                    Besonders der erste Start kann deutlich länger dauern.
-
-                </p>
-
-            </article>
-
-
-            <article class="problem">
-
-                <h3>
-                    ZU WENIG RAM
-                </h3>
-
-                <p>
-
-                    Profil auf 8–12 GB einstellen,
-                    sofern dein PC genug Gesamtspeicher besitzt.
-
-                </p>
-
-            </article>
-
-
-            <article class="problem">
-
-                <h3>
-                    FALSCHER ORDNER
-                </h3>
-
-                <p>
-
-                    Niemals einfach irgendeinen Minecraft-Ordner
-                    auswählen. Immer über das CurseForge-Profil
-                    → ⋯ → Open Folder gehen.
-
-                </p>
-
-            </article>
+            </div>
 
         </div>
 
-    </section>
 
+        <div class="ron-alert">
 
-    <!-- =====================================================
-         SUPPORT
-    ====================================================== -->
+            <strong>SUPPORT NOTICE</strong><br>
 
-    <section class="section">
-
-        <div class="support">
-
-            <h2>
-                SUPPORT PROTOCOL
-            </h2>
-
-            <p>
-
-                Wenn das Modpack trotz dieser Anleitung nicht startet,
-                bitte nicht einfach Mods löschen oder Dateien verändern.
-
-                Für eine schnelle Fehleranalyse sind folgende
-                Informationen hilfreich:
-
-            </p>
-
-
-            <ul class="support-list">
-
-                <li>
-                    Minecraft Version: 1.21.1
-                </li>
-
-                <li>
-                    NeoForge Version: 21.1.248
-                </li>
-
-                <li>
-                    Java: Default Version
-                </li>
-
-                <li>
-                    verwendeter RAM
-                </li>
-
-                <li>
-                    genaue Fehlermeldung
-                </li>
-
-                <li>
-                    Screenshot des Fehlers
-                </li>
-
-                <li>
-                    falls vorhanden: Crash-Report
-                </li>
-
-            </ul>
-
-            <p>
-
-                Je genauer die Informationen sind,
-                desto schneller kann das Problem gefunden werden.
-
-            </p>
+            Before reporting a problem, make sure the correct
+            Minecraft version, NeoForge version and profile
+            directory are being used. This resolves a large
+            portion of installation problems.
 
         </div>
 
-    </section>
+    </main>
 
 
-</main>
+    <footer class="ron-footer">
+
+        RISE OF NATIONS
+        &nbsp; // &nbsp;
+        <span id="footerVersion">SYSTEM</span>
+        &nbsp; // &nbsp;
+        SUPPORT COMMAND
+
+    </footer>
 
 
-<!-- =========================================================
-     FOOTER
-========================================================= -->
+    <script>
 
-<footer>
+        if (typeof SITE_CONFIG !== "undefined") {
 
-    <div>
-        RISE OF NATIONS // TECHNICAL SUPPORT
-    </div>
+            const minecraftVersion =
+                SITE_CONFIG.website.minecraftVersion;
 
-    <div>
-
-        VERSION
-
-        <span id="footerVersion">
-            --
-        </span>
-
-    </div>
-
-</footer>
+            const neoforgeVersion =
+                "21.1.248";
 
 
-<script>
+            document.getElementById("minecraftVersion").textContent =
+                minecraftVersion;
 
-    if (typeof SITE_CONFIG !== "undefined") {
+            document.getElementById("neoforgeVersion").textContent =
+                neoforgeVersion;
 
-        const footerVersion =
-            document.getElementById("footerVersion");
+            document.getElementById("configMinecraft").textContent =
+                minecraftVersion;
 
-        if (footerVersion) {
+            document.getElementById("configNeoForge").textContent =
+                neoforgeVersion;
 
-            footerVersion.textContent =
+            document.getElementById("footerVersion").textContent =
                 SITE_CONFIG.modpack.version;
 
         }
 
-    }
-
-</script>
-
+    </script>
 
 </body>
+
 </html>
