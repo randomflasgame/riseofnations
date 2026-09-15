@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RISE OF NATIONS // CREATE RAILWAYS NAVIGATOR</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+    min-height:100vh;
+    background:
+        linear-gradient(rgba(6,11,16,.97),rgba(6,11,16,.99)),
+        repeating-linear-gradient(
+            135deg,
+            rgba(255,255,255,.018) 0 2px,
+            transparent 2px 9px
+        );
+    color:#dbe3e8;
+    font-family:"Segoe UI",Arial,sans-serif;
+}
+
+header{
+    background:rgba(5,10,15,.98);
+    border-bottom:1px solid #293944;
+    box-shadow:0 5px 25px rgba(0,0,0,.45);
+}
+
+.header-inner{
+    max-width:1500px;
+    margin:auto;
+    padding:18px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:30px;
+}
+
+.logo{
+    color:#d6b85c;
+    font-size:22px;
+    font-weight:950;
+    letter-spacing:3px;
+}
+
+.logo span{
+    display:block;
+    color:#687b86;
+    font-size:9px;
+    letter-spacing:2px;
+    margin-top:4px;
+}
+
+nav{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+    gap:7px;
+}
+
+nav a{
+    color:#9aabb4;
+    text-decoration:none;
+    padding:9px 11px;
+    border:1px solid transparent;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.2px;
+    transition:.2s;
+}
+
+nav a:hover{
+    color:#d6b85c;
+    background:#111b22;
+    border-color:#3b4d58;
+}
+
+main{
+    max-width:1250px;
+    margin:auto;
+    padding:70px 30px 100px;
+}
+
+.eyebrow{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:3px;
+    margin-bottom:15px;
+}
+
+h1{
+    color:#edf2f4;
+    font-size:clamp(40px,6.5vw,78px);
+    line-height:.95;
+    letter-spacing:4px;
+    font-weight:950;
+}
+
+.subtitle{
+    max-width:920px;
+    margin-top:22px;
+    color:#8497a2;
+    line-height:1.75;
+    font-size:15px;
+}
+
+.meta{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-top:38px;
+}
+
+.meta-box{
+    padding:18px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+
+.meta-label{
+    color:#596c77;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:8px;
+}
+
+.meta-value{
+    color:#d6b85c;
+    font-size:13px;
+    font-weight:900;
+}
+
+.section{
+    margin-top:35px;
+    padding:30px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+
+.section-number{
+    color:#526773;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:2px;
+    margin-bottom:9px;
+}
+
+h2{
+    color:#e1e8eb;
+    font-size:22px;
+    letter-spacing:1px;
+    margin-bottom:18px;
+}
+
+h3{
+    color:#d6b85c;
+    font-size:14px;
+    letter-spacing:1px;
+    margin:25px 0 10px;
+}
+
+p{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    margin-bottom:13px;
+}
+
+ul,ol{
+    margin:12px 0 18px 22px;
+}
+
+li{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    padding-left:5px;
+}
+
+strong{
+    color:#d9e2e6;
+}
+
+.note{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#111c23;
+    border-left:3px solid #4d91bd;
+}
+
+.note-title{
+    color:#4d91bd;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+
+.warning{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#17140e;
+    border-left:3px solid #d6b85c;
+}
+
+.warning-title{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:18px;
+}
+
+th,td{
+    text-align:left;
+    padding:13px 14px;
+    border:1px solid #293c47;
+    font-size:12px;
+}
+
+th{
+    color:#d6b85c;
+    background:#111c23;
+    font-size:10px;
+    letter-spacing:1px;
+}
+
+td{
+    color:#8ea0a9;
+    background:#0a141a;
+}
+
+.sources{
+    display:grid;
+    gap:10px;
+    margin-top:15px;
+}
+
+.sources a{
+    display:block;
+    padding:13px 15px;
+    background:#101b22;
+    border:1px solid #293c47;
+    color:#9fb0b9;
+    text-decoration:none;
+    font-size:12px;
+    transition:.2s;
+}
+
+.sources a:hover{
+    color:#d6b85c;
+    border-color:#d6b85c;
+}
+
+.back{
+    display:inline-block;
+    margin-top:45px;
+    padding:12px 16px;
+    color:#d6b85c;
+    border:1px solid #4c4530;
+    text-decoration:none;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    transition:.2s;
+}
+
+.back:hover{
+    background:#17150f;
+    border-color:#d6b85c;
+}
+
+footer{
+    border-top:1px solid #202e36;
+    padding:25px 30px;
+    text-align:center;
+    color:#465861;
+    font-size:9px;
+    letter-spacing:2px;
+}
+
+@media(max-width:850px){
+    .header-inner{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    nav{
+        justify-content:flex-start;
+    }
+
+    .meta{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:550px){
+    .meta{
+        grid-template-columns:1fr;
+    }
+
+    main{
+        padding:45px 18px 70px;
+    }
+
+    .section{
+        padding:22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-inner">
+
+        <div class="logo">
+            RISE OF NATIONS
+            <span>TACTICAL KNOWLEDGE DATABASE</span>
+        </div>
+
+        <nav>
+            <a href="../index.html">COMMAND</a>
+            <a href="intelligence.html">INTELLIGENCE</a>
+            <a href="server.html">SERVER</a>
+            <a href="database.html">DATABASE</a>
+            <a href="download.html">DOWNLOAD</a>
+            <a href="communications.html">COMMUNICATIONS</a>
+            <a href="wiki.html">WIKI</a>
+        </nav>
+
+    </div>
+</header>
+
+<main>
+
+    <div class="eyebrow">
+        PROFESSOR DATABASE // RAILWAY LOGISTICS
+    </div>
+
+    <h1>CREATE RAILWAYS NAVIGATOR</h1>
+
+    <p class="subtitle">
+        Create Railways Navigator ergänzt das Create-Eisenbahnsystem
+        um Werkzeuge für Planung, Navigation und Verwaltung größerer
+        Bahnnetze. Besonders in RISE OF NATIONS kann daraus die
+        Grundlage für eine echte industrielle Transportinfrastruktur
+        entstehen.
+    </p>
+
+    <div class="meta">
+
+        <div class="meta-box">
+            <div class="meta-label">MOD</div>
+            <div class="meta-value">CREATE RAILWAYS NAVIGATOR</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">VERSION</div>
+            <div class="meta-value">0.9.1</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">MINECRAFT</div>
+            <div class="meta-value">1.21.1</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">SYSTEM</div>
+            <div class="meta-value">RAIL NETWORK</div>
+        </div>
+
+    </div>
+
+
+    <section class="section">
+
+        <div class="section-number">01 // SYSTEM OVERVIEW</div>
+        <h2>Was ist Create Railways Navigator?</h2>
+
+        <p>
+            Create Railways Navigator erweitert die Möglichkeiten rund
+            um das Eisenbahnsystem von Create. Der Schwerpunkt liegt
+            auf Navigation, Orientierung und der Verwaltung größerer
+            Bahnverbindungen.
+        </p>
+
+        <p>
+            Damit wird das Create-Zugsystem besonders für große
+            Basen, Industriegebiete und weit voneinander entfernte
+            Standorte interessant.
+        </p>
+
+        <div class="note">
+            <div class="note-title">RAILWAY PRINCIPLE</div>
+            <p>
+                Ein gutes Bahnnetz transportiert nicht einfach Items.
+                Es verbindet Produktionsstandorte zu einem gemeinsamen
+                wirtschaftlichen System.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">02 // CREATE RAILWAY BASICS</div>
+        <h2>Grundlagen des Create-Bahnverkehrs</h2>
+
+        <p>
+            Für die Nutzung der Navigator-Funktionen müssen zunächst
+            die grundlegenden Create-Bahnmechaniken verstanden werden.
+        </p>
+
+        <ul>
+            <li>Gleise und Streckenführung</li>
+            <li>Bahnhöfe</li>
+            <li>Züge</li>
+            <li>Fahrplan und Haltestellen</li>
+            <li>Frachttransport</li>
+            <li>Signalisierung</li>
+        </ul>
+
+        <p>
+            Der Navigator ergänzt diese Systeme, ersetzt aber nicht
+            die eigentliche Create-Eisenbahninfrastruktur.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">03 // NETWORK DESIGN</div>
+        <h2>Ein Bahnnetz richtig planen</h2>
+
+        <p>
+            Bei kleinen Entfernungen kann eine einfache Direktverbindung
+            ausreichend sein. Mit zunehmender Größe sollte das Netzwerk
+            strukturiert werden.
+        </p>
+
+        <table>
+
+            <tr>
+                <th>EBENE</th>
+                <th>FUNKTION</th>
+            </tr>
+
+            <tr>
+                <td>LOCAL</td>
+                <td>Verbindungen innerhalb einer Basis</td>
+            </tr>
+
+            <tr>
+                <td>REGIONAL</td>
+                <td>Verbindungen zwischen nahegelegenen Standorten</td>
+            </tr>
+
+            <tr>
+                <td>INDUSTRIAL</td>
+                <td>Rohstoffe und Produktionsanlagen verbinden</td>
+            </tr>
+
+            <tr>
+                <td>LONG DISTANCE</td>
+                <td>Große Entfernungen zwischen Hauptstandorten</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">04 // STATIONS</div>
+        <h2>Bahnhöfe als Logistikzentren</h2>
+
+        <p>
+            Ein Bahnhof sollte nicht nur ein Ort sein, an dem ein Zug
+            anhält. In einem großen Modpack kann er als logistischer
+            Knotenpunkt dienen.
+        </p>
+
+        <h3>Typische Aufgaben</h3>
+
+        <ul>
+            <li>Personentransport</li>
+            <li>Rohstofftransport</li>
+            <li>Produktionsversorgung</li>
+            <li>Warenexport</li>
+            <li>Umladung zwischen Transportlinien</li>
+        </ul>
+
+        <div class="note">
+            <div class="note-title">STATION DESIGN</div>
+            <p>
+                Benenne Bahnhöfe nach ihrer tatsächlichen Funktion.
+                Dadurch bleibt ein großes Netzwerk auch Monate später
+                verständlich.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">05 // NAVIGATION</div>
+        <h2>Navigation im Bahnnetz</h2>
+
+        <p>
+            Bei wenigen Zügen ist manuelle Verwaltung noch möglich.
+            Mit zunehmender Zahl von Strecken wird eine klare
+            Navigationsstruktur immer wichtiger.
+        </p>
+
+        <ol>
+            <li>Startbahnhof bestimmen.</li>
+            <li>Zielbahnhof bestimmen.</li>
+            <li>Verbindung prüfen.</li>
+            <li>Route kontrollieren.</li>
+            <li>Fahrplan überprüfen.</li>
+        </ol>
+
+        <p>
+            Der Navigator kann dabei helfen, die Übersicht über das
+            wachsende Netz zu behalten.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">06 // ROUTE ARCHITECTURE</div>
+        <h2>Direkte Linien oder zentrale Knoten?</h2>
+
+        <p>
+            Es gibt zwei grundlegende Strategien für große Bahnnetze.
+        </p>
+
+        <table>
+
+            <tr>
+                <th>MODELL</th>
+                <th>VORTEIL</th>
+                <th>NACHTEIL</th>
+            </tr>
+
+            <tr>
+                <td>DIREKT</td>
+                <td>Kurze Wege</td>
+                <td>Viele einzelne Strecken</td>
+            </tr>
+
+            <tr>
+                <td>HUB</td>
+                <td>Sehr gut skalierbar</td>
+                <td>Mehr Umladung</td>
+            </tr>
+
+            <tr>
+                <td>MIXED</td>
+                <td>Flexibel</td>
+                <td>Komplexer</td>
+            </tr>
+
+        </table>
+
+        <p>
+            Für große industrielle Netzwerke ist ein gemischtes Modell
+            häufig besonders flexibel.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">07 // INDUSTRIAL LOGISTICS</div>
+        <h2>Eisenbahn für Rohstoffe</h2>
+
+        <p>
+            Einer der wichtigsten Einsatzzwecke eines Create-Bahnnetzes
+            ist die Versorgung industrieller Anlagen.
+        </p>
+
+        <ul>
+            <li>Erzminen → Hauptfabrik</li>
+            <li>Holzproduktion → Verarbeitungsanlage</li>
+            <li>Landwirtschaft → Lebensmittelproduktion</li>
+            <li>Öl- oder Treibstoffproduktion → Industrie</li>
+            <li>Fertige Produkte → Lager oder Handelszentrum</li>
+        </ul>
+
+        <div class="warning">
+            <div class="warning-title">LOGISTICS WARNING</div>
+            <p>
+                Vermeide es, jede kleine Produktionsstätte mit einer
+                eigenen Bahnlinie zu verbinden. Bündele Warenströme,
+                wenn dies sinnvoll ist.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">08 // CARGO NETWORK</div>
+        <h2>Frachtverkehr organisieren</h2>
+
+        <p>
+            Ein funktionierendes Frachtbahnnetz benötigt klare Regeln
+            für Beladung, Entladung und Lagerung.
+        </p>
+
+        <table>
+
+            <tr>
+                <th>STATION</th>
+                <th>FUNKTION</th>
+            </tr>
+
+            <tr>
+                <td>RESOURCE HUB</td>
+                <td>Rohstoffe sammeln</td>
+            </tr>
+
+            <tr>
+                <td>PROCESSING HUB</td>
+                <td>Material zur Verarbeitung verteilen</td>
+            </tr>
+
+            <tr>
+                <td>WAREHOUSE</td>
+                <td>Produkte lagern</td>
+            </tr>
+
+            <tr>
+                <td>DISTRIBUTION HUB</td>
+                <td>Produkte weiterverteilen</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">09 // NAMING PROTOCOL</div>
+        <h2>Bahnhöfe und Linien benennen</h2>
+
+        <p>
+            Ein gutes Namenssystem ist bei großen Netzwerken wichtiger,
+            als es zunächst wirkt.
+        </p>
+
+        <h3>Empfehlung</h3>
+
+        <ul>
+            <li>Kurze Bahnhofsnamen verwenden.</li>
+            <li>Funktion im Namen berücksichtigen.</li>
+            <li>Rohstoffstationen eindeutig markieren.</li>
+            <li>Hubs von normalen Stationen unterscheiden.</li>
+            <li>Keine nahezu identischen Namen verwenden.</li>
+        </ul>
+
+        <p>
+            Dadurch können Spieler und automatische Systeme leichter
+            erkennen, welche Verbindung gemeint ist.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">10 // NETWORK SCALING</div>
+        <h2>Das Bahnnetz erweitern</h2>
+
+        <p>
+            Ein Bahnnetz sollte schrittweise wachsen.
+        </p>
+
+        <ol>
+            <li>Hauptstandort bestimmen.</li>
+            <li>Wichtigsten Außenstandort anbinden.</li>
+            <li>Transportbedarf messen.</li>
+            <li>Weitere Stationen hinzufügen.</li>
+            <li>Hubs einführen, sobald die Komplexität steigt.</li>
+            <li>Routen regelmäßig überprüfen.</li>
+        </ol>
+
+        <p>
+            So verhindert man ein unübersichtliches Netz aus
+            improvisierten Strecken.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">11 // MULTI-TRAIN OPERATIONS</div>
+        <h2>Mehrere Züge gleichzeitig</h2>
+
+        <p>
+            Sobald mehrere Züge dieselben Strecken verwenden, muss die
+            Infrastruktur auf Verkehrsfluss ausgelegt werden.
+        </p>
+
+        <ul>
+            <li>Streckenabschnitte logisch aufteilen.</li>
+            <li>Bahnhöfe nicht unnötig überlasten.</li>
+            <li>Fahrpläne übersichtlich halten.</li>
+            <li>Konflikte zwischen Routen vermeiden.</li>
+            <li>Wichtige Transportlinien priorisieren.</li>
+        </ul>
+
+        <div class="note">
+            <div class="note-title">NETWORK CONTROL</div>
+            <p>
+                Ein gutes Bahnnetz muss nicht möglichst viele Züge
+                gleichzeitig bewegen. Es muss zuverlässig die benötigten
+                Waren und Spieler transportieren.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">12 // TROUBLESHOOTING</div>
+        <h2>Fehleranalyse</h2>
+
+        <h3>Zug findet das Ziel nicht</h3>
+
+        <p>
+            Prüfe zuerst die Strecke, die verbundenen Bahnhöfe und die
+            eingestellte Route.
+        </p>
+
+        <h3>Zug bleibt stehen</h3>
+
+        <p>
+            Prüfe die Strecke auf fehlende oder problematische
+            Abschnitte sowie mögliche Konflikte mit anderen Zügen.
+        </p>
+
+        <h3>Fracht kommt nicht an</h3>
+
+        <p>
+            Prüfe sowohl die Beladestation als auch die Entladestation.
+            Besonders häufig liegt das Problem nicht beim Zug selbst,
+            sondern bei der Logistik an einem Bahnhof.
+        </p>
+
+        <h3>Das Netzwerk wird unübersichtlich</h3>
+
+        <p>
+            Führe ein einheitliches Namenssystem ein und trenne
+            lokale, regionale und überregionale Strecken.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">13 // RISE OF NATIONS APPLICATION</div>
+        <h2>Das Eisenbahnnetz als Infrastruktur</h2>
+
+        <p>
+            In RISE OF NATIONS kann ein Create-Bahnnetz weit mehr sein
+            als ein dekoratives Transportmittel.
+        </p>
+
+        <table>
+
+            <tr>
+                <th>BEREICH</th>
+                <th>FUNKTION</th>
+            </tr>
+
+            <tr>
+                <td>INDUSTRIE</td>
+                <td>Rohstoffversorgung</td>
+            </tr>
+
+            <tr>
+                <td>HANDEL</td>
+                <td>Warenverteilung</td>
+            </tr>
+
+            <tr>
+                <td>STÄDTE</td>
+                <td>Spieler- und Gütertransport</td>
+            </tr>
+
+            <tr>
+                <td>BERGWERKE</td>
+                <td>Ressourcenexport</td>
+            </tr>
+
+            <tr>
+                <td>HÄFEN</td>
+                <td>Verbindung mit maritimer Infrastruktur</td>
+            </tr>
+
+            <tr>
+                <td>FABRIKEN</td>
+                <td>Automatisierte Versorgung</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">14 // ADVANCED NETWORK</div>
+        <h2>Fortgeschrittene Bahnarchitektur</h2>
+
+        <p>
+            Große Netzwerke können in mehrere Ebenen aufgeteilt werden.
+        </p>
+
+        <ul>
+            <li><strong>Local Lines:</strong> kurze Verbindungen innerhalb eines Gebiets.</li>
+            <li><strong>Regional Lines:</strong> Verbindung mehrerer Produktionsstandorte.</li>
+            <li><strong>Main Lines:</strong> zentrale Verkehrsachsen.</li>
+            <li><strong>Hub Lines:</strong> Verbindung wichtiger Logistikknoten.</li>
+        </ul>
+
+        <p>
+            Dadurch entsteht eine Struktur, die auch bei vielen
+            zusätzlichen Spielern und Standorten erweiterbar bleibt.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">15 // PROFESSOR DOCTRINE</div>
+        <h2>Das Wichtigste zum Mitnehmen</h2>
+
+        <p>
+            Create Railways Navigator ist besonders dann wertvoll,
+            wenn aus einzelnen Create-Zügen ein richtiges Verkehrsnetz
+            entsteht.
+        </p>
+
+        <ul>
+            <li>Bahnlinien von Anfang an planen.</li>
+            <li>Bahnhöfe als Logistikknoten betrachten.</li>
+            <li>Rohstoff- und Produktionsstandorte verbinden.</li>
+            <li>Einheitliche Namen verwenden.</li>
+            <li>Bei wachsendem Netz Hubs einsetzen.</li>
+            <li>Mehrere Züge mit klarer Infrastruktur koordinieren.</li>
+        </ul>
+
+        <div class="note">
+            <div class="note-title">FINAL PRINCIPLE</div>
+            <p>
+                Die Eisenbahn ist in einem industriellen Modpack keine
+                Dekoration. Sie kann das Rückgrat der gesamten
+                Wirtschaftsinfrastruktur bilden.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">16 // REFERENCE DATA</div>
+        <h2>Originalquellen</h2>
+
+        <p>
+            Für konkrete Funktionen und versionsabhängige Details
+            sollten die offiziellen Projektseiten und die tatsächlich
+            installierte Modversion herangezogen werden.
+        </p>
+
+        <div class="sources">
+
+            <a href="https://modrinth.com/mod/create-railways-navigator"
+               target="_blank"
+               rel="noopener">
+                MODRINTH // CREATE RAILWAYS NAVIGATOR
+            </a>
+
+            <a href="https://www.curseforge.com/minecraft/mc-mods/create-railways-navigator"
+               target="_blank"
+               rel="noopener">
+                CURSEFORGE // CREATE RAILWAYS NAVIGATOR
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <a class="back" href="wiki.html">
+        ← ZURÜCK ZUR WIKI
+    </a>
+
+</main>
+
+<footer>
+    RISE OF NATIONS // CREATE RAILWAYS NAVIGATOR // TACTICAL KNOWLEDGE DATABASE
+</footer>
+
+</body>
+</html>
