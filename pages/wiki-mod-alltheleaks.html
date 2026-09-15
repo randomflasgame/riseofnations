@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RISE OF NATIONS // ALLTHELEAKS</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+    min-height:100vh;
+    background:
+        linear-gradient(rgba(5,10,15,.97),rgba(5,10,15,.99)),
+        repeating-linear-gradient(
+            135deg,
+            rgba(255,255,255,.018) 0 2px,
+            transparent 2px 9px
+        );
+    color:#dbe3e8;
+    font-family:"Segoe UI",Arial,sans-serif;
+}
+
+header{
+    background:rgba(5,10,15,.98);
+    border-bottom:1px solid #293944;
+    box-shadow:0 5px 25px rgba(0,0,0,.45);
+}
+
+.header-inner{
+    max-width:1500px;
+    margin:auto;
+    padding:18px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:30px;
+}
+
+.logo{
+    color:#d6b85c;
+    font-size:22px;
+    font-weight:950;
+    letter-spacing:3px;
+}
+
+.logo span{
+    display:block;
+    color:#687b86;
+    font-size:9px;
+    letter-spacing:2px;
+    margin-top:4px;
+}
+
+nav{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+    gap:7px;
+}
+
+nav a{
+    color:#9aabb4;
+    text-decoration:none;
+    padding:9px 11px;
+    border:1px solid transparent;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.2px;
+    transition:.2s;
+}
+
+nav a:hover{
+    color:#d6b85c;
+    background:#111b22;
+    border-color:#3b4d58;
+}
+
+main{
+    max-width:1250px;
+    margin:auto;
+    padding:70px 30px 100px;
+}
+
+.eyebrow{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:3px;
+    margin-bottom:15px;
+}
+
+h1{
+    color:#edf2f4;
+    font-size:clamp(42px,7vw,82px);
+    line-height:.95;
+    letter-spacing:4px;
+    font-weight:950;
+}
+
+.subtitle{
+    max-width:950px;
+    margin-top:22px;
+    color:#8497a2;
+    line-height:1.75;
+    font-size:15px;
+}
+
+.meta{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-top:38px;
+}
+
+.meta-box{
+    padding:18px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+
+.meta-label{
+    color:#596c77;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:8px;
+}
+
+.meta-value{
+    color:#d6b85c;
+    font-size:13px;
+    font-weight:900;
+}
+
+.section{
+    margin-top:35px;
+    padding:30px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+
+.section-number{
+    color:#526773;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:2px;
+    margin-bottom:9px;
+}
+
+h2{
+    color:#e1e8eb;
+    font-size:22px;
+    letter-spacing:1px;
+    margin-bottom:18px;
+}
+
+h3{
+    color:#d6b85c;
+    font-size:14px;
+    letter-spacing:1px;
+    margin:25px 0 10px;
+}
+
+p{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    margin-bottom:13px;
+}
+
+ul,ol{
+    margin:12px 0 18px 22px;
+}
+
+li{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    padding-left:5px;
+}
+
+.note{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#111c23;
+    border-left:3px solid #4d91bd;
+}
+
+.note-title{
+    color:#4d91bd;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+
+.warning{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#17140e;
+    border-left:3px solid #d6b85c;
+}
+
+.warning-title{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:18px;
+}
+
+th,td{
+    text-align:left;
+    padding:13px 14px;
+    border:1px solid #293c47;
+    font-size:12px;
+}
+
+th{
+    color:#d6b85c;
+    background:#111c23;
+    font-size:10px;
+    letter-spacing:1px;
+}
+
+td{
+    color:#8ea0a9;
+    background:#0a141a;
+}
+
+.sources{
+    display:grid;
+    gap:10px;
+    margin-top:15px;
+}
+
+.sources a{
+    display:block;
+    padding:13px 15px;
+    background:#101b22;
+    border:1px solid #293c47;
+    color:#9fb0b9;
+    text-decoration:none;
+    font-size:12px;
+    transition:.2s;
+}
+
+.sources a:hover{
+    color:#d6b85c;
+    border-color:#d6b85c;
+}
+
+.back{
+    display:inline-block;
+    margin-top:45px;
+    padding:12px 16px;
+    color:#d6b85c;
+    border:1px solid #4c4530;
+    text-decoration:none;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+}
+
+footer{
+    border-top:1px solid #202e36;
+    padding:25px 30px;
+    text-align:center;
+    color:#465861;
+    font-size:9px;
+    letter-spacing:2px;
+}
+
+@media(max-width:850px){
+    .header-inner{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    nav{
+        justify-content:flex-start;
+    }
+
+    .meta{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:550px){
+    .meta{
+        grid-template-columns:1fr;
+    }
+
+    main{
+        padding:45px 18px 70px;
+    }
+
+    .section{
+        padding:22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="header-inner">
+
+<div class="logo">
+RISE OF NATIONS
+<span>TACTICAL KNOWLEDGE DATABASE</span>
+</div>
+
+<nav>
+<a href="../index.html">COMMAND</a>
+<a href="intelligence.html">INTELLIGENCE</a>
+<a href="server.html">SERVER</a>
+<a href="database.html">DATABASE</a>
+<a href="download.html">DOWNLOAD</a>
+<a href="communications.html">COMMUNICATIONS</a>
+<a href="wiki.html">WIKI</a>
+</nav>
+
+</div>
+</header>
+
+<main>
+
+<div class="eyebrow">
+PROFESSOR DATABASE // STABILITY // DIAGNOSTICS
+</div>
+
+<h1>ALLTHELEAKS</h1>
+
+<p class="subtitle">
+AllTheLeaks ist ein technischer Diagnose- und Stabilitätsmod,
+der darauf ausgerichtet ist, bestimmte Speicher- beziehungsweise
+Ressourcenprobleme in einer Minecraft-Umgebung aufzuspüren und
+sichtbarer zu machen. In einem großen Modpack wie RISE OF NATIONS
+ist eine solche Diagnoseebene besonders wertvoll.
+</p>
+
+<div class="meta">
+
+<div class="meta-box">
+<div class="meta-label">MOD</div>
+<div class="meta-value">ALLTHELEAKS</div>
+</div>
+
+<div class="meta-box">
+<div class="meta-label">VERSION</div>
+<div class="meta-value">1.1.10</div>
+</div>
+
+<div class="meta-box">
+<div class="meta-label">MINECRAFT</div>
+<div class="meta-value">1.21.1</div>
+</div>
+
+<div class="meta-box">
+<div class="meta-label">SYSTEM</div>
+<div class="meta-value">DIAGNOSTICS</div>
+</div>
+
+</div>
+
+
+<section class="section">
+<div class="section-number">01 // SYSTEM OVERVIEW</div>
+<h2>Was ist AllTheLeaks?</h2>
+
+<p>
+AllTheLeaks gehört zur technischen Infrastruktur eines Modpacks.
+Der Mod ist nicht dafür gedacht, neue Waffen, Blöcke oder
+Produktionsketten bereitzustellen. Stattdessen hilft er dabei,
+bestimmte Arten von Problemen während des Spielbetriebs zu
+erkennen.
+</p>
+
+<p>
+Das ist vor allem bei großen Modpacks wichtig, weil hunderte Mods
+gemeinsam Speicher, Ressourcen und verschiedene interne Systeme
+verwenden.
+</p>
+
+<div class="note">
+<div class="note-title">DIAGNOSTIC PRINCIPLE</div>
+<p>
+Wenn ein Modpack ungewöhnlich viel Speicher verbraucht oder sich
+mit der Zeit immer weiter verschlechtert, muss zunächst festgestellt
+werden, ob tatsächlich ein Leak oder ein anderes Ressourcenproblem
+vorliegt.
+</p>
+</div>
+</section>
+
+
+<section class="section">
+<div class="section-number">02 // WHAT IS A LEAK?</div>
+<h2>Was bedeutet „Memory Leak“?</h2>
+
+<p>
+Ein Memory Leak bezeichnet vereinfacht gesagt eine Situation, in der
+Speicher, der eigentlich nicht mehr benötigt wird, nicht korrekt
+freigegeben wird.
+</p>
+
+<p>
+Bei Minecraft kann sich ein solches Problem beispielsweise dadurch
+bemerkbar machen, dass der Speicherverbrauch über längere
+Spielzeiten ungewöhnlich anwächst.
+</p>
+
+<table>
+<tr>
+<th>SYMPTOM</th>
+<th>MÖGLICHE URSACHE</th>
+</tr>
+<tr>
+<td>RAM-Verbrauch steigt dauerhaft</td>
+<td>Möglicher Speicherfehler</td>
+</tr>
+<tr>
+<td>Spiel wird nach langer Laufzeit instabil</td>
+<td>Ressourcen werden eventuell nicht freigegeben</td>
+</tr>
+<tr>
+<td>Starke Ruckler nach langer Spielzeit</td>
+<td>Speicherbereinigung oder andere Belastung</td>
+</tr>
+<tr>
+<td>Crash nach längerer Laufzeit</td>
+<td>Kann verschiedene Ursachen haben</td>
+</tr>
+</table>
+</section>
+
+
+<section class="section">
+<div class="section-number">03 // MODPACK SCALE</div>
+<h2>Warum ist das in RISE OF NATIONS wichtig?</h2>
+
+<p>
+RISE OF NATIONS verwendet eine sehr große Anzahl an Mods.
+Darunter befinden sich Weltgeneratoren, Create-Erweiterungen,
+Technikmods, Dimensionen, Animationen, Rendering-Optimierungen,
+Fahrzeuge und zahlreiche Utility-Systeme.
+</p>
+
+<p>
+Je größer ein Modpack wird, desto schwieriger wird es, einen
+Performancefehler auf einen einzelnen Verursacher zurückzuführen.
+</p>
+
+<ul>
+<li>Viele gleichzeitig geladene Mods.</li>
+<li>Große Welten.</li>
+<li>Viele geladene Chunks.</li>
+<li>Komplexe Maschinen.</li>
+<li>Viele Entities.</li>
+<li>Zusätzliche Dimensionen.</li>
+<li>Aufwendige Rendering-Systeme.</li>
+</ul>
+</section>
+
+
+<section class="section">
+<div class="section-number">04 // DIAGNOSTIC WORKFLOW</div>
+<h2>Probleme richtig untersuchen</h2>
+
+<p>
+Wenn ein Performanceproblem auftritt, sollte nicht sofort ein Mod
+entfernt werden. Eine systematische Untersuchung liefert wesentlich
+bessere Ergebnisse.
+</p>
+
+<ol>
+<li>Problem reproduzieren.</li>
+<li>Speicherverbrauch beobachten.</li>
+<li>Spielzeit vergleichen.</li>
+<li>Logs und Crashreports sichern.</li>
+<li>Weitere Performance-Tools einsetzen.</li>
+<li>Verdächtige Mods einzeln testen.</li>
+</ol>
+
+<div class="warning">
+<div class="warning-title">IMPORTANT</div>
+<p>
+Ein hoher RAM-Verbrauch bedeutet nicht automatisch, dass ein
+Memory Leak vorhanden ist. Minecraft kann absichtlich viel
+Arbeitsspeicher verwenden und später wieder freigeben.
+</p>
+</div>
+</section>
+
+
+<section class="section">
+<div class="section-number">05 // JAVA MEMORY</div>
+<h2>RAM richtig verstehen</h2>
+
+<p>
+Minecraft verwendet Java. Der von Java reservierte Speicher und
+der tatsächlich verwendete Speicher sind nicht dasselbe.
+</p>
+
+<p>
+Deshalb sollte man bei einer Diagnose nicht ausschließlich auf die
+Zahl im Launcher schauen. Entscheidend ist das Verhalten über die
+Zeit.
+</p>
+
+<table>
+<tr>
+<th>BEOBACHTUNG</th>
+<th>INTERPRETATION</th>
+</tr>
+<tr>
+<td>RAM steigt und fällt</td>
+<td>Kann normales Verhalten sein</td>
+</tr>
+<tr>
+<td>RAM steigt dauerhaft ohne Erholung</td>
+<td>Untersuchung sinnvoll</td>
+</tr>
+<tr>
+<td>Crash bei Speichergrenze</td>
+<td>Kann zu wenig RAM oder ein Leak sein</td>
+</tr>
+<tr>
+<td>Starke FPS-Einbrüche</td>
+<td>Nicht automatisch ein Memory Leak</td>
+</tr>
+</table>
+</section>
+
+
+<section class="section">
+<div class="section-number">06 // CLIENT VS SERVER</div>
+<h2>Client und Server unterscheiden</h2>
+
+<p>
+Performanceprobleme können auf dem Client, auf dem Server oder auf
+beiden Seiten auftreten.
+</p>
+
+<h3>Client</h3>
+<p>
+Probleme können sich beispielsweise durch niedrige FPS,
+Renderingfehler oder steigenden RAM-Verbrauch äußern.
+</p>
+
+<h3>Server</h3>
+<p>
+Serverprobleme zeigen sich eher durch Tickverzögerungen,
+Spieler-Lag oder verzögerte Block- und Entity-Aktualisierungen.
+</p>
+
+<div class="note">
+<div class="note-title">DIAGNOSTIC RULE</div>
+<p>
+Immer zuerst feststellen, ob nur ein Spieler oder der gesamte
+Server betroffen ist.
+</p>
+</div>
+</section>
+
+
+<section class="section">
+<div class="section-number">07 // COMBINATION WITH MODERNFIX</div>
+<h2>Zusammenspiel mit Performance-Mods</h2>
+
+<p>
+AllTheLeaks sollte nicht als Ersatz für Performance-Mods betrachtet
+werden. Es erfüllt eine andere Aufgabe.
+</p>
+
+<table>
+<tr>
+<th>SYSTEM</th>
+<th>ROLLE</th>
+</tr>
+<tr>
+<td>AllTheLeaks</td>
+<td>Diagnose bestimmter Speicherprobleme</td>
+</tr>
+<tr>
+<td>ModernFix</td>
+<td>Allgemeine Optimierungen und Speicherverbesserungen</td>
+</tr>
+<tr>
+<td>FerriteCore</td>
+<td>Reduzierung des Speicherbedarfs bestimmter Daten</td>
+</tr>
+<tr>
+<td>ImmediatelyFast</td>
+<td>Rendering-Optimierung</td>
+</tr>
+<tr>
+<td>Spark</td>
+<td>Profiling und Performanceanalyse</td>
+</tr>
+</table>
+</section>
+
+
+<section class="section">
+<div class="section-number">08 // LONG SESSION TESTING</div>
+<h2>Langzeittests</h2>
+
+<p>
+Einige Probleme werden erst nach längerer Laufzeit sichtbar.
+Deshalb sind kurze Teststarts nicht immer ausreichend.
+</p>
+
+<p>
+Für ein großes Modpack kann ein sinnvoller Test beispielsweise
+folgende Schritte enthalten:
+</p>
+
+<ol>
+<li>Spiel starten.</li>
+<li>Ausgangszustand notieren.</li>
+<li>Normale Aktivitäten durchführen.</li>
+<li>Mehrere Gebiete laden.</li>
+<li>Maschinen und Systeme benutzen.</li>
+<li>Dimensionen wechseln.</li>
+<li>Nach längerer Laufzeit erneut messen.</li>
+</ol>
+</section>
+
+
+<section class="section">
+<div class="section-number">09 // CHUNK BEHAVIOR</div>
+<h2>Chunks und Speicher</h2>
+
+<p>
+Große Welten können erhebliche Mengen an Daten gleichzeitig im
+Speicher halten. Besonders relevant sind Spielerbasen, Maschinen,
+Entities und dauerhaft geladene Gebiete.
+</p>
+
+<ul>
+<li>Große Fabriken können viele Blockdaten enthalten.</li>
+<li>Mobfarmen erzeugen zahlreiche Entities.</li>
+<li>Dimensionen besitzen eigene Chunkdaten.</li>
+<li>Exploration lädt ständig neue Gebiete.</li>
+<li>Distant Horizons besitzt zusätzliche Daten für entfernte Weltbereiche.</li>
+</ul>
+</section>
+
+
+<section class="section">
+<div class="section-number">10 // TROUBLESHOOTING</div>
+<h2>Typische Fehleranalyse</h2>
+
+<h3>„Mein RAM ist immer fast voll.“</h3>
+<p>
+Das allein beweist keinen Leak. Java kann den zur Verfügung
+gestellten Speicher aktiv nutzen. Wichtig ist die Entwicklung über
+längere Zeit und das tatsächliche Verhalten des Spiels.
+</p>
+
+<h3>„Das Spiel wird nach Stunden langsamer.“</h3>
+<p>
+Hier lohnt sich eine systematische Untersuchung mit Performance-
+und Profiling-Werkzeugen. Auch Entity-, Chunk- oder Tick-Probleme
+können die Ursache sein.
+</p>
+
+<h3>„Nach einem Mod-Update tritt das Problem auf.“</h3>
+<p>
+Die zuletzt aktualisierten Mods als mögliche Ursache prüfen und
+Versionen dokumentieren.
+</p>
+
+<h3>„Der Server laggt, aber mein Client läuft gut.“</h3>
+<p>
+Dann sollte primär die Server-Tickrate und nicht nur der
+Client-RAM untersucht werden.
+</p>
+</section>
+
+
+<section class="section">
+<div class="section-number">11 // SAFE TESTING</div>
+<h2>Sichere Fehlersuche</h2>
+
+<p>
+Bei der Fehlersuche sollte möglichst reproduzierbar gearbeitet
+werden.
+</p>
+
+<ul>
+<li>Backup der Welt erstellen.</li>
+<li>Testwelt für Experimente verwenden.</li>
+<li>Nur eine Änderung gleichzeitig durchführen.</li>
+<li>Versionen dokumentieren.</li>
+<li>Logs aufbewahren.</li>
+<li>Nach jeder Änderung erneut testen.</li>
+</ul>
+
+<div class="warning">
+<div class="warning-title">WORLD SAFETY</div>
+<p>
+Mods nicht einfach aus einer bestehenden produktiven Welt entfernen.
+Das kann zu fehlenden Blöcken, Items oder beschädigten
+Weltabschnitten führen.
+</p>
+</div>
+</section>
+
+
+<section class="section">
+<div class="section-number">12 // SERVER ADMINISTRATION</div>
+<h2>Für Serveradministratoren</h2>
+
+<p>
+Auf einem großen RISE OF NATIONS-Server sollte Performanceanalyse
+als regelmäßiger Teil der Wartung betrachtet werden.
+</p>
+
+<ul>
+<li>Server-RAM beobachten.</li>
+<li>Tickzeiten prüfen.</li>
+<li>Crashreports archivieren.</li>
+<li>Modupdates dokumentieren.</li>
+<li>Große Spielerprojekte beobachten.</li>
+<li>Regelmäßige Backups durchführen.</li>
+</ul>
+
+<p>
+AllTheLeaks kann dabei als zusätzliche Diagnoseebene betrachtet
+werden, ersetzt aber keine vollständige Serveranalyse.
+</p>
+</section>
+
+
+<section class="section">
+<div class="section-number">13 // RISE OF NATIONS APPLICATION</div>
+<h2>Einsatz im Modpack</h2>
+
+<p>
+Aufgrund der Größe des Modpacks ist AllTheLeaks besonders als
+technisches Hintergrundsystem interessant.
+</p>
+
+<p>
+Zusammen mit ModernFix, FerriteCore, ImmediatelyFast und Spark
+entsteht eine wesentlich bessere Grundlage für die Analyse und
+Optimierung einer großen Installation.
+</p>
+
+<table>
+<tr>
+<th>MOD</th>
+<th>FUNKTION</th>
+</tr>
+<tr>
+<td>AllTheLeaks</td>
+<td>Leak-/Speicherdiagnose</td>
+</tr>
+<tr>
+<td>ModernFix</td>
+<td>Performance und Speicheroptimierung</td>
+</tr>
+<tr>
+<td>FerriteCore</td>
+<td>Speicheroptimierung</td>
+</tr>
+<tr>
+<td>ImmediatelyFast</td>
+<td>Rendering-Optimierung</td>
+</tr>
+<tr>
+<td>Spark</td>
+<td>Performance-Profiling</td>
+</tr>
+<tr>
+<td>Better Chunk Loading</td>
+<td>Chunk-Verarbeitung</td>
+</tr>
+</table>
+</section>
+
+
+<section class="section">
+<div class="section-number">14 // PROFESSOR DOCTRINE</div>
+<h2>Das Wichtigste zum Mitnehmen</h2>
+
+<ul>
+<li>AllTheLeaks ist ein Diagnosemod und kein Content-Mod.</li>
+<li>Ein hoher RAM-Verbrauch bedeutet nicht automatisch einen Leak.</li>
+<li>Langzeittests sind für Speicherprobleme besonders wichtig.</li>
+<li>Client- und Serverprobleme müssen getrennt betrachtet werden.</li>
+<li>Spark ergänzt die Untersuchung durch detailliertes Profiling.</li>
+<li>ModernFix und FerriteCore übernehmen andere Optimierungsaufgaben.</li>
+<li>Bei Modtests sollten immer Welt-Backups verwendet werden.</li>
+</ul>
+
+<div class="warning">
+<div class="warning-title">FINAL PRINCIPLE</div>
+<p>
+Nicht raten – messen. In einem großen Modpack ist eine saubere
+Diagnose fast immer besser als blindes Entfernen von Mods.
+</p>
+</div>
+</section>
+
+
+<section class="section">
+<div class="section-number">15 // REFERENCE DATA</div>
+<h2>Originalquellen</h2>
+
+<div class="sources">
+
+<a href="https://modrinth.com/"
+   target="_blank"
+   rel="noopener">
+MODRINTH // MOD DATABASE
+</a>
+
+<a href="https://www.curseforge.com/minecraft/mc-mods"
+   target="_blank"
+   rel="noopener">
+CURSEFORGE // MINECRAFT MOD DATABASE
+</a>
+
+</div>
+</section>
+
+
+<a class="back" href="wiki.html">
+← ZURÜCK ZUR WIKI
+</a>
+
+</main>
+
+<footer>
+RISE OF NATIONS // ALLTHELEAKS // TACTICAL KNOWLEDGE DATABASE
+</footer>
+
+</body>
+</html>
