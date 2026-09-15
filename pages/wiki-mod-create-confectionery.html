@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RISE OF NATIONS // CREATE CONFECTIONERY</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+    min-height:100vh;
+    background:
+        linear-gradient(rgba(5,10,15,.97),rgba(5,10,15,.99)),
+        repeating-linear-gradient(135deg,rgba(255,255,255,.018) 0 2px,transparent 2px 9px);
+    color:#dbe3e8;
+    font-family:"Segoe UI",Arial,sans-serif;
+}
+
+header{
+    background:rgba(5,10,15,.98);
+    border-bottom:1px solid #293944;
+    box-shadow:0 5px 25px rgba(0,0,0,.45);
+}
+
+.header-inner{
+    max-width:1500px;
+    margin:auto;
+    padding:18px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:30px;
+}
+
+.logo{
+    color:#d6b85c;
+    font-size:22px;
+    font-weight:950;
+    letter-spacing:3px;
+}
+
+.logo span{
+    display:block;
+    color:#687b86;
+    font-size:9px;
+    letter-spacing:2px;
+    margin-top:4px;
+}
+
+nav{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+    gap:7px;
+}
+
+nav a{
+    color:#9aabb4;
+    text-decoration:none;
+    padding:9px 11px;
+    border:1px solid transparent;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.2px;
+    transition:.2s;
+}
+
+nav a:hover{
+    color:#d6b85c;
+    background:#111b22;
+    border-color:#3b4d58;
+}
+
+main{
+    max-width:1250px;
+    margin:auto;
+    padding:70px 30px 100px;
+}
+
+.eyebrow{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:3px;
+    margin-bottom:15px;
+}
+
+h1{
+    color:#edf2f4;
+    font-size:clamp(40px,6.5vw,78px);
+    line-height:.95;
+    letter-spacing:4px;
+    font-weight:950;
+}
+
+.subtitle{
+    max-width:930px;
+    margin-top:22px;
+    color:#8497a2;
+    line-height:1.75;
+    font-size:15px;
+}
+
+.meta{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-top:38px;
+}
+
+.meta-box{
+    padding:18px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+
+.meta-label{
+    color:#596c77;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:8px;
+}
+
+.meta-value{
+    color:#d6b85c;
+    font-size:13px;
+    font-weight:900;
+}
+
+.section{
+    margin-top:35px;
+    padding:30px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+
+.section-number{
+    color:#526773;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:2px;
+    margin-bottom:9px;
+}
+
+h2{
+    color:#e1e8eb;
+    font-size:22px;
+    letter-spacing:1px;
+    margin-bottom:18px;
+}
+
+h3{
+    color:#d6b85c;
+    font-size:14px;
+    letter-spacing:1px;
+    margin:25px 0 10px;
+}
+
+p{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    margin-bottom:13px;
+}
+
+ul,ol{
+    margin:12px 0 18px 22px;
+}
+
+li{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    padding-left:5px;
+}
+
+.note{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#111c23;
+    border-left:3px solid #4d91bd;
+}
+
+.note-title{
+    color:#4d91bd;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+
+.warning{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#17140e;
+    border-left:3px solid #d6b85c;
+}
+
+.warning-title{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:18px;
+}
+
+th,td{
+    text-align:left;
+    padding:13px 14px;
+    border:1px solid #293c47;
+    font-size:12px;
+}
+
+th{
+    color:#d6b85c;
+    background:#111c23;
+    font-size:10px;
+    letter-spacing:1px;
+}
+
+td{
+    color:#8ea0a9;
+    background:#0a141a;
+}
+
+.sources{
+    display:grid;
+    gap:10px;
+    margin-top:15px;
+}
+
+.sources a{
+    display:block;
+    padding:13px 15px;
+    background:#101b22;
+    border:1px solid #293c47;
+    color:#9fb0b9;
+    text-decoration:none;
+    font-size:12px;
+    transition:.2s;
+}
+
+.sources a:hover{
+    color:#d6b85c;
+    border-color:#d6b85c;
+}
+
+.back{
+    display:inline-block;
+    margin-top:45px;
+    padding:12px 16px;
+    color:#d6b85c;
+    border:1px solid #4c4530;
+    text-decoration:none;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    transition:.2s;
+}
+
+.back:hover{
+    background:#17150f;
+    border-color:#d6b85c;
+}
+
+footer{
+    border-top:1px solid #202e36;
+    padding:25px 30px;
+    text-align:center;
+    color:#465861;
+    font-size:9px;
+    letter-spacing:2px;
+}
+
+@media(max-width:850px){
+    .header-inner{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    nav{
+        justify-content:flex-start;
+    }
+
+    .meta{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:550px){
+    .meta{
+        grid-template-columns:1fr;
+    }
+
+    main{
+        padding:45px 18px 70px;
+    }
+
+    .section{
+        padding:22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-inner">
+
+        <div class="logo">
+            RISE OF NATIONS
+            <span>TACTICAL KNOWLEDGE DATABASE</span>
+        </div>
+
+        <nav>
+            <a href="../index.html">COMMAND</a>
+            <a href="intelligence.html">INTELLIGENCE</a>
+            <a href="server.html">SERVER</a>
+            <a href="database.html">DATABASE</a>
+            <a href="download.html">DOWNLOAD</a>
+            <a href="communications.html">COMMUNICATIONS</a>
+            <a href="wiki.html">WIKI</a>
+        </nav>
+
+    </div>
+</header>
+
+<main>
+
+    <div class="eyebrow">
+        PROFESSOR DATABASE // FOOD INDUSTRY // CREATE
+    </div>
+
+    <h1>CREATE CONFECTIONERY</h1>
+
+    <p class="subtitle">
+        Create Confectionery erweitert Create um eine industrielle
+        Süßwarenproduktion. Der Schwerpunkt liegt auf der Herstellung
+        verschiedener Süßigkeiten und deren Einbindung in automatisierte
+        Produktionsketten.
+    </p>
+
+    <div class="meta">
+
+        <div class="meta-box">
+            <div class="meta-label">MOD</div>
+            <div class="meta-value">CREATE CONFECTIONERY</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">VERSION</div>
+            <div class="meta-value">1.1.3b</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">MINECRAFT</div>
+            <div class="meta-value">1.21.1</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">SYSTEM</div>
+            <div class="meta-value">FOOD / INDUSTRY</div>
+        </div>
+
+    </div>
+
+
+    <section class="section">
+
+        <div class="section-number">01 // SYSTEM OVERVIEW</div>
+        <h2>Was ist Create Confectionery?</h2>
+
+        <p>
+            Create Confectionery erweitert das industrielle
+            Create-Ökosystem um Süßwaren und entsprechende
+            Produktionsketten.
+        </p>
+
+        <p>
+            Dadurch kann eine einfache Lebensmittelproduktion zu
+            einer größeren Süßwarenindustrie ausgebaut werden.
+        </p>
+
+        <div class="note">
+            <div class="note-title">CORE PRINCIPLE</div>
+            <p>
+                Süßwaren sollten als Produktionskette betrachtet
+                werden: Rohstoffe werden verarbeitet, kombiniert
+                und anschließend als fertige Produkte gelagert
+                oder verteilt.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">02 // PRODUCTION CHAIN</div>
+        <h2>Produktionslogik</h2>
+
+        <p>
+            Die genaue Rezeptstruktur hängt vom jeweiligen Produkt
+            ab. Das allgemeine Prinzip bleibt jedoch gleich.
+        </p>
+
+        <ol>
+            <li>Rohstoffe bereitstellen.</li>
+            <li>Ausgangsmaterialien verarbeiten.</li>
+            <li>Zwischenprodukte herstellen.</li>
+            <li>Komponenten kombinieren.</li>
+            <li>Fertigprodukt erzeugen.</li>
+            <li>Produkt lagern oder ausliefern.</li>
+        </ol>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">03 // RAW MATERIALS</div>
+        <h2>Rohstoffe und Zutaten</h2>
+
+        <p>
+            Eine automatisierte Süßwarenfabrik benötigt eine
+            zuverlässige Versorgung ihrer Zutaten.
+        </p>
+
+        <ul>
+            <li>Grundlegende Lebensmittelrohstoffe.</li>
+            <li>Verarbeitete Zwischenprodukte.</li>
+            <li>Spezielle Süßwarenzutaten.</li>
+            <li>Weitere Zutaten aus kompatiblen Food-Mods.</li>
+        </ul>
+
+        <div class="warning">
+            <div class="warning-title">SUPPLY WARNING</div>
+            <p>
+                Bei komplexen Rezeptketten sollte jede wichtige
+                Zutat über einen ausreichenden Puffer verfügen.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">04 // AUTOMATION</div>
+        <h2>Süßwaren automatisieren</h2>
+
+        <p>
+            Create Confectionery kann in normale Create-
+            Produktionsanlagen integriert werden.
+        </p>
+
+        <table>
+
+            <tr>
+                <th>SYSTEM</th>
+                <th>FUNKTION</th>
+            </tr>
+
+            <tr>
+                <td>BELTS</td>
+                <td>Transport von Zutaten und Produkten</td>
+            </tr>
+
+            <tr>
+                <td>FUNNELS</td>
+                <td>Gezielte Übergaben</td>
+            </tr>
+
+            <tr>
+                <td>DEPOTS</td>
+                <td>Verarbeitung und Zwischenstationen</td>
+            </tr>
+
+            <tr>
+                <td>STORAGE</td>
+                <td>Rohstoff- und Produktlager</td>
+            </tr>
+
+            <tr>
+                <td>CREATE MACHINES</td>
+                <td>Automatisierte Verarbeitung</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">05 // PRODUCTION DESIGN</div>
+        <h2>Aufbau einer Süßwarenfabrik</h2>
+
+        <p>
+            Eine übersichtliche Produktionsanlage sollte nach
+            Produktionsstufen organisiert werden.
+        </p>
+
+        <ol>
+            <li>Rohstofflager.</li>
+            <li>Zutatenaufbereitung.</li>
+            <li>Hauptproduktion.</li>
+            <li>Zwischenproduktlager.</li>
+            <li>Endproduktion.</li>
+            <li>Fertigwarenlager.</li>
+            <li>Versand.</li>
+        </ol>
+
+        <div class="note">
+            <div class="note-title">DESIGN PRINCIPLE</div>
+            <p>
+                Der physische Aufbau sollte dem logischen
+                Produktionsfluss folgen. Dadurch lassen sich
+                Fehler und Engpässe leichter erkennen.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">06 // STORAGE</div>
+        <h2>Lagerstruktur</h2>
+
+        <p>
+            Eine Süßwarenproduktion profitiert von mehreren
+            getrennten Lagerstufen.
+        </p>
+
+        <table>
+
+            <tr>
+                <th>LAGER</th>
+                <th>ZWECK</th>
+            </tr>
+
+            <tr>
+                <td>RAW STORAGE</td>
+                <td>Grundmaterialien</td>
+            </tr>
+
+            <tr>
+                <td>PROCESSING STORAGE</td>
+                <td>Zwischenprodukte</td>
+            </tr>
+
+            <tr>
+                <td>PRODUCT STORAGE</td>
+                <td>Fertige Süßwaren</td>
+            </tr>
+
+            <tr>
+                <td>EXPORT STORAGE</td>
+                <td>Produkte für den Versand</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">07 // BOTTLENECKS</div>
+        <h2>Produktionsengpässe</h2>
+
+        <p>
+            Bei automatisierten Produktionslinien ist meistens
+            nicht die komplette Anlage das Problem. Häufig ist nur
+            eine einzelne Produktionsstufe langsamer.
+        </p>
+
+        <ul>
+            <li>Zutatenversorgung prüfen.</li>
+            <li>Zwischenlager kontrollieren.</li>
+            <li>Transportgeschwindigkeit prüfen.</li>
+            <li>Langsamste Maschine identifizieren.</li>
+            <li>Nur den tatsächlichen Engpass erweitern.</li>
+        </ul>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">08 // FOOD INDUSTRY</div>
+        <h2>Verbindung mit der Lebensmittelindustrie</h2>
+
+        <p>
+            Create Confectionery ist besonders interessant, wenn
+            Süßwaren nicht isoliert, sondern als Teil einer größeren
+            Lebensmittelwirtschaft produziert werden.
+        </p>
+
+        <ul>
+            <li>Landwirtschaftliche Rohstoffe.</li>
+            <li>Lebensmittelverarbeitung.</li>
+            <li>Süßwarenproduktion.</li>
+            <li>Getränkeproduktion.</li>
+            <li>Verpackung und Lagerung.</li>
+            <li>Transport und Handel.</li>
+        </ul>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">09 // MOD SYNERGY</div>
+        <h2>Zusammenspiel mit anderen Mods</h2>
+
+        <p>
+            Innerhalb von RISE OF NATIONS kann Create Confectionery
+            mit mehreren Food- und Create-Erweiterungen kombiniert
+            werden.
+        </p>
+
+        <ul>
+            <li>Create für die zentrale Automation.</li>
+            <li>Create Café für Gastronomie.</li>
+            <li>Create Chocolate Fountain für Schokolade.</li>
+            <li>Create Cola Factory für Getränke.</li>
+            <li>Farmer’s Delight für Lebensmittelverarbeitung.</li>
+            <li>Cooking for Blockheads für Küchenorganisation.</li>
+            <li>Let's Do: Brewery für Getränke.</li>
+            <li>Let's Do: Vinery für weitere Lebensmittel und Getränke.</li>
+        </ul>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">10 // MULTIPLAYER ECONOMY</div>
+        <h2>Süßwaren als Handelsprodukt</h2>
+
+        <p>
+            Süßwaren können in einer spielergesteuerten Wirtschaft
+            als Handels- und Versorgungsprodukte verwendet werden.
+        </p>
+
+        <ul>
+            <li>Cafés beliefern.</li>
+            <li>Restaurants versorgen.</li>
+            <li>Produkte auf Märkten verkaufen.</li>
+            <li>Eventgebäude versorgen.</li>
+            <li>Lieferverträge mit anderen Spielern aufbauen.</li>
+        </ul>
+
+        <div class="note">
+            <div class="note-title">ECONOMIC ROLE</div>
+            <p>
+                Die Fabrik wird besonders interessant, wenn die
+                Produktion nicht nur für den Eigenbedarf arbeitet,
+                sondern Teil eines größeren Handelsnetzwerks wird.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">11 // LOGISTICS</div>
+        <h2>Verteilung und Transport</h2>
+
+        <p>
+            Fertige Produkte können über verschiedene
+            Transportwege verteilt werden.
+        </p>
+
+        <ul>
+            <li>Lokale Lager.</li>
+            <li>Create-Belts innerhalb der Fabrik.</li>
+            <li>Transportsysteme zwischen Gebäuden.</li>
+            <li>Create-Züge für größere Entfernungen.</li>
+            <li>Zentrale Verteilzentren.</li>
+        </ul>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">12 // FACTORY SCALING</div>
+        <h2>Produktion vergrößern</h2>
+
+        <p>
+            Eine kleine Produktionslinie kann schrittweise zu
+            einer industriellen Anlage erweitert werden.
+        </p>
+
+        <ol>
+            <li>Produktionsengpass finden.</li>
+            <li>Betroffene Stufe vervielfachen.</li>
+            <li>Rohstoffversorgung erhöhen.</li>
+            <li>Transportkapazität erweitern.</li>
+            <li>Zwischenlager vergrößern.</li>
+            <li>Fertigwarenlager erweitern.</li>
+        </ol>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">13 // TROUBLESHOOTING</div>
+        <h2>Fehleranalyse</h2>
+
+        <h3>Eine Rezeptkette funktioniert nicht</h3>
+
+        <p>
+            Prüfe zuerst die einzelnen Produktionsstufen und
+            vergleiche die tatsächlich benötigten Zutaten mit
+            dem vorhandenen Material.
+        </p>
+
+        <h3>Items stauen sich</h3>
+
+        <p>
+            Wahrscheinlich ist eine nachgelagerte Produktionsstufe
+            zu langsam oder das Ziellager voll.
+        </p>
+
+        <h3>Maschinen stehen still</h3>
+
+        <p>
+            Prüfe Antrieb, Input und Output der betroffenen Station.
+        </p>
+
+        <h3>Fabrik läuft ungleichmäßig</h3>
+
+        <p>
+            Suche nach fehlenden Puffern zwischen unterschiedlich
+            schnellen Produktionsschritten.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">14 // INDUSTRIAL CONFECTIONERY</div>
+        <h2>Großprojekt: Süßwarenwerk</h2>
+
+        <p>
+            Für ein großes RISE OF NATIONS-Projekt kann ein
+            vollständiges Süßwarenwerk aufgebaut werden.
+        </p>
+
+        <ul>
+            <li>Rohstofflager.</li>
+            <li>Produktionshalle.</li>
+            <li>Schokoladenbereich.</li>
+            <li>Süßwarenlinien.</li>
+            <li>Verpackungs- und Lagerbereich.</li>
+            <li>Verladebahnhof.</li>
+            <li>Verwaltungsgebäude.</li>
+        </ul>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">15 // RISE OF NATIONS APPLICATION</div>
+        <h2>Einsatz im Modpack</h2>
+
+        <p>
+            Create Confectionery passt hervorragend in die zivile
+            und wirtschaftliche Infrastruktur des Modpacks.
+        </p>
+
+        <ul>
+            <li>Süßwarenfabriken.</li>
+            <li>Cafés.</li>
+            <li>Restaurants.</li>
+            <li>Hotels.</li>
+            <li>Supermärkte.</li>
+            <li>Marktplätze.</li>
+            <li>Industriegebiete.</li>
+            <li>Handelsunternehmen.</li>
+        </ul>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">16 // PROFESSOR DOCTRINE</div>
+        <h2>Das Wichtigste zum Mitnehmen</h2>
+
+        <ul>
+            <li>Create Confectionery erweitert Create um Süßwarenproduktion.</li>
+            <li>Komplexe Rezepte sollten als Produktionsketten geplant werden.</li>
+            <li>Puffer verhindern unnötige Produktionsstillstände.</li>
+            <li>Transportwege sollten dem Produktionsfluss folgen.</li>
+            <li>Engpässe sollten gezielt analysiert und erweitert werden.</li>
+            <li>Der Mod lässt sich mit vielen Food- und Create-Mods kombinieren.</li>
+            <li>Süßwaren können Teil einer Multiplayer-Wirtschaft werden.</li>
+        </ul>
+
+        <div class="warning">
+            <div class="warning-title">FINAL PRINCIPLE</div>
+            <p>
+                Baue keine einzelne Maschine – baue eine
+                Produktionskette. Die eigentliche Stärke entsteht
+                durch das Zusammenspiel von Rohstoffen, Verarbeitung,
+                Logistik, Lagerung und Vertrieb.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">17 // REFERENCE DATA</div>
+        <h2>Originalquellen</h2>
+
+        <p>
+            Für konkrete Rezepte, Maschinen und versionsabhängige
+            Mechaniken sollten die Projektseiten der verwendeten
+            Version konsultiert werden.
+        </p>
+
+        <div class="sources">
+
+            <a href="https://modrinth.com/mod/create-confectionery"
+               target="_blank"
+               rel="noopener">
+                MODRINTH // CREATE CONFECTIONERY
+            </a>
+
+            <a href="https://www.curseforge.com/minecraft/mc-mods/create-confectionery"
+               target="_blank"
+               rel="noopener">
+                CURSEFORGE // CREATE CONFECTIONERY
+            </a>
+
+            <a href="https://modrinth.com/mod/create"
+               target="_blank"
+               rel="noopener">
+                MODRINTH // CREATE
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <a class="back" href="wiki.html">
+        ← ZURÜCK ZUR WIKI
+    </a>
+
+</main>
+
+<footer>
+    RISE OF NATIONS // CREATE CONFECTIONERY // TACTICAL KNOWLEDGE DATABASE
+</footer>
+
+</body>
+</html>
