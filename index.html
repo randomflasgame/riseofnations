@@ -5,126 +5,875 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>IMPORTANT // RISE OF NATIONS</title>
+    <title>RISE OF NATIONS // COMMAND DASHBOARD</title>
 
-    <link rel="stylesheet" href="../style.css">
-    <script src="../config/site-config.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="config/site-config.js"></script>
+
+    <style>
+
+        /* =====================================================
+           CINEMATIC INTRO
+        ===================================================== */
+
+        #intro {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background:
+                radial-gradient(circle at center, rgba(20, 55, 80, 0.18), transparent 45%),
+                linear-gradient(180deg, #020508 0%, #05090d 50%, #020406 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            transition: opacity 1s ease, visibility 1s ease;
+        }
+
+        #intro.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .intro-grid {
+            position: absolute;
+            inset: 0;
+            opacity: 0.16;
+            background-image:
+                linear-gradient(rgba(65, 145, 190, 0.12) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(65, 145, 190, 0.12) 1px, transparent 1px);
+            background-size: 55px 55px;
+        }
+
+        .intro-scan {
+            position: absolute;
+            inset: 0;
+            background:
+                repeating-linear-gradient(
+                    0deg,
+                    transparent 0px,
+                    transparent 4px,
+                    rgba(255,255,255,0.012) 5px
+                );
+            pointer-events: none;
+        }
+
+        .intro-vignette {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(
+                    ellipse at center,
+                    transparent 25%,
+                    rgba(0,0,0,0.78) 100%
+                );
+        }
+
+        .intro-content {
+            position: relative;
+            z-index: 5;
+            width: min(900px, 90%);
+            text-align: center;
+        }
+
+        .intro-classification {
+            color: #7ca8bd;
+            font-size: 11px;
+            letter-spacing: 5px;
+            margin-bottom: 28px;
+            opacity: 0;
+            animation: introFade 1s ease 0.8s forwards;
+        }
+
+        .intro-title {
+            margin: 0;
+            color: #d9e8ef;
+            font-size: clamp(48px, 9vw, 110px);
+            line-height: 0.9;
+            letter-spacing: 8px;
+            font-weight: 900;
+            text-shadow:
+                0 0 18px rgba(80, 170, 220, 0.18),
+                0 0 50px rgba(30, 110, 160, 0.12);
+            opacity: 0;
+            animation:
+                introTitle 1.6s cubic-bezier(.16,.8,.25,1) 1.3s forwards;
+        }
+
+        .intro-subtitle {
+            margin-top: 25px;
+            color: #9aaeb9;
+            font-size: 12px;
+            letter-spacing: 6px;
+            opacity: 0;
+            animation: introFade 1s ease 2.5s forwards;
+        }
+
+        .intro-line {
+            width: 0;
+            height: 1px;
+            margin: 35px auto;
+            background: #4d91b4;
+            box-shadow: 0 0 12px rgba(70,150,190,0.45);
+            animation: introLine 1.2s ease 2.9s forwards;
+        }
+
+        .intro-status {
+            color: #718995;
+            font-family: monospace;
+            font-size: 11px;
+            letter-spacing: 2px;
+            min-height: 20px;
+            opacity: 0;
+            animation: introFade 0.8s ease 3.4s forwards;
+        }
+
+        .intro-skip {
+            position: absolute;
+            right: 30px;
+            bottom: 25px;
+            z-index: 10;
+            border: 1px solid rgba(120,160,180,0.35);
+            background: rgba(5,10,14,0.72);
+            color: #8299a5;
+            padding: 9px 15px;
+            font-size: 10px;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .intro-skip:hover {
+            color: #d9e8ef;
+            border-color: #6c9db7;
+            background: rgba(20,40,50,0.8);
+        }
+
+        .intro-light {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: #77b9d8;
+            box-shadow: 0 0 15px #4c9ac0;
+            opacity: 0;
+            animation: lightPulse 3s infinite;
+        }
+
+        .intro-light.one {
+            left: 18%;
+            top: 32%;
+            animation-delay: 1s;
+        }
+
+        .intro-light.two {
+            right: 20%;
+            top: 42%;
+            animation-delay: 1.8s;
+        }
+
+        .intro-light.three {
+            left: 25%;
+            bottom: 24%;
+            animation-delay: 2.4s;
+        }
+
+        .intro-light.four {
+            right: 28%;
+            bottom: 30%;
+            animation-delay: 3s;
+        }
+
+        @keyframes introFade {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes introTitle {
+            from {
+                opacity: 0;
+                transform: scale(1.08);
+                filter: blur(8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+                filter: blur(0);
+            }
+        }
+
+        @keyframes introLine {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 260px;
+            }
+        }
+
+        @keyframes lightPulse {
+
+            0%,
+            100% {
+                opacity: 0.15;
+            }
+
+            50% {
+                opacity: 0.9;
+            }
+
+        }
+
+
+        /* =====================================================
+           DASHBOARD
+        ===================================================== */
+
+        .dashboard-hero {
+            margin-bottom: 35px;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .dashboard-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .dashboard-link .ron-card {
+            height: 100%;
+        }
+
+        .dashboard-description {
+            color: #8296a1;
+            font-size: 13px;
+            line-height: 1.7;
+            margin: 12px 0 20px;
+        }
+
+        .dashboard-action {
+            color: #7eb3d0;
+            font-size: 10px;
+            letter-spacing: 2px;
+        }
+
+        .dashboard-action::after {
+            content: "  →";
+        }
+
+        .dashboard-warning {
+            margin-top: 25px;
+        }
+
+        @media (max-width: 800px) {
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .intro-title {
+                letter-spacing: 4px;
+            }
+
+            .intro-subtitle {
+                letter-spacing: 3px;
+            }
+
+        }
+
+    </style>
+
 </head>
+
 
 <body>
 
+
+<!-- =========================================================
+     CINEMATIC INTRO
+========================================================= -->
+
+<div id="intro">
+
+    <div class="intro-grid"></div>
+    <div class="intro-scan"></div>
+    <div class="intro-vignette"></div>
+
+    <div class="intro-light one"></div>
+    <div class="intro-light two"></div>
+    <div class="intro-light three"></div>
+    <div class="intro-light four"></div>
+
+    <div class="intro-content">
+
+        <div class="intro-classification">
+            RISE OF NATIONS // COMMAND NETWORK
+        </div>
+
+        <h1 class="intro-title">
+            RISE OF<br>NATIONS
+        </h1>
+
+        <div class="intro-subtitle">
+            GLOBAL COMMAND SYSTEM
+        </div>
+
+        <div class="intro-line"></div>
+
+        <div
+            class="intro-status"
+            id="introStatus"
+        >
+            INITIALIZING COMMAND NETWORK...
+        </div>
+
+    </div>
+
+    <button
+        class="intro-skip"
+        id="skipIntro"
+    >
+        SKIP INTRO
+    </button>
+
+</div>
+
+
+
+<!-- =========================================================
+     MAIN WEBSITE
+========================================================= -->
+
 <div class="top-line"></div>
 
+
 <header>
+
     <nav class="ron-nav">
 
         <div class="ron-brand">
+
             RISE OF NATIONS
-            <span>KNOWLEDGE DATABASE</span>
+
+            <span>
+                COMMAND DASHBOARD
+            </span>
+
         </div>
 
+
         <div class="ron-nav-links">
-            <a href="communications.html">COMMUNICATIONS</a>
-            <a href="intelligence.html">INTELLIGENCE</a>
-            <a href="server.html">SERVER</a>
-            <a href="database.html">DATABASE</a>
-            <a href="download.html">DOWNLOAD</a>
-            <a href="wiki.html" class="active">WIKI</a>
-            <a href="faq.html">FAQ</a>
+
+            <a href="pages/communications.html">
+                COMMUNICATIONS
+            </a>
+
+            <a href="pages/intelligence.html">
+                INTELLIGENCE
+            </a>
+
+            <a href="pages/server.html">
+                SERVER
+            </a>
+
+            <a href="pages/database.html">
+                DATABASE
+            </a>
+
+            <a href="pages/download.html">
+                DOWNLOAD
+            </a>
+
+            <a href="pages/wiki.html">
+                WIKI
+            </a>
+
+            <a href="pages/faq.html">
+                FAQ
+            </a>
+
         </div>
 
     </nav>
+
 </header>
+
 
 
 <main class="ron-page">
 
+
+    <!-- =====================================================
+         CLASSIFICATION
+    ====================================================== -->
+
     <div class="ron-classification">
 
         <span>
-            WIKI // PRIORITY INFORMATION
+            RISE OF NATIONS // COMMAND DASHBOARD
         </span>
 
         <span class="ron-live">
-            ● DATABASE ONLINE
+            ● SYSTEM ONLINE
         </span>
 
     </div>
 
 
-    <h1 class="ron-page-title">
-        IMPORTANT
-    </h1>
 
-    <p class="ron-page-subtitle">
-        Essential systems and information required for
-        successful operations within Rise of Nations.
-    </p>
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
 
+    <section class="dashboard-hero">
+
+        <h1 class="ron-page-title">
+            COMMAND DASHBOARD
+        </h1>
+
+        <p class="ron-page-subtitle">
+            Central command interface for server operations,
+            intelligence, communications and modpack systems.
+        </p>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         SYSTEM STATUS
+    ====================================================== -->
 
     <div class="section-title">
-        CORE SYSTEMS
-        <span>PRIORITY 01</span>
+
+        SYSTEM STATUS
+
+        <span>
+            NETWORK MONITORING
+        </span>
+
+    </div>
+
+
+    <div class="ron-status-grid">
+
+
+        <div class="ron-status">
+
+            <div class="ron-status-label">
+                SERVER
+            </div>
+
+            <div
+                class="ron-status-value ron-green"
+                id="serverStatus"
+            >
+                ONLINE
+            </div>
+
+        </div>
+
+
+        <div class="ron-status">
+
+            <div class="ron-status-label">
+                MODPACK
+            </div>
+
+            <div
+                class="ron-status-value ron-blue"
+                id="modpackVersion"
+            >
+                SYSTEM
+            </div>
+
+        </div>
+
+
+        <div class="ron-status">
+
+            <div class="ron-status-label">
+                MINECRAFT
+            </div>
+
+            <div
+                class="ron-status-value ron-gold"
+                id="minecraftVersion"
+            >
+                SYSTEM
+            </div>
+
+        </div>
+
+
+        <div class="ron-status">
+
+            <div class="ron-status-label">
+                NETWORK
+            </div>
+
+            <div
+                class="ron-status-value ron-green"
+            >
+                OPERATIONAL
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         COMMAND MODULES
+    ====================================================== -->
+
+    <div class="section-title">
+
+        COMMAND MODULES
+
+        <span>
+            AVAILABLE SYSTEMS
+        </span>
+
+    </div>
+
+
+    <div class="dashboard-grid">
+
+
+        <!-- COMMUNICATIONS -->
+
+        <a
+            class="dashboard-link"
+            href="pages/communications.html"
+        >
+
+            <div class="ron-card">
+
+                <div class="ron-panel-header">
+
+                    <div class="ron-panel-title">
+                        COMMUNICATIONS
+                    </div>
+
+                    <div class="ron-panel-code">
+                        COM-01
+                    </div>
+
+                </div>
+
+                <div class="dashboard-description">
+
+                    Community communications, Discord access
+                    and external coordination channels.
+
+                </div>
+
+                <div class="dashboard-action">
+                    COMMUNITY & DISCORD
+                </div>
+
+            </div>
+
+        </a>
+
+
+
+        <!-- INTELLIGENCE -->
+
+        <a
+            class="dashboard-link"
+            href="pages/intelligence.html"
+        >
+
+            <div class="ron-card">
+
+                <div class="ron-panel-header">
+
+                    <div class="ron-panel-title">
+                        INTELLIGENCE
+                    </div>
+
+                    <div class="ron-panel-code">
+                        INT-01
+                    </div>
+
+                </div>
+
+                <div class="dashboard-description">
+
+                    Global situation reports, strategic indicators
+                    and simulated world intelligence.
+
+                </div>
+
+                <div class="dashboard-action">
+                    GLOBAL SITUATION
+                </div>
+
+            </div>
+
+        </a>
+
+
+
+        <!-- SERVER -->
+
+        <a
+            class="dashboard-link"
+            href="pages/server.html"
+        >
+
+            <div class="ron-card">
+
+                <div class="ron-panel-header">
+
+                    <div class="ron-panel-title">
+                        SERVER
+                    </div>
+
+                    <div class="ron-panel-code">
+                        SRV-01
+                    </div>
+
+                </div>
+
+                <div class="dashboard-description">
+
+                    Minecraft server information, connection
+                    data, technical status and emergency access.
+
+                </div>
+
+                <div class="dashboard-action">
+                    SERVER OPERATIONS
+                </div>
+
+            </div>
+
+        </a>
+
+
+
+        <!-- DATABASE -->
+
+        <a
+            class="dashboard-link"
+            href="pages/database.html"
+        >
+
+            <div class="ron-card">
+
+                <div class="ron-panel-header">
+
+                    <div class="ron-panel-title">
+                        DATABASE
+                    </div>
+
+                    <div class="ron-panel-code">
+                        DAT-01
+                    </div>
+
+                </div>
+
+                <div class="dashboard-description">
+
+                    Modpack systems, technologies, gameplay
+                    categories and technical documentation.
+
+                </div>
+
+                <div class="dashboard-action">
+                    MODPACK DATABASE
+                </div>
+
+            </div>
+
+        </a>
+
+
+
+        <!-- DOWNLOAD -->
+
+        <a
+            class="dashboard-link"
+            href="pages/download.html"
+        >
+
+            <div class="ron-card">
+
+                <div class="ron-panel-header">
+
+                    <div class="ron-panel-title">
+                        DOWNLOAD
+                    </div>
+
+                    <div class="ron-panel-code">
+                        DLS-01
+                    </div>
+
+                </div>
+
+                <div class="dashboard-description">
+
+                    Access the current Rise of Nations modpack
+                    and installation information.
+
+                </div>
+
+                <div class="dashboard-action">
+                    DEPLOY MODPACK
+                </div>
+
+            </div>
+
+        </a>
+
+
+
+        <!-- WIKI -->
+
+        <a
+            class="dashboard-link"
+            href="pages/wiki.html"
+        >
+
+            <div class="ron-card">
+
+                <div class="ron-panel-header">
+
+                    <div class="ron-panel-title">
+                        WIKI
+                    </div>
+
+                    <div class="ron-panel-code">
+                        WIK-01
+                    </div>
+
+                </div>
+
+                <div class="dashboard-description">
+
+                    Knowledge database containing important,
+                    useful and advanced modpack information.
+
+                </div>
+
+                <div class="dashboard-action">
+                    KNOWLEDGE DATABASE
+                </div>
+
+            </div>
+
+        </a>
+
+
+
+        <!-- FAQ -->
+
+        <a
+            class="dashboard-link"
+            href="pages/faq.html"
+        >
+
+            <div class="ron-card">
+
+                <div class="ron-panel-header">
+
+                    <div class="ron-panel-title">
+                        FAQ
+                    </div>
+
+                    <div class="ron-panel-code">
+                        SUP-01
+                    </div>
+
+                </div>
+
+                <div class="dashboard-description">
+
+                    Installation instructions, technical
+                    requirements and troubleshooting information.
+
+                </div>
+
+                <div class="dashboard-action">
+                    TECHNICAL SUPPORT
+                </div>
+
+            </div>
+
+        </a>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         DIRECT ACCESS
+    ====================================================== -->
+
+    <div class="section-title">
+
+        DIRECT ACCESS
+
+        <span>
+            PRIMARY OPERATIONS
+        </span>
+
     </div>
 
 
     <div class="ron-grid">
 
-        <div class="ron-card">
-
-            <div class="ron-panel-header">
-
-                <div class="ron-panel-title">
-                    CREATE
-                </div>
-
-                <div class="ron-panel-code">
-                    CORE-01
-                </div>
-
-            </div>
-
-            <p>
-                The primary industrial engineering system.
-                Create provides machinery, automation,
-                logistics, factories, trains and large-scale
-                industrial infrastructure.
-            </p>
-
-            <a class="ron-button"
-               href="wiki-mod-create.html">
-                OPEN DATABASE
-            </a>
-
-        </div>
-
 
         <div class="ron-card">
 
             <div class="ron-panel-header">
 
                 <div class="ron-panel-title">
-                    JEI
+                    DEPLOY MODPACK
                 </div>
 
                 <div class="ron-panel-code">
-                    CORE-02
+                    QUICK-01
                 </div>
 
             </div>
 
             <p>
-                Item and recipe intelligence system.
-                Use JEI to search for items, recipes and
-                available crafting methods.
+                Download the current modpack and prepare
+                the installation environment.
             </p>
 
-            <a class="ron-button"
-               href="wiki-mod-jei.html">
-                OPEN DATABASE
+            <a
+                class="ron-button"
+                id="heroDownload"
+                href="pages/download.html"
+            >
+                DOWNLOAD
             </a>
 
         </div>
+
 
 
         <div class="ron-card">
@@ -132,27 +881,29 @@
             <div class="ron-panel-header">
 
                 <div class="ron-panel-title">
-                    WAYSTONES
+                    SERVER ACCESS
                 </div>
 
                 <div class="ron-panel-code">
-                    CORE-03
+                    QUICK-02
                 </div>
 
             </div>
 
             <p>
-                Strategic transportation infrastructure.
-                Waystones allow fast movement between
-                established locations.
+                Open server information and connection
+                instructions.
             </p>
 
-            <a class="ron-button"
-               href="wiki-mod-waystones.html">
-                OPEN DATABASE
+            <a
+                class="ron-button"
+                href="pages/server.html"
+            >
+                SERVER INFO
             </a>
 
         </div>
+
 
 
         <div class="ron-card">
@@ -160,270 +911,333 @@
             <div class="ron-panel-header">
 
                 <div class="ron-panel-title">
-                    CLAIMS
+                    COMMUNITY
                 </div>
 
                 <div class="ron-panel-code">
-                    CORE-04
+                    QUICK-03
                 </div>
 
             </div>
 
             <p>
-                Territory protection and land management.
-                Claims are used to protect important
-                settlements and infrastructure.
+                Access the community communication channels
+                and Discord network.
             </p>
 
-            <a class="ron-button"
-               href="wiki-mod-claims.html">
-                OPEN DATABASE
+            <a
+                class="ron-button"
+                id="discordButton"
+                href="pages/communications.html"
+            >
+                COMMUNICATIONS
             </a>
 
         </div>
 
-
-        <div class="ron-card">
-
-            <div class="ron-panel-header">
-
-                <div class="ron-panel-title">
-                    SECURITYCRAFT
-                </div>
-
-                <div class="ron-panel-code">
-                    CORE-05
-                </div>
-
-            </div>
-
-            <p>
-                Security and defensive technology.
-                SecurityCraft provides systems for protecting
-                important facilities and strategic locations.
-            </p>
-
-            <a class="ron-button"
-               href="wiki-mod-securitycraft.html">
-                OPEN DATABASE
-            </a>
-
-        </div>
-
-
-        <div class="ron-card">
-
-            <div class="ron-panel-header">
-
-                <div class="ron-panel-title">
-                    SIMPLE VOICE CHAT
-                </div>
-
-                <div class="ron-panel-code">
-                    CORE-06
-                </div>
-
-            </div>
-
-            <p>
-                In-game voice communication for coordinated
-                operations, exploration and multiplayer activity.
-            </p>
-
-            <a class="ron-button"
-               href="wiki-mod-simple-voice-chat.html">
-                OPEN DATABASE
-            </a>
-
-        </div>
 
     </div>
 
 
-    <div class="section-title">
-        SURVIVAL & INFRASTRUCTURE
-        <span>PRIORITY 02</span>
-    </div>
 
-
-    <div class="ron-grid">
-
-        <div class="ron-card">
-
-            <div class="ron-panel-header">
-
-                <div class="ron-panel-title">
-                    FARMER'S DELIGHT
-                </div>
-
-                <div class="ron-panel-code">
-                    FOOD-01
-                </div>
-
-            </div>
-
-            <p>
-                Expanded food production, cooking and
-                agricultural infrastructure.
-            </p>
-
-            <a class="ron-button"
-               href="wiki-mod-farmers-delight.html">
-                OPEN DATABASE
-            </a>
-
-        </div>
-
-
-        <div class="ron-card">
-
-            <div class="ron-panel-header">
-
-                <div class="ron-panel-title">
-                    SOPHISTICATED BACKPACKS
-                </div>
-
-                <div class="ron-panel-code">
-                    LOG-01
-                </div>
-
-            </div>
-
-            <p>
-                Expanded mobile storage for exploration,
-                logistics and resource operations.
-            </p>
-
-            <a class="ron-button"
-               href="wiki-mod-sophisticated-backpacks.html">
-                OPEN DATABASE
-            </a>
-
-        </div>
-
-
-        <div class="ron-card">
-
-            <div class="ron-panel-header">
-
-                <div class="ron-panel-title">
-                    SOPHISTICATED STORAGE
-                </div>
-
-                <div class="ron-panel-code">
-                    LOG-02
-                </div>
-
-            </div>
-
-            <p>
-                Advanced stationary storage infrastructure
-                for large-scale resource management.
-            </p>
-
-            <a class="ron-button"
-               href="wiki-mod-sophisticated-storage.html">
-                OPEN DATABASE
-            </a>
-
-        </div>
-
-    </div>
-
+    <!-- =====================================================
+         SYSTEM NOTICE
+    ====================================================== -->
 
     <div class="ron-alert gold">
 
-        <strong>DATABASE NOTICE</strong><br>
+        <strong>
+            COMMAND NETWORK NOTICE
+        </strong>
 
-        This section contains priority information for
-        new and experienced personnel. Additional systems
-        can be accessed through the main Wiki database.
+        <br>
 
-    </div>
-
-
-    <div class="ron-grid">
-
-        <div class="ron-card">
-
-            <div class="ron-panel-header">
-
-                <div class="ron-panel-title">
-                    RETURN TO WIKI
-                </div>
-
-                <div class="ron-panel-code">
-                    NAV-01
-                </div>
-
-            </div>
-
-            <p>
-                Return to the central knowledge database
-                and browse all available Wiki categories.
-            </p>
-
-            <a class="ron-button"
-               href="wiki.html">
-                WIKI DATABASE
-            </a>
-
-        </div>
-
-
-        <div class="ron-card">
-
-            <div class="ron-panel-header">
-
-                <div class="ron-panel-title">
-                    INSTALLATION
-                </div>
-
-                <div class="ron-panel-code">
-                    NAV-02
-                </div>
-
-            </div>
-
-            <p>
-                Need help installing the modpack?
-                Open the technical FAQ for the complete
-                installation procedure.
-            </p>
-
-            <a class="ron-button"
-               href="faq.html">
-                OPEN FAQ
-            </a>
-
-        </div>
+        Rise of Nations command systems are operational.
+        Server, intelligence, database and communication
+        modules are available through the navigation network.
 
     </div>
+
 
 </main>
 
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
 
 <footer class="ron-footer">
 
     RISE OF NATIONS
     &nbsp; // &nbsp;
-    <span id="footerVersion">SYSTEM</span>
+
+    <span id="footerVersion">
+        SYSTEM
+    </span>
+
     &nbsp; // &nbsp;
-    KNOWLEDGE DATABASE
+
+    <span id="footerStatus">
+        COMMAND NETWORK ONLINE
+    </span>
 
 </footer>
 
 
+
+<!-- =========================================================
+     CONFIG + INTRO SCRIPT
+========================================================= -->
+
 <script>
 
-if (typeof SITE_CONFIG !== "undefined") {
+    /* =====================================================
+       CONFIGURATION
+    ===================================================== */
 
-    document.getElementById("footerVersion").textContent =
-        SITE_CONFIG.modpack.version;
+    if (typeof SITE_CONFIG !== "undefined") {
 
-}
+        const config = SITE_CONFIG;
+
+        /*
+         * Website / Version
+         */
+
+        const modpackVersion =
+            config.modpack?.version ||
+            "PLATZHALTER";
+
+        const minecraftVersion =
+            config.website?.minecraftVersion ||
+            config.modpack?.minecraftVersion ||
+            "PLATZHALTER";
+
+
+        /*
+         * Footer
+         */
+
+        const footerVersion =
+            document.getElementById("footerVersion");
+
+        if (footerVersion) {
+
+            footerVersion.textContent =
+                modpackVersion;
+
+        }
+
+
+        /*
+         * Minecraft Version
+         */
+
+        const minecraftElement =
+            document.getElementById("minecraftVersion");
+
+        if (minecraftElement) {
+
+            minecraftElement.textContent =
+                minecraftVersion;
+
+        }
+
+
+        /*
+         * Modpack Version
+         */
+
+        const modpackElement =
+            document.getElementById("modpackVersion");
+
+        if (modpackElement) {
+
+            modpackElement.textContent =
+                modpackVersion;
+
+        }
+
+
+        /*
+         * Server Status
+         */
+
+        const serverStatus =
+            document.getElementById("serverStatus");
+
+        if (
+            serverStatus &&
+            config.server &&
+            config.server.status
+        ) {
+
+            serverStatus.textContent =
+                config.server.status;
+
+        }
+
+
+        /*
+         * Download
+         */
+
+        const heroDownload =
+            document.getElementById("heroDownload");
+
+        if (
+            heroDownload &&
+            config.download &&
+            config.download.modpack &&
+            config.download.modpack !== "PLATZHALTER"
+        ) {
+
+            heroDownload.href =
+                config.download.modpack;
+
+        }
+
+
+        /*
+         * Discord
+         */
+
+        const discordButton =
+            document.getElementById("discordButton");
+
+        if (
+            discordButton &&
+            config.communications &&
+            config.communications.discord &&
+            config.communications.discord !== "PLATZHALTER"
+        ) {
+
+            discordButton.href =
+                config.communications.discord;
+
+        }
+
+    }
+
+
+
+    /* =====================================================
+       CINEMATIC INTRO
+    ===================================================== */
+
+    const intro =
+        document.getElementById("intro");
+
+    const skipIntro =
+        document.getElementById("skipIntro");
+
+    const introStatus =
+        document.getElementById("introStatus");
+
+
+    const introMessages = [
+
+        "INITIALIZING COMMAND NETWORK...",
+
+        "ESTABLISHING SECURE CONNECTION...",
+
+        "LOADING STRATEGIC DATABASE...",
+
+        "CHECKING COMMUNICATION SYSTEMS...",
+
+        "INITIALIZING INTELLIGENCE NETWORK...",
+
+        "VERIFYING SERVER SYSTEMS...",
+
+        "COMMAND NETWORK READY."
+
+    ];
+
+
+    let introIndex = 0;
+
+
+    function updateIntroStatus() {
+
+        if (!introStatus) {
+            return;
+        }
+
+        if (introIndex >= introMessages.length) {
+            return;
+        }
+
+        introStatus.textContent =
+            introMessages[introIndex];
+
+        introIndex++;
+
+    }
+
+
+    const introInterval =
+        setInterval(
+            updateIntroStatus,
+            650
+        );
+
+
+    function closeIntro() {
+
+        clearInterval(introInterval);
+
+        if (!intro) {
+            return;
+        }
+
+        intro.classList.add("hidden");
+
+        setTimeout(
+            () => {
+
+                intro.style.display =
+                    "none";
+
+            },
+            1100
+        );
+
+    }
+
+
+    if (skipIntro) {
+
+        skipIntro.addEventListener(
+            "click",
+            closeIntro
+        );
+
+    }
+
+
+    /*
+     * Start status sequence
+     */
+
+    setTimeout(
+        updateIntroStatus,
+        400
+    );
+
+
+    /*
+     * Automatically finish intro.
+     */
+
+    setTimeout(
+        closeIntro,
+        6200
+    );
+
 
 </script>
 
+
 </body>
+
 </html>
