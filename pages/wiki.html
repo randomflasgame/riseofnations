@@ -1,538 +1,453 @@
 <!DOCTYPE html>
 <html lang="de">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>WIKI // RISE OF NATIONS</title>
+    <title>Wiki // Rise of Nations</title>
 
     <link rel="stylesheet" href="../style.css">
     <script src="../config/site-config.js"></script>
+
+    <style>
+        .ron-page-nav {
+            display: flex;
+            align-items: center;
+            gap: 26px;
+            padding: 14px 30px;
+            border-bottom: 1px solid rgba(80, 150, 210, 0.25);
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(8, 18, 28, 0.98),
+                    rgba(5, 12, 20, 0.98)
+                );
+        }
+
+        .ron-brand {
+            color: #dce6ed !important;
+            text-decoration: none !important;
+            font-weight: 900;
+            letter-spacing: 2px;
+            font-size: 16px;
+            white-space: nowrap;
+        }
+
+        .ron-brand span {
+            display: block;
+            margin-top: 3px;
+            color: #5f88a8;
+            font-size: 9px;
+            letter-spacing: 3px;
+            font-weight: 700;
+        }
+
+        .ron-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .ron-nav a {
+            color: #8fa7b8 !important;
+            text-decoration: none !important;
+            padding: 8px 11px;
+            border: 1px solid transparent;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1.4px;
+            transition: 0.18s ease;
+        }
+
+        .ron-nav a:hover,
+        .ron-nav a.active {
+            color: #dceeff !important;
+            background: rgba(30, 75, 110, 0.35);
+            border-color: rgba(80, 150, 210, 0.35);
+        }
+
+        .wiki-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .wiki-card {
+            min-height: 180px;
+            padding: 22px;
+            border: 1px solid rgba(90, 130, 160, 0.3);
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(17, 29, 39, 0.96),
+                    rgba(8, 16, 23, 0.96)
+                );
+            box-shadow:
+                inset 0 0 25px rgba(0, 0, 0, 0.25),
+                0 8px 25px rgba(0, 0, 0, 0.2);
+            transition: 0.2s ease;
+        }
+
+        .wiki-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(70, 145, 205, 0.55);
+            box-shadow:
+                inset 0 0 30px rgba(20, 90, 140, 0.08),
+                0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .wiki-code {
+            color: #5d8bab;
+            font-size: 10px;
+            letter-spacing: 2px;
+            font-weight: 900;
+            margin-bottom: 12px;
+        }
+
+        .wiki-card h3 {
+            margin: 0 0 10px;
+            color: #dce6ed;
+            font-size: 18px;
+            letter-spacing: 1px;
+        }
+
+        .wiki-card p {
+            margin: 0;
+            color: #8194a3;
+            line-height: 1.6;
+            font-size: 13px;
+        }
+
+        .wiki-status {
+            margin-top: 18px;
+            padding: 14px 16px;
+            border-left: 3px solid #d1a84a;
+            background: rgba(90, 70, 25, 0.12);
+            color: #c8b98c;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 900px) {
+            .wiki-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 650px) {
+            .ron-page-nav {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .wiki-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-    <div class="top-line"></div>
+    <div class="ron-page-nav">
 
-    <header>
+        <a
+            href="../index.html"
+            class="ron-brand"
+            onclick="sessionStorage.setItem('ron_access','granted')">
+
+            RISE OF NATIONS
+
+            <span>
+                COMMAND NETWORK
+            </span>
+
+        </a>
+
         <nav class="ron-nav">
 
-            <div class="ron-brand">
-                RISE OF NATIONS
-                <span>KNOWLEDGE COMMAND</span>
-            </div>
+            <a
+                href="../index.html"
+                onclick="sessionStorage.setItem('ron_access','granted')">
+                HOME / COMMAND
+            </a>
 
-            <div class="ron-nav-links">
-                <a href="communications.html">COMMUNICATIONS</a>
-                <a href="intelligence.html">INTELLIGENCE</a>
-                <a href="server.html">SERVER</a>
-                <a href="database.html">DATABASE</a>
-                <a href="download.html">DOWNLOAD</a>
-                <a href="wiki.html" class="active">WIKI</a>
-                <a href="faq.html">FAQ</a>
-            </div>
+            <a href="communications.html">
+                COMMUNICATIONS
+            </a>
+
+            <a href="intelligence.html">
+                INTELLIGENCE
+            </a>
+
+            <a href="server.html">
+                SERVER
+            </a>
+
+            <a href="database.html">
+                DATABASE
+            </a>
+
+            <a href="download.html">
+                DOWNLOAD
+            </a>
+
+            <a href="wiki.html" class="active">
+                WIKI
+            </a>
+
+            <a href="faq.html">
+                FAQ
+            </a>
 
         </nav>
-    </header>
+
+    </div>
 
 
     <main class="ron-page">
 
         <div class="ron-classification">
-            <span>WIKI // KNOWLEDGE DATABASE</span>
-            <span class="ron-live">● ARCHIVE ONLINE</span>
+            KNOWLEDGE DATABASE // RESTRICTED ACCESS
         </div>
 
 
-        <h1 class="ron-page-title" id="wikiTitle">
+        <h1 class="ron-page-title">
             WIKI
         </h1>
 
-        <p class="ron-page-subtitle" id="wikiDescription">
-            Central knowledge database for RISE OF NATIONS.
+        <p class="ron-page-subtitle">
+            TECHNICAL DOCUMENTATION // FIELD MANUALS // SURVIVAL KNOWLEDGE
         </p>
 
 
-        <div class="ron-status-grid">
-
-            <div class="ron-status">
-                <div class="ron-status-label">
-                    DATABASE
-                </div>
-
-                <div class="ron-status-value ron-green">
-                    ONLINE
-                </div>
-            </div>
-
-            <div class="ron-status">
-                <div class="ron-status-label">
-                    DOCUMENTATION
-                </div>
-
-                <div class="ron-status-value ron-blue">
-                    ACTIVE
-                </div>
-            </div>
-
-            <div class="ron-status">
-                <div class="ron-status-label">
-                    MOD ARCHIVE
-                </div>
-
-                <div class="ron-status-value ron-gold">
-                    AVAILABLE
-                </div>
-            </div>
-
-            <div class="ron-status">
-                <div class="ron-status-label">
-                    ACCESS
-                </div>
-
-                <div class="ron-status-value ron-green">
-                    PUBLIC
-                </div>
-            </div>
-
-        </div>
-
-
-        <div class="section-title">
-            KNOWLEDGE CATEGORIES
-            <span>PRIMARY ARCHIVES</span>
-        </div>
-
-
-        <div class="ron-grid">
-
-            <a
-                href="wiki-important.html"
-                class="ron-card"
-                style="text-decoration:none;"
-            >
-
-                <div class="ron-panel-header">
-
-                    <div class="ron-panel-title">
-                        IMPORTANT
-                    </div>
-
-                    <div class="ron-panel-code">
-                        WIKI-001
-                    </div>
-
-                </div>
-
-                <h3>IMPORTANT INFORMATION</h3>
-
-                <p>
-                    Essential information for getting started,
-                    server participation and core systems.
-                </p>
-
-                <div style="margin-top:16px;">
-                    <span class="ron-tag gold">
-                        PRIORITY
-                    </span>
-                </div>
-
-            </a>
-
-
-            <a
-                href="wiki-useful.html"
-                class="ron-card"
-                style="text-decoration:none;"
-            >
-
-                <div class="ron-panel-header">
-
-                    <div class="ron-panel-title">
-                        USEFUL
-                    </div>
-
-                    <div class="ron-panel-code">
-                        WIKI-002
-                    </div>
-
-                </div>
-
-                <h3>USEFUL KNOWLEDGE</h3>
-
-                <p>
-                    Practical guides, systems, utilities and
-                    information useful during normal gameplay.
-                </p>
-
-                <div style="margin-top:16px;">
-                    <span class="ron-tag">
-                        REFERENCE
-                    </span>
-                </div>
-
-            </a>
-
-
-            <a
-                href="wiki-professor.html"
-                class="ron-card"
-                style="text-decoration:none;"
-            >
-
-                <div class="ron-panel-header">
-
-                    <div class="ron-panel-title">
-                        PROFESSOR
-                    </div>
-
-                    <div class="ron-panel-code">
-                        WIKI-003
-                    </div>
-
-                </div>
-
-                <h3>ADVANCED SYSTEMS</h3>
-
-                <p>
-                    Advanced technical information for players
-                    who want to understand the deeper systems.
-                </p>
-
-                <div style="margin-top:16px;">
-                    <span class="ron-tag green">
-                        ADVANCED
-                    </span>
-                </div>
-
-            </a>
-
-        </div>
-
-
-        <div class="section-title">
-            MOD DATABASE
-            <span>DIRECT ACCESS</span>
-        </div>
-
-
-        <div class="ron-grid">
-
-            <a
-                href="../wiki-mod-create.html"
-                class="ron-card"
-                style="text-decoration:none;"
-            >
-
-                <div class="ron-panel-header">
-
-                    <div class="ron-panel-title">
-                        CREATE
-                    </div>
-
-                    <div class="ron-panel-code">
-                        MOD-001
-                    </div>
-
-                </div>
-
-                <h3>INDUSTRIAL SYSTEMS</h3>
-
-                <p>
-                    Machines, automation, logistics, trains,
-                    factories and industrial production.
-                </p>
-
-                <div style="margin-top:16px;">
-                    <span class="ron-tag gold">
-                        CORE MOD
-                    </span>
-                </div>
-
-            </a>
-
-
-            <a
-                href="../wiki-mod-jei.html"
-                class="ron-card"
-                style="text-decoration:none;"
-            >
-
-                <div class="ron-panel-header">
-
-                    <div class="ron-panel-title">
-                        JEI
-                    </div>
-
-                    <div class="ron-panel-code">
-                        MOD-002
-                    </div>
-
-                </div>
-
-                <h3>ITEM DATABASE</h3>
-
-                <p>
-                    Recipes, items, crafting information and
-                    technical references.
-                </p>
-
-                <div style="margin-top:16px;">
-                    <span class="ron-tag">
-                        REFERENCE
-                    </span>
-                </div>
-
-            </a>
-
-
-            <a
-                href="../wiki-mod-waystones.html"
-                class="ron-card"
-                style="text-decoration:none;"
-            >
-
-                <div class="ron-panel-header">
-
-                    <div class="ron-panel-title">
-                        WAYSTONES
-                    </div>
-
-                    <div class="ron-panel-code">
-                        MOD-003
-                    </div>
-
-                </div>
-
-                <h3>TRANSPORT NETWORK</h3>
-
-                <p>
-                    Fast travel and strategic connection
-                    between established locations.
-                </p>
-
-                <div style="margin-top:16px;">
-                    <span class="ron-tag">
-                        TRANSPORT
-                    </span>
-                </div>
-
-            </a>
-
-
-            <a
-                href="../wiki-mod-securitycraft.html"
-                class="ron-card"
-                style="text-decoration:none;"
-            >
-
-                <div class="ron-panel-header">
-
-                    <div class="ron-panel-title">
-                        SECURITYCRAFT
-                    </div>
-
-                    <div class="ron-panel-code">
-                        MOD-004
-                    </div>
-
-                </div>
-
-                <h3>SECURITY SYSTEMS</h3>
-
-                <p>
-                    Defensive infrastructure, protection systems
-                    and secured installations.
-                </p>
-
-                <div style="margin-top:16px;">
-                    <span class="ron-tag red">
-                        SECURITY
-                    </span>
-                </div>
-
-            </a>
-
-
-            <a
-                href="../wiki-mod-farmers-delight.html"
-                class="ron-card"
-                style="text-decoration:none;"
-            >
-
-                <div class="ron-panel-header">
-
-                    <div class="ron-panel-title">
-                        FARMER'S DELIGHT
-                    </div>
-
-                    <div class="ron-panel-code">
-                        MOD-005
-                    </div>
-
-                </div>
-
-                <h3>FOOD & AGRICULTURE</h3>
-
-                <p>
-                    Food production, agriculture and expanded
-                    civilian resource systems.
-                </p>
-
-                <div style="margin-top:16px;">
-                    <span class="ron-tag green">
-                        AGRICULTURE
-                    </span>
-                </div>
-
-            </a>
-
-
-            <a
-                href="../wiki-mod-sophisticated-backpacks.html"
-                class="ron-card"
-                style="text-decoration:none;"
-            >
-
-                <div class="ron-panel-header">
-
-                    <div class="ron-panel-title">
-                        SOPHISTICATED
-                    </div>
-
-                    <div class="ron-panel-code">
-                        MOD-006
-                    </div>
-
-                </div>
-
-                <h3>LOGISTICS</h3>
-
-                <p>
-                    Advanced storage and mobile logistics
-                    for large-scale resource management.
-                </p>
-
-                <div style="margin-top:16px;">
-                    <span class="ron-tag gold">
-                        LOGISTICS
-                    </span>
-                </div>
-
-            </a>
-
-        </div>
-
-
-        <div class="section-title">
-            WIKI NAVIGATION
-            <span>REFERENCE SYSTEMS</span>
-        </div>
-
-
-        <div class="ron-card">
+        <section class="command-panel">
 
             <div class="ron-panel-header">
 
                 <div class="ron-panel-title">
-                    KNOWLEDGE ACCESS
+                    KNOWLEDGE DATABASE
                 </div>
 
                 <div class="ron-panel-code">
-                    NAV // WIKI
+                    DB-WIKI-001
                 </div>
 
             </div>
 
-            <div class="ron-data">
 
-                <div class="ron-data-row">
-                    <span class="ron-data-label">
-                        IMPORTANT
-                    </span>
+            <p style="
+                color:#91a5b5;
+                line-height:1.7;
+                max-width:850px;
+                margin:0;
+            ">
+                Zentrale Wissensdatenbank für Rise of Nations.
+                Hier werden später Anleitungen, technische Dokumentation,
+                Mod-Erklärungen, Gameplay-Systeme und weitere Informationen
+                gesammelt.
+            </p>
 
-                    <span class="ron-data-value">
-                        CORE INFORMATION
-                    </span>
-                </div>
 
-                <div class="ron-data-row">
-                    <span class="ron-data-label">
-                        USEFUL
-                    </span>
+            <div class="wiki-status">
 
-                    <span class="ron-data-value">
-                        PRACTICAL INFORMATION
-                    </span>
-                </div>
-
-                <div class="ron-data-row">
-                    <span class="ron-data-label">
-                        PROFESSOR
-                    </span>
-
-                    <span class="ron-data-value">
-                        ADVANCED INFORMATION
-                    </span>
-                </div>
-
-                <div class="ron-data-row">
-                    <span class="ron-data-label">
-                        MOD DATABASE
-                    </span>
-
-                    <span class="ron-data-value">
-                        MOD-SPECIFIC INFORMATION
-                    </span>
-                </div>
+                STATUS:
+                WIKI-STRUKTUR INITIALISIERT //
+                DETAILLIERTE EINTRÄGE WERDEN NACH UND NACH HINZUGEFÜGT.
 
             </div>
 
-        </div>
+        </section>
 
 
-        <div class="ron-alert">
+        <section class="wiki-grid">
 
-            <strong>DATABASE NOTICE</strong><br>
+            <article class="wiki-card">
 
-            The RISE OF NATIONS Wiki is continuously expandable.
-            New mod documentation, guides and technical information
-            can be added without changing the overall command interface.
+                <div class="wiki-code">
+                    WIKI-001
+                </div>
 
-        </div>
+                <h3>
+                    INSTALLATION
+                </h3>
+
+                <p>
+                    Installation des Modpacks, Einrichtung des
+                    Minecraft-Profils und grundlegende technische
+                    Voraussetzungen.
+                </p>
+
+            </article>
+
+
+            <article class="wiki-card">
+
+                <div class="wiki-code">
+                    WIKI-002
+                </div>
+
+                <h3>
+                    MODS
+                </h3>
+
+                <p>
+                    Übersicht über wichtige Mods, deren Funktionen,
+                    Abhängigkeiten und technische Besonderheiten.
+                </p>
+
+            </article>
+
+
+            <article class="wiki-card">
+
+                <div class="wiki-code">
+                    WIKI-003
+                </div>
+
+                <h3>
+                    TECHNOLOGY
+                </h3>
+
+                <p>
+                    Maschinen, Energie, Automatisierung, Produktion
+                    und industrielle Systeme.
+                </p>
+
+            </article>
+
+
+            <article class="wiki-card">
+
+                <div class="wiki-code">
+                    WIKI-004
+                </div>
+
+                <h3>
+                    MILITARY
+                </h3>
+
+                <p>
+                    Waffen, Fahrzeuge, Ausrüstung und militärische
+                    Systeme innerhalb des Modpacks.
+                </p>
+
+            </article>
+
+
+            <article class="wiki-card">
+
+                <div class="wiki-code">
+                    WIKI-005
+                </div>
+
+                <h3>
+                    WORLD
+                </h3>
+
+                <p>
+                    Weltgenerierung, Biome, Strukturen, Ressourcen
+                    und besondere Orte.
+                </p>
+
+            </article>
+
+
+            <article class="wiki-card">
+
+                <div class="wiki-code">
+                    WIKI-006
+                </div>
+
+                <h3>
+                    GAMEPLAY
+                </h3>
+
+                <p>
+                    Grundlagen, wichtige Mechaniken, Fortschritt,
+                    Ressourcenmanagement und hilfreiche Tipps.
+                </p>
+
+            </article>
+
+
+            <article class="wiki-card">
+
+                <div class="wiki-code">
+                    WIKI-007
+                </div>
+
+                <h3>
+                    SERVER
+                </h3>
+
+                <p>
+                    Serverregeln, technische Informationen,
+                    Verbindungsprobleme und häufige Fehler.
+                </p>
+
+            </article>
+
+
+            <article class="wiki-card">
+
+                <div class="wiki-code">
+                    WIKI-008
+                </div>
+
+                <h3>
+                    COMMANDS
+                </h3>
+
+                <p>
+                    Relevante Minecraft- und Serverbefehle für
+                    Administration und Gameplay.
+                </p>
+
+            </article>
+
+
+            <article class="wiki-card">
+
+                <div class="wiki-code">
+                    WIKI-009
+                </div>
+
+                <h3>
+                    TROUBLESHOOTING
+                </h3>
+
+                <p>
+                    Lösungen für typische Abstürze, fehlende Mods,
+                    Performance-Probleme und andere Fehler.
+                </p>
+
+            </article>
+
+        </section>
+
+
+        <footer class="ron-footer">
+
+            RISE OF NATIONS //
+            KNOWLEDGE DATABASE //
+            VERSION
+            <span id="wiki-version">
+                PLATZHALTER
+            </span>
+
+        </footer>
 
     </main>
 
 
-    <footer class="ron-footer">
-
-        RISE OF NATIONS
-        &nbsp; // &nbsp;
-        <span id="footerVersion">SYSTEM</span>
-        &nbsp; // &nbsp;
-        KNOWLEDGE COMMAND
-
-    </footer>
-
-
     <script>
 
-        if (typeof SITE_CONFIG !== "undefined") {
-
-            document.getElementById("wikiTitle").textContent =
-                SITE_CONFIG.wiki.title;
-
-            document.getElementById("wikiDescription").textContent =
-                SITE_CONFIG.wiki.description;
-
-            document.getElementById("footerVersion").textContent =
-                SITE_CONFIG.modpack.version;
-
-        }
+        document.getElementById("wiki-version").textContent =
+            SITE_CONFIG.website.modpackVersion;
 
     </script>
 
 </body>
-
 </html>
