@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RISE OF NATIONS // CREATE AERONAUTICS</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    background:
+        linear-gradient(rgba(7,12,17,.96), rgba(7,12,17,.99)),
+        repeating-linear-gradient(
+            135deg,
+            rgba(255,255,255,.018) 0px,
+            rgba(255,255,255,.018) 2px,
+            transparent 2px,
+            transparent 9px
+        );
+    color: #dbe3e8;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+header {
+    background: rgba(6,11,16,.98);
+    border-bottom: 1px solid #293944;
+    box-shadow: 0 5px 25px rgba(0,0,0,.45);
+}
+
+.header-inner {
+    max-width: 1500px;
+    margin: auto;
+    padding: 18px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+}
+
+.logo {
+    color: #d6b85c;
+    font-size: 22px;
+    font-weight: 950;
+    letter-spacing: 3px;
+}
+
+.logo span {
+    display: block;
+    color: #687b86;
+    font-size: 9px;
+    letter-spacing: 2px;
+    margin-top: 4px;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 7px;
+}
+
+nav a {
+    color: #9aabb4;
+    text-decoration: none;
+    padding: 9px 11px;
+    border: 1px solid transparent;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 1.2px;
+    transition: .2s;
+}
+
+nav a:hover {
+    color: #d6b85c;
+    background: #111b22;
+    border-color: #3b4d58;
+}
+
+main {
+    max-width: 1250px;
+    margin: auto;
+    padding: 70px 30px 100px;
+}
+
+.eyebrow {
+    color: #d6b85c;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+}
+
+h1 {
+    color: #edf2f4;
+    font-size: clamp(40px, 6.5vw, 78px);
+    line-height: .95;
+    letter-spacing: 4px;
+    font-weight: 950;
+}
+
+.subtitle {
+    max-width: 900px;
+    margin-top: 22px;
+    color: #8497a2;
+    line-height: 1.75;
+    font-size: 15px;
+}
+
+.meta {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 38px;
+}
+
+.meta-box {
+    padding: 18px;
+    background: #0d171d;
+    border: 1px solid #293c47;
+}
+
+.meta-label {
+    color: #596c77;
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+}
+
+.meta-value {
+    color: #d6b85c;
+    font-size: 13px;
+    font-weight: 900;
+}
+
+.section {
+    margin-top: 35px;
+    padding: 30px;
+    background: #0d171d;
+    border: 1px solid #293c47;
+}
+
+.section-number {
+    color: #526773;
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    margin-bottom: 9px;
+}
+
+h2 {
+    color: #e1e8eb;
+    font-size: 22px;
+    letter-spacing: 1px;
+    margin-bottom: 18px;
+}
+
+h3 {
+    color: #d6b85c;
+    font-size: 14px;
+    letter-spacing: 1px;
+    margin: 25px 0 10px;
+}
+
+p {
+    color: #899ba5;
+    font-size: 13px;
+    line-height: 1.8;
+    margin-bottom: 13px;
+}
+
+ul,
+ol {
+    margin: 12px 0 18px 22px;
+}
+
+li {
+    color: #899ba5;
+    font-size: 13px;
+    line-height: 1.8;
+    padding-left: 5px;
+}
+
+strong {
+    color: #d9e2e6;
+}
+
+.note {
+    margin-top: 18px;
+    padding: 17px 18px;
+    background: #111c23;
+    border-left: 3px solid #4d91bd;
+}
+
+.note-title {
+    color: #4d91bd;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    margin-bottom: 7px;
+}
+
+.warning {
+    margin-top: 18px;
+    padding: 17px 18px;
+    background: #17140e;
+    border-left: 3px solid #d6b85c;
+}
+
+.warning-title {
+    color: #d6b85c;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    margin-bottom: 7px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 18px;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 13px 14px;
+    border: 1px solid #293c47;
+    font-size: 12px;
+}
+
+th {
+    color: #d6b85c;
+    background: #111c23;
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+td {
+    color: #8ea0a9;
+    background: #0a141a;
+}
+
+.sources {
+    display: grid;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.sources a {
+    display: block;
+    padding: 13px 15px;
+    background: #101b22;
+    border: 1px solid #293c47;
+    color: #9fb0b9;
+    text-decoration: none;
+    font-size: 12px;
+    transition: .2s;
+}
+
+.sources a:hover {
+    color: #d6b85c;
+    border-color: #d6b85c;
+}
+
+.back {
+    display: inline-block;
+    margin-top: 45px;
+    padding: 12px 16px;
+    color: #d6b85c;
+    border: 1px solid #4c4530;
+    text-decoration: none;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    transition: .2s;
+}
+
+.back:hover {
+    background: #17150f;
+    border-color: #d6b85c;
+}
+
+footer {
+    border-top: 1px solid #202e36;
+    padding: 25px 30px;
+    text-align: center;
+    color: #465861;
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+@media (max-width: 850px) {
+    .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav {
+        justify-content: flex-start;
+    }
+
+    .meta {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 550px) {
+    .meta {
+        grid-template-columns: 1fr;
+    }
+
+    main {
+        padding: 45px 18px 70px;
+    }
+
+    .section {
+        padding: 22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-inner">
+
+        <div class="logo">
+            RISE OF NATIONS
+            <span>TACTICAL KNOWLEDGE DATABASE</span>
+        </div>
+
+        <nav>
+            <a href="../index.html">COMMAND</a>
+            <a href="intelligence.html">INTELLIGENCE</a>
+            <a href="server.html">SERVER</a>
+            <a href="database.html">DATABASE</a>
+            <a href="download.html">DOWNLOAD</a>
+            <a href="communications.html">COMMUNICATIONS</a>
+            <a href="wiki.html">WIKI</a>
+        </nav>
+
+    </div>
+</header>
+
+<main>
+
+    <div class="eyebrow">
+        PROFESSOR DATABASE // CREATE AVIATION SYSTEMS
+    </div>
+
+    <h1>CREATE AERONAUTICS</h1>
+
+    <p class="subtitle">
+        Create Aeronautics erweitert das Create-System um fliegende,
+        bewegliche Konstruktionen. Damit wird die klassische Create-Logik
+        aus mechanischer Bewegung, Contraptions und physikalisch wirkenden
+        Maschinen in einen neuen Bereich übertragen: die Luftfahrt.
+    </p>
+
+
+    <div class="meta">
+
+        <div class="meta-box">
+            <div class="meta-label">MOD</div>
+            <div class="meta-value">CREATE AERONAUTICS</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">VERSION</div>
+            <div class="meta-value">1.3.0</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">MINECRAFT</div>
+            <div class="meta-value">1.21.1</div>
+        </div>
+
+        <div class="meta-box">
+            <div class="meta-label">SYSTEM</div>
+            <div class="meta-value">AVIATION</div>
+        </div>
+
+    </div>
+
+
+    <section class="section">
+
+        <div class="section-number">01 // SYSTEM OVERVIEW</div>
+        <h2>Was ist Create Aeronautics?</h2>
+
+        <p>
+            Create Aeronautics baut auf den technischen Prinzipien von
+            Create auf und ermöglicht Konstruktionen, die sich durch die
+            Luft bewegen können.
+        </p>
+
+        <p>
+            Der entscheidende Unterschied zu normalen Create-Maschinen
+            besteht darin, dass eine Konstruktion nicht mehr nur an ihrem
+            Standort arbeitet. Die gesamte Konstruktion kann zu einem
+            mobilen technischen System werden.
+        </p>
+
+        <div class="note">
+            <div class="note-title">RISE OF NATIONS // AIR OPERATIONS</div>
+            <p>
+                Flugzeuge, Luftschiffe und andere Flugkonstruktionen
+                sollten als komplette Maschinen geplant werden. Die
+                technische Struktur ist wichtiger als das reine Aussehen.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">02 // CREATE FOUNDATION</div>
+        <h2>Grundwissen: Create</h2>
+
+        <p>
+            Vor der Arbeit mit Create Aeronautics sollte das grundlegende
+            Create-System verstanden werden.
+        </p>
+
+        <ul>
+            <li>Rotation und Geschwindigkeit</li>
+            <li>Stress und Belastung</li>
+            <li>Wellen und Zahnräder</li>
+            <li>Mechanical Bearings</li>
+            <li>Contraptions</li>
+            <li>Redstone-Steuerung</li>
+            <li>Materialtransport</li>
+        </ul>
+
+        <p>
+            Wer Create bereits beherrscht, kann viele dieser Konzepte
+            direkt auf Luftfahrzeuge übertragen.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">03 // AIRFRAME</div>
+        <h2>Der Aufbau eines Fluggeräts</h2>
+
+        <p>
+            Ein funktionierendes Luftfahrzeug benötigt mehr als nur einen
+            Motor. Die Konstruktion sollte in mehrere technische Bereiche
+            aufgeteilt werden.
+        </p>
+
+        <table>
+
+            <tr>
+                <th>BEREICH</th>
+                <th>FUNKTION</th>
+            </tr>
+
+            <tr>
+                <td>FRAME</td>
+                <td>Grundstruktur des Fluggeräts</td>
+            </tr>
+
+            <tr>
+                <td>PROPULSION</td>
+                <td>Antrieb und Energieübertragung</td>
+            </tr>
+
+            <tr>
+                <td>CONTROL</td>
+                <td>Steuerung und Bewegungsrichtung</td>
+            </tr>
+
+            <tr>
+                <td>UTILITY</td>
+                <td>Transport, Lager und Zusatzsysteme</td>
+            </tr>
+
+            <tr>
+                <td>ARMOR</td>
+                <td>Schutz und strukturelle Verstärkung</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">04 // CONTRAPTIONS</div>
+        <h2>Mobile Konstruktionen</h2>
+
+        <p>
+            Das zentrale Create-Prinzip bleibt auch hier erhalten:
+            Mehrere Blöcke können zu einer funktionierenden Konstruktion
+            zusammengefasst werden.
+        </p>
+
+        <p>
+            Für ein Fluggerät bedeutet das, dass Rumpf, Antrieb,
+            Lagerflächen und technische Komponenten gemeinsam bewegt
+            werden können.
+        </p>
+
+        <div class="warning">
+            <div class="warning-title">PLANUNG</div>
+            <p>
+                Vor dem Bau sollte festgelegt werden, welche Blöcke
+                tatsächlich Teil der beweglichen Konstruktion sein sollen.
+                Ungeplante Blockverbindungen können zu unerwartetem
+                Verhalten führen.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">05 // PROPULSION</div>
+        <h2>Antrieb</h2>
+
+        <p>
+            Der Antrieb bildet das technische Zentrum eines Fluggeräts.
+            Bei Create-basierten Maschinen sollte deshalb zuerst die
+            Energie- und Bewegungslogik funktionieren, bevor das äußere
+            Design fertiggestellt wird.
+        </p>
+
+        <h3>Grundregel</h3>
+
+        <p>
+            Erst Maschine, dann Verkleidung.
+        </p>
+
+        <p>
+            Ein optisch perfektes Flugzeug, dessen technische Systeme
+            nicht sauber funktionieren, ist für eine große Basis weniger
+            wertvoll als eine einfache, aber zuverlässige Maschine.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">06 // CONTROL SYSTEMS</div>
+        <h2>Steuerung</h2>
+
+        <p>
+            Ein Luftfahrzeug benötigt eine klare Steuerlogik. Besonders
+            bei komplexeren Konstruktionen sollte die Bedienung nicht
+            vollständig aus zufälligen Schaltern bestehen.
+        </p>
+
+        <ul>
+            <li>Startsystem</li>
+            <li>Antriebssystem</li>
+            <li>Steuerung</li>
+            <li>Beleuchtung</li>
+            <li>Hilfssysteme</li>
+            <li>Notabschaltung</li>
+        </ul>
+
+        <p>
+            Eine eindeutige Steuerung erleichtert auch Reparaturen und
+            spätere Erweiterungen.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">07 // LOGISTICS</div>
+        <h2>Lufttransport</h2>
+
+        <p>
+            Einer der interessantesten Einsatzzwecke ist der Transport
+            von Ressourcen zwischen weit entfernten Standorten.
+        </p>
+
+        <p>
+            Ein Luftfahrzeug kann beispielsweise als mobiles
+            Versorgungsfahrzeug eingesetzt werden und damit eine
+            Verbindung zwischen mehreren Produktionsstandorten schaffen.
+        </p>
+
+        <ul>
+            <li>Rohstofftransport</li>
+            <li>Versorgung entfernter Basen</li>
+            <li>Mobile Lagerung</li>
+            <li>Baumaterial-Transport</li>
+            <li>Expeditionsunterstützung</li>
+        </ul>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">08 // CREATE + AERONAUTICS</div>
+        <h2>Integration in Fabriken</h2>
+
+        <p>
+            Die Kombination aus Create und Create Aeronautics ermöglicht
+            ein besonders interessantes Logistikmodell.
+        </p>
+
+        <ol>
+            <li>Eine Fabrik produziert Ressourcen.</li>
+            <li>Das zentrale Lager sammelt die Produkte.</li>
+            <li>Ein Luftfahrzeug übernimmt den Transport.</li>
+            <li>Eine entfernte Anlage erhält die Lieferung.</li>
+            <li>Die zweite Anlage verarbeitet die Ressourcen weiter.</li>
+        </ol>
+
+        <p>
+            Damit kann eine Basis über mehrere Standorte hinweg wie ein
+            zusammenhängendes industrielles Netzwerk funktionieren.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">09 // AIRCRAFT DESIGN</div>
+        <h2>Design und Konstruktion</h2>
+
+        <p>
+            Bei größeren Flugzeugen sollte das Design nicht nur nach
+            optischen Kriterien erfolgen.
+        </p>
+
+        <h3>Struktur</h3>
+
+        <p>
+            Der Rumpf sollte eine klare technische Mitte besitzen.
+            Schwere Systeme sollten möglichst sinnvoll verteilt werden.
+        </p>
+
+        <h3>Wartung</h3>
+
+        <p>
+            Technische Komponenten sollten erreichbar bleiben. Ein
+            komplett verschlossener Rumpf sieht zwar sauber aus, kann
+            aber spätere Reparaturen unnötig erschweren.
+        </p>
+
+        <h3>Modularität</h3>
+
+        <p>
+            Austauschbare Module ermöglichen spätere Varianten des
+            gleichen Fluggeräts.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">10 // ADVANCED OPERATIONS</div>
+        <h2>Fortgeschrittene Nutzung</h2>
+
+        <p>
+            Sobald die grundlegende Luftfahrt funktioniert, kann das
+            System mit weiteren Modpacks kombiniert werden.
+        </p>
+
+        <ul>
+            <li>Create Big Cannons für schwere technische Systeme</li>
+            <li>Create Diesel Generators für industrielle Energie</li>
+            <li>Create New Age für elektrische Systeme</li>
+            <li>Create Deco für technische Gestaltung</li>
+            <li>Sophisticated Storage für Lagerung</li>
+            <li>JEI für Rezept- und Produktionsplanung</li>
+        </ul>
+
+        <div class="note">
+            <div class="note-title">SYSTEM DOCTRINE</div>
+            <p>
+                Die Stärke von RISE OF NATIONS entsteht nicht durch eine
+                einzelne Mod, sondern durch die Kombination mehrerer
+                technischer Systeme.
+            </p>
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">11 // COMMON PROBLEMS</div>
+        <h2>Fehleranalyse</h2>
+
+        <h3>Konstruktion bewegt sich nicht</h3>
+
+        <p>
+            Prüfe zuerst, ob die verwendete Konstruktion korrekt
+            definiert wurde und ob das notwendige Bewegungssystem
+            vorhanden und funktionsfähig ist.
+        </p>
+
+        <h3>Maschine verhält sich unerwartet</h3>
+
+        <p>
+            Vereinfache die Konstruktion. Entferne zunächst zusätzliche
+            Komponenten und teste anschließend einzelne Systeme.
+        </p>
+
+        <h3>Fluggerät ist zu kompliziert</h3>
+
+        <p>
+            Teile das Projekt in einzelne Subsysteme auf und teste jedes
+            System separat.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">12 // DEVELOPMENT METHOD</div>
+        <h2>Empfohlene Bau-Reihenfolge</h2>
+
+        <ol>
+            <li>Grundrahmen bauen.</li>
+            <li>Bewegungssystem testen.</li>
+            <li>Antrieb integrieren.</li>
+            <li>Steuerung einbauen.</li>
+            <li>Transport- und Nutzsysteme hinzufügen.</li>
+            <li>Schutz und Dekoration ergänzen.</li>
+            <li>Kompletten Belastungstest durchführen.</li>
+        </ol>
+
+        <p>
+            Diese Reihenfolge reduziert die Anzahl möglicher Fehler,
+            weil technische Probleme erkannt werden, bevor die Maschine
+            mit unnötiger Dekoration kompliziert wird.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-number">13 // REFERENCE DATA</div>
+        <h2>Originalquellen</h2>
+
+        <p>
+            Für genaue Blocknamen, aktuelle Mechaniken, Kompatibilität
+            und versionsabhängige Änderungen sollten die offiziellen
+            Projektseiten verwendet werden.
+        </p>
+
+        <div class="sources">
+
+            <a href="https://modrinth.com/mod/create-aeronautics"
+               target="_blank"
+               rel="noopener">
+                MODRINTH // CREATE AERONAUTICS
+            </a>
+
+            <a href="https://www.curseforge.com/minecraft/mc-mods/create-aeronautics"
+               target="_blank"
+               rel="noopener">
+                CURSEFORGE // CREATE AERONAUTICS
+            </a>
+
+            <a href="https://github.com/antonio-moon/Create-Aeronautics"
+               target="_blank"
+               rel="noopener">
+                GITHUB // CREATE AERONAUTICS
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <a class="back" href="wiki.html">
+        ← ZURÜCK ZUR WIKI
+    </a>
+
+</main>
+
+<footer>
+    RISE OF NATIONS // CREATE AERONAUTICS // TACTICAL KNOWLEDGE DATABASE
+</footer>
+
+</body>
+</html>
