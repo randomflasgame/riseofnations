@@ -9,471 +9,793 @@
 
     <link rel="stylesheet" href="../style.css">
     <script src="../config/site-config.js"></script>
+
+    <style>
+        .ron-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            padding: 14px 28px;
+            background: rgba(7, 12, 17, 0.97);
+            border-bottom: 1px solid rgba(120, 160, 190, 0.25);
+        }
+
+        .ron-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            color: #dce6ed !important;
+            text-decoration: none !important;
+            font-weight: 900;
+            letter-spacing: 2px;
+            white-space: nowrap;
+        }
+
+        .ron-brand::before {
+            content: "RON";
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 22px;
+            margin-bottom: 5px;
+            border: 1px solid #60798a;
+            background: #111c25;
+            color: #d6a94a;
+            font-size: 10px;
+            letter-spacing: 2px;
+        }
+
+        .ron-brand span {
+            color: #728b9b;
+            font-size: 9px;
+            letter-spacing: 3px;
+            font-weight: 600;
+        }
+
+        .ron-nav-links {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .ron-nav-links a {
+            padding: 10px 12px;
+            color: #8fa7b8 !important;
+            text-decoration: none !important;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1.4px;
+            border: 1px solid transparent;
+            transition: 0.2s ease;
+        }
+
+        .ron-nav-links a:hover {
+            color: #dce6ed !important;
+            background: rgba(40, 75, 100, 0.25);
+            border-color: rgba(100, 145, 175, 0.25);
+        }
+
+        .ron-nav-links a.active {
+            color: #d6a94a !important;
+            background: rgba(80, 65, 25, 0.18);
+            border-color: rgba(214, 169, 74, 0.35);
+        }
+
+        .download-grid {
+            display: grid;
+            grid-template-columns: 1.3fr 0.7fr;
+            gap: 18px;
+            margin-top: 24px;
+        }
+
+        .download-wide {
+            grid-column: 1 / -1;
+        }
+
+        .download-main {
+            padding: 28px;
+            border: 1px solid rgba(110, 145, 165, 0.22);
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(20, 39, 53, 0.78),
+                    rgba(8, 15, 21, 0.94)
+                );
+        }
+
+        .download-kicker {
+            color: #d6a94a;
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .download-title {
+            color: #dce6ed;
+            font-size: 28px;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+
+        .download-description {
+            margin-top: 12px;
+            max-width: 760px;
+            color: #8298a7;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .download-button {
+            display: inline-block;
+            margin-top: 22px;
+            padding: 14px 20px;
+            border: 1px solid rgba(214, 169, 74, 0.55);
+            background: rgba(100, 75, 25, 0.16);
+            color: #e4c978 !important;
+            text-decoration: none !important;
+            font-size: 11px;
+            font-weight: 900;
+            letter-spacing: 1.8px;
+            transition: 0.2s ease;
+        }
+
+        .download-button:hover {
+            background: rgba(130, 95, 30, 0.27);
+            border-color: #d6a94a;
+        }
+
+        .download-data {
+            display: grid;
+            gap: 0;
+        }
+
+        .download-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(130, 160, 180, 0.12);
+        }
+
+        .download-row:last-child {
+            border-bottom: none;
+        }
+
+        .download-label {
+            color: #708798;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+        }
+
+        .download-value {
+            color: #dce6ed;
+            font-size: 12px;
+            font-weight: 900;
+            text-align: right;
+        }
+
+        .download-value.gold {
+            color: #d6a94a;
+        }
+
+        .download-value.green {
+            color: #70c889;
+        }
+
+        .download-step {
+            display: flex;
+            gap: 16px;
+            padding: 17px 0;
+            border-bottom: 1px solid rgba(130, 160, 180, 0.12);
+        }
+
+        .download-step:last-child {
+            border-bottom: none;
+        }
+
+        .download-step-number {
+            flex: 0 0 34px;
+            width: 34px;
+            height: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(110, 145, 165, 0.3);
+            background: rgba(25, 43, 56, 0.5);
+            color: #d6a94a;
+            font-size: 11px;
+            font-weight: 900;
+        }
+
+        .download-step-title {
+            color: #dce6ed;
+            font-size: 12px;
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
+
+        .download-step-text {
+            margin-top: 5px;
+            color: #8298a7;
+            font-size: 12px;
+            line-height: 1.65;
+        }
+
+        .download-alert {
+            padding: 16px;
+            border-left: 3px solid #d6a94a;
+            background: rgba(110, 85, 25, 0.10);
+            color: #b9aa83;
+            font-size: 12px;
+            line-height: 1.75;
+        }
+
+        @media (max-width: 900px) {
+            .ron-nav {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .ron-nav-links {
+                justify-content: flex-start;
+            }
+
+            .download-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .download-wide {
+                grid-column: auto;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
     <div class="top-line"></div>
 
+
+    <!-- =========================
+         NAVIGATION
+    ========================== -->
+
     <header>
+
         <nav class="ron-nav">
 
-            <div class="ron-brand">
+            <a
+                href="../index.html"
+                class="ron-brand"
+                onclick="sessionStorage.setItem('ron_access', 'granted')"
+            >
                 RISE OF NATIONS
-                <span>DEPLOYMENT SYSTEM</span>
-            </div>
+
+                <span>
+                    COMMAND NETWORK
+                </span>
+            </a>
+
 
             <div class="ron-nav-links">
-                <a href="communications.html">COMMUNICATIONS</a>
-                <a href="intelligence.html">INTELLIGENCE</a>
-                <a href="server.html">SERVER</a>
-                <a href="database.html">DATABASE</a>
-                <a href="download.html" class="active">DOWNLOAD</a>
-                <a href="wiki.html">WIKI</a>
-                <a href="faq.html">FAQ</a>
+
+                <a
+                    href="../index.html"
+                    onclick="sessionStorage.setItem('ron_access', 'granted')"
+                >
+                    HOME / COMMAND
+                </a>
+
+                <a href="communications.html">
+                    COMMUNICATIONS
+                </a>
+
+                <a href="intelligence.html">
+                    INTELLIGENCE
+                </a>
+
+                <a href="server.html">
+                    SERVER
+                </a>
+
+                <a href="database.html">
+                    DATABASE
+                </a>
+
+                <a href="download.html" class="active">
+                    DOWNLOAD
+                </a>
+
+                <a href="wiki.html">
+                    WIKI
+                </a>
+
+                <a href="faq.html">
+                    FAQ
+                </a>
+
             </div>
 
         </nav>
+
     </header>
 
+
+    <!-- =========================
+         MAIN
+    ========================== -->
 
     <main class="ron-page">
 
         <div class="ron-classification">
-            <span>DOWNLOAD // DEPLOYMENT PACKAGE</span>
-            <span class="ron-live">● PACKAGE READY</span>
+            DOWNLOAD // SOFTWARE DEPLOYMENT
         </div>
 
 
-        <h1 class="ron-page-title">DOWNLOAD</h1>
+        <h1 class="ron-page-title">
+            DOWNLOAD
+        </h1>
 
         <p class="ron-page-subtitle">
-            Official deployment package for the RISE OF NATIONS
-            Minecraft experience. Download the current package
-            and follow the installation instructions.
+            RISE OF NATIONS // MODPACK DEPLOYMENT CENTER
         </p>
 
 
-        <div class="ron-status-grid">
-
-            <div class="ron-status">
-                <div class="ron-status-label">MODPACK</div>
-
-                <div
-                    class="ron-status-value ron-gold"
-                    id="modpackName"
-                >
-                    —
-                </div>
-            </div>
-
-            <div class="ron-status">
-                <div class="ron-status-label">VERSION</div>
-
-                <div
-                    class="ron-status-value ron-blue"
-                    id="modpackVersion"
-                >
-                    —
-                </div>
-            </div>
-
-            <div class="ron-status">
-                <div class="ron-status-label">MINECRAFT</div>
-
-                <div
-                    class="ron-status-value"
-                    id="minecraftVersion"
-                >
-                    —
-                </div>
-            </div>
-
-            <div class="ron-status">
-                <div class="ron-status-label">DEPLOYMENT</div>
-
-                <div class="ron-status-value ron-green">
-                    READY
-                </div>
-            </div>
-
-        </div>
+        <div class="download-grid">
 
 
-        <div class="section-title">
-            DEPLOYMENT PACKAGE
-            <span>PRIMARY DOWNLOAD</span>
-        </div>
+            <!-- =========================
+                 MAIN DOWNLOAD
+            ========================== -->
 
+            <section class="download-main">
 
-        <div class="ron-card">
-
-            <div class="ron-panel-header">
-
-                <div class="ron-panel-title">
-                    RISE OF NATIONS // MODPACK
+                <div class="download-kicker">
+                    OFFICIAL DEPLOYMENT PACKAGE
                 </div>
 
-                <div class="ron-panel-code">
-                    DEPLOY-001
+                <div class="download-title">
+                    RISE OF NATIONS
                 </div>
 
-            </div>
+                <div class="download-description">
 
+                    Download the current RISE OF NATIONS modpack
+                    package and prepare your Minecraft installation
+                    for deployment.
 
-            <div class="ron-data">
-
-                <div class="ron-data-row">
-                    <span class="ron-data-label">
-                        PACKAGE
-                    </span>
-
-                    <span
-                        class="ron-data-value"
-                        id="packageName"
-                    >
-                        —
-                    </span>
                 </div>
 
-                <div class="ron-data-row">
-                    <span class="ron-data-label">
-                        VERSION
-                    </span>
-
-                    <span
-                        class="ron-data-value"
-                        id="packageVersion"
-                    >
-                        —
-                    </span>
-                </div>
-
-                <div class="ron-data-row">
-                    <span class="ron-data-label">
-                        MINECRAFT
-                    </span>
-
-                    <span
-                        class="ron-data-value"
-                        id="packageMinecraft"
-                    >
-                        —
-                    </span>
-                </div>
-
-                <div class="ron-data-row">
-                    <span class="ron-data-label">
-                        LOADER
-                    </span>
-
-                    <span
-                        class="ron-data-value"
-                        id="packageLoader"
-                    >
-                        —
-                    </span>
-                </div>
-
-            </div>
-
-
-            <div style="margin-top:20px; display:flex; gap:10px; flex-wrap:wrap;">
 
                 <a
-                    id="downloadButton"
-                    class="ron-button gold"
+                    id="modpackDownload"
                     href="#"
+                    class="download-button"
                     target="_blank"
-                    rel="noopener noreferrer"
+                    rel="noopener"
                 >
                     DOWNLOAD MODPACK
                 </a>
 
-                <a
-                    href="faq.html"
-                    class="ron-button"
-                >
-                    INSTALLATION GUIDE
-                </a>
-
-            </div>
-
-        </div>
+            </section>
 
 
-        <div class="section-title">
-            INSTALLATION
-            <span>DEPLOYMENT PROCEDURE</span>
-        </div>
 
+            <!-- =========================
+                 PACKAGE INFO
+            ========================== -->
 
-        <div class="ron-grid">
-
-            <div class="ron-card">
+            <section class="ron-panel">
 
                 <div class="ron-panel-header">
+
                     <div class="ron-panel-title">
-                        STEP 01
+                        PACKAGE INFO
                     </div>
 
                     <div class="ron-panel-code">
-                        PREPARATION
+                        DL-01
                     </div>
+
                 </div>
 
-                <h3>CREATE PROFILE</h3>
 
-                <p>
-                    Create or select the appropriate Minecraft
-                    profile in CurseForge before installing
-                    the modpack.
-                </p>
+                <div class="download-data">
 
-            </div>
+                    <div class="download-row">
 
-
-            <div class="ron-card">
-
-                <div class="ron-panel-header">
-                    <div class="ron-panel-title">
-                        STEP 02
-                    </div>
-
-                    <div class="ron-panel-code">
-                        PACKAGE
-                    </div>
-                </div>
-
-                <h3>OPEN PROFILE FOLDER</h3>
-
-                <p>
-                    Open the three-dot menu next to Play
-                    and select the profile folder.
-                </p>
-
-            </div>
-
-
-            <div class="ron-card">
-
-                <div class="ron-panel-header">
-                    <div class="ron-panel-title">
-                        STEP 03
-                    </div>
-
-                    <div class="ron-panel-code">
-                        INSTALL
-                    </div>
-                </div>
-
-                <h3>EXTRACT MODS</h3>
-
-                <p>
-                    Extract the downloaded package into
-                    the Minecraft profile folder as described
-                    in the installation guide.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="section-title">
-            SYSTEM REQUIREMENTS
-            <span>RECOMMENDED CONFIGURATION</span>
-        </div>
-
-
-        <div class="ron-grid">
-
-            <div class="ron-card">
-
-                <h3>MINECRAFT</h3>
-
-                <p>
-                    Required Minecraft version for the
-                    current RISE OF NATIONS deployment.
-                </p>
-
-                <div class="ron-data">
-                    <div class="ron-data-row">
-                        <span class="ron-data-label">
+                        <span class="download-label">
                             VERSION
                         </span>
 
                         <span
-                            class="ron-data-value"
-                            id="requirementMinecraft"
+                            class="download-value gold"
+                            id="modpackVersion"
                         >
-                            —
+                            PLATZHALTER
                         </span>
+
                     </div>
-                </div>
-
-            </div>
 
 
-            <div class="ron-card">
+                    <div class="download-row">
 
-                <h3>NEOFORGE</h3>
+                        <span class="download-label">
+                            MINECRAFT
+                        </span>
 
-                <p>
-                    The modpack uses NeoForge as its
-                    Minecraft mod loader.
-                </p>
+                        <span
+                            class="download-value"
+                            id="minecraftVersion"
+                        >
+                            PLATZHALTER
+                        </span>
 
-                <div class="ron-data">
-                    <div class="ron-data-row">
-                        <span class="ron-data-label">
+                    </div>
+
+
+                    <div class="download-row">
+
+                        <span class="download-label">
                             LOADER
                         </span>
 
                         <span
-                            class="ron-data-value"
-                            id="requirementLoader"
+                            class="download-value"
+                            id="loader"
                         >
-                            —
+                            PLATZHALTER
                         </span>
+
                     </div>
+
+
+                    <div class="download-row">
+
+                        <span class="download-label">
+                            STATUS
+                        </span>
+
+                        <span class="download-value green">
+                            READY
+                        </span>
+
+                    </div>
+
                 </div>
 
-            </div>
+            </section>
 
 
-            <div class="ron-card">
 
-                <h3>MEMORY</h3>
+            <!-- =========================
+                 INSTALLATION
+            ========================== -->
 
-                <p>
-                    Recommended memory allocation for a
-                    stable gameplay experience.
-                </p>
+            <section class="ron-panel download-wide">
 
-                <div class="ron-data">
-                    <div class="ron-data-row">
-                        <span class="ron-data-label">
-                            RAM
-                        </span>
+                <div class="ron-panel-header">
 
-                        <span class="ron-data-value">
-                            8–12 GB
-                        </span>
+                    <div class="ron-panel-title">
+                        INSTALLATION PROCEDURE
                     </div>
+
+                    <div class="ron-panel-code">
+                        DL-02
+                    </div>
+
                 </div>
 
-            </div>
 
-        </div>
+                <div class="download-step">
+
+                    <div class="download-step-number">
+                        01
+                    </div>
+
+                    <div>
+
+                        <div class="download-step-title">
+                            DOWNLOAD PACKAGE
+                        </div>
+
+                        <div class="download-step-text">
+                            Download the current modpack package
+                            using the official deployment link.
+                        </div>
+
+                    </div>
+
+                </div>
 
 
-        <div class="ron-alert">
+                <div class="download-step">
 
-            <strong>DEPLOYMENT NOTICE</strong><br>
+                    <div class="download-step-number">
+                        02
+                    </div>
 
-            Always use the official package and the correct
-            Minecraft profile. For detailed installation
-            instructions and troubleshooting, use the FAQ.
+                    <div>
 
-        </div>
+                        <div class="download-step-title">
+                            OPEN MINECRAFT INSTALLATION
+                        </div>
+
+                        <div class="download-step-text">
+                            Open the Minecraft instance or CurseForge
+                            profile that will be used for RISE OF NATIONS.
+                        </div>
+
+                    </div>
+
+                </div>
 
 
-        <div class="section-title">
-            ADDITIONAL ACCESS
-            <span>SUPPORT SYSTEMS</span>
-        </div>
+                <div class="download-step">
+
+                    <div class="download-step-number">
+                        03
+                    </div>
+
+                    <div>
+
+                        <div class="download-step-title">
+                            DEPLOY MODPACK
+                        </div>
+
+                        <div class="download-step-text">
+                            Extract the downloaded package into the
+                            correct Minecraft installation directory.
+                            Make sure the required mods are inside the
+                            active mods folder.
+                        </div>
+
+                    </div>
+
+                </div>
 
 
-        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                <div class="download-step">
 
-            <a
-                href="server.html"
-                class="ron-button"
-            >
-                SERVER INFORMATION
-            </a>
+                    <div class="download-step-number">
+                        04
+                    </div>
 
-            <a
-                href="wiki.html"
-                class="ron-button"
-            >
-                OPEN WIKI
-            </a>
+                    <div>
 
-            <a
-                href="faq.html"
-                class="ron-button gold"
-            >
-                OPEN FAQ
-            </a>
+                        <div class="download-step-title">
+                            START MINECRAFT
+                        </div>
+
+                        <div class="download-step-text">
+                            Start the configured Minecraft profile and
+                            verify that the required modpack version
+                            is active.
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="download-step">
+
+                    <div class="download-step-number">
+                        05
+                    </div>
+
+                    <div>
+
+                        <div class="download-step-title">
+                            CONNECT TO SERVER
+                        </div>
+
+                        <div class="download-step-text">
+                            After successful installation, connect to
+                            the configured RISE OF NATIONS server.
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =========================
+                 IMPORTANT NOTICE
+            ========================== -->
+
+            <section class="ron-panel">
+
+                <div class="ron-panel-header">
+
+                    <div class="ron-panel-title">
+                        DEPLOYMENT NOTICE
+                    </div>
+
+                    <div class="ron-panel-code">
+                        DL-03
+                    </div>
+
+                </div>
+
+
+                <div class="download-alert">
+
+                    Always use the current modpack version.
+                    Mixing different versions may cause missing
+                    mods, configuration errors or connection problems.
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =========================
+                 ADDITIONAL DOWNLOADS
+            ========================== -->
+
+            <section class="ron-panel">
+
+                <div class="ron-panel-header">
+
+                    <div class="ron-panel-title">
+                        ADDITIONAL DOWNLOADS
+                    </div>
+
+                    <div class="ron-panel-code">
+                        DL-04
+                    </div>
+
+                </div>
+
+
+                <div class="download-data">
+
+                    <div class="download-row">
+
+                        <span class="download-label">
+                            LAUNCHER
+                        </span>
+
+                        <span class="download-value">
+
+                            <a
+                                id="launcherDownload"
+                                href="#"
+                                target="_blank"
+                                rel="noopener"
+                                style="
+                                    color:#d6a94a;
+                                    text-decoration:none;
+                                "
+                            >
+                                OPEN
+                            </a>
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="download-row">
+
+                        <span class="download-label">
+                            ADDITIONAL PACKAGE
+                        </span>
+
+                        <span class="download-value">
+
+                            <a
+                                id="additionalDownload"
+                                href="#"
+                                target="_blank"
+                                rel="noopener"
+                                style="
+                                    color:#d6a94a;
+                                    text-decoration:none;
+                                "
+                            >
+                                OPEN
+                            </a>
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
 
         </div>
 
     </main>
 
 
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
     <footer class="ron-footer">
 
         RISE OF NATIONS
+
         &nbsp; // &nbsp;
-        <span id="footerVersion">SYSTEM</span>
+
+        <span id="footerVersion">
+            SYSTEM
+        </span>
+
         &nbsp; // &nbsp;
-        DEPLOYMENT SYSTEM
+
+        SOFTWARE DEPLOYMENT
 
     </footer>
 
+
+    <!-- =========================
+         CONFIG
+    ========================== -->
 
     <script>
 
         if (typeof SITE_CONFIG !== "undefined") {
 
-            const modpackName =
-                SITE_CONFIG.modpack.name;
-
-            const modpackVersion =
+            document.getElementById("modpackVersion").textContent =
                 SITE_CONFIG.modpack.version;
 
-            const minecraftVersion =
+            document.getElementById("minecraftVersion").textContent =
                 SITE_CONFIG.modpack.minecraftVersion;
 
-            const loader =
+            document.getElementById("loader").textContent =
                 SITE_CONFIG.modpack.loader;
 
-
-            document.getElementById("modpackName").textContent =
-                modpackName;
-
-            document.getElementById("modpackVersion").textContent =
-                modpackVersion;
-
-            document.getElementById("minecraftVersion").textContent =
-                minecraftVersion;
-
-            document.getElementById("packageName").textContent =
-                modpackName;
-
-            document.getElementById("packageVersion").textContent =
-                modpackVersion;
-
-            document.getElementById("packageMinecraft").textContent =
-                minecraftVersion;
-
-            document.getElementById("packageLoader").textContent =
-                loader;
-
-            document.getElementById("requirementMinecraft").textContent =
-                minecraftVersion;
-
-            document.getElementById("requirementLoader").textContent =
-                loader;
-
             document.getElementById("footerVersion").textContent =
-                modpackVersion;
+                SITE_CONFIG.website.modpackVersion;
 
 
-            document.getElementById("downloadButton").href =
-                SITE_CONFIG.download.modpack;
+            const modpackDownload =
+                document.getElementById("modpackDownload");
+
+            const launcherDownload =
+                document.getElementById("launcherDownload");
+
+            const additionalDownload =
+                document.getElementById("additionalDownload");
+
+
+            if (SITE_CONFIG.download.modpack !== "PLATZHALTER") {
+
+                modpackDownload.href =
+                    SITE_CONFIG.download.modpack;
+
+            }
+
+
+            if (SITE_CONFIG.download.launcher !== "PLATZHALTER") {
+
+                launcherDownload.href =
+                    SITE_CONFIG.download.launcher;
+
+            }
+
+
+            if (SITE_CONFIG.download.additional !== "PLATZHALTER") {
+
+                additionalDownload.href =
+                    SITE_CONFIG.download.additional;
+
+            }
 
         }
 
