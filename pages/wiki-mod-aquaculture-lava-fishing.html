@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RISE OF NATIONS // AQUACULTURE LAVA FISHING</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+    min-height:100vh;
+    background:
+        linear-gradient(rgba(5,10,15,.97),rgba(5,10,15,.99)),
+        repeating-linear-gradient(135deg,rgba(255,255,255,.018) 0 2px,transparent 2px 9px);
+    color:#dbe3e8;
+    font-family:"Segoe UI",Arial,sans-serif;
+}
+
+header{
+    background:rgba(5,10,15,.98);
+    border-bottom:1px solid #293944;
+    box-shadow:0 5px 25px rgba(0,0,0,.45);
+}
+
+.header-inner{
+    max-width:1500px;
+    margin:auto;
+    padding:18px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:30px;
+}
+
+.logo{
+    color:#d6b85c;
+    font-size:22px;
+    font-weight:950;
+    letter-spacing:3px;
+}
+
+.logo span{
+    display:block;
+    color:#687b86;
+    font-size:9px;
+    letter-spacing:2px;
+    margin-top:4px;
+}
+
+nav{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+    gap:7px;
+}
+
+nav a{
+    color:#9aabb4;
+    text-decoration:none;
+    padding:9px 11px;
+    border:1px solid transparent;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.2px;
+    transition:.2s;
+}
+
+nav a:hover{
+    color:#d6b85c;
+    background:#111b22;
+    border-color:#3b4d58;
+}
+
+main{
+    max-width:1250px;
+    margin:auto;
+    padding:70px 30px 100px;
+}
+
+.eyebrow{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:3px;
+    margin-bottom:15px;
+}
+
+h1{
+    color:#edf2f4;
+    font-size:clamp(38px,6vw,74px);
+    line-height:.95;
+    letter-spacing:3px;
+    font-weight:950;
+}
+
+.subtitle{
+    max-width:950px;
+    margin-top:22px;
+    color:#8497a2;
+    line-height:1.75;
+    font-size:15px;
+}
+
+.meta{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-top:38px;
+}
+
+.meta-box{
+    padding:18px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+
+.meta-label{
+    color:#596c77;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:8px;
+}
+
+.meta-value{
+    color:#d6b85c;
+    font-size:13px;
+    font-weight:900;
+}
+
+.section{
+    margin-top:35px;
+    padding:30px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+
+.section-number{
+    color:#526773;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:2px;
+    margin-bottom:9px;
+}
+
+h2{
+    color:#e1e8eb;
+    font-size:22px;
+    letter-spacing:1px;
+    margin-bottom:18px;
+}
+
+h3{
+    color:#d6b85c;
+    font-size:14px;
+    letter-spacing:1px;
+    margin:25px 0 10px;
+}
+
+p{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    margin-bottom:13px;
+}
+
+ul,ol{
+    margin:12px 0 18px 22px;
+}
+
+li{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    padding-left:5px;
+}
+
+.note{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#111c23;
+    border-left:3px solid #4d91bd;
+}
+
+.note-title{
+    color:#4d91bd;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+
+.warning{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#17140e;
+    border-left:3px solid #d6b85c;
+}
+
+.warning-title{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+
+.danger{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#1b1010;
+    border-left:3px solid #b84a4a;
+}
+
+.danger-title{
+    color:#d66a6a;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:18px;
+}
+
+th,td{
+    text-align:left;
+    padding:13px 14px;
+    border:1px solid #293c47;
+    font-size:12px;
+}
+
+th{
+    color:#d6b85c;
+    background:#111c23;
+    font-size:10px;
+    letter-spacing:1px;
+}
+
+td{
+    color:#8ea0a9;
+    background:#0a141a;
+}
+
+.sources{
+    display:grid;
+    gap:10px;
+    margin-top:15px;
+}
+
+.sources a{
+    display:block;
+    padding:13px 15px;
+    background:#101b22;
+    border:1px solid #293c47;
+    color:#9fb0b9;
+    text-decoration:none;
+    font-size:12px;
+    transition:.2s;
+}
+
+.sources a:hover{
+    color:#d6b85c;
+    border-color:#d6b85c;
+}
+
+.back{
+    display:inline-block;
+    margin-top:45px;
+    padding:12px 16px;
+    color:#d6b85c;
+    border:1px solid #4c4530;
+    text-decoration:none;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+}
+
+footer{
+    border-top:1px solid #202e36;
+    padding:25px 30px;
+    text-align:center;
+    color:#465861;
+    font-size:9px;
+    letter-spacing:2px;
+}
+
+@media(max-width:850px){
+    .header-inner{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    nav{
+        justify-content:flex-start;
+    }
+
+    .meta{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:550px){
+    .meta{
+        grid-template-columns:1fr;
+    }
+
+    main{
+        padding:45px 18px 70px;
+    }
+
+    .section{
+        padding:22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="header-inner">
+
+<div class="logo">
+RISE OF NATIONS
+<span>TACTICAL KNOWLEDGE DATABASE</span>
+</div>
+
+<nav>
+<a href="../index.html">COMMAND</a>
+<a href="intelligence.html">INTELLIGENCE</a>
+<a href="server.html">SERVER</a>
+<a href="database.html">DATABASE</a>
+<a href="download.html">DOWNLOAD</a>
+<a href="communications.html">COMMUNICATIONS</a>
+<a href="wiki.html">WIKI</a>
+</nav>
+
+</div>
+</header>
+
+<main>
+
+<div class="eyebrow">
+PROFESSOR DATABASE // AQUATIC OPERATIONS // LAVA FISHING
+</div>
+
+<h1>AQUACULTURE<br>LAVA FISHING</h1>
+
+<p class="subtitle">
+Das Aquaculture Lava Fishing Addon erweitert das Fischerei-Konzept
+des Modpacks über gewöhnliche Wasserflächen hinaus. Es verbindet
+die erweiterte Fischerei von Aquaculture 2 mit einer ungewöhnlichen
+Umgebung und macht Lava dadurch zu einem möglichen Bestandteil
+des Fischerei-Gameplays.
+</p>
+
+<div class="meta">
+
+<div class="meta-box">
+<div class="meta-label">MOD</div>
+<div class="meta-value">LAVA FISHING ADDON</div>
+</div>
+
+<div class="meta-box">
+<div class="meta-label">VERSION</div>
+<div class="meta-value">1.0.0</div>
+</div>
+
+<div class="meta-box">
+<div class="meta-label">MINECRAFT</div>
+<div class="meta-value">1.21.1</div>
+</div>
+
+<div class="meta-box">
+<div class="meta-label">SYSTEM</div>
+<div class="meta-value">LAVA FISHING</div>
+</div>
+
+</div>
+
+
+<section class="section">
+<div class="section-number">01 // SYSTEM OVERVIEW</div>
+<h2>Was macht das Addon?</h2>
+
+<p>
+Das Addon verändert das grundlegende Prinzip der Fischerei:
+Nicht nur Wasser, sondern auch Lava wird als mögliche Umgebung
+für das Angeln relevant.
+</p>
+
+<p>
+Dadurch entsteht ein ungewöhnlicher Gameplay-Kreislauf, der
+besonders gut zu Nether-Expeditionen, gefährlichen Industrie-
+gebieten und späteren Survival-Phasen passt.
+</p>
+
+<div class="note">
+<div class="note-title">CORE FUNCTION</div>
+<p>
+Der Mod ist als Erweiterung des Aquaculture-Systems zu verstehen.
+Seine Stärke liegt nicht in einer großen eigenen Progression,
+sondern in der zusätzlichen Einsatzmöglichkeit der Fischerei.
+</p>
+</div>
+</section>
+
+
+<section class="section">
+<div class="section-number">02 // REQUIREMENTS</div>
+<h2>Voraussetzungen und Umfeld</h2>
+
+<p>
+Das Addon ist in RISE OF NATIONS gemeinsam mit Aquaculture 2
+installiert. Für die Nutzung sollte daher zuerst das grundlegende
+Aquaculture-System verstanden werden.
+</p>
+
+<table>
+<tr>
+<th>KOMPONENTE</th>
+<th>FUNKTION</th>
+</tr>
+<tr>
+<td>Aquaculture 2</td>
+<td>Grundlage des erweiterten Fischerei-Systems</td>
+</tr>
+<tr>
+<td>Lava Fishing Addon</td>
+<td>Erweitert das System auf Lava</td>
+</tr>
+<tr>
+<td>JEI</td>
+<td>Kontrolle von Items und Verwendungen</td>
+</tr>
+<tr>
+<td>Nether-System</td>
+<td>Wichtiger Einsatzbereich für Lava</td>
+</tr>
+</table>
+</section>
+
+
+<section class="section">
+<div class="section-number">03 // LAVA ENVIRONMENT</div>
+<h2>Warum Lava?</h2>
+
+<p>
+Lava ist in Minecraft wesentlich gefährlicher als Wasser. Sie
+ist gleichzeitig Umweltgefahr, Ressource und Bestandteil vieler
+technischer Systeme.
+</p>
+
+<p>
+Durch Lava Fishing erhält diese Umgebung zusätzlich eine
+Fischerei-Komponente. Dadurch kann eine ansonsten gefährliche
+Lavaquelle plötzlich einen weiteren praktischen Nutzen erhalten.
+</p>
+
+<div class="danger">
+<div class="danger-title">HAZARD // LAVA</div>
+<p>
+Lava kann Ausrüstung, Items und den Spieler zerstören. Eine
+Fischerei-Operation sollte deshalb niemals ohne ausreichende
+Sicherheitsmaßnahmen durchgeführt werden.
+</p>
+</div>
+</section>
+
+
+<section class="section">
+<div class="section-number">04 // OPERATION PROCEDURE</div>
+<h2>Grundlegender Ablauf</h2>
+
+<p>
+Die genaue Funktionsweise und mögliche Beute sollte immer mit
+der installierten Version und JEI abgeglichen werden. Der
+grundlegende Ablauf lässt sich jedoch als sichere Operation
+planen.
+</p>
+
+<ol>
+<li>Geeignete Lavaquelle auswählen.</li>
+<li>Standort gegen versehentliches Hineinfallen sichern.</li>
+<li>Benötigte Angel und Ausrüstung bereithalten.</li>
+<li>Fischerei durchführen.</li>
+<li>Beute kontrollieren.</li>
+<li>Fänge sicher lagern oder weiterverarbeiten.</li>
+</ol>
+</section>
+
+
+<section class="section">
+<div class="section-number">05 // SAFETY PROTOCOL</div>
+<h2>Sicherheitsmaßnahmen</h2>
+
+<p>
+Lava Fishing sollte anders vorbereitet werden als normales
+Angeln. Die größte Gefahr ist nicht die Fischerei selbst,
+sondern die Umgebung.
+</p>
+
+<ul>
+<li>Niemals ungesichert direkt an einer Lavaquelle stehen.</li>
+<li>Fluchtweg freihalten.</li>
+<li>Wichtige Items nicht unnötig über Lava transportieren.</li>
+<li>Feuer- und Lava-Risiken berücksichtigen.</li>
+<li>Bei Expeditionen zusätzliche Sicherheitsausrüstung mitnehmen.</li>
+</ul>
+
+<div class="warning">
+<div class="warning-title">FIELD RULE</div>
+<p>
+Baue möglichst eine feste Plattform oder einen geschützten
+Angelpunkt. Eine organisierte Fischereistation ist wesentlich
+sicherer als improvisiertes Angeln am Rand eines Lavasees.
+</p>
+</div>
+</section>
+
+
+<section class="section">
+<div class="section-number">06 // NETHER OPERATIONS</div>
+<h2>Einsatz im Nether</h2>
+
+<p>
+Der Nether ist der natürliche Einsatzbereich für Lava Fishing.
+Hier existieren große Lavaflächen, wodurch das System besonders
+interessant für längere Expeditionen wird.
+</p>
+
+<p>
+Eine gut geplante Netherstation kann gleichzeitig als
+Versorgungspunkt, Lager und Fischereistation dienen.
+</p>
+
+<table>
+<tr>
+<th>STATION</th>
+<th>AUFGABE</th>
+</tr>
+<tr>
+<td>SAFE ZONE</td>
+<td>Geschützter Spielerbereich</td>
+</tr>
+<tr>
+<td>FISHING ZONE</td>
+<td>Bereich für die Lava-Fischerei</td>
+</tr>
+<tr>
+<td>STORAGE</td>
+<td>Sichere Lagerung der Beute</td>
+</tr>
+<tr>
+<td>ESCAPE ROUTE</td>
+<td>Schnelle Rückzugsmöglichkeit</td>
+</tr>
+</table>
+</section>
+
+
+<section class="section">
+<div class="section-number">07 // FOOD SYSTEM</div>
+<h2>Verbindung mit Nahrung</h2>
+
+<p>
+Das Modpack besitzt mehrere Food-Mods. Dadurch können zusätzliche
+Fänge aus der Fischerei Bestandteil eines größeren
+Versorgungssystems werden.
+</p>
+
+<p>
+Besonders relevant sind Aquaculture 2, Farmer's Delight,
+Aquaculture Delight und Cooking for Blockheads.
+</p>
+
+<p>
+Welche konkreten Lava-Fänge für welche Rezepte verwendet werden
+können, sollte direkt in JEI kontrolliert werden.
+</p>
+</section>
+
+
+<section class="section">
+<div class="section-number">08 // JEI ANALYSIS</div>
+<h2>JEI richtig verwenden</h2>
+
+<p>
+Da kleine Addons häufig nur wenige zusätzliche Inhalte
+bereitstellen, ist JEI der schnellste Weg, die tatsächlichen
+Möglichkeiten der installierten Version zu überprüfen.
+</p>
+
+<ol>
+<li>Nach dem erhaltenen Item suchen.</li>
+<li>Rezeptansicht öffnen.</li>
+<li>Verwendungsansicht öffnen.</li>
+<li>Nach Food-Rezepten suchen.</li>
+<li>Nach weiteren Mod-Integrationen suchen.</li>
+</ol>
+
+<div class="note">
+<div class="note-title">DATABASE RULE</div>
+<p>
+Wenn eine auf einer älteren Wiki-Seite beschriebene Verwendung
+nicht in JEI auftaucht, sollte immer die installierte Version
+als maßgebliche Referenz behandelt werden.
+</p>
+</div>
+</section>
+
+
+<section class="section">
+<div class="section-number">09 // EXPEDITION LOGISTICS</div>
+<h2>Lava Fishing auf Reisen</h2>
+
+<p>
+Eine Nether-Expedition kann mit mehreren Aufgaben kombiniert
+werden. Statt ausschließlich nach bestimmten Ressourcen zu
+suchen, kann eine Gruppe mehrere Systeme gleichzeitig nutzen.
+</p>
+
+<ul>
+<li>Nether-Ressourcen sammeln.</li>
+<li>Neue Gebiete erkunden.</li>
+<li>Transportwege vorbereiten.</li>
+<li>Eine sichere Station errichten.</li>
+<li>Lava Fishing als zusätzliche Versorgung nutzen.</li>
+</ul>
+</section>
+
+
+<section class="section">
+<div class="section-number">10 // STORAGE</div>
+<h2>Beute organisieren</h2>
+
+<p>
+Durch zusätzliche Fischarten und mögliche Spezialfänge sollte
+die Beute nicht ungeordnet in irgendeine Kiste geworfen werden.
+</p>
+
+<table>
+<tr>
+<th>BEREICH</th>
+<th>INHALT</th>
+</tr>
+<tr>
+<td>FISH</td>
+<td>Normale Fischfänge</td>
+</tr>
+<tr>
+<td>FOOD</td>
+<td>Bereits verarbeitete Nahrung</td>
+</tr>
+<tr>
+<td>RARE</td>
+<td>Seltene oder ungewöhnliche Fänge</td>
+</tr>
+<tr>
+<td>PROCESSING</td>
+<td>Items für spätere Verarbeitung</td>
+</tr>
+</table>
+
+<p>
+Sophisticated Backpacks und Sophisticated Storage sind im
+Modpack geeignete Systeme für eine solche Organisation.
+</p>
+</section>
+
+
+<section class="section">
+<div class="section-number">11 // AUTOMATION</div>
+<h2>Automatisierung</h2>
+
+<p>
+Lava Fishing ist in erster Linie ein Gameplay-System und sollte
+nicht automatisch als vollständig automatisierbare Create-
+Produktion betrachtet werden.
+</p>
+
+<p>
+Create und seine zahlreichen Erweiterungen können zwar bei
+Transport, Lagerung und Verarbeitung helfen, aber die eigentliche
+Fischerei sollte nur dann automatisiert werden, wenn die
+installierte Version dies ausdrücklich unterstützt.
+</p>
+
+<div class="warning">
+<div class="warning-title">DO NOT ASSUME</div>
+<p>
+Nicht jedes Item eines Mods kann automatisch über Create
+produziert werden. Prüfe konkrete Rezepte und Interaktionen
+immer über JEI.
+</p>
+</div>
+</section>
+
+
+<section class="section">
+<div class="section-number">12 // MULTIPLAYER</div>
+<h2>Gruppenoperationen</h2>
+
+<p>
+Lava Fishing kann im Multiplayer als spezialisierte Aufgabe
+einer Gruppe eingesetzt werden.
+</p>
+
+<ul>
+<li>Ein Spieler sichert die Station.</li>
+<li>Ein Spieler übernimmt die Fischerei.</li>
+<li>Ein Spieler transportiert die Beute.</li>
+<li>Ein Spieler verarbeitet und lagert die Ressourcen.</li>
+</ul>
+
+<p>
+Dadurch wird selbst ein kleines Addon zu einem Bestandteil
+einer größeren arbeitsteiligen Basiswirtschaft.
+</p>
+</section>
+
+
+<section class="section">
+<div class="section-number">13 // TROUBLESHOOTING</div>
+<h2>Fehleranalyse</h2>
+
+<h3>Es passiert beim Angeln nichts</h3>
+<p>
+Prüfe zuerst, ob die benötigten Mods geladen wurden und ob die
+verwendete Angelmechanik für die installierte Version vorgesehen
+ist.
+</p>
+
+<h3>Keine erwartete Beute</h3>
+<p>
+JEI und die Mod-Version kontrollieren. Zusätzlich können
+Konfigurationen oder andere Mods die möglichen Ergebnisse
+beeinflussen.
+</p>
+
+<h3>Client funktioniert, Server nicht</h3>
+<p>
+Client und Server müssen mit der vorgesehenen Modpack-Version
+laufen. Bei Problemen Serverlog und Clientlog vergleichen.
+</p>
+
+<h3>Items gehen in Lava verloren</h3>
+<p>
+Die Angelstation sollte so gebaut werden, dass der Spieler und
+wichtige Items nicht direkt in die Lava geraten können.
+</p>
+</section>
+
+
+<section class="section">
+<div class="section-number">14 // PERFORMANCE</div>
+<h2>Performance</h2>
+
+<p>
+Das Addon erweitert ein vorhandenes Gameplay-System und gehört
+nicht zu den großen Weltgenerierungs- oder Grafiksystemen des
+Modpacks.
+</p>
+
+<p>
+Bei allgemeinen Performance-Problemen sind daher zuerst größere
+Systeme wie Weltgenerierung, Entities, Rendering und Simulation
+zu untersuchen.
+</p>
+</section>
+
+
+<section class="section">
+<div class="section-number">15 // RISE OF NATIONS ROLE</div>
+<h2>Rolle im Modpack</h2>
+
+<p>
+Das Lava-Fishing-Addon ist klein, erweitert aber das Gameplay
+auf eine Weise, die gut zum Aufbau von RISE OF NATIONS passt:
+Selbst gefährliche Regionen können wirtschaftlich interessant
+werden.
+</p>
+
+<table>
+<tr>
+<th>KATEGORIE</th>
+<th>BEDEUTUNG</th>
+</tr>
+<tr>
+<td>Eigener Content</td>
+<td>Gering</td>
+</tr>
+<tr>
+<td>Erkundung</td>
+<td>Mittel</td>
+</tr>
+<tr>
+<td>Versorgung</td>
+<td>Mittel</td>
+</tr>
+<tr>
+<td>Nether-Nutzung</td>
+<td>Hoch</td>
+</tr>
+<tr>
+<td>Kompatibilität</td>
+<td>Abhängig von Aquaculture 2</td>
+</tr>
+</table>
+</section>
+
+
+<section class="section">
+<div class="section-number">16 // PROFESSOR DOCTRINE</div>
+<h2>Was man sich merken sollte</h2>
+
+<ul>
+<li>Das Addon erweitert das Aquaculture-System auf Lava.</li>
+<li>Aquaculture 2 bildet das zentrale Umfeld.</li>
+<li>Der Nether ist der wichtigste Einsatzbereich.</li>
+<li>Lava Fishing benötigt deutlich mehr Sicherheitsplanung als normales Angeln.</li>
+<li>JEI sollte für konkrete Rezepte und Fänge verwendet werden.</li>
+<li>Die Beute kann in das größere Food-System des Modpacks einfließen.</li>
+<li>Eine sichere Angelstation ist besser als improvisiertes Angeln am Lavasee.</li>
+<li>Die installierte Version 1.0.0 ist die Referenz für RISE OF NATIONS.</li>
+</ul>
+
+<div class="danger">
+<div class="danger-title">FINAL ASSESSMENT</div>
+<p>
+Kleines Addon, ungewöhnlicher Nutzen: Lava wird von einer reinen
+Gefahrenquelle zu einer möglichen Fischerei-Umgebung. Gerade
+für Nether-Expeditionen verleiht das dem Modpack zusätzliche
+Tiefe.
+</p>
+</div>
+</section>
+
+
+<section class="section">
+<div class="section-number">17 // REFERENCE DATA</div>
+<h2>Originalquellen</h2>
+
+<div class="sources">
+
+<a href="https://modrinth.com/"
+   target="_blank"
+   rel="noopener">
+MODRINTH // MOD DATABASE
+</a>
+
+<a href="https://www.curseforge.com/minecraft/mc-mods"
+   target="_blank"
+   rel="noopener">
+CURSEFORGE // MINECRAFT MOD DATABASE
+</a>
+
+</div>
+</section>
+
+
+<a class="back" href="wiki.html">
+← ZURÜCK ZUR WIKI
+</a>
+
+</main>
+
+<footer>
+RISE OF NATIONS // AQUACULTURE LAVA FISHING // TACTICAL KNOWLEDGE DATABASE
+</footer>
+
+</body>
+</html>
