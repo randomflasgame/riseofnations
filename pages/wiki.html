@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>WIKI // RISE OF NATIONS</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+
+            background:
+                radial-gradient(circle at top, #18232d 0%, #0b1117 45%, #05080b 100%);
+
+            color: #e8edf2;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+
+            background:
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+
+            background-size: 40px 40px;
+            opacity: 0.35;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+
+            min-height: 76px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 15px 35px;
+
+            background: rgba(7, 12, 17, 0.96);
+            border-bottom: 1px solid #1d5f91;
+
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+
+        .logo {
+            color: #d6a83d;
+            font-size: 22px;
+            font-weight: 900;
+            letter-spacing: 3px;
+        }
+
+        nav {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        nav a {
+            color: #bfc9d2;
+            text-decoration: none;
+
+            padding: 13px 17px;
+
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 1.5px;
+
+            border: 1px solid transparent;
+
+            transition: 0.2s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: white;
+            background: rgba(18, 91, 143, 0.25);
+            border-color: #1d6fa8;
+        }
+
+        .status {
+            color: #65d48a;
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+
+        main {
+            max-width: 1300px;
+            margin: auto;
+            padding: 75px 35px;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .small-title {
+            color: #5599c8;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 5px;
+            margin-bottom: 18px;
+        }
+
+        h1 {
+            margin: 0;
+
+            color: #d6a83d;
+
+            font-size: clamp(48px, 8vw, 95px);
+            font-weight: 900;
+            letter-spacing: 8px;
+
+            text-shadow: 0 0 30px rgba(214,168,61,0.12);
+        }
+
+        .subtitle {
+            margin-top: 18px;
+
+            color: #8796a3;
+
+            font-size: 13px;
+            letter-spacing: 3px;
+        }
+
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .category {
+            position: relative;
+
+            min-height: 390px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            padding: 32px;
+
+            background: rgba(13, 21, 28, 0.96);
+
+            border: 1px solid #263846;
+
+            text-decoration: none;
+            color: white;
+
+            overflow: hidden;
+
+            transition: 0.25s;
+        }
+
+        .category::before {
+            content: "";
+
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+
+            height: 3px;
+
+            background: #263846;
+
+            transition: 0.25s;
+        }
+
+        .category:hover {
+            transform: translateY(-5px);
+
+            border-color: #287bb5;
+
+            background: rgba(16, 28, 37, 0.98);
+
+            box-shadow:
+                0 10px 30px rgba(0,0,0,0.35),
+                0 0 25px rgba(29,111,168,0.08);
+        }
+
+        .category:hover::before {
+            background: #287bb5;
+        }
+
+        .category-number {
+            color: #56636e;
+
+            font-size: 12px;
+            font-weight: bold;
+
+            letter-spacing: 3px;
+        }
+
+        .category-icon {
+            font-size: 48px;
+
+            margin: 30px 0 20px;
+
+            filter: grayscale(30%);
+        }
+
+        .category h2 {
+            margin: 0 0 15px;
+
+            font-size: 28px;
+
+            letter-spacing: 3px;
+        }
+
+        .important h2 {
+            color: #d45b5b;
+        }
+
+        .useful h2 {
+            color: #d6a83d;
+        }
+
+        .professor h2 {
+            color: #8c9ee8;
+        }
+
+        .category p {
+            margin: 0;
+
+            color: #9aa7b1;
+
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .category-footer {
+            margin-top: 30px;
+
+            padding-top: 15px;
+
+            border-top: 1px solid #263846;
+
+            color: #6e7d88;
+
+            font-size: 10px;
+            font-weight: bold;
+
+            letter-spacing: 2px;
+        }
+
+        .important:hover {
+            border-color: #9b4040;
+        }
+
+        .important:hover::before {
+            background: #c64e4e;
+        }
+
+        .useful:hover {
+            border-color: #a9842e;
+        }
+
+        .useful:hover::before {
+            background: #d6a83d;
+        }
+
+        .professor:hover {
+            border-color: #5969b0;
+        }
+
+        .professor:hover::before {
+            background: #7b8bd0;
+        }
+
+        .info {
+            margin-top: 25px;
+
+            padding: 22px 25px;
+
+            background: rgba(13, 21, 28, 0.94);
+
+            border-left: 3px solid #287bb5;
+            border-top: 1px solid #263846;
+            border-right: 1px solid #263846;
+            border-bottom: 1px solid #263846;
+        }
+
+        .info-title {
+            color: #5aa3d5;
+
+            font-size: 12px;
+            font-weight: bold;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 8px;
+        }
+
+        .info p {
+            margin: 0;
+
+            color: #8f9ba5;
+
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .back {
+            display: block;
+
+            width: fit-content;
+
+            margin: 45px auto 0;
+
+            color: #9ba8b2;
+
+            text-decoration: none;
+
+            font-size: 11px;
+            font-weight: bold;
+
+            letter-spacing: 2px;
+
+            padding: 12px 18px;
+
+            border: 1px solid #263846;
+        }
+
+        .back:hover {
+            color: white;
+            border-color: #287bb5;
+            background: rgba(18, 91, 143, 0.2);
+        }
+
+        footer {
+            text-align: center;
+
+            padding: 50px 20px;
+
+            color: #56636e;
+
+            font-size: 11px;
+            letter-spacing: 2px;
+        }
+
+        @media (max-width: 950px) {
+
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .categories {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        RISE OF NATIONS
+    </div>
+
+    <nav>
+
+        <a href="../index.html">
+            COMMAND
+        </a>
+
+        <a href="intelligence.html">
+            INTELLIGENCE
+        </a>
+
+        <a href="server.html">
+            SERVER
+        </a>
+
+        <a href="database.html">
+            DATABASE
+        </a>
+
+        <a href="download.html">
+            DOWNLOAD
+        </a>
+
+        <a href="communications.html">
+            COMMUNICATIONS
+        </a>
+
+        <a href="wiki.html" class="active">
+            WIKI
+        </a>
+
+    </nav>
+
+    <div class="status">
+        ● SYSTEM ONLINE
+    </div>
+
+</header>
+
+
+<main>
+
+    <section class="page-header">
+
+        <div class="small-title">
+            KNOWLEDGE & DOCUMENTATION DATABASE
+        </div>
+
+        <h1>
+            WIKI
+        </h1>
+
+        <div class="subtitle">
+            PLAYER KNOWLEDGE // TECHNICAL DATA // ADVANCED SYSTEMS
+        </div>
+
+    </section>
+
+
+    <section class="categories">
+
+
+        <!-- WICHTIG -->
+
+        <a class="category important" href="wiki-important.html">
+
+            <div>
+
+                <div class="category-number">
+                    CLASSIFICATION // 01
+                </div>
+
+                <div class="category-icon">
+                    🔴
+                </div>
+
+                <h2>
+                    WICHTIG
+                </h2>
+
+                <p>
+                    Essenzielle Informationen, die jeder Spieler kennen
+                    sollte. Grundlagen, wichtige Systeme, Bedienung,
+                    Fortschritt und spielrelevante Mechaniken.
+                </p>
+
+            </div>
+
+            <div class="category-footer">
+                ESSENTIAL PLAYER KNOWLEDGE →
+            </div>
+
+        </a>
+
+
+        <!-- NÜTZLICH -->
+
+        <a class="category useful" href="wiki-useful.html">
+
+            <div>
+
+                <div class="category-number">
+                    CLASSIFICATION // 02
+                </div>
+
+                <div class="category-icon">
+                    🟡
+                </div>
+
+                <h2>
+                    NÜTZLICH
+                </h2>
+
+                <p>
+                    Erweiterte Informationen für Spieler, die ihre
+                    Möglichkeiten verbessern möchten. Tipps, Systeme,
+                    Kombinationen und fortgeschrittene Anwendungen.
+                </p>
+
+            </div>
+
+            <div class="category-footer">
+                ADVANCED PLAYER KNOWLEDGE →
+            </div>
+
+        </a>
+
+
+        <!-- PROFESSOR -->
+
+        <a class="category professor" href="wiki-professor.html">
+
+            <div>
+
+                <div class="category-number">
+                    CLASSIFICATION // 03
+                </div>
+
+                <div class="category-icon">
+                    🧠
+                </div>
+
+                <h2>
+                    PROFESSOR
+                </h2>
+
+                <p>
+                    Tiefgehende technische Dokumentation für Spieler,
+                    die jedes System verstehen wollen. Mechaniken,
+                    Optimierung, Automatisierung und Spezialwissen.
+                </p>
+
+            </div>
+
+            <div class="category-footer">
+                ADVANCED TECHNICAL KNOWLEDGE →
+            </div>
+
+        </a>
+
+    </section>
+
+
+    <section class="info">
+
+        <div class="info-title">
+            DATABASE NOTICE
+        </div>
+
+        <p>
+            Diese Wissensdatenbank soll nicht nur kurze Anleitungen
+            liefern. Jede dokumentierte Mod wird ausführlich erklärt.
+            Informationen werden nach Relevanz geordnet und bei Bedarf
+            durch weiterführende Originalquellen ergänzt.
+        </p>
+
+    </section>
+
+
+    <a class="back" href="../index.html">
+        ← RETURN TO COMMAND
+    </a>
+
+</main>
+
+
+<footer>
+    RISE OF NATIONS // KNOWLEDGE DATABASE // SYSTEM ONLINE
+</footer>
+
+</body>
+</html>
