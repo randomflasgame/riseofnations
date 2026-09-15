@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RISE OF NATIONS // CHANGELOG</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        background:
+            linear-gradient(rgba(8, 13, 18, 0.94), rgba(8, 13, 18, 0.97)),
+            repeating-linear-gradient(
+                135deg,
+                rgba(255,255,255,0.018) 0px,
+                rgba(255,255,255,0.018) 2px,
+                transparent 2px,
+                transparent 8px
+            );
+        color: #d9e2e8;
+        font-family: "Segoe UI", Arial, sans-serif;
+        min-height: 100vh;
+    }
+
+    header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(7, 12, 17, 0.97);
+        border-bottom: 1px solid #263640;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.45);
+    }
+
+    .header-inner {
+        max-width: 1500px;
+        margin: auto;
+        padding: 18px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .logo {
+        color: #d6b85c;
+        font-size: 22px;
+        font-weight: 900;
+        letter-spacing: 3px;
+        white-space: nowrap;
+    }
+
+    .logo span {
+        display: block;
+        color: #667984;
+        font-size: 9px;
+        letter-spacing: 2px;
+        margin-top: 4px;
+    }
+
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 8px;
+    }
+
+    nav a {
+        color: #9eafb9;
+        text-decoration: none;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 1.2px;
+        padding: 9px 12px;
+        border: 1px solid transparent;
+        transition: 0.2s;
+    }
+
+    nav a:hover {
+        color: #d6b85c;
+        border-color: #394a55;
+        background: #111b22;
+    }
+
+    main {
+        max-width: 1250px;
+        margin: auto;
+        padding: 70px 30px 100px;
+    }
+
+    .eyebrow {
+        color: #d6b85c;
+        font-size: 11px;
+        font-weight: 900;
+        letter-spacing: 3px;
+        margin-bottom: 14px;
+    }
+
+    h1 {
+        font-size: clamp(42px, 7vw, 82px);
+        line-height: 0.95;
+        letter-spacing: 4px;
+        color: #eef3f5;
+        font-weight: 950;
+    }
+
+    .subtitle {
+        max-width: 780px;
+        margin-top: 22px;
+        color: #8496a1;
+        line-height: 1.7;
+        font-size: 15px;
+    }
+
+    .status-bar {
+        margin: 45px 0;
+        padding: 18px 22px;
+        background: #0d171d;
+        border: 1px solid #263a45;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .status {
+        color: #68c98b;
+        font-size: 11px;
+        font-weight: 900;
+        letter-spacing: 1.5px;
+    }
+
+    .status::before {
+        content: "●";
+        margin-right: 8px;
+        animation: blink 1.8s infinite;
+    }
+
+    .status-info {
+        color: #657883;
+        font-size: 11px;
+        letter-spacing: 1px;
+    }
+
+    @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.35; }
+    }
+
+    .release {
+        margin-bottom: 28px;
+        background: #0d171d;
+        border: 1px solid #273a45;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .release-header {
+        padding: 22px 25px;
+        border-bottom: 1px solid #273a45;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .version {
+        color: #d6b85c;
+        font-size: 23px;
+        font-weight: 950;
+        letter-spacing: 2px;
+    }
+
+    .date {
+        color: #647984;
+        font-size: 11px;
+        letter-spacing: 1.5px;
+        font-weight: 800;
+    }
+
+    .release-body {
+        padding: 25px;
+    }
+
+    .release-title {
+        color: #e7edf0;
+        font-size: 18px;
+        font-weight: 900;
+        letter-spacing: 1px;
+        margin-bottom: 18px;
+    }
+
+    .changes {
+        display: grid;
+        gap: 10px;
+    }
+
+    .change {
+        padding: 13px 15px;
+        border-left: 3px solid #405460;
+        background: #101c23;
+        color: #9caeb7;
+        font-size: 13px;
+        line-height: 1.55;
+    }
+
+    .change strong {
+        color: #d8e0e4;
+    }
+
+    .change.added {
+        border-left-color: #58a875;
+    }
+
+    .change.changed {
+        border-left-color: #d6b85c;
+    }
+
+    .change.fixed {
+        border-left-color: #4d91bd;
+    }
+
+    .change.warning {
+        border-left-color: #b85b52;
+    }
+
+    .tag {
+        display: inline-block;
+        margin-right: 9px;
+        padding: 3px 7px;
+        font-size: 9px;
+        font-weight: 900;
+        letter-spacing: 1px;
+        color: #071016;
+        background: #81939d;
+    }
+
+    .tag.added {
+        background: #58a875;
+    }
+
+    .tag.changed {
+        background: #d6b85c;
+    }
+
+    .tag.fixed {
+        background: #4d91bd;
+    }
+
+    .tag.warning {
+        background: #b85b52;
+        color: white;
+    }
+
+    .notice {
+        margin-top: 45px;
+        padding: 24px;
+        border: 1px solid #3c3321;
+        background: #17150f;
+    }
+
+    .notice-title {
+        color: #d6b85c;
+        font-size: 12px;
+        font-weight: 900;
+        letter-spacing: 2px;
+        margin-bottom: 10px;
+    }
+
+    .notice p {
+        color: #8998a0;
+        font-size: 13px;
+        line-height: 1.7;
+    }
+
+    .back {
+        display: inline-block;
+        margin-top: 45px;
+        color: #d6b85c;
+        text-decoration: none;
+        font-size: 11px;
+        font-weight: 900;
+        letter-spacing: 1.5px;
+        border: 1px solid #4b4634;
+        padding: 12px 16px;
+    }
+
+    .back:hover {
+        background: #17150f;
+        border-color: #d6b85c;
+    }
+
+    footer {
+        border-top: 1px solid #202e36;
+        padding: 25px 30px;
+        text-align: center;
+        color: #465861;
+        font-size: 9px;
+        letter-spacing: 2px;
+    }
+
+    @media (max-width: 800px) {
+        .header-inner {
+            align-items: flex-start;
+            flex-direction: column;
+        }
+
+        nav {
+            justify-content: flex-start;
+        }
+
+        main {
+            padding-top: 45px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-inner">
+
+        <div class="logo">
+            RISE OF NATIONS
+            <span>TACTICAL COMMAND NETWORK</span>
+        </div>
+
+        <nav>
+            <a href="../index.html">COMMAND</a>
+            <a href="intelligence.html">INTELLIGENCE</a>
+            <a href="server.html">SERVER</a>
+            <a href="database.html">DATABASE</a>
+            <a href="download.html">DOWNLOAD</a>
+            <a href="communications.html">COMMUNICATIONS</a>
+            <a href="wiki.html">WIKI</a>
+            <a href="changelog.html">CHANGELOG</a>
+        </nav>
+
+    </div>
+</header>
+
+<main>
+
+    <div class="eyebrow">SYSTEM HISTORY // DEPLOYMENT RECORDS</div>
+
+    <h1>CHANGELOG</h1>
+
+    <p class="subtitle">
+        Vollständige Übersicht über Änderungen, neue Inhalte,
+        technische Anpassungen und wichtige Entwicklungen innerhalb
+        des RISE OF NATIONS Projekts.
+    </p>
+
+    <div class="status-bar">
+        <div class="status">SYSTEM ONLINE</div>
+        <div class="status-info">CURRENT DEPLOYMENT // VERSION 1.0.0</div>
+    </div>
+
+
+    <!-- VERSION 1.0.0 -->
+
+    <section class="release">
+
+        <div class="release-header">
+            <div class="version">VERSION 1.0.0</div>
+            <div class="date">INITIAL DEPLOYMENT</div>
+        </div>
+
+        <div class="release-body">
+
+            <div class="release-title">
+                RISE OF NATIONS // INITIAL SYSTEM DEPLOYMENT
+            </div>
+
+            <div class="changes">
+
+                <div class="change added">
+                    <span class="tag added">ADDED</span>
+                    <strong>RISE OF NATIONS</strong> wurde als eigenständiges
+                    Minecraft-Projekt initialisiert.
+                </div>
+
+                <div class="change added">
+                    <span class="tag added">ADDED</span>
+                    Minecraft <strong>1.21.1</strong> als Zielplattform definiert.
+                </div>
+
+                <div class="change added">
+                    <span class="tag added">ADDED</span>
+                    Neues militärisch-technisches <strong>Command Center</strong>
+                    für die Projektwebsite.
+                </div>
+
+                <div class="change added">
+                    <span class="tag added">ADDED</span>
+                    Server-, Download-, Intelligence- und
+                    Communications-Bereiche eingerichtet.
+                </div>
+
+                <div class="change added">
+                    <span class="tag added">ADDED</span>
+                    Erste <strong>Modpack-Datenbank</strong> integriert.
+                </div>
+
+                <div class="change added">
+                    <span class="tag added">ADDED</span>
+                    Wiki-System mit technischen Mod-Dokumentationen
+                    eingerichtet.
+                </div>
+
+                <div class="change added">
+                    <span class="tag added">ADDED</span>
+                    Erste umfangreiche Mod-Dokumentationen für
+                    Create, JEI, Waystones, Simple Voice Chat,
+                    Farmer’s Delight und Sophisticated Backpacks.
+                </div>
+
+                <div class="change added">
+                    <span class="tag added">ADDED</span>
+                    Militärisch-industrielles UI-System mit
+                    NATO-inspirierter Farbgebung und technischen Panels.
+                </div>
+
+                <div class="change changed">
+                    <span class="tag changed">CHANGED</span>
+                    Website-Navigation auf ein zentrales
+                    <strong>COMMAND / DATABASE / INTELLIGENCE</strong>
+                    System umgestellt.
+                </div>
+
+                <div class="change changed">
+                    <span class="tag changed">CHANGED</span>
+                    Website auf eine langfristig erweiterbare
+                    Informationsplattform ausgerichtet.
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CURRENT DEVELOPMENT -->
+
+    <section class="release">
+
+        <div class="release-header">
+            <div class="version">NEXT DEPLOYMENT</div>
+            <div class="date">IN DEVELOPMENT</div>
+        </div>
+
+        <div class="release-body">
+
+            <div class="release-title">
+                SYSTEM EXPANSION
+            </div>
+
+            <div class="changes">
+
+                <div class="change changed">
+                    <span class="tag changed">PLANNED</span>
+                    Vollständige Überarbeitung der Modpack-Datenbank
+                    anhand des tatsächlichen aktuellen Mods-Ordners.
+                </div>
+
+                <div class="change changed">
+                    <span class="tag changed">PLANNED</span>
+                    Weitere detaillierte Wiki-Seiten für wichtige Mods.
+                </div>
+
+                <div class="change changed">
+                    <span class="tag changed">PLANNED</span>
+                    Erweiterte Such- und Filtersysteme für die Datenbank.
+                </div>
+
+                <div class="change changed">
+                    <span class="tag changed">PLANNED</span>
+                    Erweiterte Serverinformationen und
+                    Deployment-Informationen.
+                </div>
+
+                <div class="change changed">
+                    <span class="tag changed">PLANNED</span>
+                    Ausbau der Intelligence- und Lagebericht-Systeme.
+                </div>
+
+                <div class="change changed">
+                    <span class="tag changed">PLANNED</span>
+                    Zentrale Konfiguration für Version,
+                    Server-IP, Download und Community-Verbindungen.
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <div class="notice">
+
+        <div class="notice-title">
+            CHANGELOG PROTOCOL
+        </div>
+
+        <p>
+            Dieser Bereich dokumentiert die Entwicklung der Website
+            und des RISE OF NATIONS Modpacks. Neue Versionen,
+            wichtige Änderungen, neue Mods, entfernte Mods,
+            technische Fixes und größere Systemänderungen werden
+            hier zukünftig chronologisch erfasst.
+        </p>
+
+    </div>
+
+
+    <a class="back" href="../index.html">
+        ← ZURÜCK ZUM COMMAND CENTER
+    </a>
+
+</main>
+
+<footer>
+    RISE OF NATIONS // CHANGELOG // DEPLOYMENT HISTORY
+</footer>
+
+</body>
+</html>
