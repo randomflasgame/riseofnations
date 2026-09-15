@@ -1,1 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RISE OF NATIONS // STRUCTURES DATABASE</title>
 
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+        body {
+            margin: 0;
+            background:
+                linear-gradient(rgba(5, 10, 16, 0.94), rgba(5, 10, 16, 0.97)),
+                radial-gradient(circle at top, #263044 0%, #080c12 65%);
+            color: #dce8f2;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .page {
+            min-height: 100vh;
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #3c8dbc;
+            padding-bottom: 18px;
+            margin-bottom: 35px;
+        }
+
+        .brand {
+            color: #5da9d6;
+            font-size: 22px;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        .status {
+            color: #6fcf97;
+            font-size: 12px;
+            letter-spacing: 2px;
+        }
+
+        .header {
+            margin-bottom: 35px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 46px;
+            letter-spacing: 6px;
+            color: #dce8f2;
+        }
+
+        .header p {
+            margin-top: 12px;
+            color: #8798a8;
+            letter-spacing: 2px;
+            font-size: 13px;
+        }
+
+        .system-info {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 35px;
+        }
+
+        .info-box {
+            background: rgba(17, 25, 34, 0.9);
+            border: 1px solid #334453;
+            padding: 18px;
+            position: relative;
+        }
+
+        .info-box::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: #3c8dbc;
+        }
+
+        .info-label {
+            color: #718292;
+            font-size: 10px;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .info-value {
+            color: #dce8f2;
+            font-size: 17px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .mods {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .mod {
+            background: rgba(14, 21, 29, 0.95);
+            border: 1px solid #334453;
+            padding: 22px;
+            transition: 0.2s ease;
+        }
+
+        .mod:hover {
+            border-color: #3c8dbc;
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(60, 141, 188, 0.10);
+        }
+
+        .mod-number {
+            color: #667888;
+            font-size: 11px;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .mod-name {
+            color: #f0f3f5;
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .mod-description {
+            color: #8293a2;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        .footer {
+            margin-top: 35px;
+            padding-top: 20px;
+            border-top: 1px solid #263542;
+        }
+
+        .return {
+            color: #5da9d6;
+            text-decoration: none;
+            font-size: 12px;
+            letter-spacing: 2px;
+        }
+
+        .return:hover {
+            color: #ffffff;
+        }
+
+        @media (max-width: 800px) {
+            .page {
+                padding: 20px;
+            }
+
+            .system-info,
+            .mods {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="page">
+
+    <div class="top-bar">
+        <div class="brand">RISE OF NATIONS // DATABASE</div>
+        <div class="status">● SYSTEM OPERATIONAL</div>
+    </div>
+
+    <div class="header">
+        <h1>STRUCTURES & VILLAGES</h1>
+        <p>WORLD GENERATION // LOCATIONS // DUNGEONS // CIVILIAN INFRASTRUCTURE</p>
+    </div>
+
+    <div class="system-info">
+
+        <div class="info-box">
+            <div class="info-label">DATABASE CATEGORY</div>
+            <div class="info-value">STRUCTURES</div>
+        </div>
+
+        <div class="info-box">
+            <div class="info-label">REGISTERED SYSTEMS</div>
+            <div class="info-value">8 SYSTEMS</div>
+        </div>
+
+        <div class="info-box">
+            <div class="info-label">STATUS</div>
+            <div class="info-value">OPERATIONAL</div>
+        </div>
+
+    </div>
+
+    <div class="mods">
+
+        <div class="mod">
+            <div class="mod-number">SYSTEM 01</div>
+            <div class="mod-name">When Dungeons Arise: Seven Seas</div>
+            <div class="mod-description">
+                Massive structures, dangerous dungeons and large-scale
+                exploration locations distributed throughout the world.
+            </div>
+        </div>
+
+        <div class="mod">
+            <div class="mod-number">SYSTEM 02</div>
+            <div class="mod-name">YUNG’s Better Caves</div>
+            <div class="mod-description">
+                Advanced underground world generation with larger,
+                more detailed and more dangerous cave systems.
+            </div>
+        </div>
+
+        <div class="mod">
+            <div class="mod-number">SYSTEM 03</div>
+            <div class="mod-name">YUNG’s Better Mineshafts</div>
+            <div class="mod-description">
+                Reworked abandoned mineshafts with expanded layouts,
+                structures and exploration opportunities.
+            </div>
+        </div>
+
+        <div class="mod">
+            <div class="mod-number">SYSTEM 04</div>
+            <div class="mod-name">YUNG’s Better Strongholds</div>
+            <div class="mod-description">
+                Completely enhanced strongholds with improved
+                architecture, rooms and underground environments.
+            </div>
+        </div>
+
+        <div class="mod">
+            <div class="mod-number">SYSTEM 05</div>
+            <div class="mod-name">YUNG’s Better Bridges</div>
+            <div class="mod-description">
+                Adds detailed bridge structures designed to connect
+                different regions and landscapes.
+            </div>
+        </div>
+
+        <div class="mod">
+            <div class="mod-number">SYSTEM 06</div>
+            <div class="mod-name">Moog’s Structures</div>
+            <div class="mod-description">
+                Expands world generation with additional structures,
+                landmarks and exploration locations.
+            </div>
+        </div>
+
+        <div class="mod">
+            <div class="mod-number">SYSTEM 07</div>
+            <div class="mod-name">Underground Village</div>
+            <div class="mod-description">
+                Introduces unusual underground settlements and
+                hidden civilian infrastructure beneath the surface.
+            </div>
+        </div>
+
+        <div class="mod">
+            <div class="mod-number">SYSTEM 08</div>
+            <div class="mod-name">Villages and Pillages</div>
+            <div class="mod-description">
+                Expands village environments and increases the variety
+                of settlements, structures and hostile encounters.
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <a class="return" href="database.html">
+            ← RETURN TO DATABASE
+        </a>
+    </div>
+
+</div>
+
+</body>
+</html>
