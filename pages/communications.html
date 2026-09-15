@@ -1,495 +1,442 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>COMMUNICATIONS // RISE OF NATIONS</title>
 
+    <link rel="stylesheet" href="../style.css">
     <script src="../config/site-config.js"></script>
-
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            min-height: 100vh;
-            background:
-                radial-gradient(circle at 50% 10%, rgba(25, 70, 95, 0.22), transparent 35%),
-                linear-gradient(135deg, #05080b, #0a1117 50%, #05080b);
-            color: #dce8ef;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            border-bottom: 1px solid #1e3440;
-            background: rgba(5, 10, 14, 0.96);
-            backdrop-filter: blur(12px);
-        }
-
-        .header-inner {
-            width: min(1450px, 94%);
-            margin: auto;
-            min-height: 78px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 30px;
-        }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            color: #fff;
-            text-decoration: none;
-        }
-
-        .brand-emblem {
-            width: 43px;
-            height: 43px;
-            border: 2px solid #b89543;
-            display: grid;
-            place-items: center;
-            color: #b89543;
-            background: #101820;
-            font-size: 19px;
-            font-weight: 900;
-            transform: rotate(45deg);
-        }
-
-        .brand-emblem span {
-            transform: rotate(-45deg);
-        }
-
-        .brand-title {
-            font-size: 16px;
-            font-weight: 900;
-            letter-spacing: 2px;
-        }
-
-        .brand-subtitle {
-            margin-top: 4px;
-            color: #627985;
-            font-size: 8px;
-            letter-spacing: 2px;
-        }
-
-        nav {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: flex-end;
-            gap: 6px;
-        }
-
-        nav a {
-            color: #8da5b1;
-            text-decoration: none;
-            padding: 11px 12px;
-            font-size: 10px;
-            letter-spacing: 1.5px;
-            border: 1px solid transparent;
-            transition: 0.2s ease;
-        }
-
-        nav a:hover {
-            color: #e8f3f8;
-            border-color: #294858;
-            background: #0b1820;
-        }
-
-        main {
-            width: min(1100px, 92%);
-            margin: auto;
-            padding: 80px 0;
-        }
-
-        .eyebrow {
-            color: #b89543;
-            font-size: 10px;
-            letter-spacing: 4px;
-            font-weight: bold;
-            margin-bottom: 18px;
-        }
-
-        .hero {
-            padding: 50px 0 60px;
-            border-bottom: 1px solid #1c303b;
-        }
-
-        h1 {
-            font-size: clamp(42px, 7vw, 82px);
-            line-height: 0.95;
-            letter-spacing: 4px;
-            color: #edf4f7;
-            margin-bottom: 22px;
-        }
-
-        h1 span {
-            color: #5da1c7;
-        }
-
-        .hero p {
-            max-width: 760px;
-            color: #8197a2;
-            font-size: 14px;
-            line-height: 1.8;
-        }
-
-        .comms-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 14px;
-            margin-top: 35px;
-        }
-
-        .comms-card {
-            border: 1px solid #294553;
-            background:
-                linear-gradient(145deg, rgba(17, 32, 41, 0.96), rgba(6, 13, 18, 0.96));
-            padding: 30px;
-        }
-
-        .card-label {
-            color: #506d79;
-            font-size: 8px;
-            letter-spacing: 2px;
-            margin-bottom: 12px;
-        }
-
-        .card-title {
-            color: #dce8ef;
-            font-size: 18px;
-            letter-spacing: 2px;
-            font-weight: bold;
-            margin-bottom: 12px;
-        }
-
-        .card-text {
-            color: #788f9a;
-            font-size: 12px;
-            line-height: 1.8;
-            margin-bottom: 22px;
-        }
-
-        .comms-button {
-            display: inline-block;
-            padding: 13px 20px;
-            border: 1px solid #315b70;
-            color: #6da9c8;
-            background: #09141b;
-            text-decoration: none;
-            font-size: 10px;
-            letter-spacing: 2px;
-            font-weight: bold;
-            transition: 0.2s ease;
-        }
-
-        .comms-button:hover {
-            border-color: #6da9c8;
-            background: #0d202b;
-        }
-
-        .info-section {
-            margin-top: 45px;
-        }
-
-        .section-title {
-            color: #d5e1e6;
-            font-size: 13px;
-            letter-spacing: 3px;
-            margin-bottom: 18px;
-        }
-
-        .info-box {
-            border-left: 2px solid #315b70;
-            padding: 18px 22px;
-            background: rgba(9, 20, 27, 0.7);
-            color: #788f9a;
-            font-size: 12px;
-            line-height: 1.8;
-        }
-
-        footer {
-            width: min(1100px, 92%);
-            margin: auto;
-            padding: 25px 0 40px;
-            border-top: 1px solid #1c303b;
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
-            color: #455c67;
-            font-size: 9px;
-            letter-spacing: 1.5px;
-        }
-
-        @media (max-width: 800px) {
-
-            .header-inner {
-                padding: 15px 0;
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            nav {
-                justify-content: flex-start;
-            }
-
-            .comms-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 550px) {
-
-            main {
-                padding-top: 45px;
-            }
-
-            .comms-card {
-                padding: 22px;
-            }
-
-            footer {
-                flex-direction: column;
-            }
-        }
-    </style>
 </head>
 
 <body>
 
-<header>
+    <div class="top-line"></div>
 
-    <div class="header-inner">
+    <header>
+        <nav class="ron-nav">
 
-        <a href="../index.html" class="brand">
-
-            <div class="brand-emblem">
-                <span>R</span>
+            <div class="ron-brand">
+                RISE OF NATIONS
+                <span>COMMAND NETWORK</span>
             </div>
 
-            <div>
-                <div class="brand-title">
-                    RISE OF NATIONS
-                </div>
-
-                <div class="brand-subtitle">
-                    COMMAND & CONTROL NETWORK
-                </div>
+            <div class="ron-nav-links">
+                <a href="communications.html" class="active">COMMUNICATIONS</a>
+                <a href="intelligence.html">INTELLIGENCE</a>
+                <a href="server.html">SERVER</a>
+                <a href="database.html">DATABASE</a>
+                <a href="download.html">DOWNLOAD</a>
+                <a href="wiki.html">WIKI</a>
+                <a href="faq.html">FAQ</a>
             </div>
-
-        </a>
-
-
-        <nav>
-
-            <a href="communications.html">
-                COMMUNICATIONS
-            </a>
-
-            <a href="intelligence.html">
-                INTELLIGENCE
-            </a>
-
-            <a href="server.html">
-                SERVER
-            </a>
-
-            <a href="database.html">
-                DATABASE
-            </a>
-
-            <a href="download.html">
-                DOWNLOAD
-            </a>
-
-            <a href="wiki.html">
-                WIKI
-            </a>
 
         </nav>
-
-    </div>
-
-</header>
+    </header>
 
 
-<main>
+    <main class="ron-page">
 
-    <section class="hero">
-
-        <div class="eyebrow">
-            NETWORK OPERATIONS // COMMUNICATIONS
+        <div class="ron-classification">
+            <span>COMMUNICATIONS // SECURE NETWORK</span>
+            <span class="ron-live">● NETWORK ACTIVE</span>
         </div>
 
-        <h1>
-            COMMUNI<span>CATIONS</span>
-        </h1>
 
-        <p>
-            Zentrale Kommunikationsschnittstelle für die
-            RISE OF NATIONS Community.
-            Verbinde dich mit anderen Spielern, erhalte Updates
-            und bleibe über aktuelle Entwicklungen informiert.
+        <h1 class="ron-page-title">COMMUNICATIONS</h1>
+
+        <p class="ron-page-subtitle">
+            Central communication interface for the RISE OF NATIONS community.
+            Access community channels, announcements and operational information.
         </p>
 
-    </section>
 
+        <div class="ron-status-grid">
 
-    <section class="comms-grid">
-
-        <!-- DISCORD -->
-
-        <div class="comms-card">
-
-            <div class="card-label">
-                PRIMARY CHANNEL
+            <div class="ron-status">
+                <div class="ron-status-label">NETWORK STATUS</div>
+                <div class="ron-status-value ron-green" id="networkStatus">
+                    —
+                </div>
             </div>
 
-            <div class="card-title">
-                DISCORD
+            <div class="ron-status">
+                <div class="ron-status-label">COMMUNITY</div>
+                <div class="ron-status-value ron-blue">
+                    ACTIVE
+                </div>
             </div>
 
-            <div class="card-text">
-                Der zentrale Treffpunkt der Community.
-                Kommunikation, Support, Neuigkeiten,
-                Serverinformationen und Austausch mit anderen Spielern.
+            <div class="ron-status">
+                <div class="ron-status-label">COMMUNICATIONS</div>
+                <div class="ron-status-value ron-gold">
+                    ONLINE
+                </div>
             </div>
 
-            <a
-                id="discordLink"
-                href="#"
-                class="comms-button"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                OPEN DISCORD →
-            </a>
+            <div class="ron-status">
+                <div class="ron-status-label">SECURITY</div>
+                <div class="ron-status-value ron-green">
+                    NOMINAL
+                </div>
+            </div>
 
         </div>
 
 
-        <!-- COMMUNITY -->
+        <div class="section-title">
+            COMMUNITY NETWORK
+            <span>PRIMARY CHANNELS</span>
+        </div>
 
-        <div class="comms-card">
 
-            <div class="card-label">
-                COMMUNITY NETWORK
+        <div class="ron-grid">
+
+            <div class="ron-card">
+
+                <div class="ron-panel-header">
+                    <div class="ron-panel-title">
+                        DISCORD
+                    </div>
+
+                    <div class="ron-panel-code">
+                        COM-001
+                    </div>
+                </div>
+
+                <div class="ron-data">
+
+                    <div class="ron-data-row">
+                        <span class="ron-data-label">CHANNEL</span>
+                        <span class="ron-data-value">COMMUNITY</span>
+                    </div>
+
+                    <div class="ron-data-row">
+                        <span class="ron-data-label">STATUS</span>
+                        <span class="ron-data-value ron-green">
+                            AVAILABLE
+                        </span>
+                    </div>
+
+                </div>
+
+                <a
+                    class="ron-button gold"
+                    id="discordLink"
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    OPEN DISCORD
+                </a>
+
             </div>
 
-            <div class="card-title">
-                COMMUNITY
+
+            <div class="ron-card">
+
+                <div class="ron-panel-header">
+                    <div class="ron-panel-title">
+                        COMMUNITY
+                    </div>
+
+                    <div class="ron-panel-code">
+                        COM-002
+                    </div>
+                </div>
+
+                <div class="ron-data">
+
+                    <div class="ron-data-row">
+                        <span class="ron-data-label">NETWORK</span>
+                        <span class="ron-data-value">
+                            RISE OF NATIONS
+                        </span>
+                    </div>
+
+                    <div class="ron-data-row">
+                        <span class="ron-data-label">STATUS</span>
+                        <span class="ron-data-value ron-green">
+                            ACTIVE
+                        </span>
+                    </div>
+
+                </div>
+
+                <a
+                    class="ron-button"
+                    id="communityLink"
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    OPEN COMMUNITY
+                </a>
+
             </div>
 
-            <div class="card-text">
-                Weitere Community-Angebote und externe
-                Kommunikationsmöglichkeiten werden hier
-                zentral bereitgestellt.
-            </div>
 
-            <a
-                id="communityLink"
-                href="#"
-                class="comms-button"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                OPEN COMMUNITY →
-            </a>
+            <div class="ron-card">
+
+                <div class="ron-panel-header">
+                    <div class="ron-panel-title">
+                        SERVER
+                    </div>
+
+                    <div class="ron-panel-code">
+                        COM-003
+                    </div>
+                </div>
+
+                <div class="ron-data">
+
+                    <div class="ron-data-row">
+                        <span class="ron-data-label">SERVER</span>
+                        <span class="ron-data-value" id="serverName">
+                            —
+                        </span>
+                    </div>
+
+                    <div class="ron-data-row">
+                        <span class="ron-data-label">STATUS</span>
+                        <span class="ron-data-value ron-green">
+                            OPERATIONAL
+                        </span>
+                    </div>
+
+                </div>
+
+                <a
+                    class="ron-button"
+                    href="server.html"
+                >
+                    SERVER INFORMATION
+                </a>
+
+            </div>
 
         </div>
 
-    </section>
-
-
-    <section class="info-section">
 
         <div class="section-title">
             COMMUNICATION PROTOCOL
+            <span>NETWORK GUIDELINES</span>
         </div>
 
-        <div class="info-box">
-            Offizielle Ankündigungen, wichtige Serverinformationen
-            und Community-Updates werden über die zentralen
-            Kommunikationskanäle veröffentlicht.
+
+        <div class="ron-card">
+
+            <div class="ron-panel-header">
+
+                <div class="ron-panel-title">
+                    COMMUNITY COMMUNICATION
+                </div>
+
+                <div class="ron-panel-code">
+                    PROTOCOL // 01
+                </div>
+
+            </div>
+
+            <div class="ron-data">
+
+                <div class="ron-data-row">
+                    <span class="ron-data-label">
+                        PRIMARY CHANNEL
+                    </span>
+
+                    <span class="ron-data-value">
+                        DISCORD
+                    </span>
+                </div>
+
+                <div class="ron-data-row">
+                    <span class="ron-data-label">
+                        SUPPORT
+                    </span>
+
+                    <span class="ron-data-value">
+                        COMMUNITY NETWORK
+                    </span>
+                </div>
+
+                <div class="ron-data-row">
+                    <span class="ron-data-label">
+                        ANNOUNCEMENTS
+                    </span>
+
+                    <span class="ron-data-value">
+                        COMMUNITY CHANNEL
+                    </span>
+                </div>
+
+            </div>
+
         </div>
 
-    </section>
 
+        <div class="ron-alert">
 
-    <section class="info-section">
+            <strong>NETWORK NOTICE</strong><br>
+
+            Official communication channels are used for server
+            announcements, community coordination, technical support
+            and general communication between players.
+
+        </div>
+
 
         <div class="section-title">
-            NETWORK STATUS
+            SYSTEM NETWORK
+            <span>COMMUNICATION STATUS</span>
         </div>
 
-        <div class="info-box">
-            <strong id="networkStatus">
-                PLATZHALTER
-            </strong>
+
+        <div class="ron-grid">
+
+            <div class="ron-card">
+
+                <h3>COMMUNICATION NETWORK</h3>
+
+                <p>
+                    Primary communication infrastructure for the
+                    RISE OF NATIONS community.
+                </p>
+
+                <div class="ron-bar green">
+                    <span style="width: 100%;"></span>
+                </div>
+
+                <div style="margin-top: 10px;">
+                    <span class="ron-tag green">
+                        OPERATIONAL
+                    </span>
+                </div>
+
+            </div>
+
+
+            <div class="ron-card">
+
+                <h3>COMMUNITY ACCESS</h3>
+
+                <p>
+                    Community access point for players,
+                    announcements and coordination.
+                </p>
+
+                <div class="ron-bar">
+                    <span style="width: 92%;"></span>
+                </div>
+
+                <div style="margin-top: 10px;">
+                    <span class="ron-tag">
+                        AVAILABLE
+                    </span>
+                </div>
+
+            </div>
+
+
+            <div class="ron-card">
+
+                <h3>NETWORK SECURITY</h3>
+
+                <p>
+                    Communication infrastructure is currently
+                    operating within normal parameters.
+                </p>
+
+                <div class="ron-bar gold">
+                    <span style="width: 96%;"></span>
+                </div>
+
+                <div style="margin-top: 10px;">
+                    <span class="ron-tag gold">
+                        NOMINAL
+                    </span>
+                </div>
+
+            </div>
+
         </div>
 
-    </section>
-
-</main>
+    </main>
 
 
-<footer>
+    <footer class="ron-footer">
 
-    <div>
-        RISE OF NATIONS // COMMUNICATION NETWORK
-    </div>
+        RISE OF NATIONS
+        &nbsp; // &nbsp;
+        <span id="footerVersion">SYSTEM</span>
+        &nbsp; // &nbsp;
+        COMMUNICATIONS NETWORK
 
-    <div id="footerVersion">
-        PLATZHALTER
-    </div>
-
-</footer>
+    </footer>
 
 
-<script>
+    <script>
 
-    /*
-     * DISCORD
-     */
+        /*
+         * =========================================
+         * RISE OF NATIONS
+         * COMMUNICATIONS CONFIGURATION
+         * =========================================
+         */
 
-    document.getElementById("discordLink").href =
-        SITE_CONFIG.communications.discord;
+        if (typeof SITE_CONFIG !== "undefined") {
+
+            const networkStatus =
+                document.getElementById("networkStatus");
+
+            const discordLink =
+                document.getElementById("discordLink");
+
+            const communityLink =
+                document.getElementById("communityLink");
+
+            const serverName =
+                document.getElementById("serverName");
+
+            const footerVersion =
+                document.getElementById("footerVersion");
 
 
-    /*
-     * COMMUNITY
-     */
-
-    document.getElementById("communityLink").href =
-        SITE_CONFIG.communications.community;
+            if (networkStatus) {
+                networkStatus.textContent =
+                    SITE_CONFIG.system.network;
+            }
 
 
-    /*
-     * NETWORK STATUS
-     */
-
-    document.getElementById("networkStatus").textContent =
-        SITE_CONFIG.system.network;
+            if (discordLink) {
+                discordLink.href =
+                    SITE_CONFIG.communications.discord;
+            }
 
 
-    /*
-     * FOOTER
-     */
+            if (communityLink) {
+                communityLink.href =
+                    SITE_CONFIG.communications.community;
+            }
 
-    document.getElementById("footerVersion").textContent =
-        SITE_CONFIG.website.name +
-        " // " +
-        SITE_CONFIG.modpack.version;
 
-</script>
+            if (serverName) {
+                serverName.textContent =
+                    SITE_CONFIG.server.name;
+            }
+
+
+            if (footerVersion) {
+                footerVersion.textContent =
+                    SITE_CONFIG.modpack.version;
+            }
+
+        }
+
+    </script>
 
 </body>
+
 </html>
