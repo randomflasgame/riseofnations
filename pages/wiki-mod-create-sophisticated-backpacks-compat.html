@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RISE OF NATIONS // CREATE SOPHISTICATED BACKPACKS COMPAT</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+    min-height:100vh;
+    background:
+        linear-gradient(rgba(5,10,15,.97),rgba(5,10,15,.99)),
+        repeating-linear-gradient(135deg,rgba(255,255,255,.018) 0 2px,transparent 2px 9px);
+    color:#dbe3e8;
+    font-family:"Segoe UI",Arial,sans-serif;
+}
+header{
+    background:rgba(5,10,15,.98);
+    border-bottom:1px solid #293944;
+    box-shadow:0 5px 25px rgba(0,0,0,.45);
+}
+.header-inner{
+    max-width:1500px;
+    margin:auto;
+    padding:18px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:30px;
+}
+.logo{
+    color:#d6b85c;
+    font-size:22px;
+    font-weight:950;
+    letter-spacing:3px;
+}
+.logo span{
+    display:block;
+    color:#687b86;
+    font-size:9px;
+    letter-spacing:2px;
+    margin-top:4px;
+}
+nav{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+    gap:7px;
+}
+nav a{
+    color:#9aabb4;
+    text-decoration:none;
+    padding:9px 11px;
+    border:1px solid transparent;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.2px;
+    transition:.2s;
+}
+nav a:hover{
+    color:#d6b85c;
+    background:#111b22;
+    border-color:#3b4d58;
+}
+main{
+    max-width:1250px;
+    margin:auto;
+    padding:70px 30px 100px;
+}
+.eyebrow{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:3px;
+    margin-bottom:15px;
+}
+h1{
+    color:#edf2f4;
+    font-size:clamp(40px,6.5vw,76px);
+    line-height:.95;
+    letter-spacing:4px;
+    font-weight:950;
+}
+.subtitle{
+    max-width:950px;
+    margin-top:22px;
+    color:#8497a2;
+    line-height:1.75;
+    font-size:15px;
+}
+.meta{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-top:38px;
+}
+.meta-box{
+    padding:18px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+.meta-label{
+    color:#596c77;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:8px;
+}
+.meta-value{
+    color:#d6b85c;
+    font-size:13px;
+    font-weight:900;
+}
+.section{
+    margin-top:35px;
+    padding:30px;
+    background:#0d171d;
+    border:1px solid #293c47;
+}
+.section-number{
+    color:#526773;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:2px;
+    margin-bottom:9px;
+}
+h2{
+    color:#e1e8eb;
+    font-size:22px;
+    letter-spacing:1px;
+    margin-bottom:18px;
+}
+h3{
+    color:#d6b85c;
+    font-size:14px;
+    letter-spacing:1px;
+    margin:25px 0 10px;
+}
+p{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    margin-bottom:13px;
+}
+ul,ol{
+    margin:12px 0 18px 22px;
+}
+li{
+    color:#899ba5;
+    font-size:13px;
+    line-height:1.8;
+    padding-left:5px;
+}
+.note{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#111c23;
+    border-left:3px solid #4d91bd;
+}
+.note-title{
+    color:#4d91bd;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+.warning{
+    margin-top:18px;
+    padding:17px 18px;
+    background:#17140e;
+    border-left:3px solid #d6b85c;
+}
+.warning-title{
+    color:#d6b85c;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:18px;
+}
+th,td{
+    text-align:left;
+    padding:13px 14px;
+    border:1px solid #293c47;
+    font-size:12px;
+}
+th{
+    color:#d6b85c;
+    background:#111c23;
+    font-size:10px;
+    letter-spacing:1px;
+}
+td{
+    color:#8ea0a9;
+    background:#0a141a;
+}
+.sources{
+    display:grid;
+    gap:10px;
+    margin-top:15px;
+}
+.sources a{
+    display:block;
+    padding:13px 15px;
+    background:#101b22;
+    border:1px solid #293c47;
+    color:#9fb0b9;
+    text-decoration:none;
+    font-size:12px;
+    transition:.2s;
+}
+.sources a:hover{
+    color:#d6b85c;
+    border-color:#d6b85c;
+}
+.back{
+    display:inline-block;
+    margin-top:45px;
+    padding:12px 16px;
+    color:#d6b85c;
+    border:1px solid #4c4530;
+    text-decoration:none;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    transition:.2s;
+}
+.back:hover{
+    background:#17150f;
+    border-color:#d6b85c;
+}
+footer{
+    border-top:1px solid #202e36;
+    padding:25px 30px;
+    text-align:center;
+    color:#465861;
+    font-size:9px;
+    letter-spacing:2px;
+}
+@media(max-width:850px){
+    .header-inner{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+    nav{justify-content:flex-start}
+    .meta{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:550px){
+    .meta{grid-template-columns:1fr}
+    main{padding:45px 18px 70px}
+    .section{padding:22px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="header-inner">
+
+<div class="logo">
+RISE OF NATIONS
+<span>TACTICAL KNOWLEDGE DATABASE</span>
+</div>
+
+<nav>
+<a href="../index.html">COMMAND</a>
+<a href="intelligence.html">INTELLIGENCE</a>
+<a href="server.html">SERVER</a>
+<a href="database.html">DATABASE</a>
+<a href="download.html">DOWNLOAD</a>
+<a href="communications.html">COMMUNICATIONS</a>
+<a href="wiki.html">WIKI</a>
+</nav>
+
+</div>
+</header>
+
+<main>
+
+<div class="eyebrow">
+PROFESSOR DATABASE // CREATE // STORAGE INTEGRATION
+</div>
+
+<h1>CREATE SOPHISTICATED BACKPACKS COMPAT</h1>
+
+<p class="subtitle">
+Eine kleine Integrations-Erweiterung für Create und Sophisticated Backpacks.
+Sie verbindet die beiden Systeme dort, wo Create-Contraptions und
+Sophisticated-Backpacks-Funktionen miteinander interagieren sollen.
+</p>
+
+<div class="meta">
+
+<div class="meta-box">
+<div class="meta-label">MOD</div>
+<div class="meta-value">CREATE SB COMPAT</div>
+</div>
+
+<div class="meta-box">
+<div class="meta-label">VERSION</div>
+<div class="meta-value">1.0</div>
+</div>
+
+<div class="meta-box">
+<div class="meta-label">MINECRAFT</div>
+<div class="meta-value">1.21.1</div>
+</div>
+
+<div class="meta-box">
+<div class="meta-label">SYSTEM</div>
+<div class="meta-value">INTEGRATION</div>
+</div>
+
+</div>
+
+
+<section class="section">
+
+<div class="section-number">01 // SYSTEM OVERVIEW</div>
+<h2>Was macht die Kompatibilität?</h2>
+
+<p>
+Sophisticated Backpacks stellt erweiterte tragbare Lagerung bereit,
+während Create umfangreiche Transportsysteme und Contraptions bietet.
+Die Kompatibilitätsschicht sorgt dafür, dass diese beiden Systeme
+besser zusammenarbeiten können.
+</p>
+
+<p>
+Der eigentliche Zweck ist nicht, ein neues Inventarsystem einzuführen,
+sondern vorhandene Funktionen miteinander nutzbar zu machen.
+</p>
+
+<div class="note">
+<div class="note-title">CORE PRINCIPLE</div>
+<p>
+Create übernimmt Bewegung und Automatisierung. Sophisticated Backpacks
+übernimmt flexible persönliche Lagerung. Die Integration verbindet
+beide Rollen.
+</p>
+</div>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">02 // SOPHISTICATED BACKPACKS</div>
+<h2>Das Basissystem</h2>
+
+<p>
+Sophisticated Backpacks erweitert das klassische Rucksackprinzip um
+zusätzliche Lager- und Upgrade-Funktionen.
+</p>
+
+<ul>
+<li>Tragbare zusätzliche Inventarkapazität.</li>
+<li>Upgrade-Systeme.</li>
+<li>Automatisierungsoptionen.</li>
+<li>Verbesserte Organisation von Ressourcen.</li>
+<li>Flexible Nutzung während Mining und Bauprojekten.</li>
+</ul>
+
+<p>
+Dadurch eignet sich das Mod besonders gut für technische
+Modpacks mit großen Produktionsketten.
+</p>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">03 // CREATE</div>
+<h2>Das Create-System</h2>
+
+<p>
+Create arbeitet mit mechanischen Systemen, Transport und beweglichen
+Contraptions.
+</p>
+
+<table>
+
+<tr>
+<th>SYSTEM</th>
+<th>HAUPTAUFGABE</th>
+</tr>
+
+<tr>
+<td>CREATE</td>
+<td>Bewegung und Maschinen</td>
+</tr>
+
+<tr>
+<td>SOPHISTICATED BACKPACKS</td>
+<td>mobiles Lager</td>
+</tr>
+
+<tr>
+<td>COMPAT</td>
+<td>gemeinsame Nutzung</td>
+</tr>
+
+</table>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">04 // INVENTORY LOGISTICS</div>
+<h2>Inventarlogistik</h2>
+
+<p>
+In einer großen Create-Fabrik entstehen sehr schnell viele verschiedene
+Materialströme. Ein Rucksack kann dabei als mobiles Zwischenlager
+dienen.
+</p>
+
+<ul>
+<li>Baumaterial transportieren.</li>
+<li>Werkzeuge mitführen.</li>
+<li>Rohstoffe sammeln.</li>
+<li>Mobiles Zwischenlager bereitstellen.</li>
+<li>Material zwischen Produktionsstationen transportieren.</li>
+</ul>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">05 // AUTOMATION</div>
+<h2>Automatisierung</h2>
+
+<p>
+Die interessante Kombination entsteht dort, wo ein Backpack nicht
+nur als persönlicher Stauraum, sondern als Teil einer größeren
+Logistikkette eingesetzt wird.
+</p>
+
+<p>
+Create kann Materialien über mechanische Transportsysteme bewegen,
+während Sophisticated Backpacks zusätzliche Lagerkapazität bereitstellt.
+</p>
+
+<div class="note">
+<div class="note-title">DESIGN PRINCIPLE</div>
+<p>
+Verwende Rucksäcke als flexible Puffer. Für dauerhaft hohe
+Materialmengen sind stationäre Lager und Sophisticated Storage
+meist besser geeignet.
+</p>
+</div>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">06 // MOBILE OPERATIONS</div>
+<h2>Mobile Produktion</h2>
+
+<p>
+Ein besonders sinnvoller Einsatz ist das Arbeiten außerhalb der
+Hauptfabrik.
+</p>
+
+<ol>
+<li>Backpack mit Grundmaterialien ausrüsten.</li>
+<li>Werkzeuge und Ersatzmaterial mitnehmen.</li>
+<li>Außenstandort errichten.</li>
+<li>Materialien vor Ort verarbeiten.</li>
+<li>Produkte anschließend zur Hauptfabrik zurückbringen.</li>
+</ol>
+
+<p>
+Das reduziert unnötige Laufwege und macht größere Bau- und
+Expeditionsprojekte angenehmer.
+</p>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">07 // CREATE CONTRAPTIONS</div>
+<h2>Contraptions und Inventare</h2>
+
+<p>
+Create-Contraptions können eigene Inventare und transportierte
+Gegenstände besitzen. Genau hier können Integrationsmods besonders
+wichtig werden.
+</p>
+
+<p>
+Wenn eine Contraption mit zusätzlichen Inventarsystemen arbeitet,
+sollte immer geprüft werden, ob die jeweilige Kombination von den
+installierten Versionen unterstützt wird.
+</p>
+
+<div class="warning">
+<div class="warning-title">VERSION CONTROL</div>
+<p>
+Bei Problemen mit Inventaren niemals automatisch davon ausgehen,
+dass Create oder Sophisticated Backpacks allein verantwortlich ist.
+Die Integrationsschicht kann entscheidend sein.
+</p>
+</div>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">08 // FACTORY LOGISTICS</div>
+<h2>Fabrikplanung</h2>
+
+<p>
+Eine gute RISE-OF-NATIONS-Fabrik sollte zwischen mobilen und stationären
+Lagern unterscheiden.
+</p>
+
+<table>
+
+<tr>
+<th>LOGISTIK</th>
+<th>EMPFOHLENES SYSTEM</th>
+</tr>
+
+<tr>
+<td>Persönliche Gegenstände</td>
+<td>Sophisticated Backpack</td>
+</tr>
+
+<tr>
+<td>Kleine Baustelle</td>
+<td>Backpack + Create Transport</td>
+</tr>
+
+<tr>
+<td>Dauerhafte Fabrik</td>
+<td>Stationäres Lager</td>
+</tr>
+
+<tr>
+<td>Große Rohstoffmengen</td>
+<td>Großlager + Automatisierung</td>
+</tr>
+
+</table>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">09 // UPGRADE STRATEGY</div>
+<h2>Backpack sinnvoll einsetzen</h2>
+
+<p>
+Sophisticated Backpacks besitzt ein umfangreiches Upgrade-System.
+Welche Upgrades sinnvoll sind, hängt stark von der Aufgabe ab.
+</p>
+
+<ul>
+<li>Mining → Fokus auf Kapazität und Ressourcensammlung.</li>
+<li>Bau → Fokus auf Lagerkapazität und Materialzugriff.</li>
+<li>Exploration → Fokus auf flexible Lagerung.</li>
+<li>Logistik → Fokus auf automatische Inventarverarbeitung.</li>
+</ul>
+
+<p>
+Nicht jedes Upgrade muss gleichzeitig verwendet werden. Ein
+spezialisierter Rucksack ist oft effizienter als ein überladener.
+</p>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">10 // TROUBLESHOOTING</div>
+<h2>Fehleranalyse</h2>
+
+<h3>Inventar wird nicht erkannt</h3>
+
+<p>
+Prüfe zuerst, ob beide Mods vorhanden und auf kompatiblen Versionen
+installiert sind.
+</p>
+
+<h3>Create-Maschine reagiert nicht wie erwartet</h3>
+
+<p>
+Testaufbau mit möglichst wenigen beteiligten Mods erstellen und die
+betroffene Interaktion isolieren.
+</p>
+
+<h3>Problem tritt nur mit bestimmten Upgrades auf</h3>
+
+<p>
+Upgrade entfernen und die Interaktion erneut testen. Dadurch lässt
+sich feststellen, ob das Upgrade Teil des Problems ist.
+</p>
+
+<h3>Problem nach Modpack-Update</h3>
+
+<p>
+Create, Sophisticated Backpacks, Sophisticated Core und die
+Kompatibilitätserweiterung gemeinsam überprüfen.
+</p>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">11 // MULTIPLAYER</div>
+<h2>Einsatz auf RISE OF NATIONS</h2>
+
+<p>
+Im Multiplayer kann ein Backpack als persönliches mobiles Lager
+dienen, während die eigentliche Fabrik stationär organisiert wird.
+</p>
+
+<ul>
+<li>Spieler können persönliche Materialien getrennt halten.</li>
+<li>Bauteams können eigene Materialvorräte mitführen.</li>
+<li>Fabriken bleiben übersichtlich.</li>
+<li>Große Lager können zentral verwaltet werden.</li>
+</ul>
+
+<div class="note">
+<div class="note-title">TEAM LOGISTICS</div>
+<p>
+Für gemeinsame Bauprojekte lohnt es sich, zentrale Materiallager
+mit mobilen Rucksäcken für einzelne Bautrupps zu kombinieren.
+</p>
+</div>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">12 // PERFORMANCE</div>
+<h2>Performance und Ordnung</h2>
+
+<p>
+Ein Rucksack ist kein Ersatz für ein gut geplantes Lager.
+Bei großen Produktionsketten sollte die zentrale Lagerlogistik
+stationär bleiben.
+</p>
+
+<ul>
+<li>Backpacks für mobile Aufgaben.</li>
+<li>Stationäre Lager für große Mengen.</li>
+<li>Create für automatisierten Transport.</li>
+<li>Sophisticated Storage für langfristige Lagerung.</li>
+</ul>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">13 // RISE OF NATIONS APPLICATION</div>
+<h2>Praktische Einsatzgebiete</h2>
+
+<ul>
+<li>Mobile Mining-Teams.</li>
+<li>Baustellen.</li>
+<li>Expeditionen.</li>
+<li>Militärische Außenposten.</li>
+<li>Create-Fabriken.</li>
+<li>Rohstofftransporte.</li>
+<li>Technische Wartung.</li>
+</ul>
+
+<p>
+Besonders praktisch ist die Kombination bei Spielern, die häufig
+zwischen ihrer Hauptbasis und entfernten Produktions- oder
+Explorationsgebieten wechseln.
+</p>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">14 // PROFESSOR DOCTRINE</div>
+<h2>Das Wichtigste zum Mitnehmen</h2>
+
+<ul>
+<li>Die Erweiterung verbindet Create mit Sophisticated Backpacks.</li>
+<li>Sie ist eine Integrationskomponente und kein eigenständiges Content-Mod.</li>
+<li>Backpacks eignen sich hervorragend für mobile Lagerung.</li>
+<li>Create eignet sich für automatisierten Materialtransport.</li>
+<li>Große Fabriken sollten stationäre Lager verwenden.</li>
+<li>Bei Problemen immer die Versionen aller beteiligten Mods prüfen.</li>
+</ul>
+
+<div class="warning">
+<div class="warning-title">FINAL PRINCIPLE</div>
+<p>
+Mobiles Lager für den Spieler. Automatisiertes Lager für die Fabrik.
+Die Kombination beider Systeme macht die Logistik effizient.
+</p>
+</div>
+
+</section>
+
+
+<section class="section">
+
+<div class="section-number">15 // REFERENCE DATA</div>
+<h2>Originalquellen</h2>
+
+<div class="sources">
+
+<a href="https://modrinth.com/mod/create"
+   target="_blank"
+   rel="noopener">
+CREATE // MODRINTH
+</a>
+
+<a href="https://modrinth.com/mod/sophisticated-backpacks"
+   target="_blank"
+   rel="noopener">
+SOPHISTICATED BACKPACKS // MODRINTH
+</a>
+
+<a href="https://github.com/P3pp3rF1y/SophisticatedBackpacks"
+   target="_blank"
+   rel="noopener">
+SOPHISTICATED BACKPACKS // GITHUB
+</a>
+
+</div>
+
+</section>
+
+
+<a class="back" href="wiki.html">
+← ZURÜCK ZUR WIKI
+</a>
+
+</main>
+
+<footer>
+RISE OF NATIONS // CREATE SOPHISTICATED BACKPACKS COMPAT // TACTICAL KNOWLEDGE DATABASE
+</footer>
+
+</body>
+</html>
