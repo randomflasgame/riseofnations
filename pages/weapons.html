@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>WEAPONS & VEHICLES // RISE OF NATIONS</title>
+
+    <meta
+        name="description"
+        content="RISE OF NATIONS — Weapons and Vehicles Database"
+    >
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+        .weapons-page {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 70px 40px;
+        }
+
+        .weapons-header {
+            border-left: 3px solid #a83232;
+            padding-left: 22px;
+            margin-bottom: 40px;
+        }
+
+        .weapons-header h1 {
+            margin: 0;
+            color: #f2f7fb;
+            font-size: 48px;
+            letter-spacing: 5px;
+        }
+
+        .weapons-header p {
+            margin-top: 12px;
+            color: #789bb5;
+            font-size: 12px;
+            letter-spacing: 3px;
+        }
+
+        .system-info {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 35px;
+        }
+
+        .info-box {
+            padding: 18px;
+            border: 1px solid rgba(168, 50, 50, 0.4);
+            background: rgba(20, 12, 15, 0.8);
+        }
+
+        .info-label {
+            color: #6f7f8a;
+            font-size: 9px;
+            letter-spacing: 2px;
+        }
+
+        .info-value {
+            margin-top: 8px;
+            color: #d8aa32;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .mod-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .mod-card {
+            padding: 22px;
+            border: 1px solid rgba(168, 50, 50, 0.4);
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(38, 20, 25, 0.95),
+                    rgba(12, 10, 14, 0.95)
+                );
+            transition: all 0.2s ease;
+        }
+
+        .mod-card:hover {
+            border-color: #c85a5a;
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(180, 50, 50, 0.15);
+        }
+
+        .mod-number {
+            color: #d8aa32;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .mod-name {
+            margin-top: 10px;
+            color: #edf6ff;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .mod-type {
+            margin-top: 8px;
+            color: #9b7d84;
+            font-size: 10px;
+            letter-spacing: 2px;
+        }
+
+        .mod-description {
+            margin-top: 12px;
+            color: #71818d;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        .return-link {
+            display: inline-block;
+            margin-top: 35px;
+            color: #8fb9d6;
+            text-decoration: none;
+            font-size: 11px;
+            letter-spacing: 2px;
+            border: 1px solid rgba(72, 139, 180, 0.35);
+            padding: 10px 15px;
+        }
+
+        .return-link:hover {
+            color: #ffffff;
+            border-color: #4c9bd0;
+            background: rgba(16, 55, 78, 0.8);
+        }
+
+        .weapons-footer {
+            margin-top: 40px;
+            padding-top: 18px;
+            border-top: 1px solid rgba(168, 50, 50, 0.25);
+            color: #56758c;
+            font-size: 10px;
+            letter-spacing: 2px;
+        }
+
+        @media (max-width: 900px) {
+            .weapons-page {
+                padding: 45px 20px;
+            }
+
+            .weapons-header h1 {
+                font-size: 34px;
+            }
+
+            .system-info {
+                grid-template-columns: 1fr;
+            }
+
+            .mod-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="command-screen">
+
+        <header class="top-bar">
+
+            <div class="logo">
+                RISE <span>OF</span> NATIONS
+            </div>
+
+            <div class="system-status">
+                <span class="status-light"></span>
+                ARSENAL DATABASE ONLINE
+            </div>
+
+        </header>
+
+
+        <main class="weapons-page">
+
+            <div class="weapons-header">
+
+                <h1>WEAPONS &amp; VEHICLES</h1>
+
+                <p>
+                    MIL-02 // ARSENAL, VEHICLES &amp; COMBAT SYSTEMS
+                </p>
+
+            </div>
+
+
+            <section class="system-info">
+
+                <div class="info-box">
+                    <div class="info-label">
+                        CATEGORY
+                    </div>
+
+                    <div class="info-value">
+                        MILITARY
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-label">
+                        MOD COUNT
+                    </div>
+
+                    <div class="info-value">
+                        8 SYSTEMS
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-label">
+                        STATUS
+                    </div>
+
+                    <div class="info-value">
+                        OPERATIONAL
+                    </div>
+                </div>
+
+            </section>
+
+
+            <section class="mod-list">
+
+
+                <div class="mod-card">
+
+                    <div class="mod-number">
+                        MIL-001
+                    </div>
+
+                    <div class="mod-name">
+                        TIMELESS AND CLASSICS ZERO
+                    </div>
+
+                    <div class="mod-type">
+                        FIREARMS SYSTEM
+                    </div>
+
+                    <div class="mod-description">
+                        Moderne Schusswaffen, Ausrüstung und
+                        militärische Kampfsysteme.
+                    </div>
+
+                </div>
+
+
+                <div class="mod-card">
+
+                    <div class="mod-number">
+                        MIL-002
+                    </div>
+
+                    <div class="mod-name">
+                        SUPERB WARFARE
+                    </div>
+
+                    <div class="mod-type">
+                        COMBAT SYSTEM
+                    </div>
+
+                    <div class="mod-description">
+                        Erweiterte Waffen-, Fahrzeug- und
+                        Kampfsysteme für militärische Einsätze.
+                    </div>
+
+                </div>
+
+
+                <div class="mod-card">
+
+                    <div class="mod-number">
+                        MIL-003
+                    </div>
+
+                    <div class="mod-name">
+                        IMMERSIVE VEHICLES
+                    </div>
+
+                    <div class="mod-type">
+                        VEHICLE SYSTEM
+                    </div>
+
+                    <div class="mod-description">
+                        Fahrzeuge und technische Transportsysteme
+                        für Land- und Militäreinsätze.
+                    </div>
+
+                </div>
+
+
+                <div class="mod-card">
+
+                    <div class="mod-number">
+                        MIL-004
+                    </div>
+
+                    <div class="mod-name">
+                        MTS OFFICIAL PACK
+                    </div>
+
+                    <div class="mod-type">
+                        VEHICLE EXPANSION
+                    </div>
+
+                    <div class="mod-description">
+                        Zusätzliche Fahrzeuge und
+                        Transportsysteme für Immersive Vehicles.
+                    </div>
+
+                </div>
+
+
+                <div class="mod-card">
+
+                    <div class="mod-number">
+                        MIL-005
+                    </div>
+
+                    <div class="mod-name">
+                        NEW CARS
+                    </div>
+
+                    <div class="mod-type">
+                        CIVILIAN VEHICLES
+                    </div>
+
+                    <div class="mod-description">
+                        Zusätzliche Fahrzeuge für den
+                        zivilen und alltäglichen Verkehr.
+                    </div>
+
+                </div>
+
+
+                <div class="mod-card">
+
+                    <div class="mod-number">
+                        MIL-006
+                    </div>
+
+                    <div class="mod-name">
+                        HELICOPTER PACK
+                    </div>
+
+                    <div class="mod-type">
+                        AVIATION
+                    </div>
+
+                    <div class="mod-description">
+                        Hubschrauber und luftgestützte
+                        Transportsysteme.
+                    </div>
+
+                </div>
+
+
+                <div class="mod-card">
+
+                    <div class="mod-number">
+                        MIL-007
+                    </div>
+
+                    <div class="mod-name">
+                        SALTYFISH VEHICLES
+                    </div>
+
+                    <div class="mod-type">
+                        VEHICLE SYSTEM
+                    </div>
+
+                    <div class="mod-description">
+                        Erweiterte Fahrzeugauswahl für
+                        Transport und Mobilität.
+                    </div>
+
+                </div>
+
+
+                <div class="mod-card">
+
+                    <div class="mod-number">
+                        MIL-008
+                    </div>
+
+                    <div class="mod-name">
+                        DRONE WARFARE
+                    </div>
+
+                    <div class="mod-type">
+                        UAV SYSTEMS
+                    </div>
+
+                    <div class="mod-description">
+                        Unbemannte Fluggeräte und
+                        moderne Drohnensysteme.
+                    </div>
+
+                </div>
+
+
+            </section>
+
+
+            <a class="return-link" href="database.html">
+                ← RETURN TO DATABASE
+            </a>
+
+
+            <div class="weapons-footer">
+                MIL-02 STATUS: OPERATIONAL // MINECRAFT 1.21.1
+            </div>
+
+        </main>
+
+    </div>
+
+</body>
+</html>
