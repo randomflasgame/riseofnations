@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="de">
 
@@ -11,6 +12,7 @@
     <script src="../config/site-config.js"></script>
 
     <style>
+
         .ron-nav {
             display: flex;
             align-items: center;
@@ -238,6 +240,7 @@
         }
 
         @media (max-width: 900px) {
+
             .ron-nav {
                 align-items: flex-start;
                 flex-direction: column;
@@ -254,9 +257,13 @@
             .download-wide {
                 grid-column: auto;
             }
+
         }
+
     </style>
+
 </head>
+
 
 <body>
 
@@ -343,6 +350,7 @@
             DOWNLOAD
         </h1>
 
+
         <p class="ron-page-subtitle">
             RISE OF NATIONS // MODPACK DEPLOYMENT CENTER
         </p>
@@ -387,7 +395,6 @@
             </section>
 
 
-
             <!-- =========================
                  PACKAGE INFO
             ========================== -->
@@ -419,7 +426,7 @@
                             class="download-value gold"
                             id="modpackVersion"
                         >
-                            PLATZHALTER
+                            -
                         </span>
 
                     </div>
@@ -435,7 +442,7 @@
                             class="download-value"
                             id="minecraftVersion"
                         >
-                            PLATZHALTER
+                            -
                         </span>
 
                     </div>
@@ -451,7 +458,7 @@
                             class="download-value"
                             id="loader"
                         >
-                            PLATZHALTER
+                            -
                         </span>
 
                     </div>
@@ -472,7 +479,6 @@
                 </div>
 
             </section>
-
 
 
             <!-- =========================
@@ -609,7 +615,6 @@
             </section>
 
 
-
             <!-- =========================
                  IMPORTANT NOTICE
             ========================== -->
@@ -638,7 +643,6 @@
                 </div>
 
             </section>
-
 
 
             <!-- =========================
@@ -680,7 +684,7 @@
                                     text-decoration:none;
                                 "
                             >
-                                OPEN
+                                NOT AVAILABLE
                             </a>
 
                         </span>
@@ -706,7 +710,7 @@
                                     text-decoration:none;
                                 "
                             >
-                                OPEN
+                                NOT AVAILABLE
                             </a>
 
                         </span>
@@ -744,12 +748,16 @@
 
 
     <!-- =========================
-         CONFIG
+         CONFIGURATION
     ========================== -->
 
     <script>
 
         if (typeof SITE_CONFIG !== "undefined") {
+
+            /*
+             * PACKAGE INFORMATION
+             */
 
             document.getElementById("modpackVersion").textContent =
                 SITE_CONFIG.modpack.version;
@@ -760,47 +768,12 @@
             document.getElementById("loader").textContent =
                 SITE_CONFIG.modpack.loader;
 
+
+            /*
+             * FOOTER
+             */
+
             document.getElementById("footerVersion").textContent =
                 SITE_CONFIG.website.modpackVersion;
 
-
-            const modpackDownload =
-                document.getElementById("modpackDownload");
-
-            const launcherDownload =
-                document.getElementById("launcherDownload");
-
-            const additionalDownload =
-                document.getElementById("additionalDownload");
-
-
-            if (SITE_CONFIG.download.modpack !== "PLATZHALTER") {
-
-                modpackDownload.href =
-                    SITE_CONFIG.download.modpack;
-
-            }
-
-
-            if (SITE_CONFIG.download.launcher !== "PLATZHALTER") {
-
-                launcherDownload.href =
-                    SITE_CONFIG.download.launcher;
-
-            }
-
-
-            if (SITE_CONFIG.download.additional !== "PLATZHALTER") {
-
-                additionalDownload.href =
-                    SITE_CONFIG.download.additional;
-
-            }
-
-        }
-
-    </script>
-
-</body>
-
-</html>
+```
