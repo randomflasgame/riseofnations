@@ -1,446 +1,103 @@
-```html
 <!DOCTYPE html>
+
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Rise of Nations // Command</title>
-
-    <link rel="stylesheet" href="style.css">
-    <script src="config/site-config.js"></script>
-
-    <style>
-
-        /* =========================================================
-           BASE
-        ========================================================= */
-
-        * {
-            box-sizing: border-box;
-        }
-
-        html,
-        body {
-            margin: 0;
-            min-height: 100%;
-            background: #03070b;
-            color: #dce6ed;
-            font-family:
-                "Arial Narrow",
-                "Segoe UI",
-                Arial,
-                sans-serif;
-        }
-
-        body {
-            overflow-x: hidden;
-        }
-
-        button,
-        input {
-            font: inherit;
-        }
-
-        a {
-            color: inherit;
-        }
-
-
-        /* =========================================================
-           INTRO // FULL SCREEN COMMAND CINEMATIC
-        ========================================================= */
-
-        .ron-intro {
-            position: fixed;
-            inset: 0;
-            z-index: 99999;
-
-            overflow: hidden;
-
-            background:
-                radial-gradient(
-                    circle at 50% 48%,
-                    rgba(30, 105, 150, 0.18),
-                    transparent 35%
-                ),
-                linear-gradient(
-                    135deg,
-                    #020405 0%,
-                    #071018 48%,
-                    #010304 100%
-                );
-
-            opacity: 1;
-            visibility: visible;
-
-            transition:
-                opacity 1s ease,
-                visibility 1s ease;
-        }
-
-        .ron-intro.hidden {
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-        }
-
-
-        /* =========================================================
-           INTRO BACKGROUND
-        ========================================================= */
-
-        .intro-grid {
-            position: absolute;
-            inset: -100px;
-
-            background-image:
-                linear-gradient(
-                    rgba(75, 135, 175, 0.055) 1px,
-                    transparent 1px
-                ),
-                linear-gradient(
-                    90deg,
-                    rgba(75, 135, 175, 0.055) 1px,
-                    transparent 1px
-                );
-
-            background-size: 55px 55px;
-
-            animation:
-                introGridMove 10s linear infinite;
-
-            opacity: 0.8;
-        }
-
-        @keyframes introGridMove {
-            from {
-                transform: translate(0, 0);
-            }
-
-            to {
-                transform: translate(55px, 55px);
-            }
-        }
-
-
-        .intro-vignette {
-            position: absolute;
-            inset: 0;
-
-            background:
-                radial-gradient(
-                    ellipse at center,
-                    transparent 20%,
-                    rgba(0, 0, 0, 0.25) 55%,
-                    rgba(0, 0, 0, 0.9) 100%
-                );
-
-            pointer-events: none;
-        }
-
-
-        .intro-scanline {
-            position: absolute;
-            left: 0;
-            right: 0;
-            top: -10%;
-
-            height: 2px;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    transparent,
-                    rgba(90, 175, 220, 0.7),
-                    transparent
-                );
-
-            box-shadow:
-                0 0 20px rgba(80, 170, 220, 0.5);
-
-            animation:
-                introScan 4s linear infinite;
-
-            opacity: 0.5;
-        }
-
-        @keyframes introScan {
-            from {
-                transform: translateY(0);
-            }
-
-            to {
-                transform: translateY(120vh);
-            }
-        }
-
-
-        /* =========================================================
-           INTRO LIGHTS
-        ========================================================= */
-
-        .intro-light {
-            position: absolute;
-
-            width: 500px;
-            height: 500px;
-
-            border-radius: 50%;
-
-            background:
-                radial-gradient(
-                    circle,
-                    rgba(35, 125, 175, 0.14),
-                    transparent 68%
-                );
-
-            filter: blur(5px);
-
-            animation:
-                introLightPulse 3.5s ease-in-out infinite;
-        }
-
-        .intro-light.one {
-            left: -160px;
-            top: -150px;
-        }
-
-        .intro-light.two {
-            right: -180px;
-            bottom: -160px;
-
-            animation-delay: 1.4s;
-        }
-
-        @keyframes introLightPulse {
-
-            0%,
-            100% {
-                opacity: 0.25;
-                transform: scale(0.9);
-            }
-
-            50% {
-                opacity: 1;
-                transform: scale(1.15);
-            }
-        }
-
-
-        /* =========================================================
-           INDUSTRIAL CORNERS
-        ========================================================= */
-
-        .intro-corner {
-            position: absolute;
-
-            width: 180px;
-            height: 180px;
-
-            border-color:
-                rgba(90, 150, 185, 0.22);
-
-            border-style: solid;
-
-            opacity: 0.8;
-        }
-
-        .intro-corner.tl {
-            left: 25px;
-            top: 25px;
-
-            border-width: 1px 0 0 1px;
-        }
-
-        .intro-corner.tr {
-            right: 25px;
-            top: 25px;
-
-            border-width: 1px 1px 0 0;
-        }
-
-        .intro-corner.bl {
-            left: 25px;
-            bottom: 25px;
-
-            border-width: 0 0 1px 1px;
-        }
-
-        .intro-corner.br {
-            right: 25px;
-            bottom: 25px;
-
-            border-width: 0 1px 1px 0;
-        }
-
-
-        /* =========================================================
-           COMMAND CONSOLE
-        ========================================================= */
-
-        .intro-console {
-            position: absolute;
-
-            left: 7%;
-            top: 7%;
-
-            width: min(430px, 42vw);
-
-            color: #496d82;
-
-            font-family:
-                "Consolas",
-                "Courier New",
-                monospace;
-
-            font-size: 10px;
-
-            line-height: 1.8;
-
-            opacity: 0;
-
-            animation:
-                consoleAppear 0.8s ease forwards;
-
-            animation-delay: 0.3s;
-        }
-
-        .intro-console-line {
-            opacity: 0;
-
-            animation:
-                consoleLine 0.4s ease forwards;
-        }
-
-        .intro-console-line:nth-child(1) {
-            animation-delay: 0.4s;
-        }
-
-        .intro-console-line:nth-child(2) {
-            animation-delay: 0.8s;
-        }
-
-        .intro-console-line:nth-child(3) {
-            animation-delay: 1.2s;
-        }
-
-        .intro-console-line:nth-child(4) {
-            animation-delay: 1.6s;
-        }
-
-        .intro-console-line:nth-child(5) {
-            animation-delay: 2s;
-        }
-
-        .intro-console-line:nth-child(6) {
-            animation-delay: 2.4s;
-        }
-
-        .intro-console-line:nth-child(7) {
-            animation-delay: 2.8s;
-        }
-
-        @keyframes consoleAppear {
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes consoleLine {
-            from {
-                opacity: 0;
-                transform: translateX(-8px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .console-green {
-            color: #73a88a;
-        }
-
-        .console-blue {
-            color: #6798b8;
-        }
-
-        .console-gold {
-            color: #bca05b;
-        }
-
-
-        /* =========================================================
-           SYSTEM BOOT CENTER
-        ========================================================= */
-
-        .intro-center {
-            position: absolute;
-
-            inset: 0;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            text-align: center;
-
-            pointer-events: none;
-        }
-
-        .intro-center-content {
-            width: min(1100px, 90%);
-
-            transform: translateY(25px);
-
-            opacity: 0;
-
-            animation:
-                centerReveal 1s ease forwards;
-
-            animation-delay: 2.8s;
-        }
-
-        @keyframes centerReveal {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-
-        .intro-classification {
-            color: #60859b;
-
-            font-size: 10px;
-
-            font-weight: 900;
-
-            letter-spacing: 5px;
-
-            margin-bottom: 25px;
-        }
-
-
-        /* =========================================================
-           MAIN LOGO
-        ========================================================= */
-
-        .intro-title {
-            margin: 0;
-
-            color: #e9f0f4;
-
-            font-size:
-                clamp(50px, 9vw, 135px);
-
-            font-weight: 1000;
-
-            letter-spacing: 8px;
-
-            line-height: 0.88;
-
-            text-shadow:
+```
+<title>RISE OF NATIONS // COMMAND NETWORK</title>
+
+<link rel="stylesheet" href="style.css">
+<script src="config/site-config.js"></script>
+
+<style>
+
+    * {
+        box-sizing: border-box;
+    }
+
+    html,
+    body {
+        margin: 0;
+        min-height: 100%;
+        background: #050a0f;
+        color: #dce6ed;
+        font-family:
+            "Arial Narrow",
+            "Segoe UI",
+            Arial,
+            sans-serif;
+    }
+
+    body {
+        overflow-x: hidden;
+    }
+
+    a {
+        color: inherit;
+    }
+
+    button,
+    input {
+        font: inherit;
+    }
+
+
+    /* =========================================================
+       INTRO
+    ========================================================= */
+
+    .ron-intro {
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        overflow: hidden;
+
+        background:
+            radial-gradient(
+                circle at center,
+                rgba(25, 90, 130, 0.22),
+                transparent 42%
+            ),
+            linear-gradient(
+                135deg,
+                #020507 0%,
+                #071019 50%,
+                #020507 100%
+            );
+
+        opacity: 1;
+        visibility: visible;
+
+        transition:
+            opacity 0.9s ease,
+            visibility 0.9s ease;
+    }
+
+    .ron-intro.hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
+
+
+    /* GRID */
+
+    .intro-grid {
+        position: absolute;
+        inset: -100px;
+
+        background-image:
+            linear-gradient(
+                rgba(70, 140, 190, 0.055) 1px,
+                transparent 1px
+            ),
+            linear-gradient(
 ```
