@@ -382,9 +382,11 @@
                 </div>
 
 
+                <!-- DIRECT GOOGLE DRIVE DOWNLOAD -->
+
                 <a
                     id="modpackDownload"
-                    href="#"
+                    href="https://drive.usercontent.google.com/download?id=1NACbhPCcP1QPANQUAO67qOCHxqX5xAtX&export=download&authuser=0"
                     class="download-button"
                     target="_blank"
                     rel="noopener"
@@ -426,7 +428,7 @@
                             class="download-value gold"
                             id="modpackVersion"
                         >
-                            -
+                            5.0.0
                         </span>
 
                     </div>
@@ -442,7 +444,7 @@
                             class="download-value"
                             id="minecraftVersion"
                         >
-                            -
+                            1.21.1
                         </span>
 
                     </div>
@@ -458,7 +460,7 @@
                             class="download-value"
                             id="loader"
                         >
-                            -
+                            NeoForge 21.1.248
                         </span>
 
                     </div>
@@ -673,20 +675,7 @@
                         </span>
 
                         <span class="download-value">
-
-                            <a
-                                id="launcherDownload"
-                                href="#"
-                                target="_blank"
-                                rel="noopener"
-                                style="
-                                    color:#d6a94a;
-                                    text-decoration:none;
-                                "
-                            >
-                                NOT AVAILABLE
-                            </a>
-
+                            NOT AVAILABLE
                         </span>
 
                     </div>
@@ -699,20 +688,7 @@
                         </span>
 
                         <span class="download-value">
-
-                            <a
-                                id="additionalDownload"
-                                href="#"
-                                target="_blank"
-                                rel="noopener"
-                                style="
-                                    color:#d6a94a;
-                                    text-decoration:none;
-                                "
-                            >
-                                NOT AVAILABLE
-                            </a>
-
+                            NOT AVAILABLE
                         </span>
 
                     </div>
@@ -736,8 +712,8 @@
 
         &nbsp; // &nbsp;
 
-        <span id="footerVersion">
-            SYSTEM
+        <span>
+            5.0.0
         </span>
 
         &nbsp; // &nbsp;
@@ -755,10 +731,6 @@
 
         if (typeof SITE_CONFIG !== "undefined") {
 
-            /*
-             * PACKAGE INFORMATION
-             */
-
             document.getElementById("modpackVersion").textContent =
                 SITE_CONFIG.modpack.version;
 
@@ -768,12 +740,12 @@
             document.getElementById("loader").textContent =
                 SITE_CONFIG.modpack.loader;
 
+        }
 
-            /*
-             * FOOTER
-             */
+    </script>
 
-            document.getElementById("footerVersion").textContent =
-                SITE_CONFIG.website.modpackVersion;
 
+</body>
+
+</html>
 ```
